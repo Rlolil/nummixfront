@@ -2,7 +2,7 @@ import React from 'react'
 
 function SidebarComp() {
   return (
-    <div>SidebarComp</div>
+    <div>SidebarCompp</div>
   )
 }
 
