@@ -82,7 +82,7 @@ function Register() {
         <div>
           <p className="text-center text-gray-400">
             You have an account?{" "}
-            <Link to="/login" className="text-black underline font-medium">
+            <Link to="/login" className="text-black font-medium">
               Sign in
             </Link>
           </p>

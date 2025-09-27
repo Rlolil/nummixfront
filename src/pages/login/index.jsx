@@ -24,7 +24,7 @@ function Login() {
     <div className="max-w-[1320px] mx-auto">
       <div className="rounded-2xl shadow-2xl border border-gray-200 p-10 mt-20 max-w-[500px] mx-auto space-y-6">
         <div className="text-center">
-          <h2 className="text-[black] font-bold text-[26px]">Nummix ERP</h2>
+          <h2 className="text-[black] font-bold text-[26px]">Nummix.az</h2>
           <p className="text-gray-600">
             Sign in to your financial management dashboard
           </p>
@@ -54,6 +54,12 @@ function Login() {
                 placeholder="Enter your password"
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               />
+              <p className="text-center text-gray-400 mr-[190px] mt-[10px]">
+                Forgot your password?{" "}
+                <Link to="/reset-password" className="text-black  font-medium">
+                  Reset it
+                </Link>
+              </p>
             </div>
             <div>
               <button
@@ -70,17 +76,8 @@ function Login() {
         <div className="space-y-4">
           <p className="text-center text-gray-400">
             Don't have an account?{" "}
-            <Link to="/register" className="text-black underline font-medium">
+            <Link to="/register" className="text-black  font-medium">
               Sign up
-            </Link>
-          </p>
-          <p className="text-center text-gray-400">
-            Forgot your password?{" "}
-            <Link
-              to="/reset-password"
-              className="text-black underline font-medium"
-            >
-              Reset it
             </Link>
           </p>
         </div>

@@ -33,7 +33,7 @@ function ResetPassword() {
                 </form>
             </div>
             <div className='space-y-4'>
-                <p className='text-center text-gray-400'>Don't have an account? <Link to="/register" className='text-black underline font-medium'>Sign up</Link></p>
+                <p className='text-center text-gray-400'>Don't have an account? <Link to="/register" className='text-black font-medium'>Sign up</Link></p>
             </div>
         </div>
     </div>
