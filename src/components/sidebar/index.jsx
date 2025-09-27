@@ -4,11 +4,11 @@ import { Link } from "react-router";
 
 function SidebarComp() {
   return (
-    <div className="w-20 hover:w-64 transition-all duration-400 h-screen group bg-white border-r-1 border-gray-200 text-black ">
+    <div className="fixed top-0 left-0 w-20 hover:w-64 transition-all duration-400 h-screen group bg-white border-l-1 border-gray-200 text-black z-50">
       <div className="flex items-center gap-[20px] p-4">
         <img src={image} alt="Logo" className="w-12 h-auto" />
         <h2 className="text-md group-hover:text-xl font-bold group-hover:opacity-100 opacity-0 transition-opacity duration-200">
-          Nummix ERP
+          Nummix
         </h2>
       </div>
       <hr className="border-gray-200" />
@@ -16,7 +16,6 @@ function SidebarComp() {
         <div>
           <Link to="/dashboard">
             <button
-              data-slot="button"
               className="block group-hover:flex items-center rounded-md text-md font-medium transition-all outline-none hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
             >
               <svg
@@ -45,7 +44,6 @@ function SidebarComp() {
         <div>
           <Link to="/bank-accounts">
             <button
-              data-slot="button"
               className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
             >
               <svg
@@ -87,7 +85,7 @@ function SidebarComp() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className=" h-5 w-5"
+                className="h-5 w-5"
               >
                 <rect width="20" height="14" x="2" y="5" rx="2"></rect>
                 <line x1="2" x2="22" y1="10" y2="10"></line>
@@ -161,7 +159,7 @@ function SidebarComp() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className=" h-5 w-5"
+                className="h-5 w-5"
               >
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
                 <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
@@ -302,7 +300,7 @@ function SidebarComp() {
         </div>
       </div>
       <hr className="border-gray-200" />
-      <div className="text-gray-500 p-4 bottom-0">
+      <div className="text-gray-500 p-4 absolute bottom-0 w-full">
         <Link to="/login">
           <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
             <svg

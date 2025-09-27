@@ -5,7 +5,7 @@ import Sidebar from "../../pages/sidebar";
 
 function MainLayout() {
   return (
-    <div className="flex w-screen overflow-x-hidden">
+    <div className="flex overflow-x-hidden">
       <Sidebar />
       <div className="w-full overflow-x-hidden">
         <Header />
