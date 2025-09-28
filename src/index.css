@@ -1,1 +1,11 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+@utility tabs {
+  @apply max-w-fit h-10 mb-6;
+}
+
+/* Tab write font-bold */
+@utility tab {
+    @apply h-8
+}
