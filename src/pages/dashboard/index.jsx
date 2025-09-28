@@ -2,7 +2,7 @@ import React from "react";
 
 function Dashboard() {
   return (
-    <div className="p-4 max-w-[1320px] mx-auto">
+    <div className="p-4 max-w-[1320px] mx-auto ml-[100px]">
       <div className="flex lg:flex-nowrap flex-wrap items-center justify-between">
         <div>
           <h2 className="text-[32px] font-bold text-black">

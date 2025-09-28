@@ -3,6 +3,7 @@ import RevenueCharts from "../../components/revenuecharts";
 import ExpensesBreakdown from "../../components/expensesbreakdown";
 import MonthlyTrends from "../../components/mothlytrends";
 import AddTransactionModuleForRevenue from "../../components/addtransictionmoduleforrevenue";
+
 function RevenueExpenses() {
   const [activeTab, setActiveTab] = useState("Revenue Breakdown");
   const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +60,7 @@ function RevenueExpenses() {
             </svg>
             Add Transaction
           </button>
-          {isOpen && <AddTransactionModuleForRevenue />}
+          {isOpen && <AddTransactionModuleForRevenue isOpen={isOpen} onClose={() => setIsOpen(false)} />}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
