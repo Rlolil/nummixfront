@@ -3,33 +3,37 @@ import RevenueCharts from "../../components/revenuecharts";
 import ExpensesBreakdown from "../../components/expensesbreakdown";
 import MonthlyTrends from "../../components/mothlytrends";
 import AddTransactionModuleForRevenue from "../../components/addtransictionmoduleforrevenue";
+
 function RevenueExpenses() {
   const [activeTab, setActiveTab] = useState("Revenue Breakdown");
   const [isOpen, setIsOpen] = useState(false);
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+  }
   return (
     <div className="max-w-[1320px] mx-auto p-4 ml-[100px]">
-      <div className="flex items-center justify-between mb-10">
+      <div className="flex flex-wrap md:flex-nowrap items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
         <div>
-          <h2 className="text-black font-bold text-[32px]">
+          <h2 className="text-xl sm:text-2xl font-bold text-black">
             Revenue & Expenses
           </h2>
-          <p className="text-gray-600">
+          <p className="text-sm sm:text-base text-gray-600">
             Track your income, expenses, and profitability
           </p>
         </div>
-        <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2 text-black font-medium border border-gray-300 rounded-lg px-4 py-1 hover:bg-gray-100 shadow-xl transition">
+        <div className="flex items-center gap-2 sm:gap-3 mt-3 sm:mt-0">
+          <button className="flex items-center gap-1 sm:gap-2 text-black md:text-[16px] text-[10px]  font-medium border border-gray-300 rounded-lg px-2 sm:px-4 py-1.5 sm:py-2 hover:bg-gray-100 shadow-sm transition-colors duration-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="lucide lucide-calendar mr-2 h-4 w-4"
+              className="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2"
             >
               <path d="M8 2v4"></path>
               <path d="M16 2v4"></path>
@@ -40,26 +44,31 @@ function RevenueExpenses() {
           </button>
           <button
             onClick={() => setIsOpen(true)}
-            className="bg-black text-white flex items-center font-medium px-4 py-[5px] rounded-lg hover:bg-gray-800 transition shadow-xl"
+            className="bg-black text-white flex items-center font-medium px-3 sm:px-4 py-1.5  md:text-[16px] text-[10px] sm:py-2 rounded-lg hover:bg-gray-800 shadow-sm transition-colors duration-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="lucide lucide-plus mr-2 h-4 w-4"
+              className="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2"
             >
               <path d="M5 12h14"></path>
               <path d="M12 5v14"></path>
             </svg>
             Add Transaction
           </button>
-          {isOpen && <AddTransactionModuleForRevenue />}
+          {isOpen && (
+            <AddTransactionModuleForRevenue
+              isOpen={isOpen}
+              onClose={() => setIsOpen(false)}
+            />
+          )}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
@@ -170,8 +179,8 @@ function RevenueExpenses() {
           </div>
         </div>
       </div>
-      <div className="flex gap-4 mt-6">
-        <div className="shadow-xl border border-gray-200 rounded-xl p-4 max-w-full">
+      <div className="flex md:flex-nowrap flex-wrap gap-4 mt-6">
+        <div className="shadow-xl md:flex-1 flex-10/12 border border-gray-200 rounded-xl p-4 max-w-full">
           <p className="text-black font-medium">Revenue vs Expenses Trend</p>
           <div className="mt-10 w-full">
             <RevenueCharts />
@@ -193,14 +202,14 @@ function RevenueExpenses() {
         </div>
       </div>
       <div className="flex flex-col gap-4 mt-6">
-        <div className="flex bg-gray-100 gap-[10px] max-w-fit p-2 rounded-xl mt-6">
+        <div className="flex flex-wrap bg-gray-100 gap-[10px] max-w-full p-2 rounded-xl mt-6">
           <button
             onClick={(e) => setActiveTab("Revenue Breakdown")}
             className={`border ${
               activeTab === "Revenue Breakdown"
                 ? "bg-white border-gray-200"
                 : "border-none"
-            } rounded-lg py-1 px-6`}
+            } rounded-lg py-1 px-4 sm:px-6 text-sm sm:text-base`}
           >
             Revenue Breakdown
           </button>
@@ -210,7 +219,7 @@ function RevenueExpenses() {
               activeTab === "Expense Breakdown"
                 ? "bg-white border-gray-200"
                 : "border-none"
-            } rounded-lg py-1 px-6`}
+            } rounded-lg py-1 px-4 sm:px-6 text-sm sm:text-base`}
           >
             Expense Breakdown
           </button>
@@ -220,7 +229,7 @@ function RevenueExpenses() {
               activeTab === "Monthly Trends"
                 ? "bg-white border-gray-200"
                 : "border-none"
-            } rounded-lg py-1 px-6`}
+            } rounded-lg py-1 px-4 sm:px-6 text-sm sm:text-base`}
           >
             Monthly Trends
           </button>
@@ -238,17 +247,19 @@ function RevenueExpenses() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="lucide lucide-trending-up h-5 w-5 text-green-600"
+                className="lucide lucide-trending-up h-5 w-5 text-green-600"
               >
                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
                 <polyline points="16 7 22 7 22 13"></polyline>
               </svg>
-              <p className="text-black font-medium">
+              <p className="text-black font-medium text-sm sm:text-base">
                 Revenue Sources - September 2025
               </p>
             </div>
-            <div className="text-center mt-20 mb-20">
-              <p className="text-gray-600">No revenue recorded this month</p>
+            <div className="text-center mt-10 sm:mt-20 mb-10 sm:mb-20">
+              <p className="text-gray-600 text-sm sm:text-base">
+                No revenue recorded this month
+              </p>
             </div>
           </div>
         )}
