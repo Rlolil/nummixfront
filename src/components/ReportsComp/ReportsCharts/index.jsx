@@ -9,7 +9,7 @@ const data = [
   { name: 'Sep', revenue: 2390, expenses: 3800 },
 ];
 
-export default function RevenueCharts() {
+export default function ReportsCharts() {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <LineChart data={data}>

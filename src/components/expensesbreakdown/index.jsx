@@ -14,17 +14,17 @@ function ExpensesBreakdown() {
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="lucide lucide-trending-down h-5 w-5 text-red-600"
+          className="lucide lucide-trending-down h-5 w-5 text-red-600"
         >
           <polyline points="22 17 13.5 8.5 8.5 13.5 2 7"></polyline>
           <polyline points="16 17 22 17 22 11"></polyline>
         </svg>
-        <p className="text-black font-medium">
+        <p className="text-black font-medium text-sm sm:text-base">
           Expense Categories - September 2025
         </p>
       </div>
-      <div className="text-center mt-20 mb-20">
-        <p className="text-gray-600">No expenses recorded this month</p>
+      <div className="text-center mt-10 sm:mt-20 mb-10 sm:mb-20">
+        <p className="text-gray-600 text-sm sm:text-base">No expenses recorded this month</p>
       </div>
     </div>
   );

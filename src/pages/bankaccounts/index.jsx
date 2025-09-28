@@ -5,6 +5,7 @@ import BankModal from '../../components/bankmodal';
 
 function BankAccounts() {
   const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <div className="p-4 max-w-[1320px] ml-[100px] mx-auto">
       <div className="flex lg:flex-nowrap flex-wrap items-center justify-between">
