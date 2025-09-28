@@ -24,7 +24,7 @@ function AiInsights() {
     { id: "expenses", label: "Expenses" },
   ];
   return (
-    <div className="p-4 max-w-[1320px] mx-auto">
+    <div className="p-4 max-w-[1320px] ml-[100px]  mx-auto">
       <div className="flex flex-col lg:flex-row lg:flex-nowrap items-start lg:items-center justify-between gap-4 lg:gap-0">
         <div className="flex flex-col gap-2">
           <h2 className="text-[32px] font-bold text-black">
@@ -125,7 +125,7 @@ function AiInsights() {
         </div>
       </div>
       <div className='mt-[40px]'>
-        <div className="flex items-center text-[14px] justify-between gap-2 bg-gray-100 rounded-xl p-1">
+        <div className="flex flex-wrap items-center text-[14px] justify-between gap-2 bg-gray-100 rounded-xl p-1">
           {tabs.map((tab) => (
             <button
               key={tab.id}
