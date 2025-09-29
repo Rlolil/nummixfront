@@ -5,6 +5,12 @@ import BankModal from '../../components/bankmodal';
 
 function BankAccounts() {
   const [isOpen, setIsOpen] = useState(false);
+  if(isOpen) {
+    document.body.style.overflow = "hidden"
+  }
+  else{
+    document.body.style.overflow = "auto"
+  }
 
   return (
     <div className="p-4 max-w-[1320px] ml-[100px] mx-auto">
