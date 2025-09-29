@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../header";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import Sidebar from "../../pages/sidebar";
 
 function MainLayout() {
+  const navigate = useNavigate()
+  useEffect(() => {
+    navigate("/dashboard")
+  }, [])
+  
   return (
     <div className="flex overflow-x-hidden">
       <Sidebar />

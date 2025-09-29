@@ -9,6 +9,8 @@ function RevenueExpenses() {
   const [isOpen, setIsOpen] = useState(false);
   if (isOpen) {
     document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
   }
   return (
     <div className="max-w-[1320px] mx-auto p-4 ml-[100px]">
