@@ -2,40 +2,44 @@ import React from 'react'
 import Headers from './headers'
 import Cards from './cards'
 import Tabs from './tabs'
-import { MdArrowOutward } from 'react-icons/md';
-import { LuArrowDownLeft, LuCreditCard } from 'react-icons/lu';
-import { GoClock } from 'react-icons/go';
+import { HiMiniArrowsUpDown } from "react-icons/hi2";
+import { HiMiniArrowTrendingUp } from "react-icons/hi2";
+import { HiMiniArrowTrendingDown } from "react-icons/hi2";
 import TransactionsHeaders from './headers';
+
 
 export default function Transactions() {
   const cardsData = [
     {
-      title: "Total Payments",
+      title: "Total Transactions",
       numberdes: "0",
-      description: "This month",
-      icon: <MdArrowOutward />,
+      description: "All time",
+      icon: <HiMiniArrowsUpDown />,
     },
     {
-      title: "Recevied",
+      title: "Total Income",
       numberdes: "0",
-      description: "This month",
-      icon: <LuArrowDownLeft />,
+      description: "0 transactions",
+      icon:<HiMiniArrowTrendingUp />,
+
     },
     {
-      title: "Pending",
-      numberdes: "0",
-      description: "Awaiting processing",
-      icon: <GoClock />,
-    },
-    {
-      title: "Monthly Total",
+      title: "Total Expenses",
       numberdes: "₼ 0",
-      description: "Outgoing payments",
-      icon: <LuCreditCard />,
+      description: "0 transactions",
+      icon: <HiMiniArrowTrendingDown />
+,
+    },
+    {
+      title: "Net flow",
+      numberdes: "₼ 0",
+      description: "Income - Expenses",
+      icon: <HiMiniArrowsUpDown />,
+
     },
   ];
   return (
-    <main className=''>
+    <main className='sm:ml-[6.25rem]'>
       <div className='container px-4 mx-auto'>
         <TransactionsHeaders />
         <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-3 lg:gap-3 overflow-hidden">
@@ -52,7 +56,7 @@ export default function Transactions() {
         <Tabs />
       </div>
     </main>
-  )
+  ) 
 }
 
 
