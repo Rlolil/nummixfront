@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
   return (
-    <div className="p-[19px] w-full border-b bg-white border-gray-200 pr-[80px]">
+    <div className="p-[19px] w-full border-b sm:block hidden bg-white border-gray-200 pr-[80px]">
       <div className="flex items-center justify-between">
         <div className="relative ml-[100px]">
           <svg
