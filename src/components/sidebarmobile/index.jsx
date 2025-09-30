@@ -1,23 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import image from "../../assets/image/logo.png";
-import { Link } from "react-router";
+function SidebarMobile() {
+  const [isOpen, setIsOpen] = useState(false);
 
-function SidebarComp() {
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+    const closeSidebar = () => {
+    setIsOpen(false);
+  };
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
   return (
-    <div className="top-0 hidden md:block md:fixed left-0 w-20 hover:w-64 transition-all duration-400 h-screen group bg-white border-l-1 border-gray-200 text-black z-50">
-      <div className="flex items-center gap-[20px] p-4">
-        <img src={image} alt="Logo" className="w-12 h-auto" />
-        <h2 className="text-md group-hover:text-xl font-bold group-hover:opacity-100 opacity-0 transition-opacity duration-200">
-          Nummix
-        </h2>
-      </div>
-      <hr className="border-gray-200" />
-      <div className="flex flex-col p-4 gap-[10px] mb-[50px] text-black font-medium">
-        <div>
+    <>
+      <button
+        onClick={toggleSidebar}
+        className="fixed top-4 left-4 z-50 p-2 rounded-md md:hidden"
+      >
+        <img src={image} alt="" className="w-12 h-auto" />
+      </button>
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-30 z-30 md:hidden"
+          onClick={closeSidebar}
+        />
+      )}
+      <div
+        className={`fixed top-0 left-0 w-64 h-screen bg-white border-r border-gray-200 text-black z-40 transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out md:hidden`}
+      >
+        <div className="flex items-center gap-4 p-4">
+          <img src={image} alt="Logo" className="w-12 h-auto" />
+          <h2 className="text-xl font-bold">Nummix</h2>
+        </div>
+        <hr className="border-gray-200" />
+        <div className="flex flex-col p-4 gap-2 mb-12 text-black font-medium">
           <Link to="/dashboard">
-            <button
-              className="block group-hover:flex items-center rounded-md text-md font-medium transition-all outline-none hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
-            >
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -35,17 +60,11 @@ function SidebarComp() {
                 <rect width="7" height="9" x="14" y="12" rx="1"></rect>
                 <rect width="7" height="5" x="3" y="16" rx="1"></rect>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Dashboard
-              </span>
+              <span>Dashboard</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/bank-accounts">
-            <button
-              className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
-            >
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -66,15 +85,11 @@ function SidebarComp() {
                 <path d="M10 14h4"></path>
                 <path d="M10 18h4"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Bank Accounts
-              </span>
+              <span>Bank Accounts</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/payments">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -90,15 +105,11 @@ function SidebarComp() {
                 <rect width="20" height="14" x="2" y="5" rx="2"></rect>
                 <line x1="2" x2="22" y1="10" y2="10"></line>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Payments
-              </span>
+              <span>Payments</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/transactions">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -116,15 +127,11 @@ function SidebarComp() {
                 <path d="m3 8 4-4 4 4"></path>
                 <path d="M7 4v16"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Transactions
-              </span>
+              <span>Transactions</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/revenue-expenses">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -140,15 +147,11 @@ function SidebarComp() {
                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
                 <polyline points="16 7 22 7 22 13"></polyline>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Revenue & Expenses
-              </span>
+              <span>Revenue & Expenses</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/invoices">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -167,15 +170,11 @@ function SidebarComp() {
                 <path d="M16 13H8"></path>
                 <path d="M16 17H8"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Invoices
-              </span>
+              <span>Invoices</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/reports-analytics">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -193,15 +192,11 @@ function SidebarComp() {
                 <path d="M13 17V5"></path>
                 <path d="M8 17v-3"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Reports & Analytics
-              </span>
+              <span>Reports & Analytics</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/ai-insights">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -212,21 +207,17 @@ function SidebarComp() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="lucide lucide-brain h-4 w-4"
+                className="h-4 w-4"
               >
                 <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path>
                 <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path>
                 <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                AI Insights
-              </span>
+              <span>AI Insights</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/customers">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -242,15 +233,11 @@ function SidebarComp() {
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Customers
-              </span>
+              <span>Customers</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/calendar">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -268,15 +255,11 @@ function SidebarComp() {
                 <rect width="18" height="18" x="3" y="4" rx="2"></rect>
                 <path d="M3 10h18"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Calendar
-              </span>
+              <span>Calendar</span>
             </button>
           </Link>
-        </div>
-        <div>
           <Link to="/settings">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -292,41 +275,37 @@ function SidebarComp() {
                 <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Settings
-              </span>
+              <span>Settings</span>
+            </button>
+          </Link>
+        </div>
+        <hr className="border-gray-200" />
+        <div className="text-gray-500 p-4 absolute bottom-0 w-full">
+          <Link to="/login">
+            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" x2="9" y1="12" y2="12"></line>
+              </svg>
+              <span>Sign Out</span>
             </button>
           </Link>
         </div>
       </div>
-      <hr className="border-gray-200" />
-      <div className="text-gray-500 p-4 absolute bottom-0 w-full">
-        <Link to="/login">
-          <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-5 w-5"
-            >
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-              <polyline points="16 17 21 12 16 7"></polyline>
-              <line x1="21" x2="9" y1="12" y2="12"></line>
-            </svg>
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              Sign Out
-            </span>
-          </button>
-        </Link>
-      </div>
-    </div>
+    </>
   );
 }
 
-export default SidebarComp;
+export default SidebarMobile;

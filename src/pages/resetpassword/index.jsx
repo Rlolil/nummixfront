@@ -9,7 +9,7 @@ function ResetPassword() {
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false); 
-      navigate("/login");
+      navigate("/reset-password-verify");
     }, 2000);
   };
   return (
@@ -17,7 +17,7 @@ function ResetPassword() {
         <div className='rounded-2xl shadow-2xl border border-gray-200 p-10 mt-20 max-w-[500px] mx-auto space-y-6'>
             <div className='text-center'>
                 <h2 className='text-[black] font-bold text-[26px]'>Nummix ERP</h2>
-                <p className='text-gray-600'>Reset your password</p>
+                <p className='text-gray-600'>Send password reset link</p>
             </div>
             <div>
                 <form onSubmit={handleSubmit} className='space-y-6 mt-6'>

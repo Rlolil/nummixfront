@@ -9,7 +9,7 @@ function RevenueExpenses() {
   const [isOpen, setIsOpen] = useState(false);
   if (isOpen) {
     document.body.style.overflow = "hidden";
-  }
+  } 
   return (
     <div className="max-w-[1320px] mx-auto p-4 ml-[100px]">
       <div className="flex flex-wrap md:flex-nowrap items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">

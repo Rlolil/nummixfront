@@ -34,7 +34,7 @@ export default function Payments() {
     },
   ];
   return (
-    <main className='overflow-hidden'>
+    <main className='overflow-hidden ml-[100px]'>
       <div className='container px-4 mx-auto'>
         <Headers />
         <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-3 lg:gap-3 overflow-hidden">

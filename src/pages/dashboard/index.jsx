@@ -2,7 +2,7 @@ import React from "react";
 
 function Dashboard() {
   return (
-    <div className="p-3 sm:p-4 max-w-[1320px] ml-[100px] mx-auto">
+    <div className="p-3 sm:p-4 max-w-[1320px] sm:ml-[100px] mx-auto">
       <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-3 sm:gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold text-black">
