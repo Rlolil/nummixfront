@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function ExpensesBreakdown() {
+  const {t} = useTranslation();
   return (
     <div className="shadow-xl border border-gray-200 rounded-xl p-4 w-full">
       <div className="flex items-center gap-2 mb-10">
@@ -20,11 +22,11 @@ function ExpensesBreakdown() {
           <polyline points="16 17 22 17 22 11"></polyline>
         </svg>
         <p className="text-black font-medium text-sm sm:text-base">
-          Expense Categories - September 2025
+          {t("Expense_Categories_September_2025")}
         </p>
       </div>
       <div className="text-center mt-10 sm:mt-20 mb-10 sm:mb-20">
-        <p className="text-gray-600 text-sm sm:text-base">No expenses recorded this month</p>
+        <p className="text-gray-600 text-sm sm:text-base">{t("No_expenses_recorded_this_month")}</p>
       </div>
     </div>
   );

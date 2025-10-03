@@ -1,10 +1,12 @@
 import React from "react";
 import image from "../../assets/image/logo.png";
 import { Link } from "react-router";
+import { useTranslation } from "react-i18next";
 
 function SidebarComp() {
+  const {t} = useTranslation()
   return (
-    <div className="top-0 hidden md:block md:fixed left-0 w-20 hover:w-64 transition-all duration-400 h-screen group bg-white border-l-1 border-gray-200 text-black z-50">
+    <div className="top-0 hidden md:block max-w-64 md:fixed left-0 w-20 hover:w-64 transition-all duration-400 h-screen group bg-white border-l-1 border-gray-200 text-black z-50">
       <div className="flex items-center gap-[20px] p-4">
         <img src={image} alt="Logo" className="w-12 h-auto" />
         <h2 className="text-md group-hover:text-xl font-bold group-hover:opacity-100 opacity-0 transition-opacity duration-200">
@@ -35,8 +37,8 @@ function SidebarComp() {
                 <rect width="7" height="9" x="14" y="12" rx="1"></rect>
                 <rect width="7" height="5" x="3" y="16" rx="1"></rect>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Dashboard
+              <span className="opacity-0 group-hover:opacity-100 invisible group-hover:visible text-nowrap transition-opacity duration-200">
+                {t("dashboard")}
               </span>
             </button>
           </Link>
@@ -66,8 +68,8 @@ function SidebarComp() {
                 <path d="M10 14h4"></path>
                 <path d="M10 18h4"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Bank Accounts
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+                {t("bank_accounts")}
               </span>
             </button>
           </Link>
@@ -90,8 +92,8 @@ function SidebarComp() {
                 <rect width="20" height="14" x="2" y="5" rx="2"></rect>
                 <line x1="2" x2="22" y1="10" y2="10"></line>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Payments
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+                {t("payments")}
               </span>
             </button>
           </Link>
@@ -116,8 +118,8 @@ function SidebarComp() {
                 <path d="m3 8 4-4 4 4"></path>
                 <path d="M7 4v16"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Transactions
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+                {t("transactions")}
               </span>
             </button>
           </Link>
@@ -140,8 +142,8 @@ function SidebarComp() {
                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
                 <polyline points="16 7 22 7 22 13"></polyline>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Revenue & Expenses
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+                {t("Revenue_Expenses")}
               </span>
             </button>
           </Link>
@@ -167,8 +169,8 @@ function SidebarComp() {
                 <path d="M16 13H8"></path>
                 <path d="M16 17H8"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Invoices
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+                {t("Invoices")}
               </span>
             </button>
           </Link>
@@ -193,8 +195,8 @@ function SidebarComp() {
                 <path d="M13 17V5"></path>
                 <path d="M8 17v-3"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Reports & Analytics
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+                {t("reports_analytics")}
               </span>
             </button>
           </Link>
@@ -218,8 +220,8 @@ function SidebarComp() {
                 <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path>
                 <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                AI Insights
+              <span className="opacity-0 group-hover:opacity-100 text-ellipsis invisible group-hover:visible max-w-24 text-nowrap transition-opacity duration-200">
+                {t("ai_insights")}
               </span>
             </button>
           </Link>
@@ -242,8 +244,8 @@ function SidebarComp() {
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Customers
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+                {t("Customers")}
               </span>
             </button>
           </Link>
@@ -268,8 +270,8 @@ function SidebarComp() {
                 <rect width="18" height="18" x="3" y="4" rx="2"></rect>
                 <path d="M3 10h18"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Calendar
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+                {t("Calendar")}
               </span>
             </button>
           </Link>
@@ -292,8 +294,8 @@ function SidebarComp() {
                 <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Settings
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+                {t("settings")}
               </span>
             </button>
           </Link>
@@ -319,8 +321,8 @@ function SidebarComp() {
               <polyline points="16 17 21 12 16 7"></polyline>
               <line x1="21" x2="9" y1="12" y2="12"></line>
             </svg>
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              Sign Out
+            <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+              {t("sign_out")}
             </span>
           </button>
         </Link>

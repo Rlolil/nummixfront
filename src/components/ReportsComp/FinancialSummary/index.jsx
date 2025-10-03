@@ -1,14 +1,16 @@
 import React from "react";
 import ReportsCharts from "../ReportsCharts";
+import { useTranslation } from "react-i18next";
 
 function FinancialSummary() {
+  const {t} = useTranslation();
   return (
     <div className="mt-3 sm:mt-4 space-y-3 sm:space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
             <p className="text-black font-medium text-xs sm:text-sm">
-              Net Profit
+              {t("Net_Profit")}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,13 +30,13 @@ function FinancialSummary() {
           </div>
           <div>
             <p className="font-bold text-green-600 text-lg sm:text-xl">₼0</p>
-            <p className="text-gray-600 text-xs">This Month</p>
+            <p className="text-gray-600 text-xs">{t("this_month")}</p>
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
             <p className="text-black font-medium text-xs sm:text-sm">
-              Active Accounts
+              {t("Active_Accounts")}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -59,13 +61,13 @@ function FinancialSummary() {
           </div>
           <div>
             <p className="font-bold text-black text-lg sm:text-xl">0</p>
-            <p className="text-gray-600 text-xs">₼0 total balance</p>
+            <p className="text-gray-600 text-xs">₼0 {t("Total_Balance")}</p>
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
             <p className="text-black font-medium text-xs sm:text-sm">
-              Total Customers
+              {t("Total_Customers")}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,13 +89,13 @@ function FinancialSummary() {
           </div>
           <div>
             <p className="font-bold text-black text-lg sm:text-xl">0</p>
-            <p className="text-gray-600 text-xs">Customer Base</p>
+            <p className="text-gray-600 text-xs">{t("Customer_Base")}</p>
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
             <p className="text-black font-medium text-xs sm:text-sm">
-              Pending Invoices
+              {t("Pending_Invoices")}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,13 +118,13 @@ function FinancialSummary() {
           </div>
           <div>
             <p className="font-bold text-red-600 text-lg sm:text-xl">0</p>
-            <p className="text-gray-600 text-xs">Awaiting payment</p>
+            <p className="text-gray-600 text-xs">{t("Awaiting_payment")}</p>
           </div>
         </div>
       </div>
       <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200">
         <p className="font-medium text-sm sm:text-base">
-          6-Month Financial Performance
+          {t("Month_Financial_Performance")}
         </p>
         <div className="mt-2 sm:mt-3">
           <ReportsCharts />
@@ -131,31 +133,31 @@ function FinancialSummary() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4">
           <h2 className="text-base sm:text-lg font-medium">
-            Financial Health Score
+            {t("Financial_Health_Score")}
           </h2>
           <div className="space-y-3 sm:space-y-4">
             {[
               {
-                label: "Profit Margin",
+                label: t("Profit_Margin"),
                 value: "0%",
                 bgColor: "bg-gray-200",
                 textColor: "text-black",
               },
               {
-                label: "Cash Flow",
-                value: "Positive",
+                label: t("Cash_Flow"),
+                value: t("Positive"),
                 bgColor: "bg-black",
                 textColor: "text-white",
               },
               {
-                label: "Account Diversity",
-                value: "Limited",
+                label: t("Account_Diversity"),
+                value: t("Limited"),
                 bgColor: "bg-gray-200",
                 textColor: "text-black",
               },
               {
-                label: "Invoice Management",
-                value: "Good",
+                label: t("Invoice_Management"),
+                value: t("Good"),
                 bgColor: "bg-black",
                 textColor: "text-white",
               },
@@ -172,7 +174,7 @@ function FinancialSummary() {
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4">
-          <h2 className="text-base sm:text-lg font-medium">Quick Insights</h2>
+          <h2 className="text-base sm:text-lg font-medium">{t("Quick_Insights")}</h2>
           <div className="space-y-3 sm:space-y-4">
             {[
               {
@@ -193,8 +195,8 @@ function FinancialSummary() {
                     <polyline points="16 7 22 7 22 13"></polyline>
                   </svg>
                 ),
-                title: "Revenue Growth",
-                subtext: "Insufficient data for comparison",
+                title: t("Revenue_Growth"),
+                subtext: t("Insufficient_data_for_comparison"),
               },
               {
                 icon: (
@@ -214,8 +216,8 @@ function FinancialSummary() {
                     <polyline points="16 17 22 17 22 11"></polyline>
                   </svg>
                 ),
-                title: "Expense Control",
-                subtext: "No revenue to compare",
+                title: t("Expense_Trend"),
+                subtext: t("No_revenue_to_compare"),
               },
               {
                 icon: (
@@ -237,8 +239,8 @@ function FinancialSummary() {
                     <path d="M3 10h18"></path>
                   </svg>
                 ),
-                title: "Transaction Volume",
-                subtext: "0 transactions this month",
+                title: t("Invoice_Paid_on_Time"),
+                subtext: t("transactions_this_month"),
               },
             ].map((item, index) => (
               <div key={index} className="flex items-center gap-3 sm:gap-4">

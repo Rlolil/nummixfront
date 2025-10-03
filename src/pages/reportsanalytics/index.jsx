@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { FiDownload } from "react-icons/fi";
 import FinancialSummary from "../../components/ReportsComp/FinancialSummary";
 import CashFlow from "../../components/ReportsComp/cashflow";
 import ProfitLoss from "../../components/ReportsComp/profitloss";
 import AccountBalance from "../../components/ReportsComp/accountbalance";
+import { useTranslation } from "react-i18next";
 function ReportsAnalytics() {
+  const {t} = useTranslation()
   const [activeTab, setActiveTab] = useState("Financial Summary");
   const [selectedRange, setSelectedRange] = useState("Current Month");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -63,7 +65,7 @@ function ReportsAnalytics() {
           <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
             <div className="flex items-center justify-between">
               <p className="text-black font-medium text-xs sm:text-sm">
-                Monthly Revenue
+                {t("Monthly_Revenue")}
               </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,13 +85,13 @@ function ReportsAnalytics() {
             </div>
             <div>
               <p className="font-bold text-green-600 text-lg sm:text-xl">₼0</p>
-              <p className="text-gray-600 text-xs">0 transactions</p>
+              <p className="text-gray-600 text-xs">0 {t("transactions")}</p>
             </div>
           </div>
           <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
             <div className="flex items-center justify-between">
               <p className="text-black font-medium text-xs sm:text-sm">
-                Monthly Expenses
+                {t("Monthly_Expenses")}
               </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,13 +113,13 @@ function ReportsAnalytics() {
             </div>
             <div>
               <p className="font-bold text-red-600 text-lg sm:text-xl">₼0</p>
-              <p className="text-gray-600 text-xs">0 transactions</p>
+              <p className="text-gray-600 text-xs">0 {t("transactions")}</p>
             </div>
           </div>
           <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
             <div className="flex items-center justify-between">
               <p className="text-black font-medium text-xs sm:text-sm">
-                Total Balance
+                {t("total_balance")}
               </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -137,13 +139,13 @@ function ReportsAnalytics() {
             </div>
             <div>
               <p className="font-bold text-black text-lg sm:text-xl">₼0</p>
-              <p className="text-gray-600 text-xs">Across 0 accounts</p>
+              <p className="text-gray-600 text-xs">{t("across_accounts")}</p>
             </div>
           </div>
           <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
             <div className="flex items-center justify-between">
               <p className="text-black font-medium text-xs sm:text-sm">
-                Invoice Revenue
+                {t("Invoice_Revenue")}
               </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -173,10 +175,10 @@ function ReportsAnalytics() {
         <div>
           <div className="flex flex-row flex-wrap lg:flex-nowrap bg-gray-100 gap-2 sm:gap-3 p-2 rounded-lg mt-4 sm:mt-6">
             {[
-              "Financial Summary",
-              "Cash Flow",
-              "Profit & Loss",
-              "Accounts Balance",
+              `${t("Financial_Summary")}`,
+              `${t("Cash_Flow")}`,
+              `${t("Profit_Loss")}`,
+              `${t("Accounts_Balance")}`,
             ].map((tab) => (
               <button
                 key={tab}
@@ -190,10 +192,10 @@ function ReportsAnalytics() {
             ))}
           </div>
           <div className="mt-3 sm:mt-4">
-            {activeTab === "Financial Summary" && <FinancialSummary />}
-            {activeTab === "Cash Flow" && <CashFlow />}
-            {activeTab === "Profit & Loss" && <ProfitLoss />}
-            {activeTab === "Accounts Balance" && <AccountBalance />}
+            {activeTab === `${t("Financial_Summary")}` && <FinancialSummary />}
+            {activeTab === `${t("Cash_Flow")}` && <CashFlow />}
+            {activeTab === `${t("Profit_Loss")}` && <ProfitLoss />}
+            {activeTab === `${t("Accounts_Balance")}` && <AccountBalance />}
           </div>
         </div>
       </div>

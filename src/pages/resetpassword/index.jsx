@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
+import { forgotPassword } from '../../services';
 
 function ResetPassword() {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [email, setEmail] = useState("");
     const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false); 
-      navigate("/reset-password-verify");
-    }, 2000);
+    try {
+        await forgotPassword({ email });
+        setIsSubmitting(false);
+        navigate("/reset-password-verify");
+    } catch (error) {
+        console.error(error);
+        setIsSubmitting(false); 
+    }
   };
   return (
     <div className='max-w-[1320px] mx-auto'>
@@ -23,7 +29,7 @@ function ResetPassword() {
                 <form onSubmit={handleSubmit} className='space-y-6 mt-6'>
                     <div>
                         <label className='text-sm font-medium text-gray-700'>Email</label>
-                        <input required type="email" className='flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50' placeholder='Enter your email' />
+                        <input onChange={(e)=> {setEmail(e.target.value)}} required type="email" className='flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50' placeholder='Enter your email' />
                     </div>
                     <div>
                         <button type='submit' className='w-full bg-[black] text-white p-3 rounded-lg font-medium hover:bg-gray-800 transition' style={{ backgroundColor: isSubmitting ? 'gray' : 'black' }} disabled={isSubmitting}>

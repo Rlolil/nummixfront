@@ -1,15 +1,16 @@
-import React from "react";
-
+import { useTranslation } from "react-i18next";
+import "../../utils/i18n/i18n.js";
 function Dashboard() {
+  const { t } = useTranslation();
   return (
-    <div className="p-3 sm:p-4 max-w-[1320px] sm:ml-[100px] mx-auto">
+    <div className="p-3 sm:p-4 max-w-[1320px] sm:ml-[100px] sm:mt-0 mt-[80px] mx-auto">
       <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-3 sm:gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold text-black">
-            Welcome back, UserName
+            {t("welcome")}, UserName
           </h2>
           <p className="text-sm sm:text-base text-gray-600">
-            Here's your financial overview for today
+            {t("financial_overview")}
           </p>
         </div>
         <div className="mt-3 lg:mt-0 flex items-center gap-2 sm:gap-3">
@@ -28,11 +29,31 @@ function Dashboard() {
             >
               <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
             </svg>
-            Generate AI Analysis
+            {t("generate_ai_analysis")}
           </button>
           <a href="https://portal.asxm.gov.az/login" target="_blank" rel="noopener noreferrer">
             <button className="shadow-sm bg-white border border-gray-200 text-black font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-gray-100 transition-colors duration-200">
-              E taxes
+              E-Taxes
+            </button>
+          </a>
+          <a href="https://e-social.gov.az/az" target="_blank" rel="noopener noreferrer">
+            <button className="shadow-sm bg-white border border-gray-200 text-black font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-gray-100 transition-colors duration-200">
+              E-Sosial
+            </button>
+          </a>
+          <a href="https://sosial.gov.az/az" target="_blank" rel="noopener noreferrer">
+            <button className="shadow-sm bg-white border border-gray-200 text-black font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-gray-100 transition-colors duration-200">
+              ƏMAS
+            </button>
+          </a>
+          <a href="https://customs.gov.az/" target="_blank" rel="noopener noreferrer">
+            <button className="shadow-sm bg-white border border-gray-200 text-black font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-gray-100 transition-colors duration-200">
+              Gömrük
+            </button>
+          </a>
+          <a href="https://www.etender.gov.az/" target="_blank" rel="noopener noreferrer">
+            <button className="shadow-sm bg-white border border-gray-200 text-black font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-gray-100 transition-colors duration-200">
+              E-Tender
             </button>
           </a>
         </div>
@@ -41,7 +62,7 @@ function Dashboard() {
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
             <p className="text-black font-medium text-xs sm:text-sm">
-              Total Balance
+              {t("total_balance")}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,13 +82,13 @@ function Dashboard() {
           </div>
           <div>
             <p className="font-bold text-black text-lg sm:text-xl">₼0</p>
-            <p className="text-gray-600 text-xs sm:text-sm">Across 0 accounts</p>
+            <p className="text-gray-600 text-xs sm:text-sm">{t("across_accounts")}</p>
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
             <p className="text-black font-medium text-xs sm:text-sm">
-              Monthly Income
+              {t("monthly_income")}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,13 +108,13 @@ function Dashboard() {
           </div>
           <div>
             <p className="font-bold text-green-600 text-lg sm:text-xl">+₼0</p>
-            <p className="text-gray-600 text-xs sm:text-sm">This Month</p>
+            <p className="text-gray-600 text-xs sm:text-sm">{t("this_month")}</p>
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
             <p className="text-black font-medium text-xs sm:text-sm">
-              Monthly Expenses
+              {t("monthly_expenses")}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -113,13 +134,13 @@ function Dashboard() {
           </div>
           <div>
             <p className="font-bold text-red-600 text-lg sm:text-xl">-₼0</p>
-            <p className="text-gray-600 text-xs sm:text-sm">This Month</p>
+            <p className="text-gray-600 text-xs sm:text-sm">{t("this_month")}</p>
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
             <p className="text-black font-medium text-xs sm:text-sm">
-              Net Cash Flow
+              {t("net_cash_flow")}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -139,17 +160,17 @@ function Dashboard() {
           </div>
           <div>
             <p className="font-bold text-green-600 text-lg sm:text-xl">₼0</p>
-            <p className="text-gray-600 text-xs sm:text-sm">This Month</p>
+            <p className="text-gray-600 text-xs sm:text-sm">{t("this_month")}</p>
           </div>
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 mt-3 sm:mt-4">
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 h-[250px] sm:h-[300px]">
           <p className="text-black font-medium text-xs sm:text-sm">
-            Recent Transactions
+            {t("recent_transactions")}
           </p>
           <p className="text-gray-600 text-xs sm:text-sm">
-            No recent transactions
+            {t("no_recent_transactions")}
           </p>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 h-[250px] sm:h-[300px]">
@@ -177,7 +198,7 @@ function Dashboard() {
               <path d="M19.967 17.484A4 4 0 0 1 18 18"></path>
             </svg>
             <p className="text-black font-medium text-xs sm:text-sm">
-              AI Financial Insights
+              {t("ai_insights")}
             </p>
           </div>
           <div className="text-center mt-3 sm:mt-4 space-y-3 sm:space-y-4 flex flex-col items-center justify-center flex-grow">
@@ -204,10 +225,10 @@ function Dashboard() {
               <path d="M19.967 17.484A4 4 0 0 1 18 18"></path>
             </svg>
             <p className="text-gray-600 text-xs sm:text-sm">
-              No AI insights available yet.
+              {t("no_ai_insights")}
             </p>
             <button className="shadow-sm bg-white border border-gray-200 text-black font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-md hover:bg-gray-100 transition-colors duration-200">
-              Generate AI Analysis
+              {t("generate_ai_analysis")}
             </button>
           </div>
         </div>

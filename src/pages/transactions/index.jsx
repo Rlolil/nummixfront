@@ -2,40 +2,46 @@ import React from 'react'
 import Headers from './headers'
 import Cards from './cards'
 import Tabs from './tabs'
-import { MdArrowOutward } from 'react-icons/md';
-import { LuArrowDownLeft, LuCreditCard } from 'react-icons/lu';
-import { GoClock } from 'react-icons/go';
+import { HiMiniArrowsUpDown } from "react-icons/hi2";
+import { HiMiniArrowTrendingUp } from "react-icons/hi2";
+import { HiMiniArrowTrendingDown } from "react-icons/hi2";
 import TransactionsHeaders from './headers';
+import { useTranslation } from 'react-i18next';
+
 
 export default function Transactions() {
+  const { t } = useTranslation();
   const cardsData = [
     {
-      title: "Total Payments",
+      title: t("Total_Transactions"),
       numberdes: "0",
-      description: "This month",
-      icon: <MdArrowOutward />,
+      description: t("All_time"),
+      icon: <HiMiniArrowsUpDown />,
     },
     {
-      title: "Recevied",
+      title: t("Total_Income"),
       numberdes: "0",
-      description: "This month",
-      icon: <LuArrowDownLeft />,
+      description: `0 ${t("transactions")}`,
+      icon:<HiMiniArrowTrendingUp />,
+
     },
     {
-      title: "Pending",
-      numberdes: "0",
-      description: "Awaiting processing",
-      icon: <GoClock />,
-    },
-    {
-      title: "Monthly Total",
+      title: t("Total_Expenses"),
       numberdes: "₼ 0",
-      description: "Outgoing payments",
-      icon: <LuCreditCard />,
+      description: `0 ${t("transactions")}`,
+      icon: <HiMiniArrowTrendingDown />
+,
+    },
+    {
+      title: t("Net_Balance"),
+      numberdes: "₼ 0",
+      description: `${t("Income")} - ${t("Expenses")}`,
+      icon: <HiMiniArrowsUpDown />,
+
     },
   ];
   return (
-    <main className='ml-[100px]'>
+    <main className='sm:ml-[6.25rem]'>
       <div className='container px-4 mx-auto'>
         <TransactionsHeaders />
         <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-3 lg:gap-3 overflow-hidden">
@@ -52,7 +58,7 @@ export default function Transactions() {
         <Tabs />
       </div>
     </main>
-  )
+  ) 
 }
 
 

@@ -7,7 +7,7 @@ function SidebarMobile() {
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-    const closeSidebar = () => {
+  const closeSidebar = () => {
     setIsOpen(false);
   };
   if (isOpen) {
@@ -15,15 +15,60 @@ function SidebarMobile() {
   } else {
     document.body.style.overflow = "auto";
   }
-
   return (
     <>
-      <button
-        onClick={toggleSidebar}
-        className="fixed top-4 left-4 z-50 p-2 rounded-md md:hidden"
-      >
-        <img src={image} alt="" className="w-12 h-auto" />
-      </button>
+      <div className="bg-white p-3 border-b border-gray-200 flex items-center justify-between fixed w-full z-20 md:hidden">
+        <button
+          onClick={toggleSidebar}
+          className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300"
+        >
+          <img src={image} alt="Menu" className="w-10 h-auto" />
+        </button>
+        <div className="relative flex-1 mx-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="absolute left-2 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input
+            className="w-full h-9 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-9"
+            placeholder="Search..."
+          />
+        </div>
+        <div className="flex items-center gap-2">
+          <button className="relative hover:bg-gray-100 p-2 rounded-full focus:outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+            >
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+            </svg>
+            <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-red-500"></span>
+          </button>
+          <button className="relative hover:bg-gray-100 p-2 text-sm font-bold text-black rounded-full focus:outline-none">
+            <span className="flex items-center justify-center w-8 h-8">SA</span>
+          </button>
+        </div>
+      </div>
       {isOpen && (
         <div
           className="fixed inset-0 bg-black opacity-30 z-30 md:hidden"
@@ -36,13 +81,18 @@ function SidebarMobile() {
         } transition-transform duration-300 ease-in-out md:hidden`}
       >
         <div className="flex items-center gap-4 p-4">
-          <img src={image} alt="Logo" className="w-12 h-auto" />
+          <img
+            onClick={closeSidebar}
+            src={image}
+            alt="Logo"
+            className="w-12 h-auto"
+          />
           <h2 className="text-xl font-bold">Nummix</h2>
         </div>
         <hr className="border-gray-200" />
         <div className="flex flex-col p-4 gap-2 mb-12 text-black font-medium">
           <Link to="/dashboard">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -64,7 +114,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/bank-accounts">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -89,7 +139,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/payments">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -109,7 +159,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/transactions">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -131,7 +181,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/revenue-expenses">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -151,7 +201,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/invoices">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -174,7 +224,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/reports-analytics">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -196,7 +246,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/ai-insights">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -217,7 +267,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/customers">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -237,7 +287,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/calendar">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -259,7 +309,7 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/settings">
-            <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button onClick={() => setIsOpen(false)} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -279,7 +329,6 @@ function SidebarMobile() {
             </button>
           </Link>
         </div>
-        <hr className="border-gray-200" />
         <div className="text-gray-500 p-4 absolute bottom-0 w-full">
           <Link to="/login">
             <button className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
