@@ -11,7 +11,7 @@ function BankAccounts() {
     document.body.style.overflow = "hidden"
   }
   return (
-    <div className="p-4 max-w-[1320px] ml-[100px] mx-auto">
+    <div className="p-4 max-w-[1320px] sm:mt-0 mt-[80px] sm:ml-[100px] mx-auto">
       <div className="flex lg:flex-nowrap flex-wrap items-center justify-between">
         <div>
           <h2 className="text-[32px] font-bold text-black">

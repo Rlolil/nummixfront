@@ -1,12 +1,14 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function AccountBalance() {
+  const {t} = useTranslation();
   return (
     <div className="mt-3 sm:mt-4 space-y-3 sm:space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
-            <p className="text-black font-medium text-xs sm:text-sm">Total Balance</p>
+            <p className="text-black font-medium text-xs sm:text-sm">{t("Total_Balance")}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -30,12 +32,12 @@ function AccountBalance() {
           </div>
           <div>
             <p className="font-bold text-lg sm:text-xl">₼0</p>
-            <p className="text-gray-600 text-xs">Across all accounts</p>
+            <p className="text-gray-600 text-xs">{t("Across_all_accounts")}</p>
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
-            <p className="text-black font-medium text-xs sm:text-sm">Active Accounts</p>
+            <p className="text-black font-medium text-xs sm:text-sm">{t("Active_Accounts")}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -54,12 +56,12 @@ function AccountBalance() {
           </div>
           <div>
             <p className="font-bold text-green-600 text-lg sm:text-xl">0</p>
-            <p className="text-gray-600 text-xs">0 inactive</p>
+            <p className="text-gray-600 text-xs">0 {t("Inactive_Accounts")}</p>
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
-            <p className="text-black font-medium text-xs sm:text-sm">Low Balance Alerts</p>
+            <p className="text-black font-medium text-xs sm:text-sm">{t("Low_Balance_Alerts")}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -79,12 +81,12 @@ function AccountBalance() {
           </div>
           <div>
             <p className="font-bold text-green-600 text-lg sm:text-xl">0</p>
-            <p className="text-gray-600 text-xs">Accounts below ₼1,000</p>
+            <p className="text-gray-600 text-xs">{t("Accounts_below")} ₼1,000</p>
           </div>
         </div>
         <div className="bg-white shadow-sm rounded-lg p-3 sm:p-4 border border-gray-200 flex flex-col gap-3 sm:gap-4 transition-colors duration-200">
           <div className="flex items-center justify-between">
-            <p className="text-black font-medium text-xs sm:text-sm">Currencies</p>
+            <p className="text-black font-medium text-xs sm:text-sm">{t("Currencies")}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -103,12 +105,12 @@ function AccountBalance() {
           </div>
           <div>
             <p className="font-bold text-black text-lg sm:text-xl">0</p>
-            <p className="text-gray-600 text-xs">Different currencies</p>
+            <p className="text-gray-600 text-xs">{t("Different_currencies")}</p>
           </div>
         </div>
       </div>
       <div className="border border-gray-300 p-3 sm:p-4 shadow-sm rounded-lg flex flex-col gap-3 sm:gap-4">
-        <p className="font-medium text-xs sm:text-sm">Account Details</p>
+        <p className="font-medium text-xs sm:text-sm">{t("Account_Details")}</p>
       </div>
     </div>
   );
