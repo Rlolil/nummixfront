@@ -3,22 +3,26 @@ import RevenueCharts from "../../components/revenuecharts";
 import ExpensesBreakdown from "../../components/expensesbreakdown";
 import MonthlyTrends from "../../components/mothlytrends";
 import AddTransactionModuleForRevenue from "../../components/addtransictionmoduleforrevenue";
+import { useTranslation } from "react-i18next";
 
 function RevenueExpenses() {
   const [activeTab, setActiveTab] = useState("Revenue Breakdown");
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
   if (isOpen) {
     document.body.style.overflow = "hidden";
-  } 
+  }else{
+    document.body.style.overflow = "auto";
+  }
   return (
     <div className="max-w-[1320px] mx-auto p-4 ml-[100px]">
       <div className="flex flex-wrap md:flex-nowrap items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold text-black">
-            Revenue & Expenses
+            {t("Revenue_Expenses")}
           </h2>
           <p className="text-sm sm:text-base text-gray-600">
-            Track your income, expenses, and profitability
+            {t("Track_your_income_expenses_and_profitability")}
           </p>
         </div>
         <div className="flex items-center gap-2 sm:gap-3 mt-3 sm:mt-0">
@@ -40,7 +44,7 @@ function RevenueExpenses() {
               <rect width="18" height="18" x="3" y="4" rx="2"></rect>
               <path d="M3 10h18"></path>
             </svg>
-            This Month
+            {t("this_month")}
           </button>
           <button
             onClick={() => setIsOpen(true)}
@@ -61,7 +65,7 @@ function RevenueExpenses() {
               <path d="M5 12h14"></path>
               <path d="M12 5v14"></path>
             </svg>
-            Add Transaction
+            {t("addtransaction")}
           </button>
           {isOpen && (
             <AddTransactionModuleForRevenue
@@ -74,7 +78,7 @@ function RevenueExpenses() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
         <div className="bg-white shadow-xl space-y-8 rounded-xl p-4 border border-gray-200 max-w-full">
           <div className="flex items-center justify-between">
-            <p className="text-black font-medium">Monthly Revenue</p>
+            <p className="text-black font-medium">{t("Monthly_Revenue")}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -97,13 +101,13 @@ function RevenueExpenses() {
               <p className="bg-black rounded-2xl px-2 py-1 text-white text-[14px]">
                 +0.0%
               </p>
-              <p className="text-gray-600 text-[14px]">vs last month</p>
+              <p className="text-gray-600 text-[14px]">vs {t("last_month")}</p>
             </div>
           </div>
         </div>
         <div className="bg-white shadow-xl space-y-8 rounded-xl p-4 border border-gray-200 max-w-full">
           <div className="flex items-center justify-between">
-            <p className="text-black font-medium">Monthly Expenses</p>
+            <p className="text-black font-medium">{t("Monthly_Expenses")}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -126,13 +130,13 @@ function RevenueExpenses() {
               <p className="bg-black rounded-2xl px-2 py-1 text-[14px] text-white">
                 +0.0%
               </p>
-              <p className="text-gray-600 text-[14px]">vs last month</p>
+              <p className="text-gray-600 text-[14px]">vs {t("last_month")}</p>
             </div>
           </div>
         </div>
         <div className="bg-white shadow-xl space-y-8 rounded-xl p-4 border border-gray-200 max-w-full">
           <div className="flex items-center justify-between">
-            <p className="text-black font-medium">Net Profit</p>
+            <p className="text-black font-medium">{t("Net_Profit")}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -151,12 +155,12 @@ function RevenueExpenses() {
           </div>
           <div>
             <p className="font-bold text-green-600 text-[24px]">₼0</p>
-            <p className="text-gray-600 text-[14px]">0% margin</p>
+            <p className="text-gray-600 text-[14px]">0% {t("margin")}</p>
           </div>
         </div>
         <div className="bg-white shadow-xl space-y-8 rounded-xl p-4 border border-gray-200 max-w-full">
           <div className="flex items-center justify-between">
-            <p className="text-black font-medium">Expense Ratio</p>
+            <p className="text-black font-medium">{t("Expense_Ratio")}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -175,28 +179,28 @@ function RevenueExpenses() {
           </div>
           <div>
             <p className="font-bold text-black text-[24px]">0%</p>
-            <p className="text-gray-600">Expenses vs Revenue</p>
+            <p className="text-gray-600">{t("Expenses_vs_Revenue")}</p>
           </div>
         </div>
       </div>
       <div className="flex md:flex-nowrap flex-wrap gap-4 mt-6">
         <div className="shadow-xl md:flex-1 flex-10/12 border border-gray-200 rounded-xl p-4 max-w-full">
-          <p className="text-black font-medium">Revenue vs Expenses Trend</p>
+          <p className="text-black font-medium">{t("Revenue_vs_Expenses_Trend")}</p>
           <div className="mt-10 w-full">
             <RevenueCharts />
           </div>
         </div>
         <div className="space-y-4 flex-1 max-w-full">
           <div className="shadow-xl border relative w-full border-gray-200 rounded-xl p-4">
-            <p className="text-green-600">Revenue by Category</p>
+            <p className="text-green-600">{t("Revenue_by_Category")}</p>
             <div className="text-center mt-20 mb-20">
-              <p>No revenue data available</p>
+              <p>{t("No_revenue_data_available")}</p>
             </div>
           </div>
           <div className="shadow-xl border relative w-full border-gray-200 rounded-xl p-4">
-            <p className="text-red-600">Expenses by Category</p>
+            <p className="text-red-600">{t("Expenses_by_Category")}</p>
             <div className="text-center mt-20 mb-20">
-              <p>No expense data available</p>
+              <p>{t("No_expense_data_available")}</p>
             </div>
           </div>
         </div>
@@ -211,7 +215,7 @@ function RevenueExpenses() {
                 : "border-none"
             } rounded-lg py-1 px-4 sm:px-6 text-sm sm:text-base`}
           >
-            Revenue Breakdown
+            {t("revenuebreakdown")}
           </button>
           <button
             onClick={(e) => setActiveTab("Expense Breakdown")}
@@ -221,7 +225,7 @@ function RevenueExpenses() {
                 : "border-none"
             } rounded-lg py-1 px-4 sm:px-6 text-sm sm:text-base`}
           >
-            Expense Breakdown
+            {t("expensebreakdown")}
           </button>
           <button
             onClick={(e) => setActiveTab("Monthly Trends")}
@@ -231,7 +235,7 @@ function RevenueExpenses() {
                 : "border-none"
             } rounded-lg py-1 px-4 sm:px-6 text-sm sm:text-base`}
           >
-            Monthly Trends
+            {t("Monthly_Trends")}
           </button>
         </div>
         {activeTab === "Revenue Breakdown" && (
@@ -253,12 +257,12 @@ function RevenueExpenses() {
                 <polyline points="16 7 22 7 22 13"></polyline>
               </svg>
               <p className="text-black font-medium text-sm sm:text-base">
-                Revenue Sources - September 2025
+                {t("Revenue_Sources_September_2025")}
               </p>
             </div>
             <div className="text-center mt-10 sm:mt-20 mb-10 sm:mb-20">
               <p className="text-gray-600 text-sm sm:text-base">
-                No revenue recorded this month
+                {t("No_revenue_recorded_this_month")}
               </p>
             </div>
           </div>

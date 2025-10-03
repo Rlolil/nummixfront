@@ -6,34 +6,36 @@ import { HiMiniArrowsUpDown } from "react-icons/hi2";
 import { HiMiniArrowTrendingUp } from "react-icons/hi2";
 import { HiMiniArrowTrendingDown } from "react-icons/hi2";
 import TransactionsHeaders from './headers';
+import { useTranslation } from 'react-i18next';
 
 
 export default function Transactions() {
+  const { t } = useTranslation();
   const cardsData = [
     {
-      title: "Total Transactions",
+      title: t("Total_Transactions"),
       numberdes: "0",
-      description: "All time",
+      description: t("All_time"),
       icon: <HiMiniArrowsUpDown />,
     },
     {
-      title: "Total Income",
+      title: t("Total_Income"),
       numberdes: "0",
-      description: "0 transactions",
+      description: `0 ${t("transactions")}`,
       icon:<HiMiniArrowTrendingUp />,
 
     },
     {
-      title: "Total Expenses",
+      title: t("Total_Expenses"),
       numberdes: "₼ 0",
-      description: "0 transactions",
+      description: `0 ${t("transactions")}`,
       icon: <HiMiniArrowTrendingDown />
 ,
     },
     {
-      title: "Net flow",
+      title: t("Net_Balance"),
       numberdes: "₼ 0",
-      description: "Income - Expenses",
+      description: `${t("Income")} - ${t("Expenses")}`,
       icon: <HiMiniArrowsUpDown />,
 
     },

@@ -1,31 +1,93 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
+import { login } from "../../services";
+function Toaster({ toasts, removeToast }) {
+  return (
+    <div className="fixed top-6 right-6 z-50 space-y-2">
+      {toasts.map((t) => (
+        <div
+          key={t.id}
+          className={`max-w-sm w-full px-4 py-2 rounded-md shadow-md text-white ${
+            t.type === "success"
+              ? "bg-green-600"
+              : t.type === "error"
+              ? "bg-red-600"
+              : "bg-gray-800"
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="text-sm">{t.message}</div>
+            <button
+              onClick={() => removeToast(t.id)}
+              className="ml-4 text-xs opacity-80 hover:opacity-100"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function Login() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [toasts, setToasts] = useState([]);
+  const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+  const addToast = (type, message, ttl = 3000) => {
+    const id = Date.now() + Math.random();
+    const t = { id, type, message };
+    setToasts((s) => [t, ...s]);
+    setTimeout(() => {
+      setToasts((s) => s.filter((x) => x.id !== id));
+    }, ttl);
+  };
+  const removeToast = (id) => {
+    setToasts((s) => s.filter((x) => x.id !== id));
+  };
 
   useEffect(() => {
     setEmail("");
     setPassword("");
   }, []);
-
-  const handleSubmit = (e) => {
+  let timeout = 0;
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email || !password) {
+      addToast("error", "Please enter both email and password!");
+      return;
+    }
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      const data = await login({ email, password });
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
       setIsSubmitting(false);
-      navigate("/dashboard");
-    }, 2000);
+      setIsLogin(true);
+      setTimeout(() => navigate("/dashboard"), 1000);
+      addToast("success", "Login successful! Redirecting...");
+    } catch (err) {
+      setIsSubmitting(false);
+      navigate("/login");
+      addToast("error", "Invalid email or password!");
+      timeout++;
+      throw new Error("Login failed");
+    }
   };
 
   return (
     <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+      <Toaster toasts={toasts} removeToast={removeToast} />
+
       <div className="rounded-2xl shadow-2xl border border-gray-200 p-6 sm:p-10 mt-10 sm:mt-20 max-w-[500px] mx-auto space-y-6">
         <div className="text-center">
-          <h2 className="text-[black] font-bold text-xl sm:text-2xl md:text-[26px]">Nummix.az</h2>
+          <h2 className="text-[black] font-bold text-xl sm:text-2xl md:text-[26px]">
+            Nummix.az
+          </h2>
           <p className="text-gray-600 text-sm sm:text-base">
             Sign in to your financial management dashboard
           </p>
@@ -44,7 +106,9 @@ function Login() {
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700">Password</label>
+              <label className="text-sm font-medium text-gray-700">
+                Password
+              </label>
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

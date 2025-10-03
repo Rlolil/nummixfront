@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { FaPlus } from "react-icons/fa6";
 import { FaManatSign } from "react-icons/fa6";
 import BankModal from '../../components/bankmodal';
+import { useTranslation } from 'react-i18next';
 
 function BankAccounts() {
   const [isOpen, setIsOpen] = useState(false);
+  const {t} = useTranslation();
   if(isOpen) {
     document.body.style.overflow = "hidden"
   }
@@ -13,16 +15,16 @@ function BankAccounts() {
       <div className="flex lg:flex-nowrap flex-wrap items-center justify-between">
         <div>
           <h2 className="text-[32px] font-bold text-black">
-            Bank Accounts
+            {t('bank_accounts')}
           </h2>
           <p className="text-md text-gray-600">
-            Manage your bank accounts and monitor balances
+            {t('Manage_your_bank_accounts_and_monitor_balances')}
           </p>
         </div>
         <div className="mt-4 lg:mt-0 flex items-center gap-3">
           <button onClick={() => setIsOpen(true)} className="shadow-md cursor-pointer gap-3 bg-black border border-gray-200 text-white font-medium px-4 py-2 rounded-md flex items-center hover:bg-gray-800 transition-colors duration-200">
             <FaPlus />
-            Add Account
+            {t('add_account')}
           </button>
         </div>
       </div>
@@ -48,20 +50,20 @@ function BankAccounts() {
             <path d="M10 14h4"></path>
             <path d="M10 18h4"></path>
           </svg>
-          <h1>Account Summary</h1>
+          <h1>{t('Account_Summary')}</h1>
         </div>
 
         <div className="flex flex-wrap justify-between">
           <div className="w-full sm:w-auto">
-            <h1 className="text-[14px] text-gray-500">Total Accounts</h1>
+            <h1 className="text-[14px] text-gray-500">{t('Total_Accounts')}</h1>
             <p className="text-[24px]">0</p>
           </div>
           <div className="w-full sm:w-auto">
-            <h1 className="text-[14px] text-gray-500">Active Accounts</h1>
+            <h1 className="text-[14px] text-gray-500">{t('Active_Accounts')}</h1>
             <p className="text-green-400 text-[24px]">0</p>
           </div>
           <div className="w-full sm:w-auto">
-            <h1 className="text-[14px] text-gray-500">Total Balance</h1>
+            <h1 className="text-[14px] text-gray-500">{t('Total_Balance')}</h1>
             <p className="flex items-center text-[24px]">
               <FaManatSign />0
             </p>
@@ -92,14 +94,14 @@ function BankAccounts() {
           <path d="M10 18h4"></path>
         </svg>
 
-        <p className="font-bold text-[18px]">No banks accounts yet</p>
+        <p className="font-bold text-[18px]">{t('No_banks_accounts_yet')}</p>
         <p className="text-[16px] text-gray-500">
-          Add your first bank account to start tracking your finances
+          {t('Add_your_first_bank_account_to_start_tracking_your_finances')}
         </p>
 
         <button onClick={() => setIsOpen(true)} className="shadow-md cursor-pointer gap-3 bg-black border border-gray-200 text-white font-medium px-4 py-2 rounded-md flex items-center hover:bg-gray-800 transition-colors duration-200">
           <FaPlus />
-          Add Your First Account
+          {t('Add_Your_First_Account')}
         </button>
       </div>
       {isOpen && <BankModal onClose={() => setIsOpen(false)} />}

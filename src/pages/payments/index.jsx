@@ -5,32 +5,34 @@ import Tabs from './tabs'
 import { MdArrowOutward } from 'react-icons/md';
 import { LuArrowDownLeft, LuCreditCard } from 'react-icons/lu';
 import { GoClock } from 'react-icons/go';
+import { useTranslation } from 'react-i18next';
 
 
 export default function Payments() {
+  const {t} = useTranslation();
   const cardsData = [
     {
-      title: "Total Payments",
+      title: t('Total_Payments'),
       numberdes: "0",
-      description: "This month",
+      description: t('this_month'),
       icon: <MdArrowOutward />,
     },
     {
-      title: "Recevied",
+      title: t('Received'),
       numberdes: "0",
-      description: "This month",
+      description: t('this_month'),
       icon: <LuArrowDownLeft />,
     },
     {
-      title: "Pending",
+      title: t('Pending'),
       numberdes: "0",
-      description: "Awaiting processing",
+      description: t('Awaiting_processing'),
       icon: <GoClock />,
     },
     {
-      title: "Monthly Total",
+      title: t('Monthly_Total'),
       numberdes: "₼ 0",
-      description: "Outgoing payments",
+      description: t('Outgoing_payments'),
       icon: <LuCreditCard />,
     },
   ];
