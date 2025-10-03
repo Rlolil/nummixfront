@@ -195,7 +195,7 @@ function SidebarComp() {
                 <path d="M13 17V5"></path>
                 <path d="M8 17v-3"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+              <span className="opacity-0 group-hover:opacity-100 text-ellipsis invisible group-hover:visible max-w-24 text-nowrap transition-opacity duration-200">
                 {t("reports_analytics")}
               </span>
             </button>

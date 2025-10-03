@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Allinsight() {
+  const  {t} = useTranslation();
   const [message, setMessage] = useState("");
 
   return (
@@ -30,14 +32,14 @@ function Allinsight() {
               <path d="M6 18a4 4 0 0 1-1.967-.516"></path>
               <path d="M19.967 17.484A4 4 0 0 1 18 18"></path>
             </svg>
-            Ask AI Financial Advisor
+            {t("Ask_a_question_about_your_finances")}
           </span>
         </div>
 
         <div className="flex items-center flex-nowrap bg-gray-50 border border-gray-300 rounded-xl px-3 py-2 focus-within:border-gray-600 transition-colors">
           <input
             type="text"
-            placeholder="Type your question..."
+            placeholder={t("Type_your_question")}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             className="flex-1 min-w-0 bg-transparent outline-none text-gray-700 placeholder-gray-400"

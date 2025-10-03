@@ -1,6 +1,7 @@
 import React from "react";
 import { PiExportBold } from "react-icons/pi";
 import { CiSearch } from "react-icons/ci";
+import { useTranslation } from "react-i18next";
 
 const customers = [
   {
@@ -34,17 +35,18 @@ const customers = [
 ];
 
 function Customers() {
+  const { t } = useTranslation();
   return (
     <div className="p-4 max-w-[1320px] sm:mt-0 mt-[80px] sm:ml-[100px]">
-      <h1 className="text-2xl font-bold mb-4">Customers</h1>
+      <h1 className="text-2xl font-bold mb-4">{t("Customers")}</h1>
 
       <div className="flex flex-wrap gap-2 mb-6">
         <button className="px-4 py-2 text-black border border-gray-300 rounded-lg">
-          + Create Invoice
+          + {t("Create_Invoice")}
         </button>
         <button className="px-4 py-2 border border-gray-300 rounded-lg flex items-center gap-2">
           <PiExportBold />
-          Export
+          {t("Export")}
         </button>
       </div>
 
@@ -60,7 +62,7 @@ function Customers() {
           </div>
 
           <select className="w-full sm:w-[150px] border border-gray-300 rounded-lg px-3 py-2">
-            <option>Status</option>
+            <option>{t("Status")}</option>
           </select>
         </div>
 
@@ -68,10 +70,10 @@ function Customers() {
           <table className="w-full border-collapse">
             <thead>
               <tr className="text-left border-b border-t border-gray-300">
-                <th className="py-3 px-2">Name</th>
-                <th className="px-2">Email</th>
-                <th className="px-2">Phone</th>
-                <th className="px-2">Address</th>
+                <th className="py-3 px-2">{t("Name")}</th>
+                <th className="px-2">{t("Email")}</th>
+                <th className="px-2">{t("Phone")}</th>
+                <th className="px-2">{t("Address")}</th>
                 <th className="px-2"></th>
               </tr>
             </thead>
@@ -84,7 +86,7 @@ function Customers() {
                   <td className="px-2">{c.address}</td>
                   <td className="px-2">
                     <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm">
-                      View
+                      {t("View")}
                     </button>
                   </td>
                 </tr>
@@ -101,16 +103,16 @@ function Customers() {
             >
               <h2 className="font-semibold text-lg mb-2">{c.name}</h2>
               <p className="text-sm text-gray-600 mb-1">
-                <span className="font-medium">Email: </span>{c.email}
+                <span className="font-medium">{t("Email")}: </span>{c.email}
               </p>
               <p className="text-sm text-gray-600 mb-1">
-                <span className="font-medium">Phone: </span>{c.phone}
+                <span className="font-medium">{t("Phone")}: </span>{c.phone}
               </p>
               <p className="text-sm text-gray-600 mb-3">
-                <span className="font-medium">Address: </span>{c.address}
+                <span className="font-medium">{t("Address")}: </span>{c.address}
               </p>
               <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm w-full">
-                View
+                {t("View")}
               </button>
             </div>
           ))}
