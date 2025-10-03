@@ -1,4 +1,3 @@
-import React from "react";
 import { PiExportBold } from "react-icons/pi";
 import { CiSearch } from "react-icons/ci";
 import { useTranslation } from "react-i18next";
