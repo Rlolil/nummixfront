@@ -11,7 +11,7 @@ import Transactions from "../pages/transactions";
 import RevenueExpenses from "../pages/revenueexpenses";
 import Invoices from "../pages/Invoices";
 import ReportsAnalytics from "../pages/reportsanalytics";
-import Customers from "../pages/customers/INDEX.JSX";
+import Customers from "../pages/customers";
 import Calendar from "../pages/calendar";
 import Settings from "../pages/settings";
 import AiInsights from "../pages/ai";
