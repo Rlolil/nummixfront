@@ -24,7 +24,7 @@ function AiInsights() {
     { id: "expenses", label: "Expenses" },
   ];
   return (
-    <div className="p-4 max-w-[1320px] ml-[100px]  mx-auto">
+    <div className="p-4 max-w-[1320px] sm:mt-0 mt-[80px] sm:ml-[100px]  mx-auto">
       <div className="flex flex-col lg:flex-row lg:flex-nowrap items-start lg:items-center justify-between gap-4 lg:gap-0">
         <div className="flex flex-col gap-2">
           <h2 className="text-[32px] font-bold text-black">
