@@ -233,6 +233,20 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      <div className=" gap-3 sm:gap-4 mt-3 sm:mt-4">
+        <div className="bg-white shadow-sm rounded-lg p-1 sm:p-2 border border-gray-200 flex flex-col gap-3 sm:gap-4 h-[250px] sm:h-[300px]">
+          <div className="flex items-center justify-between gap-1 sm:gap-2">
+            <div className="flex items-center gap-30 ml-[30px]">
+              <h2 className="font-bold text-[20px]">Debet</h2>
+              <h2 className="font-bold text-[20px]">Kredit</h2>
+            </div>
+            <div  className="mr-[450px]">
+              <h2 className="font-bold text-[20px]">Açıqlanma</h2>
+            </div>
+          </div>
+          <hr className="mt-[-10px] text-[90px] font-bold"/>
+        </div>
+      </div>
     </div>
   );
 }
