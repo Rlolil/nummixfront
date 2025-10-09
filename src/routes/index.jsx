@@ -4,19 +4,16 @@ import Login from "../pages/login";
 import Register from "../pages/register";
 import ResetPassword from "../pages/resetpassword";
 import PrivateRoute from "../provider/privateRoot";
-import Dashboard from "../pages/dashboard";
-import BankAccounts from "../pages/bankaccounts";
-import Payments from "../pages/payments";
-import Transactions from "../pages/transactions";
-import RevenueExpenses from "../pages/revenueexpenses";
-import Invoices from "../pages/Invoices";
-import ReportsAnalytics from "../pages/reportsanalytics";
-import Customers from "../pages/customers/INDEX.JSX";
-import Calendar from "../pages/calendar";
-import Settings from "../pages/settings";
-import AiInsights from "../pages/ai";
 import ResetPasswordVerify from "../pages/resetpasswordverify";
-
+import Muhasibat from "../pages/muhasibat";
+import Supplier from "../pages/supllier";
+import Settings from "../pages/settings";
+import SalesCustomers from "../pages/salescustomers";
+import Maliyye from "../pages/maliyye";
+import EsasVesaitler from "../pages/esasvesaitler";
+import EmekHaqqi from "../pages/emekhaqqi";
+import Anbar from "../pages/anbar";
+import Ai from "../pages/ai";
 export const routers = createBrowserRouter([
   {
     path: "/",
@@ -27,49 +24,41 @@ export const routers = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard",
-        element: <Dashboard />,
+        path: "/muhasibat",
+        element: <Muhasibat />,
       },
       {
-        path: "/bank-accounts",
-        element: <BankAccounts />,
-      },
-      {
-        path: "/payments",
-        element: <Payments />,
-      },
-      {
-        path: "/transactions",
-        element: <Transactions />,
-      },
-      {
-        path: "/revenue-expenses",
-        element: <RevenueExpenses />,
-      },
-      {
-        path: "/invoices",
-        element: <Invoices />,
-      },
-      {
-        path: "/reports-analytics",
-        element: <ReportsAnalytics />,
-      },
-      {
-        path: "/ai-insights",
-        element: <AiInsights />,
-      },
-      {
-        path: "/customers",
-        element: <Customers />,
-      },
-      {
-        path: "/calendar",
-        element: <Calendar />,
+        path: "/supplier",
+        element: <Supplier />,
       },
       {
         path: "/settings",
         element: <Settings />,
       },
+      {
+        path: "/salescustomers",
+        element: <SalesCustomers />,
+      },
+      {
+        path: "/maliyye",
+        element: <Maliyye />,
+      },
+      {
+        path: "/esasvesaitler",
+        element: <EsasVesaitler />,
+      },
+      {
+        path: "/emekhaqqi",
+        element: <EmekHaqqi />,
+      },
+      {
+        path: "/anbar",
+        element: <Anbar />,
+      },
+      {
+        path: "/ai",
+        element: <Ai />,
+      }
     ],
   },
   {
