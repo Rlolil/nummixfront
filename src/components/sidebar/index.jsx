@@ -16,7 +16,7 @@ function SidebarComp() {
       <hr className="border-gray-200" />
       <div className="flex flex-col p-4 gap-[10px] mb-[50px] text-black font-medium">
         <div>
-          <Link to="/dashboard">
+          <Link to="/muhasibat">
             <button
               className="block group-hover:flex items-center rounded-md text-md font-medium transition-all outline-none hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
             >
@@ -38,13 +38,13 @@ function SidebarComp() {
                 <rect width="7" height="5" x="3" y="16" rx="1"></rect>
               </svg>
               <span className="opacity-0 group-hover:opacity-100 invisible group-hover:visible text-nowrap transition-opacity duration-200">
-                {t("dashboard")}
+                Muhasibat
               </span>
             </button>
           </Link>
         </div>
         <div>
-          <Link to="/bank-accounts">
+          <Link to="/maliyye">
             <button
               className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
             >
@@ -69,13 +69,13 @@ function SidebarComp() {
                 <path d="M10 18h4"></path>
               </svg>
               <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
-                {t("bank_accounts")}
+                Maliyye idarəetmə
               </span>
             </button>
           </Link>
         </div>
         <div>
-          <Link to="/payments">
+          <Link to="/salescustomers">
             <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -93,13 +93,13 @@ function SidebarComp() {
                 <line x1="2" x2="22" y1="10" y2="10"></line>
               </svg>
               <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
-                {t("payments")}
+                Sales & Customers
               </span>
             </button>
           </Link>
         </div>
         <div>
-          <Link to="/transactions">
+          <Link to="/supplier">
             <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,13 +119,13 @@ function SidebarComp() {
                 <path d="M7 4v16"></path>
               </svg>
               <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
-                {t("transactions")}
+                Satinalma & Təchizatçılar
               </span>
             </button>
           </Link>
         </div>
         <div>
-          <Link to="/revenue-expenses">
+          <Link to="/anbar">
             <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -143,13 +143,13 @@ function SidebarComp() {
                 <polyline points="16 7 22 7 22 13"></polyline>
               </svg>
               <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
-                {t("Revenue_Expenses")}
+                Anbar
               </span>
             </button>
           </Link>
         </div>
         <div>
-          <Link to="/invoices">
+          <Link to="/esasvesaitler">
             <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -170,13 +170,13 @@ function SidebarComp() {
                 <path d="M16 17H8"></path>
               </svg>
               <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
-                {t("Invoices")}
+                Əsas vəsaitlər
               </span>
             </button>
           </Link>
         </div>
         <div>
-          <Link to="/reports-analytics">
+          <Link to="/emekhaqqi">
             <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -196,13 +196,13 @@ function SidebarComp() {
                 <path d="M8 17v-3"></path>
               </svg>
               <span className="opacity-0 group-hover:opacity-100 text-ellipsis invisible group-hover:visible max-w-24 text-nowrap transition-opacity duration-200">
-                {t("reports_analytics")}
+                Hr & Əmək haqqı
               </span>
             </button>
           </Link>
         </div>
         <div>
-          <Link to="/ai-insights">
+          <Link to="/ai">
             <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -221,57 +221,7 @@ function SidebarComp() {
                 <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
               </svg>
               <span className="opacity-0 group-hover:opacity-100 text-ellipsis invisible group-hover:visible max-w-24 text-nowrap transition-opacity duration-200">
-                {t("ai_insights")}
-              </span>
-            </button>
-          </Link>
-        </div>
-        <div>
-          <Link to="/customers">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-5 w-5"
-              >
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-              </svg>
-              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
-                {t("Customers")}
-              </span>
-            </button>
-          </Link>
-        </div>
-        <div>
-          <Link to="/calendar">
-            <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-5 w-5"
-              >
-                <path d="M8 2v4"></path>
-                <path d="M16 2v4"></path>
-                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                <path d="M3 10h18"></path>
-              </svg>
-              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
-                {t("Calendar")}
+                Süni intellekt
               </span>
             </button>
           </Link>
@@ -331,4 +281,4 @@ function SidebarComp() {
   );
 }
 
-export default SidebarComp;
+export default SidebarComp; 
