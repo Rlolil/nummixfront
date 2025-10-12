@@ -14,6 +14,11 @@ import EsasVesaitler from "../pages/esasvesaitler";
 import EmekHaqqi from "../pages/emekhaqqi";
 import Anbar from "../pages/anbar";
 import Ai from "../pages/ai";
+import DashboardCards from "../components/muhasibatcomp/dashboard";
+import Ledger from "../components/muhasibatcomp/generalledger";
+import Transactions from "../components/muhasibatcomp/trasntaction";
+import FinancialReports from "../components/muhasibatcomp/financialreports";
+import TaxDashboard from "../components/muhasibatcomp/taxreports";
 export const routers = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +31,28 @@ export const routers = createBrowserRouter([
       {
         path: "/muhasibat",
         element: <Muhasibat />,
+        children: [
+          {
+            path: "/muhasibat/dashboard",
+            element: <DashboardCards />,
+          },
+          {
+            path: "/muhasibat/generalledger",
+            element: <Ledger />,
+          },
+          {
+            path: "/muhasibat/transactions",
+            element:  <Transactions />,
+          },
+          {
+            path: "/muhasibat/financialreports",
+            element: <FinancialReports />,
+          },
+          {
+            path: "/muhasibat/taxreports",
+            element: <TaxDashboard />,
+          }
+        ],
       },
       {
         path: "/supplier",
