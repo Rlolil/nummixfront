@@ -2,7 +2,8 @@ import { useState } from "react";
 import BodyCard from "../components/BodyCard";
 import HeadCard from "../components/HeadCard";
 
-import TableRow from "../components/TableRow";
+import { HiPlus } from "react-icons/hi";
+import CustomersTableRow from "../components/CustomersTableRow";
 
 const data = [
     {
@@ -44,11 +45,108 @@ export default function Customers() {
         setSearchedData(filteredData);
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
+
     return (
         <div className="w-full flex flex-col gap-6">
-            <div>
-                <h2 className="text-2xl font-semibold">Müştərilər</h2>
-                <p className="text-zinc-600">Müştəri məlumatları və satış tarixçəsi</p>
+            <div className="flex justify-between items-center">
+                <div>
+                    <h2 className="text-2xl font-semibold">Müştərilər</h2>
+                    <p className="text-zinc-600">Müştəri məlumatları və satış tarixçəsi</p>
+                </div>
+                <div>
+                    <button
+                        className="btn btn-neutral rounded-lg flex justify-between items-center gap-4"
+                        onClick={() => document.getElementById("addNew").showModal()}
+                    >
+                        <HiPlus className="size-4.5 text-white" />
+                        <p>Yeni Müştəri</p>
+                    </button>
+                    <dialog id="addNew" className="modal">
+                        <div className="modal-box">
+                            <button
+                                type="button"
+                                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                onClick={() => document.getElementById("addNew").close()}
+                            >
+                                ✕
+                            </button>
+                            <div className="flex flex-col gap-4">
+                                <h3 className="font-bold text-lg">Yeni Müştəri Əlavə Et!</h3>
+                                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <label className="flex flex-col gap-2">
+                                            <p className="font-semibold text-sm">Şirkət Adı</p>
+                                            <input
+                                                type="text"
+                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                placeholder="Şirkət Adını daxil edin"
+                                            />
+                                        </label>
+                                        <label className="flex flex-col gap-2">
+                                            <p className="font-semibold text-sm">VÖEN</p>
+                                            <input
+                                                type="text"
+                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                placeholder="VÖEN nömrəsini"
+                                            />
+                                        </label>
+                                        <label className="flex flex-col gap-2">
+                                            <p className="font-semibold text-sm">Əlaqə Şəxs</p>
+                                            <input
+                                                type="text"
+                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                placeholder="Ad Soyad"
+                                            />
+                                        </label>
+                                        <label className="flex flex-col gap-2">
+                                            <p className="font-semibold text-sm">Telefon</p>
+                                            <input
+                                                type="text"
+                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                placeholder="+994 XX XXX XX XX"
+                                            />
+                                        </label>
+                                        <label className="flex flex-col gap-2">
+                                            <p className="font-semibold text-sm">Email</p>
+                                            <input
+                                                type="text"
+                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                placeholder="email@example.com"
+                                            />
+                                        </label>
+                                        <label className="flex flex-col gap-2">
+                                            <p className="font-semibold text-sm">Ünvan</p>
+                                            <input
+                                                type="text"
+                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                placeholder="Ünvan"
+                                            />
+                                        </label>
+                                    </div>
+                                    <div className="flex gap-2 justify-end items-center">
+                                        <button
+                                            type="button"
+                                            className="btn rounded-lg mt-4"
+                                            onClick={() => document.getElementById("addNew").close()}
+                                        >
+                                            Ləğv et
+                                        </button>
+                                        <button className="btn btn-neutral rounded-lg mt-4" type="submit">
+                                            Yadda saxla
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div
+                            className="modal-backdrop"
+                            onClick={() => document.getElementById("addNew").close()}
+                        />
+                    </dialog>
+                </div>
             </div>
             <div className="flex flex-col gap-6">
                 <div className="w-full col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -104,7 +202,7 @@ export default function Customers() {
                                 </svg>
                                 <input
                                     type="search"
-                                    className="grow"
+                                    className="grow placeholder:text-gray-600"
                                     placeholder="Müştəri axtar"
                                     onChange={handleSearch}
                                 />
@@ -118,14 +216,16 @@ export default function Customers() {
                                                 <th className="hidden md:table-cell">Əlaqə</th>
                                                 <th className="hidden md:table-cell">Telefon</th>
                                                 <th className="hidden lg:table-cell">Seqment</th>
-                                                <th className="text-right hidden sm:table-cell">Ümumi Satış</th>
+                                                <th className="text-right hidden sm:table-cell">
+                                                    Ümumi Satış
+                                                </th>
                                                 <th className="text-right">Borc</th>
                                                 <th className="text-right"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {searchedData?.map((item, index) => (
-                                                <TableRow key={index} item={item} />
+                                                <CustomersTableRow key={index} item={item} />
                                             ))}
                                         </tbody>
                                     </table>
