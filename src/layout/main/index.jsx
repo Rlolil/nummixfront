@@ -5,9 +5,6 @@ import Sidebar from "../../pages/sidebar";
 
 function MainLayout() {
   const navigate = useNavigate()
-  useEffect(() => {
-    navigate("/")
-  }, [])
   
   return (
     <div className="flex overflow-x-hidden">

@@ -16,7 +16,7 @@ function SidebarComp() {
       <hr className="border-gray-200" />
       <div className="flex flex-col p-4 gap-[10px] mb-[50px] text-black font-medium">
         <div>
-          <Link to="/muhasibat">
+          <Link to="/muhasibat/dashboard">
             <button
               className="block group-hover:flex items-center rounded-md text-md font-medium transition-all outline-none hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
             >
@@ -118,7 +118,7 @@ function SidebarComp() {
                 <path d="m3 8 4-4 4 4"></path>
                 <path d="M7 4v16"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200">
+              <span className="opacity-0 group-hover:opacity-100 text-nowrap text-ellipsis max-w-24 invisible group-hover:visible transition-opacity duration-200">
                 Satinalma & Təchizatçılar
               </span>
             </button>
@@ -251,7 +251,6 @@ function SidebarComp() {
           </Link>
         </div>
       </div>
-      <hr className="border-gray-200" />
       <div className="text-gray-500 p-4 absolute bottom-0 w-full">
         <Link to="/login">
           <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
