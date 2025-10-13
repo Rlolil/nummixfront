@@ -119,7 +119,7 @@ export default function ControlPanel() {
                     <BodyCard
                         title={<div>Satış Dinamikası</div>}
                         child={
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer className="min-h-80" width="100%" height="100%">
                                 <LineChart
                                     width={500}
                                     height={300}
@@ -140,9 +140,10 @@ export default function ControlPanel() {
                                         type="monotone"
                                         dataKey="pv"
                                         stroke="#0096FF"
+                                        strokeWidth={3}
                                         activeDot={{ r: 8 }}
                                     />
-                                    <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                                    <Line type="monotone" dataKey="uv" stroke="#82ca9d" strokeWidth={3} />
                                 </LineChart>
                             </ResponsiveContainer>
                         }
@@ -150,7 +151,7 @@ export default function ControlPanel() {
                     <BodyCard
                         title={<div>Məhsul Paylanması</div>}
                         child={
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer className="min-h-80" width="100%" height="100%">
                                 <PieChart width={400} height={400}>
                                     <Pie
                                         data={dataPie}
@@ -158,8 +159,9 @@ export default function ControlPanel() {
                                         cy="50%"
                                         labelLine={false}
                                         label={renderCustomizedLabel}
-                                        outerRadius={80}
+                                        outerRadius={110}
                                         fill="#000"
+                                        strokeWidth={3}
                                         dataKey="value"
                                     >
                                         {dataPie.map((entry, index) => (
@@ -182,36 +184,28 @@ export default function ControlPanel() {
                                         <h3 className="font-semibold">ABC Şirkəti</h3>
                                         <p className="text-sm text-zinc-700">₼45,000</p>
                                     </div>
-                                    <div className="bg-green-100 rounded-md px-2 py-1">
-                                        <p className="text-xs text-green-900">Aktiv</p>
-                                    </div>
+                                    <span className="font-semibold text-xs badge badge-success">Aktiv</span>
                                 </div>
                                 <div className="flex justify-between items-center bg-zinc-100 p-3 rounded-lg">
                                     <div className="flex flex-col">
                                         <h3 className="font-semibold">ABC Şirkəti</h3>
                                         <p className="text-sm text-zinc-700">₼45,000</p>
                                     </div>
-                                    <div className="bg-green-100 rounded-md px-2 py-1">
-                                        <p className="text-xs text-green-900">Aktiv</p>
-                                    </div>
+                                    <span className="font-semibold text-xs badge badge-success">Aktiv</span>
                                 </div>
                                 <div className="flex justify-between items-center bg-zinc-100 p-3 rounded-lg">
                                     <div className="flex flex-col">
                                         <h3 className="font-semibold">ABC Şirkəti</h3>
                                         <p className="text-sm text-zinc-700">₼45,000</p>
                                     </div>
-                                    <div className="bg-red-100 rounded-md px-2 py-1">
-                                        <p className="text-xs text-red-900">Gecikmiş</p>
-                                    </div>
+                                    <span className="font-semibold text-xs badge badge-error">Gecikmiş</span>
                                 </div>
                                 <div className="flex justify-between items-center bg-zinc-100 p-3 rounded-lg">
                                     <div className="flex flex-col">
                                         <h3 className="font-semibold">ABC Şirkəti</h3>
                                         <p className="text-sm text-zinc-700">₼45,000</p>
                                     </div>
-                                    <div className="bg-green-100 rounded-md px-2 py-1">
-                                        <p className="text-xs text-green-900">Aktiv</p>
-                                    </div>
+                                    <span className="font-semibold text-xs badge badge-success">Aktiv</span>
                                 </div>
                             </div>
                         }

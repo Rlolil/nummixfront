@@ -5,7 +5,7 @@ import { HiPlus } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 
 import SalesTableRow from "../components/SalesTableRow";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const data = [
     {
@@ -41,7 +41,6 @@ export default function Sales() {
     const handleAddNewProduct = () => {
         const newProduct = { id: Date.now(), name: "", quantity: 1, price: 0, discount: 0 };
         setNewProducts([...newProducts, newProduct]);
-        console.log(newProduct);
     };
 
     const handleRemoveProduct = (id) => {
@@ -55,6 +54,11 @@ export default function Sales() {
             )
         );
     };
+
+    const [total, setTotal] = useState(0);
+    const [discount, setDiscount] = useState(0);
+    const [tax, setTax] = useState(0);
+    const [totalCost, setTotalCost] = useState(0);
 
     return (
         <div className="w-full flex flex-col gap-6">
@@ -189,7 +193,7 @@ export default function Sales() {
                                                             </td>
                                                             <td>₼ 100</td>
                                                             <td>
-                                                                <button className="hover:bg-zinc-100 p-2 rounded-lg transition-all">
+                                                                <button className="hover:bg-zinc-200 p-2 rounded-lg transition-all">
                                                                     <IoClose className="size-5" />
                                                                 </button>
                                                             </td>
@@ -262,7 +266,7 @@ export default function Sales() {
                                                                         onClick={() =>
                                                                             handleRemoveProduct(product.id)
                                                                         }
-                                                                        className="hover:bg-zinc-100 p-2 rounded-lg transition-all"
+                                                                        className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
                                                                     >
                                                                         <IoClose className="size-5" />
                                                                     </button>

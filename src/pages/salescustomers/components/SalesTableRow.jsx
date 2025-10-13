@@ -50,13 +50,13 @@ export default function SalesTableRow({ item }) {
             <td className="text-right">
                 <div className="flex justify-center items-center gap-2">
                     <button
-                        className="hover:bg-zinc-100 p-2 rounded-lg transition-all"
+                        className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
                         onClick={() => dialogRef.current && dialogRef.current.showModal()}
                     >
                         <MdOutlineRemoveRedEye className="size-5" />
                     </button>
                     <button
-                        className="hover:bg-zinc-100 p-2 rounded-lg transition-all"
+                        className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
                         onClick={() => dialogRef.current && dialogRef.current.showModal()}
                     >
                         <MdOutlineFileDownload className="size-5" />

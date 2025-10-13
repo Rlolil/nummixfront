@@ -51,7 +51,7 @@ export default function CustomersTableRow({ item }) {
             </td>
             <td className="text-right">
                 <button
-                    className="hover:bg-zinc-100 p-2 rounded-lg transition-all"
+                    className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
                     onClick={() => dialogRef.current && dialogRef.current.showModal()}
                 >
                     <MdOutlineRemoveRedEye className="size-5" />
