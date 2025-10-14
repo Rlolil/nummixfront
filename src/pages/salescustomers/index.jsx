@@ -1,11 +1,12 @@
 import { useState } from "react";
 import ControlPanel from "./pages/ControlPanel";
-import TabSelector from "./components/TabSelector";
+
 import Customers from "./pages/Customers";
 import Sales from "./pages/Sales";
 import Cart from "./pages/Cart";
 import Transactions from "./pages/Transactions";
 import Reports from "./pages/Reports";
+import TabSelector from "../../components/TabSelector/TabSelector";
 
 function SalesCustomers() {
     const [currentTab, setCurrentTab] = useState(1);
