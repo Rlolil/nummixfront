@@ -19,6 +19,9 @@ import Ledger from "../components/muhasibatcomp/generalledger";
 import Transactions from "../components/muhasibatcomp/trasntaction";
 import FinancialReports from "../components/muhasibatcomp/financialreports";
 import TaxDashboard from "../components/muhasibatcomp/taxreports";
+import HRDashboard from "../components/emekhaqqicomp/dashboard";
+import Employees from "../components/emekhaqqicomp/employees";
+import PayrollManagement from "../components/emekhaqqicomp/payroll";
 export const routers = createBrowserRouter([
   {
     path: "/",
@@ -77,6 +80,20 @@ export const routers = createBrowserRouter([
       {
         path: "/emekhaqqi",
         element: <EmekHaqqi />,
+        children: [
+          {
+            path: "/emekhaqqi/dashboard",
+            element: <HRDashboard />,
+          },
+          {
+            path: "/emekhaqqi/employees",
+            element: <Employees  />
+          },
+          {
+            path: "/emekhaqqi/payroll",
+            element: <PayrollManagement />
+          }
+        ],
       },
       {
         path: "/anbar",
