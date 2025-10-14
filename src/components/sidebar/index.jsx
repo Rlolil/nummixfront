@@ -176,7 +176,7 @@ function SidebarComp() {
           </Link>
         </div>
         <div>
-          <Link to="/emekhaqqi">
+          <Link to="/emekhaqqi/dashboard">
             <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
