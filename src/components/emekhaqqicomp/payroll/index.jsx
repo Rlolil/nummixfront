@@ -79,7 +79,6 @@ const PayrollManagement = () => {
 
   return (
     <div className="flex-1 overflow-auto p-6 space-y-6">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-xl font-bold text-gray-900">Əməkhaqqı İdarəetməsi</h2>
@@ -101,8 +100,6 @@ const PayrollManagement = () => {
           </button>
         </div>
       </div>
-
-      {/* Payroll Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-white border rounded-xl p-6 flex items-center justify-between">
           <div>
@@ -141,10 +138,7 @@ const PayrollManagement = () => {
           </div>
         </div>
       </div>
-
-      {/* Tax Deductions and Employee Payroll */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Tax Deductions */}
         <div className="bg-white border rounded-xl lg:col-span-1">
           <div className="px-6 pt-6">
             <h4 className="font-semibold">Vergi və Ayırmalar</h4>
@@ -158,7 +152,7 @@ const PayrollManagement = () => {
                 </div>
                 <div className="bg-gray-200 rounded-full h-2">
                   <div
-                    className="bg-blue-600 h-full rounded-full"
+                    className="bg-black h-full rounded-full"
                     style={{ width: `${tax.progress}%` }}
                   ></div>
                 </div>
@@ -172,8 +166,6 @@ const PayrollManagement = () => {
             </div>
           </div>
         </div>
-
-        {/* Employee Payroll Table */}
         <div className="bg-white border rounded-xl lg:col-span-2">
           <div className="px-6 pt-6">
             <h4 className="font-semibold">İşçilər üzrə Maaş</h4>
@@ -221,8 +213,6 @@ const PayrollManagement = () => {
           </div>
         </div>
       </div>
-
-      {/* Accounting Entries */}
       <div className="bg-white border rounded-xl">
         <div className="px-6 pt-6">
           <h4 className="font-semibold">Mühasibat Müxabirləşməsi</h4>
