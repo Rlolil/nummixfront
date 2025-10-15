@@ -22,6 +22,10 @@ import TaxDashboard from "../components/muhasibatcomp/taxreports";
 import HRDashboard from "../components/emekhaqqicomp/dashboard";
 import Employees from "../components/emekhaqqicomp/employees";
 import PayrollManagement from "../components/emekhaqqicomp/payroll";
+import Leave from "../components/emekhaqqicomp/leave";
+import Attendance from "../components/emekhaqqicomp/attendance/index,";
+import Calendar from "../components/emekhaqqicomp/calendar";
+import Reports from "../components/emekhaqqicomp/hesabatlar";
 export const routers = createBrowserRouter([
   {
     path: "/",
@@ -45,7 +49,7 @@ export const routers = createBrowserRouter([
           },
           {
             path: "/muhasibat/transactions",
-            element:  <Transactions />,
+            element: <Transactions />,
           },
           {
             path: "/muhasibat/financialreports",
@@ -54,7 +58,7 @@ export const routers = createBrowserRouter([
           {
             path: "/muhasibat/taxreports",
             element: <TaxDashboard />,
-          }
+          },
         ],
       },
       {
@@ -87,11 +91,27 @@ export const routers = createBrowserRouter([
           },
           {
             path: "/emekhaqqi/employees",
-            element: <Employees  />
+            element: <Employees />,
           },
           {
             path: "/emekhaqqi/payroll",
-            element: <PayrollManagement />
+            element: <PayrollManagement />,
+          },
+          {
+            path: "/emekhaqqi/leave",
+            element: <Leave />,
+          },
+          {
+            path: "/emekhaqqi/attendance",
+            element: <Attendance />,
+          },
+          {
+            path: "/emekhaqqi/calendar",
+            element: <Calendar />,
+          },
+          {
+            path: "/emekhaqqi/reports",
+            element: <Reports />,
           }
         ],
       },
@@ -102,7 +122,7 @@ export const routers = createBrowserRouter([
       {
         path: "/ai",
         element: <Ai />,
-      }
+      },
     ],
   },
   {
