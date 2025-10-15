@@ -62,7 +62,7 @@ export default function Customers() {
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
-                        <p>Yeni Müştəri</p>
+                        <p className="text-nowrap">Yeni Müştəri</p>
                     </button>
                     <dialog id="addNew" className="modal">
                         <div className="modal-box">

@@ -67,13 +67,13 @@ const data = [
 export default function Reports() {
     return (
         <div className="w-full flex flex-col gap-6">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center gap-2">
                 <div>
                     <h2 className="text-2xl font-semibold">Hesabatlar və Analitika</h2>
                     <p className="text-zinc-600">Satış performansı və tendensiyalar</p>
                 </div>
-                <div className="flex items-center gap-4">
-                    <select className="select appearance-none input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0">
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                    <select className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0">
                         <option>Bu Ay</option>
                         <option>Ötən Ay</option>
                         <option>Son 3 Ay</option>
@@ -146,7 +146,7 @@ export default function Reports() {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <BodyCard
                         title={null}
                         child={
@@ -274,11 +274,11 @@ export default function Reports() {
                             </table>
                         }
                     />
-                    <div className="col-span-2">
+                    <div className="sm:col-span-2">
                         <BodyCard
                             title={"Əsas Performans Göstəriciləri (KPI)"}
                             child={
-                                <div className="grid grid-cols-3 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                     <div className="flex justify-between items-center">
                                         <p className="text-zinc-500">Ümumi Gəlir:</p> <span>₼100,000</span>
                                     </div>
@@ -304,10 +304,12 @@ export default function Reports() {
                                         <p className="text-zinc-500">Satış Konversiyası:</p> <span>4.5%</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Ən Yaxşı Satış Kanalı:</p> <span>Onlayn</span>
+                                        <p className="text-zinc-500">Ən Yaxşı Satış Kanalı:</p>{" "}
+                                        <span>Onlayn</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Gecikmiş Ödəniş %:</p> <span className="text-red-500">12.7%</span>
+                                        <p className="text-zinc-500">Gecikmiş Ödəniş %:</p>{" "}
+                                        <span className="text-red-500">12.7%</span>
                                     </div>
                                 </div>
                             }

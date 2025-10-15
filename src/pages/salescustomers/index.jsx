@@ -30,9 +30,11 @@ function SalesCustomers() {
         }
     };
 
+    const tabs = ["Control Panel", "Customers", "Sales", "POS Cart", "Transactions", "Reports"];
+
     return (
         <div className="sm:ml-16 mt-20 sm:mt-0 py-8 px-6 flex flex-col gap-6">
-            <TabSelector currentTab={currentTab} setCurrentTab={setCurrentTab} />
+            <TabSelector currentTab={currentTab} setCurrentTab={setCurrentTab} tabs={tabs} />
             <div>{renderTabContent()}</div>
         </div>
     );

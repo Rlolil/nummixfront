@@ -70,7 +70,7 @@ export default function CustomersTableRow({ item }) {
                                     onClick={() => setCurrentTab(1)}
                                     className={`${
                                         currentTab === 1 ? "bg-white" : ""
-                                    } text-sm rounded-lg px-3 py-1 font-semibold text-center cursor-pointer hover:bg-white hover:text-zinc-800 transition-all`}
+                                    } flex items-center justify-center h-full text-sm rounded-lg px-3 py-1 font-semibold text-center cursor-pointer hover:bg-white hover:text-zinc-800 transition-all`}
                                 >
                                     Məlumat
                                 </div>
@@ -78,7 +78,7 @@ export default function CustomersTableRow({ item }) {
                                     onClick={() => setCurrentTab(2)}
                                     className={`${
                                         currentTab === 2 ? "bg-white" : ""
-                                    } text-sm rounded-lg px-3 py-1 font-semibold text-center cursor-pointer hover:bg-white hover:text-zinc-800 transition-all`}
+                                    } flex items-center justify-center h-full text-sm rounded-lg px-3 py-1 font-semibold text-center cursor-pointer hover:bg-white hover:text-zinc-800 transition-all`}
                                 >
                                     Satış Tarixçəsi
                                 </div>
@@ -86,7 +86,7 @@ export default function CustomersTableRow({ item }) {
                                     onClick={() => setCurrentTab(3)}
                                     className={`${
                                         currentTab === 3 ? "bg-white" : ""
-                                    } text-sm rounded-lg px-3 py-1 font-semibold text-center cursor-pointer hover:bg-white hover:text-zinc-800 transition-all`}
+                                    } flex items-center justify-center h-full text-sm rounded-lg px-3 py-1 font-semibold text-center cursor-pointer hover:bg-white hover:text-zinc-800 transition-all`}
                                 >
                                     Ödənişlər
                                 </div>

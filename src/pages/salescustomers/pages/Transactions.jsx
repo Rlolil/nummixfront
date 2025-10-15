@@ -3,11 +3,8 @@ import HeadCard from "../components/HeadCard";
 
 import { HiPlus } from "react-icons/hi";
 import { RiErrorWarningLine } from "react-icons/ri";
-import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaRegBell } from "react-icons/fa";
 
-import SalesTableRow from "../components/SalesTableRow";
-import { Trans } from "react-i18next";
 import TransactionsTableRow from "../components/TransactionsTableRow";
 
 const data = [
@@ -58,7 +55,7 @@ export default function Transactions() {
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
-                        <p>Ödəniş Qeyd Et</p>
+                        <p className="text-nowrap">Ödəniş Qeyd Et</p>
                     </button>
                     <dialog id="addNew" className="modal">
                         <div className="modal-box">
@@ -77,7 +74,7 @@ export default function Transactions() {
                                             <p className="font-semibold text-sm">Müştəri Adı</p>
                                             <select
                                                 defaultValue="Müştəri Seçin"
-                                                className="select appearance-none input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                             >
                                                 <option disabled>Müştəri Seçin</option>
                                                 <option value="A">ABC Şirkəti</option>
@@ -89,7 +86,7 @@ export default function Transactions() {
                                             <p className="font-semibold text-sm">Faktura Nömrəsi</p>
                                             <select
                                                 defaultValue="Faktura Nömrəsi Seçin"
-                                                className="select appearance-none input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                             >
                                                 <option disabled>Faktura Nömrəsi Seçin</option>
                                                 <option value="1">INV-2025-001</option>
@@ -190,13 +187,15 @@ export default function Transactions() {
                     <div className="flex justify-between items-center outline-red-200 outline-2 bg-white p-3 rounded-lg">
                         <div className="flex flex-col">
                             <h3 className="font-semibold">DEF Holding</h3>
-                            <p className="text-sm text-zinc-700">Faktura: INV-2025-003 • Tarix: 2025-09-23</p>
+                            <p className="text-sm text-zinc-700 flex gap-2 sm:flex-row flex-col">
+                                <span>Faktura: INV-2025-003</span> <span className="hidden sm:block">•</span> <span>Tarix: 2025-09-23</span>
+                            </p>
                         </div>
                         <div className="flex items-center gap-4">
                             <p className="text-red-500">₼5,400</p>
-                            <button className="flex gap-2 items-center text-sm text-black font-semibold hover:bg-zinc-200 outline-zinc-200 outline px-2 py-1 rounded-lg transition-all">
+                            <button className="flex gap-2 items-center text-sm text-black font-semibold hover:bg-zinc-200 outline-zinc-200 outline sm:px-2 sm:py-1 p-3 rounded-lg transition-all">
                                 <FaRegBell />
-                                Xəbərdarlıq Göndər
+                                <p className="hidden sm:block">Xəbərdarlıq Göndər</p>
                             </button>
                         </div>
                     </div>

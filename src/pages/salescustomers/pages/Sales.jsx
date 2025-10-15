@@ -73,7 +73,7 @@ export default function Sales() {
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
-                        <p>Yeni Faktura</p>
+                        <p className="text-nowrap">Yeni Faktura</p>
                     </button>
                     <dialog id="addNew" className="modal">
                         <div className="modal-box w-11/12 max-w-5xl">
@@ -93,7 +93,7 @@ export default function Sales() {
                                                 <p className="font-semibold text-sm">Müştəri</p>
                                                 <select
                                                     defaultValue="Müştəri Seçin"
-                                                    className="select appearance-none input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                    className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 >
                                                     <option disabled>Müştəri Seçin</option>
                                                     {data?.map((item, index) => (
@@ -115,7 +115,7 @@ export default function Sales() {
                                                 <p className="font-semibold text-sm">Valyuta</p>
                                                 <select
                                                     defaultValue="Valyuta Seçin"
-                                                    className="select appearance-none input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                    className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 >
                                                     <option value="AZN">AZN</option>
                                                     <option value="USD">USD</option>
@@ -126,7 +126,7 @@ export default function Sales() {
                                                 <p className="font-semibold text-sm">Ödəniş Müddəti</p>
                                                 <select
                                                     defaultValue="Ödəniş Müddəti Seçin"
-                                                    className="select appearance-none input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                    className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 >
                                                     <option value="0">Nağd</option>
                                                     <option value="15">15 gün</option>

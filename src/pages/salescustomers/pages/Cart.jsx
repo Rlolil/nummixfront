@@ -47,8 +47,8 @@ export default function Cart() {
                     <p className="text-zinc-600">Pərakəndə satış sistemi</p>
                 </div>
             </div>
-            <div className="flex gap-6">
-                <div className="flex flex-col gap-4 w-2/3">
+            <div className="flex sm:flex-row flex-col gap-6">
+                <div className="flex flex-col gap-4 w-full sm:w-2/3">
                     <div className="w-full flex gap-4 border-1 border-zinc-300 rounded-xl p-6">
                         <input
                             type="text"
@@ -87,7 +87,7 @@ export default function Cart() {
                                         />
                                     </label>
                                 </div>
-                                <div className="grid grid-cols-3 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                     {searchedCart.length ? (
                                         searchedCart?.map((item) => (
                                             <div
@@ -107,7 +107,7 @@ export default function Cart() {
                                             </div>
                                         ))
                                     ) : (
-                                        <div className="col-span-3 text-center text-lg text-zinc-500">
+                                        <div className="sm:col-span-2 md:col-span-3 text-center text-lg text-zinc-500">
                                             Məhsul Taplımadı
                                         </div>
                                     )}
@@ -116,7 +116,7 @@ export default function Cart() {
                         }
                     />
                 </div>
-                <div className="w-1/3 flex flex-col gap-4">
+                <div className="w-full sm:w-1/3 flex flex-col gap-4">
                     <BodyCard
                         title={"Cart"}
                         child={

@@ -157,7 +157,7 @@ export default function ControlPanel() {
                             </div>
                         }
                     />
-                    <div className="col-span-2">
+                    <div className="sm:col-span-2">
                         <BodyCard
                             title={"Ən Çox Alış Edilən Təchizatçılar"}
                             child={

@@ -1,18 +1,11 @@
-import { FiDollarSign } from "react-icons/fi";
-import { MdPeopleOutline } from "react-icons/md";
-import { IoCartOutline } from "react-icons/io5";
-import { AiOutlineRise } from "react-icons/ai";
 import { HiPlus } from "react-icons/hi";
 
-import HeadCard from "../../salescustomers/components/HeadCard";
-import BodyCard from "../../salescustomers/components/BodyCard";
-
-export default function Outfitter() {
+export default function Suppliers() {
     return (
         <div className="w-full flex flex-col gap-6">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center gap-2">
                 <div>
-                    <h2 className="text-2xl font-semibold">Müştərilər</h2>
+                    <h2 className="text-2xl font-semibold">Təchizatçılar</h2>
                     <p className="text-zinc-600">Müştəri məlumatları və satış tarixçəsi</p>
                 </div>
                 <div>
@@ -21,7 +14,7 @@ export default function Outfitter() {
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
-                        <p>Yeni Təchizatçı</p>
+                        <p className="text-nowrap">Yeni Təchizatçı</p>
                     </button>
                     <dialog id="addNew" className="modal">
                         <div className="modal-box">
@@ -122,7 +115,7 @@ export default function Outfitter() {
                 </svg>
                 <input type="search" className="grow placeholder:text-gray-600" placeholder="Müştəri axtar" />
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div className="border-1 hover:bg-zinc-100 transition border-zinc-300 rounded-lg p-4 flex flex-col gap-6">
                     <div className="flex items-center gap-4">
                         <div className="bg-zinc-200 p-3 w-fit rounded-lg">
