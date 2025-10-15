@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router";
 
 const Maliyye = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen ml-[100px]">
       <nav className="flex justify-center gap-8 bg-white border-b py-4 shadow-sm">
         <NavLink
           to="idare-paneli"
