@@ -14,7 +14,7 @@ const BudgetChart = () => {
       planned: 8000,
       percent: 115,
       extra: 1200,
-      noRed: true, 
+      noRed: true,
     },
     {
       title: "Marketing",
@@ -50,30 +50,33 @@ const BudgetChart = () => {
 
           <div className="relative w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
             <div
-              className={`h-2.5 rounded-full ${
-                item.percent > 100 && !item.noRed
+              className={`h-2.5 rounded-full ${item.percent > 100 && !item.noRed
                   ? "bg-red-600"
                   : "bg-gray-900"
-              }`}
+                }`}
               style={{
                 width: `${Math.min(item.percent, 100)}%`,
               }}
             ></div>
           </div>
 
-          <div className="text-sm text-gray-600 mt-1 flex items-center gap-2">
-            {item.percent}% istifadə edilib
+          <div className="text-sm text-gray-600 mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
+            <div className="flex items-center gap-2">
+              <span>{item.percent}% istifadə edilib</span>
+              {item.extra && (
+                <span className="bg-red-600 text-white text-[11px] sm:text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
+                  Artıq xərcl
+                </span>
+              )}
+            </div>
+
             {item.extra && (
-              <span className="bg-red-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-                Artıq xərcl
-              </span>
-            )}
-            {item.extra && (
-              <span className="text-gray-500 text-sm">
+              <span className="text-gray-500 text-sm whitespace-nowrap">
                 ({item.extra.toLocaleString()} AZN artıq)
               </span>
             )}
           </div>
+
         </div>
       ))}
     </div>

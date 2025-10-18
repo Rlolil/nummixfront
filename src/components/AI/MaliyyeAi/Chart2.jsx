@@ -30,7 +30,7 @@ const Chart2 = () => {
           <Line
             type="monotone"
             dataKey="gelir"
-            stroke="#8b5cf6" // bənövşəyi rəng
+            stroke="#8b5cf6" 
             strokeWidth={3}
             dot={{ r: 4, stroke: "#8b5cf6", strokeWidth: 2, fill: "white" }}
             activeDot={{ r: 6 }}

@@ -18,17 +18,17 @@ const Kassa = () => {
 
   return (
     <div className="container mx-auto px-2 py-4">
-      <div className='flex justify-between items-center'>
+      <div className='flex flex-col sm:flex-row justify-between sm:items-center'>
         <div>
           <h1 className="text-[24px] font-semibold">Kassa və Bank Əməliyyatları</h1>
           <p className="text-[#717182] text-[16px] mt-2 mb-5">Nağd və nağdsız pul əməliyyatlarının idarə edilməsi</p>
         </div>
-        <div className='flex gap-4'>
+        <div className='flex flex-col mb-3 sm:flex-row gap-4'>
           <button className='flex gap-3 text-[14px] items-center border-1 border-gray-300 rounded-lg px-4 py-2 min-w-[200px] justify-center hover:bg-gray-100 transition'>
             <BiExport /> Bank çıxarışı yüklə
           </button>
-           <button 
-            onClick={() => setIsModalOpen(true)} 
+          <button
+            onClick={() => setIsModalOpen(true)}
             className='flex gap-3 text-[14px] items-center border-2 bg-black text-white rounded-lg px-4 py-2 min-w-[200px] justify-center hover:bg-gray-800 transition'>
             <FiPlus /> Yeni Əməliyyat
           </button>
@@ -47,20 +47,36 @@ const Kassa = () => {
         ))}
       </div>
 
-      <div className="inline-flex mt-5 mb-5 overflow-hidden rounded-full bg-gray-200">
+      <div className="inline-flex mt-5 mb-5 p-1 overflow-hidden rounded-full bg-gray-200">
         <button
           onClick={() => setActiveTab("kassa")}
-          className={`px-6 py-2 m-1 text-sm font-medium transition-all duration-200 
+          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full
             ${activeTab === "kassa" ? "bg-white text-black shadow-sm rounded-full" : "text-gray-600 hover:text-black"}`}>
           Kassa Əməliyyatları
         </button>
         <button
           onClick={() => setActiveTab("bank")}
-          className={`px-6 py-2 m-1 text-sm font-medium transition-all duration-200 
+          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full
             ${activeTab === "bank" ? "bg-white text-black shadow-sm rounded-full" : "text-gray-600 hover:text-black"}`}>
           Bank Əməliyyatları
         </button>
       </div>
+      {/* <div className="flex mt-5 mb-5 gap-1 sm:gap-2 bg-gray-200 p-1 rounded-full justify-center">
+        <button
+          onClick={() => setActiveTab("kassa")}
+          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full
+      ${activeTab === "kassa" ? "bg-white text-black shadow-sm" : "text-gray-600 hover:text-black"}`}
+        >
+          Kassa Əməliyyatları
+        </button>
+        <button
+          onClick={() => setActiveTab("bank")}
+          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full
+      ${activeTab === "bank" ? "bg-white text-black shadow-sm" : "text-gray-600 hover:text-black"}`}
+        >
+          Bank Əməliyyatları
+        </button>
+      </div> */}
 
       {activeTab === "kassa" && <KassaEmeliyyatlari />}
       {activeTab === "bank" && <BankEmeliyyatlari />}

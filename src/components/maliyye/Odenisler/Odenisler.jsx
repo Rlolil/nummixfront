@@ -55,7 +55,7 @@ const Odenisler = () => {
 
   return (
     <div className="container mx-auto px-2 py-4">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between mb-4 sm:items-center">
         <div>
           <h1 className="text-[24px] font-semibold">Ödənişlərin İdarə Olunması</h1>
           <p className="text-[#717182] text-[16px] mt-2 mb-5">
@@ -79,10 +79,10 @@ const Odenisler = () => {
         ))}
       </div>
 
-      <div className="inline-flex mt-6 mb-6 overflow-hidden rounded-full bg-gray-200">
+      <div className="inline-flex p-1 mt-6 mb-6 overflow-hidden rounded-full bg-gray-200">
         <button
           onClick={() => setActiveTab("odenis")}
-          className={`px-6 py-2 m-1 text-sm font-medium transition-all duration-200 
+          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full
           ${activeTab === "odenis"
               ? "bg-white text-black shadow-sm rounded-full"
               : "text-gray-600 hover:text-black"}`}
@@ -91,7 +91,7 @@ const Odenisler = () => {
         </button>
         <button
           onClick={() => setActiveTab("daxilolma")}
-          className={`px-6 py-2 m-1 text-sm font-medium transition-all duration-200 
+          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full
           ${activeTab === "daxilolma"
               ? "bg-white text-black shadow-sm rounded-full"
               : "text-gray-600 hover:text-black"}`}
@@ -109,35 +109,63 @@ const Odenisler = () => {
           Planlaşdırılmış ödənişlər və daxilolmalar
         </p>
 
-        <div className="divide-y">
+        <div className="flex flex-col md:divide-y md:divide-gray-300">
           {schedule.map((item, index) => (
+            // <div
+            //   key={index}
+            //   className="flex flex-col md:flex-row md:justify-between border-b border-gray-300 md:items-center py-3 px-2 md:px-0 text-[15px] gap-2 md:gap-0"
+            // >
+            //   <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+            //     <span className="text-gray-500 w-[90px]">{item.date}</span>
+            //     <span
+            //       className={`px-3 py-1 text-xs font-medium rounded-md ${item.type === "Ödəniş"
+            //         ? "bg-gray-100 text-gray-800"
+            //         : "bg-black text-white"
+            //         }`}
+            //     >
+            //       {item.type}
+            //     </span>
+            //     <span className="text-gray-800 font-medium">{item.name}</span>
+            //     {item.urgent && (
+            //       <span className="bg-red-600 text-white text-xs font-medium px-2 py-1 rounded-md md:inline-block inline-block md:px-3 md:py-1 whitespace-nowrap">
+            //         Təcili
+            //       </span>
+            //     )}
+
+            //   </div>
+            //   <span className={`font-semibold mt-2 md:mt-0 ${item.color}`}>
+            //     {item.amount}
+            //   </span>
+            // </div>
             <div
               key={index}
-              className="flex justify-between border-b border-gray-300 items-center py-3 text-[15px]"
+              className="flex flex-col md:flex-row md:justify-between border-b border-gray-300 items-start md:items-center py-3 text-[15px] gap-2"
             >
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center gap-2 md:gap-4">
                 <span className="text-gray-500 w-[90px]">{item.date}</span>
                 <span
                   className={`px-3 py-1 text-xs font-medium rounded-md ${item.type === "Ödəniş"
-                      ? "bg-gray-100 text-gray-800"
-                      : "bg-black text-white"
+                    ? "bg-gray-100 text-gray-800"
+                    : "bg-black text-white"
                     }`}
                 >
                   {item.type}
                 </span>
                 <span className="text-gray-800 font-medium">{item.name}</span>
                 {item.urgent && (
-                  <span className="bg-red-600 text-white text-xs font-medium px-2 py-1 rounded-md">
+                  <span className="bg-red-600 text-white text-xs font-medium px-2 py-1 rounded-md whitespace-nowrap">
                     Təcili
                   </span>
                 )}
               </div>
-              <span className={`font-semibold ${item.color}`}>
+              <span className={`font-semibold mt-2 md:mt-0 ${item.color}`}>
                 {item.amount}
               </span>
             </div>
+
           ))}
         </div>
+
       </div>
     </div>
   );
