@@ -99,10 +99,10 @@ const Analitika = () => {
         ))}
       </div>
 
-      <div className="inline-flex mt-8 mb-6 overflow-hidden rounded-full bg-gray-200">
+      <div className="inline-flex mt-8 mb-6 overflow-hidden p-1 rounded-full bg-gray-200">
         <button
           onClick={() => setActiveTab("cashflow")}
-          className={`px-6 py-2 m-1 text-sm font-medium transition-all duration-200 
+          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full
           ${
             activeTab === "cashflow"
               ? "bg-white text-black shadow-sm rounded-full"
@@ -113,7 +113,7 @@ const Analitika = () => {
         </button>
         <button
           onClick={() => setActiveTab("rentabel")}
-          className={`px-6 py-2 m-1 text-sm font-medium transition-all duration-200 
+          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full
           ${
             activeTab === "rentabel"
               ? "bg-white text-black shadow-sm rounded-full"
@@ -124,7 +124,7 @@ const Analitika = () => {
         </button>
         <button
           onClick={() => setActiveTab("likvid")}
-          className={`px-6 py-2 m-1 text-sm font-medium transition-all duration-200 
+          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full
           ${
             activeTab === "likvid"
               ? "bg-white text-black shadow-sm rounded-full"

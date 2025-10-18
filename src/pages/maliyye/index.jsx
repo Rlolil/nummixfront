@@ -1,53 +1,35 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Maliyye = () => {
+  const navItems = [
+    { to: "idare-paneli", label: "İdarə Paneli" },
+    { to: "kassa-bank", label: "Kassa və Bank" },
+    { to: "odenisler", label: "Ödənişlər" },
+    { to: "budce-planlamasi", label: "Büdcə Planlaması" },
+    { to: "analitika", label: "Analitika" },
+  ];
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <nav className="flex justify-center gap-8 bg-white border-b py-4 shadow-sm">
-        <NavLink
-          to="idare-paneli"
-          className={({ isActive }) =>
-            `font-medium hover:text-blue-600 ${isActive ? "text-blue-600 border-b-2 border-blue-600 pb-1" : "text-gray-600"}`
-          }
-        >
-          İdarə Paneli
-        </NavLink>
-        <NavLink
-          to="kassa-bank"
-          className={({ isActive }) =>
-            `font-medium hover:text-blue-600 ${isActive ? "text-blue-600 border-b-2 border-blue-600 pb-1" : "text-gray-600"}`
-          }
-        >
-          Kassa və Bank
-        </NavLink>
-        <NavLink
-          to="odenisler"
-          className={({ isActive }) =>
-            `font-medium hover:text-blue-600 ${isActive ? "text-blue-600 border-b-2 border-blue-600 pb-1" : "text-gray-600"}`
-          }
-        >
-          Ödənişlər
-        </NavLink>
-        <NavLink
-          to="budce-planlamasi"
-          className={({ isActive }) =>
-            `font-medium hover:text-blue-600 ${isActive ? "text-blue-600 border-b-2 border-blue-600 pb-1" : "text-gray-600"}`
-          }
-        >
-          Büdcə Planlaması
-        </NavLink>
-        <NavLink
-          to="analitika"
-          className={({ isActive }) =>
-            `font-medium hover:text-blue-600 ${isActive ? "text-blue-600 border-b-2 border-blue-600 pb-1" : "text-gray-600"}`
-          }
-        >
-          Analitika
-        </NavLink>
+    <div className="flex flex-col  sm:ml-[100px] ml-[0px] min-h-screen ">
+      <nav className="flex justify-center items-center sm:w-[1200px] bg-gray-300 rounded-xl mx-auto mt-25 sm:mt-4 p-1 shadow-inner ">
+        {navItems.map((item) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            className={({ isActive }) =>
+              `px-20 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+                ? "bg-gray-400 text-black shadow-inner"
+                : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            {item.label}
+          </NavLink>
+        ))}
       </nav>
 
-      <div className="p-6 bg-gray-50 flex-grow">
+      <div className="p-6 flex-grow">
         <Outlet />
       </div>
     </div>

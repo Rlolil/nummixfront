@@ -1,31 +1,11 @@
 import React from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
-  {
-    name: 'Satış',
-    uv: 94,
-    pv: 78,
-    amt: 2400,
-  },
-  {
-    name: 'Texniki',
-    uv: 91,
-    pv: 88,
-    amt: 2210,
-  },
-  {
-    name: 'Marketinq',
-    uv: 76,
-    pv: 65,
-    amt: 2290,
-  },
-  {
-    name: 'Mühasibat',
-    uv: 98,
-    pv: 92,
-    amt: 2000,
-  }
+  { name: 'Satış', performans: 94, memnuniyyet: 78 },
+  { name: 'Texniki', performans: 91, memnuniyyet: 88 },
+  { name: 'Marketinq', performans: 76, memnuniyyet: 65 },
+  { name: 'Mühasibat', performans: 98, memnuniyyet: 92 }
 ];
 
 const Chart3 = () => {
@@ -33,30 +13,18 @@ const Chart3 = () => {
     <ResponsiveContainer width="100%" height={300}>
       <BarChart
         data={data}
-        margin={{
-          top: 20,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
+        margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
-        <YAxis
-          yAxisId="left"
-          orientation="left"
-          stroke="#8884d8"
-          domain={[0, 100]}
-          ticks={[0, 25, 50, 75, 100]}
-        />
+        <YAxis domain={[0, 100]} ticks={[0, 25, 50, 75, 100]} />
         <Tooltip />
         <Legend />
-        <Bar yAxisId="left" dataKey="pv" fill="#37A656" name="Məmnuniyyət (%)" />
-        <Bar yAxisId="right" dataKey="uv" fill="#059AF5" name="Performans (%)" />
+        <Bar dataKey="performans" fill="#059AF5" name="Performans (%)" />
+        <Bar dataKey="memnuniyyet" fill="#37A656" name="Məmnuniyyət (%)" />
       </BarChart>
     </ResponsiveContainer>
   );
 };
-
 
 export default Chart3;

@@ -16,7 +16,7 @@ const Budce = () => {
 
   return (
     <div className="container mx-auto px-2 py-4">
-      <div className='flex justify-between items-center'>
+      <div className='flex flex-col md:flex-row justify-between mb-5 sm:items-center'>
         <div>
           <h1 className="text-[24px] font-semibold">Büdcə Planlaması və Nəzarət</h1>
           <p className="text-[#717182] text-[16px] mt-2 mb-5">
