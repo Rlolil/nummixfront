@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
-// import { FaBox } from "react-icons/fa6";
-// import { IoStatsChart } from "react-icons/io5";
-// import { FaArrowTrendUp } from "react-icons/fa6";
-// import { FaArrowTrendDown } from "react-icons/fa6";
-
-import AnbarEsasSehife from "../../components/anbarcompanents/anbaresassehife";
+import Navbar from "../../components/anbarcompanents/anbarnav";
+import { Outlet } from "react-router";
 
 
 export default function Anbar() {
   return (
 
-    <div className="">
-      <AnbarEsasSehife></AnbarEsasSehife>
+    <div className="sm:ml-[100px] ml-0">
+      <Navbar></Navbar>
+
+      <Outlet />
     </div>
   )
 }
