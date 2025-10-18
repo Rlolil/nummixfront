@@ -1,6 +1,5 @@
 "use client"; //esas sehife sol qrafik
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, PieChart, Pie, Cell } from "recharts";
-
+import { BarChart, LineChart, Line, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, PieChart, Pie, Cell } from "recharts";
 
 const Adata = [
   { name: "Yan", value: 450 },
@@ -62,3 +61,75 @@ export function CategoryDistributionChart() {
     </div>
   );
 }
+
+
+
+// Demo data (backend hazir olanda buradan fetch olunacaq)
+
+
+
+const stokDovriyeData = [
+  { ay: "Yan", deyer: 4.2 },
+  { ay: "Fev", deyer: 4.5 },
+  { ay: "Mar", deyer: 4.1 },
+  { ay: "Apr", deyer: 4.8 },
+  { ay: "May", deyer: 4.6 },
+  { ay: "Iyn", deyer: 4.9 },
+];
+
+const anbarDeyeriData = [
+  { ay: "Yan", deyer: 420000 },
+  { ay: "Fev", deyer: 450000 },
+  { ay: "Mar", deyer: 430000 },
+  { ay: "Apr", deyer: 470000 },
+  { ay: "May", deyer: 460000 },
+  { ay: "Iyn", deyer: 480000 },
+];
+
+export function StokDovriyeChart() {
+  return (
+    <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
+      <h3 className="text-lg font-medium mb-4">Stok Dövriyyə Əmsalı</h3>
+      <div className="h-64">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={stokDovriyeData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="ay" />
+            <YAxis />
+            <Tooltip />
+            <Line type="monotone" dataKey="deyer" stroke="#3b82f6" strokeWidth={2} dot />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  );
+}
+
+export function AnbarDeyeriChart() {
+  return (
+    <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
+      <h3 className="text-lg font-medium mb-4">Anbar Dəyəri Dinamikası</h3>
+      <div className="h-64">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={anbarDeyeriData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="ay" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="deyer" fill="#000000" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  );
+}
+
+export function ChartsGroup() {
+  return (
+    <div className="flex flex-col md:flex-row gap-4 w-full">
+      <div className="flex-1"><StokDovriyeChart /></div>
+      <div className="flex-1"><AnbarDeyeriChart /></div>
+    </div>
+  );
+}
+

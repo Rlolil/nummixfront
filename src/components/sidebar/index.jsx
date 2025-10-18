@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 
 function SidebarComp() {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   return (
     <div className="top-0 hidden md:block max-w-64 md:fixed left-0 w-20 hover:w-64 transition-all duration-400 h-screen group bg-white border-l-1 border-gray-200 text-black z-50">
       <div className="flex items-center gap-[20px] p-4">
@@ -125,7 +125,7 @@ function SidebarComp() {
           </Link>
         </div>
         <div>
-          <Link to="/anbar">
+          <Link to="/anbar/dashboard">
             <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

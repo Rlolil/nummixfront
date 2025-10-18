@@ -14,6 +14,18 @@ import EsasVesaitler from "../pages/esasvesaitler";
 import EmekHaqqi from "../pages/emekhaqqi";
 import Anbar from "../pages/anbar";
 import Ai from "../pages/ai";
+import AnbarEsasSehife from "../components/anbarcompanents/anbaresassehife";
+import Məhsullar from "../components/anbarcompanents/Məhsullar";
+import Anbaremeliyyat from "../components/anbarcompanents/anbaremeliyyatlari/esasemeliyyat";
+import Anbardn from "../components/anbarcompanents/anbaremeliyyatlari/dn";
+import Anbargrn from "../components/anbarcompanents/anbaremeliyyatlari/grn";
+import AnbarTransfer from "../components/anbarcompanents/anbaremeliyyatlari/transfer";
+import AnbarHistory from "../components/anbarcompanents/anbaremeliyyatlari/tarixçə";
+import Inventar from "../components/anbarcompanents/inventar/inventaresas";
+import CariQaliqlar from "../components/anbarcompanents/inventar/cariqalıq";
+import InventarSayimi from "../components/anbarcompanents/inventar/Inventarsayimi";
+import HesabatAnalitika from "../components/anbarcompanents/hesabatlar";
+
 export const routers = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +66,35 @@ export const routers = createBrowserRouter([
       {
         path: "/anbar",
         element: <Anbar />,
+        children: [
+          {
+            path: "/anbar/dashboard",
+            element: <AnbarEsasSehife />
+          },
+          {
+            path: "/anbar/products",
+            element: <Məhsullar />
+          },
+          {
+            path: "/anbar/warehouseoperations",
+            element: <Anbaremeliyyat />,
+            children: [
+              { path: "grn", element: <Anbargrn /> },
+              { path: "dn", element: <Anbardn /> },
+              { path: "transfer", element: <AnbarTransfer /> },
+              { path: "history", element: <AnbarHistory /> },
+
+            ]
+          },
+          {
+            path: "/anbar/inventory", element: <Inventar />,
+            children: [
+              { path: "currentbalances", element: <CariQaliqlar /> },
+              { path: "inventorycount", element: <InventarSayimi /> },
+            ]
+          },
+          { path: "/anbar/reports", element: <HesabatAnalitika /> }
+        ]
       },
       {
         path: "/ai",
