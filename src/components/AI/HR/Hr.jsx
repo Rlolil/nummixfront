@@ -62,7 +62,7 @@ const Hr = () => {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
+      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col">
           <h3 className="text-gray-700 font-medium mb-2">Şöbələr üzrə Davamiyyət</h3>
           <p className="text-gray-400 text-sm mb-3">Davamiyyət və gecikmə faizləri</p>
@@ -70,12 +70,41 @@ const Hr = () => {
             <strong>Xeberdarliq:</strong> Marketinq şöbəsində gecikmə faizi 10%-dən yuxarıdır.</div>
           <ProgressBar />
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col items-center justify-center">
-          <h3 className="text-gray-700 font-medium mb-2">Xərç Bölgüsü</h3>
-          <p className="text-gray-400 text-sm mb-3">Cari ay kateqoriyalar üzrə xərcləri</p>
-          <Chart2 />
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col justify-center w-full">
+          <h3 className="text-gray-700 font-medium mb-2">Xərc Bölgüsü</h3>
+          <p className="text-gray-400 text-sm mb-3">
+            Cari ay kateqoriyalar üzrə xərcləri
+          </p>
+          <div className="w-full h-[300px]">
+            <Chart2 />
+          </div>
+        </div>
+      </div> */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8 items-stretch">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col h-full">
+          <h3 className="text-gray-700 font-medium mb-2">Şöbələr üzrə Davamiyyət</h3>
+          <p className="text-gray-400 text-sm mb-3">Davamiyyət və gecikmə faizləri</p>
+
+          <div className="bg-red-100 text-sm border border-red-300 text-gray-800 p-3 rounded-lg mb-4 mt-4">
+            <strong>Xəbərdarlıq:</strong> Marketinq şöbəsində gecikmə faizi 10%-dən yuxarıdır.
+          </div>
+          <ProgressBar />
+        </div>
+
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col h-full">
+          <h3 className="text-gray-700 font-medium mb-2">Xərc Bölgüsü</h3>
+          <p className="text-gray-400 text-sm mb-3">
+            Cari ay kateqoriyalar üzrə xərcləri
+          </p>
+
+          <div className="flex-grow flex items-center justify-center">
+            <div className="w-full h-[300px]">
+              <Chart2 />
+            </div>
+          </div>
         </div>
       </div>
+
       <RiskAnaliz />
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4  flex flex-col">
         <h3 className="text-gray-700 font-medium mb-2">Şöbə Performansı</h3>
@@ -88,5 +117,4 @@ const Hr = () => {
     </div>
   )
 }
-
 export default Hr

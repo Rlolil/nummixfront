@@ -96,7 +96,6 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto px-2 py-4">
-      {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {data.stats.map((s, i) => (
           <div
@@ -119,7 +118,6 @@ const Dashboard = () => {
         ))}
       </div>
 
-      {/* Alerts */}
       <div className="bg-white border border-gray-300 rounded-xl shadow-sm p-5 mb-6">
         <h2 className="text-[16px] font-semibold mb-2">Ən Mühüm Xəbərdarlıqlar</h2>
         <p className="text-gray-500 text-sm mb-4">
@@ -131,20 +129,20 @@ const Dashboard = () => {
             key={i}
             className={`border-l-4 ${a.borderColor} ${a.bgColor} p-4 mb-4 rounded-lg`}
           >
-            <h3 className="font-semibold text-gray-800 flex items-center gap-2">
-              {a.title}
+            <h3 className="font-semibold text-gray-800 flex items-center gap-2 flex-nowrap min-w-0">
+              <span className="truncate">{a.title}</span>
               <span
-                className={`${a.badgeColor} text-xs px-2 py-0.5 rounded-full`}
+                className={`${a.badgeColor} text-xs px-2 py-0.5 whitespace-nowrap rounded-full`}
               >
                 {a.impact}
               </span>
             </h3>
+
             <p className="text-gray-600 text-sm mt-2">{a.text}</p>
           </div>
         ))}
       </div>
 
-      {/* AI Təhlili */}
       <div className="bg-white border border-gray-300 rounded-xl shadow-sm p-5">
         <h2 className="text-[16px] font-semibold mb-2">
           AI İntelligent Təhlilin Nəticələri
@@ -163,7 +161,9 @@ const Dashboard = () => {
                 <h3 className="font-semibold text-gray-800">{r.title}</h3>
                 <p className="text-gray-600 text-sm mt-1">{r.text}</p>
               </div>
-              <span className={`${r.badgeColor} text-xs px-3 py-1 rounded-full`}>
+              <span
+                className={`${r.badgeColor} text-xs px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0`}
+              >
                 {r.impact}
               </span>
             </div>

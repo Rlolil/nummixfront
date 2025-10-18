@@ -41,7 +41,7 @@ const alerts = [
 
 const Xeberdarliq = () => {
     return (
-        <div className="p-5">
+        <div>
             <h2 className="text-lg font-semibold mb-1">Minimum Stok Xəbardarlıqları</h2>
             <p className="text-gray-500 text-sm mb-4">
                 AI proqnozuna görə təcili sifariş tələb edən məhsullar

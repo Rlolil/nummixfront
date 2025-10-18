@@ -26,11 +26,11 @@ const recommendations = [
 
 const Optimallasdirma = () => {
   return (
-    <div className="p-6 bg-gray-50 rounded-xl">
-      <h2 className="text-lg font-semibold mb-2">
+    <div className="p-4 sm:p-6 bg-gray-50 rounded-xl">
+      <h2 className="text-lg sm:text-xl font-semibold mb-2">
         Vergi Optimallaşdırma Tövsiyələri
       </h2>
-      <p className="text-gray-600 mb-4">
+      <p className="text-gray-600 mb-4 text-sm sm:text-base">
         AI tərəfindən müəyyən edilmiş qanuni vergi qənaət yolları
       </p>
 
@@ -38,11 +38,13 @@ const Optimallasdirma = () => {
         {recommendations.map((item, index) => (
           <div
             key={index}
-            className="bg-green-50 border border-green-100 p-4 rounded-xl flex justify-between items-start"
+            className="bg-green-50 border border-green-100 p-4 sm:p-5 rounded-xl flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3"
           >
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <h3 className="font-semibold text-gray-800">{item.title}</h3>
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                <h3 className="font-semibold text-gray-800 text-sm sm:text-base">
+                  {item.title}
+                </h3>
                 <span
                   className={`text-xs px-2 py-0.5 rounded-full ${
                     item.level === "Asan"
@@ -53,20 +55,24 @@ const Optimallasdirma = () => {
                   {item.level}
                 </span>
               </div>
-              <p className="text-gray-700 mb-2">{item.description}</p>
-              <button className="bg-green-600 text-white text-sm px-4 py-1.5 rounded-md hover:bg-green-700 transition">
+              <p className="text-gray-700 mb-2 text-sm sm:text-base">
+                {item.description}
+              </p>
+              <button className="bg-green-600 text-white text-xs sm:text-sm px-4 py-1.5 rounded-md hover:bg-green-700 transition">
                 Ətraflı Məlumat
               </button>
             </div>
-            <div className="text-right">
-              <p className="text-green-700 font-semibold">+₼{item.saving}</p>
-              <p className="text-sm text-gray-500">qənaət</p>
+            <div className="text-right sm:text-left">
+              <p className="text-green-700 font-semibold text-sm sm:text-base">
+                +₼{item.saving}
+              </p>
+              <p className="text-xs sm:text-sm text-gray-500">qənaət</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-6 bg-blue-50 border border-blue-100 text-sm text-blue-800 p-3 rounded-md">
+      <div className="mt-6 bg-blue-50 border border-blue-100 text-sm sm:text-base text-blue-800 p-3 sm:p-4 rounded-md">
         <p>
           <strong>Qeyd:</strong> Bütün tövsiyələr Azərbaycan Respublikasının
           vergi qanunvericiliyinə uyğundur. Tətbiq etməzdən əvvəl vergi

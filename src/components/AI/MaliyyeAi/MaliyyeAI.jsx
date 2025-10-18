@@ -66,7 +66,6 @@ const MaliyyeAI = () => {
 
   return (
     <div className="container mx-auto px-2 py-4">
-      {/* Üst Stat Kartları */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {data.stats.map((s, i) => (
           <div
@@ -88,7 +87,6 @@ const MaliyyeAI = () => {
         ))}
       </div>
 
-      {/* Chart 1 */}
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm mt-10 p-4 flex flex-col">
         <h3 className="text-gray-700 font-medium mb-2">Gəlir-Xərc Balansı</h3>
         <p className="text-gray-400 text-sm mb-3">Son 6 ayın müqayisəsi</p>
@@ -104,21 +102,24 @@ const MaliyyeAI = () => {
         </div>
       </div>
 
-      {/* Chart 2 və 3 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col">
           <h3 className="text-gray-700 font-medium mb-2">Pul Vəsaitlərinin Hərəkəti</h3>
           <p className="text-gray-400 text-sm mb-3">Son 6 ayın gəlir və xərç dinamkası</p>
           <Chart2 />
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col items-center justify-center">
-          <h3 className="text-gray-700 font-medium mb-2">Xərç Bölgüsü</h3>
-          <p className="text-gray-400 text-sm mb-3">Cari ay kateqoriyalar üzrə xərcləri</p>
-          <Chart3 />
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col justify-center w-full">
+          <h3 className="text-gray-700 font-medium mb-2">Xərc Bölgüsü</h3>
+          <p className="text-gray-400 text-sm mb-3">
+            Cari ay kateqoriyalar üzrə xərcləri
+          </p>
+          <div className="w-full h-[300px]">
+            <Chart3 />
+          </div>
         </div>
+
       </div>
 
-      {/* Borc və Alacaqlar */}
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm mt-10 p-5">
         <h3 className="text-gray-800 font-semibold text-lg mb-1">Borc və Alacaqlar</h3>
         <p className="text-gray-400 text-sm mb-5">Riskli vəziyyətdə olan ödənişlər</p>
@@ -144,23 +145,21 @@ const MaliyyeAI = () => {
                 <div className="flex gap-2 mt-1">
                   {item.status && (
                     <span
-                      className={`text-xs font-medium px-2 py-[2px] rounded-lg ${
-                        item.status === "Risk"
-                          ? "bg-orange-500 text-white"
-                          : item.status === "Kritik"
+                      className={`text-xs font-medium px-2 py-[2px] rounded-lg ${item.status === "Risk"
+                        ? "bg-orange-500 text-white"
+                        : item.status === "Kritik"
                           ? "bg-red-600 text-white"
                           : ""
-                      }`}
+                        }`}
                     >
                       {item.status}
                     </span>
                   )}
                   <span
-                    className={`text-xs font-medium px-2 py-[2px] rounded-lg ${
-                      item.type === "Alacaq"
-                        ? "bg-slate-900 text-white"
-                        : "bg-rose-600 text-white"
-                    }`}
+                    className={`text-xs font-medium px-2 py-[2px] rounded-lg ${item.type === "Alacaq"
+                      ? "bg-slate-900 text-white"
+                      : "bg-rose-600 text-white"
+                      }`}
                   >
                     {item.type}
                   </span>

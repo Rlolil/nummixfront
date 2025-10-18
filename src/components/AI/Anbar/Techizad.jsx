@@ -48,7 +48,6 @@ const Techizad = () => {
       <div className="space-y-4">
         {suppliers.map((item, index) => (
           <div key={index} className="bg-white rounded-lg p-4 shadow-sm">
-            {/* Header */}
             <div className="flex justify-between items-center mb-3">
               <h3 className="font-medium text-gray-800">{item.name}</h3>
               <span
@@ -58,9 +57,7 @@ const Techizad = () => {
               </span>
             </div>
 
-            {/* Progress Bars in Row */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              {/* Delivery */}
               <div className="w-full md:w-1/2">
                 <div className="flex justify-between text-sm text-gray-600 mb-1">
                   <span>Vaxtında Çatdırılma</span>
@@ -74,7 +71,6 @@ const Techizad = () => {
                 </div>
               </div>
 
-              {/* Quality */}
               <div className="w-full md:w-1/2">
                 <div className="flex justify-between text-sm text-gray-600 mb-1">
                   <span>Keyfiyyət</span>
@@ -89,7 +85,6 @@ const Techizad = () => {
               </div>
             </div>
 
-            {/* Delay Info */}
             <div className="flex justify-end text-xs text-gray-500 mt-3">
               <span className="text-gray-600 font-medium mr-1">Orta Gecikmə:</span>
               <span className="text-gray-800">{item.delay}</span>

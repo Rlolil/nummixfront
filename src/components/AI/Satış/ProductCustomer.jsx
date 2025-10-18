@@ -18,8 +18,7 @@ const customers = [
 
 const ProductCustomer = () => {
   return (
-    <div className="grid grid-cols-2 gap-6 mt-8">
-      {/* Sol - Məhsullar */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
       <div className="bg-white rounded-xl shadow p-5">
         <h2 className="text-lg font-semibold">Ən Çox Satılan Məhsullar</h2>
         <p className="text-sm text-gray-500 mb-4">Bu ayın ən populyar məhsulları</p>
