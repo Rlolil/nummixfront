@@ -37,6 +37,7 @@ import Satış from "../components/AI/Satış/Satış";
 import Hr from "../components/AI/HR/Hr";
 import Vergi from "../components/AI/Vergi/Vergi";
 import AnbarAi from "../components/AI/Anbar/AnbarAi";
+import EmployeePortal from "../components/emekhaqqicomp/employeeportal";
 export const routers = createBrowserRouter([
   {
     path: "/",
@@ -149,6 +150,10 @@ export const routers = createBrowserRouter([
           {
             path: "/emekhaqqi/reports",
             element: <Reports />,
+          },
+          {
+            path: "/emekhaqqi/employeeportal",
+            element: <EmployeePortal />,
           }
         ],
       },
