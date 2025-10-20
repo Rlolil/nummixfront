@@ -1,0 +1,135 @@
+{
+  "pages": {
+    "ai": {
+      "title": "Nummix AI Köməkçi",
+      "subtitle": "Analitika Modulu",
+      "openAssistant": "AI Köməkçi",
+      "tabs": {
+        "dashboard": "Panel",
+        "finance": "Maliyyə",
+        "sales": "Satış",
+        "warehouse": "Anbar",
+        "hr": "HR",
+        "tax": "Vergi"
+      }
+    },
+    "hr": {
+      "title": "HR & Əmək Haqqı",
+      "tabs": {
+        "dashboard": "Panel",
+        "employees": "İşçilər",
+        "payroll": "Əmək haqqı",
+        "leave": "Məzuniyyət",
+        "attendance": "Davamedicilik",
+        "calendar": "Təqvim",
+        "reports": "Hesabatlar",
+        "portal": "Portal"
+      }
+    },
+    "accounting": {
+      "title": "Mühasibat",
+      "tabs": {
+        "dashboard": "Panel",
+        "ledger": "Baş Kitab",
+        "transactions": "Əməliyyatlar",
+        "financialReports": "Maliyyə Hesabatları",
+        "taxReports": "Vergi Hesabatları"
+      }
+    },
+    "finance": {
+      "tabs": {
+        "dashboard": "İdarə Paneli",
+        "cashBank": "Kassa və Bank",
+        "payments": "Ödənişlər",
+        "budgeting": "Büdcə Planlaması",
+        "analytics": "Analitika"
+      }
+    },
+    "sales": {
+      "tabs": {
+        "controlPanel": "İdarə Paneli",
+        "customers": "Müştərilər",
+        "sales": "Satış",
+        "pos": "POS Səbət",
+        "transactions": "Əməliyyatlar",
+        "reports": "Hesabatlar"
+      }
+    },
+    "supplier": {
+      "tabs": {
+        "controlPanel": "İdarə Paneli",
+        "suppliers": "Tədarükçülər",
+        "sales": "Satış",
+        "agreements": "Müqavilələr",
+        "payments": "Ödənişlər",
+        "analytics": "Analitika"
+      }
+    }
+  },
+  "auth": {
+    "common": {
+      "noAccount": "Hesabınız yoxdur?",
+      "haveAccount": "Hesabınız var?",
+      "signIn": "Daxil ol",
+      "signUp": "Qeydiyyat"
+    },
+    "login": {
+      "subtitle": "Maliyyə idarəetmə panelinizə daxil olun",
+      "submit": "Daxil ol",
+      "submitting": "Daxil olunur...",
+      "forgotPrefix": "Şifrənizi unutmusunuz?",
+      "reset": "Sıfırlayın",
+      "success": "Uğurla daxil olundu! Yönləndirilir...",
+      "errors": {
+        "missingFields": "Zəhmət olmasa email və şifrəni daxil edin!",
+        "invalidCredentials": "Yanlış email və ya şifrə!"
+      }
+    },
+    "register": {
+      "title": "Nummix ERP-yə qoşulun",
+      "subtitle": "Maliyyə idarəetmə hesabınızı yaradın",
+      "submit": "Hesab yarat",
+      "submitting": "Hesab yaradılır...",
+      "codeSent": "6 rəqəmli təsdiq kodu email ünvanınıza göndərildi.",
+      "error": "Qeydiyyat zamanı xəta baş verdi."
+    },
+    "verify": {
+      "subtitle": "Emailinizə göndərilən 6 rəqəmli təsdiq kodunu daxil edin",
+      "enterCode": "Zəhmət olmasa 6 rəqəmli kodu daxil edin",
+      "submit": "Kodu təsdiqlə",
+      "submitting": "Təsdiqlənir...",
+      "resent": "Yeni təsdiq kodu emailinizə göndərildi.",
+      "resend": "Yenidən göndər",
+      "resendFailed": "Təsdiq kodu göndərilə bilmədi.",
+      "success": "Təsdiq uğurludur!",
+      "successRedirect": "Şifrə bərpasına yönləndirilir...",
+      "invalid": "Yanlış kod",
+      "error": "Təsdiq zamanı xəta baş verdi."
+    },
+    "reset": {
+      "subtitle": "Şifrə bərpa linkini göndərin",
+      "submit": "Şifrəni sıfırla",
+      "submitting": "Göndərilir...",
+      "enterNew": "Yeni şifrənizi daxil edin",
+      "newPassword": "Yeni şifrə",
+      "confirmPassword": "Şifrəni təsdiqlə",
+      "mismatch": "Şifrələr uyğun deyil!",
+      "successRedirect": "Şifrə uğurla sıfırlandı! Girişə yönləndirilir..."
+    }
+  },
+  "common": {
+    "email": "Email",
+    "password": "Şifrə",
+    "fullName": "Ad Soyad",
+    "companyName": "Şirkət adı",
+    "somethingWrong": "Nəsə səhv oldu"
+  },
+  "placeholders": {
+    "email": "Emailinizi daxil edin",
+    "password": "Şifrənizi daxil edin",
+    "fullName": "Məs: John Doe",
+    "companyName": "Şirkət adını daxil edin",
+    "newPassword": "Yeni şifrəni daxil edin",
+    "confirmPassword": "Yeni şifrəni təsdiqləyin"
+  }
+}

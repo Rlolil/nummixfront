@@ -1,0 +1,135 @@
+{
+  "pages": {
+    "ai": {
+      "title": "Nummix AI Ассистент",
+      "subtitle": "Модуль аналитики",
+      "openAssistant": "AI Помощник",
+      "tabs": {
+        "dashboard": "Панель",
+        "finance": "Финансы",
+        "sales": "Продажи",
+        "warehouse": "Склад",
+        "hr": "HR",
+        "tax": "Налоги"
+      }
+    },
+    "hr": {
+      "title": "HR и Зарплата",
+      "tabs": {
+        "dashboard": "Панель",
+        "employees": "Сотрудники",
+        "payroll": "Зарплата",
+        "leave": "Отпуска",
+        "attendance": "Посещаемость",
+        "calendar": "Календарь",
+        "reports": "Отчеты",
+        "portal": "Портал"
+      }
+    },
+    "accounting": {
+      "title": "Бухгалтерия",
+      "tabs": {
+        "dashboard": "Панель",
+        "ledger": "Главная книга",
+        "transactions": "Транзакции",
+        "financialReports": "Финансовые отчеты",
+        "taxReports": "Налоговые отчеты"
+      }
+    },
+    "finance": {
+      "tabs": {
+        "dashboard": "Панель",
+        "cashBank": "Касса и Банк",
+        "payments": "Платежи",
+        "budgeting": "Бюджетирование",
+        "analytics": "Аналитика"
+      }
+    },
+    "sales": {
+      "tabs": {
+        "controlPanel": "Панель управления",
+        "customers": "Клиенты",
+        "sales": "Продажи",
+        "pos": "POS Корзина",
+        "transactions": "Транзакции",
+        "reports": "Отчеты"
+      }
+    },
+    "supplier": {
+      "tabs": {
+        "controlPanel": "Панель управления",
+        "suppliers": "Поставщики",
+        "sales": "Продажи",
+        "agreements": "Соглашения",
+        "payments": "Платежи",
+        "analytics": "Аналитика"
+      }
+    }
+  },
+  "auth": {
+    "common": {
+      "noAccount": "Нет аккаунта?",
+      "haveAccount": "У вас есть аккаунт?",
+      "signIn": "Войти",
+      "signUp": "Зарегистрироваться"
+    },
+    "login": {
+      "subtitle": "Войдите в панель финансового управления",
+      "submit": "Войти",
+      "submitting": "Входим...",
+      "forgotPrefix": "Забыли пароль?",
+      "reset": "Сбросить",
+      "success": "Вход выполнен! Перенаправляем...",
+      "errors": {
+        "missingFields": "Введите email и пароль!",
+        "invalidCredentials": "Неверный email или пароль!"
+      }
+    },
+    "register": {
+      "title": "Присоединяйтесь к Nummix ERP",
+      "subtitle": "Создайте учетную запись для управления финансами",
+      "submit": "Создать аккаунт",
+      "submitting": "Создаем аккаунт...",
+      "codeSent": "6-значный код подтверждения отправлен на вашу почту.",
+      "error": "Ошибка во время регистрации."
+    },
+    "verify": {
+      "subtitle": "Введите 6-значный код подтверждения, отправленный на ваш email",
+      "enterCode": "Введите 6-значный код",
+      "submit": "Подтвердить код",
+      "submitting": "Подтверждаем...",
+      "resent": "Новый код отправлен на ваш email.",
+      "resend": "Отправить снова",
+      "resendFailed": "Не удалось отправить код повторно.",
+      "success": "Подтверждение прошло успешно!",
+      "successRedirect": "Успешно! Перенаправляем ко входу...",
+      "invalid": "Неверный код",
+      "error": "Ошибка во время подтверждения."
+    },
+    "reset": {
+      "subtitle": "Отправьте ссылку для сброса пароля",
+      "submit": "Сбросить пароль",
+      "submitting": "Отправляем...",
+      "enterNew": "Введите новый пароль",
+      "newPassword": "Новый пароль",
+      "confirmPassword": "Подтвердите пароль",
+      "mismatch": "Пароли не совпадают!",
+      "successRedirect": "Пароль успешно сброшен! Перенаправляем ко входу..."
+    }
+  },
+  "common": {
+    "email": "Email",
+    "password": "Пароль",
+    "fullName": "Имя Фамилия",
+    "companyName": "Название компании",
+    "somethingWrong": "Что-то пошло не так"
+  },
+  "placeholders": {
+    "email": "Введите ваш email",
+    "password": "Введите ваш пароль",
+    "fullName": "Напр.: John Doe",
+    "companyName": "Введите название компании",
+    "newPassword": "Введите новый пароль",
+    "confirmPassword": "Подтвердите новый пароль"
+  }
+}

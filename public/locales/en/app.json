@@ -1,0 +1,135 @@
+{
+  "pages": {
+    "ai": {
+      "title": "Nummix AI Assistant",
+      "subtitle": "Analytics Module",
+      "openAssistant": "AI Assistant",
+      "tabs": {
+        "dashboard": "Dashboard",
+        "finance": "Finance",
+        "sales": "Sales",
+        "warehouse": "Warehouse",
+        "hr": "HR",
+        "tax": "Tax"
+      }
+    },
+    "hr": {
+      "title": "HR & Payroll",
+      "tabs": {
+        "dashboard": "Dashboard",
+        "employees": "Employees",
+        "payroll": "Payroll",
+        "leave": "Leave",
+        "attendance": "Attendance",
+        "calendar": "Calendar",
+        "reports": "Reports",
+        "portal": "Employee Portal"
+      }
+    },
+    "accounting": {
+      "title": "Accounting",
+      "tabs": {
+        "dashboard": "Dashboard",
+        "ledger": "General Ledger",
+        "transactions": "Transactions",
+        "financialReports": "Financial Reports",
+        "taxReports": "Tax Reports"
+      }
+    },
+    "finance": {
+      "tabs": {
+        "dashboard": "Dashboard",
+        "cashBank": "Cash & Bank",
+        "payments": "Payments",
+        "budgeting": "Budgeting",
+        "analytics": "Analytics"
+      }
+    },
+    "sales": {
+      "tabs": {
+        "controlPanel": "Control Panel",
+        "customers": "Customers",
+        "sales": "Sales",
+        "pos": "POS Cart",
+        "transactions": "Transactions",
+        "reports": "Reports"
+      }
+    },
+    "supplier": {
+      "tabs": {
+        "controlPanel": "Control Panel",
+        "suppliers": "Suppliers",
+        "sales": "Sales",
+        "agreements": "Agreements",
+        "payments": "Payments",
+        "analytics": "Analytics"
+      }
+    }
+  },
+  "auth": {
+    "common": {
+      "noAccount": "Don't have an account?",
+      "haveAccount": "You have an account?",
+      "signIn": "Sign in",
+      "signUp": "Sign up"
+    },
+    "login": {
+      "subtitle": "Sign in to your financial management dashboard",
+      "submit": "Sign In",
+      "submitting": "Signing In...",
+      "forgotPrefix": "Forgot your password?",
+      "reset": "Reset it",
+      "success": "Login successful! Redirecting...",
+      "errors": {
+        "missingFields": "Please enter both email and password!",
+        "invalidCredentials": "Invalid email or password!"
+      }
+    },
+    "register": {
+      "title": "Join Nummix ERP",
+      "subtitle": "Create your financial management account",
+      "submit": "Create Account",
+      "submitting": "Creating Account...",
+      "codeSent": "A 6-digit verification code has been sent to your email.",
+      "error": "An error occurred during registration."
+    },
+    "verify": {
+      "subtitle": "Enter the 6-digit verification code sent to your email",
+      "enterCode": "Please enter a 6-digit code",
+      "submit": "Verify Code",
+      "submitting": "Verifying...",
+      "resent": "A new verification code has been sent to your email.",
+      "resend": "Resend",
+      "resendFailed": "Failed to resend verification code.",
+      "success": "Verification successful!",
+      "successRedirect": "Verification successful! Redirecting to login...",
+      "invalid": "Invalid code",
+      "error": "An error occurred during verification."
+    },
+    "reset": {
+      "subtitle": "Send password reset link",
+      "submit": "Reset Password",
+      "submitting": "Sending...",
+      "enterNew": "Enter your new password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "mismatch": "Passwords don't match!",
+      "successRedirect": "Password reset successful! Redirecting to login..."
+    }
+  },
+  "common": {
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full Name",
+    "companyName": "Company Name",
+    "somethingWrong": "Something went wrong"
+  },
+  "placeholders": {
+    "email": "Enter your email",
+    "password": "Enter your password",
+    "fullName": "John Doe",
+    "companyName": "Enter Company Name",
+    "newPassword": "Enter new password",
+    "confirmPassword": "Confirm new password"
+  }
+}

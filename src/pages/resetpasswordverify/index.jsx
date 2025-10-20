@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Toaster({ toasts, removeToast }) {
   return (
@@ -31,6 +32,7 @@ function Toaster({ toasts, removeToast }) {
 }
 
 function ResetPasswordVerify() {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [digits, setDigits] = useState(["", "", "", "", "", ""]);
   const [password, setPassword] = useState("");
@@ -65,7 +67,7 @@ function ResetPasswordVerify() {
     e.preventDefault();
     const total = digits.join("");
     if (total.length !== 6) {
-      addToast("error", "Please enter a 6-digit code");
+      addToast("error", t("auth.verify.enterCode"));
       return;
     }
     setIsSubmitting(true);
@@ -73,13 +75,13 @@ function ResetPasswordVerify() {
       const data = { success: total === "123456" };
       if (data.success) {
         setIsCodeVerified(true);
-        addToast("success", "Verification successful!");
+        addToast("success", t("auth.verify.success"));
       } else {
-        addToast("error", "Invalid code");
+        addToast("error", t("auth.verify.invalid"));
       }
     } catch (error) {
       console.error(error);
-      addToast("error", "Something went wrong");
+      addToast("error", t("common.somethingWrong"));
     }
     setIsSubmitting(false);
   };
@@ -87,19 +89,19 @@ function ResetPasswordVerify() {
   const handlePasswordReset = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      addToast("error", "Passwords don't match!");
+      addToast("error", t("auth.reset.mismatch"));
       return;
     }
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
-      addToast("success", "Password reset successful! Redirecting to login...");
+      addToast("success", t("auth.reset.successRedirect"));
       setTimeout(() => navigate("/login"), 1000);
     }, 1500);
   };
 
   const handleResend = () => {
-    addToast("info", "A new verification code has been sent to your email.");
+    addToast("info", t("auth.verify.resent"));
     setDigits(["", "", "", "", "", ""]);
   };
 
@@ -113,8 +115,8 @@ function ResetPasswordVerify() {
             <h2 className="text-black font-bold text-2xl sm:text-3xl">Nummix ERP</h2>
             <p className="text-gray-600 text-sm sm:text-base mt-2">
               {isCodeVerified
-                ? "Enter your new password"
-                : "Enter the 6-digit verification code sent to your email"}
+                ? t("auth.reset.enterNew")
+                : t("auth.verify.subtitle")}
             </p>
           </div>
 
@@ -140,7 +142,7 @@ function ResetPasswordVerify() {
                   className="flex-1 bg-black text-white p-3 rounded-lg font-medium hover:bg-gray-800 transition disabled:bg-gray-400"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Verifying..." : "Verify Code"}
+                  {isSubmitting ? t("auth.verify.submitting") : t("auth.verify.submit")}
                 </button>
                 <button
                   type="button"
@@ -148,32 +150,32 @@ function ResetPasswordVerify() {
                   className="px-4 py-3 border rounded-lg text-sm"
                   disabled={isSubmitting}
                 >
-                  Resend
+                  {t("auth.verify.resend")}
                 </button>
               </div>
             </form>
           ) : (
             <form onSubmit={handlePasswordReset} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700">New Password</label>
+                <label className="block text-sm font-medium text-gray-700">{t("auth.reset.newPassword")}</label>
                 <input
                   required
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="mt-1 block w-full h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
-                  placeholder="Enter new password"
+                  placeholder={t("placeholders.newPassword")}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <label className="block text-sm font-medium text-gray-700">{t("auth.reset.confirmPassword")}</label>
                 <input
                   required
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   className="mt-1 block w-full h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
-                  placeholder="Confirm new password"
+                  placeholder={t("placeholders.confirmPassword")}
                 />
               </div>
               <button
@@ -181,15 +183,15 @@ function ResetPasswordVerify() {
                 className="w-full bg-black text-white p-3 rounded-lg font-medium hover:bg-gray-800 transition disabled:bg-gray-400"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Resetting..." : "Reset Password"}
+                {isSubmitting ? t("auth.reset.submitting") : t("auth.reset.submit")}
               </button>
             </form>
           )}   
           <div className="space-y-4 text-center">
             <p className="text-gray-400 text-sm">
-              Don't have an account?{" "}
+              {t("auth.common.noAccount")} {" "}
               <Link to="/register" className="text-black font-medium hover:underline">
-                Sign up
+                {t("auth.common.signUp")}
               </Link>
             </p>
           </div>

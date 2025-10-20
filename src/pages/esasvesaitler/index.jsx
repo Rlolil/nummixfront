@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Package, Box, TrendingDown, Grid3x3, Search, Plus, MoreVertical, Download, FileText, Eye } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function EsasVesaitler() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('management');
   const [searchQuery, setSearchQuery] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
@@ -221,10 +223,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
         <div className="flex justify-between items-start mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Əsas Vəsaitlər Modulu
+              {t('pages.assets.title')}
             </h1>
             <p className="text-gray-600">
-              Aktivlərin idarəsi və amortizasiya uçotu
+              {t('pages.assets.subtitle')}
             </p>
           </div>
           {activeTab === 'assets' && (
@@ -233,7 +235,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
               className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors"
             >
               <Plus className="w-5 h-5" />
-              Yeni aktiv
+              {t('pages.assets.actions.newAsset')}
             </button>
           )}
         </div>
@@ -249,7 +251,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
             }`}
           >
             <Package className="w-4 h-4" />
-            İdarə paneli
+            {t('pages.assets.tabs.management')}
           </button>
           <button
             onClick={() => setActiveTab('assets')}
@@ -260,7 +262,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
             }`}
           >
             <Grid3x3 className="w-4 h-4" />
-            Aktivlər
+            {t('pages.assets.tabs.assets')}
           </button>
           <button
             onClick={() => setActiveTab('reports')}
@@ -271,7 +273,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
             }`}
           >
             <TrendingDown className="w-4 h-4" />
-            Hesabatlar
+            {t('pages.assets.tabs.reports')}
           </button>
         </div>
 
@@ -396,7 +398,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="text"
-                  placeholder="Axtar (ad, inv. nömrə, kateqoriya)..."
+                  placeholder={t('pages.assets.searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
@@ -410,28 +412,28 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      İnv. №
+                      {t('pages.assets.table.invNo')}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      Ad
+                      {t('pages.assets.table.name')}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      Kateqoriya
+                      {t('pages.assets.table.category')}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      Hesab
+                      {t('pages.assets.table.account')}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      Yer
+                      {t('pages.assets.table.location')}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      İlkin dəyər
+                      {t('pages.assets.table.initialValue')}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      Cari dəyər
+                      {t('pages.assets.table.currentValue')}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      Status
+                      {t('pages.assets.table.status')}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                     </th>
@@ -481,71 +483,71 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
         {activeTab === 'reports' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Ümumi hesabat */}
+            {/* General report */}
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                Ümumi hesabat
+                {t('pages.assets.reports.general.title')}
               </h2>
               <p className="text-gray-600 text-sm mb-6">
-                Bütün aktivlər üzrə tam hesabat
+                {t('pages.assets.reports.general.desc')}
               </p>
               <button 
                 onClick={generateExcelReport}
                 className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 <Download className="w-4 h-4" />
-                Excel yüklə
+                {t('pages.assets.reports.general.downloadExcel')}
               </button>
             </div>
 
-            {/* Amortizasiya hesabatı */}
+            {/* Depreciation report */}
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                Amortizasiya hesabatı
+                {t('pages.assets.reports.depreciation.title')}
               </h2>
               <p className="text-gray-600 text-sm mb-6">
-                Aylıq və illik amortizasiya cədvəli
+                {t('pages.assets.reports.depreciation.desc')}
               </p>
               <button 
                 onClick={generateDepreciationPDF}
                 className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 <FileText className="w-4 h-4" />
-                PDF yüklə
+                {t('pages.assets.reports.depreciation.downloadPDF')}
               </button>
             </div>
 
-            {/* Kateqoriya üzrə */}
+            {/* By Category */}
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                Kateqoriya üzrə
+                {t('pages.assets.reports.byCategory.title')}
               </h2>
               <p className="text-gray-600 text-sm mb-6">
-                Kateqoriyalar üzrə qruplaşdırılmış məlumat
+                {t('pages.assets.reports.byCategory.desc')}
               </p>
               <button 
                 onClick={() => setShowCategoryReport(true)}
                 className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 <Eye className="w-4 h-4" />
-                Bax
+                {t('pages.assets.actions.view')}
               </button>
             </div>
 
-            {/* Şöbələr üzrə */}
+            {/* By Department */}
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                Şöbələr üzrə
+                {t('pages.assets.reports.byDepartment.title')}
               </h2>
               <p className="text-gray-600 text-sm mb-6">
-                Şöbələr və filiallar üzrə bölgü
+                {t('pages.assets.reports.byDepartment.desc')}
               </p>
               <button 
                 onClick={() => setShowBranchReport(true)}
                 className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 <Eye className="w-4 h-4" />
-                Bax
+                {t('pages.assets.actions.view')}
               </button>
             </div>
           </div>
@@ -557,7 +559,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900">Yeni aktiv əlavə et</h2>
+              <h2 className="text-xl font-semibold text-gray-900">{t('pages.assets.modal.add.title')}</h2>
               <button 
                 onClick={() => setShowAddModal(false)}
                 className="text-gray-400 hover:text-gray-600"
@@ -570,10 +572,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Aktivin adı */}
+                {/* Asset name */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Aktivin adı <span className="text-red-500">*</span>
+                    {t('pages.assets.form.assetName')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -583,10 +585,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
-                {/* İnventarlaşdırma nömrəsi */}
+                {/* Inventory number */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    İnventarlaşdırma nömrəsi <span className="text-red-500">*</span>
+                    {t('pages.assets.form.inventoryNo')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -596,58 +598,58 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
-                {/* Kateqoriya */}
+                {/* Category */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Kateqoriya <span className="text-red-500">*</span>
+                    {t('pages.assets.form.category')} <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({...formData, category: e.target.value})}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
                   >
-                    <option value="">Kateqoriya seçin</option>
-                    <option value="Kompüter avadanlığı">Kompüter avadanlığı</option>
-                    <option value="Nəqliyyat vasitələri">Nəqliyyat vasitələri</option>
-                    <option value="Ofis avadanlığı">Ofis avadanlığı</option>
-                    <option value="Əmlak">Əmlak</option>
+                    <option value="">{t('pages.assets.form.selectCategory')}</option>
+                    <option value="Kompüter avadanlığı">{t('pages.assets.form.categoryOptions.computerEquipment')}</option>
+                    <option value="Nəqliyyat vasitələri">{t('pages.assets.form.categoryOptions.vehicles')}</option>
+                    <option value="Ofis avadanlığı">{t('pages.assets.form.categoryOptions.officeEquipment')}</option>
+                    <option value="Əmlak">{t('pages.assets.form.categoryOptions.property')}</option>
                   </select>
                 </div>
 
-                {/* Hesab kodu */}
+                {/* Account code */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Hesab kodu <span className="text-red-500">*</span>
+                    {t('pages.assets.form.accountCode')} <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={formData.account}
                     onChange={(e) => setFormData({...formData, account: e.target.value})}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
                   >
-                    <option value="111">111 - Maşın və avadanlıqlar</option>
-                    <option value="112">112 - Nəqliyyat vasitələri</option>
-                    <option value="113">113 - Binalar</option>
+                    <option value="111">{t('pages.assets.form.accountOptions.111')}</option>
+                    <option value="112">{t('pages.assets.form.accountOptions.112')}</option>
+                    <option value="113">{t('pages.assets.form.accountOptions.113')}</option>
                   </select>
                 </div>
 
-                {/* Alınma tarixi */}
+                {/* Purchase date */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Alınma tarixi <span className="text-red-500">*</span>
+                    {t('pages.assets.form.purchaseDate')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="mm/dd/yyyy"
+                    placeholder={t('pages.assets.form.purchaseDatePlaceholder')}
                     value={formData.purchaseDate}
                     onChange={(e) => setFormData({...formData, purchaseDate: e.target.value})}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
 
-                {/* İlkin dəyər */}
+                {/* Initial value */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    İlkin dəyər (₼) <span className="text-red-500">*</span>
+                    {t('pages.assets.form.initialValue')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="number"
@@ -657,10 +659,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
-                {/* Qalıq dəyər */}
+                {/* Residual value */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Qalıq dəyər (₼) <span className="text-red-500">*</span>
+                    {t('pages.assets.form.residualValue')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="number"
@@ -670,26 +672,26 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
-                {/* Amortizasiya metodu */}
+                {/* Depreciation method */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Amortizasiya metodu <span className="text-red-500">*</span>
+                    {t('pages.assets.form.depreciationMethod')} <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={formData.depreciationMethod}
                     onChange={(e) => setFormData({...formData, depreciationMethod: e.target.value})}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
                   >
-                    <option value="Düzxətli">Düzxətli</option>
-                    <option value="Azalan qalıq">Azalan qalıq</option>
-                    <option value="İstehsal həcmi">İstehsal həcmi</option>
+                    <option value="Düzxətli">{t('pages.assets.form.depreciationMethods.straightLine')}</option>
+                    <option value="Azalan qalıq">{t('pages.assets.form.depreciationMethods.decliningBalance')}</option>
+                    <option value="İstehsal həcmi">{t('pages.assets.form.depreciationMethods.unitsOfProduction')}</option>
                   </select>
                 </div>
 
-                {/* Faydalı istifadə müddəti */}
+                {/* Useful life */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Faydalı istifadə müddəti (ay) <span className="text-red-500">*</span>
+                    {t('pages.assets.form.usefulLifeMonths')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="number"
@@ -699,45 +701,45 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
-                {/* Yerləşmə */}
+                {/* Location */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Yerləşmə <span className="text-red-500">*</span>
+                    {t('pages.assets.form.location')} <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={formData.location}
                     onChange={(e) => setFormData({...formData, location: e.target.value})}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
                   >
-                    <option value="">Yer seçin</option>
-                    <option value="Bakı Ofisi">Bakı Ofisi</option>
-                    <option value="Sumqayıt filialı">Sumqayıt filialı</option>
-                    <option value="Gəncə filialı">Gəncə filialı</option>
+                    <option value="">{t('pages.assets.form.selectLocation')}</option>
+                    <option value="Bakı Ofisi">{t('pages.assets.form.locationOptions.bakuOffice')}</option>
+                    <option value="Sumqayıt filialı">{t('pages.assets.form.locationOptions.sumgaitBranch')}</option>
+                    <option value="Gəncə filialı">{t('pages.assets.form.locationOptions.ganjaBranch')}</option>
                   </select>
                 </div>
 
-                {/* Şöbə */}
+                {/* Branch */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Şöbə <span className="text-red-500">*</span>
+                    {t('pages.assets.form.branch')} <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={formData.branch}
                     onChange={(e) => setFormData({...formData, branch: e.target.value})}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
                   >
-                    <option value="">Şöbə seçin</option>
-                    <option value="IT Şöbəsi">IT Şöbəsi</option>
-                    <option value="Mühasibatlıq">Mühasibatlıq</option>
-                    <option value="Satış şöbəsi">Satış şöbəsi</option>
-                    <option value="İnsan resursları">İnsan resursları</option>
+                    <option value="">{t('pages.assets.form.selectBranch')}</option>
+                    <option value="IT Şöbəsi">{t('pages.assets.form.branchOptions.it')}</option>
+                    <option value="Mühasibatlıq">{t('pages.assets.form.branchOptions.accounting')}</option>
+                    <option value="Satış şöbəsi">{t('pages.assets.form.branchOptions.sales')}</option>
+                    <option value="İnsan resursları">{t('pages.assets.form.branchOptions.hr')}</option>
                   </select>
                 </div>
 
-                {/* Təchizatçı */}
+                {/* Supplier */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Təchizatçı <span className="text-red-500">*</span>
+                    {t('pages.assets.form.supplier')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -747,10 +749,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
-                {/* Seriya nömrəsi */}
+                {/* Serial number */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Seriya nömrəsi
+                    {t('pages.assets.form.serialNumber')}
                   </label>
                   <input
                     type="text"
@@ -760,10 +762,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
-                {/* Təhkim olunub */}
+                {/* Assigned to */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Təhkim olunub
+                    {t('pages.assets.form.assignedTo')}
                   </label>
                   <input
                     type="text"
@@ -771,10 +773,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
-                {/* Zəmanət müddəti */}
+                {/* Warranty period */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Zəmanət müddəti (ay)
+                    {t('pages.assets.form.warrantyPeriodMonths')}
                   </label>
                   <input
                     type="time"
@@ -782,10 +784,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
-                {/* Qeyd - Full width */}
+                {/* Notes - Full width */}
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Qeyd
+                    {t('pages.assets.form.note')}
                   </label>
                   <textarea
                     value={formData.notes}
@@ -802,7 +804,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   onClick={() => setShowAddModal(false)}
                   className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
                 >
-                  Ləğv et
+                  {t('pages.assets.buttons.cancel')}
                 </button>
                 <button
                   onClick={() => {
@@ -811,7 +813,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   }}
                   className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
                 >
-                  Yadda saxla
+                  {t('pages.assets.buttons.save')}
                 </button>
               </div>
             </div>
@@ -824,7 +826,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900">Kateqoriya üzrə hesabat</h2>
+              <h2 className="text-xl font-semibold text-gray-900">{t('pages.assets.categoryReportModal.title')}</h2>
               <button 
                 onClick={() => setShowCategoryReport(false)}
                 className="text-gray-400 hover:text-gray-600"
@@ -840,12 +842,12 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                 <table className="w-full">
                   <thead className="bg-gray-50 border-b-2 border-gray-200">
                     <tr>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Kateqoriya</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Aktiv sayı</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">İlkin dəyər</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Cari dəyər</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Amortizasiya</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Faiz</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.category')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.assetCount')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.initial')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.current')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.depreciation')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.percent')}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -863,7 +865,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                       );
                     })}
                     <tr className="bg-gray-50 font-semibold">
-                      <td className="px-6 py-4 text-sm text-gray-900">CƏMİ</td>
+                      <td className="px-6 py-4 text-sm text-gray-900">{t('pages.assets.categoryReportModal.total')}</td>
                       <td className="px-6 py-4 text-sm text-gray-900">
                         {categoryReportData.reduce((sum, cat) => sum + cat.count, 0)}
                       </td>
@@ -894,7 +896,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900">Şöbələr və filiallar üzrə hesabat</h2>
+              <h2 className="text-xl font-semibold text-gray-900">{t('pages.assets.branchReportModal.title')}</h2>
               <button 
                 onClick={() => setShowBranchReport(false)}
                 className="text-gray-400 hover:text-gray-600"
@@ -910,11 +912,11 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                 <table className="w-full">
                   <thead className="bg-gray-50 border-b-2 border-gray-200">
                     <tr>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Yer</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Aktiv sayı</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">İlkin dəyər</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Cari dəyər</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Pay</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.location')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.assetCount')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.initial')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.current')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.share')}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -932,7 +934,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                       );
                     })}
                     <tr className="bg-gray-50 font-semibold">
-                      <td className="px-6 py-4 text-sm text-gray-900">CƏMİ</td>
+                      <td className="px-6 py-4 text-sm text-gray-900">{t('pages.assets.branchReportModal.total')}</td>
                       <td className="px-6 py-4 text-sm text-gray-900">
                         {branchReportData.reduce((sum, b) => sum + b.count, 0)}
                       </td>
