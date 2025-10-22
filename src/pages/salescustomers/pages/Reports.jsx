@@ -4,6 +4,7 @@ import { FiDownload } from "react-icons/fi";
 import { FaRegFileAlt } from "react-icons/fa";
 
 import BodyCard from "../components/BodyCard";
+import { useTranslation } from "react-i18next";
 
 import {
     LineChart,
@@ -65,28 +66,29 @@ const data = [
 ];
 
 export default function Reports() {
+    const { t } = useTranslation();
     return (
         <div className="w-full flex flex-col gap-6">
             <div className="flex justify-between items-center gap-2">
                 <div>
-                    <h2 className="text-2xl font-semibold">Hesabatlar və Analitika</h2>
-                    <p className="text-zinc-600">Satış performansı və tendensiyalar</p>
+                    <h2 className="text-2xl font-semibold">{t("pages.sales.reports.title")}</h2>
+                    <p className="text-zinc-600">{t("pages.sales.reports.subtitle")}</p>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center gap-4">
                     <select className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0">
-                        <option>Bu Ay</option>
-                        <option>Ötən Ay</option>
-                        <option>Son 3 Ay</option>
-                        <option>Bu İl</option>
-                        <option>Ötən İl</option>
+                        <option>{t("pages.sales.reports.filters.range.thisMonth")}</option>
+                        <option>{t("pages.sales.reports.filters.range.lastMonth")}</option>
+                        <option>{t("pages.sales.reports.filters.range.last3Months")}</option>
+                        <option>{t("pages.sales.reports.filters.range.thisYear")}</option>
+                        <option>{t("pages.sales.reports.filters.range.lastYear")}</option>
                     </select>
                     <button className="flex items-center gap-2 hover:bg-gray-100 px-2 py-2 rounded-lg bg-white border border-zinc-200 transition-all">
                         <FiDownload />
-                        <p className="text-sm font-semibold text-nowrap">Export Excel</p>
+                        <p className="text-sm font-semibold text-nowrap">{t("pages.sales.reports.actions.exportExcel")}</p>
                     </button>
                     <button className="flex items-center gap-2 hover:bg-gray-100 px-2 py-2 rounded-lg bg-white border border-zinc-200 transition-all">
                         <FaRegFileAlt />
-                        <p className="text-sm font-semibold text-nowrap">PDF Hesabat</p>
+                        <p className="text-sm font-semibold text-nowrap">{t("pages.sales.reports.actions.pdfReport")}</p>
                     </button>
                 </div>
             </div>
@@ -98,7 +100,7 @@ export default function Reports() {
                         </div>
                         <div>
                             <p className="text-2xl -mb-2">₼ 42,400</p>
-                            <h3 className="text-sm text-zinc-400 font-semibold mt-2">Ümumi Satış</h3>
+                            <h3 className="text-sm text-zinc-400 font-semibold mt-2">{t("pages.sales.reports.tiles.totalSales")}</h3>
                         </div>
                     </div>
                     <div className="flex items-center gap-4 border-1 border-zinc-200 p-4 rounded-lg">
@@ -107,7 +109,7 @@ export default function Reports() {
                         </div>
                         <div>
                             <p className="text-2xl -mb-2">₼ 96,000</p>
-                            <h3 className="text-sm text-zinc-400 font-semibold mt-2">Brüt Mənfəət</h3>
+                            <h3 className="text-sm text-zinc-400 font-semibold mt-2">{t("pages.sales.reports.tiles.grossProfit")}</h3>
                         </div>
                     </div>
                     <div className="flex items-center gap-4 border-1 border-zinc-200 p-4 rounded-lg">
@@ -133,7 +135,7 @@ export default function Reports() {
                         </div>
                         <div>
                             <p className="text-2xl -mb-2">3,280</p>
-                            <h3 className="text-sm text-zinc-400 font-semibold mt-2">Satılan Məhsul</h3>
+                            <h3 className="text-sm text-zinc-400 font-semibold mt-2">{t("pages.sales.reports.tiles.productsSold")}</h3>
                         </div>
                     </div>
                     <div className="flex items-center gap-4 border-1 border-zinc-200 p-4 rounded-lg">
@@ -142,7 +144,7 @@ export default function Reports() {
                         </div>
                         <div>
                             <p className="text-2xl -mb-2">26.6%</p>
-                            <h3 className="text-sm text-zinc-400 font-semibold mt-2">Mənfəət Marjası</h3>
+                            <h3 className="text-sm text-zinc-400 font-semibold mt-2">{t("pages.sales.reports.tiles.profitMargin")}</h3>
                         </div>
                     </div>
                 </div>
@@ -213,29 +215,29 @@ export default function Reports() {
                         }
                     />
                     <BodyCard
-                        title={"Ən Çox Satılan Məhsullar"}
+                        title={t("pages.sales.reports.tables.topProducts.title")}
                         child={
                             <table className="table text-base">
                                 <thead className="font-semibold text-black">
                                     <tr>
-                                        <th className="text-start p-3 rounded-l-lg">Məhsul</th>
-                                        <th className="text-start p-3">Satış Sayı</th>
-                                        <th className="text-start p-3">Gəlir</th>
+                                        <th className="text-start p-3 rounded-l-lg">{t("pages.sales.reports.tables.topProducts.columns.product")}</th>
+                                        <th className="text-start p-3">{t("pages.sales.reports.tables.topProducts.columns.salesCount")}</th>
+                                        <th className="text-start p-3">{t("pages.sales.reports.tables.topProducts.columns.revenue")}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td className="p-3">Məhsul 1</td>
+                                        <td className="p-3">{t("pages.sales.reports.tables.topProducts.sample.product1")}</td>
                                         <td className="p-3">100</td>
                                         <td className="p-3">₼1,000</td>
                                     </tr>
                                     <tr>
-                                        <td className="p-3">Məhsul 2</td>
+                                        <td className="p-3">{t("pages.sales.reports.tables.topProducts.sample.product2")}</td>
                                         <td className="p-3">200</td>
                                         <td className="p-3">₼2,000</td>
                                     </tr>
                                     <tr>
-                                        <td className="p-3">Məhsul 3</td>
+                                        <td className="p-3">{t("pages.sales.reports.tables.topProducts.sample.product3")}</td>
                                         <td className="p-3">300</td>
                                         <td className="p-3">₼3,000</td>
                                     </tr>
@@ -244,29 +246,29 @@ export default function Reports() {
                         }
                     />
                     <BodyCard
-                        title={"Ən Gəlirli Müştərilər"}
+                        title={t("pages.sales.reports.tables.topCustomers.title")}
                         child={
                             <table className="table text-base">
                                 <thead className="font-semibold text-black">
                                     <tr>
-                                        <th className="text-start p-3 rounded-l-lg">Müştəri</th>
-                                        <th className="text-start p-3">Sifariş</th>
-                                        <th className="text-start p-3">Gəlir</th>
+                                        <th className="text-start p-3 rounded-l-lg">{t("pages.sales.reports.tables.topCustomers.columns.customer")}</th>
+                                        <th className="text-start p-3">{t("pages.sales.reports.tables.topCustomers.columns.orders")}</th>
+                                        <th className="text-start p-3">{t("pages.sales.reports.tables.topCustomers.columns.revenue")}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td className="p-3">ABC Şirkəti</td>
+                                        <td className="p-3">{t("pages.sales.reports.tables.topCustomers.sample.customer1")}</td>
                                         <td className="p-3">67</td>
                                         <td className="p-3">₼14,000</td>
                                     </tr>
                                     <tr>
-                                        <td className="p-3">XYZ MMC</td>
+                                        <td className="p-3">{t("pages.sales.reports.tables.topCustomers.sample.customer2")}</td>
                                         <td className="p-3">41</td>
                                         <td className="p-3">₼22,000</td>
                                     </tr>
                                     <tr>
-                                        <td className="p-3">DEF Holding</td>
+                                        <td className="p-3">{t("pages.sales.reports.tables.topCustomers.sample.customer3")}</td>
                                         <td className="p-3">21</td>
                                         <td className="p-3">₼39,000</td>
                                     </tr>
@@ -276,40 +278,35 @@ export default function Reports() {
                     />
                     <div className="sm:col-span-2">
                         <BodyCard
-                            title={"Əsas Performans Göstəriciləri (KPI)"}
+                            title={t("pages.sales.reports.kpi.title")}
                             child={
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Ümumi Gəlir:</p> <span>₼100,000</span>
+                                        <p className="text-zinc-500">{t("pages.sales.reports.kpi.totalRevenue")}:</p> <span>₼100,000</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Satış Artımı (MoM):</p>{" "}
-                                        <span className="text-green-600">+21.8%</span>
+                                        <p className="text-zinc-500">{t("pages.sales.reports.kpi.salesGrowthMoM")}:</p> <span className="text-green-600">+21.8%</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Ortalama Sifariş Dəyəri:</p>{" "}
-                                        <span>₼500</span>
+                                        <p className="text-zinc-500">{t("pages.sales.reports.kpi.avgOrderValue")}:</p> <span>₼500</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Yeni Müştərilər:</p> <span>50</span>
+                                        <p className="text-zinc-500">{t("pages.sales.reports.kpi.newCustomers")}:</p> <span>50</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Mənfəət Artımı (MoM):</p>{" "}
-                                        <span className="text-green-600">+27.3%</span>
+                                        <p className="text-zinc-500">{t("pages.sales.reports.kpi.profitGrowthMoM")}:</p> <span className="text-green-600">+27.3%</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Müştəri Saxlanması:</p> <span>85%</span>
+                                        <p className="text-zinc-500">{t("pages.sales.reports.kpi.customerRetention")}:</p> <span>85%</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Satış Konversiyası:</p> <span>4.5%</span>
+                                        <p className="text-zinc-500">{t("pages.sales.reports.kpi.salesConversion")}:</p> <span>4.5%</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Ən Yaxşı Satış Kanalı:</p>{" "}
-                                        <span>Onlayn</span>
+                                        <p className="text-zinc-500">{t("pages.sales.reports.kpi.bestSalesChannel")}:</p> <span>{t("pages.sales.reports.kpi.values.online")}</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500">Gecikmiş Ödəniş %:</p>{" "}
-                                        <span className="text-red-500">12.7%</span>
+                                        <p className="text-zinc-500">{t("pages.sales.reports.kpi.overduePaymentRate")}:</p> <span className="text-red-500">12.7%</span>
                                     </div>
                                 </div>
                             }

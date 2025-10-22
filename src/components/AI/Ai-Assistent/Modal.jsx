@@ -1,7 +1,9 @@
 import React from "react";
 import Overlay from "../../overlay";
+import { useTranslation } from "react-i18next";
 
 const Modal = ({ onClose }) => {
+    const { t } = useTranslation();
     return (
         <Overlay onClose={onClose}>
             <div className="w-[350px] sm:w-[600px] sm:h-[600px] bg-white rounded-2xl shadow-2xl overflow-hidden animate-fade-in relative">
@@ -28,8 +30,8 @@ const Modal = ({ onClose }) => {
                             </svg>
                         </div>
                         <div className="flex flex-col">
-                            <span className="font-semibold">Nummix AI Köməkçi</span>
-                            <span className="font-semibold text-xs">Suallarınıza cavab alın</span>
+                            <span className="font-semibold">{t("pages.ai.assistant.modal.title")}</span>
+                            <span className="font-semibold text-xs">{t("pages.ai.assistant.modal.subtitle")}</span>
                         </div>
                     </div>
                     <button
@@ -42,26 +44,26 @@ const Modal = ({ onClose }) => {
 
                 <div className="p-4 h-[530px] flex flex-col">
                     <div className="bg-gray-100 p-3 rounded-lg mt-10 text-gray-700 mb-4">
-                        Salam! Mən Nummix AI Assistentəm. Sizə necə kömək edə bilərəm?
+                        {t("pages.ai.assistant.modal.greeting")}
                     </div>
 
                     <div className="mt-auto">
                         <div className="mb-3">
                             <span className="text-sm font-semibold text-gray-700">
-                                Tez-tez verilən suallar:
+                                {t("pages.ai.assistant.modal.faqTitle")}
                             </span>
                             <div className="flex flex-wrap gap-2 mt-2">
                                 <button className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg">
-                                    Bu ay mənim mənfəətim nə qədər olub?
+                                    {t("pages.ai.assistant.modal.quickQuestions.profitThisMonth")}
                                 </button>
                                 <button className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg">
-                                    Ən çox satılan məhsulum hansıdır?
+                                    {t("pages.ai.assistant.modal.quickQuestions.topSellingProduct")}
                                 </button>
                                 <button className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg">
-                                    Növbəti ay maaş fondu nə qədər olacaq?
+                                    {t("pages.ai.assistant.modal.quickQuestions.nextMonthPayroll")}
                                 </button>
                                 <button className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg">
-                                    Kimə ən çox borcum var?
+                                    {t("pages.ai.assistant.modal.quickQuestions.largestDebt")}
                                 </button>
                             </div>
                         </div>
@@ -69,11 +71,11 @@ const Modal = ({ onClose }) => {
                         <div className="border-t border-gray-300 pt-3 flex gap-2">
                             <input
                                 type="text"
-                                placeholder="Sualınızı yazın..."
+                                placeholder={t("pages.ai.assistant.modal.inputPlaceholder")}
                                 className="flex-grow border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none"
                             />
                             <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-lg">
-                                Göndər
+                                {t("pages.ai.assistant.modal.send")}
                             </button>
                         </div>
                     </div>

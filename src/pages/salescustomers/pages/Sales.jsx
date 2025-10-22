@@ -6,6 +6,7 @@ import { IoClose } from "react-icons/io5";
 
 import SalesTableRow from "../components/SalesTableRow";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const data = [
     {
@@ -13,25 +14,26 @@ const data = [
         date: "2025-10-08",
         customer: "ABC Şirkəti",
         amount: "AZN 12,500",
-        status: "Ödənildi",
+        statusCode: "paid",
     },
     {
         invoiceNumber: "INV-2025-002",
         date: "2025-10-10",
         customer: "XYZ MMC",
         amount: "AZN 8,750",
-        status: "Ödənilməmiş",
+        statusCode: "unpaid",
     },
     {
         invoiceNumber: "INV-2025-003",
         date: "2025-10-12",
         customer: "123 Ltd.",
         amount: "AZN 5,300",
-        status: "Gecikmiş",
+        statusCode: "overdue",
     },
 ];
 
 export default function Sales() {
+    const { t } = useTranslation();
     const handleSubmit = (e) => {
         e.preventDefault();
     };
@@ -64,8 +66,8 @@ export default function Sales() {
         <div className="w-full flex flex-col gap-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h2 className="text-2xl font-semibold">Müştərilər</h2>
-                    <p className="text-zinc-600">Müştəri məlumatları və satış tarixçəsi</p>
+                    <h2 className="text-2xl font-semibold">{t("pages.sales.sales.title")}</h2>
+                    <p className="text-zinc-600">{t("pages.sales.sales.subtitle")}</p>
                 </div>
                 <div>
                     <button
@@ -73,7 +75,7 @@ export default function Sales() {
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
-                        <p className="text-nowrap">Yeni Faktura</p>
+                        <p className="text-nowrap">{t("pages.sales.sales.actions.newInvoice")}</p>
                     </button>
                     <dialog id="addNew" className="modal">
                         <div className="modal-box w-11/12 max-w-5xl">
@@ -85,17 +87,17 @@ export default function Sales() {
                                 ✕
                             </button>
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-bold text-lg">Yeni Faktura Əlavə Et!</h3>
+                                <h3 className="font-bold text-lg">{t("pages.sales.sales.modal.title")}</h3>
                                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                                     <div className="flex flex-col gap-8">
                                         <div className="grid grid-cols-2 gap-4">
                                             <label className="flex flex-col gap-2">
-                                                <p className="font-semibold text-sm">Müştəri</p>
+                                                <p className="font-semibold text-sm">{t("pages.sales.sales.form.customer")}</p>
                                                 <select
-                                                    defaultValue="Müştəri Seçin"
+                                                    defaultValue="select"
                                                     className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 >
-                                                    <option disabled>Müştəri Seçin</option>
+                                                    <option disabled value="select">{t("pages.sales.sales.placeholders.selectCustomer")}</option>
                                                     {data?.map((item, index) => (
                                                         <option key={index} value={item.customer}>
                                                             {item.customer}
@@ -104,57 +106,57 @@ export default function Sales() {
                                                 </select>
                                             </label>
                                             <label className="flex flex-col gap-2">
-                                                <p className="font-semibold text-sm">Tarix</p>
+                                                <p className="font-semibold text-sm">{t("pages.sales.sales.form.date")}</p>
                                                 <input
                                                     type="date"
                                                     className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                    placeholder="Tarixi daxil edin"
+                                                    placeholder={t("pages.sales.sales.placeholders.date")}
                                                 />
                                             </label>
                                             <label className="flex flex-col gap-2">
-                                                <p className="font-semibold text-sm">Valyuta</p>
+                                                <p className="font-semibold text-sm">{t("pages.sales.sales.form.currency")}</p>
                                                 <select
-                                                    defaultValue="Valyuta Seçin"
+                                                    defaultValue="AZN"
                                                     className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 >
-                                                    <option value="AZN">AZN</option>
-                                                    <option value="USD">USD</option>
-                                                    <option value="EUR">EUR</option>
+                                                    <option value="AZN">{t("pages.sales.sales.currencyOptions.AZN")}</option>
+                                                    <option value="USD">{t("pages.sales.sales.currencyOptions.USD")}</option>
+                                                    <option value="EUR">{t("pages.sales.sales.currencyOptions.EUR")}</option>
                                                 </select>
                                             </label>
                                             <label className="flex flex-col gap-2">
-                                                <p className="font-semibold text-sm">Ödəniş Müddəti</p>
+                                                <p className="font-semibold text-sm">{t("pages.sales.sales.form.paymentTerm")}</p>
                                                 <select
-                                                    defaultValue="Ödəniş Müddəti Seçin"
+                                                    defaultValue="cash"
                                                     className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 >
-                                                    <option value="0">Nağd</option>
-                                                    <option value="15">15 gün</option>
-                                                    <option value="30">30 gün</option>
-                                                    <option value="60">60 gün</option>
+                                                    <option value="cash">{t("pages.sales.sales.paymentTerms.cash")}</option>
+                                                    <option value="15">{t("pages.sales.sales.paymentTerms.days15")}</option>
+                                                    <option value="30">{t("pages.sales.sales.paymentTerms.days30")}</option>
+                                                    <option value="60">{t("pages.sales.sales.paymentTerms.days60")}</option>
                                                 </select>
                                             </label>
                                         </div>
                                         <div className="flex flex-col gap-4">
                                             <div className="flex justify-between items-center">
-                                                <h3 className="font-semibold">Məhsullar</h3>
+                                                <h3 className="font-semibold">{t("pages.sales.sales.products.title")}</h3>
                                                 <button
                                                     onClick={handleAddNewProduct}
                                                     className="btn btn-neutral btn-outline rounded-lg flex justify-between items-center gap-4 h-fit py-1"
                                                 >
                                                     <HiPlus className="size-4.5" />
-                                                    <p>Yeni Məhsul</p>
+                                                    <p>{t("pages.sales.sales.products.add")}</p>
                                                 </button>
                                             </div>
                                             <div className="overflow-x-auto">
                                                 <table className="table">
                                                     <thead>
                                                         <tr className="bg-zinc-100 text-black">
-                                                            <th>Məhsul</th>
-                                                            <th>Miqdar</th>
-                                                            <th>Qiymət</th>
-                                                            <th>Endirim %</th>
-                                                            <th>Cəmi</th>
+                                                            <th>{t("pages.sales.sales.products.table.product")}</th>
+                                                            <th>{t("pages.sales.sales.products.table.quantity")}</th>
+                                                            <th>{t("pages.sales.sales.products.table.price")}</th>
+                                                            <th>{t("pages.sales.sales.products.table.discount")}</th>
+                                                            <th>{t("pages.sales.sales.products.table.total")}</th>
                                                             <th></th>
                                                         </tr>
                                                     </thead>
@@ -211,7 +213,7 @@ export default function Sales() {
                                                                         }
                                                                         type="text"
                                                                         className="input input-sm focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                                        placeholder="Məhsul"
+                                                                        placeholder={t("pages.sales.sales.placeholders.product")}
                                                                         defaultValue={product.name}
                                                                     />
                                                                 </td>
@@ -226,7 +228,7 @@ export default function Sales() {
                                                                         }
                                                                         type="number"
                                                                         className="input input-sm focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                                        placeholder="Miqdar"
+                                                                        placeholder={t("pages.sales.sales.placeholders.quantity")}
                                                                         defaultValue={product.quantity}
                                                                     />
                                                                 </td>
@@ -241,7 +243,7 @@ export default function Sales() {
                                                                         }
                                                                         type="number"
                                                                         className="input input-sm focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                                        placeholder="Qiymət"
+                                                                        placeholder={t("pages.sales.sales.placeholders.price")}
                                                                         defaultValue={product.price}
                                                                     />
                                                                 </td>
@@ -256,7 +258,7 @@ export default function Sales() {
                                                                         }
                                                                         type="number"
                                                                         className="input input-sm focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                                        placeholder="Endirim %"
+                                                                        placeholder={t("pages.sales.sales.placeholders.discount")}
                                                                         defaultValue={product.discount}
                                                                     />
                                                                 </td>
@@ -278,17 +280,17 @@ export default function Sales() {
                                             </div>
                                             <div className="flex flex-col gap-1 items-end">
                                                 <p className="flex justify-between sm:w-64 w-full">
-                                                    <span className="font-semibold">Ümumi:</span> ₼0
+                                                    <span className="font-semibold">{t("pages.sales.sales.summary.total")}:</span> ₼0
                                                 </p>
                                                 <p className="flex justify-between sm:w-64 w-full">
-                                                    <span className="font-semibold">Endirim:</span> ₼0
+                                                    <span className="font-semibold">{t("pages.sales.sales.summary.discount")}:</span> ₼0
                                                 </p>
                                                 <p className="flex justify-between sm:w-64 w-full">
-                                                    <span className="font-semibold">ƏDV (18%):</span> ₼0
+                                                    <span className="font-semibold">{t("pages.sales.sales.summary.vat", { percent: 18 })}:</span> ₼0
                                                 </p>
                                                 <div className="border-t border-zinc-300 mt-2 pt-2 w-full sm:w-fit">
                                                     <p className="font-semibold flex justify-between sm:w-64 w-full">
-                                                        <span className="font-semibold">Yekun:</span> ₼0
+                                                        <span className="font-semibold">{t("pages.sales.sales.summary.grandTotal")}:</span> ₼0
                                                     </p>
                                                 </div>
                                             </div>
@@ -300,10 +302,10 @@ export default function Sales() {
                                             className="btn rounded-lg mt-4"
                                             onClick={() => document.getElementById("addNew").close()}
                                         >
-                                            Ləğv et
+                                            {t("common.cancel")}
                                         </button>
                                         <button className="btn btn-neutral rounded-lg mt-4" type="submit">
-                                            Yadda saxla
+                                            {t("common.save")}
                                         </button>
                                     </div>
                                 </form>
@@ -322,28 +324,28 @@ export default function Sales() {
                         title={null}
                         amount={<div className="text-2xl">₼ 42,400</div>}
                         greenText={null}
-                        description="Ümumi Satış (Bu Ay)"
+                        description={t("pages.sales.sales.cards.totalSalesThisMonth")}
                         icon={null}
                     />
                     <HeadCard
                         title={null}
                         amount={<div className="text-2xl text-green-600">₼ 21,400</div>}
                         greenText={null}
-                        description="Ödənilmiş"
+                        description={t("pages.sales.sales.cards.paid")}
                         icon={null}
                     />
                     <HeadCard
                         title={null}
                         amount={<div className="text-2xl text-orange-400">₼ 15,600</div>}
                         greenText={null}
-                        description="Ödənilməmiş"
+                        description={t("pages.sales.sales.cards.unpaid")}
                         icon={null}
                     />
                     <HeadCard
                         title={null}
                         amount={<div className="text-2xl text-red-500">₼5,400</div>}
                         greenText={null}
-                        description="Gecikmiş"
+                        description={t("pages.sales.sales.cards.overdue")}
                         icon={null}
                     />
                 </div>
@@ -351,16 +353,16 @@ export default function Sales() {
                     title={null}
                     child={
                         <div className="w-full flex flex-col gap-6">
-                            <h3>Fakturalar</h3>
+                            <h3>{t("pages.sales.sales.table.title")}</h3>
                             <div className="overflow-x-auto">
                                 <table className="table text-base">
                                     <thead>
                                         <tr className="text-black text-base">
-                                            <th>Faktura №</th>
-                                            <th className="hidden md:table-cell">Tarix</th>
-                                            <th className="hidden md:table-cell">Müştəri</th>
-                                            <th className="text-right">Məbləğ</th>
-                                            <th className="hidden sm:table-cell">Status</th>
+                                            <th>{t("pages.sales.sales.table.columns.invoiceNo")}</th>
+                                            <th className="hidden md:table-cell">{t("pages.sales.sales.table.columns.date")}</th>
+                                            <th className="hidden md:table-cell">{t("pages.sales.sales.table.columns.customer")}</th>
+                                            <th className="text-right">{t("pages.sales.sales.table.columns.amount")}</th>
+                                            <th className="hidden sm:table-cell">{t("pages.sales.sales.table.columns.status")}</th>
                                             <th className="text-right"></th>
                                         </tr>
                                     </thead>

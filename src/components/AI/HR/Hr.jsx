@@ -6,33 +6,35 @@ import Chart2 from './Chart2';
 import ProgressBar from './ProgressBar';
 import RiskAnaliz from './RiskAnaliz';
 import Chart3 from './Chart3';
+import { useTranslation } from "react-i18next";
 
 const Hr = () => {
+  const { t } = useTranslation();
   const data = {
     stats: [
       {
-        title: "Aylıq Mənfəət",
+        title: t("pages.ai.dashboard.stats.monthlyProfit"),
         value: "₼45,231",
         change: "+18.5%",
         positive: true,
         icon: <MdAttachMoney className="text-green-500 text-[28px]" />,
       },
       {
-        title: "Satış Həcmi",
+        title: t("pages.ai.dashboard.stats.salesVolume"),
         value: "₼128,456",
         change: "+12.3%",
         positive: true,
         icon: <BsCart3 className="text-blue-500 text-[28px]" />,
       },
       {
-        title: "Anbar Dəyəri",
+        title: t("pages.ai.dashboard.stats.inventoryValue"),
         value: "₼67,890",
         change: "-5.2%",
         positive: false,
         icon: <BsBoxSeam className="text-purple-500 text-[28px]" />,
       },
       {
-        title: "Əmək Haqqı Fondu",
+        title: t("pages.ai.dashboard.stats.payrollFund"),
         value: "₼23,450",
         change: "+8.1%",
         positive: true,
@@ -82,20 +84,18 @@ const Hr = () => {
       </div> */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8 items-stretch">
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col h-full">
-          <h3 className="text-gray-700 font-medium mb-2">Şöbələr üzrə Davamiyyət</h3>
-          <p className="text-gray-400 text-sm mb-3">Davamiyyət və gecikmə faizləri</p>
+          <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.hrAi.attendanceByDept.title")}</h3>
+          <p className="text-gray-400 text-sm mb-3">{t("pages.ai.hrAi.attendanceByDept.subtitle")}</p>
 
           <div className="bg-red-100 text-sm border border-red-300 text-gray-800 p-3 rounded-lg mb-4 mt-4">
-            <strong>Xəbərdarlıq:</strong> Marketinq şöbəsində gecikmə faizi 10%-dən yuxarıdır.
+            <strong>{t("pages.ai.common.warningLabel")}</strong> {t("pages.ai.hrAi.attendanceByDept.warningText")}
           </div>
           <ProgressBar />
         </div>
 
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col h-full">
-          <h3 className="text-gray-700 font-medium mb-2">Xərc Bölgüsü</h3>
-          <p className="text-gray-400 text-sm mb-3">
-            Cari ay kateqoriyalar üzrə xərcləri
-          </p>
+          <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.hrAi.expenseDistribution.title")}</h3>
+          <p className="text-gray-400 text-sm mb-3">{t("pages.ai.hrAi.expenseDistribution.subtitle")}</p>
 
           <div className="flex-grow flex items-center justify-center">
             <div className="w-full h-[300px]">
@@ -107,8 +107,8 @@ const Hr = () => {
 
       <RiskAnaliz />
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4  flex flex-col">
-        <h3 className="text-gray-700 font-medium mb-2">Şöbə Performansı</h3>
-        <p className="text-gray-400 text-sm mb-3">Performans və işçi məmnuniyyəti göstəriciləri</p>
+        <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.hrAi.departmentPerformance.title")}</h3>
+        <p className="text-gray-400 text-sm mb-3">{t("pages.ai.hrAi.departmentPerformance.subtitle")}</p>
 
         <div className="flex-1">
           <Chart3 />

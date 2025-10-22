@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiDownload } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const salaryHistory = [
   {
@@ -8,7 +9,7 @@ const salaryHistory = [
     tax: '₼518',
     social: '₼370',
     net: '₼2812',
-    status: 'Ödənilib'
+    status: 'paid'
   },
   {
     month: 'Avqust 2025',
@@ -16,7 +17,7 @@ const salaryHistory = [
     tax: '₼490',
     social: '₼350',
     net: '₼2660',
-    status: 'Ödənilib'
+    status: 'paid'
   },
   {
     month: 'İyul 2025',
@@ -24,7 +25,7 @@ const salaryHistory = [
     tax: '₼476',
     social: '₼340',
     net: '₼2584',
-    status: 'Ödənilib'
+    status: 'paid'
   },
   {
     month: 'İyun 2025',
@@ -32,18 +33,19 @@ const salaryHistory = [
     tax: '₼448',
     social: '₼320',
     net: '₼2432',
-    status: 'Ödənilib'
+    status: 'paid'
   }
 ];
 
 const SalaryHistoryTable = () => {
+  const { t } = useTranslation('app');
   return (
     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
       <div className="flex items-center justify-between px-6 pt-6">
-        <h4 className="font-medium text-gray-900">Maaş Tarixçəsi</h4>
+        <h4 className="font-medium text-gray-900">{t('pages.hr.portal.salary.history.title')}</h4>
         <button className="flex items-center gap-2 text-sm px-3 py-2 border rounded-md hover:bg-gray-100">
           <FiDownload className="w-4 h-4" />
-          İxrac
+          {t('pages.hr.portal.salary.history.export')}
         </button>
       </div>
 
@@ -51,12 +53,12 @@ const SalaryHistoryTable = () => {
         <table className="min-w-full text-sm mt-4">
           <thead className="bg-gray-50 text-gray-500 uppercase text-xs">
             <tr>
-              <th className="px-6 py-3 text-left">Ay</th>
-              <th className="px-6 py-3 text-left">Brüt</th>
-              <th className="px-6 py-3 text-left">Vergi</th>
-              <th className="px-6 py-3 text-left">Sosial</th>
-              <th className="px-6 py-3 text-left">Net</th>
-              <th className="px-6 py-3 text-left">Status</th>
+              <th className="px-6 py-3 text-left">{t('pages.hr.portal.salary.history.headers.month')}</th>
+              <th className="px-6 py-3 text-left">{t('pages.hr.portal.salary.history.headers.gross')}</th>
+              <th className="px-6 py-3 text-left">{t('pages.hr.portal.salary.history.headers.tax')}</th>
+              <th className="px-6 py-3 text-left">{t('pages.hr.portal.salary.history.headers.social')}</th>
+              <th className="px-6 py-3 text-left">{t('pages.hr.portal.salary.history.headers.net')}</th>
+              <th className="px-6 py-3 text-left">{t('pages.hr.portal.salary.history.headers.status')}</th>
               <th className="px-6 py-3"></th>
             </tr>
           </thead>
@@ -70,7 +72,7 @@ const SalaryHistoryTable = () => {
                 <td className="px-6 py-4 text-green-600">{item.net}</td>
                 <td className="px-6 py-4">
                   <span className="text-green-700 bg-green-100 text-xs px-2 py-0.5 rounded-md font-medium">
-                    {item.status}
+                    {t(`pages.hr.payroll.status.${item.status}`)}
                   </span>
                 </td>
                 <td className="px-6 py-4">

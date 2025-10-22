@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const taxes = [
   {
@@ -38,15 +39,12 @@ const taxes = [
 ];
 
 const VergiOdenis = () => {
+  const { t } = useTranslation();
   return (
     <div className="container mx-auto py-4">
       <div className="bg-white border border-gray-300 rounded-xl shadow-sm p-5 mb-6">
-        <h2 className="text-xl font-semibold mb-1 text-gray-800">
-          Yaxınlaşan Vergi Ödənişləri
-        </h2>
-        <p className="text-gray-500 mb-5 text-sm sm:text-base">
-          Ödənilməli vergi və ayırmalar
-        </p>
+        <h2 className="text-xl font-semibold mb-1 text-gray-800">{t("pages.ai.taxAi.upcomingPayments.title")}</h2>
+        <p className="text-gray-500 mb-5 text-sm sm:text-base">{t("pages.ai.taxAi.upcomingPayments.subtitle")}</p>
 
         <div className="space-y-5">
           {taxes.map((tax, index) => (
@@ -63,9 +61,7 @@ const VergiOdenis = () => {
                   )}
                   <div>
                     <p className="font-semibold text-gray-800">{tax.name}</p>
-                    <p className="text-sm text-gray-500">
-                      Son tarix: {tax.dueDate}
-                    </p>
+                    <p className="text-sm text-gray-500">{t("pages.ai.taxAi.upcomingPayments.dueDate", { date: tax.dueDate })}</p>
                   </div>
                 </div>
 
@@ -80,23 +76,23 @@ const VergiOdenis = () => {
                         : "bg-gray-200 text-gray-700"
                     }`}
                   >
-                    {tax.remainingDays} gün qalıb
+                    {t("pages.ai.taxAi.upcomingPayments.daysLeft", { count: tax.remainingDays })}
                   </span>
                 </div>
               </div>
 
               {tax.delay && (
                 <div className="mt-3 text-sm text-gray-700 bg-white/70 p-3 rounded-lg border border-gray-100">
-                  <strong>AI Xəbardarlıq:</strong> Gecikən cərimə: {tax.delay}
+                  <strong>{t("pages.ai.taxAi.upcomingPayments.aiWarning")}</strong> {t("pages.ai.taxAi.upcomingPayments.latePenalty", { amount: tax.delay })}
                 </div>
               )}
 
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
                 <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded-lg transition w-full sm:w-1/2">
-                  İndi Ödə
+                  {t("pages.ai.taxAi.upcomingPayments.payNow")}
                 </button>
                 <button className="border bg-white border-gray-300 hover:bg-gray-100 text-gray-700 font-medium px-5 py-2 rounded-lg transition w-full sm:w-1/2">
-                  Xatırlat
+                  {t("pages.ai.taxAi.upcomingPayments.remind")}
                 </button>
               </div>
             </div>

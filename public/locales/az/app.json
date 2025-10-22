@@ -1,0 +1,2262 @@
+{
+  "pages": {
+    "ai": {
+      "title": "Nummix AI Köməkçi",
+      "subtitle": "Analitika Modulu",
+      "openAssistant": "AI Köməkçi",
+      "tabs": {
+        "dashboard": "Panel",
+        "finance": "Maliyyə",
+        "sales": "Satış",
+        "warehouse": "Anbar",
+        "hr": "HR",
+        "tax": "Vergi"
+      },
+      "common": {
+        "impact": {
+          "high": "Yüksək təsir",
+          "medium": "Orta təsir",
+          "low": "Aşağı təsir"
+        },
+        "aiAnalysisLabel": "AI Analizi:",
+        "aiRecommendation": "AI Tövsiyəsi:",
+        "days": "gün",
+        "months": {
+          "jan": "Yan",
+          "feb": "Fev",
+          "mar": "Mar",
+          "apr": "Apr",
+          "may": "May",
+          "jun": "İyn"
+        }
+      },
+      "assistant": {
+        "modal": {
+          "title": "Nummix AI Köməkçi",
+          "subtitle": "Suallarınıza cavab alın",
+          "greeting": "Salam! Mən Nummix AI Assistentəm. Sizə necə kömək edə bilərəm?",
+          "faqTitle": "Tez-tez verilən suallar:",
+          "quickQuestions": {
+            "profitThisMonth": "Bu ay mənim mənfəətim nə qədər olub?",
+            "topSellingProduct": "Ən çox satılan məhsulum hansıdır?",
+            "nextMonthPayroll": "Növbəti ay maaş fondu nə qədər olacaq?",
+            "largestDebt": "Kimə ən çox borcum var?"
+          },
+          "inputPlaceholder": "Sualınızı yazın...",
+          "send": "Göndər"
+        },
+        "notifications": {
+          "title": "Bildirişlər",
+          "unreadCount": "{{count}} oxunmamış bildiriş",
+          "items": {
+            "vatDue": {
+              "title": "ƏDV Ödənişi Yaxınlaşır",
+              "desc": "ƏDV ödənişi 3 gün qalıb. Məbləğ: ₼8,450",
+              "time": "1 saat əvvəl",
+              "action": "Ödə",
+              "tag": "Təcili"
+            },
+            "criticalStock": {
+              "title": "Kritik Stok Səviyyəsi",
+              "desc": "Premium Paket 8 günə bitəcək. Təcili sifariş verin.",
+              "time": "2 saat əvvəl",
+              "action": "Sifariş Ver",
+              "tag": "Xəbərdarlıq"
+            },
+            "minWarehouse": {
+              "title": "Anbar Minimum Səviyyəsi",
+              "desc": "5 məhsul minimum stok səviyyəsinə çatıb.",
+              "time": "3 saat əvvəl",
+              "action": "Bax",
+              "tag": "Xəbərdarlıq"
+            },
+            "overdueDebt": {
+              "title": "Borc Ödənişi Gecikir",
+              "desc": "Ödəniş vaxtı keçib. Əlaqə saxlayın.",
+              "time": "4 saat əvvəl",
+              "action": "Info",
+              "tag": "Info"
+            }
+          },
+          "markAllRead": "Hamısını Oxunmuş Kimi Qeyd Et"
+        }
+      },
+      "dashboard": {
+        "stats": {
+          "monthlyProfit": "Aylıq Mənfəət",
+          "salesVolume": "Satış Həcmi",
+          "inventoryValue": "Anbar Dəyəri",
+          "payrollFund": "Əmək Haqqı Fondu"
+        },
+          "alerts": {
+          "title": "Ən Mühüm Xəbərdarlıqlar",
+          "subtitle": "AI tərəfindən müəyyən edilmiş prioritet məsələlər",
+          "items": {
+            "criticalStock": {
+              "title": "Kritik Stok Səviyyəsi",
+              "text": "5 məhsul minimum stok səviyyəsinə çatıb. Təkrar sifariş tələb olunur."
+            },
+            "vatDueSoon": {
+              "title": "ƏDV Ödənişi Yaxınlaşır",
+              "text": "ƏDV ödənişinə 3 gün qalıb. Məbləğ: ₼8,450"
+            },
+            "salesTarget": {
+              "title": "Satış Hədəfi",
+              "text": "Bu ay satış hədəfi 105% yerinə yetirildi!"
+            }
+          }
+        },
+        "aiResults": {
+          "title": "AI Təhlilinin Nəticələri",
+          "subtitle": "Biznesiniz üçün tövsiyələr və proqnozlar",
+          "items": {
+            "revenueGrowth": {
+              "title": "Gəlir Artımı",
+              "text": "Bu ay gəlirlər 20%, xərclər isə 35% artıb. Xərc optimallaşdırması tövsiyə olunur."
+            },
+            "customerBehavior": {
+              "title": "Müştəri Davranışı",
+              "text": "Son 3 ayda ən çox alış edən 5 müştəri ümumi satışın 42%-ni təşkil edir."
+            },
+            "salesTrend": {
+              "title": "Satış Trendi",
+              "text": "Satışlar əsasən ayın 20-dən sonra 60% artır. Kampaniyaları bu dövrə planlaşdırın."
+            },
+            "staffTurnover": {
+              "title": "İşçi Dövriyyəsi",
+              "text": "Marketinq şöbəsində işçi itkisinin riski müəyyən edilib. HR ilə görüş planlaşdırılmalıdır."
+            }
+          }
+        },
+        "salesTarget": {
+          "title": "Satış Hədəfi",
+          "subtitle": "Aylıq satış planının icra vəziyyəti"
+        },
+        "expenseLimit": {
+          "title": "Xərc Limiti",
+          "subtitle": "Aylıq büdcə istifadəsi"
+        }
+      },
+      "salesAi": {
+        "salesTrend": {
+          "title": "Aylıq Satış Trendi",
+          "subtitle": "Son 6 ayın satış dinamikası",
+          "aiText": "Növbəti 6 ay ərzində orta aylıq pul axını {{avg}} proqnozlaşdırılır. Sentyabr ayında maksimum ({{max}}) gözlənilir. Likvidlik riski aşkar edilmədi."
+        },
+        "series": { "sales": "Satış" },
+        "products": {
+          "title": "Ən Çox Satılan Məhsullar",
+          "subtitle": "Bu ayın ən populyar məhsulları"
+        },
+        "customers": {
+          "title": "Ən Çox Alış Edən Müştərilər",
+          "subtitle": "Son 3 ayın TOP müştəriləri",
+          "aiText": "TOP 5 müştəri ümumi satışın {{percent}}-ni təşkil edir."
+        },
+        "salesCycles": {
+          "title": "Satış Dövrləri",
+          "subtitle": "Ay ərzində satışların paylanması",
+          "recommendation": "Satışlar əsasən ayın 20-dən sonra 60% artır. Kampaniyaları bu dövrə planlaşdırın.",
+          "buckets": {
+            "oneToTen": "1-10",
+            "elevenToTwenty": "11-20",
+            "twentyOneToThirtyOne": "21-31"
+          }
+        },
+        "campaigns": {
+          "title": "Kampaniya Effektivliyi",
+          "subtitle": "Endirim kampaniyalarının nəticələri",
+          "discount": "{{percent}} endirim",
+          "roi": "ROI: {{value}}",
+          "items": {
+            "springSale": "Yaz Endirim Kampaniyası",
+            "vipProgram": "VIP Müştəri Proqramı",
+            "bulkDiscount": "Toplu Alış Endirimi"
+          }
+        },
+        "common": { "salesCount": "{{count}} satış" }
+      },
+      "financeAi": {
+        "incomeExpense": {
+          "title": "Gəlir-Xərc Balansı",
+          "subtitle": "Son 6 ayın müqayisəsi",
+          "aiText": "Növbəti 6 ay ərzində orta aylıq pul axını {{avg}} proqnozlaşdırılır. Sentyabr ayında maksimum ({{max}}) gözlənilir. Likvidlik riski aşkar edilmədi."
+        },
+        "cashFlow": {
+          "title": "Pul Vəsaitlərinin Hərəkəti",
+          "subtitle": "Son 6 ayda gəlir və xərc dinamikası"
+        },
+        "expenseDistribution": {
+          "title": "Xərc Bölgüsü",
+          "subtitle": "Cari ayın kateqoriyalar üzrə xərcləri",
+          "categories": {
+            "salaries": "Maaşlar",
+            "office": "Ofis xərcləri",
+            "marketing": "Marketinq",
+            "it": "IT"
+          }
+        },
+        "series": {
+          "income": "Gəlir",
+          "expense": "Xərc"
+        },
+        "debts": {
+          "title": "Borc və Alacaqlar",
+          "subtitle": "Riskli vəziyyətdə olan ödənişlər",
+          "status": { "risk": "Risk", "critical": "Kritik" },
+          "type": { "receivable": "Alacaq", "payable": "Borc" }
+        }
+      },
+      "taxAi": {
+        "history": {
+          "title": "Vergi Ödənişləri Tarixçəsi",
+          "subtitle": "Son 6 ayın vergi ödənişləri"
+        },
+        "progress": {
+          "title": "Uyğunluq Proqresi",
+          "subtitle": "Şöbələr üzrə paylanma və proqres"
+        },
+        "tasks": {
+          "title": "Uyğunluq Tapşırıqları",
+          "subtitle": "Son tarixlər və status",
+          "status": { "completed": "Tamamlandı", "pending": "Gözləyir", "delayed": "Gecikmə" }
+        },
+        "series": {
+          "incomeTax": "Gəlir Vergisi",
+          "social": "Sosial",
+          "vat": "ƏDV"
+        },
+        "upcomingPayments": {
+          "title": "Yaxınlaşan Vergi Ödənişləri",
+          "subtitle": "Ödənilməli vergi və ayırmalar",
+          "dueDate": "Son tarix: {{date}}",
+          "daysLeft": "{{count}} gün qalıb",
+          "aiWarning": "AI Xəbərdarlıq:",
+          "latePenalty": "Gecikən cərimə: {{amount}}",
+          "payNow": "İndi Ödə",
+          "remind": "Xatırlat"
+        },
+        "optimization": {
+          "title": "Vergi Optimallaşdırma Tövsiyələri",
+          "subtitle": "AI tərəfindən müəyyən edilmiş qanuni qənaət yolları",
+          "level": { "easy": "Asan", "medium": "Orta" },
+          "moreInfo": "Ətraflı Məlumat",
+          "saving": "qənaət",
+          "noteTitle": "Qeyd:",
+          "noteText": "Bütün tövsiyələr Azərbaycan Respublikasının vergi qanunvericiliyinə uyğundur. Tətbiq etməzdən əvvəl vergi məsləhətçisi ilə məsləhətləşin."
+        }
+      },
+      "warehouse": {
+        "cashFlow": {
+          "title": "Pul Vəsaitlərinin Hərəkəti",
+          "subtitle": "Son 6 ayın gəlir və xərc dinamikası",
+          "aiText": "Maya dəyəri son 3 ayda 8% artıb. Alternativ təchizatçılar araşdırılmalıdır."
+        },
+        "expenseDistribution": {
+          "title": "Xərc Bölgüsü",
+          "subtitle": "Cari ay kateqoriyalar üzrə xərclər"
+        },
+        "suppliers": {
+          "title": "Təchizatçı Performansı",
+          "subtitle": "Keyfiyyət və vaxtında çatdırılma göstəriciləri",
+          "onTimeDelivery": "Vaxtında Çatdırılma",
+          "quality": "Keyfiyyət",
+          "avgDelay": "Orta Gecikmə",
+          "status": {
+            "excellent": "Əla",
+            "good": "Yaxşı",
+            "average": "Orta",
+            "poor": "Zəif"
+          }
+        },
+        "stockAlerts": {
+          "title": "Minimum Stok Xəbərdarlıqları",
+          "subtitle": "AI proqnozuna görə təcili sifariş tələb edən məhsullar",
+          "status": { "critical": "Kritik", "warning": "Xəbərdarlıq", "normal": "Normal" },
+          "current": "Mövcud",
+          "minimum": "Minimum",
+          "timeToDeplete": "Stok bitməsinə",
+          "orderNow": "Sifariş Ver",
+          "orderSuggestion": "{{count}} ədəd sifariş verin"
+        }
+      }
+      ,
+      "hrAi": {
+        "attendanceByDept": {
+          "title": "Şöbələr üzrə Davamiyyət",
+          "subtitle": "Davamiyyət və gecikmə faizləri",
+          "warningText": "Marketinq şöbəsində gecikmə faizi 10%-dən yuxarıdır."
+        },
+        "attendance": { "delayLabel": "Gecikmə" },
+        "expenseDistribution": {
+          "title": "Xərc Bölgüsü",
+          "subtitle": "Bu ayın kateqoriyalar üzrə xərcləri"
+        },
+        "departmentPerformance": {
+          "title": "Şöbə Performansı",
+          "subtitle": "Performans və işçi məmnuniyyəti göstəriciləri",
+          "legend": { "performance": "Performans", "satisfaction": "Məmnuniyyət" }
+        },
+        "departments": {
+          "sales": "Satış",
+          "officeExpenses": "Ofis xərcləri",
+          "marketing": "Marketinq",
+          "itTech": "IT və Texnologiya",
+          "procurement": "Satınalma",
+          "it": "IT",
+          "accounting": "Mühasibat"
+        },
+        "categories": {
+          "salaries": "Maaşlar",
+          "office": "Ofis xərcləri",
+          "marketing": "Marketinq",
+          "it": "IT"
+        },
+        "risk": {
+          "title": "İşçi İtkisi Risk Analizi",
+          "subtitle": "AI tərəfindən yüksək riskli hesab olunan şöbələr",
+          "reasons": "Səbəblər:",
+          "level": { "high": "Yüksək Risk", "medium": "Orta Risk", "low": "Aşağı Risk" }
+        }
+      }
+    },
+    "hr": {
+      "title": "HR & Əmək Haqqı",
+      "tabs": {
+        "dashboard": "Panel",
+        "employees": "İşçilər",
+        "payroll": "Əmək haqqı",
+        "leave": "Məzuniyyət",
+        "attendance": "Davamedicilik",
+        "calendar": "Təqvim",
+        "reports": "Hesabatlar",
+        "portal": "Portal"
+      },
+      "dashboard": {
+        "headerTitle": "HR Paneli",
+        "headerSubtitle": "HR və Əməkhaqqı sisteminin ümumi görünüşü",
+        "cards": {
+          "totalEmployees": "Ümumi İşçi Sayı",
+          "changeThisMonth": "{{change}} bu ay",
+          "monthlyPayroll": "Aylıq Maaş Fondu",
+          "vsPrevMonth": "{{change}} əvvəlki aya nisbətən",
+          "onLeave": "Məzuniyyətdə",
+          "ofEmployees": "{{percent}} işçilərdən",
+          "attendance": "Davamiyyət",
+          "thisWeek": "Bu Həftə"
+        },
+        "sections": {
+          "recentPayments": "Son Ödənişlər",
+          "upcomingPayments": "Gələcək Ödənişlər",
+          "departmentStats": "Şöbələr üzrə Statistika"
+        },
+        "payments": {
+          "salaryPayment": "Əməkhaqqı ödənişi",
+          "socialInsurance": "Sosial sığorta (DSMF)",
+          "incomeTax": "Gəlir vergisi"
+        },
+        "roles": {
+          "developer": "Proqramçı"
+        },
+        "budgetUsage": "{{percent}} büdcə",
+        "alert": {
+          "title": "Diqqət tələb edir",
+          "contractsExpiring": "Bu ay {{count}} işçinin əmək müqaviləsi bitir. Müqavilələrin yenilənməsi üçün İK şöbəsi ilə əlaqə saxlayın."
+        }
+      },
+      "departments": {
+        "it": "IT Şöbəsi",
+        "finance": "Maliyyə",
+        "sales": "Satış",
+        "marketing": "Marketinq",
+        "hr": "İnsan Resursları"
+      },
+      "common": {
+        "employeeCount": "{{count}} işçi",
+        "months": {
+          "august": "Avqust",
+          "september": "Sentyabr",
+          "october": "Oktyabr"
+        },
+        "period": {
+          "thisMonth": "Bu ay",
+          "lastMonth": "Keçən ay",
+          "thisYear": "Bu il",
+          "all": "Hamısı"
+        }
+      },
+      "payroll": {
+        "title": "Əməkhaqqı İdarəetməsi",
+        "subtitle": "Maaş hesablamaları və ödənişlər",
+        "actions": {
+          "calculate": "Hesabla",
+          "export": "İxrac"
+        },
+        "cards": {
+          "totalGross": "Ümumi Brüt Maaş",
+          "totalNet": "Ümumi Net Maaş",
+          "taxes": "Vergilər",
+          "bonuses": "Bonuslar"
+        },
+        "sections": {
+          "taxesAndContributions": "Vergi və Ayırmalar",
+          "salariesByEmployee": "İşçilər üzrə Maaş",
+          "accountingReconciliation": "Mühasibat Müxabirləşməsi"
+        },
+        "taxes": {
+          "incomeTax": "Gəlir vergisi (14%)",
+          "socialInsurance": "Sosial sığorta (DSMF)",
+          "unemploymentInsurance": "İşsizlik sığortası",
+          "medicalInsurance": "İcbari tibbi sığorta"
+        },
+        "totalContributions": "Ümumi Ayırmalar",
+        "table": {
+          "employee": "İşçi",
+          "baseSalary": "Əsas Maaş",
+          "bonus": "Bonus",
+          "gross": "Brüt",
+          "net": "Net",
+          "status": "Status"
+        },
+        "status": {
+          "paid": "Ödənilib",
+          "pending": "Gözləyir"
+        },
+        "accounting": {
+          "debit": "Debet",
+          "credit": "Kredit",
+          "salaryExpenses": "Əmək haqqı xərcləri",
+          "settlementsWithEmployees": "İşçilərlə hesablaşmalar",
+          "settlementsWithBudgetTaxes": "Büdcə ilə hesablaşmalar (vergilər)",
+          "settlementsWithSocialInsurance": "Sosial sığorta ilə hesablaşmalar"
+        }
+      },
+      "attendance": {
+        "title": "Davamiyyətin izlənməsi",
+        "subtitle": "İş vaxtı qeydiyyatı və statistika",
+        "cards": {
+          "attendanceRate": "Davamiyyət %",
+          "change": "{{value}}",
+          "present": "İşdə olan",
+          "ofTotal": "cəmi {{total}}",
+          "lateArrivals": "Gecikmələr",
+          "thisWeek": "Bu həftə",
+          "excused": "Hörmətli səbəb",
+          "sickOrLeave": "Xəstə/Məzuniyyət"
+        },
+        "calendar": {
+          "title": "Təqvim",
+          "workday": "İş günü",
+          "offday": "İstirahət günü",
+          "holiday": "Bayram günü"
+        },
+        "todayTitle": "Bugünkü Davamiyyət",
+        "events": {
+          "projectPresentation": "Layihə təqdimatı",
+          "teamMeeting": "Komanda iclası"
+        },
+        "messages": {
+          "date": "Tarix",
+          "time": "Saat",
+          "event": "Tədbir",
+          "allDay": "Bütün gün",
+          "week": "Həftə",
+          "work_week": "İş həftəsi",
+          "day": "Gün",
+          "month": "Ay",
+          "previous": "Əvvəlki",
+          "next": "Növbəti",
+          "yesterday": "Dünən",
+          "tomorrow": "Sabah",
+          "today": "Bu gün",
+          "agenda": "Gündəm",
+          "noEventsInRange": "Bu aralıqda tədbir yoxdur.",
+          "showMore": "+{{count}} daha çox"
+        },
+        "table": {
+          "employee": "İşçi",
+          "checkIn": "Giriş",
+          "checkOut": "Çıxış",
+          "workHours": "İş saatı",
+          "status": "Status"
+        },
+        "status": {
+          "present": "İşdə",
+          "late": "Gecikib",
+          "onLeave": "Məzuniyyətdə"
+        },
+        "weeklySummary": {
+          "title": "Həftəlik İcmal",
+          "headers": {
+            "day": "Gün",
+            "date": "Tarix",
+            "present": "İşdə olan",
+            "late": "Gecikənlər",
+            "involuntary": "Qeyri-ixtiyari",
+            "attendancePct": "Davamiyyət %"
+          }
+        },
+        "latecomers": {
+          "title": "Bu Həftə Gecikənlər",
+          "minutesSuffix": "dəqiqə",
+          "entryLabel": "Giriş"
+        }
+      },
+      "calendar": {
+        "title": "Təqvim",
+        "subtitle": "Mühüm tarixlər və xatırlatmalar",
+        "newRequest": "Yeni Sorğu",
+        "upcomingTitle": "Yaxınlaşan Hadisələr",
+        "monthTitle": "Bu Ayın Hadisələri",
+        "items": {
+          "republicDay": "Respublika Günü",
+          "socialInsuranceShort": "Sosial sığorta (DSMF)",
+          "incomeTax": "Gəlir vergisi",
+          "leave": "Məzuniyyət",
+          "salaryPayment": "Əməkhaqqı ödənişi",
+          "hrMeeting": "İK şöbəsi toplantısı"
+        },
+        "descriptions": {
+          "stateHoliday": "Dövlət bayramı",
+          "paymentSSPF": "DSMF-ə ödəniş",
+          "paymentIncomeTax": "Büdcəyə gəlir vergisi ödənişi",
+          "annualLeaveDays": "İllik məzuniyyət ({{days}} gün)",
+          "monthlyReview": "Aylıq icmal toplantısı",
+          "monthlySalaryPayments": "Aylıq əməkhaqqı ödənişləri"
+        }
+      },
+      "employees": {
+        "title": "İşçilər",
+        "subtitle": "Bütün işçilərin idarə olunması",
+        "new": "Yeni İşçi",
+        "searchPlaceholder": "İşçi axtar (ad, vəzifə, ID)",
+        "filters": {
+          "label": "Filter",
+          "allDepartments": "Bütün şöbələr"
+        },
+        "table": {
+          "employee": "İşçi",
+          "position": "Vəzifə",
+          "department": "Şöbə",
+          "salary": "Maaş",
+          "status": "Status",
+          "actions": "Əməliyyatlar"
+        },
+        "status": {
+          "active": "Aktiv",
+          "onLeave": "Məzuniyyətdə"
+        },
+        "footer": {
+          "showing": "Göstərilir: {{count}} nəticə (Ümumi: {{total}} işçi)"
+        },
+        "modal": {
+          "title": "Yeni İşçi Əlavə Et",
+          "close": "Bağla",
+          "firstName": "Ad",
+          "firstNamePlaceholder": "Ad daxil edin",
+          "lastName": "Soyad",
+          "lastNamePlaceholder": "Soyad daxil edin",
+          "position": "Vəzifə",
+          "positionPlaceholder": "Vəzifə daxil edin",
+          "department": "Şöbə",
+          "selectDepartment": "Şöbə seçin",
+          "salary": "Əmək haqqı (₼)",
+          "salaryPlaceholder": "2000",
+          "contractDate": "Müqavilə tarixi",
+          "phone": "Telefon",
+          "phonePlaceholder": "+994 50 123 45 67",
+          "email": "Email",
+          "emailPlaceholder": "email@company.az",
+          "tin": "VÖEN",
+          "tinPlaceholder": "VÖEN nömrəsi",
+          "idSerial": "Şəxsiyyət vəsiqəsi seriya nömrəsi",
+          "idSerialPlaceholder": "AZE1234567",
+          "cancel": "Ləğv et",
+          "save": "Yadda saxla"
+        }
+      },
+      "leave": {
+        "title": "Məzuniyyət İdarəetməsi",
+        "subtitle": "İcazələr və məzuniyyət qrafiki",
+        "newRequest": "Yeni Sorğu",
+        "cards": {
+          "totalDays": "Cəmi məzuniyyət günü",
+          "used": "İstifadə olunub",
+          "remaining": "Qalıq",
+          "pending": "Gözləyən sorğular"
+        },
+        "requests": {
+          "title": "Məzuniyyət Sorğuları",
+          "type": { "annual": "İllik" },
+          "status": { "approved": "Təsdiq edilib" },
+          "description": { "annual": "İllik məzuniyyət" },
+          "approvedBy": "Təsdiq edən: {{by}} ({{date}})"
+        },
+        "upcoming": { "title": "Yaxın Məzuniyyətlər" },
+        "balance": { "title": "İşçilər üzrə Məzuniyyət Qalığı" },
+        "table": {
+          "employee": "İşçi",
+          "department": "Şöbə",
+          "total": "Cəmi hüququ",
+          "used": "İstifadə olunub",
+          "remaining": "Qalıq",
+          "status": "Status"
+        },
+        "common": { "daysSuffix": "gün" },
+        "modal": {
+          "title": "Məzuniyyət Sorğusu",
+          "employee": "İşçi",
+          "selectEmployee": "İşçi seçin",
+          "leaveType": "Məzuniyyət növü",
+          "selectType": "Növ seçin",
+          "types": { "annual": "İllik", "sick": "Xəstəlik", "other": "Digər" },
+          "startDate": "Başlanğıc tarixi",
+          "endDate": "Bitmə tarixi",
+          "reason": "Səbəb",
+          "reasonPlaceholder": "Məzuniyyət səbəbini qeyd edin",
+          "cancel": "Ləğv et",
+          "submit": "Təqdim et"
+        }
+      },
+      "reports": {
+        "title": "Hesabat və Analitika",
+        "subtitle": "HR və maaş statistikası",
+        "filters": {
+          "range": {
+            "thisMonth": "Bu ay",
+            "lastMonth": "Keçən ay",
+            "last3Months": "Son 3 ay",
+            "last6Months": "Son 6 ay",
+            "oneYear": "1 il"
+          }
+        },
+        "cards": {
+          "salaryReport": { "title": "Maaş Hesabatı", "desc": "Aylıq və illik maaş fondunun analizi" },
+          "employeeTurnover": { "title": "İşçi Dövriyyəsi", "desc": "Yeni işə qəbul və işdən çıxmalar" },
+          "attendanceReport": { "title": "Davamiyyət Hesabatı", "desc": "İş vaxtı və davamiyyət statistikası" },
+          "departmentAnalysis": { "title": "Şöbələr üzrə Analiz", "desc": "Şöbələrin məsrəf və işçi analizi" }
+        },
+        "charts": {
+          "payrollDynamics": {
+            "title": "Maaş Fondu Dinamikası",
+            "legend": { "gross": "Brüt", "taxes": "Vergilər", "net": "Net" }
+          }
+        },
+        "turnover": {
+          "title": "İşçi Dövriyyəsi",
+          "series": { "hired": "Yeni işə qəbul", "left": "İşdən çıxma" },
+          "totals": { "hired6m": "Ümumi işə qəbul (6 ay)", "left6m": "Ümumi işdən çıxma (6 ay)" }
+        },
+        "attendanceChart": {
+          "title": "Davamiyyət Statistikası",
+          "series": { "attendancePct": "Davamiyyət %", "delayPct": "Gecikmə %" }
+        },
+        "departmentDistribution": { "title": "Şöbələr üzrə Bölgü" },
+        "monthlyReport": {
+          "title": "Aylıq İcmal Hesabat",
+          "headers": {
+            "indicator": "Göstərici",
+            "thisMonth": "Bu ay",
+            "lastMonth": "Keçən ay",
+            "change": "Dəyişiklik"
+          },
+          "rows": {
+            "totalEmployees": "Ümumi işçi sayı",
+            "payrollFund": "Maaş fondu",
+            "averageSalary": "Orta maaş",
+            "attendance": "Davamiyyət",
+            "turnover": "İşçi dövriyyəsi"
+          }
+        }
+      },
+      "portal": {
+        "title": "İşçi Portalı",
+        "subtitle": "Şəxsi məlumatlar və xidmətlər",
+        "edit": "Redaktə et",
+        "tabs": {
+          "salary": "Maaş",
+          "leave": "Məzuniyyət",
+          "attendance": "Davamiyyət",
+          "documents": "Sənədlər"
+        },
+        "salary": {
+          "cards": {
+            "baseSalary": "Əsas Maaş",
+            "lastNetSalary": "Son Maaş (Net)",
+            "annualFund": "İllik Maaş Fondu"
+          },
+          "history": {
+            "title": "Maaş Tarixçəsi",
+            "export": "İxrac",
+            "headers": {
+              "month": "Ay",
+              "gross": "Brüt",
+              "tax": "Vergi",
+              "social": "Sosial",
+              "net": "Net",
+              "status": "Status"
+            }
+          }
+        },
+        "leave": {
+          "history": { "title": "Məzuniyyət Tarixçəsi" },
+          "suffix": { "requests": "sorğu" }
+        },
+        "attendance": {
+          "title": "Son Davamiyyət Qeydləri",
+          "headers": {
+            "date": "Tarix",
+            "checkIn": "Giriş",
+            "checkOut": "Çıxış",
+            "hours": "İş saatı",
+            "status": "Status"
+          },
+          "status": { "present": "İşdə", "late": "Gecikib" }
+        },
+        "documents": {
+          "title": "Şəxsi Sənədlər",
+          "contract": "Əmək müqaviləsi",
+          "uploadedAt": "Yüklənmə tarixi",
+          "download": "Yüklə",
+          "medicalCertificate": "Tibbi arayış",
+          "validity": "Etibarlılıq",
+          "idCopy": "Şəxsiyyət vəsiqəsi surəti"
+        },
+        "profile": {
+          "position": "Vəzifə",
+          "department": "Şöbə",
+          "email": "Email",
+          "phone": "Telefon"
+        },
+        "notifications": {
+          "button": "Bildirişlər",
+          "title": "Son Bildirişlər",
+          "salaryPaid": {
+            "title": "Maaş ödənilib",
+            "message": "Bu ay üçün əməkhaqqınız hesabınıza köçürülüb."
+          },
+          "leaveApproved": {
+            "title": "Məzuniyyət təsdiqləndi",
+            "message": "Məzuniyyət sorğunuz rəhbərlik tərəfindən təsdiqləndi."
+          },
+          "documentReminder": {
+            "title": "Sənəd yeniləmə xatırlatması",
+            "message": "Tibbi arayışınızın müddəti bu ay bitir. Yeniləyin."
+          }
+        }
+      }
+    },
+    "accounting": {
+      "title": "Mühasibat",
+      "tabs": {
+        "dashboard": "Panel",
+        "ledger": "Baş Kitab",
+        "transactions": "Əməliyyatlar",
+        "financialReports": "Maliyyə Hesabatları",
+        "taxReports": "Vergi Hesabatları"
+      },
+      "dashboard": {
+        "cards": {
+          "totalRevenue": "Ümumi Gəlir",
+          "fromLastQuarter": "keçən rübə nisbətən",
+          "netIncome": "Xalis Gəlir",
+          "totalAssets": "Ümumi Aktivlər",
+          "liabilities": "Öhdəliklər",
+          "pendingTaxes": "Gözləyən Vergilər",
+          "actionRequired": "Fəaliyyət tələb olunur"
+        },
+        "charts": {
+          "revenueVsExpenses6m": "Gəlir və Xərc (6 ay)",
+          "profitTrend": "Mənfəət dinamikası",
+          "balanceSheetDistribution": "Balans hesabatı bölgüsü"
+        },
+        "upcomingTaxObligations": "Yaxın vergi öhdəlikləri"
+      },
+      "ledger": {
+        "subtitle": "Hesab planı - Azərbaycan Milli Mühasibat Planı",
+        "chartOfAccounts": "Hesab Planı",
+        "searchPlaceholder": "Koda və ya ada görə axtarış...",
+        "table": {
+          "code": "Kod",
+          "accountName": "Hesab adı",
+          "type": "Növ",
+          "balance": "Qalıq",
+          "currency": "Valyuta"
+        },
+        "cards": {
+          "totalAssets": "Ümumi Aktivlər",
+          "totalLiabilities": "Ümumi Öhdəliklər",
+          "totalEquity": "Ümumi Kapital",
+          "totalRevenue": "Ümumi Gəlir",
+          "totalExpenses": "Ümumi Xərc"
+        },
+        "types": {
+          "asset": "Aktiv",
+          "liability": "Öhdəlik",
+          "revenue": "Gəlir",
+          "expense": "Xərc",
+          "equity": "Kapital"
+        }
+      },
+      "financialReports": {
+        "subtitle": "Standart maliyyə hesabatları",
+        "tabs": {
+          "balanceSheet": "Balans Hesabatı",
+          "incomeStatement": "Mənfəət və Zərər",
+          "cashFlow": "Pul Axını",
+          "equityChanges": "Kapitalda Dəyişikliklər"
+        },
+        "common": {
+          "amount": "Məbləğ",
+          "asOf": "{{date}} tarixinə",
+          "forPeriodEnding": "Hesabat dövrü bitmə tarixi: {{date}}"
+        },
+        "balanceSheet": {
+        "rows": {
+          "cash": "Nağd vəsait",
+          "accountsReceivable": "Debitor borcları",
+          "inventory": "Ehtiyatlar",
+          "fixedAssets241": "Əsas vəsaitlər (241)",
+          "accountsPayable331": "Kreditor borcları (331)",
+          "vatPayable341": "ƏDV üzrə öhdəlik (341)",
+          "incomeTaxPayable351": "Mənfəət vergisi üzrə öhdəlik (351)",
+          "shareCapital401": "Səhmdar kapitalı (401)",
+          "retainedEarnings421": "Bölüşdürülməmiş mənfəət (421)"
+        },
+          "title": "Balans Hesabatı",
+          "assets": {
+            "title": "Aktivlər",
+            "current": "Cari aktivlər",
+            "nonCurrent": "Uzunmüddətli aktivlər"
+          },
+          "liabilities": {
+            "title": "Öhdəliklər",
+            "current": "Cari öhdəliklər"
+          },
+          "equity": {
+            "title": "Kapital"
+          },
+          "columns": { "equity": "Kapital" },
+          "totals": {
+            "totalCurrentAssets": "Cəmi cari aktivlər",
+            "totalNonCurrentAssets": "Cəmi uzunmüddətli aktivlər",
+            "totalAssets": "Cəmi aktivlər",
+            "totalCurrentLiabilities": "Cəmi cari öhdəliklər",
+            "totalLiabilities": "Cəmi öhdəliklər",
+            "totalEquity": "Cəmi kapital"
+          }
+        },
+        "income": {
+        "rows": {
+          "salesRevenue701": "Satış gəliri (701)",
+          "serviceRevenue711": "Xidmət gəliri (711)",
+          "costOfSales601": "Satışların maya dəyəri (601)",
+          "payroll543": "Əməkhaqqı (543)",
+          "socialContributions551": "Sosial ayırmalar (551)",
+          "administrativeExpenses731": "İnzibati xərclər (731)",
+          "salesExpenses741": "Satış xərcləri (741)",
+          "operatingExpenses721": "Əməliyyat xərcləri (721)"
+        },
+          "title": "Mənfəət və Zərər",
+          "columns": {
+            "revenue": "Gəlir",
+            "costOfSales": "Satışın maya dəyəri",
+            "operatingExpenses": "İnzibati/operasion xərclər"
+          },
+          "labels": {
+            "lessCostOfSales": "Azaldılsın: Satışın maya dəyəri",
+            "lessOperatingExpenses": "Azaldılsın: Operasion xərclər"
+          },
+          "totals": {
+            "totalRevenue": "Cəmi gəlir",
+            "grossProfit": "Ümumi mənfəət",
+            "totalOperatingExpenses": "Cəmi operasion xərclər",
+            "netIncome": "Xalis gəlir"
+          }
+        },
+        "cashFlow": {
+        "rows": {
+          "netIncome": "Xalis gəlir",
+          "adjustmentsNonCash": "Nağdsız maddələr üzrə düzəlişlər",
+          "changesWorkingCapital": "Dövriyyə kapitalında dəyişikliklər",
+          "purchaseFixedAssets": "Əsas vəsaitlərin alınması",
+          "proceedsLoans": "Kreditlərdən daxilolmalar",
+          "repaymentLoans": "Kreditlərin qaytarılması"
+        },
+          "title": "Pul Axını",
+          "columns": {
+            "operating": "Əməliyyat fəaliyyəti",
+            "investing": "İnvestisiya fəaliyyəti",
+            "financing": "Maliyyələşdirmə fəaliyyəti"
+          },
+          "totals": {
+            "netCashOperating": "Əməliyyat fəaliyyətindən xalis pul vəsaiti",
+            "netCashInvesting": "İnvestisiya fəaliyyətində istifadə olunan xalis pul vəsaiti",
+            "netCashFinancing": "Maliyyələşdirmədən xalis pul vəsaiti",
+            "netIncreaseInCash": "Pul vəsaitlərinin xalis artımı"
+          }
+        },
+        "equityChanges": {
+          "title": "Kapitalda Dəyişikliklər Hesabatı",
+          "columns": {
+            "description": "Təsvir",
+            "shareCapital": "Səhmdar kapitalı",
+            "retainedEarnings": "Bölüşdürülməmiş mənfəət",
+            "totalEquity": "Cəmi kapital"
+          },
+          "rows": {
+            "beginning": "Başlanğıc qalığı",
+            "netIncome": "Xalis gəlir",
+            "dividends": "Dividendlər",
+            "ending": "Son qalıq"
+          }
+        }
+      },
+      "transactions": {
+        "title": "Əməliyyatlar və Jurnal",
+        "subtitle": "Mühasibat yazılarına bax və yarat",
+        "newJournalEntry": "Yeni jurnal yazısı",
+        "table": {
+          "accountCode": "Hesab kodu",
+          "accountName": "Hesab adı",
+          "debit": "Debet",
+          "credit": "Kredit"
+        },
+        "accounts": {
+          "accountsReceivable": "Debitor borcları",
+          "salesRevenue": "Satış gəliri",
+          "vatPayable": "ƏDV üzrə öhdəlik",
+          "inventory": "Ehtiyatlar",
+          "accountsPayable": "Kreditor borcları",
+          "payroll": "Əməkhaqqı",
+          "socialContributions": "Sosial ayırmalar",
+          "bankAccounts": "Bank hesabları"
+        },
+        "samples": {
+          "salesInvoice": "Satış fakturası {{id}}",
+          "purchaseInvoice": "Alış fakturası {{id}}",
+          "salaryPaymentMonth": "Əməkhaqqı ödənişi - {{period}}",
+          "vatPaymentMonth": "ƏDV ödənişi - {{period}}",
+          "bankTransferFromClient": "Müştəridən bank köçürməsi"
+        },
+        "modal": {
+          "title": "Jurnal Yazısı Yarat",
+          "dateLabel": "Tarix",
+          "referenceLabel": "İstinad",
+          "referencePlaceholder": "məs., INV-2025-1046",
+          "descriptionLabel": "Təsvir",
+          "descriptionPlaceholder": "Əməliyyat təsviri",
+          "journalEntries": "Jurnal yazıları",
+          "addLine": "Sətir əlavə et",
+          "table": {
+            "account": "Hesab",
+            "debit": "Debet (₼)",
+            "credit": "Kredit (₼)",
+            "selectAccount": "Hesab seçin",
+            "options": {
+              "cash": "Nağd",
+              "bank": "Bank",
+              "sales": "Satışlar",
+              "expenses": "Xərclər"
+            },
+            "debitPlaceholder": "0.00",
+            "creditPlaceholder": "0.00",
+            "removeLine": "Sətiri sil"
+          },
+          "postEntry": "Yazını göndər"
+        }
+      },
+      "taxReports": {
+        "tabs": {
+          "vat": "ƏDV Bəyannaməsi",
+          "profit": "Mənfəət Vergisi",
+          "social": "Sosial ayırmalar",
+          "simplified": "Sadələşdirilmiş vergi"
+        },
+        "actions": {
+          "submitToEgov": "e-taxes.gov.az-a göndər",
+          "submitToDsmf": "DSMF-ə göndər",
+          "submitDeclaration": "Bəyannaməni göndər"
+        },
+        "cards": {
+          "vatDeclaration": "ƏDV",
+          "socialContributions": "Sosial ayırmalar",
+          "profitTax": "Mənfəət vergisi",
+          "simplifiedTax": "Sadələşdirilmiş vergi",
+          "names": {
+            "VAT Declaration": "ƏDV Bəyannaməsi",
+            "Social Contributions": "Sosial ayırmalar",
+            "Profit Tax": "Mənfəət vergisi",
+            "Simplified Tax": "Sadələşdirilmiş vergi"
+          }
+        },
+        "status": {
+          "pending": "Gözləyir",
+          "submitted": "Təqdim edilib",
+          "paid": "Ödənilib"
+        },
+        "due": "Son tarix",
+        "simplified": {
+          "notApplicable": "Şirkət standart vergi rejimində qeydiyyatdadır. Sadələşdirilmiş vergi hesabatı tətbiq edilmir."
+        },
+        "social": {
+          "columns": {
+            "employeeName": "İşçinin adı",
+            "salary": "Əmək haqqı (₼)",
+            "employer": "İşəgötürən (22%)",
+            "employee": "İşçi (3%)"
+          },
+          "totalContributionsPayable": "Ödəniləcək sosial ayırmalar cəmi"
+        },
+        "vat": {
+          "output": "Çıxış ƏDV-si",
+          "input": "Giriş ƏDV-si",
+          "columns": {
+            "description": "Təsvir",
+            "baseAmount": "Əsas məbləğ (₼)",
+            "vatAmount": "ƏDV məbləği (₼)"
+          },
+          "summary": "ƏDV xülasəsi",
+          "totalOutput": "Cəmi çıxış ƏDV-si:",
+          "lessTotalInput": "Azaldılsın: Cəmi giriş ƏDV-si:",
+          "vatPayable": "Ödəniləcək ƏDV:"
+        },
+        "profit": {
+          "taxableIncome": "Vergitutulan gəlir",
+          "taxRate": "Vergi dərəcəsi",
+          "taxPayable": "Ödəniləcək mənfəət vergisi"
+        },
+        "egov": {
+          "title": "e-Hökumət inteqrasiyası",
+          "names": {
+            "0": "e-taxes.gov.az",
+            "1": "DSMF inteqrasiyası",
+            "2": "e-Portal"
+          },
+          "items": {
+            "0": "E-qaimə hazırdır",
+            "1": "Avto-hesabat aktivdir",
+            "2": "Məlumat sinxronlaşdırılıb"
+          }
+        }
+      }
+    },
+    "finance": {
+      "title": "Maliyyə",
+      "tabs": {
+        "dashboard": "İdarə Paneli",
+        "cashBank": "Kassa və Bank",
+        "payments": "Ödənişlər",
+        "budgeting": "Büdcə Planlaması",
+        "analytics": "Analitika"
+      },
+      "common": {
+        "date": "Tarix",
+        "type": "Növ",
+        "category": "Kateqoriya",
+        "description": "İzah",
+        "amount": "Məbləğ",
+        "currency": "Valyuta",
+        "select": "Seçin",
+        "inflow": "Daxilolma",
+        "outflow": "Çıxış",
+        "categories": {
+          "salary": "Maaş",
+          "sales": "Satış",
+          "other": "Digər",
+          "it": "IT",
+          "office": "Ofis",
+          "marketing": "Marketing",
+          "services": "Xidmətlər"
+        },
+        "months": {
+          "jan": "Yan",
+          "feb": "Fev",
+          "mar": "Mar",
+          "apr": "Apr",
+          "may": "May",
+          "jun": "İyn",
+          "jul": "İyl",
+          "aug": "Avq",
+          "sep": "Sen",
+          "oct": "Okt",
+          "nov": "Noy",
+          "dec": "Dek"
+        }
+      },
+      "payments": {
+        "title": "Ödənişlərin İdarə Olunması",
+        "subtitle": "Təchizatçılara ödənişlər və müştərilərdən daxilolmalar",
+        "newPlan": "Yeni ödəniş planla",
+        "tabs": { "outflows": "Ödənişlər (Çıxış)", "inflows": "Daxilolmalar" },
+        "outflows": { "title": "Təchizatçılara Ödənişlər", "subtitle": "Planlaşdırılmış və gözlənilən ödənişlər" },
+        "inflows": { "title": "Müştərilərdən Daxilolmalar", "subtitle": "Gözlənilən ödənişlər və fakturalar" },
+        "cards": {
+          "payable": { "title": "Ödənilməli", "desc": "Təchizatçılara" },
+          "receivable": { "title": "Daxil olacaq", "desc": "Müştərilərdən" },
+          "overduePayments": { "title": "Gecikmiş ödənişlər", "desc": "Təcili diqqət tələb edir" },
+          "overdueReceivables": { "title": "Gecikmiş alacaqlar", "desc": "Xatırlatma göndər" }
+        },
+        "schedule": {
+          "title": "Növbəti 7 Günün Ödəniş Qrafiki",
+          "subtitle": "Planlaşdırılmış ödənişlər və daxilolmalar",
+          "urgent": "Təcili"
+        },
+        "types": { "payment": "Ödəniş", "receipt": "Daxilolma" },
+        "status": { "pending": "Gözləyir", "overdue": "Gecikmiş", "scheduled": "Planlaşdırılıb", "paid": "Ödənilib" },
+        "actions": { "title": "Əməliyyatlar", "pay": "Ödə", "collect": "Ödəniş al" }
+      },
+      "agreements": {
+        "title": "Müqavilələr",
+        "subtitle": "Təchizat müqavilələrinin idarə edilməsi və izlənməsi",
+        "newButton": "Yeni Müqavilə",
+        "modal": { "title": "Müqavilə əlavə et" },
+        "form": {
+          "contractNo": "Müqavilə №",
+          "supplier": "Təchizatçı",
+          "startDate": "Başlama Tarixi",
+          "endDate": "Bitmə Tarixi",
+          "amount": "Məbləğ",
+          "currency": "Valyuta",
+          "paymentTerms": "Ödəniş şərtləri",
+          "notes": "Qeydlər"
+        },
+        "placeholders": { "contractNo": "Məs: CNT-2025-001", "amount": "Məs: 1500" },
+        "paymentTerms": { "days30": "30 gün ərzində", "days60": "60 gün ərzində", "days90": "90 gün ərzində" },
+        "status": { "active": "Aktiv" },
+        "searchPlaceholder": "Müqavilələr üzrə axtarış...",
+        "cards": {
+          "active": { "title": "Aktiv Müqavilələr", "description": "Qüvvədə olan müqavilələr" },
+          "expiring": { "title": "Bitməyə Yaxın", "description": "Bitmə tarixinə yaxınlaşan müqavilələr" },
+          "totalValue": { "title": "Ümumi Dəyər", "description": "Bütün müqavilələrin dəyəri" }
+        },
+        "sample": {
+          "amount": "Məbləğ:",
+          "start": "Başlama:",
+          "end": "Bitmə:",
+          "paymentTerm": "Ödəniş şərti:",
+          "daysLeft": "{{days}} gün qalıb",
+          "description": "İllik ofis ləvazimatları təchizatı müqaviləsi"
+        }
+      },
+      "cashBank": {
+        "title": "Kassa və Bank Əməliyyatları",
+        "subtitle": "Nağd və nağdsız pul əməliyyatlarının idarə edilməsi",
+        "uploadStatement": "Bank çıxarışı yüklə",
+        "newOperation": "Yeni Əməliyyat",
+        "tabs": { "cash": "Kassa Əməliyyatları", "bank": "Bank Əməliyyatları" },
+        "cash": { "subtitle": "Nağd pul hərəkəti" },
+        "bank": { "subtitle": "Bank hesablarının hərəkəti", "account": "Hesab" },
+        "modal": {
+          "newOperationTitle": "Yeni Əməliyyat",
+          "newOperationSubtitle": "Kassa və ya bank əməliyyatı əlavə edin"
+        },
+        "form": {
+          "type": "Əməliyyat növü",
+          "notePlaceholder": "Əməliyyat haqqında qeyd..."
+        }
+      },
+      "budgeting": {
+        "title": "Büdcə Planlaması və Nəzarət",
+        "subtitle": "Gəlir və xərclərin planlaşdırılması və faktiki göstəricilərlə müqayisəsi",
+        "report": "Hesabat",
+        "newBudget": "Yeni büdcə",
+        "cards": {
+          "planned": { "title": "Plan (Bu ay)", "desc": "Planlaşdırılmış xərclər" },
+          "actual": { "title": "Faktiki", "desc": "Real xərclər" },
+          "variance": { "title": "Fərq", "desc": "-2.7% qənaət" },
+          "utilization": { "title": "İstifadə dərəcəsi" }
+        },
+        "yearly": { "title": "İllik Büdcə Performansı", "subtitle": "Planlaşdırılan və faktiki xərclərin müqayisəsi" },
+        "tabs": { "categories": "Kateqoriyalar", "departments": "Departmentlər" },
+        "categoriesTitle": "Kateqoriyalar üzrə Büdcə",
+        "categoriesSubtitle": "Cari ayın kateqoriya bazında xərc analizi",
+        "labels": { "used": "istifadə edilib", "remaining": "qalıb", "saving": "Qənaət", "overBudget": "Artıq xərc" },
+        "categories": {
+          "officeExpenses": "Ofis xərcləri",
+          "itAndTech": "İT və Texnologiya",
+          "procurement": "Satınalma",
+          "logistics": "Logistika",
+          "otherExpenses": "Digər xərclər"
+        },
+        "departments": {
+          "salesMarketing": "Satış və Marketing",
+          "itTech": "İT və Texnologiya",
+          "operations": "Əməliyyatlar",
+          "items": {
+            "advertising": "Reklam",
+            "promotion": "Promosyon",
+            "events": "Tədbirlər",
+            "software": "Proqram təminatı",
+            "hardware": "Avadanlıq",
+            "cloud": "Cloud xidmətlər",
+            "office": "Ofis xərcləri",
+            "utilities": "Kommunal xidmətlər",
+            "cleaning": "Təmizlik",
+            "repair": "Təmir"
+          }
+        },
+        "chart": { "plan": "Plan", "actual": "Faktiki" }
+      },
+      "analytics": {
+        "title": "Maliyyə Analitikası",
+        "subtitle": "Rentabellik, likvidlik və kapital göstəriciləri",
+        "tabs": { "cashFlow": "Pul Axını Proqnozu", "profitability": "Rentabellik", "liquidity": "Likvidlik" },
+        "cards": {
+          "roi": { "title": "ROI (İnvestisiyadan geri qaytarma)", "subtitle": "İnvestisiyadan geri qaytarma" },
+          "grossMargin": { "title": "Ümumi Mənfəət Marjası", "subtitle": "Gəlirdən satışın maya dəyəri çıxıldıqdan sonra" },
+          "netProfitMargin": { "title": "Xalis Mənfəət Marjası", "subtitle": "Satışa nisbətdə xalis mənfəət" },
+          "currentRatio": { "title": "Cari Əmsal", "subtitle": "Qısamüddətli likvidlik" },
+          "quickRatio": { "title": "Təcili Əmsal", "subtitle": "Sürətli likvidlik (ehtiyatlar çıxılmaqla)" },
+          "debtToEquity": { "title": "Borc/Kapital Nisbəti", "subtitle": "Maliyyə levereci" }
+        },
+        "cashFlow": {
+          "title": "Pul Axını Proqnozu",
+          "subtitle": "AI əsaslı 6 aylıq proqnoz",
+          "ai": {
+            "title": "AI Analizi:",
+            "text": "Növbəti 6 ay ərzində orta aylıq cash flow {{avg}} proqnozlaşdırılır. Sentyabr ayında maksimum ({{max}}) gözlənilir. Likvidlik riski aşkar edilmədi."
+          }
+        },
+        "profitability": {
+          "title": "Rentabellik Göstəriciləri",
+          "subtitle": "Gəlir, xərclər və mənfəət dinamikası",
+          "legend": { "expenses": "Xərclər", "revenue": "Gəlir", "netProfit": "Xalis Mənfəət" },
+          "avgRevenue": "Orta Aylıq Gəlir",
+          "avgExpense": "Orta Aylıq Xərc",
+          "avgProfit": "Orta Aylıq Mənfəət"
+        },
+        "liquidity": {
+          "title": "Likvidlik Göstəriciləri",
+          "subtitle": "Maliyyə sabitliyi və ödəniş qabiliyyəti",
+          "current": "Cari Əmsal",
+          "quick": "Təcili Əmsal",
+          "currentSummary": {
+            "title": "Current Ratio",
+            "rating": "Əla",
+            "text": "Şirkət qısa müddətli öhdəliklərini 3.4 dəfə ödəyə bilir. Sağlam likvidlik vəziyyəti."
+          },
+          "quickSummary": {
+            "title": "Quick Ratio",
+            "rating": "Yaxşı",
+            "text": "Ehtiyatlar çıxılmaqla, şirkət 2.6 dəfə qısa müddətli borcları ödəyə bilir."
+          }
+        },
+        "stability": {
+          "title": "Maliyyə Sabitlik İndeksi",
+          "subtitle": "Ümumi maliyyə sağlamlığı qiymətləndirilməsi",
+          "indicators": {
+            "liquidity": "Likvidlik",
+            "profitability": "Rentabellik",
+            "debtManagement": "Borc İdarəetməsi",
+            "budgetControl": "Büdcə Nəzarəti"
+          },
+          "totalScore": "Ümumi Bal",
+          "excellent": "Əla",
+          "recommendationsTitle": "Tövsiyələr və Xəbərdarlıqlar",
+          "recommendationsSubtitle": "AI-powered maliyyə məsləhətləri",
+          "advices": {
+            "investment": {
+              "title": "İnvestisiya fürsəti:",
+              "text": "Artıq likvidlik (60,000 AZN) qısa müddətli investisiyaya yönəldilə bilər."
+            },
+            "budgetOptimization": {
+              "title": "Büdcə optimallaşdırması:",
+              "text": "Ofis xərcləri 15% artmışdır. Enerji səmərəliliyi araşdırılmalıdır."
+            },
+            "attention": {
+              "title": "Diqqət:",
+              "text": "Net Profit Margin son ayda 0.8% azalıb. Xərc optimallaşdırması tövsiyə olunur."
+            }
+          }
+        }
+      },
+      "controlPanel": {
+        "title": "Maliyyə İdarəetməsi - İdarə Paneli",
+        "subtitle": "Maliyyə resurslarınızın və pul hərəkətinin tam görünüşü",
+        "alert": {
+          "text": "Diqqət: \"{{supplier}}\" təchizatçısına ödəniş {{days}} gün gecikir. Məbləğ: {{amount}}"
+        },
+        "cards": {
+          "totalBalance": { "title": "Ümumi Balans", "desc": "Kassa + Bank hesabları" },
+          "cashBalance": { "title": "Kassa Balansı", "desc": "Nağd pul" },
+          "bankBalance": { "title": "Bank Balansı", "desc": "Bank hesabları" },
+          "netCashFlow": { "title": "Xalis Cash Flow", "desc": "Bu ay" }
+        },
+        "charts": {
+          "cashFlow": {
+            "title": "Pul Vəsaitlərinin Hərəkəti",
+            "subtitle": "Son 6 ayın gəlir və xərc dinamikası",
+            "months": {
+              "jan": "Yan",
+              "feb": "Fev",
+              "mar": "Mar",
+              "apr": "Apr",
+              "may": "May",
+              "jun": "İyn"
+            }
+          },
+          "expenseDistribution": { "title": "Xərc Bölgüsü", "subtitle": "Cari ay kateqoriyalar üzrə xərclər" }
+        },
+        "budget": {
+          "title": "Büdcə İcmalı - Cari Ay",
+          "subtitle": "Planlaşdırılan və faktiki xərclərin müqayisəsi",
+          "usedPercent": "{{percent}}% istifadə edilib",
+          "extraOver": "({{amount}} AZN artıq)"
+        },
+        "ai": {
+          "title": "AI Tövsiyələri",
+          "items": {
+            "savingOpportunity": {
+              "title": "Qənaət imkanı:",
+              "desc": "Ofis xərcləri büdcədən 15% artıqdır. Enerji istehlakını optimallaşdırmaqla aylıq 500-700 AZN qənaət edə bilərsiniz."
+            },
+            "liquidityWarning": {
+              "title": "Likvidlik xəbərdarlığı:",
+              "desc": "3 ay sonra kassa balansında mənfi göstərici proqnozlaşdırılır. Bank kreditlərinin bəzi hissəsini daha erkən ödəmək məsləhətdir."
+            },
+            "investmentOpportunity": {
+              "title": "İnvestisiya imkanı:",
+              "desc": "Bank hesabında 60,000 AZN artıq likvidlik var. Qısa müddətli depozitə yerləşdirməklə aylıq ~300 AZN əlavə gəlir əldə edə bilərsiniz."
+            }
+          }
+        }
+      }
+    },
+    "sales": {
+      "title": "Satış",
+      "tabs": {
+        "controlPanel": "İdarə Paneli",
+        "customers": "Müştərilər",
+        "sales": "Satış",
+        "pos": "POS Səbət",
+        "transactions": "Əməliyyatlar",
+        "reports": "Hesabatlar"
+      },
+      "common": {
+        "status": { "active": "Aktiv", "overdue": "Gecikmiş" },
+        "overdueDays": "{{days}} gün gecikib"
+      },
+      "controlPanel": {
+        "title": "Satışların İdarəedilməsi - İdarə Paneli",
+        "subtitle": "Satış göstəricilərinə və müştəri aktivliyinə ümumi baxış",
+        "cards": {
+          "monthlySales": { "title": "Aylıq Satış", "desc": "əvvəlki aya görə" },
+          "activeCustomers": { "title": "Aktiv Müştəri", "desc": "son 30 gündə alanlar" },
+          "salesCount": { "title": "Satış Sayı", "desc": "tamamlanmış sifarişlər" },
+          "profit": { "title": "Mənfəət", "desc": "maya dəyərindən sonra" }
+        },
+        "charts": {
+          "salesDynamics": "Satış dinamikası (son 6 ay)",
+          "productDistribution": "Məhsul paylanması"
+        },
+        "topCustomers": { "title": "Top Müştərilər" },
+        "overduePayments": "Gecikmiş alacaqlar"
+      },
+      "pos": {
+        "title": "POS Satış",
+        "subtitle": "Ştrixkod oxudun və ya axtarıb səbətə əlavə edin",
+        "placeholders": {
+          "scanOrEnterBarcode": "Ştrixkod oxudun və ya daxil edin...",
+          "searchProduct": "Məhsul axtarın..."
+        },
+        "actions": { "add": "Əlavə et", "print": "Çap et" },
+        "empty": "Məhsul tapılmadı",
+        "cart": { "title": "Səbət", "decrease": "Miqdarı azalt", "increase": "Miqdarı artır", "remove": "Sil" },
+        "summary": {
+          "subtotal": "Ara cəm",
+          "vat": "ƏDV ({{percent}}%)",
+          "total": "Yekun"
+        },
+        "payment": { "cash": "Nağd", "card": "Kart" }
+      },
+      "customers": {
+        "title": "Müştərilər",
+        "subtitle": "Müştəri bazası və seqmentlərin idarə edilməsi",
+        "newButton": "Yeni Müştəri",
+        "modal": { "title": "Müştəri əlavə et" },
+        "form": {
+          "companyName": "Şirkət adı",
+          "taxId": "VÖEN",
+          "contactPerson": "Əlaqə şəxs",
+          "phone": "Telefon",
+          "email": "Email",
+          "address": "Ünvan"
+        },
+        "placeholders": {
+          "companyName": "Şirkət adını daxil edin",
+          "taxId": "VÖEN daxil edin",
+          "contactName": "Əlaqə şəxsin adını daxil edin",
+          "phone": "Telefon nömrəsini daxil edin",
+          "email": "Email daxil edin",
+          "address": "Ünvan daxil edin"
+        },
+        "labels": { "taxIdShort": "VÖEN" },
+        "tabs": { "info": "Məlumat", "salesHistory": "Satış tarixçəsi", "payments": "Ödənişlər" },
+        "segments": { "regular": "Daimi", "new": "Yeni", "overdue": "Gecikmiş" },
+        "cards": {
+          "totalCustomers": "Ümumi müştəri",
+          "regularCustomers": "Daimi",
+          "newCustomers": "Yeni",
+          "totalDebt": "Ümumi borc"
+        },
+        "searchPlaceholder": "Müştərilərdə axtarış...",
+        "table": {
+          "columns": {
+            "companyName": "Şirkət adı",
+            "contact": "Əlaqə",
+            "phone": "Telefon",
+            "segment": "Seqment",
+            "totalSales": "Ümumi satış",
+            "debt": "Borc"
+          }
+        },
+        "actions": { "close": "Bağla" }
+      },
+      "sales": {
+        "title": "Satış",
+        "subtitle": "Fakturalar və yeni satış",
+        "actions": { "newInvoice": "Yeni faktura" },
+        "modal": { "title": "Faktura yarat" },
+        "form": {
+          "customer": "Müştəri",
+          "date": "Tarix",
+          "currency": "Valyuta",
+          "paymentTerm": "Ödəniş şərti"
+        },
+        "currencyOptions": { "AZN": "AZN", "USD": "USD", "EUR": "EUR" },
+        "paymentTerms": {
+          "cash": "Nağd",
+          "days15": "15 gün",
+          "days30": "30 gün",
+          "days60": "60 gün"
+        },
+        "products": {
+          "title": "Məhsullar",
+          "add": "Məhsul əlavə et",
+          "table": {
+            "product": "Məhsul",
+            "quantity": "Miqdar",
+            "price": "Qiymət",
+            "discount": "Endirim %",
+            "total": "Cəmi"
+          }
+        },
+        "placeholders": {
+          "selectCustomer": "Müştəri seçin",
+          "date": "Tarix seçin",
+          "product": "Məhsul",
+          "quantity": "Miqdar",
+          "price": "Qiymət",
+          "discount": "Endirim %"
+        },
+        "summary": {
+          "total": "Cəmi",
+          "discount": "Endirim",
+          "vat": "ƏDV ({{percent}}%)",
+          "grandTotal": "Yekun"
+        },
+        "cards": {
+          "totalSalesThisMonth": "Bu ayın satışları",
+          "paid": "Ödənilib",
+          "unpaid": "Ödənilməyib",
+          "overdue": "Gecikmiş"
+        },
+        "table": {
+          "title": "Fakturalar",
+          "columns": {
+            "invoiceNo": "Faktura №",
+            "date": "Tarix",
+            "customer": "Müştəri",
+            "amount": "Məbləğ",
+            "status": "Status"
+          }
+        },
+        "status": { "paid": "Ödənilib", "unpaid": "Ödənilməyib", "overdue": "Gecikmiş" }
+      },
+      "transactions": {
+        "title": "Ödənişlər",
+        "subtitle": "Müştəri ödənişləri və fakturalar",
+        "actions": { "newPayment": "Yeni ödəniş", "notify": "Xatırlatma göndər" },
+        "modal": { "title": "Ödəniş qeydə al" },
+        "form": {
+          "customer": "Müştəri",
+          "invoice": "Faktura",
+          "amount": "Məbləğ",
+          "date": "Tarix",
+          "method": "Metod",
+          "note": "Qeyd"
+        },
+        "placeholders": {
+          "selectCustomer": "Müştəri seçin",
+          "selectInvoice": "Faktura seçin",
+          "amount": "Məbləği daxil edin",
+          "method": "Nağd, bank köçürməsi...",
+          "note": "Opsional qeyd"
+        },
+        "cards": { "completed": "Tamamlandı", "pending": "Gözləyir", "overdue": "Gecikmiş", "toNotify": "Xatırlat" },
+        "overdue": { "title": "Gecikmiş ödənişlər", "invoice": "Faktura", "date": "Tarix" },
+        "table": {
+          "title": "Ödənişlər",
+          "columns": {
+            "paymentId": "Ödəniş ID",
+            "date": "Tarix",
+            "customer": "Müştəri",
+            "invoice": "Faktura",
+            "amount": "Məbləğ",
+            "method": "Metod",
+            "status": "Status"
+          }
+        },
+        "status": { "completed": "Tamamlandı", "pending": "Gözləyir", "overdue": "Gecikmiş" }
+      },
+      "reports": {
+        "title": "Satış Hesabatları",
+        "subtitle": "KPI və satış analitikası",
+        "actions": { "exportExcel": "Excellə ixrac et", "pdfReport": "PDF Hesabat" },
+        "filters": { "range": { "thisMonth": "Bu ay", "lastMonth": "Keçən ay", "last3Months": "Son 3 ay", "thisYear": "Bu il", "lastYear": "Keçən il" } },
+        "tiles": { "totalSales": "Ümumi Satış", "grossProfit": "Ümumi Mənfəət", "productsSold": "Satılan Məhsullar", "profitMargin": "Mənfəət Marjası" },
+        "tables": {
+          "topProducts": {
+            "title": "Ən çox satılan məhsullar",
+            "columns": { "product": "Məhsul", "salesCount": "Satış sayı", "revenue": "Gəlir" },
+            "sample": { "product1": "Məhsul 1", "product2": "Məhsul 2", "product3": "Məhsul 3" }
+          },
+          "topCustomers": {
+            "title": "Ən yaxşı müştərilər",
+            "columns": { "customer": "Müştəri", "orders": "Sifarişlər", "revenue": "Gəlir" },
+            "sample": { "customer1": "ABC MMC", "customer2": "DEF Holding", "customer3": "GHI Ltd" }
+          }
+        },
+        "kpi": {
+          "title": "Əsas Göstəricilər",
+          "totalRevenue": "Ümumi Gəlir",
+          "salesGrowthMoM": "Satışın artımı (aylıq)",
+          "avgOrderValue": "Orta sifariş dəyəri",
+          "newCustomers": "Yeni müştərilər",
+          "profitGrowthMoM": "Mənfəət artımı (aylıq)",
+          "customerRetention": "Müştəri saxlama",
+          "salesConversion": "Satış konversiyası",
+          "bestSalesChannel": "Ən yaxşı satış kanalı",
+          "values": { "online": "Onlayn" },
+          "overduePaymentRate": "Gecikmiş ödəniş nisbəti"
+        }
+      }
+    },
+    "supplier": {
+      "title": "Tədarükçü",
+      "tabs": {
+        "controlPanel": "İdarə Paneli",
+        "suppliers": "Tədarükçülər",
+        "sales": "Satış",
+        "agreements": "Müqavilələr",
+        "payments": "Ödənişlər",
+        "analytics": "Analitika"
+      },
+      "suppliers": {
+        "title": "Tədarükçülər",
+        "subtitle": "Tədarükçü kataloqunun idarə edilməsi",
+        "newButton": "Yeni Tədarükçü",
+        "modal": { "title": "Tədarükçü əlavə et" },
+        "form": {
+          "companyName": "Şirkət adı",
+          "companyTaxId": "VÖEN",
+          "contactPerson": "Əlaqə şəxs",
+          "phone": "Telefon",
+          "email": "Email",
+          "address": "Ünvan"
+        },
+        "placeholders": {
+          "companyName": "Şirkət adını daxil edin",
+          "taxId": "VÖEN daxil edin",
+          "contactName": "Əlaqə şəxsin adını daxil edin",
+          "phone": "Telefon nömrəsini daxil edin",
+          "email": "Email daxil edin",
+          "address": "Ünvan daxil edin"
+        },
+        "searchPlaceholder": "Tədarükçülərdə axtarış...",
+        "sample": {
+          "category": { "officeSupplies": "Ofis ləvazimatları" },
+          "taxId": "VÖEN",
+          "debt": "Borc",
+          "rating": "Reytinq"
+        }
+      },
+      "common": {
+        "view": "Baxın",
+        "viewAll": "Hamısına Bax",
+        "approved": "Təsdiqlənib",
+        "sent": "Göndərilib",
+        "debt": "Borc",
+        "rating": "Reytinq",
+        "dueDate": "Son tarix",
+        "orders": "sifariş",
+        "payments": "ödəniş",
+        "expense": "Xərc",
+        "vsPrevMonth": "əvvəlki aya görə"
+      },
+      "controlPanel": {
+        "title": "İdarə Paneli",
+        "subtitle": "Tədarükçü və satınalma məlumatlarına ümumi baxış",
+        "contractsExpiring": "müqavilənin müddəti tezliklə bitir.",
+        "hasOverduePayment": "gecikmiş ödəniş var.",
+        "cards": {
+          "suppliers": "Tədarükçülər",
+          "activeOrders": "Aktiv Sifarişlər",
+          "inProgress": "İcrada olan sifariş",
+          "agreements": "Müqavilələr",
+          "expiringCount": "{{count}} bitir",
+          "totalDebt": "Ümumi Borc",
+          "debtToSuppliers": "Tədarükçülərə borc"
+        },
+        "latestOrders": "Son Sifarişlər",
+        "urgentPayments": "Təcili Ödənişlər",
+        "topSuppliers": "Ən Çox Alış Edilən Təchizatçılar"
+      },
+      "payments": {
+        "title": "Ödənişlər",
+        "subtitle": "Tədarükçü ödənişlərinin idarə edilməsi",
+        "cards": {
+          "pending": {
+            "title": "Gözləyən ödənişlər",
+            "description": "Ödənilməyi gözləyənlər"
+          },
+          "paid": {
+            "title": "Ödənilmiş məbləğ",
+            "description": "Tam ödənilmişlər"
+          },
+          "overdue": {
+            "title": "Gecikmiş ödənişlər",
+            "description": "Müddəti keçənlər"
+          }
+        },
+        "searchPlaceholder": "Ödənişlər üzrə axtarış...",
+        "table": {
+          "title": "Ödəniş siyahısı",
+          "columns": {
+            "paymentNo": "Ödəniş №",
+            "supplier": "Tədarükçü",
+            "amount": "Məbləğ",
+            "paid": "Ödənilib",
+            "balance": "Qalıq",
+            "dueDate": "Son tarix",
+            "status": "Status"
+          },
+          "overdueDays": "{{days}} gün gecikib"
+        },
+        "status": {
+          "paid": "Ödənilib",
+          "overdue": "Gecikmiş",
+          "partial": "Qismən ödənilib"
+        },
+        "actions": {
+          "pay": "Ödə"
+        },
+        "upcoming": {
+          "title": "Yaxın ödənişlər",
+          "empty": "Yaxın ödəniş yoxdur"
+        }
+      },
+      "agreements": {
+        "title": "Müqavilələr",
+        "subtitle": "Təchizat müqavilələrinin idarə edilməsi və izlənməsi",
+        "newButton": "Yeni Müqavilə",
+        "modal": { "title": "Müqavilə əlavə et" },
+        "form": {
+          "contractNo": "Müqavilə №",
+          "supplier": "Təchizatçı",
+          "startDate": "Başlama Tarixi",
+          "endDate": "Bitmə Tarixi",
+          "amount": "Məbləğ",
+          "currency": "Valyuta",
+          "paymentTerms": "Ödəniş şərtləri",
+          "notes": "Qeydlər"
+        },
+        "placeholders": { "contractNo": "Məs: CNT-2025-001", "amount": "Məs: 1500" },
+        "paymentTerms": { "days30": "30 gün ərzində", "days60": "60 gün ərzində", "days90": "90 gün ərzində" },
+        "status": { "active": "Aktiv" },
+        "searchPlaceholder": "Müqavilələr üzrə axtarış...",
+        "cards": {
+          "active": { "title": "Aktiv Müqavilələr", "description": "Qüvvədə olan müqavilələr" },
+          "expiring": { "title": "Bitməyə Yaxın", "description": "Bitmə tarixinə yaxınlaşan müqavilələr" },
+          "totalValue": { "title": "Ümumi Dəyər", "description": "Bütün müqavilələrin dəyəri" }
+        },
+        "sample": {
+          "amount": "Məbləğ:",
+          "start": "Başlama:",
+          "end": "Bitmə:",
+          "paymentTerm": "Ödəniş şərti:",
+          "daysLeft": "{{days}} gün qalıb",
+          "description": "İllik ofis ləvazimatları təchizatı müqaviləsi"
+        }
+      },
+      "orders": {
+        "title": "Satınalma sifarişləri",
+        "subtitle": "Tədarükçü sifarişlərinin izlənməsi və idarə edilməsi",
+        "newButton": "Yeni sifariş",
+        "modal": {
+          "title": "Satınalma sifarişi yarat"
+        },
+        "form": {
+          "orderNo": "Sifariş №",
+          "supplier": "Tədarükçü",
+          "date": "Tarix",
+          "delivery": "Çatdırılma",
+          "amount": "Məbləğ",
+          "status": "Status",
+          "notes": "Qeyd"
+        },
+        "placeholders": {
+          "orderNo": "Sifariş nömrəsini daxil edin",
+          "supplier": "Tədarükçü adını daxil edin",
+          "amount": "Məbləği daxil edin"
+        },
+        "status": {
+          "pending": "Gözləyir",
+          "delayed": "Gecikmiş"
+        },
+        "searchPlaceholder": "Sifarişlər üzrə axtarış...",
+        "table": {
+          "title": "Sifarişlər",
+          "columns": {
+            "orderNo": "Sifariş №",
+            "supplier": "Tədarükçü",
+            "date": "Tarix",
+            "delivery": "Çatdırılma",
+            "amount": "Məbləğ",
+            "status": "Status"
+          }
+        }
+      },
+      "analytics": {
+        "title": "Analitika və Hesabatlar",
+        "subtitle": "Satınalma xərclərinin təhlili və statistika",
+        "cards": {
+          "thisMonth": "Bu Ay Xərc",
+          "avgMonthly": "Orta Aylıq Xərc",
+          "last10Months": "Son 10 ay",
+          "avgOrder": "Orta Sifariş Dəyəri",
+          "yearly": "İllik Xərc"
+        },
+        "monthlyExpense": {
+          "title": "Aylıq Xərc Dinamikası",
+          "subtitle": "Son 10 ayın satınalma xərcləri"
+        },
+        "byCategory": {
+          "title": "Kateqoriya üzrə Xərclər",
+          "subtitle": "Təchizatçı kateqoriyalarına görə bölgü"
+        },
+        "categories": {
+          "officeSupplies": "Ofis ləvazimatları",
+          "technicalEquipment": "Texniki avadanlıq",
+          "chemicals": "Kimyəvi maddələr",
+          "constructionMaterials": "Tikinti materialları"
+        },
+        "topSuppliers": {
+          "title": "Ən Çox Alış Edilən Təchizatçılar",
+          "subtitle": "Ümumi borc məbləğinə görə"
+        },
+        "paymentsDynamics": {
+          "title": "Ödəniş Dinamikası",
+          "subtitle": "Ödənilmiş və gözləyən məbləğlər"
+        },
+        "legend": {
+          "paid": "Ödənilmiş",
+          "pending": "Gözləyən"
+        },
+        "performance": {
+          "title": "Təchizatçı Performansı",
+          "subtitle": "Təchizatçıların ətraflı statistikası"
+        }
+      }
+    },
+    "settings": {
+      "title": "Ayarlar",
+      "subtitle": "Hesab və üstünlüklərinizi idarə edin"
+    },
+    "assets": {
+      "title": "Əsas Vəsaitlər",
+      "subtitle": "Vəsaitlərinizi idarə edin və hesabatlar alın",
+      "charts": {
+        "categoryDistribution": "Kateqoriya üzrə bölgü",
+        "valueByDepartment": "Şöbələr üzrə dəyər"
+      },
+      "tabs": {
+        "management": "İdarəetmə",
+        "assets": "Vəsaitlər",
+        "reports": "Hesabatlar"
+      },
+      "stats": {
+        "totalValue": "Ümumi dəyər",
+        "totalValueSubtitle": "İlkin dəyər",
+        "currentValue": "Cari dəyər",
+        "currentValueSubtitle": "Amortizasiya sonrası",
+        "depreciation": "Amortizasiya",
+        "depreciationSubtitle": "Yığılmış",
+        "assetCount": "Aktiv sayı",
+        "assetCountSubtitle": "Cəmi {{count}} aktivdən"
+      },
+      "actions": {
+        "newAsset": "Yeni vəsait",
+        "view": "Bax"
+      },
+      "searchPlaceholder": "Ad, inventar №, kateqoriya üzrə axtarış...",
+      "table": {
+        "invNo": "İnv. №",
+        "name": "Ad",
+        "category": "Kateqoriya",
+        "account": "Hesab",
+        "location": "Yer",
+        "initialValue": "İlkin dəyər",
+        "currentValue": "Cari dəyər",
+        "status": "Status"
+      },
+      "reports": {
+        "general": {
+          "title": "Ümumi hesabat",
+          "desc": "Vəsait siyahısını Excel kimi yüklə",
+          "downloadExcel": "Excel yüklə"
+        },
+        "depreciation": {
+          "title": "Amortizasiya hesabatı",
+          "desc": "Amortizasiya detalları",
+          "downloadPDF": "PDF yüklə"
+        },
+        "byCategory": {
+          "title": "Kateqoriya üzrə",
+          "desc": "Kateqoriyalar üzrə xülasə"
+        },
+        "byDepartment": {
+          "title": "Şöbə/filial üzrə",
+          "desc": "Şöbələr üzrə xülasə"
+        }
+      },
+      "export": {
+        "fileNames": {
+          "generalCsv": "umumi_hesabat_{{date}}.csv",
+          "depreciationTxt": "amortizasiya_hesabati_{{date}}.txt"
+        }
+      },
+      "modal": {
+        "add": {
+          "title": "Vəsait əlavə et"
+        }
+      },
+      "form": {
+        "assetName": "Vəsaitin adı",
+        "inventoryNo": "Inventar №",
+        "category": "Kateqoriya",
+        "selectCategory": "Kateqoriya seçin",
+        "categoryOptions": {
+          "computerEquipment": "Kompüter avadanlığı",
+          "vehicles": "Nəqliyyat vasitələri",
+          "officeEquipment": "Ofis avadanlığı",
+          "property": "Əmlak"
+        },
+        "accountCode": "Hesab kodu",
+        "accountOptions": {
+          "111": "111",
+          "112": "112",
+          "113": "113"
+        },
+        "purchaseDate": "Alış tarixi",
+        "purchaseDatePlaceholder": "Tarix seçin",
+        "initialValue": "İlkin dəyər",
+        "residualValue": "Qalıq dəyər",
+        "depreciationMethod": "Amortizasiya metodu",
+        "depreciationMethods": {
+          "straightLine": "Düzxətli",
+          "decliningBalance": "Azalan qalıq",
+          "unitsOfProduction": "İstehsal həcmi"
+        },
+        "usefulLifeMonths": "Faydalı istismar (ay)",
+        "location": "Yer",
+        "selectLocation": "Yer seçin",
+        "locationOptions": {
+          "bakuOffice": "Bakı Ofisi",
+          "sumgaitBranch": "Sumqayıt filialı",
+          "ganjaBranch": "Gəncə filialı"
+        },
+        "branch": "Şöbə/Filial",
+        "selectBranch": "Şöbə seçin",
+        "branchOptions": {
+          "it": "IT Şöbəsi",
+          "accounting": "Mühasibatlıq",
+          "sales": "Satış şöbəsi",
+          "hr": "İnsan resursları",
+          "transport": "Nəqliyyat",
+          "design": "Dizayn Şöbəsi"
+        },
+        "supplier": "Tədarükçü",
+        "serialNumber": "Seriya nömrəsi",
+        "assignedTo": "Məsul şəxs",
+        "warrantyPeriodMonths": "Zəmanət müddəti (ay)",
+        "note": "Qeyd"
+      },
+      "buttons": {
+        "cancel": "Ləğv et",
+        "save": "Yadda saxla"
+      },
+      "categoryReportModal": {
+        "title": "Kateqoriya hesabatı",
+        "headers": {
+          "category": "Kateqoriya",
+          "assetCount": "Vəsaitlər",
+          "initial": "İlkin dəyər",
+          "current": "Cari dəyər",
+          "depreciation": "Amortizasiya",
+          "percent": "%"
+        },
+        "total": "Cəmi"
+      },
+      "branchReportModal": {
+        "title": "Şöbə hesabatı",
+        "headers": {
+          "location": "Yer",
+          "assetCount": "Vəsaitlər",
+          "initial": "İlkin dəyər",
+          "current": "Cari dəyər",
+          "share": "Pay"
+        },
+        "total": "Cəmi"
+      }
+    },
+    "warehouse": {
+      "title": "Anbar",
+      "dashboard": {
+        "title": "Anbar İdarəetməsi",
+        "subtitle": "Ümumi məlumat və əsas göstəricilər",
+        "cards": {
+          "totalProducts": "Ümumi Məhsul",
+          "uniqueSkuCount": "Unikal SKU sayı",
+          "totalValue": "Ümumi Dəyər",
+          "atCost": "Maya dəyəri üzrə",
+          "entriesThisMonth": "Bu Ay Giriş",
+          "exitsThisMonth": "Bu Ay Çıxış",
+          "vsPrevMonth": "{{change}} əvvəlki aya nisbətən"
+        },
+        "minStock": {
+          "title": "Minimum Stok Xəbərdarlığı",
+          "current": "Cari",
+          "minimum": "Minimum"
+        }
+      },
+      "nav": {
+        "dashboard": "Əsas Səhifə",
+        "products": "Məhsullar",
+        "operations": "Anbar Əməliyyatları",
+        "inventory": "İnventar",
+        "reports": "Hesabatlar"
+      },
+      "reports": {
+        "title": "Anbar hesabatları",
+        "subtitle": "Anbar analitikası və hesabatlar",
+        "lossAndWasteTitle": "İtki və zay statistikası"
+      },
+      "table": {
+        "date": "Tarix",
+        "product": "Məhsul",
+        "quantity": "Miqdar",
+        "reason": "Səbəb",
+        "loss": "İtki",
+        "total": "Cəmi"
+      },
+      "metrics": {
+        "stockTurnover": "Stok dövriyyəsi",
+        "vsPrevMonth": "{{change}} keçən ayla müqayisədə",
+        "avgTurnoverDays": "Ortalama dövriyyə (gün)",
+        "improvementDays": "{{days}} gün yaxşılaşma",
+        "totalLoss": "Ümumi itki",
+        "thisMonthLoss": "Bu ay üzrə",
+        "inventoryAccuracy": "İnventar dəqiqliyi",
+        "lastInventoryCount": "Son inventar sayımına görə"
+      },
+      "charts": {
+        "monthlyStock": "Aylıq stok həcmi",
+        "categoryDistribution": "Kateqoriyalar üzrə pay",
+        "stockTurnoverRatio": "Stok dövriyyə nisbəti",
+        "inventoryValueDynamics": "Anbar dəyərinin dinamikası"
+      },
+      "categories": {
+        "rawMaterials": "Xammal",
+        "finishedGoods": "Hazır məhsul",
+        "spareParts": "Ehtiyat hissələri",
+        "packaging": "Qablaşdırma"
+      },
+      "operations": {
+        "title": "Anbar Əməliyyatları",
+        "subtitle": "Giriş, çıxış və yerdəyişmə əməliyyatları",
+        "nav": {
+          "grn": "Mal Qəbulu (GRN)",
+          "dn": "Mal Çıxışı (DN)",
+          "transfer": "Transfer",
+          "history": "Tarixçə"
+        },
+        "common": {
+          "date": "Tarix",
+          "warehouse": "Anbar",
+          "warehouses": {
+            "mainBaku": "Əsas Anbar - Bakı",
+            "branchGanja": "Filial Anbar - Gəncə",
+            "production": "İstehsalat Anbarı"
+          },
+          "products": "Məhsullar",
+          "addProduct": "Məhsul əlavə et",
+          "skuProduct": "SKU / Məhsul",
+          "barcodeImageAlt": "Ştrixkod şəkli",
+          "quantity": "Miqdar",
+          "lot": "Lot/Seriya",
+          "quality": "Keyfiyyət",
+          "qualityOptions": { "accept": "Qəbul", "reject": "Rədd" },
+          "notes": "Qeydlər",
+          "notesPlaceholder": "Əlavə qeydlər...",
+          "removeRow": "Sətiri sil",
+          "select": "Seçin",
+          "product": "Məhsul"
+        },
+        "grn": {
+          "title": "Mal Qəbulu (Goods Receipt Note)",
+          "purchaseOrder": "Satınalma Sifarişi",
+          "confirm": "GRN Təsdiqlə"
+        },
+        "dn": {
+          "title": "Mal Çıxışı (Delivery Note)",
+          "exitType": "Çıxış növü",
+          "exitTypeOptions": {
+            "sale": "Satış (Faktura)",
+            "toProduction": "İstehsalata göndəriş",
+            "returnToSupplier": "Təchizatçıya geri qaytarma",
+            "writeOff": "Zay / Silinmə"
+          },
+          "reference": "İstinad №",
+          "confirm": "DN Təsdiqlə"
+        },
+        "transfer": {
+          "title": "Anbar Transfer",
+          "from": "Haradan",
+          "to": "Hara",
+          "productsTitle": "Transfer məhsulları",
+          "newLocation": "Yeni yer",
+          "confirm": "Transferi təsdiqlə",
+          "validation": { "sameWarehouse": "Eyni anbardan eyni anbara transfer etmək olmaz!" },
+          "success": "Transfer uğurla qeyd edildi (mock)"
+        },
+        "history": {
+          "title": "Son Əməliyyatlar",
+          "columns": {
+            "docNo": "Sənəd №",
+            "type": "Növ",
+            "date": "Tarix",
+            "productCount": "Məhsul sayı",
+            "reference": "İstinad",
+            "status": "Status"
+          }
+        }
+      },
+      "products": {
+        "title": "Məhsullar ({{count}})",
+        "subtitle": "Bütün mal-material siyahısı",
+        "addNew": "Yeni Məhsul",
+        "searchPlaceholder": "SKU, ad və ya ştrixkod...",
+        "table": {
+          "headers": {
+            "sku": "SKU",
+            "product": "Məhsul",
+            "category": "Kateqoriya",
+            "stock": "Qalıq",
+            "minMax": "Min/Max",
+            "status": "Status",
+            "location": "Yer",
+            "cost": "Maya"
+          }
+        },
+        "status": {
+          "low": "Aşağı",
+          "ok": "Yaxşı",
+          "high": "Yuxarı"
+        },
+        "modal": {
+          "title": "Yeni Məhsul Əlavə Et",
+          "desc": "Məhsul məlumatlarını daxil edin"
+        },
+        "form": {
+          "sku": "SKU",
+          "barcode": "Ştrixkod",
+          "name": "Məhsul adı",
+          "category": "Kateqoriya",
+          "unit": "Ölçü vahidi",
+          "minStock": "Min. Stok",
+          "maxStock": "Max. Stok",
+          "cost": "Maya dəyəri (₼)",
+          "location": "Saxlama yeri",
+          "select": "Seçin"
+        },
+        "placeholders": {
+          "name": "Məhsul adını daxil edin"
+        },
+        "units": {
+          "kg": "kq",
+          "pcs": "ədəd",
+          "liter": "litr",
+          "meter": "metr"
+        }
+      }
+      ,
+      "inventory": {
+        "title": "İnventar",
+        "subtitle": "Cari qalıqlar və inventar sayımı",
+        "nav": {
+          "currentBalances": "Cari Qalıqlar",
+          "inventoryCount": "İnventar Sayımı"
+        },
+        "control": {
+          "title": "İnventar Nəzarəti",
+          "subtitle": "Real vaxtda stok görünüşü və inventar sayı",
+          "uploadSheet": "Cədvəl Yüklə",
+          "newInventory": "Yeni İnventar",
+          "uploadedSheet": "Yüklənmiş Cədvəl"
+        },
+        "cards": {
+          "totalProducts": "Ümumi Məhsul",
+          "skuCount": "SKU sayı",
+          "totalValue": "Ümumi Dəyər",
+          "systemBalance": "Sistem qalığı",
+          "countStatus": "Sayım Statusu",
+          "countedProducts": "Sayılmış məhsul",
+          "difference": "Fərq",
+          "countDifference": "Sayım fərqi"
+        },
+        "current": {
+          "title": "Real Vaxtda Stok Görünüşü",
+          "filters": {
+            "allWarehouses": "Bütün anbarlar"
+          },
+          "searchPlaceholder": "Axtar...",
+          "table": {
+            "sku": "SKU",
+            "product": "Məhsul",
+            "warehouse": "Anbar",
+            "location": "Yer",
+            "balance": "Qalıq",
+            "cost": "Maya",
+            "total": "Ümumi Dəyər"
+          }
+        },
+        "count": {
+          "title": "Fiziki İnventar Sayımı",
+          "info": "Fiziki sayımı aparın və faktiki miqdarı daxil edin. Sistem avtomatik olaraq fərqi hesablayacaq.",
+          "table": {
+            "sku": "SKU",
+            "product": "Məhsul",
+            "location": "Yer",
+            "systemQty": "Sistem Qalığı",
+            "actualQty": "Faktiki Qalıq",
+            "difference": "Fərq",
+            "status": "Status"
+          },
+          "status": {
+            "pending": "Gözləyir",
+            "match": "Uyğundur",
+            "missing": "Əskikdir",
+            "excess": "Artıq var"
+          },
+          "confirm": "İnventarı Təsdiqlə ({{count}} məhsul)"
+        }
+      }
+    }
+  },
+  "brand": {
+    "name": "Nummix"
+  },
+  "auth": {
+    "common": {
+      "noAccount": "Hesabınız yoxdur?",
+      "haveAccount": "Hesabınız var?",
+      "signIn": "Daxil ol",
+      "signUp": "Qeydiyyat"
+    },
+    "login": {
+      "subtitle": "Maliyyə idarəetmə panelinizə daxil olun",
+      "submit": "Daxil ol",
+      "submitting": "Daxil olunur...",
+      "forgotPrefix": "Şifrənizi unutmusunuz?",
+      "reset": "Sıfırlayın",
+      "success": "Uğurla daxil olundu! Yönləndirilir...",
+      "errors": {
+        "missingFields": "Zəhmət olmasa email və şifrəni daxil edin!",
+        "invalidCredentials": "Yanlış email və ya şifrə!"
+      }
+    },
+    "register": {
+      "title": "Nummix ERP-yə qoşulun",
+      "subtitle": "Maliyyə idarəetmə hesabınızı yaradın",
+      "submit": "Hesab yarat",
+      "submitting": "Hesab yaradılır...",
+      "codeSent": "6 rəqəmli təsdiq kodu email ünvanınıza göndərildi.",
+      "error": "Qeydiyyat zamanı xəta baş verdi."
+    },
+    "verify": {
+      "subtitle": "Emailinizə göndərilən 6 rəqəmli təsdiq kodunu daxil edin",
+      "enterCode": "Zəhmət olmasa 6 rəqəmli kodu daxil edin",
+      "submit": "Kodu təsdiqlə",
+      "submitting": "Təsdiqlənir...",
+      "resent": "Yeni təsdiq kodu emailinizə göndərildi.",
+      "resend": "Yenidən göndər",
+      "resendFailed": "Təsdiq kodu göndərilə bilmədi.",
+      "success": "Təsdiq uğurludur!",
+      "successRedirect": "Şifrə bərpasına yönləndirilir...",
+      "invalid": "Yanlış kod",
+      "error": "Təsdiq zamanı xəta baş verdi."
+    },
+    "reset": {
+      "subtitle": "Şifrə bərpa linkini göndərin",
+      "submit": "Şifrəni sıfırla",
+      "submitting": "Göndərilir...",
+      "enterNew": "Yeni şifrənizi daxil edin",
+      "newPassword": "Yeni şifrə",
+      "confirmPassword": "Şifrəni təsdiqlə",
+      "mismatch": "Şifrələr uyğun deyil!",
+      "successRedirect": "Şifrə uğurla sıfırlandı! Girişə yönləndirilir..."
+    }
+  },
+  "common": {
+    "logoAlt": "Loqo",
+    "menu": "Menyu",
+    "loading": "Yüklənir...",
+    "email": "Email",
+    "password": "Şifrə",
+    "fullName": "Ad Soyad",
+    "companyName": "Şirkət adı",
+    "somethingWrong": "Nəsə səhv oldu",
+    "cancel": "Ləğv et",
+    "close": "Bağla",
+    "save": "Yadda saxla",
+    "total": "Cəm",
+    "byUser": "{{user}} tərəfindən",
+  "downloadPDF": "PDF yüklə",
+  "export": "İxrac",
+  "monthYear": "{{month}} {{year}}",
+    "period": {
+      "thisMonth": "Bu ay",
+      "thisWeek": "Bu həftə",
+      "thisQuarter": "Bu rüb",
+      "thisYear": "Bu il"
+    },
+    "months": {
+      "jan": "Yan",
+      "feb": "Fev",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "İyn"
+    }
+  },
+  "placeholders": {
+    "email": "Emailinizi daxil edin",
+    "password": "Şifrənizi daxil edin",
+    "fullName": "Məs: John Doe",
+    "companyName": "Şirkət adını daxil edin",
+    "newPassword": "Yeni şifrəni daxil edin",
+    "confirmPassword": "Yeni şifrəni təsdiqləyin"
+  }
+}

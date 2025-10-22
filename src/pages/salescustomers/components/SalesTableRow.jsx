@@ -7,8 +7,10 @@ import { FaRegFileAlt } from "react-icons/fa";
 import Info from "./ShowMore/Info";
 import SalesHistory from "./ShowMore/SalesHistory";
 import Payments from "./ShowMore/Payments";
+import { useTranslation } from "react-i18next";
 
 export default function SalesTableRow({ item }) {
+    const { t } = useTranslation();
     const dialogRef = useRef(null);
     // const [currentTab, setCurrentTab] = useState(1);
 
@@ -37,14 +39,14 @@ export default function SalesTableRow({ item }) {
             <td className="hidden sm:table-cell">
                 <span
                     className={`badge font-semibold text-xs ${
-                        item.status === "Gecikmiş"
+                        item.statusCode === "overdue"
                             ? "badge-error"
-                            : item.status === "Ödənilməmiş"
+                            : item.statusCode === "unpaid"
                             ? "badge-warning"
                             : "badge-success"
                     }`}
                 >
-                    {item.status}
+                    {t(`pages.sales.sales.status.${item.statusCode}`)}
                 </span>
             </td>
             <td className="text-right">
@@ -73,35 +75,35 @@ export default function SalesTableRow({ item }) {
                             <h3 className="font-bold text-lg">{item.customer}</h3>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <p className="font-semibold text-sm">Faktura №</p>
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.invoiceNo")}</p>
                                     <p>{item.invoiceNumber}</p>
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm">Tarix</p>
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.date")}</p>
                                     <p>{item.date}</p>
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm">Müştəri</p>
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.customer")}</p>
                                     <p>{item.customer}</p>
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm">Status</p>
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.status")}</p>
                                     <p>
                                         <span
                                             className={`badge font-semibold text-xs ${
-                                                item.status === "Gecikmiş"
+                                                item.statusCode === "overdue"
                                                     ? "badge-error"
-                                                    : item.status === "Ödənilməmiş"
+                                                    : item.statusCode === "unpaid"
                                                     ? "badge-warning"
                                                     : "badge-success"
                                             }`}
                                         >
-                                            {item.status}
+                                            {t(`pages.sales.sales.status.${item.statusCode}`)}
                                         </span>
                                     </p>
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm">Məbləğ</p>
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.amount")}</p>
                                     <p>{item.amount}</p>
                                 </div>
                             </div>
@@ -135,7 +137,7 @@ export default function SalesTableRow({ item }) {
                         </div>
                     </div>
                     <form method="dialog" className="modal-backdrop">
-                        <button>close</button>
+                        <button>{t("pages.sales.customers.actions.close")}</button>
                     </form>
                 </dialog>
             </td>

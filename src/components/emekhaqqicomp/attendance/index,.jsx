@@ -6,41 +6,47 @@ import AttendanceCard from "./AttendanceCard";
 import WeeklySummary from "./weeklysummary";
 import LatecomersCard from "./LatecomersCard";
 import MyBigCalendar from "./Date";
+import { useTranslation } from "react-i18next";
 function Attendance() {
+  const { t } = useTranslation();
   const stats = [
     {
-      title: "Davamiyyət %",
+      title: t('pages.hr.attendance.cards.attendanceRate', { defaultValue: 'Attendance %' }),
       value: "96.5%",
-      subtitle: "+2.3%",
+      subtitle: t('pages.hr.attendance.cards.change', { value: '+2.3%', defaultValue: '+2.3%' }),
       bgColor: "bg-green-50",
       textColor: "text-green-600",
     },
     {
-      title: "İşdə olan",
+      title: t('pages.hr.attendance.cards.present', { defaultValue: 'Present' }),
       value: "229",
-      subtitle: "247-dən",
+      subtitle: t('pages.hr.attendance.cards.ofTotal', { total: 247, defaultValue: 'of 247' }),
       bgColor: "bg-blue-50",
       textColor: "text-blue-600",
     },
     {
-      title: "Gecikmələr",
+      title: t('pages.hr.attendance.cards.lateArrivals', { defaultValue: 'Late arrivals' }),
       value: "8",
-      subtitle: "Bu həftə",
+      subtitle: t('pages.hr.attendance.cards.thisWeek', { defaultValue: 'This week' }),
       bgColor: "bg-orange-50",
       textColor: "text-orange-600",
     },
     {
-      title: "Qeyri-ixtiyari",
+      title: t('pages.hr.attendance.cards.excused', { defaultValue: 'Excused' }),
       value: "10",
-      subtitle: "Xəstə/İcazəli",
+      subtitle: t('pages.hr.attendance.cards.sickOrLeave', { defaultValue: 'Sick/Authorized' }),
       bgColor: "bg-purple-50",
       textColor: "text-purple-600",
     },
   ];
-  const [selected, setSelected] = useState("Bu ay");
+  const [selected, setSelected] = useState(t('pages.hr.common.period.thisMonth', { defaultValue: 'This month' }));
   const [isOpen, setIsOpen] = useState(false);
-
-  const options = ["Bu ay", "Keçən ay", "Bu il", "Hamısı"];
+  const options = [
+    t('pages.hr.common.period.thisMonth', { defaultValue: 'This month' }),
+    t('pages.hr.common.period.lastMonth', { defaultValue: 'Last month' }),
+    t('pages.hr.common.period.thisYear', { defaultValue: 'This year' }),
+    t('pages.hr.common.period.all', { defaultValue: 'All' })
+  ];
 
   const toggleDropdown = () => setIsOpen(!isOpen);
   const handleSelect = (option) => {
@@ -51,8 +57,8 @@ function Attendance() {
     <div className="space-y-6  my-4">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xl">Davamiyyət Uçotu</p>
-          <p className="text-gray-600">İş vaxtı qeydiyyatı və statistika</p>
+          <p className="text-xl">{t('pages.hr.attendance.title', { defaultValue: 'Attendance Tracking' })}</p>
+          <p className="text-gray-600">{t('pages.hr.attendance.subtitle', { defaultValue: 'Work time registration and stats' })}</p>
         </div>
         <div className="flex gap-2">
           <div className="relative w-40 h-full">
@@ -85,7 +91,7 @@ function Attendance() {
             className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
           >
             <FaDownload className="w-4 h-4" />
-            İxrac
+            {t('common.export', { ns: 'translation', defaultValue: 'Export' })}
           </button>
         </div>
       </div>
@@ -99,20 +105,20 @@ function Attendance() {
           <AttendanceCard />
         </div>
         <div className="border border-gray-200 rounded-xl p-4 space-y-4 shadow-sm">
-          <h2 className="text-xl font-medium">Teqvim</h2>
+          <h2 className="text-xl font-medium">{t('pages.hr.attendance.calendar.title', { defaultValue: 'Calendar' })}</h2>
           <MyBigCalendar />
           <div className="space-y-2">
             <div className="flex items-center text-xl gap-2">
               <div className="rounded-full bg-green-600 w-4 h-4"></div>
-              <p>İş günü</p>
+              <p>{t('pages.hr.attendance.calendar.workday', { defaultValue: 'Workday' })}</p>
             </div>
             <div className="flex items-center text-xl gap-2">
               <div className="rounded-full bg-red-600 w-4 h-4"></div>
-              <p>Qeyri-iş günü</p>
+              <p>{t('pages.hr.attendance.calendar.offday', { defaultValue: 'Off day' })}</p>
             </div>
             <div className="flex items-center text-xl gap-2">
               <div className="rounded-full bg-blue-600 w-4 h-4"></div>
-              <p>Bayram</p>
+              <p>{t('pages.hr.attendance.calendar.holiday', { defaultValue: 'Holiday' })}</p>
             </div>
           </div>
         </div>

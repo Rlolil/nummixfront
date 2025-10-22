@@ -4,8 +4,10 @@ import { IoStatsChart } from "react-icons/io5";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { FaArrowTrendDown } from "react-icons/fa6";
 import { MonthlyStockChart, CategoryDistributionChart } from "../anbarqrafiks";
+import { useTranslation } from "react-i18next";
 
 export default function AnbarEsasSehife() {
+    const { t } = useTranslation();
     const [stats, setStats] = useState(null);
     const [minStock, setMinStock] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -46,31 +48,31 @@ export default function AnbarEsasSehife() {
         fetchData();
     }, []);
 
-    if (loading) return <div className="p-8 text-gray-500">Yüklənir...</div>;
+    if (loading) return <div className="p-8 text-gray-500">{t('common.loading')}</div>;
 
     return (
         <div className="min-h-screen  p-4 lg:p-6 xl:p-8 space-y-8">
             {/* Başlıq */}
             <div>
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-800">Anbar İdarəetməsi</h1>
-                <p className="text-gray-500 text-sm lg:text-base">Ümumi məlumat və əsas göstəricilər</p>
+                <h1 className="text-xl lg:text-2xl font-bold text-gray-800">{t('pages.warehouse.dashboard.title')}</h1>
+                <p className="text-gray-500 text-sm lg:text-base">{t('pages.warehouse.dashboard.subtitle')}</p>
             </div>
 
             {/* Ümumi göstəricilər */}
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6">
-                <StatCard title="Ümumi Məhsul" value={stats.totalProducts} subtitle="Unikal SKU sayı" icon={<FaBox />} />
-                <StatCard title="Ümumi Dəyər" value={`₼ ${stats.totalValue.toLocaleString()}`} subtitle="Maya dəyəri üzrə" icon={<IoStatsChart />} />
+                <StatCard title={t('pages.warehouse.dashboard.cards.totalProducts')} value={stats.totalProducts} subtitle={t('pages.warehouse.dashboard.cards.uniqueSkuCount')} icon={<FaBox />} />
+                <StatCard title={t('pages.warehouse.dashboard.cards.totalValue')} value={`₼ ${stats.totalValue.toLocaleString()}`} subtitle={t('pages.warehouse.dashboard.cards.atCost')} icon={<IoStatsChart />} />
                 <StatCard
-                    title="Bu Ay Giriş"
+                    title={t('pages.warehouse.dashboard.cards.entriesThisMonth')}
                     value={stats.entriesThisMonth}
-                    subtitle="+12% əvvəlki aya nisbətən"
+                    subtitle={t('pages.warehouse.dashboard.cards.vsPrevMonth', { change: '+12%' })}
                     color="green"
                     icon={<FaArrowTrendUp />}
                 />
                 <StatCard
-                    title="Bu Ay Çıxış"
+                    title={t('pages.warehouse.dashboard.cards.exitsThisMonth')}
                     value={stats.exitsThisMonth}
-                    subtitle="-5% əvvəlki aya nisbətən"
+                    subtitle={t('pages.warehouse.dashboard.cards.vsPrevMonth', { change: '-5%' })}
                     color="red"
                     icon={<FaArrowTrendDown />}
                 />
@@ -80,7 +82,7 @@ export default function AnbarEsasSehife() {
             <div className="border border-red-200 bg-red-50 rounded-xl p-4 lg:p-6 shadow-sm">
                 <div className="flex items-center gap-2 mb-4">
                     <span className="text-red-500 text-lg">⚠️</span>
-                    <h2 className="text-base lg:text-lg font-semibold text-red-700">Minimum Stok Xəbərdarlığı</h2>
+                    <h2 className="text-base lg:text-lg font-semibold text-red-700">{t('pages.warehouse.dashboard.minStock.title')}</h2>
                 </div>
 
                 <div className="space-y-4">
@@ -94,7 +96,7 @@ export default function AnbarEsasSehife() {
                                 <span className="text-red-600">{item.percent}%</span>
                             </div>
                             <p className="text-xs text-gray-500">
-                                Cari: {item.current} / Minimum: {item.min}
+                                {t('pages.warehouse.dashboard.minStock.current')}: {item.current} / {t('pages.warehouse.dashboard.minStock.minimum')}: {item.min}
                             </p>
                             <div className="w-full bg-gray-200 h-2 rounded-full mt-1">
                                 <div

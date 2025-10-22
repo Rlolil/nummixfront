@@ -4,6 +4,7 @@ import HeadCard from "../components/HeadCard";
 
 import { HiPlus } from "react-icons/hi";
 import CustomersTableRow from "../components/CustomersTableRow";
+import { useTranslation } from "react-i18next";
 
 const data = [
     {
@@ -11,7 +12,7 @@ const data = [
         taxNumber: "1234567890",
         contactPerson: "Əli Məmmədov",
         phone: "+994 50 123 45 67",
-        segment: "Daimi Müştəri",
+        segmentCode: "regular",
         totalSales: "₼145,000",
         debt: "₼0",
     },
@@ -20,7 +21,7 @@ const data = [
         taxNumber: "0987654321",
         contactPerson: "Aysel Hüseynova",
         phone: "+994 51 987 65 43",
-        segment: "Yeni Müştəri",
+        segmentCode: "new",
         totalSales: "₼76,000",
         debt: "₼5,400",
     },
@@ -29,13 +30,14 @@ const data = [
         taxNumber: "1122334455",
         contactPerson: "Elvin Quliyev",
         phone: "+994 55 123 45 67",
-        segment: "Gecikən Ödəniş",
+        segmentCode: "overdue",
         totalSales: "₼145,000",
         debt: "₼0",
     },
 ];
 
 export default function Customers() {
+    const { t } = useTranslation();
     const [searchedData, setSearchedData] = useState(data);
 
     const handleSearch = (e) => {
@@ -53,8 +55,8 @@ export default function Customers() {
         <div className="w-full flex flex-col gap-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h2 className="text-2xl font-semibold">Müştərilər</h2>
-                    <p className="text-zinc-600">Müştəri məlumatları və satış tarixçəsi</p>
+                    <h2 className="text-2xl font-semibold">{t("pages.sales.customers.title")}</h2>
+                    <p className="text-zinc-600">{t("pages.sales.customers.subtitle")}</p>
                 </div>
                 <div>
                     <button
@@ -62,7 +64,7 @@ export default function Customers() {
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
-                        <p className="text-nowrap">Yeni Müştəri</p>
+                        <p className="text-nowrap">{t("pages.sales.customers.newButton")}</p>
                     </button>
                     <dialog id="addNew" className="modal">
                         <div className="modal-box">
@@ -74,55 +76,55 @@ export default function Customers() {
                                 ✕
                             </button>
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-bold text-lg">Yeni Müştəri Əlavə Et!</h3>
+                                <h3 className="font-bold text-lg">{t("pages.sales.customers.modal.title")}</h3>
                                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                                     <div className="grid grid-cols-2 gap-4">
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Şirkət Adı</p>
+                                            <p className="font-semibold text-sm">{t("pages.sales.customers.form.companyName")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="Şirkət Adını daxil edin"
+                                                placeholder={t("pages.sales.customers.placeholders.companyName")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">VÖEN</p>
+                                            <p className="font-semibold text-sm">{t("pages.sales.customers.form.taxId")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="VÖEN nömrəsini"
+                                                placeholder={t("pages.sales.customers.placeholders.taxId")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Əlaqə Şəxs</p>
+                                            <p className="font-semibold text-sm">{t("pages.sales.customers.form.contactPerson")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="Ad Soyad"
+                                                placeholder={t("pages.sales.customers.placeholders.contactName")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Telefon</p>
+                                            <p className="font-semibold text-sm">{t("pages.sales.customers.form.phone")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="+994 XX XXX XX XX"
+                                                placeholder={t("pages.sales.customers.placeholders.phone")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Email</p>
+                                            <p className="font-semibold text-sm">{t("pages.sales.customers.form.email")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="email@example.com"
+                                                placeholder={t("pages.sales.customers.placeholders.email")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Ünvan</p>
+                                            <p className="font-semibold text-sm">{t("pages.sales.customers.form.address")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="Ünvan"
+                                                placeholder={t("pages.sales.customers.placeholders.address")}
                                             />
                                         </label>
                                     </div>
@@ -132,10 +134,10 @@ export default function Customers() {
                                             className="btn rounded-lg mt-4"
                                             onClick={() => document.getElementById("addNew").close()}
                                         >
-                                            Ləğv et
+                                            {t("common.cancel")}
                                         </button>
                                         <button className="btn btn-neutral rounded-lg mt-4" type="submit">
-                                            Yadda saxla
+                                            {t("common.save")}
                                         </button>
                                     </div>
                                 </form>
@@ -154,28 +156,28 @@ export default function Customers() {
                         title={null}
                         amount={<div className="text-2xl">248</div>}
                         greenText={null}
-                        description="Ümumi Müştəri"
+                        description={t("pages.sales.customers.cards.totalCustomers")}
                         icon={null}
                     />
                     <HeadCard
                         title={null}
                         amount={<div className="text-2xl">186</div>}
                         greenText={null}
-                        description="Daimi Müştəri"
+                        description={t("pages.sales.customers.cards.regularCustomers")}
                         icon={null}
                     />
                     <HeadCard
                         title={null}
                         amount={<div className="text-2xl">23</div>}
                         greenText={null}
-                        description="Yeni Müştəri"
+                        description={t("pages.sales.customers.cards.newCustomers")}
                         icon={null}
                     />
                     <HeadCard
                         title={null}
                         amount={<div className="text-2xl text-red-500">₼ 12,500</div>}
                         greenText={null}
-                        description="Ümumi Borc"
+                        description={t("pages.sales.customers.cards.totalDebt")}
                         icon={null}
                     />
                 </div>
@@ -203,7 +205,7 @@ export default function Customers() {
                                 <input
                                     type="search"
                                     className="grow placeholder:text-gray-600"
-                                    placeholder="Müştəri axtar"
+                                    placeholder={t("pages.sales.customers.searchPlaceholder")}
                                     onChange={handleSearch}
                                 />
                             </label>
@@ -212,14 +214,14 @@ export default function Customers() {
                                     <table className="table text-base">
                                         <thead>
                                             <tr className="text-black text-base">
-                                                <th>Şirkət Adı</th>
-                                                <th className="hidden md:table-cell">Əlaqə</th>
-                                                <th className="hidden md:table-cell">Telefon</th>
-                                                <th className="hidden lg:table-cell">Seqment</th>
+                                                <th>{t("pages.sales.customers.table.columns.companyName")}</th>
+                                                <th className="hidden md:table-cell">{t("pages.sales.customers.table.columns.contact")}</th>
+                                                <th className="hidden md:table-cell">{t("pages.sales.customers.table.columns.phone")}</th>
+                                                <th className="hidden lg:table-cell">{t("pages.sales.customers.table.columns.segment")}</th>
                                                 <th className="text-right hidden sm:table-cell">
-                                                    Ümumi Satış
+                                                    {t("pages.sales.customers.table.columns.totalSales")}
                                                 </th>
-                                                <th className="text-right">Borc</th>
+                                                <th className="text-right">{t("pages.sales.customers.table.columns.debt")}</th>
                                                 <th className="text-right"></th>
                                             </tr>
                                         </thead>

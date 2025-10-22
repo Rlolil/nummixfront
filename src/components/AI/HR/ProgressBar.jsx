@@ -1,31 +1,33 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ProgressBar = () => {
+    const { t } = useTranslation();
     const data = [
         {
-            title: "Satış",
+            titleKey: "sales",
             percent: 92,
 
         },
         {
-            title: "Ofis xərcləri",
+            titleKey: "officeExpenses",
             percent: 95,
             noRed: true,
         },
         {
-            title: "Marketing",
+            titleKey: "marketing",
             percent: 88,
             gecikme: 12,
             noRed: true,
         },
         {
-            title: "IT ve Texnologiya",
+            titleKey: "itTech",
             percent: 97,
             noRed: true,
 
         },
         {
-            title: "Satinalma",
+            titleKey: "procurement",
             percent: 94,
             noRed: true,
         }
@@ -38,7 +40,7 @@ const ProgressBar = () => {
             {data.map((item, index) => (
                 <div key={index} className="mb-6">
                     <div className="flex items-center justify-between mb-1">
-                        <h3 className="text-gray-800 font-medium">{item.title}</h3>
+                        <h3 className="text-gray-800 font-medium">{t(`pages.ai.hrAi.departments.${item.titleKey}`)}</h3>
                         <h3 className="text-gray-800 font-medium">{item.percent}%</h3>
                     </div>
 
@@ -56,7 +58,7 @@ const ProgressBar = () => {
 
                     {item.gecikme && (
                         <span className="text-red-500">
-                            Gecikme:{item.gecikme}%
+                            {t("pages.ai.hrAi.attendance.delayLabel")}:{item.gecikme}%
                         </span>
                     )}
                 </div>

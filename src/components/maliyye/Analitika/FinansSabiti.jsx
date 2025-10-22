@@ -1,31 +1,33 @@
 import React from "react";
+import { useTranslation } from 'react-i18next'
 import { FiTrendingUp, FiTrendingDown, FiAlertCircle } from "react-icons/fi";
 
 const FinansSabiti = () => {
+  const { t } = useTranslation()
   const indicators = [
-    { name: "Likvidlik", value: 95, color: "bg-green-500" },
-    { name: "Rentabellik", value: 82, color: "bg-green-400" },
-    { name: "Borc İdarəetməsi", value: 88, color: "bg-green-500" },
-    { name: "Büdcə Nəzarəti", value: 75, color: "bg-yellow-500" },
+    { name: t('pages.finance.analytics.stability.indicators.liquidity'), value: 95, color: "bg-green-500" },
+    { name: t('pages.finance.analytics.stability.indicators.profitability'), value: 82, color: "bg-green-400" },
+    { name: t('pages.finance.analytics.stability.indicators.debtManagement'), value: 88, color: "bg-green-500" },
+    { name: t('pages.finance.analytics.stability.indicators.budgetControl'), value: 75, color: "bg-yellow-500" },
   ];
 
   const advices = [
     {
       icon: <FiTrendingUp className="text-green-600" />,
-      title: "İnvestisiya fürsəti:",
-      text: "Artıq likvidlik (60,000 AZN) qısa müddətli investisiyaya yönəldilə bilər.",
+      title: t('pages.finance.analytics.stability.advices.investment.title'),
+      text: t('pages.finance.analytics.stability.advices.investment.text'),
       bg: "bg-green-50 border-green-200",
     },
     {
       icon: <FiTrendingDown className="text-blue-600" />,
-      title: "Büdcə optimallaşdırması:",
-      text: "Ofis xərcləri 15% artmışdır. Enerji səmərəliliyi araşdırılmalıdır.",
+      title: t('pages.finance.analytics.stability.advices.budgetOptimization.title'),
+      text: t('pages.finance.analytics.stability.advices.budgetOptimization.text'),
       bg: "bg-blue-50 border-blue-200",
     },
     {
       icon: <FiAlertCircle className="text-yellow-600" />,
-      title: "Diqqət:",
-      text: "Net Profit Margin son ayda 0.8% azalıb. Xərc optimallaşdırması tövsiyə olunur.",
+      title: t('pages.finance.analytics.stability.advices.attention.title'),
+      text: t('pages.finance.analytics.stability.advices.attention.text'),
       bg: "bg-yellow-50 border-yellow-200",
     },
   ];
@@ -33,12 +35,8 @@ const FinansSabiti = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-6">
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-        <h2 className="text-lg font-semibold text-gray-800">
-          Maliyyə Sabitlik İndeksi
-        </h2>
-        <p className="text-sm text-gray-500 mt-1 mb-5">
-          Ümumi maliyyə sağlamlığı qiymətləndirilməsi
-        </p>
+        <h2 className="text-lg font-semibold text-gray-800">{t('pages.finance.analytics.stability.title')}</h2>
+        <p className="text-sm text-gray-500 mt-1 mb-5">{t('pages.finance.analytics.stability.subtitle')}</p>
 
         <div className="space-y-5">
           {indicators.map((item, i) => (
@@ -58,11 +56,9 @@ const FinansSabiti = () => {
         </div>
 
         <div className="flex justify-between items-center mt-6 pt-4 border-t">
-          <span className="font-semibold text-gray-700">Ümumi Bal</span>
+          <span className="font-semibold text-gray-700">{t('pages.finance.analytics.stability.totalScore')}</span>
           <div className="flex items-center gap-2">
-            <span className="bg-green-600 text-white text-xs px-2 py-1 rounded-full">
-              Əla
-            </span>
+            <span className="bg-green-600 text-white text-xs px-2 py-1 rounded-full">{t('pages.finance.analytics.stability.excellent')}</span>
             <span className="text-2xl font-semibold text-gray-900">
               85/100
             </span>
@@ -71,12 +67,8 @@ const FinansSabiti = () => {
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-        <h2 className="text-lg font-semibold text-gray-800">
-          Tövsiyələr və Xəbərdarlıqlar
-        </h2>
-        <p className="text-sm text-gray-500 mt-1 mb-4">
-          AI-powered maliyyə məsləhətləri
-        </p>
+        <h2 className="text-lg font-semibold text-gray-800">{t('pages.finance.analytics.stability.recommendationsTitle')}</h2>
+        <p className="text-sm text-gray-500 mt-1 mb-4">{t('pages.finance.analytics.stability.recommendationsSubtitle')}</p>
 
         <div className="space-y-3">
           {advices.map((item, i) => (

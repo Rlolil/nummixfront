@@ -7,9 +7,11 @@ import Cart from "./pages/Cart";
 import Transactions from "./pages/Transactions";
 import Reports from "./pages/Reports";
 import TabSelector from "../../components/TabSelector/TabSelector";
+import { useTranslation } from "react-i18next";
 
 function SalesCustomers() {
     const [currentTab, setCurrentTab] = useState(1);
+    const { t } = useTranslation();
 
     const renderTabContent = () => {
         switch (currentTab) {
@@ -30,7 +32,14 @@ function SalesCustomers() {
         }
     };
 
-    const tabs = ["Control Panel", "Customers", "Sales", "POS Cart", "Transactions", "Reports"];
+    const tabs = [
+        t("pages.sales.tabs.controlPanel"),
+        t("pages.sales.tabs.customers"),
+        t("pages.sales.tabs.sales"),
+        t("pages.sales.tabs.pos"),
+        t("pages.sales.tabs.transactions"),
+        t("pages.sales.tabs.reports")
+    ];
 
     return (
         <div className="sm:ml-16 mt-20 sm:mt-0 py-8 px-6 flex flex-col gap-6">

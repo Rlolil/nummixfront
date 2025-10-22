@@ -1,12 +1,14 @@
 import { HiPlus } from "react-icons/hi";
+import { useTranslation } from "react-i18next";
 
 export default function Suppliers() {
+    const { t } = useTranslation();
     return (
         <div className="w-full flex flex-col gap-6">
             <div className="flex justify-between items-center gap-2">
                 <div>
-                    <h2 className="text-2xl font-semibold">Təchizatçılar</h2>
-                    <p className="text-zinc-600">Müştəri məlumatları və satış tarixçəsi</p>
+                    <h2 className="text-2xl font-semibold">{t("pages.supplier.suppliers.title")}</h2>
+                    <p className="text-zinc-600">{t("pages.supplier.suppliers.subtitle")}</p>
                 </div>
                 <div>
                     <button
@@ -14,7 +16,7 @@ export default function Suppliers() {
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
-                        <p className="text-nowrap">Yeni Təchizatçı</p>
+                        <p className="text-nowrap">{t("pages.supplier.suppliers.newButton")}</p>
                     </button>
                     <dialog id="addNew" className="modal">
                         <div className="modal-box">
@@ -26,55 +28,55 @@ export default function Suppliers() {
                                 ✕
                             </button>
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-bold text-lg">Yeni Təchizatçı Əlavə Et!</h3>
+                                <h3 className="font-bold text-lg">{t("pages.supplier.suppliers.modal.title")}</h3>
                                 <form className="flex flex-col gap-4">
                                     <div className="grid grid-cols-2 gap-4">
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Şirkət Adı</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.suppliers.form.companyName")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="Şirkət Adını daxil edin"
+                                                placeholder={t("pages.supplier.suppliers.placeholders.companyName")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">VÖEN</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.suppliers.form.companyTaxId")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="VÖEN nömrəsini"
+                                                placeholder={t("pages.supplier.suppliers.placeholders.taxId")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Əlaqə Şəxs</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.suppliers.form.contactPerson")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="Ad Soyad"
+                                                placeholder={t("pages.supplier.suppliers.placeholders.contactName")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Telefon</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.suppliers.form.phone")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="+994 XX XXX XX XX"
+                                                placeholder={t("pages.supplier.suppliers.placeholders.phone")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Email</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.suppliers.form.email")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="email@example.com"
+                                                placeholder={t("pages.supplier.suppliers.placeholders.email")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Ünvan</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.suppliers.form.address")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="Ünvan"
+                                                placeholder={t("pages.supplier.suppliers.placeholders.address")}
                                             />
                                         </label>
                                     </div>
@@ -84,10 +86,10 @@ export default function Suppliers() {
                                             className="btn rounded-lg mt-4"
                                             onClick={() => document.getElementById("addNew").close()}
                                         >
-                                            Ləğv et
+                                            {t("common.cancel")}
                                         </button>
                                         <button className="btn btn-neutral rounded-lg mt-4" type="submit">
-                                            Yadda saxla
+                                            {t("common.save")}
                                         </button>
                                     </div>
                                 </form>
@@ -113,7 +115,7 @@ export default function Suppliers() {
                         <path d="m21 21-4.3-4.3"></path>
                     </g>
                 </svg>
-                <input type="search" className="grow placeholder:text-gray-600" placeholder="Müştəri axtar" />
+                <input type="search" className="grow placeholder:text-gray-600" placeholder={t("pages.supplier.suppliers.searchPlaceholder")} />
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div className="border-1 hover:bg-zinc-100 transition border-zinc-300 rounded-lg p-4 flex flex-col gap-6">
@@ -130,7 +132,7 @@ export default function Suppliers() {
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 className="lucide lucide-building2 lucide-building-2 h-6 w-6"
-                                ariaHidden="true"
+                                aria-hidden="true"
                             >
                                 <path d="M10 12h4"></path>
                                 <path d="M10 8h4"></path>
@@ -141,11 +143,11 @@ export default function Suppliers() {
                         </div>
                         <div className="flex flex-col justify-between">
                             <h3 className="font-semibold">GlobalSupply LLC</h3>
-                            <p className="text-zinc-500 text-sm">VÖEN: 1234567890</p>
+                            <p className="text-zinc-500 text-sm">{t("pages.supplier.suppliers.sample.taxId")}: 1234567890</p>
                         </div>
                     </div>
                     <div className="flex flex-col gap-4">
-                        <div className="badge badge-soft text-xs font-semibold">Ofis ləvazimatları</div>
+                        <div className="badge badge-soft text-xs font-semibold">{t("pages.supplier.suppliers.sample.category.officeSupplies")}</div>
                         <div className="flex flex-col gap-2">
                             <div className="text-zinc-500 flex items-center gap-2">
                                 <svg
@@ -159,7 +161,7 @@ export default function Suppliers() {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     className="lucide lucide-phone h-4 w-4"
-                                    ariaHidden="true"
+                                    aria-hidden="true"
                                 >
                                     <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path>
                                 </svg>
@@ -192,11 +194,11 @@ export default function Suppliers() {
                                     viewBox="0 0 24 24"
                                     fill="none"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                    strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     className="lucide lucide-map-pin h-4 w-4"
-                                    ariaHidden="true"
+                    aria-hidden="true"
                                 >
                                     <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
@@ -207,11 +209,11 @@ export default function Suppliers() {
                         <div className="w-full h-0.5 bg-zinc-300"></div>
                         <div className="flex flex-col gap-4">
                             <div className="flex justify-between items-center font-semibold text-lg">
-                                <p className="text-zinc-700">Borc:</p>
+                                <p className="text-zinc-700">{t("pages.supplier.suppliers.sample.debt")}</p>
                                 <p className="text-orange-500">1450.00 AZN</p>
                             </div>
                             <div className="flex justify-between items-center font-semibold text-lg">
-                                <p className="text-zinc-700">Reyting:</p>
+                                <p className="text-zinc-700">{t("pages.supplier.suppliers.sample.rating")}</p>
                                 <p>⭐ 4.5</p>
                             </div>
                         </div>

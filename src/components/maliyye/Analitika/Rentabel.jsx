@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next'
 import {
     AreaChart,
     Area,
@@ -11,22 +12,20 @@ import {
     Legend,
 } from "recharts";
 
-const data = [
-    { name: "Yan", gelir: 120000, xercler: 95000, menfeet: 25000 },
-    { name: "Fev", gelir: 135000, xercler: 105000, menfeet: 30000 },
-    { name: "Mar", gelir: 130000, xercler: 102000, menfeet: 28000 },
-    { name: "Apr", gelir: 145000, xercler: 108000, menfeet: 37000 },
-    { name: "May", gelir: 140000, xercler: 107000, menfeet: 33000 },
-    { name: "İyn", gelir: 160000, xercler: 112000, menfeet: 48000 },
-];
-
 const Rentabel = () => {
+    const { t } = useTranslation()
+    const data = [
+        { name: t('pages.finance.common.months.jan', 'Jan'), gelir: 120000, xercler: 95000, menfeet: 25000 },
+        { name: t('pages.finance.common.months.feb', 'Feb'), gelir: 135000, xercler: 105000, menfeet: 30000 },
+        { name: t('pages.finance.common.months.mar', 'Mar'), gelir: 130000, xercler: 102000, menfeet: 28000 },
+        { name: t('pages.finance.common.months.apr', 'Apr'), gelir: 145000, xercler: 108000, menfeet: 37000 },
+        { name: t('pages.finance.common.months.may', 'May'), gelir: 140000, xercler: 107000, menfeet: 33000 },
+        { name: t('pages.finance.common.months.jun', 'Jun'), gelir: 160000, xercler: 112000, menfeet: 48000 },
+    ];
     return (
         <div className="bg-white p-5 rounded-xl shadow-sm">
-            <h2 className="text-lg font-semibold mb-1">Rentabellik Göstəriciləri</h2>
-            <p className="text-gray-500 text-sm mb-4">
-                Gəlir, xərclər və mənfəət dinamikası
-            </p>
+            <h2 className="text-lg font-semibold mb-1">{t('pages.finance.analytics.profitability.title')}</h2>
+            <p className="text-gray-500 text-sm mb-4">{t('pages.finance.analytics.profitability.subtitle')}</p>
 
             <ResponsiveContainer width="100%" height={350}>
                 <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -53,7 +52,7 @@ const Rentabel = () => {
                         stackId="1"
                         stroke="#ef4444"
                         fill="url(#colorXercler)"
-                        name="Xərclər"
+                        name={t('pages.finance.analytics.profitability.legend.expenses', 'Xərclər')}
                     />
                     <Area
                         type="monotone"
@@ -61,7 +60,7 @@ const Rentabel = () => {
                         stackId="1"
                         stroke="#10b981"
                         fill="url(#colorGelir)"
-                        name="Gəlir"
+                        name={t('pages.finance.analytics.profitability.legend.revenue', 'Gəlir')}
                     />
                     <Line
                         type="monotone"
@@ -70,24 +69,24 @@ const Rentabel = () => {
                         strokeWidth={2}
                         dot={{ r: 4 }}
                         activeDot={{ r: 6 }}
-                        name="Xalis Mənfəət"
+                        name={t('pages.finance.analytics.profitability.legend.netProfit', 'Xalis Mənfəət')}
                     />
                 </AreaChart>
             </ResponsiveContainer>
 
             <div className="grid md:grid-cols-3 gap-4 mt-6">
                 <div className="bg-gray-50 p-4 rounded-xl text-center shadow-sm">
-                    <p className="text-gray-500 text-sm mb-1">Orta Aylıq Gəlir</p>
+                    <p className="text-gray-500 text-sm mb-1">{t('pages.finance.analytics.profitability.avgRevenue')}</p>
                     <p className="text-green-600 text-2xl font-semibold">141,167 AZN</p>
                 </div>
 
                 <div className="bg-gray-50 p-4 rounded-xl text-center shadow-sm">
-                    <p className="text-gray-500 text-sm mb-1">Orta Aylıq Xərc</p>
+                    <p className="text-gray-500 text-sm mb-1">{t('pages.finance.analytics.profitability.avgExpense')}</p>
                     <p className="text-red-500 text-2xl font-semibold">103,333 AZN</p>
                 </div>
 
                 <div className="bg-gray-50 p-4 rounded-xl text-center shadow-sm">
-                    <p className="text-gray-500 text-sm mb-1">Orta Aylıq Mənfəət</p>
+                    <p className="text-gray-500 text-sm mb-1">{t('pages.finance.analytics.profitability.avgProfit')}</p>
                     <p className="text-blue-600 text-2xl font-semibold">37,833 AZN</p>
                 </div>
             </div>

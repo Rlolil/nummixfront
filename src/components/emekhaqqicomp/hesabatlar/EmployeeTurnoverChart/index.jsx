@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   BarChart,
   Bar,
@@ -20,12 +21,13 @@ const data = [
 ];
 
 export default function EmployeeTurnoverChart() {
+  const { t } = useTranslation();
   const totalHired = data.reduce((acc, curr) => acc + curr.hired, 0);
   const totalLeft = data.reduce((acc, curr) => acc + curr.left, 0);
 
   return (
     <div className="bg-white p-6 rounded-xl border  border-gray-200 shadow-sm max-w-xl mx-auto">
-      <h2 className="text-xl font-semibold mb-6">İşçi Dövriyyəsi</h2>
+      <h2 className="text-xl font-semibold mb-6">{t('pages.hr.reports.turnover.title', { defaultValue: 'Employee Turnover' })}</h2>
       <div style={{ width: "100%", height: 300 }}>
         <ResponsiveContainer>
           <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
@@ -34,19 +36,19 @@ export default function EmployeeTurnoverChart() {
             <YAxis />
             <Tooltip />
             <Legend verticalAlign="bottom" height={36} />
-            <Bar dataKey="hired" name="Yeni işə qəbul" fill="#10b981" />
-            <Bar dataKey="left" name="İşdən çıxma" fill="#ef4444" />
+            <Bar dataKey="hired" name={t('pages.hr.reports.turnover.series.hired', { defaultValue: 'Hired' })} fill="#10b981" />
+            <Bar dataKey="left" name={t('pages.hr.reports.turnover.series.left', { defaultValue: 'Left' })} fill="#ef4444" />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-4">
         <div className="bg-green-50 p-4 rounded-lg text-center">
-          <p className="text-sm text-green-700">Ümumi işə qəbul (6 ay)</p>
+          <p className="text-sm text-green-700">{t('pages.hr.reports.turnover.totals.hired6m', { defaultValue: 'Total hired (6 months)' })}</p>
           <p className="text-3xl font-bold text-green-600">{totalHired}</p>
         </div>
         <div className="bg-red-50 p-4 rounded-lg text-center">
-          <p className="text-sm text-red-700">Ümumi işdən çıxma (6 ay)</p>
+          <p className="text-sm text-red-700">{t('pages.hr.reports.turnover.totals.left6m', { defaultValue: 'Total left (6 months)' })}</p>
           <p className="text-3xl font-bold text-red-600">{totalLeft}</p>
         </div>
       </div>

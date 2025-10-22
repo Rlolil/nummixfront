@@ -1,8 +1,10 @@
 import { HiPlus } from "react-icons/hi";
 import BodyCard from "../../salescustomers/components/BodyCard";
 import SalesTableRow from "../components/SalesTableRow";
+import { useTranslation } from "react-i18next";
 
 export default function Sales() {
+    const { t } = useTranslation();
     const data = [
         {
             id: 1,
@@ -11,7 +13,7 @@ export default function Sales() {
             date: "2023-10-01",
             delivery: "2023-10-05",
             amount: 1000,
-            status: "Gözləyir",
+            statusCode: "pending",
         },
         {
             id: 2,
@@ -20,7 +22,7 @@ export default function Sales() {
             date: "2023-10-02",
             delivery: "2023-10-06",
             amount: 1500,
-            status: "Gecikmiş",
+            statusCode: "delayed",
         },
     ];
 
@@ -28,8 +30,8 @@ export default function Sales() {
         <div className="w-full flex flex-col gap-6">
             <div className="flex justify-between items-center gap-2">
                 <div>
-                    <h2 className="text-2xl font-semibold">Satınalma Sifarişləri</h2>
-                    <p className="text-zinc-600">Təchizatçılara verilən sifarişlərin idarə edilməsi</p>
+                    <h2 className="text-2xl font-semibold">{t("pages.supplier.orders.title")}</h2>
+                    <p className="text-zinc-600">{t("pages.supplier.orders.subtitle")}</p>
                 </div>
                 <div>
                     <button
@@ -37,7 +39,7 @@ export default function Sales() {
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
-                        <p className="text-nowrap">Yeni Sifariş</p>
+                        <p className="text-nowrap">{t("pages.supplier.orders.newButton")}</p>
                     </button>
                     <dialog id="addNew" className="modal">
                         <div className="modal-box">
@@ -49,57 +51,57 @@ export default function Sales() {
                                 ✕
                             </button>
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-bold text-lg">Yeni Sifariş Əlavə Et!</h3>
+                                <h3 className="font-bold text-lg">{t("pages.supplier.orders.modal.title")}</h3>
                                 <form className="flex flex-col gap-4">
                                     <div className="grid grid-cols-2 gap-4">
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Sifariş №</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.orders.form.orderNo")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="Məs: SO-1003"
+                                                placeholder={t("pages.supplier.orders.placeholders.orderNo")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Təchizatçı</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.orders.form.supplier")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="Məs: ABC Ltd."
+                                                placeholder={t("pages.supplier.orders.placeholders.supplier")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Tarix</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.orders.form.date")}</p>
                                             <input
                                                 type="date"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Çatdırılma</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.orders.form.delivery")}</p>
                                             <input
                                                 type="date"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Məbləğ</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.orders.form.amount")}</p>
                                             <input
                                                 type="number"
                                                 step="0.01"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                                placeholder="Məs: 1500"
+                                                placeholder={t("pages.supplier.orders.placeholders.amount")}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
-                                            <p className="font-semibold text-sm">Status</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.orders.form.status")}</p>
                                             <select className="select h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0">
-                                                <option value="Gözləyir">Gözləyir</option>
-                                                <option value="Gecikmiş">Gecikmiş</option>
+                                                <option value="pending">{t("pages.supplier.orders.status.pending")}</option>
+                                                <option value="delayed">{t("pages.supplier.orders.status.delayed")}</option>
                                             </select>
                                         </label>
                                         <label className="flex flex-col gap-2 col-span-2">
-                                            <p className="font-semibold text-sm">Qeydlər</p>
+                                            <p className="font-semibold text-sm">{t("pages.supplier.orders.form.notes")}</p>
                                             <input
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
@@ -112,10 +114,10 @@ export default function Sales() {
                                             className="btn rounded-lg mt-4"
                                             onClick={() => document.getElementById("addNew").close()}
                                         >
-                                            Ləğv et
+                                            {t("common.cancel")}
                                         </button>
                                         <button className="btn btn-neutral rounded-lg mt-4" type="submit">
-                                            Yadda saxla
+                                            {t("common.save")}
                                         </button>
                                     </div>
                                 </form>
@@ -144,24 +146,24 @@ export default function Sales() {
                 <input
                     type="search"
                     className="grow placeholder:text-gray-600"
-                    placeholder="Sifariş və ya təchizatçı axtar"
+                    placeholder={t("pages.supplier.orders.searchPlaceholder")}
                 />
             </label>
             <BodyCard
                 title={null}
                 child={
                     <div className="w-full flex flex-col gap-6">
-                        <h3>Sifarişlər</h3>
+                        <h3>{t("pages.supplier.orders.table.title")}</h3>
                         <div className="overflow-x-auto">
                             <table className="table text-base">
                                 <thead>
                                     <tr className="text-black text-base">
-                                        <th>Sifariş №</th>
-                                        <th className="hidden md:table-cell">Təchizatçı</th>
-                                        <th className="hidden md:table-cell">Tarix</th>
-                                        <th className="hidden md:table-cell">Çatdırılma</th>
-                                        <th>Məbləğ</th>
-                                        <th className="hidden sm:table-cell">Status</th>
+                                        <th>{t("pages.supplier.orders.table.columns.orderNo")}</th>
+                                        <th className="hidden md:table-cell">{t("pages.supplier.orders.table.columns.supplier")}</th>
+                                        <th className="hidden md:table-cell">{t("pages.supplier.orders.table.columns.date")}</th>
+                                        <th className="hidden md:table-cell">{t("pages.supplier.orders.table.columns.delivery")}</th>
+                                        <th>{t("pages.supplier.orders.table.columns.amount")}</th>
+                                        <th className="hidden sm:table-cell">{t("pages.supplier.orders.table.columns.status")}</th>
                                         <th className="text-right"></th>
                                     </tr>
                                 </thead>

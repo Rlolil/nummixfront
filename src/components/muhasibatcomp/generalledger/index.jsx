@@ -1,12 +1,14 @@
 import { FaChartBar, FaSearch, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const Ledger = () => {
+  const { t } = useTranslation();
   const cards = [
-    { title: "Total Assets", value: "₼1.000.000", icon: <FaArrowUp className="text-green-500" /> },
-    { title: "Total Liabilities", value: "₼265.500", icon: <FaArrowDown className="text-red-500" /> },
-    { title: "Total Equity", value: "₼656.500", icon: <FaChartBar className="text-blue-500" /> },
-    { title: "Total Revenue", value: "₼675.000", icon: <FaArrowUp className="text-green-500" /> },
-    { title: "Total Expenses", value: "₼621.000", icon: <FaArrowDown className="text-red-500" /> },
+    { title: t('pages.accounting.ledger.cards.totalAssets'), value: "₼1.000.000", icon: <FaArrowUp className="text-green-500" /> },
+    { title: t('pages.accounting.ledger.cards.totalLiabilities'), value: "₼265.500", icon: <FaArrowDown className="text-red-500" /> },
+    { title: t('pages.accounting.ledger.cards.totalEquity'), value: "₼656.500", icon: <FaChartBar className="text-blue-500" /> },
+    { title: t('pages.accounting.ledger.cards.totalRevenue'), value: "₼675.000", icon: <FaArrowUp className="text-green-500" /> },
+    { title: t('pages.accounting.ledger.cards.totalExpenses'), value: "₼621.000", icon: <FaArrowDown className="text-red-500" /> },
   ];
 
   const accounts = [
@@ -20,8 +22,8 @@ const Ledger = () => {
     <main className="p-4 sm:p-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl sm:text-3xl font-semibold">General Ledger</h2>
-          <p className="text-gray-500 text-sm sm:text-base">Chart of Accounts - Azerbaijan National Accounting Plan</p>
+          <h2 className="text-2xl sm:text-3xl font-semibold">{t('pages.accounting.tabs.ledger')}</h2>
+          <p className="text-gray-500 text-sm sm:text-base">{t('pages.accounting.ledger.subtitle', { defaultValue: 'Chart of Accounts - Azerbaijan National Accounting Plan' })}</p>
         </div>
       </div>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-6">
@@ -36,12 +38,12 @@ const Ledger = () => {
       </div>
       <div className="border rounded-lg border-gray-300 p-4 sm:p-6 overflow-x-auto">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4">
-          <h4 className="text-base sm:text-lg font-semibold">Chart of Accounts</h4>
+          <h4 className="text-base sm:text-lg font-semibold">{t('pages.accounting.ledger.chartOfAccounts')}</h4>
           <div className="relative w-full sm:w-auto sm:max-w-xs mt-4 sm:mt-0">
             <FaSearch className="absolute left-3 top-3 text-gray-400" />
             <input
               type="text"
-              placeholder="Search by code or name..."
+              placeholder={t('pages.accounting.ledger.searchPlaceholder', { defaultValue: 'Search by code or name...' })}
               className="pl-10 pr-3 py-2 w-full border rounded-md focus:ring focus:ring-blue-200"
             />
           </div>
@@ -50,11 +52,11 @@ const Ledger = () => {
         <table className="w-full text-xs sm:text-sm border-collapse">
           <thead>
             <tr className="border-b bg-gray-50">
-              <th className="text-left p-2">Code</th>
-              <th className="text-left p-2">Account Name</th>
-              <th className="text-left p-2">Type</th>
-              <th className="text-right p-2">Balance</th>
-              <th className="text-left p-2">Currency</th>
+              <th className="text-left p-2">{t('pages.accounting.ledger.table.code')}</th>
+              <th className="text-left p-2">{t('pages.accounting.ledger.table.accountName')}</th>
+              <th className="text-left p-2">{t('pages.accounting.ledger.table.type')}</th>
+              <th className="text-right p-2">{t('pages.accounting.ledger.table.balance')}</th>
+              <th className="text-left p-2">{t('pages.accounting.ledger.table.currency')}</th>
             </tr>
           </thead>
           <tbody>

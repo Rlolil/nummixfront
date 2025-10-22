@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export default function TransactionsTableRow({ item }) {
+    const { t } = useTranslation();
     return (
         <tr>
             <td className="flex items-center gap-2">{item.transactionId}</td>
@@ -10,14 +13,14 @@ export default function TransactionsTableRow({ item }) {
             <td className="hidden sm:table-cell">
                 <span
                     className={`badge font-semibold text-xs ${
-                        item.status === "Gecikmiş"
+                        item.statusCode === "overdue"
                             ? "badge-error"
-                            : item.status === "Gözləyir"
+                            : item.statusCode === "pending"
                             ? "badge-warning"
                             : "badge-success"
                     }`}
                 >
-                    {item.status}
+                    {t(`pages.sales.transactions.status.${item.statusCode ?? "completed"}`)}
                 </span>
             </td>
         </tr>

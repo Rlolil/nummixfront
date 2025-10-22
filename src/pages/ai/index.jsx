@@ -4,20 +4,22 @@ import { FiMessageSquare } from "react-icons/fi";
 import { FaRegBell } from "react-icons/fa";
 import Modal from "../../components/AI/Ai-Assistent/Modal";
 import Notification from "../../components/AI/Ai-Assistent/Notification";
+import { useTranslation } from "react-i18next";
 
 const Ai = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [notification, setNotification] = useState(false);
+  const { t } = useTranslation();
 
   document.body.style.overflow = isOpen || notification ? "hidden" : "auto";
 
   const navItems = [
-    { to: "dashboard", label: "Dashboard" },
-    { to: "maliyyeAi", label: "Maliyyə" },
-    { to: "satis", label: "Satış" },
-    { to: "anbar", label: "Anbar" },
-    { to: "hr", label: "HR" },
-    { to: "vergi", label: "Vergi" },
+    { to: "dashboard", label: t("pages.ai.tabs.dashboard") },
+    { to: "maliyyeAi", label: t("pages.ai.tabs.finance") },
+    { to: "satis", label: t("pages.ai.tabs.sales") },
+    { to: "anbar", label: t("pages.ai.tabs.warehouse") },
+    { to: "hr", label: t("pages.ai.tabs.hr") },
+    { to: "vergi", label: t("pages.ai.tabs.tax") },
   ];
 
   return (
@@ -48,8 +50,8 @@ const Ai = () => {
             </svg>
           </div>
           <div className="flex flex-col leading-tight">
-            <h1 className="text-lg font-semibold">Nummix AI Assistent</h1>
-            <span className="text-sm text-gray-500">Analitika Modulu</span>
+            <h1 className="text-lg font-semibold">{t("pages.ai.title")}</h1>
+            <span className="text-sm text-gray-500">{t("pages.ai.subtitle")}</span>
           </div>
         </div>
 
@@ -65,7 +67,7 @@ const Ai = () => {
             className="bg-gradient-to-r from-indigo-500 to-purple-600 cursor-pointer flex items-center justify-center gap-2 text-white px-4 py-2 rounded-md whitespace-nowrap"
           >
             <FiMessageSquare className="text-lg " />
-            <span className="text-sm ">AI Köməkçi</span>
+            <span className="text-sm ">{t("pages.ai.openAssistant")}</span>
           </button>
         </div>
       </div>

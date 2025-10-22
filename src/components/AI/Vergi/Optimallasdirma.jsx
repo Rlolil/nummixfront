@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const recommendations = [
   {
@@ -25,14 +26,11 @@ const recommendations = [
 ];
 
 const Optimallasdirma = () => {
+  const { t } = useTranslation();
   return (
     <div className="p-4 sm:p-6 bg-gray-50 rounded-xl">
-      <h2 className="text-lg sm:text-xl font-semibold mb-2">
-        Vergi Optimallaşdırma Tövsiyələri
-      </h2>
-      <p className="text-gray-600 mb-4 text-sm sm:text-base">
-        AI tərəfindən müəyyən edilmiş qanuni vergi qənaət yolları
-      </p>
+      <h2 className="text-lg sm:text-xl font-semibold mb-2">{t("pages.ai.taxAi.optimization.title")}</h2>
+      <p className="text-gray-600 mb-4 text-sm sm:text-base">{t("pages.ai.taxAi.optimization.subtitle")}</p>
 
       <div className="space-y-4">
         {recommendations.map((item, index) => (
@@ -52,21 +50,21 @@ const Optimallasdirma = () => {
                       : "bg-yellow-100 text-yellow-700"
                   }`}
                 >
-                  {item.level}
+                  {t(`pages.ai.taxAi.optimization.level.${item.level === "Asan" ? "easy" : "medium"}`)}
                 </span>
               </div>
               <p className="text-gray-700 mb-2 text-sm sm:text-base">
                 {item.description}
               </p>
               <button className="bg-green-600 text-white text-xs sm:text-sm px-4 py-1.5 rounded-md hover:bg-green-700 transition">
-                Ətraflı Məlumat
+                {t("pages.ai.taxAi.optimization.moreInfo")}
               </button>
             </div>
             <div className="text-right sm:text-left">
               <p className="text-green-700 font-semibold text-sm sm:text-base">
                 +₼{item.saving}
               </p>
-              <p className="text-xs sm:text-sm text-gray-500">qənaət</p>
+              <p className="text-xs sm:text-sm text-gray-500">{t("pages.ai.taxAi.optimization.saving")}</p>
             </div>
           </div>
         ))}
@@ -74,9 +72,7 @@ const Optimallasdirma = () => {
 
       <div className="mt-6 bg-blue-50 border border-blue-100 text-sm sm:text-base text-blue-800 p-3 sm:p-4 rounded-md">
         <p>
-          <strong>Qeyd:</strong> Bütün tövsiyələr Azərbaycan Respublikasının
-          vergi qanunvericiliyinə uyğundur. Tətbiq etməzdən əvvəl vergi
-          məsləhətçisi ilə məsləhətləşmək tövsiyə olunur.
+          <strong>{t("pages.ai.taxAi.optimization.noteTitle")}</strong> {t("pages.ai.taxAi.optimization.noteText")}
         </p>
       </div>
     </div>

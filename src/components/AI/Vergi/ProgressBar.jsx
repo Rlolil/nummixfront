@@ -1,22 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ProgressBar = () => {
+    const { t } = useTranslation();
     const data = [
-        {
-            title: "Satış",
-            percent: 92,
-
-        },
-        {
-            title: "Ofis xərcləri",
-            percent: 95,
-            noRed: true,
-        },
-        {
-            title: "Marketing",
-            percent: 88,
-            noRed: true,
-        }
+        { title: t("pages.ai.hrAi.departments.sales"), percent: 92 },
+        { title: t("pages.ai.hrAi.departments.officeExpenses"), percent: 95, noRed: true },
+        { title: t("pages.ai.hrAi.departments.marketing"), percent: 88, noRed: true }
     ];
 
     return (

@@ -7,33 +7,35 @@ import Chart from './Chart';
 import Optimallasdirma from './Optimallasdirma';
 import ProgressBar from './ProgressBar';
 import Yoxlama from './Yoxlama';
+import { useTranslation } from "react-i18next";
 
 const Vergi = () => {
+  const { t } = useTranslation();
   const data = {
     stats: [
       {
-        title: "Aylıq Mənfəət",
+        title: t("pages.ai.dashboard.stats.monthlyProfit"),
         value: "₼45,231",
         change: "+18.5%",
         positive: true,
         icon: <MdAttachMoney className="text-green-500 text-[28px]" />,
       },
       {
-        title: "Satış Həcmi",
+        title: t("pages.ai.dashboard.stats.salesVolume"),
         value: "₼128,456",
         change: "+12.3%",
         positive: true,
         icon: <BsCart3 className="text-blue-500 text-[28px]" />,
       },
       {
-        title: "Anbar Dəyəri",
+        title: t("pages.ai.dashboard.stats.inventoryValue"),
         value: "₼67,890",
         change: "-5.2%",
         positive: false,
         icon: <BsBoxSeam className="text-purple-500 text-[28px]" />,
       },
       {
-        title: "Əmək Haqqı Fondu",
+        title: t("pages.ai.dashboard.stats.payrollFund"),
         value: "₼23,450",
         change: "+8.1%",
         positive: true,
@@ -65,22 +67,20 @@ const Vergi = () => {
       </div>
       <VergiOdenis />
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col">
-        <h3 className="text-gray-700 font-medium mb-2">Vergi Ödənişləri Tarixçəsi</h3>
-        <p className="text-gray-400 text-sm mb-3">Son 6 ayın vergi ödənişləri</p>
+        <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.taxAi.history.title")}</h3>
+        <p className="text-gray-400 text-sm mb-3">{t("pages.ai.taxAi.history.subtitle")}</p>
         <Chart />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col">
-          <h3 className="text-gray-700 font-medium mb-2">Pul Vəsaitlərinin Hərəkəti</h3>
-          <p className="text-gray-400 text-sm mb-3">Son 6 ayın gəlir və xərç dinamkası</p>
+          <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.taxAi.progress.title")}</h3>
+          <p className="text-gray-400 text-sm mb-3">{t("pages.ai.taxAi.progress.subtitle")}</p>
           <ProgressBar />
         </div>
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 ">
-
-          <h3 className="text-gray-700 font-medium mb-2">Pul Vəsaitlərinin Hərəkəti</h3>
-          <p className="text-gray-400 text-sm mb-3">Son 6 ayın gəlir və xərç dinamkası</p>
+          <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.taxAi.tasks.title")}</h3>
+          <p className="text-gray-400 text-sm mb-3">{t("pages.ai.taxAi.tasks.subtitle")}</p>
           <Yoxlama />
-
         </div>
       </div>
       <div className="bg-white border border-gray-300 rounded-xl shadow-sm mt-7 p-3 mb-6">

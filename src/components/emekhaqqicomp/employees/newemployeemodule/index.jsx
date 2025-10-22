@@ -1,6 +1,8 @@
 import { FiX } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
 const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -14,61 +16,61 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
           onClick={onClose}
         >
           <FiX className="w-4 h-4" />
-          <span className="sr-only">Close</span>
+          <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
         </button>
         <div className="flex flex-col gap-2 text-center sm:text-left">
-          <h2 className="text-lg font-semibold">Yeni İşçi Əlavə Et</h2>
+          <h2 className="text-lg font-semibold">{t('pages.hr.employees.modal.title', { defaultValue: 'Add New Employee' })}</h2>
         </div>
         <div className="space-y-4 py-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Ad</label>
+              <label className="text-sm font-medium">{t('pages.hr.employees.modal.firstName', { defaultValue: 'First name' })}</label>
               <input
                 className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Ad daxil edin"
+                placeholder={t('pages.hr.employees.modal.firstNamePlaceholder', { defaultValue: 'Enter first name' })}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Soyad</label>
+              <label className="text-sm font-medium">{t('pages.hr.employees.modal.lastName', { defaultValue: 'Last name' })}</label>
               <input
                 className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Soyad daxil edin"
+                placeholder={t('pages.hr.employees.modal.lastNamePlaceholder', { defaultValue: 'Enter last name' })}
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Vəzifə</label>
+              <label className="text-sm font-medium">{t('pages.hr.employees.modal.position', { defaultValue: 'Position' })}</label>
               <input
                 className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Vəzifə daxil edin"
+                placeholder={t('pages.hr.employees.modal.positionPlaceholder', { defaultValue: 'Enter position' })}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Şöbə</label>
+              <label className="text-sm font-medium">{t('pages.hr.employees.modal.department', { defaultValue: 'Department' })}</label>
               <select className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option>Şöbə seçin</option>
-                <option>Maliyyə</option>
-                <option>IT Şöbəsi</option>
-                <option>Marketinq</option>
-                <option>Satış</option>
-                <option>İnsan Resursları</option>
+                <option>{t('pages.hr.employees.modal.selectDepartment', { defaultValue: 'Select department' })}</option>
+                <option>{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</option>
+                <option>{t('pages.hr.departments.it', { defaultValue: 'IT Department' })}</option>
+                <option>{t('pages.hr.departments.marketing', { defaultValue: 'Marketing' })}</option>
+                <option>{t('pages.hr.departments.sales', { defaultValue: 'Sales' })}</option>
+                <option>{t('pages.hr.departments.hr', { defaultValue: 'Human Resources' })}</option>
               </select>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Əmək haqqı (₼)</label>
+              <label className="text-sm font-medium">{t('pages.hr.employees.modal.salary', { defaultValue: 'Salary (₼)' })}</label>
               <input
                 type="number"
                 className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="2000"
+                placeholder={t('pages.hr.employees.modal.salaryPlaceholder', { defaultValue: '2000' })}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Müqavilə tarixi</label>
+              <label className="text-sm font-medium">{t('pages.hr.employees.modal.contractDate', { defaultValue: 'Contract date' })}</label>
               <input
                 type="date"
                 className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -78,37 +80,35 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Telefon</label>
+              <label className="text-sm font-medium">{t('pages.hr.employees.modal.phone', { defaultValue: 'Phone' })}</label>
               <input
                 className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="+994 50 123 45 67"
+                placeholder={t('pages.hr.employees.modal.phonePlaceholder', { defaultValue: '+994 50 123 45 67' })}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Email</label>
+              <label className="text-sm font-medium">{t('pages.hr.employees.modal.email', { defaultValue: 'Email' })}</label>
               <input
                 type="email"
                 className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="email@company.az"
+                placeholder={t('pages.hr.employees.modal.emailPlaceholder', { defaultValue: 'email@company.az' })}
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">VÖEN</label>
+            <label className="text-sm font-medium">{t('pages.hr.employees.modal.tin', { defaultValue: 'TIN' })}</label>
             <input
               className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="VÖEN nömrəsi"
+              placeholder={t('pages.hr.employees.modal.tinPlaceholder', { defaultValue: 'Tax ID number' })}
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">
-              Şəxsiyyət vəsiqəsi seriya nömrəsi
-            </label>
+            <label className="text-sm font-medium">{t('pages.hr.employees.modal.idSerial', { defaultValue: 'ID serial number' })}</label>
             <input
               className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="AZE1234567"
+              placeholder={t('pages.hr.employees.modal.idSerialPlaceholder', { defaultValue: 'AZE1234567' })}
             />
           </div>
           <div className="flex justify-end gap-2 pt-4">
@@ -116,10 +116,10 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
               className="px-4 py-2 border rounded-md bg-white text-gray-900 hover:bg-gray-100"
               onClick={onClose}
             >
-              Ləğv et
+              {t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}
             </button>
             <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-              Yadda saxla
+              {t('pages.hr.employees.modal.save', { defaultValue: 'Save' })}
             </button>
           </div>
         </div>

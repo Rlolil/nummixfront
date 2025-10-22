@@ -1,23 +1,18 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { useTranslation } from 'react-i18next';
 
 const data = [
-  { name: 'Maaşlar', value: 400 },
-  { name: 'Ofis xərçləri', value: 300 },
-  { name: 'Marketing', value: 300 },
-  { name: 'IT', value: 200 },
+  { key: 'salaries', value: 400, percent: '49%' },
+  { key: 'office', value: 300, percent: '18%' },
+  { key: 'marketing', value: 300, percent: '21%' },
+  { key: 'it', value: 200, percent: '12%' },
 ];
-
-const customLabels = {
-  'Maaşlar': '49%',
-  'Ofis xərçləri': '18%',
-  'Marketing': '21%',
-  'IT': '12%',
-};
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 export default function Chart3() {
+  const { t } = useTranslation();
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart>
@@ -27,7 +22,7 @@ export default function Chart3() {
           cy="50%"
           outerRadius={80}
           labelLine={false} 
-          label={({ name }) => `${name} ${customLabels[name]}`} 
+          label={({ key }) => `${t(`pages.ai.hrAi.categories.${key}`)} ${data.find(d => d.key===key)?.percent ?? ''}`} 
           dataKey="value"
         >
           {data.map((entry, index) => (

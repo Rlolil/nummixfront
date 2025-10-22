@@ -1,13 +1,15 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Maliyye = () => {
+  const { t } = useTranslation();
   const navItems = [
-    { to: "idare-paneli", label: "İdarə Paneli" },
-    { to: "kassa-bank", label: "Kassa və Bank" },
-    { to: "odenisler", label: "Ödənişlər" },
-    { to: "budce-planlamasi", label: "Büdcə Planlaması" },
-    { to: "analitika", label: "Analitika" },
+    { to: "idare-paneli", label: t("pages.finance.tabs.dashboard") },
+    { to: "kassa-bank", label: t("pages.finance.tabs.cashBank") },
+    { to: "odenisler", label: t("pages.finance.tabs.payments") },
+    { to: "budce-planlamasi", label: t("pages.finance.tabs.budgeting") },
+    { to: "analitika", label: t("pages.finance.tabs.analytics") },
   ];
 
   return (

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { MdOutlineDone } from "react-icons/md";
 import { FaBarcode } from "react-icons/fa6";
+import { useTranslation } from 'react-i18next';
 
 const newProduct = () => ({
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
@@ -11,6 +12,7 @@ const newProduct = () => ({
 });
 
 const Anbardn = () => {
+    const { t } = useTranslation();
     const [date, setDate] = useState(() => new Date().toISOString().split('T')[0]);
     const [exitType, setExitType] = useState('');
     const [reference, setReference] = useState('');
@@ -41,13 +43,13 @@ const Anbardn = () => {
             <div className="bg-white rounded-2xl border p-4 sm:p-6 space-y-6">
                 {/* Başlıq */}
                 <div>
-                    <h2 className="text-lg font-semibold">Mal Çıxışı (Delivery Note)</h2>
+                    <h2 className="text-lg font-semibold">{t('pages.warehouse.operations.dn.title')}</h2>
                 </div>
 
                 {/* Əsas məlumatlar */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                     <div>
-                        <label className="block text-sm font-medium mb-1">Tarix</label>
+                        <label className="block text-sm font-medium mb-1">{t('pages.warehouse.operations.common.date')}</label>
                         <input
                             type="date"
                             value={date}
@@ -57,22 +59,22 @@ const Anbardn = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium mb-1">Çıxış növü</label>
+                        <label className="block text-sm font-medium mb-1">{t('pages.warehouse.operations.dn.exitType')}</label>
                         <select
                             value={exitType}
                             onChange={(e) => setExitType(e.target.value)}
                             className="w-full bg-gray-100 rounded px-3 py-2"
                         >
-                            <option hidden>Seçin</option>
-                            <option value="Satış">Satış (Faktura)</option>
-                            <option value="İstehsalata_göndəriş">İstehsalata göndəriş</option>
-                            <option value="geri_qaytarma">Təchizatçıya geri qaytarma</option>
-                            <option value="zay_silinmə">Zay / Silinmə</option>
+                            <option hidden>{t('pages.warehouse.operations.common.select')}</option>
+                            <option value="sale">{t('pages.warehouse.operations.dn.exitTypeOptions.sale')}</option>
+                            <option value="to_production">{t('pages.warehouse.operations.dn.exitTypeOptions.toProduction')}</option>
+                            <option value="return_supplier">{t('pages.warehouse.operations.dn.exitTypeOptions.returnToSupplier')}</option>
+                            <option value="writeoff">{t('pages.warehouse.operations.dn.exitTypeOptions.writeOff')}</option>
                         </select>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium mb-1">İstinad №</label>
+                        <label className="block text-sm font-medium mb-1">{t('pages.warehouse.operations.dn.reference')}</label>
                         <input
 
                             type="text"
@@ -87,13 +89,13 @@ const Anbardn = () => {
                 {/* Məhsullar */}
                 <div>
                     <div className="flex justify-between items-center mb-2">
-                        <span className="font-semibold">Məhsullar</span>
+                        <span className="font-semibold">{t('pages.warehouse.operations.common.products')}</span>
                         <button
                             type="button"
                             onClick={addProduct}
                             className="flex items-center gap-1 px-3 py-1 border rounded bg-white hover:bg-gray-100 text-black"
                         >
-                            <FiPlus /> Məhsul əlavə et
+                            <FiPlus /> {t('pages.warehouse.operations.common.addProduct')}
                         </button>
                     </div>
 
@@ -110,7 +112,7 @@ const Anbardn = () => {
                                         onChange={(e) => handleProductChange(idx, 'sku', e.target.value)}
                                         className="w-full bg-gray-100 rounded px-2 py-1"
                                     >
-                                        <option value="">Seçin</option>
+                                        <option value="">{t('pages.warehouse.operations.common.select')}</option>
                                         <option value="XM-A101">XM-A101 - Xammal A-101</option>
                                         <option value="HM-B205">HM-B205 - Hazır məhsul B-205</option>
                                         <option value="BT-M1250">BT-M1250 - Bolt M12x50</option>
@@ -132,7 +134,7 @@ const Anbardn = () => {
 
                                 {/* Miqdar */}
                                 <div className="flex-none w-full lg:w-36 xl:w-44">
-                                    <label className="block text-sm font-medium mb-1">Miqdar</label>
+                                    <label className="block text-sm font-medium mb-1">{t('pages.warehouse.operations.common.quantity')}</label>
                                     <input
                                         type="number"
                                         value={item.quantity}
@@ -150,7 +152,7 @@ const Anbardn = () => {
                                         type="button"
                                         onClick={() => removeProduct(idx)}
                                         className="ml-2 text-red-500 hover:bg-gray-200 rounded p-1"
-                                        title="Sətiri sil"
+                                        title={t('pages.warehouse.operations.common.removeRow')}
                                     >
                                         <FiMinus />
                                     </button>
@@ -162,11 +164,11 @@ const Anbardn = () => {
 
                 {/* Qeydlər */}
                 <div>
-                    <label className="block text-sm font-medium mb-1">Qeydlər</label>
+                    <label className="block text-sm font-medium mb-1">{t('pages.warehouse.operations.common.notes')}</label>
                     <textarea
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
-                        placeholder="Əlavə qeydlər..."
+                        placeholder={t('pages.warehouse.operations.common.notesPlaceholder')}
                         className="w-full bg-gray-100 rounded px-3 py-2"
                         rows={2}
                     />
@@ -179,10 +181,10 @@ const Anbardn = () => {
                         onClick={resetForm}
                         className="px-4 py-2 rounded bg-gray-100 text-black"
                     >
-                        Ləğv et
+                        {t('common.cancel')}
                     </button>
                     <button className="px-4 py-2 rounded bg-black text-white  flex items-center gap-2">
-                        <MdOutlineDone /> GRN Təsdiqlə
+                        <MdOutlineDone /> {t('pages.warehouse.operations.dn.confirm')}
                     </button>
                 </div>
             </div>

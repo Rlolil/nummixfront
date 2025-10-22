@@ -5,33 +5,35 @@ import { BsBoxSeam, BsCart3 } from "react-icons/bs";
 import Chart1 from './Chart1';
 import ProductCustomer from './ProductCustomer';
 import SatisDovrleri from './SatisDovrleri';
+import { useTranslation } from "react-i18next";
 
 const Satış = () => {
+  const { t } = useTranslation();
   const data = {
     stats: [
       {
-        title: "Aylıq Mənfəət",
+        title: t("pages.ai.dashboard.stats.monthlyProfit"),
         value: "₼45,231",
         change: "+18.5%",
         positive: true,
         icon: <MdAttachMoney className="text-green-500 text-[28px]" />,
       },
       {
-        title: "Satış Həcmi",
+        title: t("pages.ai.dashboard.stats.salesVolume"),
         value: "₼128,456",
         change: "+12.3%",
         positive: true,
         icon: <BsCart3 className="text-blue-500 text-[28px]" />,
       },
       {
-        title: "Anbar Dəyəri",
+        title: t("pages.ai.dashboard.stats.inventoryValue"),
         value: "₼67,890",
         change: "-5.2%",
         positive: false,
         icon: <BsBoxSeam className="text-purple-500 text-[28px]" />,
       },
       {
-        title: "Əmək Haqqı Fondu",
+        title: t("pages.ai.dashboard.stats.payrollFund"),
         value: "₼23,450",
         change: "+8.1%",
         positive: true,
@@ -62,15 +64,12 @@ const Satış = () => {
         ))}
       </div>
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm mt-10 p-4 flex flex-col">
-        <h3 className="text-gray-700 font-medium mb-2">Aylıq Satış Trendi</h3>
-        <p className="text-gray-400 text-sm mb-3">Son 6 ayın satış dinamikası</p>
+        <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.salesAi.salesTrend.title")}</h3>
+        <p className="text-gray-400 text-sm mb-3">{t("pages.ai.salesAi.salesTrend.subtitle")}</p>
 
         <div className="flex-1">
           <div className="bg-green-50 text-sm text-gray-800 p-3 rounded-lg mt-4 mb-4">
-            <strong>AI Analizi:</strong> Növbəti 6 ay ərzində orta aylıq cash flow
-            <strong> 72,667 AZN</strong> proqnozlaşdırılır. Sentyabr ayında maksimum
-            (<strong>75,000 AZN</strong>) gözlənilir. Likvidlik riski aşkar
-            edilmədi.
+            <strong>{t("pages.ai.common.aiAnalysisLabel")}</strong> {t("pages.ai.salesAi.salesTrend.aiText", { avg: "72,667 AZN", max: "75,000 AZN" })}
           </div>
           <Chart1 />
         </div>
