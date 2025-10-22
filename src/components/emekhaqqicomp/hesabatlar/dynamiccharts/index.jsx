@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   LineChart,
   Line,
@@ -20,22 +21,23 @@ const data = [
 ];
 
 export default function MaasFonduDinamikasi() {
+  const { t } = useTranslation();
   return (
     <div className="bg-white text-gray-900 rounded-xl border border-gray-200 p-6 shadow-md">
       <div className="flex justify-between items-center mb-4">
-        <h4 className="text-xl font-semibold">Maaş Fondu Dinamikası</h4>
+        <h4 className="text-xl font-semibold">{t('pages.hr.reports.charts.payrollDynamics.title', { defaultValue: 'Payroll Fund Dynamics' })}</h4>
         <div className="flex space-x-6 text-sm text-gray-600">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-            <span>Brüt</span>
+            <span>{t('pages.hr.reports.charts.payrollDynamics.legend.gross', { defaultValue: 'Gross' })}</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-            <span>Vergilər</span>
+            <span>{t('pages.hr.reports.charts.payrollDynamics.legend.taxes', { defaultValue: 'Taxes' })}</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span>Net</span>
+            <span>{t('pages.hr.reports.charts.payrollDynamics.legend.net', { defaultValue: 'Net' })}</span>
           </div>
         </div>
       </div>
@@ -55,7 +57,7 @@ export default function MaasFonduDinamikasi() {
               strokeWidth={2}
               dot={{ r: 3, strokeWidth: 2, fill: '#fff' }}
               activeDot={{ r: 5 }}
-              name="Brüt maaş"
+              name={t('pages.hr.reports.charts.payrollDynamics.legend.gross', { defaultValue: 'Gross' })}
             />
             <Line
               type="monotone"
@@ -64,7 +66,7 @@ export default function MaasFonduDinamikasi() {
               strokeWidth={2}
               dot={{ r: 3, strokeWidth: 2, fill: '#fff' }}
               activeDot={{ r: 5 }}
-              name="Vergilər"
+              name={t('pages.hr.reports.charts.payrollDynamics.legend.taxes', { defaultValue: 'Taxes' })}
             />
             <Line
               type="monotone"
@@ -73,7 +75,7 @@ export default function MaasFonduDinamikasi() {
               strokeWidth={2}
               dot={{ r: 3, strokeWidth: 2, fill: '#fff' }}
               activeDot={{ r: 5 }}
-              name="Net maaş"
+              name={t('pages.hr.reports.charts.payrollDynamics.legend.net', { defaultValue: 'Net' })}
             />
           </LineChart>
         </ResponsiveContainer>

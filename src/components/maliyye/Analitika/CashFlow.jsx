@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import {
   LineChart,
   Line,
@@ -10,20 +11,21 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-const data = [
-  { name: "İyn", Faktiki: 68000, Proqnoz: null },
-  { name: "İyl", Faktiki: null, Proqnoz: 73000 },
-  { name: "Avq", Faktiki: null, Proqnoz: 69000 },
-  { name: "Sen", Faktiki: null, Proqnoz: 76000 },
-  { name: "Okt", Faktiki: null, Proqnoz: 72000 },
-  { name: "Noy", Faktiki: null, Proqnoz: 80000 },
-];
-
 const CashFlow = () => {
+  const { t } = useTranslation()
+
+  const data = [
+    { name: t('pages.finance.common.months.jun', 'Jun'), actual: 68000, forecast: null },
+    { name: t('pages.finance.common.months.jul', 'Jul'), actual: null, forecast: 73000 },
+    { name: t('pages.finance.common.months.aug', 'Aug'), actual: null, forecast: 69000 },
+    { name: t('pages.finance.common.months.sep', 'Sep'), actual: null, forecast: 76000 },
+    { name: t('pages.finance.common.months.oct', 'Oct'), actual: null, forecast: 72000 },
+    { name: t('pages.finance.common.months.nov', 'Nov'), actual: null, forecast: 80000 },
+  ];
   return (
     <div className="p-4 bg-white rounded-xl shadow-md">
-      <h2 className="text-lg font-bold mb-1">Pul Axını Proqnozu</h2>
-      <p className="text-gray-500 mb-4">AI əsaslı 6 aylıq proqnoz</p>
+      <h2 className="text-lg font-bold mb-1">{t('pages.finance.analytics.cashFlow.title')}</h2>
+      <p className="text-gray-500 mb-4">{t('pages.finance.analytics.cashFlow.subtitle')}</p>
 
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>
@@ -34,7 +36,8 @@ const CashFlow = () => {
           <Legend />
           <Line
             type="monotone"
-            dataKey="Faktiki"
+            dataKey="actual"
+            name={t('pages.finance.analytics.cashFlow.legend.actual', 'Actual')}
             stroke="#2563eb"
             strokeWidth={3}
             dot={{ r: 5 }}
@@ -42,7 +45,8 @@ const CashFlow = () => {
           />
           <Line
             type="monotone"
-            dataKey="Proqnoz"
+            dataKey="forecast"
+            name={t('pages.finance.analytics.cashFlow.legend.forecast', 'Forecast')}
             stroke="#10b981"
             strokeWidth={3}
             dot={{ r: 5 }}
@@ -52,10 +56,7 @@ const CashFlow = () => {
       </ResponsiveContainer>
 
       <div className="bg-blue-50 text-sm text-gray-800 p-3 rounded-lg mt-4">
-        <strong>AI Analizi:</strong> Növbəti 6 ay ərzində orta aylıq cash flow
-        <strong> 72,667 AZN</strong> proqnozlaşdırılır. Sentyabr ayında maksimum
-        (<strong>75,000 AZN</strong>) gözlənilir. Likvidlik riski aşkar
-        edilmədi.
+        <strong>{t('pages.finance.analytics.cashFlow.ai.title')}</strong> {t('pages.finance.analytics.cashFlow.ai.text', { avg: '72,667 AZN', max: '75,000 AZN' })}
       </div>
     </div>
   );

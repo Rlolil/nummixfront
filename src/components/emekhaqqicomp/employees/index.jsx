@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   FiPlus,
   FiSearch,
@@ -11,15 +12,16 @@ import {
 import AddEmployeeDialog from "./newemployeemodule";
 
 const Employees = () => {
+  const { t } = useTranslation();
   const employees = [
     {
       id: "EMP001",
       name: "Nigar Əliyeva",
       position: "Baş Mühasib",
       email: "nigar.aliyeva@company.az",
-      department: "Maliyyə",
+      departmentKey: "finance",
       salary: "₼2.500",
-      status: "Aktiv",
+      statusKey: "active",
       statusColor: "green",
     },
     {
@@ -27,9 +29,9 @@ const Employees = () => {
       name: "Kamran Məmmədov",
       position: "IT Meneceri",
       email: "kamran.mammadov@company.az",
-      department: "IT Şöbəsi",
+      departmentKey: "it",
       salary: "₼3.200",
-      status: "Aktiv",
+      statusKey: "active",
       statusColor: "green",
     },
     {
@@ -37,9 +39,9 @@ const Employees = () => {
       name: "Səbinə Həsənova",
       position: "Marketinq Direktoru",
       email: "sabina.hasanova@company.az",
-      department: "Marketinq",
+      departmentKey: "marketing",
       salary: "₼2.800",
-      status: "Aktiv",
+      statusKey: "active",
       statusColor: "green",
     },
     {
@@ -47,9 +49,9 @@ const Employees = () => {
       name: "Elvin Quliyev",
       position: "Satış Meneceri",
       email: "elvin.quliyev@company.az",
-      department: "Satış",
+      departmentKey: "sales",
       salary: "₼1.800",
-      status: "Aktiv",
+      statusKey: "active",
       statusColor: "green",
     },
     {
@@ -57,9 +59,9 @@ const Employees = () => {
       name: "Ləman Rəhimova",
       position: "HR Mütəxəssisi",
       email: "leman.rahimova@company.az",
-      department: "İnsan Resursları",
+      departmentKey: "hr",
       salary: "₼1.600",
-      status: "Məzuniyyətdə",
+      statusKey: "onLeave",
       statusColor: "orange",
     },
     {
@@ -67,9 +69,9 @@ const Employees = () => {
       name: "Tural Əhmədov",
       position: "Proqramçı",
       email: "tural.ahmadov@company.az",
-      department: "IT Şöbəsi",
+      departmentKey: "it",
       salary: "₼2.200",
-      status: "Aktiv",
+      statusKey: "active",
       statusColor: "green",
     },
   ];
@@ -84,15 +86,15 @@ const Employees = () => {
     <div className="flex-1 overflow-auto p-6 space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">İşçilər</h2>
-          <p className="text-gray-500">Bütün işçilərin idarə olunması</p>
+          <h2 className="text-xl font-bold text-gray-900">{t('pages.hr.employees.title', { defaultValue: 'Employees' })}</h2>
+          <p className="text-gray-500">{t('pages.hr.employees.subtitle', { defaultValue: 'Manage all employees' })}</p>
         </div>
         <button
           onClick={() => setIsDialogOpen(true)}
           className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
         >
           <FiPlus className="w-4 h-4" />
-          Yeni İşçi
+          {t('pages.hr.employees.new', { defaultValue: 'New Employee' })}
         </button>
         {isDialogOpen && (
           <AddEmployeeDialog
@@ -107,21 +109,21 @@ const Employees = () => {
             <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               className="w-full pl-10 pr-3 py-2 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="İşçi axtar (ad, vəzifə, ID)"
+              placeholder={t('pages.hr.employees.searchPlaceholder', { defaultValue: 'Search employee (name, position, ID)' })}
             />
           </div>
           <select className="flex items-center justify-between gap-2 px-3 py-2 border rounded-md bg-white text-sm w-full sm:w-48">
-            <option>Filter</option>
-            <option>Bütün şöbələr</option>
-            <option>Maliyyə</option>
-            <option>IT Şöbəsi</option>
-            <option>Marketinq</option>
-            <option>Satış</option>
-            <option>İnsan Resursları</option>
+            <option>{t('pages.hr.employees.filters.label', { defaultValue: 'Filter' })}</option>
+            <option>{t('pages.hr.employees.filters.allDepartments', { defaultValue: 'All departments' })}</option>
+            <option>{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</option>
+            <option>{t('pages.hr.departments.it', { defaultValue: 'IT Department' })}</option>
+            <option>{t('pages.hr.departments.marketing', { defaultValue: 'Marketing' })}</option>
+            <option>{t('pages.hr.departments.sales', { defaultValue: 'Sales' })}</option>
+            <option>{t('pages.hr.departments.hr', { defaultValue: 'Human Resources' })}</option>
           </select>
           <button className="flex items-center gap-2 px-3 py-2 border rounded-md bg-white text-sm hover:bg-gray-100">
             <FiDownload className="w-4 h-4" />
-            <span className="hidden sm:inline">İxrac</span>
+            <span className="hidden sm:inline">{t('common.export', { ns: 'translation', defaultValue: 'Export' })}</span>
           </button>
         </div>
       </div>
@@ -130,22 +132,22 @@ const Employees = () => {
           <thead className="bg-gray-50 border-b">
             <tr>
               <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
-                İşçi
+                {t('pages.hr.employees.table.employee', { defaultValue: 'Employee' })}
               </th>
               <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
-                Vəzifə
+                {t('pages.hr.employees.table.position', { defaultValue: 'Position' })}
               </th>
               <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
-                Şöbə
+                {t('pages.hr.employees.table.department', { defaultValue: 'Department' })}
               </th>
               <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
-                Maaş
+                {t('pages.hr.employees.table.salary', { defaultValue: 'Salary' })}
               </th>
               <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
-                Status
+                {t('pages.hr.employees.table.status', { defaultValue: 'Status' })}
               </th>
               <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
-                Əməliyyatlar
+                {t('pages.hr.employees.table.actions', { defaultValue: 'Actions' })}
               </th>
             </tr>
           </thead>
@@ -168,7 +170,7 @@ const Employees = () => {
                   <div className="text-sm text-gray-500">{employee.email}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                  {employee.department}
+                  {t(`pages.hr.departments.${employee.departmentKey}`, { defaultValue: employee.departmentKey })}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-gray-900">
                   {employee.salary}
@@ -181,7 +183,7 @@ const Employees = () => {
                         : "bg-orange-100 text-orange-700"
                     }`}
                   >
-                    {employee.status}
+                    {t(`pages.hr.employees.status.${employee.statusKey}`, { defaultValue: employee.statusKey })}
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -203,7 +205,7 @@ const Employees = () => {
         </table>
       </div>
       <div className="text-sm text-gray-500">
-        Göstərilir: {employees.length} nəticə (Ümumi: {employees.length} işçi)
+        {t('pages.hr.employees.footer.showing', { count: employees.length, total: employees.length, defaultValue: 'Showing: {{count}} results (Total: {{total}} employees)' })}
       </div>
     </div>
   );

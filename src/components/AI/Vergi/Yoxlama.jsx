@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckCircle, AlertCircle, Calendar } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const tasks = [
   {
@@ -33,6 +34,7 @@ const tasks = [
 ];
 
 const Yoxlama = () => {
+  const { t } = useTranslation();
   return (
     <div>
 
@@ -50,10 +52,12 @@ const Yoxlama = () => {
               </div>
             </div>
 
-            <span
-              className={`px-3 py-1 rounded-lg text-sm font-medium ${task.badgeColor}`}
-            >
-              {task.status}
+            <span className={`px-3 py-1 rounded-lg text-sm font-medium ${task.badgeColor}`}>
+              {task.status === "Tamamlandı"
+                ? t("pages.ai.taxAi.tasks.status.completed")
+                : task.status === "Gözləyir"
+                ? t("pages.ai.taxAi.tasks.status.pending")
+                : t("pages.ai.taxAi.tasks.status.delayed")}
             </span>
           </div>
         ))}

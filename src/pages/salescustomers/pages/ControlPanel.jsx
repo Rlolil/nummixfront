@@ -54,6 +54,7 @@ const data = [
 import { Cell, Pie, PieChart } from "recharts";
 import HeadCard from "../components/HeadCard";
 import BodyCard from "../components/BodyCard";
+import { useTranslation } from "react-i18next";
 
 const dataPie = [
     { name: "Group A", value: 400 },
@@ -78,46 +79,47 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 };
 
 export default function ControlPanel() {
+    const { t } = useTranslation();
     return (
         <div className="w-full flex flex-col gap-6">
             <div>
-                <h2 className="text-2xl font-semibold">İdarə Paneli</h2>
-                <p className="text-zinc-600">Satış və müştəri məlumatlarına ümumi baxış</p>
+                <h2 className="text-2xl font-semibold">{t('pages.sales.controlPanel.title')}</h2>
+                <p className="text-zinc-600">{t('pages.sales.controlPanel.subtitle')}</p>
             </div>
             <div className="flex flex-col gap-6">
                 <div className="w-full col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <HeadCard
-                        title="Aylıq Satış"
+                        title={t('pages.sales.controlPanel.cards.monthlySales.title')}
                         amount={<div className="text-2xl">₼ 67,000</div>}
                         greenText="+12.5%"
-                        description="əvvəlki aya nisbətən"
+                        description={t('pages.sales.controlPanel.cards.monthlySales.desc')}
                         icon={<FiDollarSign />}
                     />
                     <HeadCard
-                        title="Aktiv Müştərilər"
+                        title={t('pages.sales.controlPanel.cards.activeCustomers.title')}
                         amount={<div className="text-2xl">248</div>}
                         greenText="+23"
-                        description="yeni müştəri"
+                        description={t('pages.sales.controlPanel.cards.activeCustomers.desc')}
                         icon={<MdPeopleOutline />}
                     />
                     <HeadCard
-                        title="Satış Sayı"
+                        title={t('pages.sales.controlPanel.cards.salesCount.title')}
                         amount={<div className="text-2xl">1,250</div>}
                         greenText={null}
-                        description="Bu ay"
+                        description={t('pages.sales.controlPanel.cards.salesCount.desc')}
                         icon={<IoCartOutline />}
                     />
                     <HeadCard
-                        title="Mənfəət"
+                        title={t('pages.sales.controlPanel.cards.profit.title')}
                         amount={<div className="text-2xl">₼ 21,000</div>}
                         greenText={null}
-                        description="Brüt mənfəət"
+                        description={t('pages.sales.controlPanel.cards.profit.desc')}
                         icon={<AiOutlineRise />}
                     />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <BodyCard
-                        title={<div>Satış Dinamikası</div>}
+                        title={<div>{t('pages.sales.controlPanel.charts.salesDynamics')}</div>}
                         child={
                             <ResponsiveContainer className="min-h-80" width="100%" height="100%">
                                 <LineChart
@@ -149,7 +151,7 @@ export default function ControlPanel() {
                         }
                     />
                     <BodyCard
-                        title={<div>Məhsul Paylanması</div>}
+                        title={<div>{t('pages.sales.controlPanel.charts.productDistribution')}</div>}
                         child={
                             <ResponsiveContainer className="min-h-80" width="100%" height="100%">
                                 <PieChart width={400} height={400}>
@@ -176,7 +178,7 @@ export default function ControlPanel() {
                         }
                     />
                     <BodyCard
-                        title={<div>Məhsul Paylanması</div>}
+                        title={<div>{t('pages.sales.controlPanel.topCustomers.title')}</div>}
                         child={
                             <div className="flex flex-col gap-3">
                                 <div className="flex justify-between items-center bg-zinc-100 p-3 rounded-lg">
@@ -184,28 +186,28 @@ export default function ControlPanel() {
                                         <h3 className="font-semibold">ABC Şirkəti</h3>
                                         <p className="text-sm text-zinc-700">₼45,000</p>
                                     </div>
-                                    <span className="font-semibold text-xs badge badge-success">Aktiv</span>
+                                    <span className="font-semibold text-xs badge badge-success">{t('pages.sales.common.status.active')}</span>
                                 </div>
                                 <div className="flex justify-between items-center bg-zinc-100 p-3 rounded-lg">
                                     <div className="flex flex-col">
                                         <h3 className="font-semibold">ABC Şirkəti</h3>
                                         <p className="text-sm text-zinc-700">₼45,000</p>
                                     </div>
-                                    <span className="font-semibold text-xs badge badge-success">Aktiv</span>
+                                    <span className="font-semibold text-xs badge badge-success">{t('pages.sales.common.status.active')}</span>
                                 </div>
                                 <div className="flex justify-between items-center bg-zinc-100 p-3 rounded-lg">
                                     <div className="flex flex-col">
                                         <h3 className="font-semibold">ABC Şirkəti</h3>
                                         <p className="text-sm text-zinc-700">₼45,000</p>
                                     </div>
-                                    <span className="font-semibold text-xs badge badge-error">Gecikmiş</span>
+                                    <span className="font-semibold text-xs badge badge-error">{t('pages.sales.common.status.overdue')}</span>
                                 </div>
                                 <div className="flex justify-between items-center bg-zinc-100 p-3 rounded-lg">
                                     <div className="flex flex-col">
                                         <h3 className="font-semibold">ABC Şirkəti</h3>
                                         <p className="text-sm text-zinc-700">₼45,000</p>
                                     </div>
-                                    <span className="font-semibold text-xs badge badge-success">Aktiv</span>
+                                    <span className="font-semibold text-xs badge badge-success">{t('pages.sales.common.status.active')}</span>
                                 </div>
                             </div>
                         }
@@ -214,7 +216,7 @@ export default function ControlPanel() {
                         title={
                             <div className="flex gap-2 items-center">
                                 <RiErrorWarningLine className="text-red-500 size-5" />
-                                <p>Gecikmiş Ödənişlər</p>
+                                <p>{t('pages.sales.controlPanel.overduePayments')}</p>
                             </div>
                         }
                         child={
@@ -222,14 +224,14 @@ export default function ControlPanel() {
                                 <div className="flex justify-between items-center outline-red-200 outline-2 bg-red-50 p-3 rounded-lg">
                                     <div className="flex flex-col">
                                         <h3 className="font-semibold">DEF Holding</h3>
-                                        <p className="text-sm text-zinc-700">15 gün gecikib</p>
+                                        <p className="text-sm text-zinc-700">{t('pages.sales.common.overdueDays', { days: 15 })}</p>
                                     </div>
                                     <p className="text-red-500">₼5,400</p>
                                 </div>
                                 <div className="flex justify-between items-center outline-red-200 outline-2 bg-red-50 p-3 rounded-lg">
                                     <div className="flex flex-col">
                                         <h3 className="font-semibold">DEF Holding</h3>
-                                        <p className="text-sm text-zinc-700">15 gün gecikib</p>
+                                        <p className="text-sm text-zinc-700">{t('pages.sales.common.overdueDays', { days: 15 })}</p>
                                     </div>
                                     <p className="text-red-500">₼5,400</p>
                                 </div>

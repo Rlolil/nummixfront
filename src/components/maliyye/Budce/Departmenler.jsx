@@ -1,36 +1,38 @@
 import React from "react";
+import { useTranslation } from 'react-i18next'
 
 const Departmenler = () => {
+  const { t } = useTranslation()
   const data = [
     {
-      title: "Satış və Marketing",
+      title: t('pages.finance.budgeting.departments.salesMarketing', 'Satış və Marketing'),
       total: 32000,
       budget: 35000,
       items: [
-        { name: "Reklam", spent: 14200, budget: 15000 },
-        { name: "Promosyon", spent: 7500, budget: 8000 },
-        { name: "Tədbirlər", spent: 10300, budget: 12000 },
+        { name: t('pages.finance.budgeting.departments.items.advertising', 'Reklam'), spent: 14200, budget: 15000 },
+        { name: t('pages.finance.budgeting.departments.items.promotion', 'Promosyon'), spent: 7500, budget: 8000 },
+        { name: t('pages.finance.budgeting.departments.items.events', 'Tədbirlər'), spent: 10300, budget: 12000 },
       ],
     },
     {
-      title: "İT və Texnologiya",
+      title: t('pages.finance.budgeting.departments.itTech', 'İT və Texnologiya'),
       total: 16500,
       budget: 18000,
       items: [
-        { name: "Proqram təminatı", spent: 7200, budget: 8000 },
-        { name: "Avadanlıq", spent: 6800, budget: 7000 },
-        { name: "Cloud xidmətlər", spent: 2500, budget: 3000 },
+        { name: t('pages.finance.budgeting.departments.items.software', 'Proqram təminatı'), spent: 7200, budget: 8000 },
+        { name: t('pages.finance.budgeting.departments.items.hardware', 'Avadanlıq'), spent: 6800, budget: 7000 },
+        { name: t('pages.finance.budgeting.departments.items.cloud', 'Cloud xidmətlər'), spent: 2500, budget: 3000 },
       ],
     },
     {
-      title: "Əməliyyatlar",
+      title: t('pages.finance.budgeting.departments.operations', 'Əməliyyatlar'),
       total: 21700,
       budget: 20000,
       items: [
-        { name: "Ofis xərcləri", spent: 9200, budget: 8000 },
-        { name: "Kommunal xidmətlər", spent: 5100, budget: 5000 },
-        { name: "Təmizlik", spent: 1900, budget: 2000 },
-        { name: "Təmir", spent: 5500, budget: 5000 },
+        { name: t('pages.finance.budgeting.departments.items.office', 'Ofis xərcləri'), spent: 9200, budget: 8000 },
+        { name: t('pages.finance.budgeting.departments.items.utilities', 'Kommunal xidmətlər'), spent: 5100, budget: 5000 },
+        { name: t('pages.finance.budgeting.departments.items.cleaning', 'Təmizlik'), spent: 1900, budget: 2000 },
+        { name: t('pages.finance.budgeting.departments.items.repair', 'Təmir'), spent: 5500, budget: 5000 },
       ],
     },
   ];
@@ -56,7 +58,7 @@ const Departmenler = () => {
                 </p>
                 {depPercent > 100 && (
                   <span className="bg-red-600 text-white text-xs font-medium px-2 py-[2px] rounded-md whitespace-nowrap">
-                    Artıq xərc
+                    {t('pages.finance.budgeting.labels.overBudget')}
                   </span>
                 )}
               </div>

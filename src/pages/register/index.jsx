@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { verify, register as registerUser, register, resendOtp } from "../../services"; // register fonksiyonunu import et
+import { useTranslation } from "react-i18next";
 
 function Toaster({ toasts, removeToast }) {
   return (
@@ -32,6 +33,7 @@ function Toaster({ toasts, removeToast }) {
 }
 
 function Register() {
+  const { t } = useTranslation();
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
@@ -64,10 +66,10 @@ function Register() {
       
       console.log("Registration initiated:", setUserId(data._id));
       setStep("verify");
-      addToast("info", "6 haneli doğrulama kodu e-posta adresinize gönderildi.");
+  addToast("info", t("auth.register.codeSent"));
     } catch (err) {
       console.error(err);
-      addToast("error", "Kayıt sırasında bir hata oluştu.");
+  addToast("error", t("auth.register.error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -97,7 +99,7 @@ function Register() {
   const handleVerify = async (e) => {
     e.preventDefault();
     if (otp.length !== 6) {
-      addToast("error", "Lütfen 6 haneli kodu girin.");
+  addToast("error", t("auth.verify.enterCode"));
       return;
     }
 
@@ -105,14 +107,14 @@ function Register() {
     try {
       const isValid = await verify({ userId, otp });
       if (isValid) {
-        addToast("success", "Doğrulama başarılı! Giriş sayfasına yönlendiriliyorsunuz.");
+  addToast("success", t("auth.verify.successRedirect"));
         setTimeout(() => navigate("/login"), 700);
       } else {
-        addToast("error", "Kod yanlış. Lütfen tekrar deneyin.");
+  addToast("error", t("auth.verify.invalid"));
       }
     } catch (err) {
       console.error(err);
-      addToast("error", "Doğrulama sırasında bir hata oluştu.");
+  addToast("error", t("auth.verify.error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -123,11 +125,11 @@ function Register() {
       <Toaster toasts={toasts} removeToast={removeToast} />
       <div className="rounded-2xl shadow-2xl border border-gray-200 p-10 max-w-md w-full space-y-6 bg-white">
         <div className="text-center">
-          <h2 className="text-black font-bold text-2xl">Join Nummix ERP</h2>
+          <h2 className="text-black font-bold text-2xl">{t("auth.register.title")}</h2>
           <p className="text-gray-600 mt-1">
             {step === "form"
-              ? "Create your financial management account"
-              : "Enter the 6-digit verification code sent to your email"}
+              ? t("auth.register.subtitle")
+              : t("auth.verify.subtitle")}
           </p>
         </div>
 
@@ -135,13 +137,13 @@ function Register() {
           <form onSubmit={handleSubmit} className="space-y-6 mt-4">
             {/* Full Name */}
             <div>
-              <label className="text-sm font-medium text-gray-700">Full Name</label>
+              <label className="text-sm font-medium text-gray-700">{t("common.fullName")}</label>
               <input
                 required
                 type="text"
                 name="fullname"
                 className="mt-1 block w-full h-10 rounded-md border border-gray-300 px-3 py-2 text-sm"
-                placeholder="John Doe"
+                placeholder={t("placeholders.fullName")}
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 disabled={isSubmitting}
@@ -149,13 +151,13 @@ function Register() {
             </div>
             {/* Company Name */}
             <div>
-              <label className="text-sm font-medium text-gray-700">Company Name</label>
+              <label className="text-sm font-medium text-gray-700">{t("common.companyName")}</label>
               <input
                 required
                 type="text"
                 name="company"
                 className="mt-1 block w-full h-10 rounded-md border border-gray-300 px-3 py-2 text-sm"
-                placeholder="Enter Company Name"
+                placeholder={t("placeholders.companyName")}
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
                 disabled={isSubmitting}
@@ -163,13 +165,13 @@ function Register() {
             </div>
             {/* Email */}
             <div>
-              <label className="text-sm font-medium text-gray-700">Email</label>
+              <label className="text-sm font-medium text-gray-700">{t("common.email")}</label>
               <input
                 required
                 type="email"
                 name="email"
                 className="mt-1 block w-full h-10 rounded-md border border-gray-300 px-3 py-2 text-sm"
-                placeholder="Enter your email"
+                placeholder={t("placeholders.email")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isSubmitting}
@@ -177,13 +179,13 @@ function Register() {
             </div>
             {/* Password */}
             <div>
-              <label className="text-sm font-medium text-gray-700">Password</label>
+              <label className="text-sm font-medium text-gray-700">{t("common.password")}</label>
               <input
                 required
                 type="password"
                 name="password"
                 className="mt-1 block w-full h-10 rounded-md border border-gray-300 px-3 py-2 text-sm"
-                placeholder="Enter your password"
+                placeholder={t("placeholders.password")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={isSubmitting}
@@ -195,7 +197,7 @@ function Register() {
                 className="w-full bg-black text-white p-3 rounded-lg font-medium hover:bg-gray-800 transition disabled:bg-gray-400"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Creating Account..." : "Create Account"}
+                {isSubmitting ? t("auth.register.submitting") : t("auth.register.submit")}
               </button>
             </div>
           </form>
@@ -226,22 +228,22 @@ function Register() {
                 className="flex-1 bg-black text-white p-3 rounded-lg font-medium hover:bg-gray-800 transition disabled:bg-gray-400"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Verifying..." : "Verify Code"}
+                {isSubmitting ? t("auth.verify.submitting") : t("auth.verify.submit")}
               </button>
               <button
                 type="button"
                 onClick={async () => {
                   try {
                     await resendOtp({ userId });
-                    addToast("success", "A new verification code has been sent to your email.");
+                    addToast("success", t("auth.verify.resent"));
                   } catch (err) {
-                    addToast("error", "Failed to resend verification code.");
+                    addToast("error", t("auth.verify.resendFailed"));
                   }
                 }}
                 className="px-4 py-3 border rounded-lg text-sm"
                 disabled={isSubmitting}
               >
-                Resend
+                {t("auth.verify.resend")}
               </button>
             </div>
           </form>
@@ -249,9 +251,9 @@ function Register() {
 
         <div>
           <p className="text-center text-gray-400">
-            You have an account?{" "}
+            {t("auth.common.haveAccount")} {" "}
             <Link to="/login" className="text-black font-medium">
-              Sign in
+              {t("auth.common.signIn")}
             </Link>
           </p>
         </div>

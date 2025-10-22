@@ -1,16 +1,18 @@
 import React from "react";
+import { useTranslation } from 'react-i18next'
 
 const Categories = () => {
+    const { t } = useTranslation()
     const data = [
         {
-            title: "Maaşlar",
+            title: t('pages.finance.common.categories.salary'),
             used: 24500,
             planned: 25000,
             percent: 98,
             qaliq: 500
         },
         {
-            title: "Ofis xərcləri",
+            title: t('pages.finance.budgeting.categories.officeExpenses', 'Ofis xərcləri'),
             used: 9200,
             planned: 8000,
             percent: 115,
@@ -18,30 +20,30 @@ const Categories = () => {
             noRed: false,
         },
         {
-            title: "Marketing",
+            title: t('pages.finance.common.categories.marketing'),
             used: 10500,
             planned: 12000,
             percent: 87.5,
-            qenaet: "Qənaət",
+            qenaet: t('pages.finance.budgeting.labels.saving'),
             qaliq: 1500
         },
         {
-            title: "IT ve Texnologiya",
+            title: t('pages.finance.budgeting.categories.itAndTech', 'IT və Texnologiya'),
             used: 5800,
             planned: 6000,
             percent: 96.7,
             qaliq: 200
         },
         {
-            title: "Satinalma",
+            title: t('pages.finance.budgeting.categories.procurement', 'Satınalma'),
             used: 14200,
             planned: 15000,
             percent: 94.7,
-            qenaet: "Qənaət",
+            qenaet: t('pages.finance.budgeting.labels.saving'),
             qaliq: 800
         },
         {
-            title: "Logistika",
+            title: t('pages.finance.budgeting.categories.logistics', 'Logistika'),
             used: 4100,
             planned: 4000,
             percent: 102.5,
@@ -49,23 +51,19 @@ const Categories = () => {
             noRed: false,
         },
         {
-            title: "Diger Xercler",
+            title: t('pages.finance.budgeting.categories.otherExpenses', 'Digər xərclər'),
             used: 2700,
             planned: 3000,
             percent: 90,
-            qenaet: "Qənaət",
+            qenaet: t('pages.finance.budgeting.labels.saving'),
             qaliq: 300
         },
     ];
 
     return (
         <div className="bg-white p-6 rounded-xl shadow border border-gray-200 mt-7 mx-auto">
-            <h2 className="text-lg font-semibold text-gray-800 mb-1">
-                Kateqoriyalar üzrə Büdcə
-            </h2>
-            <p className="text-gray-500 mb-6">
-                Cari ayın kateqoriya bazında xərc analizi
-            </p>
+            <h2 className="text-lg font-semibold text-gray-800 mb-1">{t('pages.finance.budgeting.categoriesTitle')}</h2>
+            <p className="text-gray-500 mb-6">{t('pages.finance.budgeting.categoriesSubtitle')}</p>
 
             {data.map((item, index) => (
                 <div key={index} className="mb-6">
@@ -107,11 +105,11 @@ const Categories = () => {
 
                     <div className="flex justify-between items-center" >
                         <div className="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                            {item.percent}% istifadə edilib
+                            {item.percent}% {t('pages.finance.budgeting.labels.used')}
                         </div>
                         {item.qaliq && (
                             <span className=" text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full">
-                                {item.qaliq} AZN qalıb
+                                {item.qaliq} AZN {t('pages.finance.budgeting.labels.remaining')}
                             </span>
                         )}
                     </div>

@@ -1,8 +1,10 @@
 
 import { NavLink } from 'react-router-dom';
 import { FiFileText, FiBarChart2 } from "react-icons/fi";
+import { useTranslation } from 'react-i18next';
 
-export default function Inventarnav({ active = 'grn', onSelect }) {
+export default function Inventarnav() {
+    const { t } = useTranslation();
 
 
     const getLinkClass = ({ isActive }) =>
@@ -13,16 +15,16 @@ export default function Inventarnav({ active = 'grn', onSelect }) {
     return (
         <div className=" flex flex-col   md:items-start md:justify-start gap-10    mb-6 px-4 md:px-0">
             <div>
-                <h1 className="text-2xl font-bold text-gray-800">Anbar Əməliyyatları</h1>
-                <p className="text-gray-500 text-sm">Giriş, çıxış və yerdəyişmə əməliyyatları</p>
+                <h1 className="text-2xl font-bold text-gray-800">{t('pages.warehouse.inventory.title')}</h1>
+                <p className="text-gray-500 text-sm">{t('pages.warehouse.inventory.subtitle')}</p>
             </div>
             <div className=" flex flex-wrap w-fit items-center bg-gray-200 rounded-full gap-4 p-2">
                 <NavLink to="/anbar/inventory/currentbalances" className={getLinkClass}>
-                    <FiBarChart2 className="inline-block mr-1" />   Cari Qalıqlar
+                    <FiBarChart2 className="inline-block mr-1" />   {t('pages.warehouse.inventory.nav.currentBalances')}
 
                 </NavLink>
                 <NavLink to="/anbar/inventory/inventorycount" className={getLinkClass}>
-                    <FiFileText className="inline-block mr-1" />İnventar Sayımı
+                    <FiFileText className="inline-block mr-1" />{t('pages.warehouse.inventory.nav.inventoryCount')}
                 </NavLink>
 
 

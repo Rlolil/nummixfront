@@ -4,8 +4,10 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import Info from "./ShowMore/Info";
 import SalesHistory from "./ShowMore/SalesHistory";
 import Payments from "./ShowMore/Payments";
+import { useTranslation } from "react-i18next";
 
 export default function CustomersTableRow({ item }) {
+    const { t } = useTranslation();
     const dialogRef = useRef(null);
     const [currentTab, setCurrentTab] = useState(1);
 
@@ -27,7 +29,7 @@ export default function CustomersTableRow({ item }) {
             <td>
                 <div className="flex flex-col">
                     <h3 className="font-semibold">{item.companyName}</h3>
-                    <p className="text-sm text-zinc-700">VÖEN: {item.taxNumber}</p>
+                    <p className="text-sm text-zinc-700">{t("pages.sales.customers.labels.taxIdShort")}: {item.taxNumber}</p>
                 </div>
             </td>
             <td className="hidden md:table-cell">{item.contactPerson}</td>
@@ -35,14 +37,14 @@ export default function CustomersTableRow({ item }) {
             <td className="hidden lg:table-cell">
                 <span
                     className={`badge font-semibold text-xs ${
-                        item.segment === "Gecikən Ödəniş"
+                        item.segmentCode === "overdue"
                             ? "badge-error"
-                            : item.segment === "Yeni Müştəri"
+                            : item.segmentCode === "new"
                             ? "badge-ghost"
                             : "badge-neutral"
                     }`}
                 >
-                    {item.segment}
+                    {t(`pages.sales.customers.segments.${item.segmentCode}`)}
                 </span>
             </td>
             <td className="text-right hidden sm:table-cell">{item.totalSales}</td>
@@ -72,7 +74,7 @@ export default function CustomersTableRow({ item }) {
                                         currentTab === 1 ? "bg-white" : ""
                                     } flex items-center justify-center h-full text-sm rounded-lg px-3 py-1 font-semibold text-center cursor-pointer hover:bg-white hover:text-zinc-800 transition-all`}
                                 >
-                                    Məlumat
+                                    {t("pages.sales.customers.tabs.info")}
                                 </div>
                                 <div
                                     onClick={() => setCurrentTab(2)}
@@ -80,7 +82,7 @@ export default function CustomersTableRow({ item }) {
                                         currentTab === 2 ? "bg-white" : ""
                                     } flex items-center justify-center h-full text-sm rounded-lg px-3 py-1 font-semibold text-center cursor-pointer hover:bg-white hover:text-zinc-800 transition-all`}
                                 >
-                                    Satış Tarixçəsi
+                                    {t("pages.sales.customers.tabs.salesHistory")}
                                 </div>
                                 <div
                                     onClick={() => setCurrentTab(3)}
@@ -88,14 +90,14 @@ export default function CustomersTableRow({ item }) {
                                         currentTab === 3 ? "bg-white" : ""
                                     } flex items-center justify-center h-full text-sm rounded-lg px-3 py-1 font-semibold text-center cursor-pointer hover:bg-white hover:text-zinc-800 transition-all`}
                                 >
-                                    Ödənişlər
+                                    {t("pages.sales.customers.tabs.payments")}
                                 </div>
                             </div>
                             {renderTabContent()}
                         </div>
                     </div>
                     <form method="dialog" className="modal-backdrop">
-                        <button>close</button>
+                        <button>{t("pages.sales.customers.actions.close")}</button>
                     </form>
                 </dialog>
             </td>

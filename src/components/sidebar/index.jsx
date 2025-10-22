@@ -7,9 +7,9 @@ function SidebarComp() {
     return (
         <div className="top-[1px] hidden md:block max-w-72 md:fixed left-0 w-20 hover:w-72 transition-all duration-400 h-screen group bg-white text-black z-50">
             <div className="flex items-center gap-[20px] p-4">
-                <img src={image} alt="Logo" className="max-w-12 h-auto" />
+                <img src={image} alt={t("common.logoAlt")} className="max-w-12 h-auto" />
                 <h2 className="text-md group-hover:text-xl font-bold group-hover:opacity-100 opacity-0 transition-opacity duration-200">
-                    Nummix
+                    {t("brand.name")}
                 </h2>
             </div>
             <hr className="border-gray-200" />
@@ -35,7 +35,7 @@ function SidebarComp() {
                                 <rect width="7" height="5" x="3" y="16" rx="1"></rect>
                             </svg>
                             <span className="opacity-0 group-hover:opacity-100 invisible group-hover:visible text-nowrap transition-opacity duration-200 leading-none">
-                                Muhasibat
+                                {t("pages.accounting.title")}
                             </span>
                         </button>
                     </Link>
@@ -64,7 +64,7 @@ function SidebarComp() {
                                 <path d="M10 18h4"></path>
                             </svg>
                             <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200 leading-none">
-                                Maliyye idarəetmə
+                                {t("pages.finance.title")}
                             </span>
                         </button>
                     </Link>
@@ -88,7 +88,7 @@ function SidebarComp() {
                                 <line x1="2" x2="22" y1="10" y2="10"></line>
                             </svg>
                             <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200 leading-none">
-                                Sales & Customers
+                                {t("pages.sales.title")}
                             </span>
                         </button>
                     </Link>
@@ -114,7 +114,7 @@ function SidebarComp() {
                                 <path d="M7 4v16"></path>
                             </svg>
                             <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200 leading-none">
-                                Satinalma & Təchizatçılar
+                                {t("pages.supplier.title")}
                             </span>
                         </button>
                     </Link>
@@ -138,7 +138,7 @@ function SidebarComp() {
                                 <polyline points="16 7 22 7 22 13"></polyline>
                             </svg>
                             <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200 leading-none">
-                                Anbar
+                                {t("pages.warehouse.title")}
                             </span>
                         </button>
                     </Link>
@@ -165,7 +165,7 @@ function SidebarComp() {
                                 <path d="M16 17H8"></path>
                             </svg>
                             <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200 leading-none">
-                                Əsas vəsaitlər
+                                {t("pages.assets.menuTitle", { defaultValue: t("pages.assets.title") })}
                             </span>
                         </button>
                     </Link>
@@ -191,7 +191,7 @@ function SidebarComp() {
                                 <path d="M8 17v-3"></path>
                             </svg>
                             <span className="opacity-0 group-hover:opacity-100 text-ellipsis invisible group-hover:visible max-w-24 text-nowrap transition-opacity duration-200 leading-none">
-                                Hr & Əmək haqqı
+                                {t("pages.hr.title")}
                             </span>
                         </button>
                     </Link>
@@ -216,7 +216,7 @@ function SidebarComp() {
                                 <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
                             </svg>
                             <span className="opacity-0 group-hover:opacity-100 text-ellipsis invisible group-hover:visible max-w-24 text-nowrap transition-opacity duration-200 leading-none">
-                                Süni intellekt
+                                {t("pages.ai.title")}
                             </span>
                         </button>
                     </Link>
@@ -240,7 +240,7 @@ function SidebarComp() {
                                 <circle cx="12" cy="12" r="3"></circle>
                             </svg>
                             <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200 leading-none">
-                                {t("settings")}
+                                {t("pages.settings.title")}
                             </span>
                         </button>
                     </Link>
@@ -267,7 +267,7 @@ function SidebarComp() {
                             <line x1="21" x2="9" y1="12" y2="12"></line>
                         </svg>
                         <span className="opacity-0 group-hover:opacity-100 text-nowrap invisible group-hover:visible transition-opacity duration-200 leading-none">
-                            {t("sign_out")}
+                            {t("common.signOut")}
                         </span>
                     </button>
                 </Link>

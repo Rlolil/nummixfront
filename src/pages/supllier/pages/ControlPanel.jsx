@@ -6,12 +6,15 @@ import { AiOutlineRise } from "react-icons/ai";
 import HeadCard from "../../salescustomers/components/HeadCard";
 import BodyCard from "../../salescustomers/components/BodyCard";
 
+import { useTranslation } from "react-i18next";
+
 export default function ControlPanel() {
+    const { t } = useTranslation();
     return (
         <div className="w-full flex flex-col gap-6">
             <div>
-                <h2 className="text-2xl font-semibold">İdarə Paneli</h2>
-                <p className="text-zinc-600">Satış və müştəri məlumatlarına ümumi baxış</p>
+                <h2 className="text-2xl font-semibold">{t("pages.supplier.controlPanel.title")}</h2>
+                <p className="text-zinc-600">{t("pages.supplier.controlPanel.subtitle")}</p>
             </div>
             <div className="flex flex-col gap-4">
                 <div className="border-1 border-zinc-300 rounded-xl p-6 flex items-center gap-2">
@@ -26,16 +29,16 @@ export default function ControlPanel() {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            class="lucide lucide-circle-alert h-4 w-4"
-                            ariaHidden="true"
+                            className="lucide lucide-circle-alert h-4 w-4"
+                            aria-hidden="true"
                         >
                             <circle cx="12" cy="12" r="10"></circle>
                             <line x1="12" x2="12" y1="8" y2="12"></line>
                             <line x1="12" x2="12.01" y1="16" y2="16"></line>
                         </svg>
                     </div>
-                    <span className="font-semibold">2</span> müqavilənin müddəti tezliklə bitir.{" "}
-                    <a className="hover:link font-semibold">Baxın</a>
+                    <span className="font-semibold">2</span> {t("pages.supplier.controlPanel.contractsExpiring")} {" "}
+                    <a className="hover:link font-semibold">{t("pages.supplier.common.view")}</a>
                 </div>
                 <div className="border-1 text-red-500 border-zinc-300 rounded-xl p-6 flex items-center gap-2">
                     <div>
@@ -49,52 +52,52 @@ export default function ControlPanel() {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            class="lucide lucide-circle-alert h-4 w-4"
-                            ariaHidden="true"
+                            className="lucide lucide-circle-alert h-4 w-4"
+                            aria-hidden="true"
                         >
                             <circle cx="12" cy="12" r="10"></circle>
                             <line x1="12" x2="12" y1="8" y2="12"></line>
                             <line x1="12" x2="12.01" y1="16" y2="16"></line>
                         </svg>
                     </div>
-                    <span className="font-semibold">1</span> gecikmiş ödəniş var.{" "}
-                    <a className="hover:link font-semibold">Baxın</a>
+                    <span className="font-semibold">1</span> {t("pages.supplier.controlPanel.hasOverduePayment")} {" "}
+                    <a className="hover:link font-semibold">{t("pages.supplier.common.view")}</a>
                 </div>
             </div>
             <div className="flex flex-col gap-6">
                 <div className="w-full col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <HeadCard
-                        title={"Təchizatçılar"}
+                        title={t("pages.supplier.controlPanel.cards.suppliers")}
                         amount={<div className="text-2xl">3</div>}
                         greenText={null}
-                        description="əvvəlki aya nisbətən"
+                        description={t("pages.supplier.common.vsPrevMonth")}
                         icon={<FiDollarSign />}
                     />
                     <HeadCard
-                        title={"Aktiv Sifarişlər"}
+                        title={t("pages.supplier.controlPanel.cards.activeOrders")}
                         amount={<div className="text-2xl">3</div>}
                         greenText={null}
-                        description="İcrada olan sifariş"
+                        description={t("pages.supplier.controlPanel.cards.inProgress")}
                         icon={<MdPeopleOutline />}
                     />
                     <HeadCard
-                        title={"Müqavilələr"}
+                        title={t("pages.supplier.controlPanel.cards.agreements")}
                         amount={<div className="text-2xl">2</div>}
                         greenText={null}
-                        description="2 bitir"
+                        description={t("pages.supplier.controlPanel.cards.expiringCount", { count: 2 })}
                         icon={<IoCartOutline />}
                     />
                     <HeadCard
-                        title={"Ümumi Borc"}
+                        title={t("pages.supplier.controlPanel.cards.totalDebt")}
                         amount={<div className="text-2xl">52986.25 ₼</div>}
                         greenText={null}
-                        description="Təchizatçılara borc"
+                        description={t("pages.supplier.controlPanel.cards.debtToSuppliers")}
                         icon={<AiOutlineRise />}
                     />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <BodyCard
-                        title={"Son Sifarişlər"}
+                        title={t("pages.supplier.controlPanel.latestOrders")}
                         child={
                             <div className="flex flex-col gap-4">
                                 <div className="flex justify-between items-center py-3">
@@ -105,7 +108,7 @@ export default function ControlPanel() {
                                     <div className="flex flex-col items-end justify-between gap-1">
                                         <p>955 AZN</p>
                                         <div className="badge badge-neutral text-sm font-semibold">
-                                            Təsdiqlənib
+                                            {t("pages.supplier.common.approved")}
                                         </div>
                                     </div>
                                 </div>
@@ -117,49 +120,49 @@ export default function ControlPanel() {
                                     <div className="flex flex-col items-end justify-between gap-1">
                                         <p>9515 AZN</p>
                                         <div className="badge badge-soft text-sm font-semibold">
-                                            Göndərilib
+                                            {t("pages.supplier.common.sent")}
                                         </div>
                                     </div>
                                 </div>
-                                <button className="btn rounded-lg">Hamısına Bax</button>
+                                <button className="btn rounded-lg">{t("pages.supplier.common.viewAll")}</button>
                             </div>
                         }
                     />
                     <BodyCard
-                        title={"Təcili Ödənişlər"}
+                        title={t("pages.supplier.controlPanel.urgentPayments")}
                         child={
                             <div className="flex flex-col gap-4">
                                 <div className="flex justify-between items-center py-3">
                                     <div className="flex flex-col justify-between gap-1">
                                         <h3 className="font-semibold">Azərbaycan Kimya MMC</h3>
-                                        <p className="text-zinc-500 text-sm">Son tarix: 2025-10-11</p>
+                                        <p className="text-zinc-500 text-sm">{t("pages.supplier.common.dueDate")}: 2025-10-11</p>
                                     </div>
                                     <div className="flex flex-col items-end justify-between gap-1">
                                         <p>8500 AZN</p>
                                         <div className="badge badge-error text-sm font-semibold">
-                                            Gecikmiş
+                                            {t("pages.supplier.payments.status.overdue")}
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <div className="flex flex-col justify-between gap-1">
                                         <h3 className="font-semibold">GlobalSupply LLC</h3>
-                                        <p className="text-zinc-500 text-sm">Son tarix: 2025-10-12</p>
+                                        <p className="text-zinc-500 text-sm">{t("pages.supplier.common.dueDate")}: 2025-10-12</p>
                                     </div>
                                     <div className="flex flex-col items-end justify-between gap-1">
                                         <p>2275 USD</p>
                                         <div className="badge badge-soft text-sm font-semibold">
-                                            Qismən ödənilib
+                                            {t("pages.supplier.payments.status.partial")}
                                         </div>
                                     </div>
                                 </div>
-                                <button className="btn rounded-lg">Hamısına Bax</button>
+                                <button className="btn rounded-lg">{t("pages.supplier.common.viewAll")}</button>
                             </div>
                         }
                     />
                     <div className="sm:col-span-2">
                         <BodyCard
-                            title={"Ən Çox Alış Edilən Təchizatçılar"}
+                            title={t("pages.supplier.controlPanel.topSuppliers")}
                             child={
                                 <div className="flex flex-col gap-4">
                                     <div className="flex justify-between items-center py-3">
@@ -176,7 +179,7 @@ export default function ControlPanel() {
                                                     strokeLinecap="round"
                                                     strokeLinejoin="round"
                                                     className="lucide lucide-building2 lucide-building-2 h-5 w-5"
-                                                    ariaHidden="true"
+                                                    aria-hidden="true"
                                                 >
                                                     <path d="M10 12h4"></path>
                                                     <path d="M10 8h4"></path>
@@ -187,12 +190,12 @@ export default function ControlPanel() {
                                             </div>
                                             <div className="flex flex-col justify-between gap-1">
                                                 <h3 className="font-semibold">AzərTəchizat MMC</h3>
-                                                <p className="text-zinc-500 text-sm">Ofis ləvazimatları</p>
+                                                <p className="text-zinc-500 text-sm">{t("pages.supplier.analytics.categories.officeSupplies")}</p>
                                             </div>
                                         </div>
                                         <div className="flex flex-col items-end justify-between gap-1">
-                                            <p>Borc: 15420.5 AZN</p>
-                                            <p className="text-zinc-500 text-sm">Reytinq: ⭐ 4.5</p>
+                                            <p>{t("pages.supplier.common.debt")}: 15420.5 AZN</p>
+                                            <p className="text-zinc-500 text-sm">{t("pages.supplier.common.rating")}: ⭐ 4.5</p>
                                         </div>
                                     </div>
                                     <div className="flex justify-between items-center py-3">
@@ -209,7 +212,7 @@ export default function ControlPanel() {
                                                     strokeLinecap="round"
                                                     strokeLinejoin="round"
                                                     className="lucide lucide-building2 lucide-building-2 h-5 w-5"
-                                                    ariaHidden="true"
+                                                    aria-hidden="true"
                                                 >
                                                     <path d="M10 12h4"></path>
                                                     <path d="M10 8h4"></path>
@@ -220,12 +223,12 @@ export default function ControlPanel() {
                                             </div>
                                             <div className="flex flex-col justify-between gap-1">
                                                 <h3 className="font-semibold">GlobalSupply LLC</h3>
-                                                <p className="text-zinc-500 text-sm">Ofis ləvazimatları</p>
+                                                <p className="text-zinc-500 text-sm">{t("pages.supplier.analytics.categories.officeSupplies")}</p>
                                             </div>
                                         </div>
                                         <div className="flex flex-col items-end justify-between gap-1">
-                                            <p>Borc: 4256.5 AZN</p>
-                                            <p className="text-zinc-500 text-sm">Reytinq: ⭐ 4.1</p>
+                                            <p>{t("pages.supplier.common.debt")}: 4256.5 AZN</p>
+                                            <p className="text-zinc-500 text-sm">{t("pages.supplier.common.rating")}: ⭐ 4.1</p>
                                         </div>
                                     </div>
                                 </div>

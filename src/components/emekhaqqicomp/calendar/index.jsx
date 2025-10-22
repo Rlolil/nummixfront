@@ -1,13 +1,15 @@
 import MonthlyEventsCard from "./events";
 import UpcomingEventsCard from "./closeevents";
 import EventCalendar from "./Teqvim";
+import { useTranslation } from "react-i18next";
 function Calendar() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6 my-4">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xl">Calendar</p>
-          <p className="text-gray-600">Mühüm tarixlər və xatırlatmalar</p>
+          <p className="text-xl">{t('pages.hr.calendar.title', { defaultValue: 'Calendar' })}</p>
+          <p className="text-gray-600">{t('pages.hr.calendar.subtitle', { defaultValue: 'Important dates and reminders' })}</p>
         </div>
         <div>
           <button
@@ -15,7 +17,7 @@ function Calendar() {
             className="bg-blue-600 rounded-xl p-2 flex items-center gap-2 hover:bg-blue-700"
           >
             <span className="text-[18px] text-white">+</span>
-            <span className="text-white">Yeni Sorğu</span>
+            <span className="text-white">{t('pages.hr.calendar.newRequest', { defaultValue: 'New Request' })}</span>
           </button>
         </div>
       </div>

@@ -1,7 +1,8 @@
 import "../../utils/i18n/i18n.js";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
 function Header() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   function changeLanguage(lang) {
     i18n.changeLanguage(lang);
   }
@@ -27,15 +28,11 @@ function Header() {
           <input
             onChange={(e) => console.log(e.target.value)}
             className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-80 pl-10"
-            placeholder="Search transactions, invoices..."
+            placeholder={t("search_placeholder", { ns: 'translation' })}
           />
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex gap-2">
-            <button onClick={() => changeLanguage("az")}>AZ</button>
-            <button onClick={() => changeLanguage("en")}>EN</button>
-            <button onClick={() => changeLanguage("ru")}>RU</button>
-          </div>
+          <LanguageSwitcher compact />
           <div>
             <button className="relative hover:bg-gray-100 p-3 rounded-2xl">
               <svg
@@ -59,7 +56,7 @@ function Header() {
           <div>
             <button className="relative hover:bg-gray-100 p-3 font-bold text-black rounded-full">
               <span className="flex size-full items-center justify-center">
-                SA
+                {t("header.initials", { ns: 'translation' })}
               </span>
             </button>
           </div>

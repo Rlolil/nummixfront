@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function LeaveRequestModal({ onClose }) {
+  const { t } = useTranslation();
   const [worker, setWorker] = useState("");
   const [leaveType, setLeaveType] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -24,12 +26,12 @@ function LeaveRequestModal({ onClose }) {
         tabIndex={-1}
       >
         <header className="mb-4 text-center sm:text-left">
-          <h2 className="text-lg font-semibold">Məzuniyyət Sorğusu</h2>
+          <h2 className="text-lg font-semibold">{t('pages.hr.leave.modal.title', { defaultValue: 'Leave Request' })}</h2>
         </header>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">İşçi</label>
+            <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.employee', { defaultValue: 'Employee' })}</label>
             <select
               value={worker}
               onChange={(e) => setWorker(e.target.value)}
@@ -37,7 +39,7 @@ function LeaveRequestModal({ onClose }) {
               required
             >
               <option value="" disabled>
-                İşçi seçin
+                {t('pages.hr.leave.modal.selectEmployee', { defaultValue: 'Select employee' })}
               </option>
               <option value="kamran">Kamran Məmmədov</option>
               <option value="elvin">Elvin Quliyev</option>
@@ -45,9 +47,7 @@ function LeaveRequestModal({ onClose }) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">
-              Məzuniyyət növü
-            </label>
+            <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.leaveType', { defaultValue: 'Leave type' })}</label>
             <select
               value={leaveType}
               onChange={(e) => setLeaveType(e.target.value)}
@@ -55,18 +55,16 @@ function LeaveRequestModal({ onClose }) {
               required
             >
               <option value="" disabled>
-                Növ seçin
+                {t('pages.hr.leave.modal.selectType', { defaultValue: 'Select type' })}
               </option>
-              <option value="illik">İllik</option>
-              <option value="xestelik">Xəstəlik</option>
-              <option value="digər">Digər</option>
+              <option value="annual">{t('pages.hr.leave.modal.types.annual', { defaultValue: 'Annual' })}</option>
+              <option value="sick">{t('pages.hr.leave.modal.types.sick', { defaultValue: 'Sick' })}</option>
+              <option value="other">{t('pages.hr.leave.modal.types.other', { defaultValue: 'Other' })}</option>
             </select>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
-                Başlanğıc tarixi
-              </label>
+              <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.startDate', { defaultValue: 'Start date' })}</label>
               <input
                 type="date"
                 value={startDate}
@@ -76,9 +74,7 @@ function LeaveRequestModal({ onClose }) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">
-                Bitmə tarixi
-              </label>
+              <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.endDate', { defaultValue: 'End date' })}</label>
               <input
                 type="date"
                 value={endDate}
@@ -89,12 +85,12 @@ function LeaveRequestModal({ onClose }) {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Səbəb</label>
+            <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.reason', { defaultValue: 'Reason' })}</label>
             <textarea
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               rows={3}
-              placeholder="Məzuniyyət səbəbini qeyd edin"
+              placeholder={t('pages.hr.leave.modal.reasonPlaceholder', { defaultValue: 'Enter reason for leave' })}
               className="w-full resize-none rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
               required
             />
@@ -105,13 +101,13 @@ function LeaveRequestModal({ onClose }) {
               onClick={onClose}
               className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-100"
             >
-              Ləğv et
+              {t('pages.hr.leave.modal.cancel', { defaultValue: 'Cancel' })}
             </button>
             <button
               type="submit"
               className="rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700"
             >
-              Təqdim et
+              {t('pages.hr.leave.modal.submit', { defaultValue: 'Submit' })}
             </button>
           </div>
         </form>

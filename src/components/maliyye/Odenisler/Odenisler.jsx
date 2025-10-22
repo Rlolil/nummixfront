@@ -3,21 +3,23 @@ import { BiExport } from "react-icons/bi";
 import { FiPlus } from "react-icons/fi";
 import OdenisTab from "./OdenisTab";
 import DaxilolmaTab from "./DaxilolmaTab";
+import { useTranslation } from "react-i18next";
 
 const Odenisler = () => {
   const [activeTab, setActiveTab] = useState("odenis");
+  const { t } = useTranslation();
 
   const cards = [
-    { title: "Ödənilməli", amount: "26,800 AZN", desc: "Təchizatçılara", color: "text-red-500" },
-    { title: "Daxil olacaq", amount: "45,500 AZN", desc: "Müştərilərdən", color: "text-green-500" },
-    { title: "Gecikmiş ödənişlər", amount: "1", desc: "Təcili diqqət tələb edir", color: "text-gray-900" },
-    { title: "Gecikmiş alacaqlar", amount: "1", desc: "Xatırlatma göndər", color: "text-gray-900" },
+    { key: "payable", amount: "26,800 AZN", color: "text-red-500" },
+    { key: "receivable", amount: "45,500 AZN", color: "text-green-500" },
+    { key: "overduePayments", amount: "1", color: "text-gray-900" },
+    { key: "overdueReceivables", amount: "1", color: "text-gray-900" },
   ];
 
   const schedule = [
     {
       date: "2025-10-08",
-      type: "Daxilolma",
+      type: "receipt",
       name: "XYZ Trading - Gecikmiş",
       urgent: true,
       amount: "+8,500 AZN",
@@ -25,28 +27,28 @@ const Odenisler = () => {
     },
     {
       date: "2025-10-10",
-      type: "Daxilolma",
+      type: "receipt",
       name: "ABC Corporation",
       amount: "+15,000 AZN",
       color: "text-green-600",
     },
     {
       date: "2025-10-12",
-      type: "Ödəniş",
+      type: "payment",
       name: "OfficeWorld",
       amount: "-2,300 AZN",
       color: "text-red-600",
     },
     {
       date: "2025-10-14",
-      type: "Daxilolma",
+      type: "receipt",
       name: "Tech Solutions",
       amount: "+22,000 AZN",
       color: "text-green-600",
     },
     {
       date: "2025-10-15",
-      type: "Ödəniş",
+      type: "payment",
       name: "Marketing Pro",
       amount: "-8,000 AZN",
       color: "text-red-600",
@@ -57,13 +59,11 @@ const Odenisler = () => {
     <div className="container mx-auto px-2 py-4">
       <div className="flex flex-col md:flex-row justify-between mb-4 sm:items-center">
         <div>
-          <h1 className="text-[24px] font-semibold">Ödənişlərin İdarə Olunması</h1>
-          <p className="text-[#717182] text-[16px] mt-2 mb-5">
-            Təchizatçılara ödənişlər və müştərilərdən daxilolmalar
-          </p>
+          <h1 className="text-[24px] font-semibold">{t('pages.finance.payments.title')}</h1>
+          <p className="text-[#717182] text-[16px] mt-2 mb-5">{t('pages.finance.payments.subtitle')}</p>
         </div>
         <button className="flex gap-3 text-[14px] items-center border-2 bg-black text-white rounded-lg px-4 py-2 min-w-[200px] justify-center hover:bg-gray-800 transition">
-          <FiPlus /> Yeni ödəniş planla
+          <FiPlus /> {t('pages.finance.payments.newPlan')}
         </button>
       </div>
 
@@ -71,10 +71,10 @@ const Odenisler = () => {
         {cards.map((card, index) => (
           <div key={index} className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
             <div className="flex justify-between items-center mb-8">
-              <p className="text-gray-600 font-medium">{card.title}</p>
+              <p className="text-gray-600 font-medium">{t(`pages.finance.payments.cards.${card.key}.title`)}</p>
             </div>
             <p className={`text-3xl mt-5 ${card.color}`}>{card.amount}</p>
-            <p className="text-sm text-gray-500 mt-1">{card.desc}</p>
+            <p className="text-sm text-gray-500 mt-1">{t(`pages.finance.payments.cards.${card.key}.desc`)}</p>
           </div>
         ))}
       </div>
@@ -87,7 +87,7 @@ const Odenisler = () => {
               ? "bg-white text-black shadow-sm rounded-full"
               : "text-gray-600 hover:text-black"}`}
         >
-          Ödənişlər (Çıxış)
+          {t('pages.finance.payments.tabs.outflows')}
         </button>
         <button
           onClick={() => setActiveTab("daxilolma")}
@@ -96,7 +96,7 @@ const Odenisler = () => {
               ? "bg-white text-black shadow-sm rounded-full"
               : "text-gray-600 hover:text-black"}`}
         >
-          Daxilolmalar
+          {t('pages.finance.payments.tabs.inflows')}
         </button>
       </div>
 
@@ -104,10 +104,8 @@ const Odenisler = () => {
       {activeTab === "daxilolma" && <DaxilolmaTab />}
 
       <div className="mt-10 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-        <h2 className="text-lg font-semibold mb-1">Növbəti 7 Günün Ödəniş Qrafiki</h2>
-        <p className="text-gray-500 text-sm mb-5">
-          Planlaşdırılmış ödənişlər və daxilolmalar
-        </p>
+        <h2 className="text-lg font-semibold mb-1">{t('pages.finance.payments.schedule.title')}</h2>
+        <p className="text-gray-500 text-sm mb-5">{t('pages.finance.payments.schedule.subtitle')}</p>
 
         <div className="flex flex-col md:divide-y md:divide-gray-300">
           {schedule.map((item, index) => (
@@ -144,17 +142,17 @@ const Odenisler = () => {
               <div className="flex flex-wrap items-center gap-2 md:gap-4">
                 <span className="text-gray-500 w-[90px]">{item.date}</span>
                 <span
-                  className={`px-3 py-1 text-xs font-medium rounded-md ${item.type === "Ödəniş"
+                  className={`px-3 py-1 text-xs font-medium rounded-md ${item.type === "payment"
                     ? "bg-gray-100 text-gray-800"
                     : "bg-black text-white"
                     }`}
                 >
-                  {item.type}
+                  {item.type === 'payment' ? t('pages.finance.payments.types.payment') : t('pages.finance.payments.types.receipt')}
                 </span>
                 <span className="text-gray-800 font-medium">{item.name}</span>
                 {item.urgent && (
                   <span className="bg-red-600 text-white text-xs font-medium px-2 py-1 rounded-md whitespace-nowrap">
-                    Təcili
+                    {t('pages.finance.payments.schedule.urgent')}
                   </span>
                 )}
               </div>

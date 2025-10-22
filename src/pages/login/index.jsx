@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { login } from "../../services";
+import { useTranslation } from "react-i18next";
 function Toaster({ toasts, removeToast }) {
   return (
     <div className="fixed top-6 right-6 z-50 space-y-2">
@@ -31,6 +32,7 @@ function Toaster({ toasts, removeToast }) {
 }
 
 function Login() {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -57,7 +59,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      addToast("error", "Please enter both email and password!");
+      addToast("error", t("auth.login.errors.missingFields"));
       return;
     }
     setIsSubmitting(true);
@@ -69,11 +71,11 @@ function Login() {
       setIsSubmitting(false);
       setIsLogin(true);
       setTimeout(() => navigate("/dashboard"), 1000);
-      addToast("success", "Login successful! Redirecting...");
+      addToast("success", t("auth.login.success"));
     } catch (err) {
       setIsSubmitting(false);
       navigate("/login");
-      addToast("error", "Invalid email or password!");
+      addToast("error", t("auth.login.errors.invalidCredentials"));
       timeout++;
       throw new Error("Login failed");
     }
@@ -89,38 +91,38 @@ function Login() {
             Nummix.az
           </h2>
           <p className="text-gray-600 text-sm sm:text-base">
-            Sign in to your financial management dashboard
+            {t("auth.login.subtitle")}
           </p>
         </div>
         <div>
           <form onSubmit={handleSubmit} className="space-y-6 mt-6">
             <div>
-              <label className="text-sm font-medium text-gray-700">Email</label>
+              <label className="text-sm font-medium text-gray-700">{t("common.email")}</label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t("placeholders.email")}
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               />
             </div>
             <div>
               <label className="text-sm font-medium text-gray-700">
-                Password
+                {t("common.password")}
               </label>
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 type="password"
-                placeholder="Enter your password"
+                placeholder={t("placeholders.password")}
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               />
               <p className="text-gray-400 text-left text-sm mt-2 sm:mt-[10px] sm:mr-0">
-                Forgot your password?{" "}
+                {t("auth.login.forgotPrefix")} {" "}
                 <Link to="/reset-password" className="text-black font-medium">
-                  Reset it
+                  {t("auth.login.reset")}
                 </Link>
               </p>
             </div>
@@ -131,16 +133,16 @@ function Login() {
                 className="w-full bg-black text-white p-3 rounded-lg font-medium hover:bg-gray-800 transition text-sm sm:text-base"
                 style={{ backgroundColor: isSubmitting ? "gray" : "black" }}
               >
-                {isSubmitting ? "Signing In..." : "Sign In"}
+                {isSubmitting ? t("auth.login.submitting") : t("auth.login.submit")}
               </button>
             </div>
           </form>
         </div>
         <div className="space-y-4">
           <p className="text-center text-gray-400 text-sm sm:text-base">
-            Don't have an account?{" "}
+            {t("auth.common.noAccount")} {" "}
             <Link to="/register" className="text-black font-medium">
-              Sign up
+              {t("auth.common.signUp")}
             </Link>
           </p>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   BarChart,
   Bar,
@@ -18,9 +19,10 @@ const data = [
 ];
 
 export default function AttendanceChart() {
+  const { t } = useTranslation();
   return (
     <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-      <h4 className="text-lg font-semibold mb-6">Davamiyyət Statistikası</h4>
+      <h4 className="text-lg font-semibold mb-6">{t('pages.hr.reports.attendanceChart.title', { defaultValue: 'Attendance Statistics' })}</h4>
 
       <div style={{ width: "100%", height: 300 }}>
         <ResponsiveContainer>
@@ -30,8 +32,8 @@ export default function AttendanceChart() {
             <YAxis stroke="#666" domain={[0, 100]} />
             <Tooltip />
             <Legend verticalAlign="bottom" height={36} />
-            <Bar dataKey="attendance" name="Davamiyyət %" fill="#3b82f6" />
-            <Bar dataKey="delay" name="Gecikmə %" fill="#f59e0b" />
+            <Bar dataKey="attendance" name={t('pages.hr.reports.attendanceChart.series.attendancePct', { defaultValue: 'Attendance %' })} fill="#3b82f6" />
+            <Bar dataKey="delay" name={t('pages.hr.reports.attendanceChart.series.delayPct', { defaultValue: 'Delay %' })} fill="#f59e0b" />
           </BarChart>
         </ResponsiveContainer>
       </div>

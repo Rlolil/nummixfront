@@ -2,37 +2,39 @@ import { HiOutlineExclamation } from "react-icons/hi";
 import HeadCard from "../../salescustomers/components/HeadCard";
 import BodyCard from "../../salescustomers/components/BodyCard";
 import { MdOutlinePayment } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 export default function Payments() {
+    const { t } = useTranslation();
     return (
         <div className="w-full flex flex-col gap-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h2 className="text-2xl font-semibold">Ödənişlər</h2>
-                    <p className="text-zinc-600">Təchizat ödənişlərinin idarə edilməsi və izlənməsi</p>
+                    <h2 className="text-2xl font-semibold">{t("pages.supplier.payments.title")}</h2>
+                    <p className="text-zinc-600">{t("pages.supplier.payments.subtitle")}</p>
                 </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <HeadCard
-                    title="Gözləyən Ödənişlər"
+                    title={t("pages.supplier.payments.cards.pending.title")}
                     amount={<div className="text-2xl text-orange-600">10775.00 ₼</div>}
                     greenText={null}
-                    description="Ödənilməli məbləğ"
+                    description={t("pages.supplier.payments.cards.pending.description")}
                     icon={<MdOutlinePayment />}
                 />
                 <HeadCard
-                    title="Ödənilib"
+                    title={t("pages.supplier.payments.cards.paid.title")}
                     amount={<div className="text-2xl text-green-600">5000.00 ₼</div>}
                     greenText={null}
-                    description="Bu ay ödənilən"
+                    description={t("pages.supplier.payments.cards.paid.description")}
                     icon={<HiOutlineExclamation className="text-green-600" />}
                 />
                 <HeadCard
-                    title="Gecikmiş Ödənişlər"
+                    title={t("pages.supplier.payments.cards.overdue.title")}
                     amount={<div className="text-2xl text-red-600">1</div>}
                     greenText={null}
-                    description="Təcili diqqət tələb olunur"
+                    description={t("pages.supplier.payments.cards.overdue.description")}
                     icon={<MdOutlinePayment className="text-red-600" />}
                 />
             </div>
@@ -52,25 +54,25 @@ export default function Payments() {
                 <input
                     type="search"
                     className="grow placeholder:text-gray-600"
-                    placeholder="Ödəniş axtar (nömrə, təchizatçı, istinad)..."
+                    placeholder={t("pages.supplier.payments.searchPlaceholder")}
                 />
             </label>
             <BodyCard
                 title={null}
                 child={
                     <div className="w-full flex flex-col gap-6">
-                        <h3>Bütün Ödənişlər</h3>
+                        <h3>{t("pages.supplier.payments.table.title")}</h3>
                         <div className="overflow-x-auto">
                             <table className="table text-base">
                                 <thead>
                                     <tr className="text-black text-base">
-                                        <th>Ödəniş №</th>
-                                        <th className="hidden sm:table-cell">Təchizatçı</th>
-                                        <th className="hidden md:table-cell">Məbləğ</th>
-                                        <th className="hidden md:table-cell">Ödənilib</th>
-                                        <th className="hidden md:table-cell">Qalıq</th>
-                                        <th className="hidden lg:table-cell">Son tarix</th>
-                                        <th className="hidden sm:table-cell">Status</th>
+                                        <th>{t("pages.supplier.payments.table.columns.paymentNo")}</th>
+                                        <th className="hidden sm:table-cell">{t("pages.supplier.payments.table.columns.supplier")}</th>
+                                        <th className="hidden md:table-cell">{t("pages.supplier.payments.table.columns.amount")}</th>
+                                        <th className="hidden md:table-cell">{t("pages.supplier.payments.table.columns.paid")}</th>
+                                        <th className="hidden md:table-cell">{t("pages.supplier.payments.table.columns.balance")}</th>
+                                        <th className="hidden lg:table-cell">{t("pages.supplier.payments.table.columns.dueDate")}</th>
+                                        <th className="hidden sm:table-cell">{t("pages.supplier.payments.table.columns.status")}</th>
                                         <th className="text-right"></th>
                                     </tr>
                                 </thead>
@@ -88,7 +90,7 @@ export default function Payments() {
                                         </td>
                                         <td className="hidden sm:table-cell">
                                             <span className="badge font-semibold text-xs badge-success">
-                                                Ödənilib
+                                                {t("pages.supplier.payments.status.paid")}
                                             </span>
                                         </td>
                                         <td className="text-right"></td>
@@ -102,17 +104,17 @@ export default function Payments() {
                                         <td className="hidden lg:table-cell">
                                             <div className="space-y-1">
                                                 <p>2025-10-11</p>
-                                                <p className="text-xs text-red-500">4 gün gecikib</p>
+                                                <p className="text-xs text-red-500">{t("pages.supplier.payments.table.overdueDays", { days: 4 })}</p>
                                             </div>
                                         </td>
                                         <td className="hidden sm:table-cell">
                                             <span className="badge font-semibold text-xs badge-error">
-                                                Gecikmiş
+                                                {t("pages.supplier.payments.status.overdue")}
                                             </span>
                                         </td>
                                         <td className="text-right">
                                             <button className="btn btn-neutral btn-sm rounded-md h-8 px-3">
-                                                Ödə
+                                                {t("pages.supplier.payments.actions.pay")}
                                             </button>
                                         </td>
                                     </tr>
@@ -125,17 +127,17 @@ export default function Payments() {
                                         <td className="hidden lg:table-cell">
                                             <div className="space-y-1">
                                                 <p>2025-10-12</p>
-                                                <p className="text-xs text-red-500">3 gün gecikib</p>
+                                                <p className="text-xs text-red-500">{t("pages.supplier.payments.table.overdueDays", { days: 3 })}</p>
                                             </div>
                                         </td>
                                         <td className="hidden sm:table-cell">
                                             <span className="badge font-semibold text-xs badge-warning">
-                                                Qismən
+                                                {t("pages.supplier.payments.status.partial")}
                                             </span>
                                         </td>
                                         <td className="text-right">
                                             <button className="btn btn-neutral btn-sm rounded-md h-8 px-3">
-                                                Ödə
+                                                {t("pages.supplier.payments.actions.pay")}
                                             </button>
                                         </td>
                                     </tr>
@@ -149,8 +151,8 @@ export default function Payments() {
                 title={null}
                 child={
                     <div className="flex flex-col gap-6">
-                        <h4>Yaxınlaşan Ödənişlər (7 gün)</h4>
-                        <p className="text-center text-zinc-500 py-8">Yaxın 7 gündə ödəniş yoxdur</p>
+                        <h4>{t("pages.supplier.payments.upcoming.title")}</h4>
+                        <p className="text-center text-zinc-500 py-8">{t("pages.supplier.payments.upcoming.empty")}</p>
                     </div>
                 }
             />

@@ -1,48 +1,29 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const BudgetChart = () => {
+  const { t } = useTranslation();
+
   const data = [
-    {
-      title: "Maaşlar",
-      used: 24500,
-      planned: 25000,
-      percent: 98,
-    },
-    {
-      title: "Ofis xərcləri",
-      used: 9200,
-      planned: 8000,
-      percent: 115,
-      extra: 1200,
-      noRed: true,
-    },
-    {
-      title: "Marketing",
-      used: 10500,
-      planned: 12000,
-      percent: 87.5,
-    },
-    {
-      title: "IT",
-      used: 5800,
-      planned: 6000,
-      percent: 96.7,
-    },
+    { key: "salary", used: 24500, planned: 25000, percent: 98 },
+    { key: "office", used: 9200, planned: 8000, percent: 115, extra: 1200, noRed: true },
+    { key: "marketing", used: 10500, planned: 12000, percent: 87.5 },
+    { key: "it", used: 5800, planned: 6000, percent: 96.7 },
   ];
 
   return (
     <div className="bg-white p-6 rounded-xl shadow border border-gray-200 mt-7 mx-auto">
       <h2 className="text-lg font-semibold text-gray-800 mb-1">
-        Büdcə İcmalı - Cari Ay
+        {t('pages.finance.controlPanel.budget.title', 'Budget Overview - Current Month')}
       </h2>
       <p className="text-gray-500 mb-6">
-        Planlaşdırılan və faktiki xərclərin müqayisəsi
+        {t('pages.finance.controlPanel.budget.subtitle', 'Comparison of planned vs actual expenses')}
       </p>
 
       {data.map((item, index) => (
         <div key={index} className="mb-6">
           <div className="flex items-center justify-between mb-1">
-            <h3 className="text-gray-800 font-medium">{item.title}</h3>
+            <h3 className="text-gray-800 font-medium">{t(`pages.finance.common.categories.${item.key}`, item.key)}</h3>
             <p className="text-gray-600 text-sm">
               {item.used.toLocaleString()} / {item.planned.toLocaleString()} AZN
             </p>
@@ -62,17 +43,17 @@ const BudgetChart = () => {
 
           <div className="text-sm text-gray-600 mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
             <div className="flex items-center gap-2">
-              <span>{item.percent}% istifadə edilib</span>
+              <span>{t('pages.finance.controlPanel.budget.usedPercent', { percent: item.percent }, `${item.percent}% used`)}</span>
               {item.extra && (
                 <span className="bg-red-600 text-white text-[11px] sm:text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-                  Artıq xərcl
+                  {t('pages.finance.budgeting.labels.overBudget', 'Over budget')}
                 </span>
               )}
             </div>
 
             {item.extra && (
               <span className="text-gray-500 text-sm whitespace-nowrap">
-                ({item.extra.toLocaleString()} AZN artıq)
+                {t('pages.finance.controlPanel.budget.extraOver', { amount: item.extra.toLocaleString() }, `(${item.extra.toLocaleString()} AZN over)`)}
               </span>
             )}
           </div>

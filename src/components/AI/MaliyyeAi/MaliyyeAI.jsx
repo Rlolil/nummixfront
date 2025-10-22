@@ -5,26 +5,28 @@ import { BsBoxSeam, BsCart3 } from "react-icons/bs";
 import Chart1 from './Chart1';
 import Chart2 from './Chart2';
 import Chart3 from './Chart3';
+import { useTranslation } from "react-i18next";
 
 const MaliyyeAI = () => {
+  const { t } = useTranslation();
   const data = {
     stats: [
       {
-        title: "Aylıq Mənfəət",
+        title: t("pages.ai.dashboard.stats.monthlyProfit"),
         value: "₼45,231",
         change: "+18.5%",
         positive: true,
         icon: <MdAttachMoney className="text-green-500 text-[28px]" />,
       },
       {
-        title: "Satış Həcmi",
+        title: t("pages.ai.dashboard.stats.salesVolume"),
         value: "₼128,456",
         change: "+12.3%",
         positive: true,
         icon: <BsCart3 className="text-blue-500 text-[28px]" />,
       },
       {
-        title: "Anbar Dəyəri",
+        title: t("pages.ai.dashboard.stats.inventoryValue"),
         value: "₼67,890",
         change: "-5.2%",
         positive: false,
@@ -37,29 +39,29 @@ const MaliyyeAI = () => {
         name: "ABC Şirkəti",
         days: "15 gün keçib",
         amount: "₼12,500",
-        type: "Alacaq",
-        status: "",
+        typeKey: "receivable",
+        statusKey: "",
       },
       {
         name: "XYZ MMC",
         days: "45 gün keçib",
         amount: "₼8,900",
-        type: "Alacaq",
-        status: "Risk",
+        typeKey: "receivable",
+        statusKey: "risk",
       },
       {
         name: "Supply Co",
         days: "5 gün keçib",
         amount: "₼15,600",
-        type: "Borc",
-        status: "",
+        typeKey: "payable",
+        statusKey: "",
       },
       {
         name: "Tech Solutions",
         days: "62 gün keçib",
         amount: "₼22,000",
-        type: "Borc",
-        status: "Kritik",
+        typeKey: "payable",
+        statusKey: "critical",
       },
     ],
   }
@@ -88,15 +90,12 @@ const MaliyyeAI = () => {
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm mt-10 p-4 flex flex-col">
-        <h3 className="text-gray-700 font-medium mb-2">Gəlir-Xərc Balansı</h3>
-        <p className="text-gray-400 text-sm mb-3">Son 6 ayın müqayisəsi</p>
+        <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.financeAi.incomeExpense.title")}</h3>
+        <p className="text-gray-400 text-sm mb-3">{t("pages.ai.financeAi.incomeExpense.subtitle")}</p>
 
         <div className="flex-1">
           <div className="bg-blue-50 text-sm text-gray-800 p-3 rounded-lg mt-4">
-            <strong>AI Analizi:</strong> Növbəti 6 ay ərzində orta aylıq cash flow
-            <strong> 72,667 AZN</strong> proqnozlaşdırılır. Sentyabr ayında maksimum
-            (<strong>75,000 AZN</strong>) gözlənilir. Likvidlik riski aşkar
-            edilmədi.
+            <strong>{t("pages.ai.common.aiAnalysisLabel")}</strong> {t("pages.ai.financeAi.incomeExpense.aiText", { avg: "72,667 AZN", max: "75,000 AZN" })}
           </div>
           <Chart1 />
         </div>
@@ -104,15 +103,13 @@ const MaliyyeAI = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8">
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col">
-          <h3 className="text-gray-700 font-medium mb-2">Pul Vəsaitlərinin Hərəkəti</h3>
-          <p className="text-gray-400 text-sm mb-3">Son 6 ayın gəlir və xərç dinamkası</p>
+          <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.financeAi.cashFlow.title")}</h3>
+          <p className="text-gray-400 text-sm mb-3">{t("pages.ai.financeAi.cashFlow.subtitle")}</p>
           <Chart2 />
         </div>
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex flex-col justify-center w-full">
-          <h3 className="text-gray-700 font-medium mb-2">Xərc Bölgüsü</h3>
-          <p className="text-gray-400 text-sm mb-3">
-            Cari ay kateqoriyalar üzrə xərcləri
-          </p>
+          <h3 className="text-gray-700 font-medium mb-2">{t("pages.ai.financeAi.expenseDistribution.title")}</h3>
+          <p className="text-gray-400 text-sm mb-3">{t("pages.ai.financeAi.expenseDistribution.subtitle")}</p>
           <div className="w-full h-[300px]">
             <Chart3 />
           </div>
@@ -121,8 +118,8 @@ const MaliyyeAI = () => {
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm mt-10 p-5">
-        <h3 className="text-gray-800 font-semibold text-lg mb-1">Borc və Alacaqlar</h3>
-        <p className="text-gray-400 text-sm mb-5">Riskli vəziyyətdə olan ödənişlər</p>
+        <h3 className="text-gray-800 font-semibold text-lg mb-1">{t("pages.ai.financeAi.debts.title")}</h3>
+        <p className="text-gray-400 text-sm mb-5">{t("pages.ai.financeAi.debts.subtitle")}</p>
 
         <div className="space-y-4">
           {data.debts.map((item, i) => (
@@ -131,7 +128,7 @@ const MaliyyeAI = () => {
               className="flex justify-between items-center bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition"
             >
               <div className="flex items-start gap-3">
-                {(item.status === "Risk" || item.status === "Kritik" || item.type === "Borc") && (
+                {(item.statusKey === "risk" || item.statusKey === "critical" || item.typeKey === "payable") && (
                   <FiAlertCircle className="text-red-500 text-lg mt-[2px]" />
                 )}
                 <div>
@@ -143,25 +140,25 @@ const MaliyyeAI = () => {
               <div className="flex flex-col items-end">
                 <span className="font-semibold text-gray-800">{item.amount}</span>
                 <div className="flex gap-2 mt-1">
-                  {item.status && (
+                  {item.statusKey && (
                     <span
-                      className={`text-xs font-medium px-2 py-[2px] rounded-lg ${item.status === "Risk"
+                      className={`text-xs font-medium px-2 py-[2px] rounded-lg ${item.statusKey === "risk"
                         ? "bg-orange-500 text-white"
-                        : item.status === "Kritik"
+                        : item.statusKey === "critical"
                           ? "bg-red-600 text-white"
                           : ""
                         }`}
                     >
-                      {item.status}
+                      {t(`pages.ai.financeAi.debts.status.${item.statusKey}`)}
                     </span>
                   )}
                   <span
-                    className={`text-xs font-medium px-2 py-[2px] rounded-lg ${item.type === "Alacaq"
+                    className={`text-xs font-medium px-2 py-[2px] rounded-lg ${item.typeKey === "receivable"
                       ? "bg-slate-900 text-white"
                       : "bg-rose-600 text-white"
                       }`}
                   >
-                    {item.type}
+                    {t(`pages.ai.financeAi.debts.type.${item.typeKey}`)}
                   </span>
                 </div>
               </div>

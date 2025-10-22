@@ -6,9 +6,11 @@ import Sales from "./pages/Sales";
 import Agreements from "./pages/Agreements";
 import Payments from "./pages/Payments";
 import Analytics from "./pages/Analytics";
+import { useTranslation } from "react-i18next";
 
 function Supplier() {
     const [currentTab, setCurrentTab] = useState(1);
+    const { t } = useTranslation();
 
     const renderTabContent = () => {
         switch (currentTab) {
@@ -29,7 +31,14 @@ function Supplier() {
         }
     };
 
-    const tabs = ["Control Panel", "Suppliers", "Sales", "Agreement ", "Payments", "Analytics"];
+        const tabs = [
+            t("pages.supplier.tabs.controlPanel"),
+            t("pages.supplier.tabs.suppliers"),
+            t("pages.supplier.tabs.sales"),
+            t("pages.supplier.tabs.agreements"),
+            t("pages.supplier.tabs.payments"),
+            t("pages.supplier.tabs.analytics")
+        ];
 
     return (
         <div className="sm:ml-16 mt-20 sm:mt-0 py-8 px-6 flex flex-col gap-6">

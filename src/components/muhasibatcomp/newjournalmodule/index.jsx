@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function CreateJournalEntry({ setModuleOpen }) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [entries, setEntries] = useState([{ account: "", debit: "", credit: "" }]);
 
@@ -28,15 +30,15 @@ export default function CreateJournalEntry({ setModuleOpen }) {
           ></div>
           <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6 max-h-[80vh] overflow-y-auto">
             <div className="flex justify-between items-center border-b pb-3">
-              <h2 className="text-lg font-semibold">Create Journal Entry</h2>
-              <button onClick={closeModal} className="text-gray-500 hover:text-gray-700 text-xl">
+              <h2 className="text-lg font-semibold">{t('pages.accounting.transactions.modal.title', { defaultValue: 'Create Journal Entry' })}</h2>
+              <button onClick={closeModal} className="text-gray-500 hover:text-gray-700 text-xl" aria-label={t('common.close', { defaultValue: 'Close' })} title={t('common.close', { defaultValue: 'Close' })}>
                 ×
               </button>
             </div>
             <div className="mt-4 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium">Date</label>
+                  <label className="block text-sm font-medium">{t('pages.accounting.transactions.modal.dateLabel', { defaultValue: 'Date' })}</label>
                   <input
                     type="date"
                     className="mt-1 w-full border rounded-md px-3 py-2"
@@ -44,31 +46,31 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium">Reference</label>
+                  <label className="block text-sm font-medium">{t('pages.accounting.transactions.modal.referenceLabel', { defaultValue: 'Reference' })}</label>
                   <input
                     type="text"
-                    placeholder="e.g., INV-2025-1046"
+                    placeholder={t('pages.accounting.transactions.modal.referencePlaceholder', { defaultValue: 'e.g., INV-2025-1046' })}
                     className="mt-1 w-full border rounded-md px-3 py-2"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium">Description</label>
+                <label className="block text-sm font-medium">{t('pages.accounting.transactions.modal.descriptionLabel', { defaultValue: 'Description' })}</label>
                 <input
                   type="text"
-                  placeholder="Transaction description"
+                  placeholder={t('pages.accounting.transactions.modal.descriptionPlaceholder', { defaultValue: 'Transaction description' })}
                   className="mt-1 w-full border rounded-md px-3 py-2"
                 />
               </div>
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="block text-sm font-medium">Journal Entries</label>
+                  <label className="block text-sm font-medium">{t('pages.accounting.transactions.modal.journalEntries', { defaultValue: 'Journal Entries' })}</label>
                   <button
                     onClick={addLine}
                     className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-md text-sm"
                   >
-                    + Add Line
+                    + {t('pages.accounting.transactions.modal.addLine', { defaultValue: 'Add Line' })}
                   </button>
                 </div>
 
@@ -76,9 +78,9 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                   <table className="w-full text-sm">
                     <thead className="bg-gray-100 border-b">
                       <tr>
-                        <th className="text-left px-2 py-2 w-[40%]">Account</th>
-                        <th className="text-left px-2 py-2 w-[25%]">Debit (₼)</th>
-                        <th className="text-left px-2 py-2 w-[25%]">Credit (₼)</th>
+                        <th className="text-left px-2 py-2 w-[40%]">{t('pages.accounting.transactions.modal.table.account', { defaultValue: 'Account' })}</th>
+                        <th className="text-left px-2 py-2 w-[25%]">{t('pages.accounting.transactions.modal.table.debit', { defaultValue: 'Debit (₼)' })}</th>
+                        <th className="text-left px-2 py-2 w-[25%]">{t('pages.accounting.transactions.modal.table.credit', { defaultValue: 'Credit (₼)' })}</th>
                         <th className="w-[10%]"></th>
                       </tr>
                     </thead>
@@ -91,11 +93,11 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                               onChange={(e) => handleChange(i, "account", e.target.value)}
                               className="w-full border rounded-md px-2 py-1"
                             >
-                              <option value="">Select account</option>
-                              <option value="cash">Cash</option>
-                              <option value="bank">Bank</option>
-                              <option value="sales">Sales</option>
-                              <option value="expenses">Expenses</option>
+                              <option value="">{t('pages.accounting.transactions.modal.table.selectAccount', { defaultValue: 'Select account' })}</option>
+                              <option value="cash">{t('pages.accounting.transactions.modal.table.options.cash', { defaultValue: 'Cash' })}</option>
+                              <option value="bank">{t('pages.accounting.transactions.modal.table.options.bank', { defaultValue: 'Bank' })}</option>
+                              <option value="sales">{t('pages.accounting.transactions.modal.table.options.sales', { defaultValue: 'Sales' })}</option>
+                              <option value="expenses">{t('pages.accounting.transactions.modal.table.options.expenses', { defaultValue: 'Expenses' })}</option>
                             </select>
                           </td>
                           <td className="px-2 py-2">
@@ -103,7 +105,7 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                               type="number"
                               value={entry.debit}
                               onChange={(e) => handleChange(i, "debit", e.target.value)}
-                              placeholder="0.00"
+                              placeholder={t('pages.accounting.transactions.modal.table.debitPlaceholder', { defaultValue: '0.00' })}
                               className="w-full border rounded-md px-2 py-1"
                             />
                           </td>
@@ -112,7 +114,7 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                               type="number"
                               value={entry.credit}
                               onChange={(e) => handleChange(i, "credit", e.target.value)}
-                              placeholder="0.00"
+                              placeholder={t('pages.accounting.transactions.modal.table.creditPlaceholder', { defaultValue: '0.00' })}
                               className="w-full border rounded-md px-2 py-1"
                             />
                           </td>
@@ -120,6 +122,7 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                             <button
                               onClick={() => removeLine(i)}
                               className="text-red-500 hover:text-red-700 text-lg"
+                              aria-label={t('pages.accounting.transactions.modal.table.removeLine', { defaultValue: 'Remove line' })}
                             >
                               ×
                             </button>
@@ -127,7 +130,7 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                         </tr>
                       ))}
                       <tr className="font-semibold bg-gray-50">
-                        <td className="px-2 py-2">Total</td>
+                        <td className="px-2 py-2">{t('common.total', { defaultValue: 'Total' })}</td>
                         <td className="px-2 py-2">₼{totalDebit.toFixed(2)}</td>
                         <td className="px-2 py-2">₼{totalCredit.toFixed(2)}</td>
                         <td></td>
@@ -141,7 +144,7 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                   onClick={closeModal}
                   className="px-4 py-2 border rounded-md hover:bg-gray-100"
                 >
-                  Cancel
+                  {t('common.cancel', { defaultValue: 'Cancel' })}
                 </button>
                 <button
                   onClick={closeModal}
@@ -152,7 +155,7 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                       : "bg-gray-400 cursor-not-allowed"
                   }`}
                 >
-                  Post Entry
+                  {t('pages.accounting.transactions.modal.postEntry', { defaultValue: 'Post Entry' })}
                 </button>
               </div>
             </div>

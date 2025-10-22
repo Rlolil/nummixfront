@@ -1,37 +1,37 @@
-
 import { FiTrendingUp, FiTrendingDown, FiUsers } from "react-icons/fi";
 import { BsBoxSeam, BsCart3 } from "react-icons/bs";
 import { MdAttachMoney } from "react-icons/md";
 import SatisHedefi from "./SatisHedefi";
-import XercLimiti from "./XercLimiti.jsx";
-
+import XercLimiti from "./Xerclimiti";
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const data = {
     stats: [
       {
-        title: "Aylıq Mənfəət",
+        title: t("pages.ai.dashboard.stats.monthlyProfit"),
         value: "₼45,231",
         change: "+18.5%",
         positive: true,
         icon: <MdAttachMoney className="text-green-500 text-[28px]" />,
       },
       {
-        title: "Satış Həcmi",
+        title: t("pages.ai.dashboard.stats.salesVolume"),
         value: "₼128,456",
         change: "+12.3%",
         positive: true,
         icon: <BsCart3 className="text-blue-500 text-[28px]" />,
       },
       {
-        title: "Anbar Dəyəri",
+        title: t("pages.ai.dashboard.stats.inventoryValue"),
         value: "₼67,890",
         change: "-5.2%",
         positive: false,
         icon: <BsBoxSeam className="text-purple-500 text-[28px]" />,
       },
       {
-        title: "Əmək Haqqı Fondu",
+        title: t("pages.ai.dashboard.stats.payrollFund"),
         value: "₼23,450",
         change: "+8.1%",
         positive: true,
@@ -41,54 +41,54 @@ const Dashboard = () => {
 
     alerts: [
       {
-        title: "Kritik Stok Səviyyəsi",
-        impact: "yüksək",
+        title: t("pages.ai.dashboard.alerts.items.criticalStock.title"),
+        impact: t("pages.ai.common.impact.high"),
         borderColor: "border-orange-300",
         bgColor: "bg-orange-50",
         badgeColor: "bg-red-500 text-white",
-        text: "5 məhsul minimum stok səviyyəsinə çatıb. Təkrar sifariş tələb olunur.",
+        text: t("pages.ai.dashboard.alerts.items.criticalStock.text"),
       },
       {
-        title: "ƏDV Ödənişi Yaxınlaşır",
-        impact: "orta",
+        title: t("pages.ai.dashboard.alerts.items.vatDueSoon.title"),
+        impact: t("pages.ai.common.impact.medium"),
         borderColor: "border-blue-300",
         bgColor: "bg-blue-50",
         badgeColor: "bg-black text-white",
-        text: "ƏDV ödənişinə 3 gün qalıb. Məbləğ: ₼8,450",
+        text: t("pages.ai.dashboard.alerts.items.vatDueSoon.text"),
       },
       {
-        title: "Satış Hədəfi",
-        impact: "aşağı",
+        title: t("pages.ai.dashboard.alerts.items.salesTarget.title"),
+        impact: t("pages.ai.common.impact.low"),
         borderColor: "border-green-300",
         bgColor: "bg-green-50",
         badgeColor: "bg-gray-300 text-gray-800",
-        text: "Bu ay satış hədəfi 105% yerinə yetirildi!",
+        text: t("pages.ai.dashboard.alerts.items.salesTarget.text"),
       },
     ],
 
     aiAnalysis: [
       {
-        title: "Gəlir Artımı",
-        text: "Bu ay gəlirlər 20%, xərclər isə 35% artıb. Xərc optimallaşdırması tövsiyə olunur.",
-        impact: "Yüksək təsir",
+        title: t("pages.ai.dashboard.aiResults.items.revenueGrowth.title"),
+        text: t("pages.ai.dashboard.aiResults.items.revenueGrowth.text"),
+        impact: t("pages.ai.common.impact.high"),
         badgeColor: "bg-red-500 text-white",
       },
       {
-        title: "Müştəri Davranışı",
-        text: "Son 3 ayda ən çox alış edən 5 müştəri ümumi satışın 42%-ni təşkil edir.",
-        impact: "Orta təsir",
+        title: t("pages.ai.dashboard.aiResults.items.customerBehavior.title"),
+        text: t("pages.ai.dashboard.aiResults.items.customerBehavior.text"),
+        impact: t("pages.ai.common.impact.medium"),
         badgeColor: "bg-gray-200 text-gray-700",
       },
       {
-        title: "Satış Trendi",
-        text: "Satışlar əsasən ayın 20-dən sonra 60% artır. Kampaniyaları bu dövrə planlaşdırın.",
-        impact: "Orta təsir",
+        title: t("pages.ai.dashboard.aiResults.items.salesTrend.title"),
+        text: t("pages.ai.dashboard.aiResults.items.salesTrend.text"),
+        impact: t("pages.ai.common.impact.medium"),
         badgeColor: "bg-gray-200 text-gray-700",
       },
       {
-        title: "İşçi Dövriyyəsi",
-        text: "Marketing şöbəsində işçi itkisinin riski müəyyən edilib. HR ilə görüş planlaşdırılmalıdır.",
-        impact: "Yüksək təsir",
+        title: t("pages.ai.dashboard.aiResults.items.staffTurnover.title"),
+        text: t("pages.ai.dashboard.aiResults.items.staffTurnover.text"),
+        impact: t("pages.ai.common.impact.high"),
         badgeColor: "bg-red-500 text-white",
       },
     ],
@@ -119,9 +119,9 @@ const Dashboard = () => {
       </div>
 
       <div className="bg-white border border-gray-300 rounded-xl shadow-sm p-5 mb-6">
-        <h2 className="text-[16px] font-semibold mb-2">Ən Mühüm Xəbərdarlıqlar</h2>
+        <h2 className="text-[16px] font-semibold mb-2">{t("pages.ai.dashboard.alerts.title")}</h2>
         <p className="text-gray-500 text-sm mb-4">
-          Al tərəfindən müəyyən edilmiş prioritet məsələlər
+          {t("pages.ai.dashboard.alerts.subtitle")}
         </p>
 
         {data.alerts.map((a, i) => (
@@ -145,10 +145,10 @@ const Dashboard = () => {
 
       <div className="bg-white border border-gray-300 rounded-xl shadow-sm p-5">
         <h2 className="text-[16px] font-semibold mb-2">
-          AI İntelligent Təhlilin Nəticələri
+          {t("pages.ai.dashboard.aiResults.title")}
         </h2>
         <p className="text-gray-500 text-sm mb-6">
-          Biznesiniz üçün tövsiyələr və proqnozlar
+          {t("pages.ai.dashboard.aiResults.subtitle")}
         </p>
 
         <div className="space-y-6">
