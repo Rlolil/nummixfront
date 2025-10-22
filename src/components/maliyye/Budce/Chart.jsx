@@ -1,46 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const data = [
-  {
-    name: 'Yan',
-    uv: 73000,
-    pv: 71000,
-    amt: 2400,
-  },
-  {
-    name: 'Fev',
-    uv: 73000,
-    pv: 75000,
-    amt: 2210,
-  },
-  {
-    name: 'Mar',
-    uv: 73000,
-    pv: 70500,
-    amt: 2290,
-  },
-  {
-    name: 'Apr',
-    uv: 73000,
-    pv: 72800,
-    amt: 2000,
-  },
-  {
-    name: 'May',
-    uv: 73000,
-    pv: 74200,
-    amt: 2000,
-  },
-  {
-    name: 'Iyn',
-    uv: 73000   ,
-    pv: 71000,
-    amt: 2181,
-  }
-];
-
 const Chart = () => {
+  const { t } = useTranslation()
+  const data = [
+    { name: t('pages.finance.common.months.jan', 'Jan'), uv: 73000, pv: 71000, amt: 2400 },
+    { name: t('pages.finance.common.months.feb', 'Feb'), uv: 73000, pv: 75000, amt: 2210 },
+    { name: t('pages.finance.common.months.mar', 'Mar'), uv: 73000, pv: 70500, amt: 2290 },
+    { name: t('pages.finance.common.months.apr', 'Apr'), uv: 73000, pv: 72800, amt: 2000 },
+    { name: t('pages.finance.common.months.may', 'May'), uv: 73000, pv: 74200, amt: 2000 },
+    { name: t('pages.finance.common.months.jun', 'Jun'), uv: 73000, pv: 71000, amt: 2181 }
+  ];
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart
@@ -63,8 +34,8 @@ const Chart = () => {
         />
         <Tooltip />
         <Legend />
-        <Bar yAxisId="left" dataKey="pv" fill="#37A656" name="Faktiki" />
-        <Bar yAxisId="right" dataKey="uv" fill="#059AF5" name="Plan" />
+        <Bar yAxisId="left" dataKey="pv" fill="#37A656" name={t('pages.finance.budgeting.chart.actual', 'Faktiki')} />
+        <Bar yAxisId="right" dataKey="uv" fill="#059AF5" name={t('pages.finance.budgeting.chart.plan', 'Plan')} />
       </BarChart>
     </ResponsiveContainer>
   );

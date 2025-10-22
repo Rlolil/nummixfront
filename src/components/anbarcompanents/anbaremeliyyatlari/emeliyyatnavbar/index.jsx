@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { LuArrowLeftRight } from "react-icons/lu";
 import { NavLink } from 'react-router-dom';
 import { FiArrowDownCircle, FiArrowUpCircle, FiRefreshCcw } from "react-icons/fi";
+import { useTranslation } from 'react-i18next';
 
-export default function EmeliyyatNavbar({ isActive = 'grn', onSelect }) {
+export default function EmeliyyatNavbar() {
+    const { t } = useTranslation();
 
 
     const getLinkClass = ({ isActive }) =>
@@ -14,22 +16,22 @@ export default function EmeliyyatNavbar({ isActive = 'grn', onSelect }) {
     return (
         <div className=" flex flex-col   md:items-start md:justify-start gap-10    mb-6 px-4 md:px-0">
             <div>
-                <h1 className="text-2xl font-bold text-gray-800">Anbar Əməliyyatları</h1>
-                <p className="text-gray-500 text-sm">Giriş, çıxış və yerdəyişmə əməliyyatları</p>
+                <h1 className="text-2xl font-bold text-gray-800">{t('pages.warehouse.operations.title')}</h1>
+                <p className="text-gray-500 text-sm">{t('pages.warehouse.operations.subtitle')}</p>
             </div>
             <div className=" flex flex-wrap w-fit items-center bg-gray-200 rounded-full gap-4 p-2">
                 <NavLink to="/anbar/warehouseoperations/grn" className={getLinkClass} >
-                    <FiArrowUpCircle className="inline-block mr-1" />   Mal Qəbulu (GRN)
+                    <FiArrowUpCircle className="inline-block mr-1" />   {t('pages.warehouse.operations.nav.grn')}
 
                 </NavLink>
                 <NavLink to="/anbar/warehouseoperations/dn" className={getLinkClass}>
-                    <FiArrowDownCircle className="inline-block mr-1" /> Mal Çıxışı (DN)
+                    <FiArrowDownCircle className="inline-block mr-1" /> {t('pages.warehouse.operations.nav.dn')}
                 </NavLink>
                 <NavLink to="/anbar/warehouseoperations/transfer" className={getLinkClass} >
-                    <div className="flex items-center gap-2"><LuArrowLeftRight /> Transfer</div>
+                    <div className="flex items-center gap-2"><LuArrowLeftRight /> {t('pages.warehouse.operations.nav.transfer')}</div>
                 </NavLink>
                 <NavLink to="/anbar/warehouseoperations/history" className={getLinkClass}>
-                    Tarixçə
+                    {t('pages.warehouse.operations.nav.history')}
                 </NavLink>
 
             </div>

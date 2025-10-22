@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaRegEdit } from "react-icons/fa";
 import { FaBox } from "react-icons/fa6";
+import { useTranslation } from 'react-i18next';
 
 // Dummy məhsul məlumatları
 const mehsullar = [
@@ -62,6 +63,7 @@ const mehsullar = [
 ];
 
 const Məhsullar = () => {
+    const { t } = useTranslation();
     const [open, setOpen] = useState(false);
     const [search, setSearch] = useState('');
 
@@ -78,15 +80,15 @@ const Məhsullar = () => {
             {/* Başlıq və düymə */}
             <div className="flex justify-between items-center mb-8">
                 <div>
-                    <h2 className="text-2xl font-bold">Məhsullar ({filtered.length})</h2>
-                    <p className="text-gray-500 text-sm">Bütün mal-material siyahısı</p>
+                    <h2 className="text-2xl font-bold">{t('pages.warehouse.products.title', { count: filtered.length })}</h2>
+                    <p className="text-gray-500 text-sm">{t('pages.warehouse.products.subtitle')}</p>
                 </div>
                 <button
                     onClick={() => setOpen(true)}
                     className="bg-black text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-800"
                 >
                     <span className="text-xl">+</span>
-                    <span className="text-blue-400 font-semibold">Yeni Məhsul</span>
+                    <span className="text-blue-400 font-semibold">{t('pages.warehouse.products.addNew')}</span>
                 </button>
             </div>
 
@@ -96,7 +98,7 @@ const Məhsullar = () => {
                     type="text"
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    placeholder="SKU, ad və ya ştrixkod..."
+                    placeholder={t('pages.warehouse.products.searchPlaceholder')}
                     className="w-72 px-3 py-2 border rounded-lg bg-gray-100 outline-none"
                 />
             </div>
@@ -106,14 +108,14 @@ const Məhsullar = () => {
                 <table className="w-full text-left">
                     <thead>
                         <tr className="text-gray-500 text-sm border-b">
-                            <th className="py-2 font-semibold">SKU</th>
-                            <th className="py-2 font-semibold">Məhsul</th>
-                            <th className="py-2 font-semibold">Kateqoriya</th>
-                            <th className="py-2 font-semibold">Qalıq</th>
-                            <th className="py-2 font-semibold">Min/Max</th>
-                            <th className="py-2 font-semibold">Status</th>
-                            <th className="py-2 font-semibold">Yer</th>
-                            <th className="py-2 font-semibold">Maya</th>
+                            <th className="py-2 font-semibold">{t('pages.warehouse.products.table.headers.sku')}</th>
+                            <th className="py-2 font-semibold">{t('pages.warehouse.products.table.headers.product')}</th>
+                            <th className="py-2 font-semibold">{t('pages.warehouse.products.table.headers.category')}</th>
+                            <th className="py-2 font-semibold">{t('pages.warehouse.products.table.headers.stock')}</th>
+                            <th className="py-2 font-semibold">{t('pages.warehouse.products.table.headers.minMax')}</th>
+                            <th className="py-2 font-semibold">{t('pages.warehouse.products.table.headers.status')}</th>
+                            <th className="py-2 font-semibold">{t('pages.warehouse.products.table.headers.location')}</th>
+                            <th className="py-2 font-semibold">{t('pages.warehouse.products.table.headers.cost')}</th>
                             <th className="py-2"></th>
                         </tr>
                     </thead>
@@ -124,13 +126,13 @@ const Məhsullar = () => {
                             let status = "";
                             let statusClass = "";
                             if (qaliq < m.min) {
-                                status = "Aşağı";
+                                status = t('pages.warehouse.products.status.low');
                                 statusClass = "bg-rose-400";
                             } else if (qaliq > m.max) {
-                                status = "Yuxarı";
+                                status = t('pages.warehouse.products.status.high');
                                 statusClass = "bg-blue-400";
                             } else {
-                                status = "Yaxşı";
+                                status = t('pages.warehouse.products.status.ok');
                                 statusClass = "bg-black";
                             }
                             return (
@@ -171,8 +173,8 @@ const Məhsullar = () => {
                         {/* Modal başlıq */}
                         <div className="flex justify-between items-center mb-2">
                             <div>
-                                <h3 className="text-xl font-bold">Yeni Məhsul Əlavə Et</h3>
-                                <p className="text-gray-500 text-sm">Məhsul məlumatlarını daxil edin</p>
+                                <h3 className="text-xl font-bold">{t('pages.warehouse.products.modal.title')}</h3>
+                                <p className="text-gray-500 text-sm">{t('pages.warehouse.products.modal.desc')}</p>
                             </div>
                             <button
                                 onClick={() => setOpen(false)}
@@ -185,56 +187,56 @@ const Məhsullar = () => {
                         <form className="space-y-3">
                             <div className="flex gap-2">
                                 <div className="flex-1">
-                                    <label className="block font-semibold text-l mb-1">SKU</label>
+                                    <label className="block font-semibold text-l mb-1">{t('pages.warehouse.products.form.sku')}</label>
                                     <input className="w-full border rounded px-2 py-1 bg-gray-100" placeholder="XM-A101" />
                                 </div>
                                 <div className="flex-1">
-                                    <label className="block font-semibold text-l mb-1">Ştrixkod</label>
+                                    <label className="block font-semibold text-l mb-1">{t('pages.warehouse.products.form.barcode')}</label>
                                     <input className="w-full border rounded px-2 py-1 bg-gray-100" placeholder="8594562341234" />
                                 </div>
                             </div>
                             <div>
-                                <label className="block font-semibold text-l mb-1">Məhsul adı</label>
-                                <input className="w-full border rounded px-2 py-1 bg-gray-100" placeholder="Məhsul adını daxil edin" />
+                                <label className="block font-semibold text-l mb-1">{t('pages.warehouse.products.form.name')}</label>
+                                <input className="w-full border rounded px-2 py-1 bg-gray-100" placeholder={t('pages.warehouse.products.placeholders.name')} />
                             </div>
                             <div className="flex gap-2">
                                 <div className="flex-1">
-                                    <label className="block font-semibold text-l mb-1">Kateqoriya</label>
+                                    <label className="block font-semibold text-l mb-1">{t('pages.warehouse.products.form.category')}</label>
                                     <select className="w-full border rounded px-2 py-1 bg-gray-100">
-                                        <option hidden>Seçin</option>
-                                        <option value="xammal">Xammal</option>
-                                        <option value="hazir_mehsul">Hazır məhsul</option>
-                                        <option value="ehtiyyat_hissələr">Ehtiyyat hissələr</option>
-                                        <option value="qablasdirma">Qablaşdırma</option>
+                                        <option hidden>{t('pages.warehouse.products.form.select')}</option>
+                                        <option value="rawMaterials">{t('pages.warehouse.categories.rawMaterials')}</option>
+                                        <option value="finishedGoods">{t('pages.warehouse.categories.finishedGoods')}</option>
+                                        <option value="spareParts">{t('pages.warehouse.categories.spareParts')}</option>
+                                        <option value="packaging">{t('pages.warehouse.categories.packaging')}</option>
                                     </select>
                                 </div>
                                 <div className="flex-1">
-                                    <label className="block font-semibold text-l mb-1">Ölçü vahidi</label>
+                                    <label className="block font-semibold text-l mb-1">{t('pages.warehouse.products.form.unit')}</label>
                                     <select className="w-full border rounded px-2 py-1 bg-gray-100">
-                                        <option hidden>Seçin</option>
-                                        <option value="kq">kq</option>
-                                        <option value="ədəd">ədəd</option>
-                                        <option value="litr">litr</option>
-                                        <option value="metr">metr</option>
+                                        <option hidden>{t('pages.warehouse.products.form.select')}</option>
+                                        <option value="kg">{t('pages.warehouse.products.units.kg')}</option>
+                                        <option value="pcs">{t('pages.warehouse.products.units.pcs')}</option>
+                                        <option value="liter">{t('pages.warehouse.products.units.liter')}</option>
+                                        <option value="meter">{t('pages.warehouse.products.units.meter')}</option>
                                     </select>
                                 </div>
                             </div>
                             <div className="flex gap-2">
                                 <div className="flex-1">
-                                    <label className="block font-semibold text-l mb-1">Min. Stok</label>
+                                    <label className="block font-semibold text-l mb-1">{t('pages.warehouse.products.form.minStock')}</label>
                                     <input className="w-full border rounded px-2 py-1 bg-gray-100" type='number' placeholder="50" />
                                 </div>
                                 <div className="flex-1">
-                                    <label className="block font-semibold text-l mb-1">Max. Stok</label>
+                                    <label className="block font-semibold text-l mb-1">{t('pages.warehouse.products.form.maxStock')}</label>
                                     <input className="w-full border rounded px-2 py-1 bg-gray-100" type='number' placeholder="500" />
                                 </div>
                                 <div className="flex-1">
-                                    <label className="block font-semibold text-l mb-1">Maya dəyəri (₼)</label>
+                                    <label className="block font-semibold text-l mb-1">{t('pages.warehouse.products.form.cost')}</label>
                                     <input className="w-full border rounded px-2 py-1 bg-gray-100" type='number' step="any" placeholder="12.50" />
                                 </div>
                             </div>
                             <div>
-                                <label className="block font-semibold text-l mb-1">Saxlama yeri</label>
+                                <label className="block font-semibold text-l mb-1">{t('pages.warehouse.products.form.location')}</label>
                                 <input className="w-full border rounded px-2 py-1 bg-gray-100" placeholder="A1-R2-H5" />
                             </div>
                             {/* Modal alt düymələri */}
@@ -244,13 +246,13 @@ const Məhsullar = () => {
                                     onClick={() => setOpen(false)}
                                     className="px-4 py-2 rounded bg-gray-100 text-black"
                                 >
-                                    Ləğv et
+                                    {t('common.cancel')}
                                 </button>
                                 <button
                                     type="submit"
                                     className="px-4 py-2 rounded bg-black text-white font-bold"
                                 >
-                                    Yadda saxla
+                                    {t('common.save')}
                                 </button>
                             </div>
                         </form>

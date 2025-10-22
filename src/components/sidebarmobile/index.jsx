@@ -24,7 +24,7 @@ function SidebarMobile() {
           onClick={toggleSidebar}
           className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300"
         >
-          <img src={image} alt="Menu" className="w-10 h-auto" />
+          <img src={image} alt={t("common.menu")} className="w-10 h-auto" />
         </button>
         <div className="relative flex-1 mx-2">
           <svg
@@ -86,10 +86,10 @@ function SidebarMobile() {
           <img
             onClick={closeSidebar}
             src={image}
-            alt="Logo"
+            alt={t("common.logoAlt")}
             className="w-12 h-auto"
           />
-          <h2 className="text-xl font-bold">Nummix</h2>
+          <h2 className="text-xl font-bold">{t("brand.name")}</h2>
         </div>
         <hr className="border-gray-200" />
         <div className="flex flex-col p-4 gap-2 mb-12 text-black font-medium">

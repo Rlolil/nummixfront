@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const products = [
   { id: 1, name: "Premium Paket", sales: "45 satış", price: "67,500 ₼", percent: "+25%" },
@@ -17,11 +18,12 @@ const customers = [
 ];
 
 const ProductCustomer = () => {
+  const { t } = useTranslation();
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
       <div className="bg-white rounded-xl shadow p-5">
-        <h2 className="text-lg font-semibold">Ən Çox Satılan Məhsullar</h2>
-        <p className="text-sm text-gray-500 mb-4">Bu ayın ən populyar məhsulları</p>
+        <h2 className="text-lg font-semibold">{t("pages.ai.salesAi.products.title")}</h2>
+        <p className="text-sm text-gray-500 mb-4">{t("pages.ai.salesAi.products.subtitle")}</p>
 
         <div className="space-y-3">
           {products.map((item, index) => (
@@ -45,11 +47,11 @@ const ProductCustomer = () => {
       </div>
 
       <div className="bg-white rounded-xl shadow p-5">
-        <h2 className="text-lg font-semibold">Ən Çox Alış Edən Müştərilər</h2>
-        <p className="text-sm text-gray-500 mb-4">Son 3 ayın TOP müştəriləri</p>
+  <h2 className="text-lg font-semibold">{t("pages.ai.salesAi.customers.title")}</h2>
+  <p className="text-sm text-gray-500 mb-4">{t("pages.ai.salesAi.customers.subtitle")}</p>
 
         <div className="bg-blue-50 text-blue-700 px-4 py-3 rounded-lg text-sm mb-4">
-          <strong>AI Analizi:</strong> TOP 5 müştəri ümumi satışın <strong>42%</strong>-ni təşkil edir.
+          <strong>{t("pages.ai.common.aiAnalysisLabel")}</strong> {t("pages.ai.salesAi.customers.aiText", { percent: "42%" })}
         </div>
 
         <div className="space-y-3">

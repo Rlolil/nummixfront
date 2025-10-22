@@ -1,7 +1,9 @@
 import { FiDownload, FiTrendingUp } from "react-icons/fi";
 import { ChartsGroup } from "../anbarqrafiks";
+import { useTranslation } from "react-i18next";
 
 function ItkiVeZayStatistikasi() {
+    const { t } = useTranslation();
     // 🔹 Data siyahısı
     const data = [
         { tarix: "2025-10-01", mehsul: "Xammal A-101", miqdar: 2, sebeb: "Keyfiyyətsiz", itki: 25.0 },
@@ -11,15 +13,15 @@ function ItkiVeZayStatistikasi() {
 
     return (
         <div className="border border-gray-200 rounded-2xl p-6 shadow-sm mt-6">
-            <h3 className="text-lg font-medium mb-4">İtki və Zay Statistikası</h3>
+            <h3 className="text-lg font-medium mb-4">{t('pages.warehouse.reports.lossAndWasteTitle')}</h3>
             <table className="w-full text-sm">
                 <thead>
                     <tr className="text-left text-gray-500 border-b">
-                        <th className="py-2">Tarix</th>
-                        <th className="py-2">Məhsul</th>
-                        <th className="py-2">Miqdar</th>
-                        <th className="py-2">Səbəb</th>
-                        <th className="py-2">İtki (₼)</th>
+                        <th className="py-2">{t('pages.warehouse.table.date')}</th>
+                        <th className="py-2">{t('pages.warehouse.table.product')}</th>
+                        <th className="py-2">{t('pages.warehouse.table.quantity')}</th>
+                        <th className="py-2">{t('pages.warehouse.table.reason')}</th>
+                        <th className="py-2">{t('pages.warehouse.table.loss')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +41,7 @@ function ItkiVeZayStatistikasi() {
                 </tbody>
             </table>
             <div className="text-right mt-4 text-sm font-medium">
-                Ümumi:{" "}
+                {t('pages.warehouse.table.total')} {" "}
                 <span className="text-red-500">
                     ₼{data.reduce((sum, row) => sum + row.itki, 0).toFixed(2)}
                 </span>
@@ -49,22 +51,23 @@ function ItkiVeZayStatistikasi() {
 }
 
 export default function HesabatAnalitika() {
+    const { t } = useTranslation();
     return (
         <div className="p-6 space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-semibold">Hesabat və Analitika</h1>
-                    <p className="text-sm text-gray-500">Anbar fəaliyyətinin detallı təhlili</p>
+                    <h1 className="text-2xl font-semibold">{t('pages.warehouse.reports.title')}</h1>
+                    <p className="text-sm text-gray-500">{t('pages.warehouse.reports.subtitle')}</p>
                 </div>
                 <div className="flex gap-3 items-center">
                     <select className="border rounded-xl px-3 py-2 text-sm">
-                        <option>Bu ay</option>
-                        <option>Bu həftə</option>
-                        <option>Bu rüb</option>
-                        <option>Bu il</option>
+                        <option>{t('common.period.thisMonth')}</option>
+                        <option>{t('common.period.thisWeek')}</option>
+                        <option>{t('common.period.thisQuarter')}</option>
+                        <option>{t('common.period.thisYear')}</option>
                     </select>
                     <button className="flex items-center gap-2 border border-gray-300 rounded-xl px-4 py-2 hover:bg-gray-100 transition">
-                        <FiDownload className="w-4 h-4" /> PDF Yüklə
+                        <FiDownload className="w-4 h-4" /> {t('common.downloadPDF')}
                     </button>
                 </div>
             </div>
@@ -72,30 +75,30 @@ export default function HesabatAnalitika() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
                     <h3 className="text-lg font-medium flex items-center gap-2">
-                        Stok Dövriyyəsi <FiTrendingUp className="w-4 h-4" />
+                        {t('pages.warehouse.metrics.stockTurnover')} <FiTrendingUp className="w-4 h-4" />
                     </h3>
                     <p className="text-3xl font-semibold mt-2">4.8x</p>
-                    <p className="text-xs text-green-600">+0.5 əvvəlki aya nisbətən</p>
+                    <p className="text-xs text-green-600">{t('pages.warehouse.metrics.vsPrevMonth', {change: '+0.5'})}</p>
                 </div>
 
                 <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
                     <h3 className="text-lg font-medium flex items-center gap-2">
-                        Orta Dövriyyə Müddəti <FiTrendingUp className="w-4 h-4" />
+                        {t('pages.warehouse.metrics.avgTurnoverDays')} <FiTrendingUp className="w-4 h-4" />
                     </h3>
-                    <p className="text-3xl font-semibold mt-2">23 gün</p>
-                    <p className="text-xs text-green-600">-2 gün yaxşılaşma</p>
+                    <p className="text-3xl font-semibold mt-2">23</p>
+                    <p className="text-xs text-green-600">{t('pages.warehouse.metrics.improvementDays', {days: 2})}</p>
                 </div>
 
                 <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
-                    <h3 className="text-lg font-medium">Ümumi İtki</h3>
+                    <h3 className="text-lg font-medium">{t('pages.warehouse.metrics.totalLoss')}</h3>
                     <p className="text-3xl font-semibold mt-2">₼ 55.25</p>
-                    <p className="text-xs text-gray-500">Bu ay zay və silinmə</p>
+                    <p className="text-xs text-gray-500">{t('pages.warehouse.metrics.thisMonthLoss')}</p>
                 </div>
 
                 <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
-                    <h3 className="text-lg font-medium">İnventar Dəqiqliyi</h3>
+                    <h3 className="text-lg font-medium">{t('pages.warehouse.metrics.inventoryAccuracy')}</h3>
                     <p className="text-3xl font-semibold mt-2">97.5%</p>
-                    <p className="text-xs text-gray-500">Son inventar sayımi</p>
+                    <p className="text-xs text-gray-500">{t('pages.warehouse.metrics.lastInventoryCount')}</p>
                 </div>
             </div>
 

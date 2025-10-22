@@ -1,19 +1,15 @@
 "use client"; //esas sehife sol qrafik
 import { BarChart, LineChart, Line, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, PieChart, Pie, Cell } from "recharts";
+import { useTranslation } from "react-i18next";
 
-const Adata = [
-  { name: "Yan", value: 450 },
-  { name: "Fev", value: 520 },
-  { name: "Mar", value: 390 },
-  { name: "Apr", value: 610 },
-  { name: "May", value: 480 },
-  { name: "İyn", value: 530 },
-];
+const AdataRaw = ["jan","feb","mar","apr","may","jun"];
 
 export function MonthlyStockChart() {
+  const { t } = useTranslation();
+  const Adata = AdataRaw.map(key => ({ name: t(`common.months.${key}`), value: ({jan:450,feb:520,mar:390,apr:610,may:480,jun:530}[key]) }));
   return (
     <div className="bg-white border rounded-xl p-5 shadow-sm">
-      <h3 className="text-lg font-semibold mb-4">Aylıq Stok Dövriyyəsi</h3>
+      <h3 className="text-lg font-semibold mb-4">{t('pages.warehouse.charts.monthlyStock')}</h3>
       <ResponsiveContainer width="100%" height={250}>
         <BarChart data={Adata}>
           <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
@@ -28,19 +24,16 @@ export function MonthlyStockChart() {
 }
 ////////////////////// esas sehife sag qrafik
 
-const Sdata = [
-  { name: "Xammal", value: 35 },
-  { name: "Hazır məhsul", value: 28 },
-  { name: "Ehtiyat hissələri", value: 22 },
-  { name: "Qablaşdırma", value: 15 },
-];
+const SdataKeys = ["rawMaterials","finishedGoods","spareParts","packaging"];
 
 const COLORS = ["#000000", "#4B5563", "#9CA3AF", "#D1D5DB"];
 
 export function CategoryDistributionChart() {
+  const { t } = useTranslation();
+  const Sdata = SdataKeys.map(k => ({ name: t(`pages.warehouse.categories.${k}`), value: ({rawMaterials:35,finishedGoods:28,spareParts:22,packaging:15}[k]) }));
   return (
     <div className="bg-white border rounded-xl p-5 shadow-sm">
-      <h3 className="text-lg font-semibold mb-4">Kateqoriya üzrə Bölgü (%)</h3>
+      <h3 className="text-lg font-semibold mb-4">{t('pages.warehouse.charts.categoryDistribution')}</h3>
       <ResponsiveContainer width="100%" height={250}>
         <PieChart>
           <Pie
@@ -68,28 +61,16 @@ export function CategoryDistributionChart() {
 
 
 
-const stokDovriyeData = [
-  { ay: "Yan", deyer: 4.2 },
-  { ay: "Fev", deyer: 4.5 },
-  { ay: "Mar", deyer: 4.1 },
-  { ay: "Apr", deyer: 4.8 },
-  { ay: "May", deyer: 4.6 },
-  { ay: "Iyn", deyer: 4.9 },
-];
+const stokDovriyeKeys = ["jan","feb","mar","apr","may","jun"];
 
-const anbarDeyeriData = [
-  { ay: "Yan", deyer: 420000 },
-  { ay: "Fev", deyer: 450000 },
-  { ay: "Mar", deyer: 430000 },
-  { ay: "Apr", deyer: 470000 },
-  { ay: "May", deyer: 460000 },
-  { ay: "Iyn", deyer: 480000 },
-];
+const anbarDeyeriKeys = ["jan","feb","mar","apr","may","jun"];
 
 export function StokDovriyeChart() {
+  const { t } = useTranslation();
+  const stokDovriyeData = stokDovriyeKeys.map(k => ({ ay: t(`common.months.${k}`), deyer: ({jan:4.2,feb:4.5,mar:4.1,apr:4.8,may:4.6,jun:4.9}[k]) }));
   return (
     <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
-      <h3 className="text-lg font-medium mb-4">Stok Dövriyyə Əmsalı</h3>
+      <h3 className="text-lg font-medium mb-4">{t('pages.warehouse.charts.stockTurnoverRatio')}</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={stokDovriyeData}>
@@ -106,9 +87,11 @@ export function StokDovriyeChart() {
 }
 
 export function AnbarDeyeriChart() {
+  const { t } = useTranslation();
+  const anbarDeyeriData = anbarDeyeriKeys.map(k => ({ ay: t(`common.months.${k}`), deyer: ({jan:420000,feb:450000,mar:430000,apr:470000,may:460000,jun:480000}[k]) }));
   return (
     <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
-      <h3 className="text-lg font-medium mb-4">Anbar Dəyəri Dinamikası</h3>
+      <h3 className="text-lg font-medium mb-4">{t('pages.warehouse.charts.inventoryValueDynamics')}</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={anbarDeyeriData}>

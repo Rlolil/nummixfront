@@ -127,7 +127,7 @@ export default function Payments() {
                                         <td className="hidden lg:table-cell">
                                             <div className="space-y-1">
                                                 <p>2025-10-12</p>
-                                                <p className="text-xs text-red-500">3 gün gecikib</p>
+                                                <p className="text-xs text-red-500">{t("pages.supplier.payments.table.overdueDays", { days: 3 })}</p>
                                             </div>
                                         </td>
                                         <td className="hidden sm:table-cell">

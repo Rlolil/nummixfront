@@ -1,38 +1,6 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Calendar } from "lucide-react"; // lucide icon istifade olunur
-
-const upcomingEvents = [
-  {
-    icon: "🎉",
-    title: "Respublika Günü",
-    date: "M10 18",
-    description: "Dövlət bayramı",
-    color: "red",
-  },
-  {
-    icon: "📊",
-    title: "Sosial sığorta (DSMF)",
-    date: "M10 20",
-    amount: "₼48,532",
-    description: "DSMF-ə ödəniş",
-    color: "orange",
-  },
-  {
-    icon: "📊",
-    title: "Gəlir vergisi",
-    date: "M10 20",
-    amount: "₼67,945",
-    description: "Büdcəyə gəlir vergisi ödənişi",
-    color: "orange",
-  },
-  {
-    icon: "✈️",
-    title: "Səbinə Həsənova - Məzuniyyət",
-    date: "M10 20",
-    description: "İllik məzuniyyət (8 gün)",
-    color: "blue",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const colorClasses = {
   red: {
@@ -53,10 +21,43 @@ const colorClasses = {
 };
 
 function UpcomingEventsCard() {
+  const { t } = useTranslation();
+  const upcomingEvents = useMemo(() => ([
+    {
+      icon: "🎉",
+      title: t('pages.hr.calendar.items.republicDay', { defaultValue: 'Republic Day' }),
+      date: "M10 18",
+      description: t('pages.hr.calendar.descriptions.stateHoliday', { defaultValue: 'Public holiday' }),
+      color: "red",
+    },
+    {
+      icon: "📊",
+      title: t('pages.hr.calendar.items.socialInsuranceShort', { defaultValue: 'Social insurance (SSPF)' }),
+      date: "M10 20",
+      amount: "₼48,532",
+      description: t('pages.hr.calendar.descriptions.paymentSSPF', { defaultValue: 'Payment to SSPF' }),
+      color: "orange",
+    },
+    {
+      icon: "📊",
+      title: t('pages.hr.calendar.items.incomeTax', { defaultValue: 'Income tax' }),
+      date: "M10 20",
+      amount: "₼67,945",
+      description: t('pages.hr.calendar.descriptions.paymentIncomeTax', { defaultValue: 'Income tax payment to the budget' }),
+      color: "orange",
+    },
+    {
+      icon: "✈️",
+      title: `Səbinə Həsənova - ${t('pages.hr.calendar.items.leave', { defaultValue: 'Leave' })}`,
+      date: "M10 20",
+      description: t('pages.hr.calendar.descriptions.annualLeaveDays', { days: 8, defaultValue: 'Annual leave ({{days}} days)' }),
+      color: "blue",
+    },
+  ]), [t]);
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col gap-6 shadow-sm">
       <div>
-        <h4 className="text-lg font-semibold">Yaxınlaşan Hadisələr</h4>
+        <h4 className="text-lg font-semibold">{t('pages.hr.calendar.upcomingTitle', { defaultValue: 'Upcoming Events' })}</h4>
       </div>
       <div className="space-y-3">
         {upcomingEvents.map((event, index) => {

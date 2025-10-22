@@ -13,7 +13,7 @@ export default function Sales() {
             date: "2023-10-01",
             delivery: "2023-10-05",
             amount: 1000,
-            status: "Gözləyir",
+            statusCode: "pending",
         },
         {
             id: 2,
@@ -22,7 +22,7 @@ export default function Sales() {
             date: "2023-10-02",
             delivery: "2023-10-06",
             amount: 1500,
-            status: "Gecikmiş",
+            statusCode: "delayed",
         },
     ];
 

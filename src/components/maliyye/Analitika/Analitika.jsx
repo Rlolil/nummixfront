@@ -4,49 +4,51 @@ import CashFlow from "./CashFlow";
 import Rentabel from "./Rentabel";
 import Likvidlik from "./Likvidlik";
 import FinansSabiti from "./FinansSabiti";
+import { useTranslation } from 'react-i18next';
 
 const Analitika = () => {
   const [activeTab, setActiveTab] = useState("cashflow");
+  const { t } = useTranslation()
 
   const financeCards = [
     {
-      title: "ROI (Return on Investment)",
-      subtitle: "Investisiyadan geri qaytarma",
+      title: t('pages.finance.analytics.cards.roi.title', 'ROI (Return on Investment)'),
+      subtitle: t('pages.finance.analytics.cards.roi.subtitle', 'Investisiyadan geri qaytarma'),
       value: "18.5%",
       change: "+2.3%",
       positive: true,
     },
     {
-      title: "Gross Margin",
-      subtitle: "Ümumi mənfəət marjası",
+      title: t('pages.finance.analytics.cards.grossMargin.title', 'Gross Margin'),
+      subtitle: t('pages.finance.analytics.cards.grossMargin.subtitle', 'Ümumi mənfəət marjası'),
       value: "42.8%",
       change: "+1.5%",
       positive: true,
     },
     {
-      title: "Net Profit Margin",
-      subtitle: "Xalis mənfəət marjası",
+      title: t('pages.finance.analytics.cards.netProfitMargin.title', 'Net Profit Margin'),
+      subtitle: t('pages.finance.analytics.cards.netProfitMargin.subtitle', 'Xalis mənfəət marjası'),
       value: "12.3%",
       change: "-0.8%",
       positive: false,
     },
     {
-      title: "Current Ratio",
-      subtitle: "Cari likvidlik əmsalı",
+      title: t('pages.finance.analytics.cards.currentRatio.title', 'Current Ratio'),
+      subtitle: t('pages.finance.analytics.cards.currentRatio.subtitle', 'Cari likvidlik əmsalı'),
       value: "3.4",
       change: "+0.3",
       positive: true,
     },
     {
-      title: "Quick Ratio",
-      subtitle: "Təcili likvidlik əmsalı",
+      title: t('pages.finance.analytics.cards.quickRatio.title', 'Quick Ratio'),
+      subtitle: t('pages.finance.analytics.cards.quickRatio.subtitle', 'Təcili likvidlik əmsalı'),
       value: "2.6",
       change: "+0.2",
       positive: true,
     },
     {
-      title: "Debt to Equity",
-      subtitle: "Borc/Kapital nisbəti",
+      title: t('pages.finance.analytics.cards.debtToEquity.title', 'Debt to Equity'),
+      subtitle: t('pages.finance.analytics.cards.debtToEquity.subtitle', 'Borc/Kapital nisbəti'),
       value: "0.45",
       change: "-0.05",
       positive: false,
@@ -57,10 +59,8 @@ const Analitika = () => {
     <div className="container mx-auto px-2 py-4">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-[24px] font-semibold">Maliyyə Analitikası</h1>
-          <p className="text-[#717182] text-[16px] mt-2 mb-5">
-            Rentabellik, likvidlik və kapital göstəriciləri
-          </p>
+          <h1 className="text-[24px] font-semibold">{t('pages.finance.analytics.title')}</h1>
+          <p className="text-[#717182] text-[16px] mt-2 mb-5">{t('pages.finance.analytics.subtitle')}</p>
         </div>
       </div>
 
@@ -109,7 +109,7 @@ const Analitika = () => {
               : "text-gray-600 hover:text-black"
           }`}
         >
-          Cash Flow Proqnozu
+          {t('pages.finance.analytics.tabs.cashFlow')}
         </button>
         <button
           onClick={() => setActiveTab("rentabel")}
@@ -120,7 +120,7 @@ const Analitika = () => {
               : "text-gray-600 hover:text-black"
           }`}
         >
-          Rentabellik
+          {t('pages.finance.analytics.tabs.profitability')}
         </button>
         <button
           onClick={() => setActiveTab("likvid")}
@@ -131,7 +131,7 @@ const Analitika = () => {
               : "text-gray-600 hover:text-black"
           }`}
         >
-          Likvidlik
+          {t('pages.finance.analytics.tabs.liquidity')}
         </button>
       </div>
 

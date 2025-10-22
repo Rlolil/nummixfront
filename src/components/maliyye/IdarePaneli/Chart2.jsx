@@ -1,23 +1,22 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-
-const data = [
-  { name: 'Maaşlar', value: 400 },
-  { name: 'Ofis xərçləri', value: 300 },
-  { name: 'Marketing', value: 300 },
-  { name: 'IT', value: 200 },
-];
-
-const customLabels = {
-  'Maaşlar': '49%',
-  'Ofis xərçləri': '18%',
-  'Marketing': '21%',
-  'IT': '12%',
-};
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 export default function Chart2() {
+  const { t } = useTranslation();
+
+  const data = [
+    { key: 'salary', value: 400, percentLabel: '49%' },
+    { key: 'office', value: 300, percentLabel: '18%' },
+    { key: 'marketing', value: 300, percentLabel: '21%' },
+    { key: 'it', value: 200, percentLabel: '12%' },
+  ].map(item => ({
+    ...item,
+    name: t(`pages.finance.common.categories.${item.key}`, item.key)
+  }));
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart>
@@ -27,7 +26,7 @@ export default function Chart2() {
           cy="50%"
           outerRadius={80}
           labelLine={false} 
-          label={({ name }) => `${name} ${customLabels[name]}`} 
+          label={({ payload, name }) => `${name} ${payload.percentLabel}`} 
           dataKey="value"
         >
           {data.map((entry, index) => (

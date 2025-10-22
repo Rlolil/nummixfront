@@ -1,15 +1,17 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const SatisHedefi = () => {
+  const { t } = useTranslation();
   const cariSatis = 128456;
   const hedef = 120000;
   const faiz = Math.round((cariSatis / hedef) * 100);
 
   return (
     <div className="bg-white border border-gray-300 rounded-xl shadow-sm p-5 flex-1">
-      <h2 className="text-lg font-semibold text-gray-800 mb-1">Satış Hədəfi</h2>
+      <h2 className="text-lg font-semibold text-gray-800 mb-1">{t("pages.ai.dashboard.salesTarget.title")}</h2>
       <p className="text-sm text-gray-500 mb-4">
-        Aylıq satış planının icra vəziyyəti
+        {t("pages.ai.dashboard.salesTarget.subtitle")}
       </p>
 
       <div className="flex justify-between text-sm font-medium text-gray-700 mb-2">

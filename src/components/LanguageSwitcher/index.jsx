@@ -14,9 +14,9 @@ export default function LanguageSwitcher({ compact = false, className = '' }) {
 
   const items = useMemo(() => (
     [
-      { code: 'az', label: t('lang.az', { ns: 'translation' }) },
-      { code: 'en', label: t('lang.en', { ns: 'translation' }) },
-      { code: 'ru', label: t('lang.ru', { ns: 'translation' }) }
+      { code: 'az', label: t('lang.az', { ns: 'translation',  keySeparator:false }) },
+      { code: 'en', label: t('lang.en', { ns: 'translation',  keySeparator:false }) },
+      { code: 'ru', label: t('lang.ru', { ns: 'translation',  keySeparator:false }) }
     ]
   ), [t])
 
@@ -48,10 +48,16 @@ export default function LanguageSwitcher({ compact = false, className = '' }) {
         {open && (
           <div className="absolute right-0 top-full mt-1 w-36 bg-white border rounded-md shadow-lg z-50">
             {items.map(it => (
-              <button key={it.code} onClick={() => change(it.code)} className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 ${current === it.code ? 'font-semibold' : ''}`}>
+              <div
+                key={it.code}
+                role="button"
+                tabIndex={0}
+                onClick={() => change(it.code)}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); change(it.code); } }}
+                className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 ${current === it.code ? 'font-semibold' : ''}`}>
                 <span>{FLAGS[it.code]}</span>
                 <span className="text-sm">{it.label}</span>
-              </button>
+              </div>
             ))}
           </div>
         )}
@@ -69,10 +75,16 @@ export default function LanguageSwitcher({ compact = false, className = '' }) {
       {open && (
         <div className="absolute right-0 top-full mt-1 w-40 bg-white border rounded-md shadow-lg z-50">
           {items.map(it => (
-            <button key={it.code} onClick={() => change(it.code)} className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 ${current === it.code ? 'font-semibold' : ''}`}>
+            <div
+              key={it.code}
+              role="button"
+              tabIndex={0}
+              onClick={() => change(it.code)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); change(it.code); } }}
+              className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 ${current === it.code ? 'font-semibold' : ''}`}>
               <span>{FLAGS[it.code]}</span>
               <span className="text-sm">{it.label}</span>
-            </button>
+            </div>
           ))}
         </div>
       )}

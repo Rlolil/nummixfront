@@ -1,8 +1,10 @@
 import { useState, useMemo, useEffect } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useOutletContext } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function InventarSayimi() {
+    const { t } = useTranslation();
     const { setInventoryStats } = useOutletContext(); // 📤 Inventar.jsx-dən gələn funksiya
     const [counts, setCounts] = useState({
         "XM-A101": "",
@@ -58,12 +60,12 @@ export default function InventarSayimi() {
         <div className="space-y-8">
             {/* Fiziki inventar cədvəli */}
             <div className="p-6 bg-white rounded-xl shadow-sm">
-                <h2 className="text-lg font-semibold mb-3">Fiziki İnventar Sayımı</h2>
+                <h2 className="text-lg font-semibold mb-3">{t('pages.warehouse.inventory.count.title')}</h2>
 
                 <div className="border p-3 rounded-lg bg-blue-50 flex gap-2 items-start mb-4">
                     <AiOutlineInfoCircle className="text-blue-500 w-5 h-5 mt-1" />
                     <p className="text-sm text-blue-800">
-                        Fiziki sayımı aparın və faktiki miqdarı daxil edin. Sistem avtomatik olaraq fərqi hesablayacaq.
+                        {t('pages.warehouse.inventory.count.info')}
                     </p>
                 </div>
 
@@ -71,13 +73,13 @@ export default function InventarSayimi() {
                     <thead>
                         <tr className="text-left border-b">
                             <th className="py-2 px-2"></th>
-                            <th className="py-2 px-2">SKU</th>
-                            <th className="py-2 px-2">Məhsul</th>
-                            <th className="py-2 px-2">Yer</th>
-                            <th className="py-2 px-2">Sistem Qalığı</th>
-                            <th className="py-2 px-2">Faktiki Qalıq</th>
-                            <th className="py-2 px-2">Fərq</th>
-                            <th className="py-2 px-2">Status</th>
+                            <th className="py-2 px-2">{t('pages.warehouse.inventory.count.table.sku')}</th>
+                            <th className="py-2 px-2">{t('pages.warehouse.inventory.count.table.product')}</th>
+                            <th className="py-2 px-2">{t('pages.warehouse.inventory.count.table.location')}</th>
+                            <th className="py-2 px-2">{t('pages.warehouse.inventory.count.table.systemQty')}</th>
+                            <th className="py-2 px-2">{t('pages.warehouse.inventory.count.table.actualQty')}</th>
+                            <th className="py-2 px-2">{t('pages.warehouse.inventory.count.table.difference')}</th>
+                            <th className="py-2 px-2">{t('pages.warehouse.inventory.count.table.status')}</th>
                         </tr>
                     </thead>
 
@@ -86,18 +88,18 @@ export default function InventarSayimi() {
                             const real = counts[item.sku] ? parseFloat(counts[item.sku]) : null;
                             const diff = real !== null && !isNaN(real) ? real - item.systemQty : null;
 
-                            let status = "Gözləyir";
+                            let status = t('pages.warehouse.inventory.count.status.pending');
                             let statusColor = "bg-gray-100 text-gray-700";
 
                             if (diff !== null) {
                                 if (diff === 0) {
-                                    status = "Uyğundur";
+                                    status = t('pages.warehouse.inventory.count.status.match');
                                     statusColor = "bg-green-100 text-green-700";
                                 } else if (diff < 0) {
-                                    status = "Əskikdir";
+                                    status = t('pages.warehouse.inventory.count.status.missing');
                                     statusColor = "bg-red-100 text-red-700";
                                 } else if (diff > 0) {
-                                    status = "Artıq var";
+                                    status = t('pages.warehouse.inventory.count.status.excess');
                                     statusColor = "bg-yellow-100 text-yellow-700";
                                 }
                             }
@@ -168,11 +170,11 @@ export default function InventarSayimi() {
                         }
                         className="px-4 py-2 border rounded-md hover:bg-gray-100"
                     >
-                        Ləğv et
+                        {t('common.cancel')}
                     </button>
 
                     <button className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700">
-                        İnventarı Təsdiqlə ({Object.values(counts).filter((v) => v).length} məhsul)
+                        {t('pages.warehouse.inventory.count.confirm', { count: Object.values(counts).filter((v) => v).length })}
                     </button>
                 </div>
             </div>

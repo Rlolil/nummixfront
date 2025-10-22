@@ -7,9 +7,9 @@ function SidebarComp() {
     return (
         <div className="top-[1px] hidden md:block max-w-72 md:fixed left-0 w-20 hover:w-72 transition-all duration-400 h-screen group bg-white text-black z-50">
             <div className="flex items-center gap-[20px] p-4">
-                <img src={image} alt="Logo" className="max-w-12 h-auto" />
+                <img src={image} alt={t("common.logoAlt")} className="max-w-12 h-auto" />
                 <h2 className="text-md group-hover:text-xl font-bold group-hover:opacity-100 opacity-0 transition-opacity duration-200">
-                    Nummix
+                    {t("brand.name")}
                 </h2>
             </div>
             <hr className="border-gray-200" />

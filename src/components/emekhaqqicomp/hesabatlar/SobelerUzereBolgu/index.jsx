@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   PieChart,
   Pie,
@@ -18,11 +19,12 @@ const data = [
 ];
 
 export default function SobelerUzereBolgu() {
+  const { t } = useTranslation();
   return (
     <div className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border border-gray-200 p-6">
       {/* Başlıq */}
       <div className="grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 pb-6">
-        <h4 className="leading-none text-lg font-semibold">Şöbələr üzrə Bölgü</h4>
+        <h4 className="leading-none text-lg font-semibold">{t('pages.hr.reports.departmentDistribution.title', { defaultValue: 'Department Distribution' })}</h4>
       </div>
 
       {/* Pie Chart */}
@@ -65,7 +67,7 @@ export default function SobelerUzereBolgu() {
               <span className="text-gray-700">{name}</span>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-gray-600">{workers} işçi</span>
+              <span className="text-gray-600">{t('pages.hr.common.employeeCount', { count: workers, defaultValue: '{{count}} employees' })}</span>
               <span className="text-gray-900">₼{salary.toLocaleString()}</span>
             </div>
           </div>

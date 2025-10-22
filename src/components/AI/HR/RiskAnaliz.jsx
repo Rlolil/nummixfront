@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const RiskAnaliz = () => {
+    const { t } = useTranslation();
     const data = [
         {
             title: "Marketinq Şöbəsi",
@@ -11,7 +13,7 @@ const RiskAnaliz = () => {
                 "Son 2 ayda 2 işçi çıxıb",
             ],
             aiAdvice: "Maaş artımı və bonus sistemi tətbiq edilməlidir",
-            risk: "Yüksək Risk",
+            riskKey: "high",
             color: "bg-red-50 border-red-200 ",
             tagColor: "bg-red-600 text-white",
         },
@@ -20,7 +22,7 @@ const RiskAnaliz = () => {
             employees: 18,
             reasons: ["Komisyon sistemi təkmilləşdirilməlidir"],
             aiAdvice: "Performans bonusları yenidən qurulmalıdır",
-            risk: "Orta Risk",
+            riskKey: "medium",
             color: "bg-amber-50 border-amber-200",
             tagColor: "bg-black text-white",
         },
@@ -29,7 +31,7 @@ const RiskAnaliz = () => {
             employees: 15,
             reasons: ["Kollektiv stabil"],
             aiAdvice: "Hal-hazırda əlavə tədbirlər tələb olunmur",
-            risk: "Aşağı Risk",
+            riskKey: "low",
             color: "bg-green-50 border-green-200",
             tagColor: "bg-gray-100 text-gray-700",
         },
@@ -38,10 +40,8 @@ const RiskAnaliz = () => {
     return (
         <div className="container mx-auto py-4">
             <div className="bg-white border border-gray-300 rounded-xl shadow-sm p-5 mb-6">
-                <h2 className="text-lg font-semibold mb-2">İşçi İtkisi Risk Analizi</h2>
-                <p className="text-gray-600 mb-6">
-                    AI tərəfindən müəyyən edilmiş yüksək riskli şöbələr
-                </p>
+                <h2 className="text-lg font-semibold mb-2">{t("pages.ai.hrAi.risk.title")}</h2>
+                <p className="text-gray-600 mb-6">{t("pages.ai.hrAi.risk.subtitle")}</p>
 
                 {data.map((dept, index) => (
                     <div
@@ -51,14 +51,14 @@ const RiskAnaliz = () => {
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="text-lg font-semibold">{dept.title}</h3>
                             <span className={`text-sm px-3 py-1 rounded-full ${dept.tagColor}`}>
-                                {dept.risk}
+                                {t(`pages.ai.hrAi.risk.level.${dept.riskKey}`)}
                             </span>
                         </div>
 
-                        <p className="text-sm mb-1 text-gray-600">{dept.employees} işçi</p>
+                        <p className="text-sm mb-1 text-gray-600">{dept.employees} {t("pages.ai.common.employeesSuffix")}</p>
 
                         <div className="mb-3">
-                            <p className="font-medium mb-1">Səbəblər:</p>
+                            <p className="font-medium mb-1">{t("pages.ai.hrAi.risk.reasons")}</p>
                             <ul className="list-disc list-inside space-y-1">
                                 {dept.reasons.map((r, i) => (
                                     <li key={i}>{r}</li>
@@ -67,7 +67,7 @@ const RiskAnaliz = () => {
                         </div>
 
                         <p className="font-semibold">
-                            AI Tövsiyəsi:{" "}
+                            {t("pages.ai.common.aiRecommendation")} {" "}
                             <span className="font-normal">{dept.aiAdvice}</span>
                         </p>
                     </div>

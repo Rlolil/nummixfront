@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const data = [
   { day: "B.e", date: "07 Okt", present: 240, late: 7, involuntary: 0, attendance: 97.2, trendingUp: true },
@@ -9,21 +10,23 @@ const data = [
 ];
 
 function WeeklySummary() {
+  const { t } = useTranslation();
   return (
     <div className="bg-base-100 text-base-content flex flex-col gap-6 rounded-xl border border-base-300 p-6 shadow-lg">
       <header className="mb-4">
-        <h4 className="text-xl font-semibold">Həftəlik İcmal</h4>
+        <h4 className="text-xl font-semibold">{t('pages.hr.attendance.weeklySummary.title', { defaultValue: 'Weekly Summary' })}</h4>
       </header>
 
       <div className="overflow-x-auto">
         <table className="w-full table-auto border-collapse">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
-              {["Gün", "Tarix", "İşdə olan", "Gecikənlər", "Qeyri-ixtiyari", "Davamiyyət %"].map((heading) => (
-                <th key={heading} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {heading}
-                </th>
-              ))}
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.day', { defaultValue: 'Day' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.date', { defaultValue: 'Date' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.present', { defaultValue: 'Present' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.late', { defaultValue: 'Late' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.involuntary', { defaultValue: 'Unexcused' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.attendancePct', { defaultValue: 'Attendance %' })}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">

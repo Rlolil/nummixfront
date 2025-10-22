@@ -1,17 +1,19 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import BalanceSheet from "./balancesheet";
 import IncomeStatement from "./income";
 import CashFlow from "./cashflow";
 import ChangeEquity from "./changesequity";
 
 export default function FinancialReports() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("balance-sheet");
 
   const tabs = [
-    { id: "balance-sheet", label: "Balance Sheet" },
-    { id: "income-statement", label: "Income Statement" },
-    { id: "cash-flow", label: "Cash Flow" },
-    { id: "equity-changes", label: "Changes in Equity" },
+    { id: "balance-sheet", label: t('pages.accounting.financialReports.tabs.balanceSheet') },
+    { id: "income-statement", label: t('pages.accounting.financialReports.tabs.incomeStatement') },
+    { id: "cash-flow", label: t('pages.accounting.financialReports.tabs.cashFlow') },
+    { id: "equity-changes", label: t('pages.accounting.financialReports.tabs.equityChanges') },
   ];
 
   const exportPDF = () => {
@@ -24,18 +26,18 @@ export default function FinancialReports() {
       <div className="container mx-auto p-4 sm:p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold">Financial Reports</h2>
-            <p className="text-gray-500 text-sm sm:text-base">Standard financial statements</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold">{t('pages.accounting.tabs.financialReports')}</h2>
+            <p className="text-gray-500 text-sm sm:text-base">{t('pages.accounting.financialReports.subtitle', { defaultValue: 'Standard financial statements' })}</p>
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-4 sm:mt-0">
             <select
               defaultValue="Q3 2025"
               className="border rounded-md px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm bg-gray-100 text-black w-full sm:w-auto"
             >
-              <option>Q1 2025</option>
-              <option>Q2 2025</option>
-              <option>Q3 2025</option>
-              <option>Q4 2025</option>
+              <option>{t('common.quarter', { quarter: 'Q1', year: 2025, defaultValue: 'Q1 2025' })}</option>
+              <option>{t('common.quarter', { quarter: 'Q2', year: 2025, defaultValue: 'Q2 2025' })}</option>
+              <option>{t('common.quarter', { quarter: 'Q3', year: 2025, defaultValue: 'Q3 2025' })}</option>
+              <option>{t('common.quarter', { quarter: 'Q4', year: 2025, defaultValue: 'Q4 2025' })}</option>
             </select>
             <button
               onClick={exportPDF}
@@ -52,7 +54,7 @@ export default function FinancialReports() {
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                 <path d="m7 10 5 5 5-5" />
               </svg>
-              Export PDF
+              {t('common.exportPdf')}
             </button>
           </div>
         </div>

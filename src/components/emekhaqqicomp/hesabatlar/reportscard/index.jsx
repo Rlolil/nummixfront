@@ -1,31 +1,34 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaWallet, FaUsers, FaCalendarAlt, FaChartLine } from 'react-icons/fa';
 
-const cards = [
-  {
-    icon: <FaWallet className="w-6 h-6 text-blue-600" />,
-    title: "Maaş Hesabatı",
-    description: "Aylıq və illik maaş fondunun analizi",
-  },
-  {
-    icon: <FaUsers className="w-6 h-6 text-blue-600" />,
-    title: "İşçi Dövriyyəsi",
-    description: "Yeni işə qəbul və işdən çıxmalar",
-  },
-  {
-    icon: <FaCalendarAlt className="w-6 h-6 text-blue-600" />,
-    title: "Davamiyyət Hesabatı",
-    description: "İş vaxtı və davamiyyət statistikası",
-  },
-  {
-    icon: <FaChartLine className="w-6 h-6 text-blue-600" />,
-    title: "Şöbələr üzrə Analiz",
-    description: "Şöbələrin məsrəf və işçi analizi",
-  },
-];
-
 export default function DashboardCards() {
-    const [selectedCard, setSelectedCard] = useState(null);
+  const { t } = useTranslation();
+  const [selectedCard, setSelectedCard] = useState(null);
+  const cards = [
+    {
+      icon: <FaWallet className="w-6 h-6 text-blue-600" />,
+      title: t('pages.hr.reports.cards.salaryReport.title', { defaultValue: 'Salary Report' }),
+      description: t('pages.hr.reports.cards.salaryReport.desc', { defaultValue: 'Monthly and yearly payroll analysis' }),
+    },
+    {
+      icon: <FaUsers className="w-6 h-6 text-blue-600" />,
+      title: t('pages.hr.reports.cards.employeeTurnover.title', { defaultValue: 'Employee Turnover' }),
+      description: t('pages.hr.reports.cards.employeeTurnover.desc', { defaultValue: 'New hires and departures' }),
+    },
+    {
+      icon: <FaCalendarAlt className="w-6 h-6 text-blue-600" />,
+      title: t('pages.hr.reports.cards.attendanceReport.title', { defaultValue: 'Attendance Report' }),
+      description: t('pages.hr.reports.cards.attendanceReport.desc', { defaultValue: 'Work hours and attendance stats' }),
+    },
+    {
+      icon: <FaChartLine className="w-6 h-6 text-blue-600" />,
+      title: t('pages.hr.reports.cards.departmentAnalysis.title', { defaultValue: 'Department Analysis' }),
+      description: t('pages.hr.reports.cards.departmentAnalysis.desc', { defaultValue: 'Cost and headcount by department' }),
+    },
+  ];
+
+  
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {cards.map(({ icon, title, description }, idx) => (

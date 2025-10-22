@@ -1,16 +1,19 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-const data = [
-  { name: 'Yan', uv: 42000, pv: 35000 },
-  { name: 'Fev', uv: 52000, pv: 38000 },
-  { name: 'Mar', uv: 48000, pv: 35000 },
-  { name: 'Apr', uv: 61000, pv: 42000 },
-  { name: 'May', uv: 55000, pv: 40000 },
-  { name: 'Iyn', uv: 67000, pv: 45000 }
-];
-
 const Chart1 = () => {
+  const { t } = useTranslation();
+
+  const data = [
+    { name: t('pages.finance.controlPanel.charts.cashFlow.months.jan', 'Jan'), uv: 42000, pv: 35000 },
+    { name: t('pages.finance.controlPanel.charts.cashFlow.months.feb', 'Feb'), uv: 52000, pv: 38000 },
+    { name: t('pages.finance.controlPanel.charts.cashFlow.months.mar', 'Mar'), uv: 48000, pv: 35000 },
+    { name: t('pages.finance.controlPanel.charts.cashFlow.months.apr', 'Apr'), uv: 61000, pv: 42000 },
+    { name: t('pages.finance.controlPanel.charts.cashFlow.months.may', 'May'), uv: 55000, pv: 40000 },
+    { name: t('pages.finance.controlPanel.charts.cashFlow.months.jun', 'Jun'), uv: 67000, pv: 45000 }
+  ];
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>

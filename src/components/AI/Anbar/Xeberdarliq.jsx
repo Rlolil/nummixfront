@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const alerts = [
     {
@@ -6,8 +7,8 @@ const alerts = [
         mevcut: 12,
         minimum: 15,
         gun: 8,
-        ai: "50 ədəd sifariş verin",
-        status: "Kritik",
+        ai: "50",
+        statusKey: "critical",
         color: "red",
     },
     {
@@ -15,8 +16,8 @@ const alerts = [
         mevcut: 8,
         minimum: 10,
         gun: 5,
-        ai: "30 ədəd sifariş verin",
-        status: "Kritik",
+        ai: "30",
+        statusKey: "critical",
         color: "red",
     },
     {
@@ -24,8 +25,8 @@ const alerts = [
         mevcut: 28,
         minimum: 25,
         gun: 15,
-        ai: "40 ədəd sifariş verin",
-        status: "Xəbardarlıq",
+        ai: "40",
+        statusKey: "warning",
         color: "orange",
     },
     {
@@ -34,17 +35,18 @@ const alerts = [
         minimum: 30,
         gun: 25,
         ai: "",
-        status: "Normal",
+        statusKey: "normal",
         color: "green",
     },
 ];
 
 const Xeberdarliq = () => {
+    const { t } = useTranslation();
     return (
         <div>
-            <h2 className="text-lg font-semibold mb-1">Minimum Stok Xəbardarlıqları</h2>
+            <h2 className="text-lg font-semibold mb-1">{t("pages.ai.warehouse.stockAlerts.title")}</h2>
             <p className="text-gray-500 text-sm mb-4">
-                AI proqnozuna görə təcili sifariş tələb edən məhsullar
+                {t("pages.ai.warehouse.stockAlerts.subtitle")}
             </p>
 
             <div className="flex flex-col gap-4">
@@ -73,24 +75,24 @@ const Xeberdarliq = () => {
                             </div>
                             <span
                                 className={`text-xs px-2 py-1 rounded-full font-medium
-                ${item.status === "Kritik"
+                ${item.statusKey === "critical"
                                         ? "bg-red-600 text-white"
-                                        : item.status === "Xəbardarlıq"
+                                        : item.statusKey === "warning"
                                             ? "bg-black text-white"
                                             : "bg-green-100 text-green-700"
                                     }`}
                             >
-                                {item.status}
+                                {t(`pages.ai.warehouse.stockAlerts.status.${item.statusKey}`)}
                             </span>
                         </div>
 
                         <p className="text-sm text-gray-600 mb-2">
-                            Mövcud: <b>{item.mevcut}</b> • Minimum: <b>{item.minimum}</b>
+                            {t("pages.ai.warehouse.stockAlerts.current")}: <b>{item.mevcut}</b> • {t("pages.ai.warehouse.stockAlerts.minimum")}: <b>{item.minimum}</b>
                         </p>
 
                         <div className="flex justify-between">
-                            <p className="text-sm text-gray-600 mb-1">Stok bitməsinə:</p>
-                            <p className="text-gray-500">{item.gun} gün</p>
+                            <p className="text-sm text-gray-600 mb-1">{t("pages.ai.warehouse.stockAlerts.timeToDeplete")}</p>
+                            <p className="text-gray-500">{item.gun} {t("pages.ai.common.days")}</p>
                         </div>
                         <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden mb-2">
                             <div
@@ -105,17 +107,17 @@ const Xeberdarliq = () => {
                         </div>
 
                         <div className="flex justify-end text-sm">
-                            {item.status !== "Normal" && (
+                            {item.statusKey !== "normal" && (
                                 <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 rounded-md transition">
-                                    Sifariş Ver
+                                    {t("pages.ai.warehouse.stockAlerts.orderNow")}
                                 </button>
                             )}
                         </div>
 
                         {item.ai && (
                             <p className="mt-2 text-sm font-medium text-gray-700">
-                                <span className="font-semibold text-black">AI Tövsiyəsi:</span>{" "}
-                                {item.ai}
+                                <span className="font-semibold text-black">{t("pages.ai.common.aiRecommendation")}</span>{" "}
+                                {t("pages.ai.warehouse.stockAlerts.orderSuggestion", { count: item.ai })}
                             </p>
                         )}
                     </div>

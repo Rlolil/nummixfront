@@ -1,7 +1,9 @@
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 export default function SalesTableRow({ item }) {
+    const { t } = useTranslation();
     const dialogRef = useRef(null);
 
     return (
@@ -14,14 +16,14 @@ export default function SalesTableRow({ item }) {
             <td className="hidden sm:table-cell">
                 <span
                     className={`badge font-semibold text-xs ${
-                        item.status === "Gecikmiş"
+                        item.statusCode === "delayed"
                             ? "badge-error"
-                            : item.status === "Gözləyir"
+                            : item.statusCode === "pending"
                             ? "badge-warning"
                             : "badge-success"
                     }`}
                 >
-                    {item.status}
+                    {t(`pages.supplier.orders.status.${item.statusCode || "pending"}`)}
                 </span>
             </td>
             <td className="text-right">
@@ -42,38 +44,38 @@ export default function SalesTableRow({ item }) {
                             <h3 className="font-bold text-lg">{item.supplier}</h3>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <p className="font-semibold text-sm">Sifariş Nömrəsi</p>
+                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.orderNo")}</p>
                                     <p>{item.orderNumber}</p>
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm">Təchizatçı</p>
+                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.supplier")}</p>
                                     <p>{item.supplier}</p>
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm">Tarix</p>
+                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.date")}</p>
                                     <p>{item.date}</p>
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm">Çatdırılma</p>
+                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.delivery")}</p>
                                     <p>{item.delivery}</p>
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm">Məbləğ</p>
+                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.amount")}</p>
                                     <p>{item.amount}</p>
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm">Status</p>
+                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.status")}</p>
                                     <p>
                                         <span
                                             className={`badge font-semibold text-xs ${
-                                                item.status === "Gecikmiş"
+                                                item.statusCode === "delayed"
                                                     ? "badge-error"
-                                                    : item.status === "Gözləyir"
+                                                    : item.statusCode === "pending"
                                                     ? "badge-warning"
                                                     : "badge-neutral"
                                             }`}
                                         >
-                                            {item.status}
+                                            {t(`pages.supplier.orders.status.${item.statusCode || "pending"}`)}
                                         </span>
                                     </p>
                                 </div>

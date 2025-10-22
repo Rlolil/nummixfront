@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 export default function PaymentsTableRow({ item }) {
     const dialogRef = useRef(null);
+    const { t } = useTranslation();
 
     return (
         <tr>
@@ -25,23 +27,23 @@ export default function PaymentsTableRow({ item }) {
                 <div className="space-y-1">
                     <p>{item.dueDate}</p>
                     {item.overdueDays > 0 && (
-                        <p className="text-xs text-red-500">{item.overdueDays} gün gecikib</p>
+                        <p className="text-xs text-red-500">{t("pages.supplier.payments.table.overdueDays", { days: item.overdueDays })}</p>
                     )}
                 </div>
             </td>
             <td className="hidden sm:table-cell">
                 <span
                     className={`badge font-semibold text-xs ${
-                        item.status === "Gecikmiş"
+                        item.statusCode === "overdue"
                             ? "badge-error"
-                            : item.status === "Qismən"
+                            : item.statusCode === "partial"
                             ? "badge-warning"
-                            : item.status === "Ödənilib"
+                            : item.statusCode === "paid"
                             ? "badge-success"
                             : "badge-neutral"
                     }`}
                 >
-                    {item.status}
+                    {t(`pages.supplier.payments.status.${item.statusCode || "paid"}`)}
                 </span>
             </td>
             <td className="text-right">
@@ -92,16 +94,16 @@ export default function PaymentsTableRow({ item }) {
                                     <p>
                                         <span
                                             className={`badge font-semibold text-xs ${
-                                                item.status === "Gecikmiş"
+                                                item.statusCode === "overdue"
                                                     ? "badge-error"
-                                                    : item.status === "Qismən"
+                                                    : item.statusCode === "partial"
                                                     ? "badge-warning"
-                                                    : item.status === "Ödənilib"
+                                                    : item.statusCode === "paid"
                                                     ? "badge-success"
                                                     : "badge-neutral"
                                             }`}
                                         >
-                                            {item.status}
+                                            {t(`pages.supplier.payments.status.${item.statusCode || "paid"}`)}
                                         </span>
                                     </p>
                                 </div>

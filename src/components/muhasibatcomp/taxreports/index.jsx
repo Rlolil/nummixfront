@@ -4,6 +4,7 @@ import VatDecleration from "./vatdecleration";
 import ProfitTax from "./profittax";
 import SocialContributions from "./social";
 import SimplifiedTax from "./simlifiedtax";
+import { useTranslation } from "react-i18next";
 
 const taxData = {
   cards: [
@@ -45,13 +46,14 @@ const taxData = {
 };
 
 const tabs = [
-  { id: "vat-declaration", label: "Vat Declaration" },
-  { id: "profit-tax", label: "Profit Tax" },
-  { id: "social-contributions", label: "Social Contributions" },
-  { id: "simplified-tax", label: "Simplified Tax" },
+  { id: "vat-declaration", labelKey: 'pages.accounting.taxReports.tabs.vat' },
+  { id: "profit-tax", labelKey: 'pages.accounting.taxReports.tabs.profit' },
+  { id: "social-contributions", labelKey: 'pages.accounting.taxReports.tabs.social' },
+  { id: "simplified-tax", labelKey: 'pages.accounting.taxReports.tabs.simplified' },
 ];
 
 export default function TaxDashboard() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("vat-declaration");
   const totalOutput = taxData.vat.output.reduce(
     (acc, item) => acc + item.vat,
@@ -62,11 +64,11 @@ export default function TaxDashboard() {
 
   return (
     <div className="p-4 sm:p-6">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Tax Reports & Declarations</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">{t('pages.accounting.tabs.taxReports')}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
         {taxData.cards.map((card, idx) => (
           <div key={idx} className="p-3 sm:p-4 border rounded-lg shadow-sm">
-            <h4 className="text-xs sm:text-sm font-medium">{card.title}</h4>
+            <h4 className="text-xs sm:text-sm font-medium">{t(`pages.accounting.taxReports.cards.names.${card.title}`, { defaultValue: card.title })}</h4>
             <div className="text-xl sm:text-2xl mt-2 mb-2">
               ₼{card.amount.toLocaleString()}
             </div>
@@ -80,23 +82,23 @@ export default function TaxDashboard() {
               ) : (
                 <AiOutlineAlert className="w-4 h-4 sm:w-5 sm:h-5" />
               )}
-              <span>{card.status}</span>
+              <span>{t(`pages.accounting.taxReports.status.${card.status.toLowerCase()}`, { defaultValue: card.status })}</span>
             </div>
-            <p className="text-xs text-gray-500 mt-1">Due: {card.due}</p>
+            <p className="text-xs text-gray-500 mt-1">{t('pages.accounting.taxReports.due')}: {card.due}</p>
           </div>
         ))}
       </div>
       <div className="p-3 sm:p-4 mb-4 sm:mb-6 border rounded-lg bg-blue-50">
         <h3 className="text-blue-900 text-sm sm:text-base font-medium mb-2 sm:mb-3">
-          e-Government Integration
+          {t('pages.accounting.taxReports.egov.title')}
         </h3>
         <div className="flex flex-col gap-2 sm:gap-3">
           {taxData.egov.map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 sm:gap-3">
               <AiOutlineCheckCircle className="text-blue-600 w-5 h-5 sm:w-6 sm:h-6" />
               <div>
-                <p className="font-medium text-blue-900 text-xs sm:text-sm">{item.name}</p>
-                <p className="text-xs sm:text-sm text-blue-700">{item.desc}</p>
+                <p className="font-medium text-blue-900 text-xs sm:text-sm">{t(`pages.accounting.taxReports.egov.names.${idx}`, { defaultValue: item.name })}</p>
+                <p className="text-xs sm:text-sm text-blue-700">{t(`pages.accounting.taxReports.egov.items.${idx}`, { defaultValue: item.desc })}</p>
               </div>
             </div>
           ))}
@@ -113,7 +115,7 @@ export default function TaxDashboard() {
                 : "text-gray-600 hover:bg-gray-50"
             }`}
           >
-            {tab.label}
+            {t(tab.labelKey)}
           </button>
         ))}
       </div>

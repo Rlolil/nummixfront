@@ -80,57 +80,69 @@ export default function EsasVesaitler() {
     }
   ];
 
-  // Dashboard data
+  // Dashboard data (localized)
   const stats = [
     {
-      title: 'Ümumi dəyər',
+      title: t('pages.assets.stats.totalValue', { defaultValue: 'Ümumi dəyər' }),
       value: '549,150',
-      subtitle: 'İlkin dəyər',
+      subtitle: t('pages.assets.stats.totalValueSubtitle', { defaultValue: 'İlkin dəyər' }),
       icon: <Package className="w-5 h-5" />
     },
     {
-      title: 'Cari dəyər',
+      title: t('pages.assets.stats.currentValue', { defaultValue: 'Cari dəyər' }),
       value: '481,037.5',
-      subtitle: 'Amortizasiya sonrası',
+      subtitle: t('pages.assets.stats.currentValueSubtitle', { defaultValue: 'Amortizasiya sonrası' }),
       icon: <Box className="w-5 h-5" />
     },
     {
-      title: 'Amortizasiya',
+      title: t('pages.assets.stats.depreciation', { defaultValue: 'Amortizasiya' }),
       value: '68,112.5',
-      subtitle: 'Yığılmış',
+      subtitle: t('pages.assets.stats.depreciationSubtitle', { defaultValue: 'Yığılmış' }),
       icon: <TrendingDown className="w-5 h-5" />
     },
     {
-      title: 'Aktiv sayı',
-      value: '5',
-      subtitle: 'Cəmi 5 aktivdən',
+      title: t('pages.assets.stats.assetCount', { defaultValue: 'Aktiv sayı' }),
+      value: String(assets.length),
+      subtitle: t('pages.assets.stats.assetCountSubtitle', { count: assets.length, defaultValue: `Cəmi ${assets.length} aktivdən` }),
       icon: <Grid3x3 className="w-5 h-5" />
     }
   ];
 
   // Category distribution data
   const categories = [
-    { name: 'Əmlak', count: 1, percentage: 65, color: '#FF8A65' },
-    { name: 'Ofis avadanlığı', count: 1, percentage: 15, color: '#FFB74D' },
-    { name: 'Nəqliyyat vasitələri', count: 1, percentage: 10, color: '#4DB6AC' },
-    { name: 'Kompüter avadanlığı', count: 2, percentage: 10, color: '#64B5F6' }
+    { name: t('pages.assets.form.categoryOptions.property'), count: 1, percentage: 65, color: '#FF8A65' },
+    { name: t('pages.assets.form.categoryOptions.officeEquipment'), count: 1, percentage: 15, color: '#FFB74D' },
+    { name: t('pages.assets.form.categoryOptions.vehicles'), count: 1, percentage: 10, color: '#4DB6AC' },
+    { name: t('pages.assets.form.categoryOptions.computerEquipment'), count: 2, percentage: 10, color: '#64B5F6' }
   ];
 
   // Branch data
   const branchData = [
-    { name: 'IT Şöbəsi', value: 25000 },
-    { name: 'Nəqliyyat', value: 55000 },
-    { name: 'Mühasibatlıq', value: 35000 },
-    { name: 'Baş Ofis', value: 420000 },
-    { name: 'Dizayn Şöbəsi', value: 15000 }
+    { name: t('pages.assets.form.branchOptions.it'), value: 25000 },
+    { name: t('pages.assets.form.branchOptions.transport', { defaultValue: 'Transport' }), value: 55000 },
+    { name: t('pages.assets.form.branchOptions.accounting'), value: 35000 },
+    { name: t('pages.assets.form.locationOptions.bakuOffice'), value: 420000 },
+    { name: t('pages.assets.form.branchOptions.design', { defaultValue: 'Design Department' }), value: 15000 }
   ];
 
   const maxValue = Math.max(...branchData.map(d => d.value));
 
-  // Generate Excel file for general report
+  // Generate Excel file for general report (localized headers and filename)
   const generateExcelReport = () => {
+    const headers = [
+      t('pages.assets.table.invNo'),
+      t('pages.assets.table.name'),
+      t('pages.assets.table.category'),
+      t('pages.assets.table.account'),
+      t('pages.assets.table.location'),
+      t('pages.assets.table.initialValue') + ' (₼)',
+      t('pages.assets.table.currentValue') + ' (₼)',
+      t('pages.assets.categoryReportModal.headers.depreciation') + ' (₼)',
+      t('pages.assets.table.status')
+    ];
+
     const csvContent = [
-      ['İnv. №', 'Ad', 'Kateqoriya', 'Hesab', 'Yer', 'İlkin dəyər (₼)', 'Cari dəyər (₼)', 'Amortizasiya (₼)', 'Status'].join(','),
+      headers.join(','),
       ...assets.map(asset => [
         asset.invNo,
         asset.name,
@@ -147,11 +159,12 @@ export default function EsasVesaitler() {
     const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `umumi_hesabat_${new Date().toISOString().split('T')[0]}.csv`;
+    const date = new Date().toISOString().split('T')[0];
+    link.download = t('pages.assets.export.fileNames.generalCsv', { date, defaultValue: `assets_${date}.csv` });
     link.click();
   };
 
-  // Generate PDF report for depreciation
+  // Generate PDF report for depreciation (localized filename)
   const generateDepreciationPDF = () => {
     // In a real application, you would use a library like jsPDF
     // For now, we'll generate a simple text-based report
@@ -192,21 +205,22 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
     const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `amortizasiya_hesabati_${new Date().toISOString().split('T')[0]}.txt`;
+    const date = new Date().toISOString().split('T')[0];
+    link.download = t('pages.assets.export.fileNames.depreciationTxt', { date, defaultValue: `depreciation_report_${date}.txt` });
     link.click();
   };
 
   // Category report data
   const categoryReportData = [
-    { name: 'Əmlak', count: 1, totalValue: 500000, currentValue: 445000, depreciation: 55000 },
-    { name: 'Nəqliyyat vasitələri', count: 1, totalValue: 45000, currentValue: 32500, depreciation: 12500 },
-    { name: 'Kompüter avadanlığı', count: 2, totalValue: 2950, currentValue: 2487.5, depreciation: 462.5 },
-    { name: 'Ofis avadanlığı', count: 1, totalValue: 1200, currentValue: 1050, depreciation: 150 }
+    { name: t('pages.assets.form.categoryOptions.property'), count: 1, totalValue: 500000, currentValue: 445000, depreciation: 55000 },
+    { name: t('pages.assets.form.categoryOptions.vehicles'), count: 1, totalValue: 45000, currentValue: 32500, depreciation: 12500 },
+    { name: t('pages.assets.form.categoryOptions.computerEquipment'), count: 2, totalValue: 2950, currentValue: 2487.5, depreciation: 462.5 },
+    { name: t('pages.assets.form.categoryOptions.officeEquipment'), count: 1, totalValue: 1200, currentValue: 1050, depreciation: 150 }
   ];
 
   // Branch report data
   const branchReportData = [
-    { name: 'Bakı Ofisi', count: 4, totalValue: 49150, currentValue: 35737.5 },
+    { name: t('pages.assets.form.locationOptions.bakuOffice'), count: 4, totalValue: 49150, currentValue: 35737.5 },
     { name: '28 May metrosu yaxınlığı', count: 1, totalValue: 500000, currentValue: 445000 }
   ];
 
@@ -307,7 +321,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
               {/* Category Distribution */}
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <h2 className="text-lg font-semibold text-gray-900 mb-6">
-                  Kateqoriya üzrə bölgü
+                  {t('pages.assets.charts.categoryDistribution')}
                 </h2>
                 <div className="flex items-center justify-center">
                   <div className="relative w-64 h-64">
@@ -354,7 +368,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
               {/* Branch Values Chart */}
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <h2 className="text-lg font-semibold text-gray-900 mb-6">
-                  Şöbələr üzrə dəyər
+                  {t('pages.assets.charts.valueByDepartment')}
                 </h2>
                 <div className="h-80 flex items-end justify-between gap-4 border-l border-b border-gray-200 pl-4 pb-4 relative">
                   {/* Y-axis labels */}

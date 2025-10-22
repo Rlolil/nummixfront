@@ -1,5 +1,6 @@
 import React from "react";
 import { FiArrowDownCircle, FiArrowUpCircle, FiRefreshCcw } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
 const operations = [
     {
@@ -66,19 +67,20 @@ const getStatusStyle = (status) => {
 };
 
 const AnbarHistory = () => {
+    const { t } = useTranslation();
     return (
         <div className="bg-white rounded-2xl border p-4 sm:p-6 mt-6">
-            <h2 className="text-lg font-semibold mb-4">Son Əməliyyatlar</h2>
+            <h2 className="text-lg font-semibold mb-4">{t('pages.warehouse.operations.history.title')}</h2>
             <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                     <thead className="border-b text-gray-600">
                         <tr className="text-left">
-                            <th className="py-2">Sənəd №</th>
-                            <th className="py-2">Növ</th>
-                            <th className="py-2">Tarix</th>
-                            <th className="py-2">Məhsul sayı</th>
-                            <th className="py-2">İstinad</th>
-                            <th className="py-2">Status</th>
+                            <th className="py-2">{t('pages.warehouse.operations.history.columns.docNo')}</th>
+                            <th className="py-2">{t('pages.warehouse.operations.history.columns.type')}</th>
+                            <th className="py-2">{t('pages.warehouse.operations.history.columns.date')}</th>
+                            <th className="py-2">{t('pages.warehouse.operations.history.columns.productCount')}</th>
+                            <th className="py-2">{t('pages.warehouse.operations.history.columns.reference')}</th>
+                            <th className="py-2">{t('pages.warehouse.operations.history.columns.status')}</th>
                         </tr>
                     </thead>
                     <tbody>

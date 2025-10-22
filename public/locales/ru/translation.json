@@ -3,5 +3,13 @@
   "lang.az": "AZ",
   "lang.en": "EN",
   "lang.ru": "RU",
-  "header.initials": "SA"
+  "header.initials": "SA",
+  "brand.name": "Nummix",
+  "common.logoAlt": "Логотип Nummix",
+  "common.signOut": "Выйти",
+  "common.menu": "Меню",
+  "common.total": "Итого",
+  "common.export": "Экспорт",
+  "common.exportPdf": "Экспорт PDF",
+  "common.quarter": "{{quarter}} {{year}}"
 }

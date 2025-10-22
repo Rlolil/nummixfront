@@ -16,25 +16,25 @@ const data = [
         invoiceNumber: "INV-2025-001",
         amount: "₼12,500",
         method: "Bank Köçürməsi",
-        status: "Tamamlandı",
+        statusCode: "completed",
     },
     {
-        transactionId: "PAY-001",
-        date: "2025-10-08",
+        transactionId: "PAY-002",
+        date: "2025-10-09",
         customer: "ABC Şirkəti",
-        invoiceNumber: "INV-2025-001",
-        amount: "₼12,500",
+        invoiceNumber: "INV-2025-002",
+        amount: "₼1,200",
         method: "Bank Köçürməsi",
-        status: "Gözləyir",
+        statusCode: "pending",
     },
     {
-        transactionId: "PAY-001",
-        date: "2025-10-08",
+        transactionId: "PAY-003",
+        date: "2025-10-10",
         customer: "ABC Şirkəti",
-        invoiceNumber: "INV-2025-001",
-        amount: "₼12,500",
+        invoiceNumber: "INV-2025-003",
+        amount: "₼5,400",
         method: "Bank Köçürməsi",
-        status: "Gecikmiş",
+        statusCode: "overdue",
     },
 ];
 
@@ -203,21 +203,20 @@ export default function Transactions() {
                     </div>
                 </div>
                 <BodyCard
-                    title={null}
+                    title={t("pages.sales.transactions.table.title")}
                     child={
                         <div className="w-full flex flex-col gap-6">
-                            <h3>Fakturalar</h3>
                             <div className="overflow-x-auto">
                                 <table className="table text-base">
                                     <thead>
                                         <tr className="text-black text-base">
-                                            <th>Ödəniş ID</th>
-                                            <th className="hidden md:table-cell">Tarix</th>
-                                            <th className="hidden md:table-cell">Müştəri</th>
-                                            <th className="hidden md:table-cell">Faktura</th>
-                                            <th className="text-right">Məbləğ</th>
-                                            <th className="hidden sm:table-cell">Method</th>
-                                            <th className="hidden sm:table-cell">Status</th>
+                                            <th>{t("pages.sales.transactions.table.columns.paymentId")}</th>
+                                            <th className="hidden md:table-cell">{t("pages.sales.transactions.table.columns.date")}</th>
+                                            <th className="hidden md:table-cell">{t("pages.sales.transactions.table.columns.customer")}</th>
+                                            <th className="hidden md:table-cell">{t("pages.sales.transactions.table.columns.invoice")}</th>
+                                            <th className="text-right">{t("pages.sales.transactions.table.columns.amount")}</th>
+                                            <th className="hidden sm:table-cell">{t("pages.sales.transactions.table.columns.method")}</th>
+                                            <th className="hidden sm:table-cell">{t("pages.sales.transactions.table.columns.status")}</th>
                                             <th className="text-right"></th>
                                         </tr>
                                     </thead>
