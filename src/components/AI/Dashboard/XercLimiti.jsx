@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const xercLimiti = () => {
+function XercLimiti() {
   const { t } = useTranslation();
   const cariXerc = 67890;
   const limit = 80000;
@@ -25,6 +25,6 @@ const xercLimiti = () => {
       </div>
     </div>
   );
-};
+}
 
-export default xercLimiti;
+export default XercLimiti;
