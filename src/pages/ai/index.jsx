@@ -21,7 +21,7 @@ const Ai = () => {
   ];
 
   return (
-    <div className="flex flex-col sm:ml-[100px] ml-[0px] min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <div className="flex items-center justify-between px-6 py-3 mt-20 sm:mt-0 bg-white shadow-lg rounded-sm relative z-10 sm:ml-[80px]">
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600">
@@ -87,7 +87,7 @@ const Ai = () => {
         ))}
       </nav>
 
-      <div className="p-6 bg-gray-50 flex-grow">
+      <div className="p-6 flex-grow">
         <Outlet />
       </div>
 

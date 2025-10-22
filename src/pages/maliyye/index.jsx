@@ -11,7 +11,7 @@ const Maliyye = () => {
   ];
 
   return (
-    <div className="flex flex-col  sm:ml-[100px] ml-[0px] min-h-screen ">
+    <div className="flex flex-col min-h-screen ">
       <nav className="flex justify-center items-center sm:w-[1200px] bg-gray-300 rounded-xl mx-auto mt-25 sm:mt-4 p-1 shadow-inner ">
         {navItems.map((item) => (
           <NavLink
