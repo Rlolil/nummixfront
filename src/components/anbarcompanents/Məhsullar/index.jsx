@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { FaRegEdit } from "react-icons/fa";
 import { FaBox } from "react-icons/fa6";
 
-// Dummy məhsul məlumatları
+// Dummy məhsul məlumatları (unitofmeasure ilə)
 const mehsullar = [
     {
         sku: "XM-A101",
         name: "Xammal A-101",
         barcode: "8594562341234",
         category: "Xammal",
-        quantity: "5 kq",
+        unitofmeasure: "kq",
+        quantity: "5",
         min: 50,
         max: 500,
         location: "A1-R2-H5",
@@ -20,7 +21,8 @@ const mehsullar = [
         name: "Hazır məhsul B-205",
         barcode: "8594562341235",
         category: "Hazır məhsul",
-        quantity: "120 ədəd",
+        unitofmeasure: "ədəd",
+        quantity: "120",
         min: 50,
         max: 300,
         location: "B2-R1-H3",
@@ -31,7 +33,8 @@ const mehsullar = [
         name: "Bolt M12x50",
         barcode: "8594562341236",
         category: "Ehtiyat hissələri",
-        quantity: "12 ədəd",
+        unitofmeasure: "ədəd",
+        quantity: "12",
         min: 100,
         max: 1000,
         location: "C1-R3-H2",
@@ -42,7 +45,8 @@ const mehsullar = [
         name: "Qablaşdırma qutusu 500x300",
         barcode: "8594562341237",
         category: "Qablaşdırma",
-        quantity: "25 ədəd",
+        unitofmeasure: "ədəd",
+        quantity: "25",
         min: 200,
         max: 2000,
         location: "D1-R1-H1",
@@ -53,7 +57,8 @@ const mehsullar = [
         name: "Motor yağı 5W-30",
         barcode: "8594562341238",
         category: "Xammal",
-        quantity: "8 litr",
+        unitofmeasure: "litr",
+        quantity: "8",
         min: 30,
         max: 200,
         location: "A2-R4-H6",
@@ -119,8 +124,7 @@ const Məhsullar = () => {
                     </thead>
                     <tbody>
                         {filtered.map((m) => {
-                            // Qalıqdan ədəd çıxar (məsələn, "120 ədəd" -> 120)
-                            const qaliq = Number(m.quantity.toString().split(' ')[0]);
+                            const qaliq = Number(m.quantity);
                             let status = "";
                             let statusClass = "";
                             if (qaliq < m.min) {
@@ -143,7 +147,7 @@ const Məhsullar = () => {
                                         <div className="text-xs text-gray-400">{m.barcode}</div>
                                     </td>
                                     <td className="py-2">{m.category}</td>
-                                    <td className="py-2">{m.quantity}</td>
+                                    <td className="py-2">{m.quantity} {m.unitofmeasure}</td>
                                     <td className="py-2">{m.min} / {m.max}</td>
                                     <td className="py-2">
                                         <span className={`${statusClass} text-white px-3 py-1 rounded-full text-xs`}>
@@ -164,7 +168,7 @@ const Məhsullar = () => {
                 </table>
             </div>
 
-            {/* Modal -Yeni Məhsul Əlavə Et */}
+            {/* Modal - Yeni Məhsul Əlavə Et (köhnə dizayn) */}
             {open && (
                 <div className="fixed inset-0 backdrop-blur-xl bg-opacity-30 flex items-center justify-center z-50">
                     <div className="bg-white rounded-2xl p-8 w-[500px] max-w-full relative shadow-lg">
@@ -262,3 +266,4 @@ const Məhsullar = () => {
 };
 
 export default Məhsullar;
+import React from 'react';

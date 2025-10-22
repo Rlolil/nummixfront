@@ -2,7 +2,6 @@ import { FiDownload, FiTrendingUp } from "react-icons/fi";
 import { ChartsGroup } from "../anbarqrafiks";
 
 function ItkiVeZayStatistikasi() {
-    // 🔹 Data siyahısı
     const data = [
         { tarix: "2025-10-01", mehsul: "Xammal A-101", miqdar: 2, sebeb: "Keyfiyyətsiz", itki: 25.0 },
         { tarix: "2025-10-03", mehsul: "Qablaşdırma qutusu", miqdar: 5, sebeb: "Zədələnmiş", itki: 11.5 },
@@ -29,9 +28,7 @@ function ItkiVeZayStatistikasi() {
                             <td className="py-2">{row.mehsul}</td>
                             <td>{row.miqdar}</td>
                             <td>
-                                <span className="bg-gray-100 px-2 py-1 rounded-full text-xs">
-                                    {row.sebeb}
-                                </span>
+                                <span className="bg-gray-100 px-2 py-1 rounded-full text-xs">{row.sebeb}</span>
                             </td>
                             <td className="text-red-500">₼{row.itki.toFixed(2)}</td>
                         </tr>
@@ -99,11 +96,83 @@ export default function HesabatAnalitika() {
                 </div>
             </div>
 
+            {/* 🔹 Ən çox satılan və ləng hərəkət edən məhsullar */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">{/* sold */}</div>
-                <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">{/* slow */}</div>
-            </div>
+                <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
+                    <h3 className="text-lg font-medium mb-3">Ən Çox Satılan Məhsullar</h3>
+                    <table className="w-full text-sm">
+                        <thead>
+                            <tr className="text-left text-gray-500 border-b">
+                                <th className="py-2">Məhsul</th>
+                                <th className="py-2">Miqdar</th>
+                                <th className="py-2">Gəlir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="border-b">
+                                <td className="py-2">
+                                    Hazır məhsul B-205 <br />
+                                    <span className="text-xs text-gray-500">HM-B205</span>
+                                </td>
+                                <td>450</td>
+                                <td>₼20 250</td>
+                            </tr>
+                            <tr className="border-b">
+                                <td className="py-2">
+                                    Xammal A-101 <br />
+                                    <span className="text-xs text-gray-500">XM-A101</span>
+                                </td>
+                                <td>380</td>
+                                <td>₼4 750</td>
+                            </tr>
+                            <tr>
+                                <td className="py-2">
+                                    Bolt M12x50 <br />
+                                    <span className="text-xs text-gray-500">BT-M1250</span>
+                                </td>
+                                <td>1200</td>
+                                <td>₼1 020</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
+                <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
+                    <h3 className="text-lg font-medium mb-3">Ləng Hərəkət Edən Məhsullar</h3>
+                    <table className="w-full text-sm">
+                        <thead>
+                            <tr className="text-left text-gray-500 border-b">
+                                <th className="py-2">Məhsul</th>
+                                <th className="py-2">Qalıq</th>
+                                <th className="py-2">Müddət</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="border-b">
+                                <td className="py-2">
+                                    Qablaşdırma qutusu <br />
+                                    <span className="text-xs text-gray-500">QT-500</span>
+                                </td>
+                                <td>25</td>
+                                <td>
+                                    <span className="bg-gray-100 px-2 py-1 rounded-full text-xs">45 gün</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="py-2">
+                                    Motor yağı 5W-30 <br />
+                                    <span className="text-xs text-gray-500">YG-5W30</span>
+                                </td>
+                                <td>8</td>
+                                <td>
+                                    <span className="bg-gray-100 px-2 py-1 rounded-full text-xs">38 gün</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {/* 🔹 ChartsGroup burdan sonra gəlir */}
             <ChartsGroup />
             <ItkiVeZayStatistikasi />
         </div>
