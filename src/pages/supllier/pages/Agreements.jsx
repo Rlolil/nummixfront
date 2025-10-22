@@ -162,7 +162,7 @@ export default function Agreements() {
                             </div>
                             <div className="text-zinc-500 justify-between flex items-center gap-2">
                                 <p className="text-sm">{t("pages.supplier.agreements.sample.paymentTerm")}</p>
-                                <p className="text-black text-sm">30 gün ərzində</p>
+                                <p className="text-black text-sm">{t("pages.supplier.agreements.paymentTerms.days30")}</p>
                             </div>
                         </div>
                         <div className="w-full h-0.5 bg-zinc-300"></div>
@@ -196,7 +196,7 @@ export default function Agreements() {
                             </div>
                             <div className="text-zinc-500 justify-between flex items-center gap-2">
                                 <p className="text-sm">{t("pages.supplier.agreements.sample.paymentTerm")}</p>
-                                <p className="text-black text-sm">30 gün ərzində</p>
+                                <p className="text-black text-sm">{t("pages.supplier.agreements.paymentTerms.days30")}</p>
                             </div>
                         </div>
                         <div className="w-full h-0.5 bg-zinc-300"></div>

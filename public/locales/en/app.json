@@ -950,6 +950,39 @@
           }
         }
       },
+      "agreements": {
+        "title": "Agreements",
+        "subtitle": "Manage and track supplier agreements",
+        "newButton": "New Agreement",
+        "modal": { "title": "Add Agreement" },
+        "form": {
+          "contractNo": "Agreement No",
+          "supplier": "Supplier",
+          "startDate": "Start Date",
+          "endDate": "End Date",
+          "amount": "Amount",
+          "currency": "Currency",
+          "paymentTerms": "Payment Terms",
+          "notes": "Notes"
+        },
+        "placeholders": { "contractNo": "e.g., CNT-2025-001", "amount": "e.g., 1500" },
+        "paymentTerms": { "days30": "Within 30 days", "days60": "Within 60 days", "days90": "Within 90 days" },
+        "status": { "active": "Active" },
+        "searchPlaceholder": "Search agreements...",
+        "cards": {
+          "active": { "title": "Active Agreements", "description": "Currently valid agreements" },
+          "expiring": { "title": "Expiring Soon", "description": "Agreements nearing end date" },
+          "totalValue": { "title": "Total Value", "description": "Value of all agreements" }
+        },
+        "sample": {
+          "amount": "Amount:",
+          "start": "Start:",
+          "end": "End:",
+          "paymentTerm": "Payment term:",
+          "daysLeft": "{{days}} days left",
+          "description": "Annual office supplies agreement"
+        }
+      },
       "analytics": {
         "title": "Analytics and Reports",
         "subtitle": "Purchase expense insights and statistics",
