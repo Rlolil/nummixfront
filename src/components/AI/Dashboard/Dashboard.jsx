@@ -1,4 +1,3 @@
-import React from "react";
 import { FiTrendingUp, FiTrendingDown, FiUsers } from "react-icons/fi";
 import { BsBoxSeam, BsCart3 } from "react-icons/bs";
 import { MdAttachMoney } from "react-icons/md";
