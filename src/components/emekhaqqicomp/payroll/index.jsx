@@ -87,23 +87,23 @@ const PayrollManagement = () => {
           <p className="text-gray-500">{t('pages.hr.payroll.subtitle', { defaultValue: 'Salary calculations and payments' })}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <select className="w-40 h-9 px-3 py-2 border rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <select className="w-40 h-9 px-3 py-2 border border-gray-200 rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option>{t('pages.hr.common.months.october', { defaultValue: 'October' })} 2025</option>
             <option>{t('pages.hr.common.months.september', { defaultValue: 'September' })} 2025</option>
             <option>{t('pages.hr.common.months.august', { defaultValue: 'August' })} 2025</option>
           </select>
-          <button className="flex items-center gap-2 px-4 py-2 border rounded-md bg-white text-sm hover:bg-gray-100">
+          <button className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-md bg-white text-sm hover:bg-gray-100">
             <FaCalculator className="w-4 h-4" />
             {t('pages.hr.payroll.actions.calculate', { defaultValue: 'Calculate' })}
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+          <button className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-md hover:opacity-50">
             <FaDownload className="w-4 h-4" />
             {t('pages.hr.payroll.actions.export', { defaultValue: 'Export' })}
           </button>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white border rounded-xl p-6 flex items-center justify-between">
+        <div className="bg-white border border-gray-200  rounded-xl p-6 flex items-center justify-between">
           <div>
             <p className="text-sm text-gray-500">{t('pages.hr.payroll.cards.totalGross', { defaultValue: 'Total Gross Salary' })}</p>
             <p className="text-gray-900 mt-1">₼485.320</p>
@@ -112,7 +112,7 @@ const PayrollManagement = () => {
             <FaWallet className="w-6 h-6" />
           </div>
         </div>
-        <div className="bg-white border rounded-xl p-6 flex items-center justify-between">
+        <div className="bg-white border border-gray-200  rounded-xl p-6 flex items-center justify-between">
           <div>
             <p className="text-sm text-gray-500">{t('pages.hr.payroll.cards.totalNet', { defaultValue: 'Total Net Salary' })}</p>
             <p className="text-gray-900 mt-1">₼368.843</p>
@@ -121,7 +121,7 @@ const PayrollManagement = () => {
             <FiTrendingUp className="w-6 h-6" />
           </div>
         </div>
-        <div className="bg-white border rounded-xl p-6 flex items-center justify-between">
+        <div className="bg-white border border-gray-200  rounded-xl p-6 flex items-center justify-between">
           <div>
             <p className="text-sm text-gray-500">{t('pages.hr.payroll.cards.taxes', { defaultValue: 'Taxes' })}</p>
             <p className="text-gray-900 mt-1">₼67.945</p>
@@ -130,7 +130,7 @@ const PayrollManagement = () => {
             <FaCalculator className="w-6 h-6" />
           </div>
         </div>
-        <div className="bg-white border rounded-xl p-6 flex items-center justify-between">
+        <div className="bg-white border border-gray-200rounded-xl p-6 flex items-center justify-between">
           <div>
             <p className="text-sm text-gray-500">{t('pages.hr.payroll.cards.bonuses', { defaultValue: 'Bonuses' })}</p>
             <p className="text-gray-900 mt-1">₼25.400</p>
@@ -141,7 +141,7 @@ const PayrollManagement = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-white border rounded-xl lg:col-span-1">
+        <div className="bg-white border border-gray-200  rounded-xl lg:col-span-1">
           <div className="px-6 pt-6">
             <h4 className="font-semibold">{t('pages.hr.payroll.sections.taxesAndContributions', { defaultValue: 'Taxes and Contributions' })}</h4>
           </div>
@@ -160,7 +160,7 @@ const PayrollManagement = () => {
                 </div>
               </div>
             ))}
-            <div className="pt-4 border-t">
+            <div className="pt-4 border-t border-gray-200 ">
               <div className="flex items-center justify-between">
                 <p className="text-gray-900">{t('pages.hr.payroll.totalContributions', { defaultValue: 'Total contributions' })}</p>
                 <p className="text-gray-900">₼128.609</p>
@@ -168,13 +168,13 @@ const PayrollManagement = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white border rounded-xl lg:col-span-2">
+        <div className="bg-white border border-gray-200 rounded-xl lg:col-span-2">
           <div className="px-6 pt-6">
             <h4 className="font-semibold">{t('pages.hr.payroll.sections.salariesByEmployee', { defaultValue: 'Salaries by Employee' })}</h4>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b">
+              <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
                   <th className="px-4 py-3 text-left text-xs text-gray-500 uppercase">{t('pages.hr.payroll.table.employee', { defaultValue: 'Employee' })}</th>
                   <th className="px-4 py-3 text-left text-xs text-gray-500 uppercase">{t('pages.hr.payroll.table.baseSalary', { defaultValue: 'Base Salary' })}</th>
@@ -215,7 +215,7 @@ const PayrollManagement = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white border rounded-xl">
+      <div className="bg-white border border-gray-200  rounded-xl">
         <div className="px-6 pt-6">
           <h4 className="font-semibold">{t('pages.hr.payroll.sections.accountingReconciliation', { defaultValue: 'Accounting Reconciliation' })}</h4>
         </div>
