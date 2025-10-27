@@ -1657,6 +1657,39 @@
           "empty": "Yaxın ödəniş yoxdur"
         }
       },
+      "agreements": {
+        "title": "Müqavilələr",
+        "subtitle": "Təchizat müqavilələrinin idarə edilməsi və izlənməsi",
+        "newButton": "Yeni Müqavilə",
+        "modal": { "title": "Müqavilə əlavə et" },
+        "form": {
+          "contractNo": "Müqavilə №",
+          "supplier": "Təchizatçı",
+          "startDate": "Başlama Tarixi",
+          "endDate": "Bitmə Tarixi",
+          "amount": "Məbləğ",
+          "currency": "Valyuta",
+          "paymentTerms": "Ödəniş şərtləri",
+          "notes": "Qeydlər"
+        },
+        "placeholders": { "contractNo": "Məs: CNT-2025-001", "amount": "Məs: 1500" },
+        "paymentTerms": { "days30": "30 gün ərzində", "days60": "60 gün ərzində", "days90": "90 gün ərzində" },
+        "status": { "active": "Aktiv" },
+        "searchPlaceholder": "Müqavilələr üzrə axtarış...",
+        "cards": {
+          "active": { "title": "Aktiv Müqavilələr", "description": "Qüvvədə olan müqavilələr" },
+          "expiring": { "title": "Bitməyə Yaxın", "description": "Bitmə tarixinə yaxınlaşan müqavilələr" },
+          "totalValue": { "title": "Ümumi Dəyər", "description": "Bütün müqavilələrin dəyəri" }
+        },
+        "sample": {
+          "amount": "Məbləğ:",
+          "start": "Başlama:",
+          "end": "Bitmə:",
+          "paymentTerm": "Ödəniş şərti:",
+          "daysLeft": "{{days}} gün qalıb",
+          "description": "İllik ofis ləvazimatları təchizatı müqaviləsi"
+        }
+      },
       "orders": {
         "title": "Satınalma sifarişləri",
         "subtitle": "Tədarükçü sifarişlərinin izlənməsi və idarə edilməsi",

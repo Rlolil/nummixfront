@@ -118,7 +118,7 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
             >
               {t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}
             </button>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+            <button onClick={onClose} className="px-4 py-2 bg-black text-white rounded-md hover:opacity-50">
               {t('pages.hr.employees.modal.save', { defaultValue: 'Save' })}
             </button>
           </div>
