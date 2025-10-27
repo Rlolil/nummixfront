@@ -3,7 +3,8 @@ import { FiTrendingUp, FiTrendingDown, FiUsers } from "react-icons/fi";
 import { BsBoxSeam, BsCart3 } from "react-icons/bs";
 import { MdAttachMoney } from "react-icons/md";
 import SatisHedefi from "./SatisHedefi";
-import XercLimiti from "./XercLimiti.jsx";
+import { useTranslation } from "react-i18next";
+import XercLimiti from "./Xerclimiti";
 
 
 const Dashboard = () => {
