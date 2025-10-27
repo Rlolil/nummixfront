@@ -41,7 +41,7 @@ const LeaveInfo = () => {
           {modal && <NewQuestion setModal={setModal} />}
           <button
             onClick={() => setModal(true)}
-            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
+            className="flex items-center justify-center gap-2 bg-black hover:opacity-50 text-white py-2 px-4 rounded-md"
           >
             <FaCalendarAlt className="text-white" />
             {t('pages.hr.leave.newRequest')}
