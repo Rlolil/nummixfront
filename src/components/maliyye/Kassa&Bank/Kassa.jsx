@@ -18,6 +18,12 @@ const Kassa = () => {
     { title: "Kapital Bank - USD", amount: "37,000 AZN", desc: "AZ45AIIB********", color: "text-gray-900" }
   ];
 
+  if(isModalOpen){
+    document.body.style.overflow = "hidden"
+  }else{
+    document.body.style.overflow = "auto"
+  }
+
   return (
     <div className="container mx-auto px-2 py-4">
       <div className='flex flex-col sm:flex-row justify-between sm:items-center'>

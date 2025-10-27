@@ -4,10 +4,13 @@ import { FiPlus } from "react-icons/fi";
 import OdenisTab from "./OdenisTab";
 import DaxilolmaTab from "./DaxilolmaTab";
 import { useTranslation } from "react-i18next";
+import NewPlanModal from "./NewPlanModal";
 
 const Odenisler = () => {
   const [activeTab, setActiveTab] = useState("odenis");
+  const [isOpen, setIsOpen] = useState(false)
   const { t } = useTranslation();
+  
 
   const cards = [
     { key: "payable", amount: "26,800 AZN", color: "text-red-500" },
@@ -55,6 +58,11 @@ const Odenisler = () => {
     },
   ];
 
+  if(isOpen){
+    document.body.style.overflow = "hidden"
+  }else{
+    document.body.style.overflow = "auto"
+  }
   return (
     <div className="container mx-auto px-2 py-4">
       <div className="flex flex-col md:flex-row justify-between mb-4 sm:items-center">
@@ -62,7 +70,7 @@ const Odenisler = () => {
           <h1 className="text-[24px] font-semibold">{t('pages.finance.payments.title')}</h1>
           <p className="text-[#717182] text-[16px] mt-2 mb-5">{t('pages.finance.payments.subtitle')}</p>
         </div>
-        <button className="flex gap-3 text-[14px] items-center border-2 bg-black text-white rounded-lg px-4 py-2 min-w-[200px] justify-center hover:bg-gray-800 transition">
+        <button onClick={() => setIsOpen(true) } className="flex gap-3 text-[14px] items-center border-2 bg-black text-white rounded-lg px-4 py-2 min-w-[200px] justify-center hover:bg-gray-800 transition">
           <FiPlus /> {t('pages.finance.payments.newPlan')}
         </button>
       </div>
@@ -165,6 +173,7 @@ const Odenisler = () => {
         </div>
 
       </div>
+      {isOpen && <NewPlanModal onClose={() => setIsOpen(false)} />}
     </div>
   );
 };

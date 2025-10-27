@@ -5,9 +5,17 @@ import Chart from './Chart';
 import Categories from './Categories';
 import Departmenler from './Departmenler';
 import { useTranslation } from 'react-i18next';
+import YeniBudceModal from './YeniBudceModal';
 
 const Budce = () => {
   const [activeTab, setActiveTab] = useState("category")
+  const [isOpen, setIsOpen] = useState(false)
+
+  if (isOpen) {
+    document.body.style.overflow = "hidden"
+  } else {
+    document.body.style.overflow = "auto"
+  }
   const { t } = useTranslation()
   const cards = [
     { key: 'planned', amount: '73,000 AZN', color: 'text-gray-900', descKey: 'plannedDesc' },
@@ -27,7 +35,7 @@ const Budce = () => {
           <button className='flex gap-3 text-[14px] items-center border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100 transition'>
             <BiExport /> {t('pages.finance.budgeting.report')}
           </button>
-          <button className='flex gap-3 text-[14px] items-center border-2 bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-800 transition'>
+          <button onClick={() => setIsOpen(true)} className='flex gap-3 text-[14px] items-center border-2 bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-800 transition'>
             <FiPlus /> {t('pages.finance.budgeting.newBudget')}
           </button>
         </div>
@@ -88,10 +96,10 @@ const Budce = () => {
       </div>
 
       {activeTab === "category" && <Categories />}
-      {activeTab === "department" && <Departmenler/>}
+      {activeTab === "department" && <Departmenler />}
 
-      
 
+      {isOpen && <YeniBudceModal onClose={() => setIsOpen(false)} />}
     </div>
   )
 }
