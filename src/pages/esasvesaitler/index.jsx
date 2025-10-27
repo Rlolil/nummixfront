@@ -80,7 +80,7 @@ export default function EsasVesaitler() {
     }
   ];
 
-  // Dashboard data (localized)
+  // Dashboard data 
   const stats = [
     {
       title: t('pages.assets.stats.totalValue', { defaultValue: 'Ümumi dəyər' }),
@@ -108,7 +108,6 @@ export default function EsasVesaitler() {
     }
   ];
 
-  // Category distribution data
   const categories = [
     { name: t('pages.assets.form.categoryOptions.property'), count: 1, percentage: 65, color: '#FF8A65' },
     { name: t('pages.assets.form.categoryOptions.officeEquipment'), count: 1, percentage: 15, color: '#FFB74D' },
@@ -127,7 +126,6 @@ export default function EsasVesaitler() {
 
   const maxValue = Math.max(...branchData.map(d => d.value));
 
-  // Generate Excel file for general report (localized headers and filename)
   const generateExcelReport = () => {
     const headers = [
       t('pages.assets.table.invNo'),
@@ -164,27 +162,11 @@ export default function EsasVesaitler() {
     link.click();
   };
 
-  // Generate PDF report for depreciation (localized filename)
+
   const generateDepreciationPDF = () => {
-    // In a real application, you would use a library like jsPDF
-    // For now, we'll generate a simple text-based report
     const reportContent = `
 AMORTIZASIYA HESABATI
 Tarix: ${new Date().toLocaleDateString('az-AZ')}
-
-═══════════════════════════════════════════════════════════════
-
-ÜMUMI MƏLUMAT
-─────────────────────────────────────────────────────────────
-Ümumi ilkin dəyər:        549,150 ₼
-Cari dəyər:               481,037.5 ₼
-Yığılmış amortizasiya:    68,112.5 ₼
-Amortizasiya faizi:       12.4%
-
-═══════════════════════════════════════════════════════════════
-
-AKTIVLƏR ÜZRƏ AMORTIZASIYA
-─────────────────────────────────────────────────────────────
 ${assets.map(asset => {
   const depreciation = parseFloat(asset.initialValue.replace(/,/g, '')) - parseFloat(asset.currentValue.replace(/,/g, ''));
   const depreciationRate = (depreciation / parseFloat(asset.initialValue.replace(/,/g, '')) * 100).toFixed(2);
@@ -291,7 +273,6 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
           </button>
         </div>
 
-        {/* Content based on active tab */}
         {activeTab === 'management' && (
           <>
             {/* Stats Cards */}
@@ -371,7 +352,6 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   {t('pages.assets.charts.valueByDepartment')}
                 </h2>
                 <div className="h-80 flex items-end justify-between gap-4 border-l border-b border-gray-200 pl-4 pb-4 relative">
-                  {/* Y-axis labels */}
                   <div className="absolute left-0 top-0 bottom-4 flex flex-col justify-between text-xs text-gray-500">
                     <span>600000</span>
                     <span>450000</span>
@@ -570,8 +550,8 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
       {/* Add Asset Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowAddModal(false)}>
+          <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-gray-900">{t('pages.assets.modal.add.title')}</h2>
               <button 
@@ -612,6 +592,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   />
                 </div>
 
+                {/* Category
                 {/* Category */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -733,8 +714,8 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                 </div>
 
                 {/* Branch */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                <div >
+                  <label className="block text-sm font-medium  text-gray-700 mb-2">
                     {t('pages.assets.form.branch')} <span className="text-red-500">*</span>
                   </label>
                   <select
@@ -815,15 +796,14 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
               {/* Action Buttons */}
               <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-gray-200">
                 <button
-                  onClick={() => setShowAddModal(false)}
+                  onClick={() => setShowAddModal(false)} 
                   className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
-                >
+                  >
                   {t('pages.assets.buttons.cancel')}
                 </button>
                 <button
                   onClick={() => {
                     setShowAddModal(false);
-                    // Here you would handle form submission
                   }}
                   className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
                 >
@@ -835,10 +815,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
         </div>
       )}
 
-      {/* Category Report Modal */}
+      {/*  Modal */}
       {showCategoryReport && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowCategoryReport(false)}>
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-gray-900">{t('pages.assets.categoryReportModal.title')}</h2>
               <button 
@@ -905,10 +885,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
         </div>
       )}
 
-      {/* Branch Report Modal */}
+      {/*  Modal */}
       {showBranchReport && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowBranchReport(false)}>
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-gray-900">{t('pages.assets.branchReportModal.title')}</h2>
               <button 
