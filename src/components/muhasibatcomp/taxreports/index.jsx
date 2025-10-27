@@ -67,7 +67,7 @@ export default function TaxDashboard() {
       <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">{t('pages.accounting.tabs.taxReports')}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
         {taxData.cards.map((card, idx) => (
-          <div key={idx} className="p-3 sm:p-4 border rounded-lg shadow-sm">
+          <div key={idx} className="p-3 sm:p-4 border border-gray-200 rounded-lg shadow-sm">
             <h4 className="text-xs sm:text-sm font-medium">{t(`pages.accounting.taxReports.cards.names.${card.title}`, { defaultValue: card.title })}</h4>
             <div className="text-xl sm:text-2xl mt-2 mb-2">
               ₼{card.amount.toLocaleString()}
@@ -88,7 +88,7 @@ export default function TaxDashboard() {
           </div>
         ))}
       </div>
-      <div className="p-3 sm:p-4 mb-4 sm:mb-6 border rounded-lg bg-blue-50">
+      <div className="p-3 sm:p-4 mb-4 sm:mb-6 border border-gray-200 rounded-lg bg-blue-50">
         <h3 className="text-blue-900 text-sm sm:text-base font-medium mb-2 sm:mb-3">
           {t('pages.accounting.taxReports.egov.title')}
         </h3>

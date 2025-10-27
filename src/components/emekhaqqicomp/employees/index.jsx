@@ -91,7 +91,7 @@ const Employees = () => {
         </div>
         <button
           onClick={() => setIsDialogOpen(true)}
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+          className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md hover:opacity-50"
         >
           <FiPlus className="w-4 h-4" />
           {t('pages.hr.employees.new', { defaultValue: 'New Employee' })}
@@ -103,7 +103,7 @@ const Employees = () => {
           />
         )}
       </div>
-      <div className="bg-white border rounded-xl p-4">
+      <div className="bg-white border border-gray-200 rounded-xl p-4">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1">
             <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -112,7 +112,7 @@ const Employees = () => {
               placeholder={t('pages.hr.employees.searchPlaceholder', { defaultValue: 'Search employee (name, position, ID)' })}
             />
           </div>
-          <select className="flex items-center justify-between gap-2 px-3 py-2 border rounded-md bg-white text-sm w-full sm:w-48">
+          <select className="flex items-center justify-between gap-2 px-3 py-2 border border-gray-200 rounded-md bg-white text-sm w-full sm:w-48">
             <option>{t('pages.hr.employees.filters.label', { defaultValue: 'Filter' })}</option>
             <option>{t('pages.hr.employees.filters.allDepartments', { defaultValue: 'All departments' })}</option>
             <option>{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</option>
@@ -121,13 +121,13 @@ const Employees = () => {
             <option>{t('pages.hr.departments.sales', { defaultValue: 'Sales' })}</option>
             <option>{t('pages.hr.departments.hr', { defaultValue: 'Human Resources' })}</option>
           </select>
-          <button className="flex items-center gap-2 px-3 py-2 border rounded-md bg-white text-sm hover:bg-gray-100">
+          <button className="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-md bg-white text-sm hover:bg-gray-100">
             <FiDownload className="w-4 h-4" />
             <span className="hidden sm:inline">{t('common.export', { ns: 'translation', defaultValue: 'Export' })}</span>
           </button>
         </div>
       </div>
-      <div className="bg-white border rounded-xl overflow-x-auto">
+      <div className="bg-white border border-gray-200 rounded-xl overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50 border-b">
             <tr>
