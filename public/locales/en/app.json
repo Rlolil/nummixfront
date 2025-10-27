@@ -1665,6 +1665,40 @@
           "noteText": "All recommendations comply with the tax legislation of the Republic of Azerbaijan. Consult a tax advisor before applying."
         }
       },
+      "warehouse": {
+        "cashFlow": {
+          "title": "Cash Flow",
+          "subtitle": "Income and expense dynamics over the last 6 months",
+          "aiText": "Cost of goods has increased by 8% over the past 3 months. Consider alternative suppliers."
+        },
+        "expenseDistribution": {
+          "title": "Expense Distribution",
+          "subtitle": "Current month's expenses by category"
+        },
+        "suppliers": {
+          "title": "Supplier Performance",
+          "subtitle": "Quality and on-time delivery metrics",
+          "onTimeDelivery": "On-time Delivery",
+          "quality": "Quality",
+          "avgDelay": "Average Delay",
+          "status": {
+            "excellent": "Excellent",
+            "good": "Good",
+            "average": "Average",
+            "poor": "Poor"
+          }
+        },
+        "stockAlerts": {
+          "title": "Minimum Stock Alerts",
+          "subtitle": "Products requiring urgent order according to AI forecast",
+          "status": { "critical": "Critical", "warning": "Warning", "normal": "Normal" },
+          "current": "Current",
+          "minimum": "Minimum",
+          "timeToDeplete": "Time to deplete",
+          "orderNow": "Order Now",
+          "orderSuggestion": "Order {{count}} units"
+        }
+      },
       
   "hrAi": {
         "attendanceByDept": {

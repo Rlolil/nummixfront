@@ -14,7 +14,7 @@ function Calendar() {
         <div>
           <button
             // onClick={() => setModalOpen(true)}
-            className="bg-blue-600 rounded-xl p-2 flex items-center gap-2 hover:bg-blue-700"
+            className="bg-black rounded-xl p-2 flex items-center gap-2 hover:opacity-50"
           >
             <span className="text-[18px] text-white">+</span>
             <span className="text-white">{t('pages.hr.calendar.newRequest', { defaultValue: 'New Request' })}</span>
