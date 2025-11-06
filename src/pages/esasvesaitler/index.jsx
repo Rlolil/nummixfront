@@ -26,7 +26,7 @@ export default function EsasVesaitler() {
     notes: ''
   });
 
-  // Asset data
+  // vesaitler
   const assets = [
     {
       invNo: 'INV-2024-001',
@@ -80,7 +80,7 @@ export default function EsasVesaitler() {
     }
   ];
 
-  // Dashboard data 
+  // Dashboard 
   const stats = [
     {
       title: t('pages.assets.stats.totalValue', { defaultValue: 'Ümumi dəyər' }),
@@ -200,7 +200,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
     { name: t('pages.assets.form.categoryOptions.officeEquipment'), count: 1, totalValue: 1200, currentValue: 1050, depreciation: 150 }
   ];
 
-  // Branch report data
+  // Branch report data ...........................
   const branchReportData = [
     { name: t('pages.assets.form.locationOptions.bakuOffice'), count: 4, totalValue: 49150, currentValue: 35737.5 },
     { name: '28 May metrosu yaxınlığı', count: 1, totalValue: 500000, currentValue: 445000 }
@@ -213,7 +213,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-gray-50 p-8 ml-[0px] sm:ml-[100px]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-start mb-8">
@@ -299,7 +299,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
             {/* Charts Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Category Distribution */}
+              {/* Category */}
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <h2 className="text-lg font-semibold text-gray-900 mb-6">
                   {t('pages.assets.charts.categoryDistribution')}
@@ -346,13 +346,13 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                 </div>
               </div>
 
-              {/* Branch Values Chart */}
+              {/* sobeler*/}
               <div className="bg-white rounded-lg p-6 shadow-sm">
-                <h2 className="text-lg font-semibold text-gray-900 mb-6">
+                <h2 className="text-lg font-semibold text-gray-900 mb-6 flex-auto">
                   {t('pages.assets.charts.valueByDepartment')}
                 </h2>
-                <div className="h-80 flex items-end justify-between gap-4 border-l border-b border-gray-200 pl-4 pb-4 relative">
-                  <div className="absolute left-0 top-0 bottom-4 flex flex-col justify-between text-xs text-gray-500">
+                <div className="h-80 flex items justify-between gap-4 pl-5 pb-3 relative">
+                  <div className="absolute left-0 top-0 bottom-4 flex flex-col justify-between text-xs text-gray-700">
                     <span>600000</span>
                     <span>450000</span>
                     <span>300000</span>
@@ -360,12 +360,12 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                     <span>0</span>
                   </div>
                   
-                  {/* Bars */}
+                  {/* şobeler uzre deyer */}
                   {branchData.map((branch, index) => (
-                    <div key={index} className="flex-1 flex flex-col items-center gap-2">
-                      <div className="w-full flex items-end justify-center" style={{ height: '280px' }}>
+                    <div key={index} className="flex-auto flex-col items-center">
+                      <div className="w-full flex items-end justify-center" style={{ height: '270px' }}>
                         <div
-                          className="w-16 bg-indigo-500 rounded-t transition-all duration-700 hover:bg-indigo-600"
+                          className="w-14 bg-indigo-500 rounded-t transition-all duration-700 hover:bg-indigo-600"
                           style={{ 
                             height: `${(branch.value / maxValue) * 100}%`,
                             minHeight: '4px'
@@ -373,7 +373,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                           title={`${branch.value.toLocaleString()} ₼`}
                         />
                       </div>
-                      <span className="text-xs text-gray-600 text-center transform -rotate-45 origin-top-left mt-8 whitespace-nowrap">
+                      <span className="text-xs text-gray-800 text-center transform -rotate- origin-top-left mt- whitespace-nowrap">
                         {branch.name}
                       </span>
                     </div>
