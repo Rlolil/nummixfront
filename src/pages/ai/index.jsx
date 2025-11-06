@@ -23,8 +23,8 @@ const Ai = () => {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="flex items-center justify-between px-6 py-3 mt-20 sm:mt-0 bg-white shadow-lg rounded-sm relative z-10 sm:ml-[80px]">
+    <div className="flex flex-col min-h-screen dark:bg-zinc-800">
+      <div className="flex dark:bg-zinc-800 dark:text-white items-center justify-between px-6 py-3 mt-20 sm:mt-0 bg-white shadow-lg rounded-sm relative z-10 sm:ml-[80px]">
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600">
             <svg
@@ -72,15 +72,15 @@ const Ai = () => {
         </div>
       </div>
 
-      <nav className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 items-center justify-between gap-4 bg-gray-200 p-2 rounded-md w-full sm:w-[1210px] mx-auto mt-10 sm:mt-4 shadow-inner">
+      <nav className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 items-center justify-between gap-4 bg-gray-200 dark:bg-zinc-700 p-2 rounded-md w-full sm:w-[1210px] mx-auto mt-10 sm:mt-4 shadow-inner">
         {navItems.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}
             className={({ isActive }) =>
               `w-full flex-1 py-2 px-4 text-center rounded-md text-sm font-medium transition-colors duration-200 ${isActive
-                ? "bg-gray-300 text-black shadow-inner"
-                : "text-gray-700 hover:bg-gray-300"
+                ? "bg-gray-300 dark:bg-zinc-600 text-black dark:text-white shadow-inner"
+                : "text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-zinc-600"
               }`
             }
           >
@@ -88,8 +88,6 @@ const Ai = () => {
           </NavLink>
         ))}
       </nav>
-
-
 
       <div className="p-6 flex-grow">
         <Outlet />

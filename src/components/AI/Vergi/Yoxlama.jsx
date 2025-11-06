@@ -47,7 +47,7 @@ const Yoxlama = () => {
             <div className="flex items-start gap-3">
               {task.icon}
               <div>
-                <p className="font-medium text-gray-800">{task.title}</p>
+                <p className="font-medium dark:text-gray-300 text-gray-800">{task.title}</p>
                 <p className="text-sm text-gray-500">{task.date}</p>
               </div>
             </div>
