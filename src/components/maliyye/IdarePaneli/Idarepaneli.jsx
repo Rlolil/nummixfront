@@ -29,14 +29,7 @@ const IdarePaneli = () => {
       amount: "122,000 AZN",
       descKey: "pages.finance.controlPanel.cards.bankBalance.desc",
       color: "text-gray-900",
-    },
-    {
-      titleKey: "pages.finance.controlPanel.cards.netCashFlow.title",
-      icon: <FaArrowTrendUp className="text-gray-400" size={20} />,
-      amount: "+22,000 AZN",
-      descKey: "pages.finance.controlPanel.cards.netCashFlow.desc",
-      color: "text-green-600",
-    },
+    }
   ];
 
   return (
@@ -57,7 +50,7 @@ const IdarePaneli = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {cards.map((card, index) => (
           <div
             key={index}
