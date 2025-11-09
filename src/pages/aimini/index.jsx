@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "../../components/AI/Ai-Assistent/Modal";
 
 function AiMini() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     function onClose() {
         setIsOpen(false);
     }
