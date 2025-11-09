@@ -79,8 +79,8 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                     <thead className="bg-gray-100 border-b">
                       <tr>
                         <th className="text-left px-2 py-2 w-[40%]">{t('pages.accounting.transactions.modal.table.account', { defaultValue: 'Account' })}</th>
-                        <th className="text-left px-2 py-2 w-[25%]">{t('pages.accounting.transactions.modal.table.debit', { defaultValue: 'Debit (₼)' })}</th>
-                        <th className="text-left px-2 py-2 w-[25%]">{t('pages.accounting.transactions.modal.table.credit', { defaultValue: 'Credit (₼)' })}</th>
+                        <th className="text-left px-2 py-2 w-[25%]">{t('pages.accounting.transactions.modal.table.debit ', { defaultValue: 'Debit' })}</th>
+                        <th className="text-left px-2 py-2 w-[25%]">{t('pages.accounting.transactions.modal.table.credit', { defaultValue: 'Credit' })}</th>
                         <th className="w-[10%]"></th>
                       </tr>
                     </thead>
@@ -131,8 +131,8 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                       ))}
                       <tr className="font-semibold bg-gray-50">
                         <td className="px-2 py-2">{t('common.total', { defaultValue: 'Total' })}</td>
-                        <td className="px-2 py-2">₼{totalDebit.toFixed(2)}</td>
-                        <td className="px-2 py-2">₼{totalCredit.toFixed(2)}</td>
+                        <td className="px-2 py-2">{totalDebit.toFixed(2)}</td>
+                        <td className="px-2 py-2">{totalCredit.toFixed(2)}</td>
                         <td></td>
                       </tr>
                     </tbody>

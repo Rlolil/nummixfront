@@ -12,6 +12,7 @@
       "dashboard": {
         "cards": {
           "totalRevenue": "Total Revenue",
+          "totalAssets": "Total Assets",
           "fromLastQuarter": "from last quarter",
           "netIncome": "Net Income",
           "liabilities": "Liabilities",
@@ -65,17 +66,17 @@
           "forPeriodEnding": "For the period ending {{date}}"
         },
         "balanceSheet": {
-        "rows": {
-          "cash": "Cash",
-          "accountsReceivable": "Accounts Receivable",
-          "inventory": "Inventory",
-          "fixedAssets241": "Fixed Assets (241)",
-          "accountsPayable331": "Accounts Payable (331)",
-          "vatPayable341": "VAT Payable (341)",
-          "incomeTaxPayable351": "Income Tax Payable (351)",
-          "shareCapital401": "Share Capital (401)",
-          "retainedEarnings421": "Retained Earnings (421)"
-        },
+          "rows": {
+            "cash": "Cash",
+            "accountsReceivable": "Accounts Receivable",
+            "inventory": "Inventory",
+            "fixedAssets241": "Fixed Assets (241)",
+            "accountsPayable331": "Accounts Payable (331)",
+            "vatPayable341": "VAT Payable (341)",
+            "incomeTaxPayable351": "Income Tax Payable (351)",
+            "shareCapital401": "Share Capital (401)",
+            "retainedEarnings421": "Retained Earnings (421)"
+          },
           "title": "Balance Sheet",
           "assets": {
             "title": "Assets",
@@ -89,7 +90,9 @@
           "equity": {
             "title": "Equity"
           },
-          "columns": { "equity": "Equity" },
+          "columns": {
+            "equity": "Equity"
+          },
           "totals": {
             "totalCurrentAssets": "Total Current Assets",
             "totalNonCurrentAssets": "Total Non-current Assets",
@@ -100,16 +103,16 @@
           }
         },
         "income": {
-        "rows": {
-          "salesRevenue701": "Sales Revenue (701)",
-          "serviceRevenue711": "Service Revenue (711)",
-          "costOfSales601": "Cost of Sales (601)",
-          "payroll543": "Payroll (543)",
-          "socialContributions551": "Social Contributions (551)",
-          "administrativeExpenses731": "Administrative Expenses (731)",
-          "salesExpenses741": "Sales Expenses (741)",
-          "operatingExpenses721": "Operating Expenses (721)"
-        },
+          "rows": {
+            "salesRevenue701": "Sales Revenue (701)",
+            "serviceRevenue711": "Service Revenue (711)",
+            "costOfSales601": "Cost of Sales (601)",
+            "payroll543": "Payroll (543)",
+            "socialContributions551": "Social Contributions (551)",
+            "administrativeExpenses731": "Administrative Expenses (731)",
+            "salesExpenses741": "Sales Expenses (741)",
+            "operatingExpenses721": "Operating Expenses (721)"
+          },
           "title": "Income Statement",
           "columns": {
             "revenue": "Revenue",
@@ -128,14 +131,14 @@
           }
         },
         "cashFlow": {
-        "rows": {
-          "netIncome": "Net Income",
-          "adjustmentsNonCash": "Adjustments for non-cash items",
-          "changesWorkingCapital": "Changes in working capital",
-          "purchaseFixedAssets": "Purchase of Fixed Assets",
-          "proceedsLoans": "Proceeds from Loans",
-          "repaymentLoans": "Repayment of Loans"
-        },
+          "rows": {
+            "netIncome": "Net Income",
+            "adjustmentsNonCash": "Adjustments for non-cash items",
+            "changesWorkingCapital": "Changes in working capital",
+            "purchaseFixedAssets": "Purchase of Fixed Assets",
+            "proceedsLoans": "Proceeds from Loans",
+            "repaymentLoans": "Repayment of Loans"
+          },
           "title": "Cash Flow",
           "columns": {
             "operating": "Operating Activities",
@@ -203,8 +206,8 @@
           "addLine": "Add Line",
           "table": {
             "account": "Account",
-            "debit": "Debit (₼)",
-            "credit": "Credit (₼)",
+            "debit": "Debit",
+            "credit": "Credit",
             "selectAccount": "Select account",
             "options": {
               "cash": "Cash",
@@ -341,29 +344,64 @@
         "title": "Payments Management",
         "subtitle": "Supplier payments and customer receipts",
         "newPlan": "Plan new payment",
-        "tabs": { "outflows": "Payments (Outflows)", "inflows": "Receipts (Inflows)" },
-        "outflows": { "title": "Payments to Suppliers", "subtitle": "Scheduled and pending payments" },
-        "inflows": { "title": "Receipts from Customers", "subtitle": "Expected payments and invoices" },
+        "tabs": {
+          "outflows": "Payments (Outflows)",
+          "inflows": "Receipts (Inflows)"
+        },
+        "outflows": {
+          "title": "Payments to Suppliers",
+          "subtitle": "Scheduled and pending payments"
+        },
+        "inflows": {
+          "title": "Receipts from Customers",
+          "subtitle": "Expected payments and invoices"
+        },
         "cards": {
-          "payable": { "title": "Payable", "desc": "To suppliers" },
-          "receivable": { "title": "Receivable", "desc": "From customers" },
-          "overduePayments": { "title": "Overdue payments", "desc": "Requires urgent attention" },
-          "overdueReceivables": { "title": "Overdue receivables", "desc": "Send reminder" }
+          "payable": {
+            "title": "Payable",
+            "desc": "To suppliers"
+          },
+          "receivable": {
+            "title": "Receivable",
+            "desc": "From customers"
+          },
+          "overduePayments": {
+            "title": "Overdue payments",
+            "desc": "Requires urgent attention"
+          },
+          "overdueReceivables": {
+            "title": "Overdue receivables",
+            "desc": "Send reminder"
+          }
         },
         "schedule": {
           "title": "Next 7 Days Payment Schedule",
           "subtitle": "Scheduled payments and receipts",
           "urgent": "Urgent"
         },
-        "types": { "payment": "Payment", "receipt": "Receipt" },
-        "status": { "pending": "Pending", "overdue": "Overdue", "scheduled": "Scheduled", "paid": "Paid" },
-        "actions": { "title": "Actions", "pay": "Pay", "collect": "Collect" }
+        "types": {
+          "payment": "Payment",
+          "receipt": "Receipt"
+        },
+        "status": {
+          "pending": "Pending",
+          "overdue": "Overdue",
+          "scheduled": "Scheduled",
+          "paid": "Paid"
+        },
+        "actions": {
+          "title": "Actions",
+          "pay": "Pay",
+          "collect": "Collect"
+        }
       },
       "agreements": {
         "title": "Agreements",
         "subtitle": "Manage and track supplier agreements",
         "newButton": "New Agreement",
-        "modal": { "title": "Add Agreement" },
+        "modal": {
+          "title": "Add Agreement"
+        },
         "form": {
           "contractNo": "Agreement No",
           "supplier": "Supplier",
@@ -374,14 +412,32 @@
           "paymentTerms": "Payment Terms",
           "notes": "Notes"
         },
-        "placeholders": { "contractNo": "e.g., CNT-2025-001", "amount": "e.g., 1500" },
-        "paymentTerms": { "days30": "Within 30 days", "days60": "Within 60 days", "days90": "Within 90 days" },
-        "status": { "active": "Active" },
+        "placeholders": {
+          "contractNo": "e.g., CNT-2025-001",
+          "amount": "e.g., 1500"
+        },
+        "paymentTerms": {
+          "days30": "Within 30 days",
+          "days60": "Within 60 days",
+          "days90": "Within 90 days"
+        },
+        "status": {
+          "active": "Active"
+        },
         "searchPlaceholder": "Search agreements...",
         "cards": {
-          "active": { "title": "Active Agreements", "description": "Currently valid agreements" },
-          "expiring": { "title": "Expiring Soon", "description": "Agreements nearing end date" },
-          "totalValue": { "title": "Total Value", "description": "Value of all agreements" }
+          "active": {
+            "title": "Active Agreements",
+            "description": "Currently valid agreements"
+          },
+          "expiring": {
+            "title": "Expiring Soon",
+            "description": "Agreements nearing end date"
+          },
+          "totalValue": {
+            "title": "Total Value",
+            "description": "Value of all agreements"
+          }
         },
         "sample": {
           "amount": "Amount:",
@@ -397,9 +453,17 @@
         "subtitle": "Manage cash and non-cash transactions",
         "uploadStatement": "Upload bank statement",
         "newOperation": "New Operation",
-        "tabs": { "cash": "Cash Operations", "bank": "Bank Operations" },
-        "cash": { "subtitle": "Cash movement" },
-        "bank": { "subtitle": "Bank account transactions", "account": "Account" },
+        "tabs": {
+          "cash": "Cash Operations",
+          "bank": "Bank Operations"
+        },
+        "cash": {
+          "subtitle": "Cash movement"
+        },
+        "bank": {
+          "subtitle": "Bank account transactions",
+          "account": "Account"
+        },
         "modal": {
           "newOperationTitle": "New Operation",
           "newOperationSubtitle": "Add a cash or bank transaction"
@@ -415,16 +479,38 @@
         "report": "Report",
         "newBudget": "New budget",
         "cards": {
-          "planned": { "title": "Plan (This month)", "desc": "Planned expenses" },
-          "actual": { "title": "Actual", "desc": "Real expenses" },
-          "variance": { "title": "Variance", "desc": "-2.7% saving" },
-          "utilization": { "title": "Utilization rate" }
+          "planned": {
+            "title": "Plan (This month)",
+            "desc": "Planned expenses"
+          },
+          "actual": {
+            "title": "Actual",
+            "desc": "Real expenses"
+          },
+          "variance": {
+            "title": "Variance",
+            "desc": "-2.7% saving"
+          },
+          "utilization": {
+            "title": "Utilization rate"
+          }
         },
-        "yearly": { "title": "Yearly Budget Performance", "subtitle": "Comparison of planned vs actual expenses" },
-        "tabs": { "categories": "Categories", "departments": "Departments" },
+        "yearly": {
+          "title": "Yearly Budget Performance",
+          "subtitle": "Comparison of planned vs actual expenses"
+        },
+        "tabs": {
+          "categories": "Categories",
+          "departments": "Departments"
+        },
         "categoriesTitle": "Budget by Categories",
         "categoriesSubtitle": "This month's expense analysis by category",
-        "labels": { "used": "used", "remaining": "remaining", "saving": "Saving", "overBudget": "Over budget" },
+        "labels": {
+          "used": "used",
+          "remaining": "remaining",
+          "saving": "Saving",
+          "overBudget": "Over budget"
+        },
         "categories": {
           "officeExpenses": "Office expenses",
           "itAndTech": "IT and Technology",
@@ -449,24 +535,52 @@
             "repair": "Repair"
           }
         },
-        "chart": { "plan": "Plan", "actual": "Actual" }
+        "chart": {
+          "plan": "Plan",
+          "actual": "Actual"
+        }
       },
       "analytics": {
         "title": "Financial Analytics",
         "subtitle": "Profitability, liquidity and capital indicators",
-        "tabs": { "cashFlow": "Cash Flow Forecast", "profitability": "Profitability", "liquidity": "Liquidity" },
+        "tabs": {
+          "cashFlow": "Cash Flow Forecast",
+          "profitability": "Profitability",
+          "liquidity": "Liquidity"
+        },
         "cards": {
-          "roi": { "title": "ROI (Return on Investment)", "subtitle": "Return on investment" },
-          "grossMargin": { "title": "Gross Margin", "subtitle": "After cost of sales" },
-          "netProfitMargin": { "title": "Net Profit Margin", "subtitle": "Net profit relative to sales" },
-          "currentRatio": { "title": "Current Ratio", "subtitle": "Short-term liquidity" },
-          "quickRatio": { "title": "Quick Ratio", "subtitle": "Quick liquidity (excl. inventory)" },
-          "debtToEquity": { "title": "Debt to Equity", "subtitle": "Financial leverage" }
+          "roi": {
+            "title": "ROI (Return on Investment)",
+            "subtitle": "Return on investment"
+          },
+          "grossMargin": {
+            "title": "Gross Margin",
+            "subtitle": "After cost of sales"
+          },
+          "netProfitMargin": {
+            "title": "Net Profit Margin",
+            "subtitle": "Net profit relative to sales"
+          },
+          "currentRatio": {
+            "title": "Current Ratio",
+            "subtitle": "Short-term liquidity"
+          },
+          "quickRatio": {
+            "title": "Quick Ratio",
+            "subtitle": "Quick liquidity (excl. inventory)"
+          },
+          "debtToEquity": {
+            "title": "Debt to Equity",
+            "subtitle": "Financial leverage"
+          }
         },
         "cashFlow": {
           "title": "Cash Flow Forecast",
           "subtitle": "AI-based 6-month forecast",
-          "legend": { "actual": "Actual", "forecast": "Forecast" },
+          "legend": {
+            "actual": "Actual",
+            "forecast": "Forecast"
+          },
           "ai": {
             "title": "AI Analysis:",
             "text": "The average monthly cash flow over the next 6 months is projected at {{avg}}. A peak is expected in September ({{max}}). No liquidity risk detected."
@@ -475,7 +589,11 @@
         "profitability": {
           "title": "Profitability Indicators",
           "subtitle": "Revenue, expense and profit dynamics",
-          "legend": { "expenses": "Expenses", "revenue": "Revenue", "netProfit": "Net Profit" },
+          "legend": {
+            "expenses": "Expenses",
+            "revenue": "Revenue",
+            "netProfit": "Net Profit"
+          },
           "avgRevenue": "Average Monthly Revenue",
           "avgExpense": "Average Monthly Expense",
           "avgProfit": "Average Monthly Profit"
@@ -525,7 +643,6 @@
           }
         }
       },
-      
       "controlPanel": {
         "title": "Finance Management - Control Panel",
         "subtitle": "Full view of your financial resources and cash movement",
@@ -533,10 +650,22 @@
           "text": "Attention: Payment to \"{{supplier}}\" is overdue by {{days}} days. Amount: {{amount}}"
         },
         "cards": {
-          "totalBalance": { "title": "Total Balance", "desc": "Cash + Bank accounts" },
-          "cashBalance": { "title": "Cash Balance", "desc": "Cash on hand" },
-          "bankBalance": { "title": "Bank Balance", "desc": "Bank accounts" },
-          "netCashFlow": { "title": "Net Cash Flow", "desc": "This month" }
+          "totalBalance": {
+            "title": "Total Balance",
+            "desc": "Cash + Bank accounts"
+          },
+          "cashBalance": {
+            "title": "Cash Balance",
+            "desc": "Cash on hand"
+          },
+          "bankBalance": {
+            "title": "Bank Balance",
+            "desc": "Bank accounts"
+          },
+          "netCashFlow": {
+            "title": "Net Cash Flow",
+            "desc": "This month"
+          }
         },
         "charts": {
           "cashFlow": {
@@ -551,7 +680,10 @@
               "jun": "Jun"
             }
           },
-          "expenseDistribution": { "title": "Expense Distribution", "subtitle": "Current month expenses by category" }
+          "expenseDistribution": {
+            "title": "Expense Distribution",
+            "subtitle": "Current month expenses by category"
+          }
         },
         "budget": {
           "title": "Budget Overview - Current Month",
@@ -589,23 +721,40 @@
         "reports": "Reports"
       },
       "common": {
-        "status": { "active": "Active", "overdue": "Overdue" },
+        "status": {
+          "active": "Active",
+          "overdue": "Overdue"
+        },
         "overdueDays": "{{days}} days overdue"
       },
       "controlPanel": {
         "title": "Sales Management - Control Panel",
         "subtitle": "Overview of sales metrics and customer activity",
         "cards": {
-          "monthlySales": { "title": "Monthly Sales", "desc": "vs previous month" },
-          "activeCustomers": { "title": "Active Customers", "desc": "purchased in last 30 days" },
-          "salesCount": { "title": "Number of Sales", "desc": "completed orders" },
-          "profit": { "title": "Profit", "desc": "after cost of goods" }
+          "monthlySales": {
+            "title": "Monthly Sales",
+            "desc": "vs previous month"
+          },
+          "activeCustomers": {
+            "title": "Active Customers",
+            "desc": "purchased in last 30 days"
+          },
+          "salesCount": {
+            "title": "Number of Sales",
+            "desc": "completed orders"
+          },
+          "profit": {
+            "title": "Profit",
+            "desc": "after cost of goods"
+          }
         },
         "charts": {
           "salesDynamics": "Sales dynamics (last 6 months)",
           "productDistribution": "Product distribution"
         },
-        "topCustomers": { "title": "Top Customers" },
+        "topCustomers": {
+          "title": "Top Customers"
+        },
         "overduePayments": "Overdue receivables"
       },
       "pos": {
@@ -615,21 +764,34 @@
           "scanOrEnterBarcode": "Scan or enter barcode...",
           "searchProduct": "Search product..."
         },
-        "actions": { "add": "Add", "print": "Print" },
+        "actions": {
+          "add": "Add",
+          "print": "Print"
+        },
         "empty": "No products found",
-        "cart": { "title": "Cart", "decrease": "Decrease quantity", "increase": "Increase quantity", "remove": "Remove item" },
+        "cart": {
+          "title": "Cart",
+          "decrease": "Decrease quantity",
+          "increase": "Increase quantity",
+          "remove": "Remove item"
+        },
         "summary": {
           "subtotal": "Subtotal",
           "vat": "VAT ({{percent}}%)",
           "total": "Total"
         },
-        "payment": { "cash": "Cash", "card": "Card" }
+        "payment": {
+          "cash": "Cash",
+          "card": "Card"
+        }
       },
       "customers": {
         "title": "Customers",
         "subtitle": "Manage your customer base and segments",
         "newButton": "New Customer",
-        "modal": { "title": "Add Customer" },
+        "modal": {
+          "title": "Add Customer"
+        },
         "form": {
           "companyName": "Company Name",
           "taxId": "Tax ID",
@@ -646,9 +808,19 @@
           "email": "Enter email",
           "address": "Enter address"
         },
-        "labels": { "taxIdShort": "Tax ID" },
-        "tabs": { "info": "Info", "salesHistory": "Sales History", "payments": "Payments" },
-        "segments": { "regular": "Regular", "new": "New", "overdue": "Overdue" },
+        "labels": {
+          "taxIdShort": "Tax ID"
+        },
+        "tabs": {
+          "info": "Info",
+          "salesHistory": "Sales History",
+          "payments": "Payments"
+        },
+        "segments": {
+          "regular": "Regular",
+          "new": "New",
+          "overdue": "Overdue"
+        },
         "cards": {
           "totalCustomers": "Total customers",
           "regularCustomers": "Regular",
@@ -666,20 +838,30 @@
             "debt": "Debt"
           }
         },
-        "actions": { "close": "Close" }
+        "actions": {
+          "close": "Close"
+        }
       },
       "sales": {
         "title": "Sales",
         "subtitle": "Invoices and new sales",
-        "actions": { "newInvoice": "New Invoice" },
-        "modal": { "title": "Create Invoice" },
+        "actions": {
+          "newInvoice": "New Invoice"
+        },
+        "modal": {
+          "title": "Create Invoice"
+        },
         "form": {
           "customer": "Customer",
           "date": "Date",
           "currency": "Currency",
           "paymentTerm": "Payment term"
         },
-        "currencyOptions": { "AZN": "AZN", "USD": "USD", "EUR": "EUR" },
+        "currencyOptions": {
+          "AZN": "AZN",
+          "USD": "USD",
+          "EUR": "EUR"
+        },
         "paymentTerms": {
           "cash": "Cash",
           "days15": "15 days",
@@ -727,13 +909,22 @@
             "status": "Status"
           }
         },
-        "status": { "paid": "Paid", "unpaid": "Unpaid", "overdue": "Overdue" }
+        "status": {
+          "paid": "Paid",
+          "unpaid": "Unpaid",
+          "overdue": "Overdue"
+        }
       },
       "transactions": {
         "title": "Payments",
         "subtitle": "Customer payments against invoices",
-        "actions": { "newPayment": "New Payment", "notify": "Send reminder" },
-        "modal": { "title": "Record Payment" },
+        "actions": {
+          "newPayment": "New Payment",
+          "notify": "Send reminder"
+        },
+        "modal": {
+          "title": "Record Payment"
+        },
         "form": {
           "customer": "Customer",
           "invoice": "Invoice",
@@ -749,8 +940,17 @@
           "method": "Cash, bank transfer...",
           "note": "Optional note"
         },
-        "cards": { "completed": "Completed", "pending": "Pending", "overdue": "Overdue", "toNotify": "To notify" },
-        "overdue": { "title": "Overdue Payments", "invoice": "Invoice", "date": "Date" },
+        "cards": {
+          "completed": "Completed",
+          "pending": "Pending",
+          "overdue": "Overdue",
+          "toNotify": "To notify"
+        },
+        "overdue": {
+          "title": "Overdue Payments",
+          "invoice": "Invoice",
+          "date": "Date"
+        },
         "table": {
           "title": "Payments",
           "columns": {
@@ -763,24 +963,60 @@
             "status": "Status"
           }
         },
-        "status": { "completed": "Completed", "pending": "Pending", "overdue": "Overdue" }
+        "status": {
+          "completed": "Completed",
+          "pending": "Pending",
+          "overdue": "Overdue"
+        }
       },
       "reports": {
         "title": "Sales Reports",
         "subtitle": "KPIs and sales analytics",
-        "actions": { "exportExcel": "Export to Excel", "pdfReport": "PDF Report" },
-        "filters": { "range": { "thisMonth": "This month", "lastMonth": "Last month", "last3Months": "Last 3 months", "thisYear": "This year", "lastYear": "Last year" } },
-        "tiles": { "totalSales": "Total Sales", "grossProfit": "Gross Profit", "productsSold": "Products Sold", "profitMargin": "Profit Margin" },
+        "actions": {
+          "exportExcel": "Export to Excel",
+          "pdfReport": "PDF Report"
+        },
+        "filters": {
+          "range": {
+            "thisMonth": "This month",
+            "lastMonth": "Last month",
+            "last3Months": "Last 3 months",
+            "thisYear": "This year",
+            "lastYear": "Last year"
+          }
+        },
+        "tiles": {
+          "totalSales": "Total Sales",
+          "grossProfit": "Gross Profit",
+          "productsSold": "Products Sold",
+          "profitMargin": "Profit Margin"
+        },
         "tables": {
           "topProducts": {
             "title": "Top Products",
-            "columns": { "product": "Product", "salesCount": "Sales Count", "revenue": "Revenue" },
-            "sample": { "product1": "Product 1", "product2": "Product 2", "product3": "Product 3" }
+            "columns": {
+              "product": "Product",
+              "salesCount": "Sales Count",
+              "revenue": "Revenue"
+            },
+            "sample": {
+              "product1": "Product 1",
+              "product2": "Product 2",
+              "product3": "Product 3"
+            }
           },
           "topCustomers": {
             "title": "Top Customers",
-            "columns": { "customer": "Customer", "orders": "Orders", "revenue": "Revenue" },
-            "sample": { "customer1": "ABC LLC", "customer2": "DEF Holding", "customer3": "GHI Ltd" }
+            "columns": {
+              "customer": "Customer",
+              "orders": "Orders",
+              "revenue": "Revenue"
+            },
+            "sample": {
+              "customer1": "ABC LLC",
+              "customer2": "DEF Holding",
+              "customer3": "GHI Ltd"
+            }
           }
         },
         "kpi": {
@@ -793,7 +1029,9 @@
           "customerRetention": "Customer Retention",
           "salesConversion": "Sales Conversion",
           "bestSalesChannel": "Best Sales Channel",
-          "values": { "online": "Online" },
+          "values": {
+            "online": "Online"
+          },
           "overduePaymentRate": "Overdue Payment Rate"
         }
       }
@@ -812,7 +1050,9 @@
         "title": "Suppliers",
         "subtitle": "Manage supplier directory",
         "newButton": "New Supplier",
-        "modal": { "title": "Add Supplier" },
+        "modal": {
+          "title": "Add Supplier"
+        },
         "form": {
           "companyName": "Company Name",
           "companyTaxId": "Tax ID",
@@ -831,7 +1071,9 @@
         },
         "searchPlaceholder": "Search suppliers...",
         "sample": {
-          "category": { "officeSupplies": "Office Supplies" },
+          "category": {
+            "officeSupplies": "Office Supplies"
+          },
           "taxId": "Tax ID",
           "debt": "Debt",
           "rating": "Rating"
@@ -911,7 +1153,7 @@
           "title": "Upcoming payments",
           "empty": "No upcoming payments"
         }
-  },
+      },
       "orders": {
         "title": "Purchase Orders",
         "subtitle": "Track and manage supplier orders",
@@ -954,7 +1196,9 @@
         "title": "Agreements",
         "subtitle": "Manage and track supplier agreements",
         "newButton": "New Agreement",
-        "modal": { "title": "Add Agreement" },
+        "modal": {
+          "title": "Add Agreement"
+        },
         "form": {
           "contractNo": "Agreement No",
           "supplier": "Supplier",
@@ -965,14 +1209,32 @@
           "paymentTerms": "Payment Terms",
           "notes": "Notes"
         },
-        "placeholders": { "contractNo": "e.g., CNT-2025-001", "amount": "e.g., 1500" },
-        "paymentTerms": { "days30": "Within 30 days", "days60": "Within 60 days", "days90": "Within 90 days" },
-        "status": { "active": "Active" },
+        "placeholders": {
+          "contractNo": "e.g., CNT-2025-001",
+          "amount": "e.g., 1500"
+        },
+        "paymentTerms": {
+          "days30": "Within 30 days",
+          "days60": "Within 60 days",
+          "days90": "Within 90 days"
+        },
+        "status": {
+          "active": "Active"
+        },
         "searchPlaceholder": "Search agreements...",
         "cards": {
-          "active": { "title": "Active Agreements", "description": "Currently valid agreements" },
-          "expiring": { "title": "Expiring Soon", "description": "Agreements nearing end date" },
-          "totalValue": { "title": "Total Value", "description": "Value of all agreements" }
+          "active": {
+            "title": "Active Agreements",
+            "description": "Currently valid agreements"
+          },
+          "expiring": {
+            "title": "Expiring Soon",
+            "description": "Agreements nearing end date"
+          },
+          "totalValue": {
+            "title": "Total Value",
+            "description": "Value of all agreements"
+          }
         },
         "sample": {
           "amount": "Amount:",
@@ -1262,7 +1524,10 @@
           "quantity": "Quantity",
           "lot": "Lot/Serial",
           "quality": "Quality",
-          "qualityOptions": { "accept": "Accept", "reject": "Reject" },
+          "qualityOptions": {
+            "accept": "Accept",
+            "reject": "Reject"
+          },
           "notes": "Notes",
           "notesPlaceholder": "Additional notes...",
           "removeRow": "Remove row",
@@ -1293,7 +1558,9 @@
           "productsTitle": "Transfer products",
           "newLocation": "New location",
           "confirm": "Confirm transfer",
-          "validation": { "sameWarehouse": "Cannot transfer to the same warehouse!" },
+          "validation": {
+            "sameWarehouse": "Cannot transfer to the same warehouse!"
+          },
           "success": "Transfer recorded successfully (mock)"
         },
         "history": {
@@ -1355,8 +1622,7 @@
           "liter": "liter",
           "meter": "meter"
         }
-      }
-      ,
+      },
       "inventory": {
         "title": "Inventory",
         "subtitle": "Current balances and inventory count",
@@ -1417,8 +1683,8 @@
           },
           "confirm": "Confirm Inventory ({{count}} items)"
         }
-    }
-  },
+      }
+    },
     "ai": {
       "title": "Nummix AI Assistant",
       "subtitle": "Analytics Module",
@@ -1562,7 +1828,9 @@
           "subtitle": "Sales dynamics over the last 6 months",
           "aiText": "The average monthly cash flow is forecast at {{avg}} over the next 6 months. The maximum is expected in September ({{max}}). No liquidity risk detected."
         },
-        "series": { "sales": "Sales" },
+        "series": {
+          "sales": "Sales"
+        },
         "products": {
           "title": "Top Selling Products",
           "subtitle": "Most popular products this month"
@@ -1593,7 +1861,9 @@
             "bulkDiscount": "Bulk Purchase Discount"
           }
         },
-        "common": { "salesCount": "{{count}} sales" }
+        "common": {
+          "salesCount": "{{count}} sales"
+        }
       },
       "financeAi": {
         "incomeExpense": {
@@ -1622,8 +1892,14 @@
         "debts": {
           "title": "Receivables & Payables",
           "subtitle": "Payments in risky state",
-          "status": { "risk": "Risk", "critical": "Critical" },
-          "type": { "receivable": "Receivable", "payable": "Payable" }
+          "status": {
+            "risk": "Risk",
+            "critical": "Critical"
+          },
+          "type": {
+            "receivable": "Receivable",
+            "payable": "Payable"
+          }
         }
       },
       "taxAi": {
@@ -1638,7 +1914,11 @@
         "tasks": {
           "title": "Compliance Tasks",
           "subtitle": "Due dates and status",
-          "status": { "completed": "Completed", "pending": "Pending", "delayed": "Delayed" }
+          "status": {
+            "completed": "Completed",
+            "pending": "Pending",
+            "delayed": "Delayed"
+          }
         },
         "series": {
           "incomeTax": "Income Tax",
@@ -1658,7 +1938,10 @@
         "optimization": {
           "title": "Tax Optimization Recommendations",
           "subtitle": "Legally identified ways to save by AI",
-          "level": { "easy": "Easy", "medium": "Medium" },
+          "level": {
+            "easy": "Easy",
+            "medium": "Medium"
+          },
           "moreInfo": "More Info",
           "saving": "saving",
           "noteTitle": "Note:",
@@ -1691,7 +1974,11 @@
         "stockAlerts": {
           "title": "Minimum Stock Alerts",
           "subtitle": "Products requiring urgent order according to AI forecast",
-          "status": { "critical": "Critical", "warning": "Warning", "normal": "Normal" },
+          "status": {
+            "critical": "Critical",
+            "warning": "Warning",
+            "normal": "Normal"
+          },
           "current": "Current",
           "minimum": "Minimum",
           "timeToDeplete": "Time to deplete",
@@ -1699,14 +1986,15 @@
           "orderSuggestion": "Order {{count}} units"
         }
       },
-      
-  "hrAi": {
+      "hrAi": {
         "attendanceByDept": {
           "title": "Attendance by Department",
           "subtitle": "Attendance and delay percentages",
           "warningText": "Delay rate in the Marketing department is above 10%."
         },
-        "attendance": { "delayLabel": "Delay" },
+        "attendance": {
+          "delayLabel": "Delay"
+        },
         "expenseDistribution": {
           "title": "Expense Distribution",
           "subtitle": "This month's expenses by category"
@@ -1714,7 +2002,10 @@
         "departmentPerformance": {
           "title": "Department Performance",
           "subtitle": "Performance and employee satisfaction metrics",
-          "legend": { "performance": "Performance", "satisfaction": "Satisfaction" }
+          "legend": {
+            "performance": "Performance",
+            "satisfaction": "Satisfaction"
+          }
         },
         "departments": {
           "sales": "Sales",
@@ -1735,7 +2026,11 @@
           "title": "Employee Attrition Risk Analysis",
           "subtitle": "Departments identified by AI as high risk",
           "reasons": "Reasons:",
-          "level": { "high": "High Risk", "medium": "Medium Risk", "low": "Low Risk" }
+          "level": {
+            "high": "High Risk",
+            "medium": "Medium Risk",
+            "low": "Low Risk"
+          }
         }
       }
     },
@@ -1752,421 +2047,470 @@
         "portal": "Employee Portal"
       },
       "dashboard": {
-          "headerTitle": "HR Dashboard",
-          "headerSubtitle": "Overview of HR & Payroll system",
-          "cards": {
-            "totalEmployees": "Total Employees",
-            "changeThisMonth": "{{change}} this month",
-            "monthlyPayroll": "Monthly Payroll",
-            "vsPrevMonth": "{{change}} vs previous month",
-            "onLeave": "On Leave",
-            "ofEmployees": "{{percent}} of employees",
-            "attendance": "Attendance",
-            "thisWeek": "This Week"
-          },
-          "sections": {
-            "recentPayments": "Recent Payments",
-            "upcomingPayments": "Upcoming Payments",
-            "departmentStats": "Department Statistics"
-          },
-          "payments": {
-            "salaryPayment": "Salary payment",
-            "socialInsurance": "Social insurance",
-            "incomeTax": "Income tax"
-          },
-          "roles": {
-            "developer": "Developer"
-          },
-          "budgetUsage": "{{percent}} of budget",
-          "alert": {
-            "title": "Action required",
-            "contractsExpiring": "{{count}} employees have contracts expiring this month. Please coordinate renewals with HR."
-          }
+        "headerTitle": "HR Dashboard",
+        "headerSubtitle": "Overview of HR & Payroll system",
+        "cards": {
+          "totalEmployees": "Total Employees",
+          "changeThisMonth": "{{change}} this month",
+          "monthlyPayroll": "Monthly Payroll",
+          "vsPrevMonth": "{{change}} vs previous month",
+          "onLeave": "On Leave",
+          "ofEmployees": "{{percent}} of employees",
+          "attendance": "Attendance",
+          "thisWeek": "This Week"
         },
+        "sections": {
+          "recentPayments": "Recent Payments",
+          "upcomingPayments": "Upcoming Payments",
+          "departmentStats": "Department Statistics"
+        },
+        "payments": {
+          "salaryPayment": "Salary payment",
+          "socialInsurance": "Social insurance",
+          "incomeTax": "Income tax"
+        },
+        "roles": {
+          "developer": "Developer"
+        },
+        "budgetUsage": "{{percent}} of budget",
+        "alert": {
+          "title": "Action required",
+          "contractsExpiring": "{{count}} employees have contracts expiring this month. Please coordinate renewals with HR."
+        }
+      },
       "departments": {
-          "it": "IT Department",
-          "finance": "Finance",
-          "sales": "Sales",
-          "marketing": "Marketing",
-          "hr": "Human Resources"
-        },
+        "it": "IT Department",
+        "finance": "Finance",
+        "sales": "Sales",
+        "marketing": "Marketing",
+        "hr": "Human Resources"
+      },
       "common": {
-          "employeeCount": "{{count}} employees",
-          "months": {
-            "august": "August",
-            "september": "September",
-            "october": "October"
-          },
-          "period": {
-            "thisMonth": "This month",
-            "lastMonth": "Last month",
-            "thisYear": "This year",
-            "all": "All"
-          }
+        "employeeCount": "{{count}} employees",
+        "months": {
+          "august": "August",
+          "september": "September",
+          "october": "October"
         },
+        "period": {
+          "thisMonth": "This month",
+          "lastMonth": "Last month",
+          "thisYear": "This year",
+          "all": "All"
+        }
+      },
       "payroll": {
-          "title": "Payroll Management",
-          "subtitle": "Salary calculations and payments",
-          "actions": {
-            "calculate": "Calculate",
-            "export": "Export"
-          },
-          "cards": {
-            "totalGross": "Total Gross Salary",
-            "totalNet": "Total Net Salary",
-            "taxes": "Taxes",
-            "bonuses": "Bonuses"
-          },
-          "sections": {
-            "taxesAndContributions": "Taxes and Contributions",
-            "salariesByEmployee": "Salaries by Employee",
-            "accountingReconciliation": "Accounting Reconciliation"
-          },
-          "taxes": {
-            "incomeTax": "Income tax (14%)",
-            "socialInsurance": "Social insurance",
-            "unemploymentInsurance": "Unemployment insurance",
-            "medicalInsurance": "Mandatory medical insurance"
-          },
-          "totalContributions": "Total contributions",
-          "table": {
-            "employee": "Employee",
-            "baseSalary": "Base Salary",
-            "bonus": "Bonus",
-            "gross": "Gross",
-            "net": "Net",
-            "status": "Status"
-          },
-          "status": {
-            "paid": "Paid",
-            "pending": "Pending"
-          },
-          "accounting": {
-            "debit": "Debit",
-            "credit": "Credit",
-            "salaryExpenses": "Salary expenses",
-            "settlementsWithEmployees": "Settlements with employees",
-            "settlementsWithBudgetTaxes": "Settlements with budget (taxes)",
-            "settlementsWithSocialInsurance": "Settlements with social insurance"
-          }
+        "title": "Payroll Management",
+        "subtitle": "Salary calculations and payments",
+        "actions": {
+          "calculate": "Calculate",
+          "export": "Export"
         },
-        "attendance": {
-          "title": "Attendance Tracking",
-          "subtitle": "Work time registration and stats",
-          "cards": {
-            "attendanceRate": "Attendance %",
-            "change": "{{value}}",
-            "present": "Present",
-            "ofTotal": "of {{total}}",
-            "lateArrivals": "Late arrivals",
-            "thisWeek": "This week",
-            "excused": "Excused",
-            "sickOrLeave": "Sick/Authorized"
-          },
-          "calendar": {
-            "title": "Calendar",
-            "workday": "Workday",
-            "offday": "Off day",
-            "holiday": "Holiday"
-          },
-          "todayTitle": "Today's Attendance",
-            "events": {
-              "projectPresentation": "Project presentation",
-              "teamMeeting": "Team meeting"
-            },
-            "messages": {
-              "date": "Date",
-              "time": "Time",
-              "event": "Event",
-              "allDay": "All day",
-              "week": "Week",
-              "work_week": "Work week",
-              "day": "Day",
-              "month": "Month",
-              "previous": "Back",
-              "next": "Next",
-              "yesterday": "Yesterday",
-              "tomorrow": "Tomorrow",
-              "today": "Today",
-              "agenda": "Agenda",
-              "noEventsInRange": "There are no events in this range.",
-              "showMore": "+{{count}} more"
-            },
-          "table": {
-            "employee": "Employee",
-            "checkIn": "Check-in",
-            "checkOut": "Check-out",
-            "workHours": "Work hours",
-            "status": "Status"
-          },
-          "status": {
-            "present": "Present",
-            "late": "Late",
-            "onLeave": "On Leave"
-          },
-          "weeklySummary": {
-            "title": "Weekly Summary",
-            "headers": {
-              "day": "Day",
-              "date": "Date",
-              "present": "Present",
-              "late": "Late",
-              "involuntary": "Unexcused",
-              "attendancePct": "Attendance %"
-            }
-          },
-          "latecomers": {
-            "title": "Latecomers This Week",
-            "minutesSuffix": "min",
-            "entryLabel": "Check-in"
-          }
+        "cards": {
+          "totalGross": "Total Gross Salary",
+          "totalNet": "Total Net Salary",
+          "taxes": "Taxes",
+          "bonuses": "Bonuses"
+        },
+        "sections": {
+          "taxesAndContributions": "Taxes and Contributions",
+          "salariesByEmployee": "Salaries by Employee",
+          "accountingReconciliation": "Accounting Reconciliation"
+        },
+        "taxes": {
+          "incomeTax": "Income tax (14%)",
+          "socialInsurance": "Social insurance",
+          "unemploymentInsurance": "Unemployment insurance",
+          "medicalInsurance": "Mandatory medical insurance"
+        },
+        "totalContributions": "Total contributions",
+        "table": {
+          "employee": "Employee",
+          "baseSalary": "Base Salary",
+          "bonus": "Bonus",
+          "gross": "Gross",
+          "net": "Net",
+          "status": "Status"
+        },
+        "status": {
+          "paid": "Paid",
+          "pending": "Pending"
+        },
+        "accounting": {
+          "debit": "Debit",
+          "credit": "Credit",
+          "salaryExpenses": "Salary expenses",
+          "settlementsWithEmployees": "Settlements with employees",
+          "settlementsWithBudgetTaxes": "Settlements with budget (taxes)",
+          "settlementsWithSocialInsurance": "Settlements with social insurance"
+        }
+      },
+      "attendance": {
+        "title": "Attendance Tracking",
+        "subtitle": "Work time registration and stats",
+        "cards": {
+          "attendanceRate": "Attendance %",
+          "change": "{{value}}",
+          "present": "Present",
+          "ofTotal": "of {{total}}",
+          "lateArrivals": "Late arrivals",
+          "thisWeek": "This week",
+          "excused": "Excused",
+          "sickOrLeave": "Sick/Authorized"
         },
         "calendar": {
           "title": "Calendar",
-          "subtitle": "Important dates and reminders",
-          "newRequest": "New Request",
-          "upcomingTitle": "Upcoming Events",
-          "monthTitle": "This Month's Events",
-          "items": {
-            "republicDay": "Republic Day",
-            "socialInsuranceShort": "Social insurance (SSPF)",
-            "incomeTax": "Income tax",
-            "leave": "Leave",
-            "salaryPayment": "Salary payment",
-            "hrMeeting": "HR department meeting"
-          },
-          "descriptions": {
-            "stateHoliday": "Public holiday",
-            "paymentSSPF": "Payment to SSPF",
-            "paymentIncomeTax": "Income tax payment to the budget",
-            "annualLeaveDays": "Annual leave ({{days}} days)",
-            "monthlyReview": "Monthly review meeting",
-            "monthlySalaryPayments": "Monthly salary payments"
+          "workday": "Workday",
+          "offday": "Off day",
+          "holiday": "Holiday"
+        },
+        "todayTitle": "Today's Attendance",
+        "events": {
+          "projectPresentation": "Project presentation",
+          "teamMeeting": "Team meeting"
+        },
+        "messages": {
+          "date": "Date",
+          "time": "Time",
+          "event": "Event",
+          "allDay": "All day",
+          "week": "Week",
+          "work_week": "Work week",
+          "day": "Day",
+          "month": "Month",
+          "previous": "Back",
+          "next": "Next",
+          "yesterday": "Yesterday",
+          "tomorrow": "Tomorrow",
+          "today": "Today",
+          "agenda": "Agenda",
+          "noEventsInRange": "There are no events in this range.",
+          "showMore": "+{{count}} more"
+        },
+        "table": {
+          "employee": "Employee",
+          "checkIn": "Check-in",
+          "checkOut": "Check-out",
+          "workHours": "Work hours",
+          "status": "Status"
+        },
+        "status": {
+          "present": "Present",
+          "late": "Late",
+          "onLeave": "On Leave"
+        },
+        "weeklySummary": {
+          "title": "Weekly Summary",
+          "headers": {
+            "day": "Day",
+            "date": "Date",
+            "present": "Present",
+            "late": "Late",
+            "involuntary": "Unexcused",
+            "attendancePct": "Attendance %"
           }
         },
-        "employees": {
-          "title": "Employees",
-          "subtitle": "Manage all employees",
-          "new": "New Employee",
-          "searchPlaceholder": "Search employee (name, position, ID)",
-          "filters": {
-            "label": "Filter",
-            "allDepartments": "All departments"
-          },
-          "table": {
-            "employee": "Employee",
-            "position": "Position",
-            "department": "Department",
-            "salary": "Salary",
-            "status": "Status",
-            "actions": "Actions"
+        "latecomers": {
+          "title": "Latecomers This Week",
+          "minutesSuffix": "min",
+          "entryLabel": "Check-in"
+        }
+      },
+      "calendar": {
+        "title": "Calendar",
+        "subtitle": "Important dates and reminders",
+        "newRequest": "New Request",
+        "upcomingTitle": "Upcoming Events",
+        "monthTitle": "This Month's Events",
+        "items": {
+          "republicDay": "Republic Day",
+          "socialInsuranceShort": "Social insurance (SSPF)",
+          "incomeTax": "Income tax",
+          "leave": "Leave",
+          "salaryPayment": "Salary payment",
+          "hrMeeting": "HR department meeting"
+        },
+        "descriptions": {
+          "stateHoliday": "Public holiday",
+          "paymentSSPF": "Payment to SSPF",
+          "paymentIncomeTax": "Income tax payment to the budget",
+          "annualLeaveDays": "Annual leave ({{days}} days)",
+          "monthlyReview": "Monthly review meeting",
+          "monthlySalaryPayments": "Monthly salary payments"
+        }
+      },
+      "employees": {
+        "title": "Employees",
+        "subtitle": "Manage all employees",
+        "new": "New Employee",
+        "searchPlaceholder": "Search employee (name, position, ID)",
+        "filters": {
+          "label": "Filter",
+          "allDepartments": "All departments"
+        },
+        "table": {
+          "employee": "Employee",
+          "position": "Position",
+          "department": "Department",
+          "salary": "Salary",
+          "status": "Status",
+          "actions": "Actions"
+        },
+        "status": {
+          "active": "Active",
+          "onLeave": "On Leave"
+        },
+        "footer": {
+          "showing": "Showing: {{count}} results (Total: {{total}} employees)"
+        },
+        "modal": {
+          "title": "Add New Employee",
+          "close": "Close",
+          "firstName": "First name",
+          "firstNamePlaceholder": "Enter first name",
+          "lastName": "Last name",
+          "lastNamePlaceholder": "Enter last name",
+          "position": "Position",
+          "positionPlaceholder": "Enter position",
+          "department": "Department",
+          "selectDepartment": "Select department",
+          "salary": "Salary (₼)",
+          "salaryPlaceholder": "2000",
+          "contractDate": "Contract date",
+          "phone": "Phone",
+          "phonePlaceholder": "+994 50 123 45 67",
+          "email": "Email",
+          "emailPlaceholder": "email@company.az",
+          "tin": "TIN",
+          "tinPlaceholder": "Tax ID number",
+          "idSerial": "ID serial number",
+          "idSerialPlaceholder": "AZE1234567",
+          "cancel": "Cancel",
+          "save": "Save"
+        }
+      },
+      "leave": {
+        "title": "Leave Management",
+        "subtitle": "Permissions and leave schedule",
+        "newRequest": "New Request",
+        "cards": {
+          "totalDays": "Total leave days",
+          "used": "Used",
+          "remaining": "Remaining",
+          "pending": "Pending requests"
+        },
+        "requests": {
+          "title": "Leave Requests",
+          "type": {
+            "annual": "Annual"
           },
           "status": {
-            "active": "Active",
-            "onLeave": "On Leave"
+            "approved": "Approved"
           },
-          "footer": {
-            "showing": "Showing: {{count}} results (Total: {{total}} employees)"
+          "description": {
+            "annual": "Annual leave"
           },
-          "modal": {
-            "title": "Add New Employee",
-            "close": "Close",
-            "firstName": "First name",
-            "firstNamePlaceholder": "Enter first name",
-            "lastName": "Last name",
-            "lastNamePlaceholder": "Enter last name",
-            "position": "Position",
-            "positionPlaceholder": "Enter position",
-            "department": "Department",
-            "selectDepartment": "Select department",
-            "salary": "Salary (₼)",
-            "salaryPlaceholder": "2000",
-            "contractDate": "Contract date",
-            "phone": "Phone",
-            "phonePlaceholder": "+994 50 123 45 67",
-            "email": "Email",
-            "emailPlaceholder": "email@company.az",
-            "tin": "TIN",
-            "tinPlaceholder": "Tax ID number",
-            "idSerial": "ID serial number",
-            "idSerialPlaceholder": "AZE1234567",
-            "cancel": "Cancel",
-            "save": "Save"
+          "approvedBy": "Approved by: {{by}} ({{date}})"
+        },
+        "upcoming": {
+          "title": "Upcoming Leaves"
+        },
+        "balance": {
+          "title": "Leave Balance by Employee"
+        },
+        "table": {
+          "employee": "Employee",
+          "department": "Department",
+          "total": "Total Entitlement",
+          "used": "Used",
+          "remaining": "Remaining",
+          "status": "Status"
+        },
+        "common": {
+          "daysSuffix": "days"
+        },
+        "modal": {
+          "title": "Leave Request",
+          "employee": "Employee",
+          "selectEmployee": "Select employee",
+          "leaveType": "Leave type",
+          "selectType": "Select type",
+          "types": {
+            "annual": "Annual",
+            "sick": "Sick",
+            "other": "Other"
+          },
+          "startDate": "Start date",
+          "endDate": "End date",
+          "reason": "Reason",
+          "reasonPlaceholder": "Enter reason for leave",
+          "cancel": "Cancel",
+          "submit": "Submit"
+        }
+      },
+      "reports": {
+        "title": "Reports & Analytics",
+        "subtitle": "HR and payroll statistics",
+        "filters": {
+          "range": {
+            "thisMonth": "This month",
+            "lastMonth": "Last month",
+            "last3Months": "Last 3 months",
+            "last6Months": "Last 6 months",
+            "oneYear": "1 year"
+          }
+        },
+        "cards": {
+          "salaryReport": {
+            "title": "Salary Report",
+            "desc": "Monthly and yearly payroll analysis"
+          },
+          "employeeTurnover": {
+            "title": "Employee Turnover",
+            "desc": "New hires and departures"
+          },
+          "attendanceReport": {
+            "title": "Attendance Report",
+            "desc": "Work hours and attendance stats"
+          },
+          "departmentAnalysis": {
+            "title": "Department Analysis",
+            "desc": "Cost and headcount by department"
+          }
+        },
+        "charts": {
+          "payrollDynamics": {
+            "title": "Payroll Fund Dynamics",
+            "legend": {
+              "gross": "Gross",
+              "taxes": "Taxes",
+              "net": "Net"
+            }
+          }
+        },
+        "turnover": {
+          "title": "Employee Turnover",
+          "series": {
+            "hired": "Hired",
+            "left": "Left"
+          },
+          "totals": {
+            "hired6m": "Total hired (6 months)",
+            "left6m": "Total left (6 months)"
+          }
+        },
+        "attendanceChart": {
+          "title": "Attendance Statistics",
+          "series": {
+            "attendancePct": "Attendance %",
+            "delayPct": "Delay %"
+          }
+        },
+        "departmentDistribution": {
+          "title": "Department Distribution"
+        },
+        "monthlyReport": {
+          "title": "Monthly Summary Report",
+          "headers": {
+            "indicator": "Indicator",
+            "thisMonth": "This month",
+            "lastMonth": "Last month",
+            "change": "Change"
+          },
+          "rows": {
+            "totalEmployees": "Total employees",
+            "payrollFund": "Payroll fund",
+            "averageSalary": "Average salary",
+            "attendance": "Attendance",
+            "turnover": "Employee turnover"
+          }
+        }
+      },
+      "portal": {
+        "title": "Employee Portal",
+        "subtitle": "Personal information and services",
+        "edit": "Edit",
+        "tabs": {
+          "salary": "Salary",
+          "leave": "Leave",
+          "attendance": "Attendance",
+          "documents": "Documents"
+        },
+        "salary": {
+          "cards": {
+            "baseSalary": "Base Salary",
+            "lastNetSalary": "Last Salary (Net)",
+            "annualFund": "Annual Salary Fund"
+          },
+          "history": {
+            "title": "Salary History",
+            "export": "Export",
+            "headers": {
+              "month": "Month",
+              "gross": "Gross",
+              "tax": "Tax",
+              "social": "Social",
+              "net": "Net",
+              "status": "Status"
+            }
           }
         },
         "leave": {
-          "title": "Leave Management",
-          "subtitle": "Permissions and leave schedule",
-          "newRequest": "New Request",
-          "cards": {
-            "totalDays": "Total leave days",
-            "used": "Used",
-            "remaining": "Remaining",
-            "pending": "Pending requests"
+          "history": {
+            "title": "Leave History"
           },
-          "requests": {
-            "title": "Leave Requests",
-            "type": { "annual": "Annual" },
-            "status": { "approved": "Approved" },
-            "description": { "annual": "Annual leave" },
-            "approvedBy": "Approved by: {{by}} ({{date}})"
-          },
-          "upcoming": { "title": "Upcoming Leaves" },
-          "balance": { "title": "Leave Balance by Employee" },
-          "table": {
-            "employee": "Employee",
-            "department": "Department",
-            "total": "Total Entitlement",
-            "used": "Used",
-            "remaining": "Remaining",
+          "suffix": {
+            "requests": "requests"
+          }
+        },
+        "attendance": {
+          "title": "Recent Attendance Records",
+          "headers": {
+            "date": "Date",
+            "checkIn": "Check-in",
+            "checkOut": "Check-out",
+            "hours": "Hours",
             "status": "Status"
           },
-          "common": { "daysSuffix": "days" },
-          "modal": {
-            "title": "Leave Request",
-            "employee": "Employee",
-            "selectEmployee": "Select employee",
-            "leaveType": "Leave type",
-            "selectType": "Select type",
-            "types": { "annual": "Annual", "sick": "Sick", "other": "Other" },
-            "startDate": "Start date",
-            "endDate": "End date",
-            "reason": "Reason",
-            "reasonPlaceholder": "Enter reason for leave",
-            "cancel": "Cancel",
-            "submit": "Submit"
+          "status": {
+            "present": "Present",
+            "late": "Late"
           }
         },
-        "reports": {
-          "title": "Reports & Analytics",
-          "subtitle": "HR and payroll statistics",
-          "filters": {
-            "range": {
-              "thisMonth": "This month",
-              "lastMonth": "Last month",
-              "last3Months": "Last 3 months",
-              "last6Months": "Last 6 months",
-              "oneYear": "1 year"
-            }
-          },
-          "cards": {
-            "salaryReport": { "title": "Salary Report", "desc": "Monthly and yearly payroll analysis" },
-            "employeeTurnover": { "title": "Employee Turnover", "desc": "New hires and departures" },
-            "attendanceReport": { "title": "Attendance Report", "desc": "Work hours and attendance stats" },
-            "departmentAnalysis": { "title": "Department Analysis", "desc": "Cost and headcount by department" }
-          },
-          "charts": {
-            "payrollDynamics": {
-              "title": "Payroll Fund Dynamics",
-              "legend": { "gross": "Gross", "taxes": "Taxes", "net": "Net" }
-            }
-          },
-          "turnover": {
-            "title": "Employee Turnover",
-            "series": { "hired": "Hired", "left": "Left" },
-            "totals": { "hired6m": "Total hired (6 months)", "left6m": "Total left (6 months)" }
-          },
-          "attendanceChart": {
-            "title": "Attendance Statistics",
-            "series": { "attendancePct": "Attendance %", "delayPct": "Delay %" }
-          },
-          "departmentDistribution": { "title": "Department Distribution" },
-          "monthlyReport": {
-            "title": "Monthly Summary Report",
-            "headers": {
-              "indicator": "Indicator",
-              "thisMonth": "This month",
-              "lastMonth": "Last month",
-              "change": "Change"
-            },
-            "rows": {
-              "totalEmployees": "Total employees",
-              "payrollFund": "Payroll fund",
-              "averageSalary": "Average salary",
-              "attendance": "Attendance",
-              "turnover": "Employee turnover"
-            }
-          }
+        "documents": {
+          "title": "Personal Documents",
+          "uploadedAt": "Uploaded at",
+          "validity": "Validity",
+          "download": "Download",
+          "contract": "Employment Contract",
+          "medicalCertificate": "Medical Certificate",
+          "idCopy": "ID Copy"
         },
-        "portal": {
-          "title": "Employee Portal",
-          "subtitle": "Personal information and services",
-          "edit": "Edit",
-          "tabs": {
-            "salary": "Salary",
-            "leave": "Leave",
-            "attendance": "Attendance",
-            "documents": "Documents"
+        "profile": {
+          "position": "Position",
+          "department": "Department",
+          "email": "Email",
+          "phone": "Phone"
+        },
+        "notifications": {
+          "button": "Notifications",
+          "title": "Recent Notifications",
+          "salaryPaid": {
+            "title": "Salary paid",
+            "message": "Your salary for this month has been transferred."
           },
-          "salary": {
-            "cards": {
-              "baseSalary": "Base Salary",
-              "lastNetSalary": "Last Salary (Net)",
-              "annualFund": "Annual Salary Fund"
-            },
-            "history": {
-              "title": "Salary History",
-              "export": "Export",
-              "headers": {
-                "month": "Month",
-                "gross": "Gross",
-                "tax": "Tax",
-                "social": "Social",
-                "net": "Net",
-                "status": "Status"
-              }
-            }
+          "leaveApproved": {
+            "title": "Leave approved",
+            "message": "Your leave request has been approved by management."
           },
-          "leave": {
-            "history": { "title": "Leave History" },
-            "suffix": { "requests": "requests" }
-          },
-          "attendance": {
-            "title": "Recent Attendance Records",
-            "headers": {
-              "date": "Date",
-              "checkIn": "Check-in",
-              "checkOut": "Check-out",
-              "hours": "Hours",
-              "status": "Status"
-            },
-            "status": { "present": "Present", "late": "Late" }
-          },
-          "documents": {
-            "title": "Personal Documents",
-            "uploadedAt": "Uploaded at",
-            "validity": "Validity",
-            "download": "Download",
-            "contract": "Employment Contract",
-            "medicalCertificate": "Medical Certificate",
-            "idCopy": "ID Copy"
-          },
-          "profile": {
-            "position": "Position",
-            "department": "Department",
-            "email": "Email",
-            "phone": "Phone"
-          },
-          "notifications": {
-            "button": "Notifications",
-            "title": "Recent Notifications",
-            "salaryPaid": {
-              "title": "Salary paid",
-              "message": "Your salary for this month has been transferred."
-            },
-            "leaveApproved": {
-              "title": "Leave approved",
-              "message": "Your leave request has been approved by management."
-            },
-            "documentReminder": {
-              "title": "Document renewal reminder",
-              "message": "Your medical certificate expires this month. Please renew it."
-            }
+          "documentReminder": {
+            "title": "Document renewal reminder",
+            "message": "Your medical certificate expires this month. Please renew it."
           }
         }
       }
-    },
-    
+    }
+  },
   "brand": {
     "name": "Nummix"
   },
@@ -2235,9 +2579,9 @@
     "save": "Save",
     "total": "Total",
     "byUser": "by {{user}}",
-  "downloadPDF": "Download PDF",
-  "export": "Export",
-  "monthYear": "{{month}} {{year}}",
+    "downloadPDF": "Download PDF",
+    "export": "Export",
+    "monthYear": "{{month}} {{year}}",
     "period": {
       "thisMonth": "This month",
       "thisWeek": "This week",
