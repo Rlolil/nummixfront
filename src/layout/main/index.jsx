@@ -12,7 +12,7 @@ function MainLayout() {
   return (
     <div className="flex overflow-x-hidden">
       <Sidebar />
-      <div className="w-full overflow-x-hidden ">
+      <div className="w-full overflow-x-hidden">
         <AiMini />
         <Header />
         <Outlet />
