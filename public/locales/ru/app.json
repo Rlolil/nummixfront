@@ -950,8 +950,8 @@
           "addLine": "Добавить строку",
           "table": {
             "account": "Счет",
-            "debit": "Дебет (₼)",
-            "credit": "Кредит (₼)",
+            "debit": "Дебет",
+            "credit": "Кредит",
             "selectAccount": "Выберите счет",
             "options": {
               "cash": "Наличные",

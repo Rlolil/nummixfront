@@ -12,6 +12,7 @@
       "dashboard": {
         "cards": {
           "totalRevenue": "Total Revenue",
+          "totalAssets": "Total Assets",
           "fromLastQuarter": "from last quarter",
           "netIncome": "Net Income",
           "liabilities": "Liabilities",
@@ -203,8 +204,8 @@
           "addLine": "Add Line",
           "table": {
             "account": "Account",
-            "debit": "Debit (₼)",
-            "credit": "Credit (₼)",
+            "debit": "Debit",
+            "credit": "Credit",
             "selectAccount": "Select account",
             "options": {
               "cash": "Cash",

@@ -47,8 +47,6 @@ const taxData = {
 
 const tabs = [
   { id: "vat-declaration", labelKey: 'pages.accounting.taxReports.tabs.vat' },
-  { id: "profit-tax", labelKey: 'pages.accounting.taxReports.tabs.profit' },
-  { id: "social-contributions", labelKey: 'pages.accounting.taxReports.tabs.social' },
   { id: "simplified-tax", labelKey: 'pages.accounting.taxReports.tabs.simplified' },
 ];
 
@@ -104,7 +102,7 @@ export default function TaxDashboard() {
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-4 bg-gray-100 rounded-2xl px-1 sm:px-2 py-2 mb-4 sm:mb-6 overflow-x-auto text-xs sm:text-sm font-medium">
+      <div className="grid grid-cols-2 bg-gray-100 rounded-2xl px-1 sm:px-2 py-2 mb-4 sm:mb-6 overflow-x-auto text-xs sm:text-sm font-medium">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -127,8 +125,6 @@ export default function TaxDashboard() {
           vatPayable={vatPayable}
         />
       )}
-      {activeTab === "profit-tax" && <ProfitTax />}
-      {activeTab === "social-contributions" && <SocialContributions />}
       {activeTab === "simplified-tax" && <SimplifiedTax />}
     </div>
   );

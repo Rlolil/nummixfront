@@ -950,8 +950,8 @@
           "addLine": "Sətir əlavə et",
           "table": {
             "account": "Hesab",
-            "debit": "Debet (₼)",
-            "credit": "Kredit (₼)",
+            "debit": "Debet",
+            "credit": "Kredit",
             "selectAccount": "Hesab seçin",
             "options": {
               "cash": "Nağd",

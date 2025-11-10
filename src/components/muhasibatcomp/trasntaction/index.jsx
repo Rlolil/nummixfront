@@ -14,9 +14,9 @@ const Transactions = () => {
       date: "06/10/2025",
       user: "Leyla Mammadova",
       entries: [
-        { code: "211", nameKey: "accountsReceivable", debit: "₼18.000", credit: "-" },
-        { code: "701", nameKey: "salesRevenue", debit: "-", credit: "₼15.000" },
-        { code: "341", nameKey: "vatPayable", debit: "-", credit: "₼3.000" },
+        { code: "211", nameKey: "accountsReceivable", debit: "18.000", credit: "-" },
+        { code: "701", nameKey: "salesRevenue", debit: "-", credit: "15.000" },
+        { code: "341", nameKey: "vatPayable", debit: "-", credit: "3.000" },
       ],
     },
     {
@@ -26,8 +26,8 @@ const Transactions = () => {
       date: "06/10/2025",
       user: "Rauf Aliyev",
       entries: [
-        { code: "221", nameKey: "inventory", debit: "₼12.000", credit: "-" },
-        { code: "331", nameKey: "accountsPayable", debit: "-", credit: "₼12.000" },
+        { code: "221", nameKey: "inventory", debit: "12.000", credit: "-" },
+        { code: "331", nameKey: "accountsPayable", debit: "-", credit: "12.000" },
       ],
     },
     {
@@ -37,9 +37,9 @@ const Transactions = () => {
       date: "05/10/2025",
       user: "Nigar Hasanova",
       entries: [
-        { code: "543", nameKey: "payroll", debit: "₼45.000", credit: "-" },
-        { code: "551", nameKey: "socialContributions", debit: "₼10.000", credit: "-" },
-        { code: "201", nameKey: "bankAccounts", debit: "-", credit: "₼55.000" },
+        { code: "543", nameKey: "payroll", debit: "45.000", credit: "-" },
+        { code: "551", nameKey: "socialContributions", debit: "10.000", credit: "-" },
+        { code: "201", nameKey: "bankAccounts", debit: "-", credit: "55.000" },
       ],
     },
     {
@@ -49,8 +49,8 @@ const Transactions = () => {
       date: "05/10/2025",
       user: "Leyla Mammadova",
       entries: [
-        { code: "341", nameKey: "vatPayable", debit: "₼8.500", credit: "-" },
-        { code: "201", nameKey: "bankAccounts", debit: "-", credit: "₼8.500" },
+        { code: "341", nameKey: "vatPayable", debit: "8.500", credit: "-" },
+        { code: "201", nameKey: "bankAccounts", debit: "-", credit: "8.500" },
       ],
     },
     {
@@ -59,8 +59,8 @@ const Transactions = () => {
       date: "04/10/2025",
       user: "Rauf Aliyev",
       entries: [
-        { code: "201", nameKey: "bankAccounts", debit: "₼25.000", credit: "-" },
-        { code: "211", nameKey: "accountsReceivable", debit: "-", credit: "₼25.000" },
+        { code: "201", nameKey: "bankAccounts", debit: "25.000", credit: "-" },
+        { code: "211", nameKey: "accountsReceivable", debit: "-", credit: "25.000" },
       ],
     },
   ];
@@ -69,10 +69,10 @@ const Transactions = () => {
     let debit = 0,
       credit = 0;
     entries.forEach((e) => {
-      if (e.debit !== "-") debit += Number(e.debit.replace(/[₼,]/g, ""));
-      if (e.credit !== "-") credit += Number(e.credit.replace(/[₼,]/g, ""));
+      if (e.debit !== "-") debit += Number(e.debit.replace(/[,]/g, ""));
+      if (e.credit !== "-") credit += Number(e.credit.replace(/[,]/g, ""));
     });
-    return { debit: `₼${debit.toLocaleString()}`, credit: `₼${credit.toLocaleString()}` };
+    return { debit: `${debit.toLocaleString()}`, credit: `${credit.toLocaleString()}` };
   };
 
   if (moduleOpen) {
