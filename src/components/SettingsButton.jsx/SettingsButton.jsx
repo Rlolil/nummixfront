@@ -26,7 +26,6 @@ export default function SettingsButton() {
 
       {open && (
         <div className="mt-2 w-44 bg-white dark:bg-zinc-800 border border-gray-300 shadow-lg rounded-lg p-3 text-gray-800 dark:text-white">
-          <p className="mb-2">Salam </p>
           <DarkMode theme={theme} setTheme={setTheme} />
         </div>
       )}
