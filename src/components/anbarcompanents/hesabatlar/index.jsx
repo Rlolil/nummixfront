@@ -1,12 +1,33 @@
 import { FiDownload, FiTrendingUp } from "react-icons/fi";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { useState } from "react";
 import { ChartsGroup } from "../anbarqrafiks";
 
 function ItkiVeZayStatistikasi() {
-    const data = [
+    const initial = [
         { tarix: "2025-10-01", mehsul: "Xammal A-101", miqdar: 2, sebeb: "Keyfiyyətsiz", itki: 25.0 },
         { tarix: "2025-10-03", mehsul: "Qablaşdırma qutusu", miqdar: 5, sebeb: "Zədələnmiş", itki: 11.5 },
         { tarix: "2025-10-05", mehsul: "Motor yağı", miqdar: 1, sebeb: "Son istifadə tarixi", itki: 18.75 },
     ];
+    const [rows, setRows] = useState(initial);
+    const [editing, setEditing] = useState(null); // { index, data }
+
+    const openEdit = (index) => setEditing({ index, data: { ...rows[index] } });
+    const closeEdit = () => setEditing(null);
+    const saveEdit = () => {
+        if (!editing) return;
+        setRows(prev => prev.map((r, i) => (i === editing.index ? {
+            ...editing.data,
+            miqdar: Number(editing.data.miqdar || 0),
+            itki: Number(editing.data.itki || 0),
+        } : r)));
+        closeEdit();
+    };
+    const handleDelete = (index) => {
+        if (window.confirm('Bu sətiri silmək istəyirsiniz?')) {
+            setRows(prev => prev.filter((_, i) => i !== index));
+        }
+    };
 
     return (
         <div className="border border-gray-200 rounded-2xl p-6 shadow-sm mt-6">
@@ -19,10 +40,11 @@ function ItkiVeZayStatistikasi() {
                         <th className="py-2">Miqdar</th>
                         <th className="py-2">Səbəb</th>
                         <th className="py-2">İtki (₼)</th>
+                        <th className="py-2 text-right">Fəaliyyətlər</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((row, i) => (
+                    {rows.map((row, i) => (
                         <tr key={i} className="border-b">
                             <td className="py-2">{row.tarix}</td>
                             <td className="py-2">{row.mehsul}</td>
@@ -30,7 +52,17 @@ function ItkiVeZayStatistikasi() {
                             <td>
                                 <span className="bg-gray-100 px-2 py-1 rounded-full text-xs">{row.sebeb}</span>
                             </td>
-                            <td className="text-red-500">₼{row.itki.toFixed(2)}</td>
+                            <td className="text-red-500">₼{Number(row.itki).toFixed(2)}</td>
+                            <td className="py-2 text-right whitespace-nowrap">
+                                <button onClick={() => openEdit(i)} className="inline-flex items-center gap-1 px-2 py-1 border rounded text-blue-600 border-blue-200 hover:bg-blue-50 mr-2">
+                                    <FaEdit />
+                                    <span className="hidden sm:inline">Redaktə</span>
+                                </button>
+                                <button onClick={() => handleDelete(i)} className="inline-flex items-center gap-1 px-2 py-1 border rounded text-red-600 border-red-200 hover:bg-red-50">
+                                    <FaTrash />
+                                    <span className="hidden sm:inline">Sil</span>
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -38,9 +70,47 @@ function ItkiVeZayStatistikasi() {
             <div className="text-right mt-4 text-sm font-medium">
                 Ümumi:{" "}
                 <span className="text-red-500">
-                    ₼{data.reduce((sum, row) => sum + row.itki, 0).toFixed(2)}
+                    ₼{rows.reduce((sum, row) => sum + Number(row.itki || 0), 0).toFixed(2)}
                 </span>
             </div>
+
+            {editing && (
+                <div>
+                    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50" onClick={closeEdit}></div>
+                    <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6">
+                        <div className="flex justify-between items-center border-b pb-3">
+                            <h3 className="text-lg font-semibold">Sətiri redaktə et</h3>
+                            <button onClick={closeEdit} className="text-xl text-gray-500 hover:text-gray-700">×</button>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                            <div>
+                                <label className="block text-sm font-medium">Tarix</label>
+                                <input type="date" className="mt-1 w-full border rounded px-3 py-2" value={editing.data.tarix} onChange={(e)=>setEditing(prev=>({...prev,data:{...prev.data, tarix:e.target.value}}))} />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium">Məhsul</label>
+                                <input className="mt-1 w-full border rounded px-3 py-2" value={editing.data.mehsul} onChange={(e)=>setEditing(prev=>({...prev,data:{...prev.data, mehsul:e.target.value}}))} />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium">Miqdar</label>
+                                <input type="number" className="mt-1 w-full border rounded px-3 py-2" value={editing.data.miqdar} onChange={(e)=>setEditing(prev=>({...prev,data:{...prev.data, miqdar:Number(e.target.value)}}))} />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium">Səbəb</label>
+                                <input className="mt-1 w-full border rounded px-3 py-2" value={editing.data.sebeb} onChange={(e)=>setEditing(prev=>({...prev,data:{...prev.data, sebeb:e.target.value}}))} />
+                            </div>
+                            <div className="sm:col-span-2">
+                                <label className="block text-sm font-medium">İtki (₼)</label>
+                                <input type="number" step="any" className="mt-1 w-full border rounded px-3 py-2" value={editing.data.itki} onChange={(e)=>setEditing(prev=>({...prev,data:{...prev.data, itki:Number(e.target.value)}}))} />
+                            </div>
+                        </div>
+                        <div className="flex justify-end gap-2 border-t mt-4 pt-4">
+                            <button onClick={closeEdit} className="px-4 py-2 border rounded hover:bg-gray-100">Ləğv et</button>
+                            <button onClick={saveEdit} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Yadda saxla</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

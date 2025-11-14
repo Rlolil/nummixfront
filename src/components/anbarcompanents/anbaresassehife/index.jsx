@@ -127,7 +127,7 @@ function StatCard({ title, value, subtitle, color, icon }) {
     };
 
     return (
-        <div className="bg-white border rounded-xl p-4 lg:p-5 shadow-sm hover:shadow-md transition">
+        <div className="bg-white border border-gray-200 rounded-xl p-4 lg:p-5 shadow-sm hover:shadow-md transition">
             <div className="flex items-center justify-between">
                 <h3 className="text-sm font-medium text-gray-600">{title}</h3>
                 {icon && <div className={`text-xl ${colorMap[color] || "text-gray-400"}`}>{icon}</div>}

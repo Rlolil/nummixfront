@@ -69,7 +69,7 @@ const getStatusStyle = (status) => {
 const AnbarHistory = () => {
     const { t } = useTranslation();
     return (
-        <div className="bg-white rounded-2xl border p-4 sm:p-6 mt-6">
+        <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 mt-6">
             <h2 className="text-lg font-semibold mb-4">{t('pages.warehouse.operations.history.title')}</h2>
             <div className="overflow-x-auto">
                 <table className="w-full text-sm">

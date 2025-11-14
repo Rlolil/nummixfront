@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function CreateJournalEntry({ setModuleOpen }) {
+export default function CreateJournalEntry({ setModuleOpen, mode = "create", initialData = null, onSave }) {
   const { t } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
-  const [entries, setEntries] = useState([{ account: "", debit: "", credit: "" }]);
+  const [date, setDate] = useState(initialData?.date || "2025-10-07");
+  const [reference, setReference] = useState(initialData?.reference || "");
+  const [description, setDescription] = useState(initialData?.description || "");
+  // Currency and amount fields
+  const [currency, setCurrency] = useState(initialData?.currency || "AZN");
+  const [amount, setAmount] = useState(initialData?.amount ?? initialData?.mayeValue ?? "");
+  // Separate Maye dəyəri (liquid value) as requested
+  const [mayeValue, setMayeValue] = useState(initialData?.mayeValue || "");
+  const [entries, setEntries] = useState(
+    initialData?.entries?.length ? initialData.entries : [{ account: "", debit: "", credit: "" }]
+  );
 
   const addLine = () => setEntries([...entries, { account: "", debit: "", credit: "" }]);
 
@@ -20,6 +29,11 @@ export default function CreateJournalEntry({ setModuleOpen }) {
   const totalCredit = entries.reduce((sum, e) => sum + Number(e.credit || 0), 0);
 
   const closeModal = () => setModuleOpen(false);
+  const handleSave = () => {
+    const payload = { date, reference, description, currency, amount, mayeValue, entries };
+    if (onSave) onSave(payload);
+    closeModal();
+  };
 
   return (
     <div className="p-6">
@@ -30,7 +44,11 @@ export default function CreateJournalEntry({ setModuleOpen }) {
           ></div>
           <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6 max-h-[80vh] overflow-y-auto">
             <div className="flex justify-between items-center border-b pb-3">
-              <h2 className="text-lg font-semibold">{t('pages.accounting.transactions.modal.title', { defaultValue: 'Create Journal Entry' })}</h2>
+              <h2 className="text-lg font-semibold">
+                {mode === 'edit'
+                  ? t('pages.accounting.transactions.modal.editTitle', { defaultValue: 'Edit Journal Entry' })
+                  : t('pages.accounting.transactions.modal.title', { defaultValue: 'Create Journal Entry' })}
+              </h2>
               <button onClick={closeModal} className="text-gray-500 hover:text-gray-700 text-xl" aria-label={t('common.close', { defaultValue: 'Close' })} title={t('common.close', { defaultValue: 'Close' })}>
                 ×
               </button>
@@ -42,7 +60,8 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                   <input
                     type="date"
                     className="mt-1 w-full border rounded-md px-3 py-2"
-                    defaultValue="2025-10-07"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
                   />
                 </div>
                 <div>
@@ -51,6 +70,50 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                     type="text"
                     placeholder={t('pages.accounting.transactions.modal.referencePlaceholder', { defaultValue: 'e.g., INV-2025-1046' })}
                     className="mt-1 w-full border rounded-md px-3 py-2"
+                    value={reference}
+                    onChange={(e) => setReference(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              {/* Currency and Amount Row */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium">{t('pages.accounting.transactions.modal.currency', { defaultValue: 'Valyuta' })}</label>
+                  <select
+                    className="mt-1 w-full border rounded-md px-3 py-2"
+                    value={currency}
+                    onChange={(e) => setCurrency(e.target.value)}
+                  >
+                    <option value="AZN">AZN</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="TRY">TRY</option>
+                    <option value="GBP">GBP</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium">{t('pages.accounting.transactions.modal.amount', { defaultValue: 'Məbləğ' })}</label>
+                  <input
+                    type="number"
+                    placeholder={t('pages.accounting.transactions.modal.amountPlaceholder', { defaultValue: '0.00' })}
+                    className="mt-1 w-full border rounded-md px-3 py-2"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              {/* Maye dəyəri (separate from amount) */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium">{t('pages.accounting.transactions.modal.liquidValueLabel', { defaultValue: 'Maye dəyəri' })}</label>
+                  <input
+                    type="number"
+                    placeholder={t('pages.accounting.transactions.modal.liquidValuePlaceholder', { defaultValue: '0.00' })}
+                    className="mt-1 w-full border rounded-md px-3 py-2"
+                    value={mayeValue}
+                    onChange={(e) => setMayeValue(e.target.value)}
                   />
                 </div>
               </div>
@@ -61,6 +124,8 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                   type="text"
                   placeholder={t('pages.accounting.transactions.modal.descriptionPlaceholder', { defaultValue: 'Transaction description' })}
                   className="mt-1 w-full border rounded-md px-3 py-2"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
               <div>
@@ -147,7 +212,7 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                   {t('common.cancel', { defaultValue: 'Cancel' })}
                 </button>
                 <button
-                  onClick={closeModal}
+                  onClick={handleSave}
                   disabled={totalDebit !== totalCredit || totalDebit === 0}
                   className={`px-4 py-2 rounded-md text-white ${
                     totalDebit === totalCredit && totalDebit > 0
@@ -155,7 +220,9 @@ export default function CreateJournalEntry({ setModuleOpen }) {
                       : "bg-gray-400 cursor-not-allowed"
                   }`}
                 >
-                  {t('pages.accounting.transactions.modal.postEntry', { defaultValue: 'Post Entry' })}
+                  {mode === 'edit'
+                    ? t('common.save', { defaultValue: 'Save' })
+                    : t('pages.accounting.transactions.modal.postEntry', { defaultValue: 'Post Entry' })}
                 </button>
               </div>
             </div>

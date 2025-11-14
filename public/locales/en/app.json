@@ -1705,6 +1705,7 @@
         },
         "aiAnalysisLabel": "AI Analysis:",
         "aiRecommendation": "AI Recommendation:",
+        "warningLabel": "Warning",
         "days": "days",
         "months": {
           "jan": "Jan",

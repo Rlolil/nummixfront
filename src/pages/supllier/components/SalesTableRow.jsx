@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { FiEdit2, FiTrash2 } from "react-icons/fi";
 
-export default function SalesTableRow({ item }) {
+export default function SalesTableRow({ item, index, onEditClick, onDelete }) {
     const { t } = useTranslation();
     const dialogRef = useRef(null);
 
@@ -27,12 +28,28 @@ export default function SalesTableRow({ item }) {
                 </span>
             </td>
             <td className="text-right">
-                <button
-                    className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
-                    onClick={() => dialogRef.current && dialogRef.current.showModal()}
-                >
-                    <MdOutlineRemoveRedEye className="size-5" />
-                </button>
+                <div className="flex justify-center items-center gap-2">
+                    <button
+                        className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                        onClick={() => dialogRef.current && dialogRef.current.showModal()}
+                    >
+                        <MdOutlineRemoveRedEye className="size-5" />
+                    </button>
+                    <button
+                        className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                        onClick={() => onEditClick && onEditClick(index)}
+                        title="Edit"
+                    >
+                        <FiEdit2 className="size-5" />
+                    </button>
+                    <button
+                        className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                        onClick={() => onDelete && onDelete(index)}
+                        title="Delete"
+                    >
+                        <FiTrash2 className="size-5" />
+                    </button>
+                </div>
                 <dialog ref={dialogRef} className="modal text-left">
                     <div className="modal-box">
                         <form method="dialog">

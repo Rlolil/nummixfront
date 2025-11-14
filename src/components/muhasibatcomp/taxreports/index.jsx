@@ -29,9 +29,9 @@ const taxData = {
     },
   ],
   egov: [
-    { name: "e-taxes.gov.az", desc: "E-invoice ready" },
-    { name: "DSMF Integration", desc: "Auto-reporting enabled" },
-    { name: "e-Portal", desc: "Data synchronized" },
+    { name: "e-taxes.gov.az", desc: "E-invoice ready", link: "https://e-taxes.gov.az" },
+    { name: "DSMF Integration", desc: "Auto-reporting enabled", link: "https://www.dsmf.gov.az/az" },
+    { name: "e-Portal", desc: "Data synchronized", link: "https://e-portal.gov.az" },
   ],
   vat: {
     output: [
@@ -97,6 +97,7 @@ export default function TaxDashboard() {
               <div>
                 <p className="font-medium text-blue-900 text-xs sm:text-sm">{t(`pages.accounting.taxReports.egov.names.${idx}`, { defaultValue: item.name })}</p>
                 <p className="text-xs sm:text-sm text-blue-700">{t(`pages.accounting.taxReports.egov.items.${idx}`, { defaultValue: item.desc })}</p>
+                <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">{item.link}</a>
               </div>
             </div>
           ))}

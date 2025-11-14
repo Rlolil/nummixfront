@@ -7,8 +7,9 @@ import { RiErrorWarningLine } from "react-icons/ri";
 import { FaRegBell } from "react-icons/fa";
 
 import TransactionsTableRow from "../components/TransactionsTableRow";
+import { useState } from "react";
 
-const data = [
+const initialTransactions = [
     {
         transactionId: "PAY-001",
         date: "2025-10-08",
@@ -17,6 +18,7 @@ const data = [
         amount: "₼12,500",
         method: "Bank Köçürməsi",
         statusCode: "completed",
+        note: "",
     },
     {
         transactionId: "PAY-002",
@@ -26,6 +28,7 @@ const data = [
         amount: "₼1,200",
         method: "Bank Köçürməsi",
         statusCode: "pending",
+        note: "",
     },
     {
         transactionId: "PAY-003",
@@ -35,13 +38,66 @@ const data = [
         amount: "₼5,400",
         method: "Bank Köçürməsi",
         statusCode: "overdue",
+        note: "",
     },
 ];
 
 export default function Transactions() {
     const { t } = useTranslation();
+    const [transactions, setTransactions] = useState(initialTransactions);
+    const [newPayment, setNewPayment] = useState({
+        transactionId: "",
+        date: "",
+        customer: "",
+        invoiceNumber: "",
+        amount: "",
+        method: "",
+        statusCode: "completed",
+        note: "",
+    });
+    const [editPayment, setEditPayment] = useState(null);
+    const [editIndex, setEditIndex] = useState(null);
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        // Simple ID assignment if empty
+        const id = newPayment.transactionId || `PAY-${String(transactions.length + 1).padStart(3, "0")}`;
+        const added = { ...newPayment, transactionId: id };
+        setTransactions([...transactions, added]);
+        setNewPayment({
+            transactionId: "",
+            date: "",
+            customer: "",
+            invoiceNumber: "",
+            amount: "",
+            method: "",
+            statusCode: "completed",
+            note: "",
+        });
+        document.getElementById("addNew")?.close();
+    };
+
+    const handleOpenEdit = (index) => {
+        setEditIndex(index);
+        setEditPayment({ ...transactions[index] });
+        document.getElementById("editPaymentDialog")?.showModal();
+    };
+
+    const handleEditSave = (e) => {
+        e.preventDefault();
+        if (editIndex === null) return;
+        const updated = [...transactions];
+        updated[editIndex] = editPayment;
+        setTransactions(updated);
+        setEditPayment(null);
+        setEditIndex(null);
+        document.getElementById("editPaymentDialog")?.close();
+    };
+
+    const handleDelete = (index) => {
+        const confirmed = window.confirm(t("pages.sales.transactions.confirmDelete"));
+        if (!confirmed) return;
+        setTransactions(transactions.filter((_, i) => i !== index));
     };
 
     return (
@@ -74,27 +130,23 @@ export default function Transactions() {
                                     <div className="grid grid-cols-2 gap-4">
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.sales.transactions.form.customer")}</p>
-                                            <select
-                                                defaultValue="select"
-                                                className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                            >
-                                                <option disabled value="select">{t("pages.sales.transactions.placeholders.selectCustomer")}</option>
-                                                <option value="A">ABC Şirkəti</option>
-                                                <option value="B">XYZ Şirkəti</option>
-                                                <option value="C">MNO Şirkəti</option>
-                                            </select>
+                                            <input
+                                                type="text"
+                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                placeholder={t("pages.sales.transactions.placeholders.selectCustomer")}
+                                                value={newPayment.customer}
+                                                onChange={(e) => setNewPayment({ ...newPayment, customer: e.target.value })}
+                                            />
                                         </label>
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.sales.transactions.form.invoice")}</p>
-                                            <select
-                                                defaultValue="select"
-                                                className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                            >
-                                                <option disabled value="select">{t("pages.sales.transactions.placeholders.selectInvoice")}</option>
-                                                <option value="1">INV-2025-001</option>
-                                                <option value="2">INV-2025-002</option>
-                                                <option value="3">INV-2025-003</option>
-                                            </select>
+                                            <input
+                                                type="text"
+                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                placeholder={t("pages.sales.transactions.placeholders.selectInvoice")}
+                                                value={newPayment.invoiceNumber}
+                                                onChange={(e) => setNewPayment({ ...newPayment, invoiceNumber: e.target.value })}
+                                            />
                                         </label>
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.sales.transactions.form.amount")}</p>
@@ -102,6 +154,8 @@ export default function Transactions() {
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 placeholder={t("pages.sales.transactions.placeholders.amount")}
+                                                value={newPayment.amount}
+                                                onChange={(e) => setNewPayment({ ...newPayment, amount: e.target.value })}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
@@ -109,6 +163,8 @@ export default function Transactions() {
                                             <input
                                                 type="date"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                value={newPayment.date}
+                                                onChange={(e) => setNewPayment({ ...newPayment, date: e.target.value })}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
@@ -117,6 +173,8 @@ export default function Transactions() {
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 placeholder={t("pages.sales.transactions.placeholders.method")}
+                                                value={newPayment.method}
+                                                onChange={(e) => setNewPayment({ ...newPayment, method: e.target.value })}
                                             />
                                         </label>
                                         <label className="flex flex-col gap-2">
@@ -125,6 +183,8 @@ export default function Transactions() {
                                                 type="text"
                                                 className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 placeholder={t("pages.sales.transactions.placeholders.note")}
+                                                value={newPayment.note}
+                                                onChange={(e) => setNewPayment({ ...newPayment, note: e.target.value })}
                                             />
                                         </label>
                                     </div>
@@ -221,8 +281,14 @@ export default function Transactions() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {data?.map((item, index) => (
-                                            <TransactionsTableRow key={index} item={item} />
+                                        {transactions?.map((item, index) => (
+                                            <TransactionsTableRow
+                                                key={index}
+                                                item={item}
+                                                index={index}
+                                                onEditClick={() => handleOpenEdit(index)}
+                                                onDelete={() => handleDelete(index)}
+                                            />
                                         ))}
                                     </tbody>
                                 </table>
@@ -231,6 +297,112 @@ export default function Transactions() {
                     }
                 />
             </div>
+            <dialog id="editPaymentDialog" className="modal">
+                <div className="modal-box">
+                    <button
+                        type="button"
+                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                        onClick={() => document.getElementById("editPaymentDialog").close()}
+                    >
+                        ✕
+                    </button>
+                    <div className="flex flex-col gap-4">
+                        <h3 className="font-bold text-lg">{t("pages.sales.transactions.editModal.title")}</h3>
+                        <form onSubmit={handleEditSave} className="flex flex-col gap-4">
+                            <div className="grid grid-cols-2 gap-4">
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.transactions.table.columns.paymentId")}</p>
+                                    <input
+                                        type="text"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editPayment?.transactionId || ""}
+                                        onChange={(e) => setEditPayment({ ...editPayment, transactionId: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.transactions.table.columns.date")}</p>
+                                    <input
+                                        type="date"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editPayment?.date || ""}
+                                        onChange={(e) => setEditPayment({ ...editPayment, date: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.transactions.table.columns.customer")}</p>
+                                    <input
+                                        type="text"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editPayment?.customer || ""}
+                                        onChange={(e) => setEditPayment({ ...editPayment, customer: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.transactions.table.columns.invoice")}</p>
+                                    <input
+                                        type="text"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editPayment?.invoiceNumber || ""}
+                                        onChange={(e) => setEditPayment({ ...editPayment, invoiceNumber: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.transactions.table.columns.amount")}</p>
+                                    <input
+                                        type="text"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editPayment?.amount || ""}
+                                        onChange={(e) => setEditPayment({ ...editPayment, amount: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.transactions.table.columns.method")}</p>
+                                    <input
+                                        type="text"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editPayment?.method || ""}
+                                        onChange={(e) => setEditPayment({ ...editPayment, method: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.transactions.table.columns.status")}</p>
+                                    <select
+                                        className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editPayment?.statusCode || ""}
+                                        onChange={(e) => setEditPayment({ ...editPayment, statusCode: e.target.value })}
+                                    >
+                                        <option value="completed">{t("pages.sales.transactions.status.completed")}</option>
+                                        <option value="pending">{t("pages.sales.transactions.status.pending")}</option>
+                                        <option value="overdue">{t("pages.sales.transactions.status.overdue")}</option>
+                                    </select>
+                                </label>
+                                <label className="flex flex-col gap-2 col-span-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.transactions.form.note")}</p>
+                                    <input
+                                        type="text"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editPayment?.note || ""}
+                                        onChange={(e) => setEditPayment({ ...editPayment, note: e.target.value })}
+                                    />
+                                </label>
+                            </div>
+                            <div className="flex gap-2 justify-end items-center">
+                                <button
+                                    type="button"
+                                    className="btn rounded-lg mt-4"
+                                    onClick={() => document.getElementById("editPaymentDialog").close()}
+                                >
+                                    {t("common.cancel")}
+                                </button>
+                                <button className="btn btn-neutral rounded-lg mt-4" type="submit">
+                                    {t("common.save")}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div className="modal-backdrop" onClick={() => document.getElementById("editPaymentDialog").close()} />
+            </dialog>
         </div>
     );
 }

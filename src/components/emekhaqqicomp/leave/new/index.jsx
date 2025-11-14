@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-function LeaveRequestModal({ onClose }) {
+function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = "" }) {
   const { t } = useTranslation();
   const [worker, setWorker] = useState("");
   const [leaveType, setLeaveType] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState(initialStartDate);
+  const [endDate, setEndDate] = useState(initialEndDate);
   const [reason, setReason] = useState("");
 
   const handleSubmit = (e) => {
@@ -105,7 +105,7 @@ function LeaveRequestModal({ onClose }) {
             </button>
             <button
               type="submit"
-              className="rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700"
+              className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-gray-800"
             >
               {t('pages.hr.leave.modal.submit', { defaultValue: 'Submit' })}
             </button>

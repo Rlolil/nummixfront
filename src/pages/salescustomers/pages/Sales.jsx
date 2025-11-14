@@ -8,7 +8,7 @@ import SalesTableRow from "../components/SalesTableRow";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const data = [
+const initialData = [
     {
         invoiceNumber: "INV-2025-001",
         date: "2025-10-08",
@@ -39,6 +39,34 @@ export default function Sales() {
     };
 
     const [newProducts, setNewProducts] = useState([]);
+
+    const [dataState, setDataState] = useState(initialData);
+    const [editInvoice, setEditInvoice] = useState(null);
+    const [editIndex, setEditIndex] = useState(null);
+
+    const handleOpenEdit = (index) => {
+        setEditIndex(index);
+        setEditInvoice({ ...dataState[index] });
+        document.getElementById("editInvoiceDialog")?.showModal();
+    };
+
+    const handleEditSave = (e) => {
+        e.preventDefault();
+        if (editIndex === null) return;
+        const updated = [...dataState];
+        updated[editIndex] = editInvoice;
+        setDataState(updated);
+        setEditInvoice(null);
+        setEditIndex(null);
+        document.getElementById("editInvoiceDialog")?.close();
+    };
+
+    const handleDelete = (index) => {
+        const confirmed = window.confirm(t("pages.sales.sales.confirmDelete"));
+        if (!confirmed) return;
+        const updated = dataState.filter((_, i) => i !== index);
+        setDataState(updated);
+    };
 
     const handleAddNewProduct = () => {
         const newProduct = { id: Date.now(), name: "", quantity: 1, price: 0, discount: 0 };
@@ -98,7 +126,7 @@ export default function Sales() {
                                                     className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
                                                 >
                                                     <option disabled value="select">{t("pages.sales.sales.placeholders.selectCustomer")}</option>
-                                                    {data?.map((item, index) => (
+                                                    {dataState?.map((item, index) => (
                                                         <option key={index} value={item.customer}>
                                                             {item.customer}
                                                         </option>
@@ -367,8 +395,14 @@ export default function Sales() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {data?.map((item, index) => (
-                                            <SalesTableRow key={index} item={item} />
+                                        {dataState?.map((item, index) => (
+                                            <SalesTableRow
+                                                key={index}
+                                                item={item}
+                                                index={index}
+                                                onEditClick={() => handleOpenEdit(index)}
+                                                onDelete={() => handleDelete(index)}
+                                            />
                                         ))}
                                     </tbody>
                                 </table>
@@ -377,6 +411,85 @@ export default function Sales() {
                     }
                 />
             </div>
+            <dialog id="editInvoiceDialog" className="modal">
+                <div className="modal-box w-11/12 max-w-3xl">
+                    <button
+                        type="button"
+                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                        onClick={() => document.getElementById("editInvoiceDialog").close()}
+                    >
+                        ✕
+                    </button>
+                    <div className="flex flex-col gap-4">
+                        <h3 className="font-bold text-lg">{t("pages.sales.sales.editModal.title")}</h3>
+                        <form onSubmit={handleEditSave} className="flex flex-col gap-4">
+                            <div className="grid grid-cols-2 gap-4">
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.invoiceNo")}</p>
+                                    <input
+                                        type="text"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editInvoice?.invoiceNumber || ""}
+                                        onChange={(e) => setEditInvoice({ ...editInvoice, invoiceNumber: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.date")}</p>
+                                    <input
+                                        type="date"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editInvoice?.date || ""}
+                                        onChange={(e) => setEditInvoice({ ...editInvoice, date: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.customer")}</p>
+                                    <input
+                                        type="text"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editInvoice?.customer || ""}
+                                        onChange={(e) => setEditInvoice({ ...editInvoice, customer: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.amount")}</p>
+                                    <input
+                                        type="text"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editInvoice?.amount || ""}
+                                        onChange={(e) => setEditInvoice({ ...editInvoice, amount: e.target.value })}
+                                    />
+                                </label>
+                                <label className="flex flex-col gap-2">
+                                    <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.status")}</p>
+                                    <select
+                                        className="select input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                        value={editInvoice?.statusCode || ""}
+                                        onChange={(e) => setEditInvoice({ ...editInvoice, statusCode: e.target.value })}
+                                    >
+                                        <option value="paid">{t("pages.sales.sales.status.paid")}</option>
+                                        <option value="unpaid">{t("pages.sales.sales.status.unpaid")}</option>
+                                        <option value="overdue">{t("pages.sales.sales.status.overdue")}</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div className="flex gap-2 justify-end items-center">
+                                <button
+                                    type="button"
+                                    className="btn rounded-lg mt-4"
+                                    onClick={() => document.getElementById("editInvoiceDialog").close()}
+                                >
+                                    {t("common.cancel")}
+                                </button>
+                                <button className="btn btn-neutral rounded-lg mt-4" type="submit">
+                                    {t("common.save")}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div className="modal-backdrop" onClick={() => document.getElementById("editInvoiceDialog").close()} />
+            </dialog>
         </div>
     );
 }

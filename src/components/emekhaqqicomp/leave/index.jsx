@@ -1,50 +1,61 @@
-import React, { useState } from "react";
-import { FiCalendar } from "react-icons/fi";
+import React, { useMemo, useState } from "react";
+import { FiCalendar, FiEdit2, FiTrash2, FiX } from "react-icons/fi";
 import { FaCircle } from 'react-icons/fa';
 import LeaveRequestModal from "./new";
 import { useTranslation } from "react-i18next";
 function Leave() {
   const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(false);
-  const data = [
-    {
-      name: "Nigar Əliyeva",
-      departmentKey: "finance",
-      total: 28,
-      used: 12,
-      remaining: 16,
-      statusKey: "active",
-    },
-    {
-      name: "Kamran Məmmədov",
-      departmentKey: "it",
-      total: 28,
-      used: 8,
-      remaining: 20,
-      statusKey: "active",
-    },
-    {
-      name: "Səbinə Həsənova",
-      departmentKey: "marketing",
-      total: 28,
-      used: 15,
-      remaining: 13,
-      statusKey: "active",
-    },
-    {
-      name: "Elvin Quliyev",
-      departmentKey: "sales",
-      total: 28,
-      used: 5,
-      remaining: 23,
-      statusKey: "active",
-    },
+
+  const initialBalances = [
+    { name: "Nigar Əliyeva", departmentKey: "finance", total: 28, used: 12, remaining: 16, statusKey: "active" },
+    { name: "Kamran Məmmədov", departmentKey: "it", total: 28, used: 8, remaining: 20, statusKey: "active" },
+    { name: "Səbinə Həsənova", departmentKey: "marketing", total: 28, used: 15, remaining: 13, statusKey: "active" },
+    { name: "Elvin Quliyev", departmentKey: "sales", total: 28, used: 5, remaining: 23, statusKey: "active" },
   ];
-  if (modalOpen) {
+  const [balances, setBalances] = useState(initialBalances);
+  const [editItem, setEditItem] = useState(null);
+  const [editIndex, setEditIndex] = useState(-1);
+
+  const anyModalOpen = useMemo(() => modalOpen || !!editItem, [modalOpen, editItem]);
+  if (anyModalOpen) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "auto";
   }
+
+  const openEdit = (item, idx) => {
+    setEditItem({ ...item });
+    setEditIndex(idx);
+  };
+  const closeEdit = () => {
+    setEditItem(null);
+    setEditIndex(-1);
+  };
+  const handleEditChange = (field, value) => {
+    setEditItem((prev) => ({ ...prev, [field]: value }));
+  };
+  const toInt = (v) => {
+    const n = parseInt(v, 10);
+    return Number.isFinite(n) ? Math.max(0, n) : 0;
+  };
+  const saveEdit = () => {
+    if (editIndex < 0 || !editItem) return;
+    const total = toInt(editItem.total);
+    const used = Math.min(toInt(editItem.used), total);
+    const updated = [...balances];
+    updated[editIndex] = { ...editItem, total, used, remaining: total - used };
+    setBalances(updated);
+    closeEdit();
+  };
+  const handleDelete = (idx) => {
+    const emp = balances[idx];
+    const confirmed = window.confirm(
+      t('pages.hr.leave.balance.confirmDelete', { defaultValue: 'Delete balance for {{name}}?', name: emp?.name })
+    );
+    if (!confirmed) return;
+    setBalances((prev) => prev.filter((_, i) => i !== idx));
+  };
 
   return (
     <div className="overflow-auto p-6 space-y-6">
@@ -54,13 +65,16 @@ function Leave() {
           <p className="text-gray-600">{t('pages.hr.leave.subtitle', { defaultValue: 'Permissions and leave schedule' })}</p>
         </div>
         <div>
-          {modalOpen && <LeaveRequestModal onClose={() => setModalOpen(false)} />}
-          <button  onClick={() => setModalOpen(true)} className="bg-black rounded-xl p-2 flex items-center gap-2 hover:opacity-50">
+          {modalOpen && (
+            <LeaveRequestModal onClose={() => setModalOpen(false)} />
+          )}
+          <button onClick={() => setModalOpen(true)} className="bg-black rounded-xl p-2 flex items-center gap-2 hover:opacity-50">
             <span className="text-[18px] text-white">+</span>
             <span className="text-white">{t('pages.hr.leave.newRequest', { defaultValue: 'New Request' })}</span>
           </button>
         </div>
       </div>
+
       <div className="lg:grid-cols-4 grid md:grid-cols-2 grid-cols-1 items-center justify-between gap-4">
         <div className="border border-gray-200 rounded-xl px-4  py-6 flex items-center justify-between shadow-sm">
           <div>
@@ -99,6 +113,7 @@ function Leave() {
           </div>
         </div>
       </div>
+
       <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-6">
         <div className="border border-gray-200 p-4 rounded-xl shadow-sm">
           <h2>{t('pages.hr.leave.requests.title', { defaultValue: 'Leave Requests' })}</h2>
@@ -111,19 +126,7 @@ function Leave() {
                     {t('pages.hr.leave.requests.type.annual', { defaultValue: 'Annual' })}
                   </p>
                   <div className="bg-green-50 text-green-600 rounded-2xl flex items-center gap-1 px-2 py-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-check w-3 h-3"
-                      aria-hidden="true"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check w-3 h-3" aria-hidden="true">
                       <path d="M20 6 9 17l-5-5"></path>
                     </svg>
                     <p className="">{t('pages.hr.leave.requests.status.approved', { defaultValue: 'Approved' })}</p>
@@ -150,19 +153,7 @@ function Leave() {
                     {t('pages.hr.leave.requests.type.annual', { defaultValue: 'Annual' })}
                   </p>
                   <div className="bg-green-50 text-green-600 rounded-2xl flex items-center gap-1 px-2 py-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-check w-3 h-3"
-                      aria-hidden="true"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check w-3 h-3" aria-hidden="true">
                       <path d="M20 6 9 17l-5-5"></path>
                     </svg>
                     <p className="">{t('pages.hr.leave.requests.status.approved', { defaultValue: 'Approved' })}</p>
@@ -189,19 +180,7 @@ function Leave() {
                     {t('pages.hr.leave.requests.type.annual', { defaultValue: 'Annual' })}
                   </p>
                   <div className="bg-green-50 text-green-600 rounded-2xl flex items-center gap-1 px-2 py-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-check w-3 h-3"
-                      aria-hidden="true"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check w-3 h-3" aria-hidden="true">
                       <path d="M20 6 9 17l-5-5"></path>
                     </svg>
                     <p className="">{t('pages.hr.leave.requests.status.approved', { defaultValue: 'Approved' })}</p>
@@ -228,19 +207,7 @@ function Leave() {
                     {t('pages.hr.leave.requests.type.annual', { defaultValue: 'Annual' })}
                   </p>
                   <div className="bg-green-50 text-green-600 rounded-2xl flex items-center gap-1 px-2 py-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-check w-3 h-3"
-                      aria-hidden="true"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check w-3 h-3" aria-hidden="true">
                       <path d="M20 6 9 17l-5-5"></path>
                     </svg>
                     <p className="">{t('pages.hr.leave.requests.status.approved', { defaultValue: 'Approved' })}</p>
@@ -265,26 +232,12 @@ function Leave() {
           <h2>{t('pages.hr.leave.upcoming.title', { defaultValue: 'Upcoming Leaves' })}</h2>
           <div className="space-y-4 p-2">
             <div className="rounded-2xl bg-blue-50 p-3 flex gap-3">
-              <div className="bg-blue-600 rounded-full flex items-center justify-center w-10 h-10 text-white font-medium">
-                N
-              </div>
+              <div className="bg-blue-600 rounded-full flex items-center justify-center w-10 h-10 text-white font-medium">N</div>
               <div className="space-y-2">
                 <p>Nigar Əliyeva</p>
                 <p className="text-gray-600">{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</p>
                 <div className="flex items-center gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-calendar w-4 h-4 text-gray-400"
-                    aria-hidden="true"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-4 h-4 text-gray-400" aria-hidden="true">
                     <path d="M8 2v4"></path>
                     <path d="M16 2v4"></path>
                     <rect width="18" height="18" x="3" y="4" rx="2"></rect>
@@ -296,26 +249,12 @@ function Leave() {
               </div>
             </div>
             <div className="rounded-2xl bg-blue-50 p-3 flex gap-3">
-              <div className="bg-blue-600 rounded-full flex items-center justify-center w-10 h-10 text-white font-medium">
-                N
-              </div>
+              <div className="bg-blue-600 rounded-full flex items-center justify-center w-10 h-10 text-white font-medium">N</div>
               <div className="space-y-2">
                 <p>Nigar Əliyeva</p>
                 <p className="text-gray-600">{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</p>
                 <div className="flex items-center gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-calendar w-4 h-4 text-gray-400"
-                    aria-hidden="true"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-4 h-4 text-gray-400" aria-hidden="true">
                     <path d="M8 2v4"></path>
                     <path d="M16 2v4"></path>
                     <rect width="18" height="18" x="3" y="4" rx="2"></rect>
@@ -329,6 +268,7 @@ function Leave() {
           </div>
         </div>
       </div>
+
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
         <h4 className="text-lg font-semibold mb-4">{t('pages.hr.leave.balance.title', { defaultValue: 'Leave Balance by Employee' })}</h4>
         <div className="overflow-x-auto">
@@ -344,22 +284,28 @@ function Leave() {
               </tr>
             </thead>
             <tbody className="divide-y">
-              {data.map((employee, idx) => (
+              {balances.map((employee, idx) => (
                 <tr key={idx} className="hover:bg-gray-50">
                   <td className="px-4 py-2">{employee.name}</td>
-                  <td className="px-4 py-2 text-gray-600">
-                    {t(`pages.hr.departments.${employee.departmentKey}`, { defaultValue: employee.departmentKey })}
-                  </td>
+                  <td className="px-4 py-2 text-gray-600">{t(`pages.hr.departments.${employee.departmentKey}`, { defaultValue: employee.departmentKey })}</td>
                   <td className="px-4 py-2">{`${employee.total} ${t('pages.hr.leave.common.daysSuffix', { defaultValue: 'days' })}`}</td>
                   <td className="px-4 py-2">{`${employee.used} ${t('pages.hr.leave.common.daysSuffix', { defaultValue: 'days' })}`}</td>
-                  <td className="px-4 py-2 text-blue-600">
-                    {`${employee.remaining} ${t('pages.hr.leave.common.daysSuffix', { defaultValue: 'days' })}`}
-                  </td>
+                  <td className="px-4 py-2 text-blue-600">{`${employee.remaining} ${t('pages.hr.leave.common.daysSuffix', { defaultValue: 'days' })}`}</td>
                   <td className="px-4 py-2">
                     <span className="inline-flex items-center gap-1 text-green-700 text-xs font-medium bg-green-100 px-2 py-1 rounded">
                       <FaCircle className="text-green-500 text-[8px]" />
                       {t(`pages.hr.employees.status.${employee.statusKey}`, { defaultValue: employee.statusKey })}
                     </span>
+                  </td>
+                  <td className="px-4 py-2">
+                    <div className="flex items-center gap-2">
+                      <button className="p-2 rounded-md hover:bg-gray-100" onClick={() => openEdit(employee, idx)} title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })}>
+                        <FiEdit2 className="w-4 h-4" />
+                      </button>
+                      <button className="p-2 rounded-md text-red-600 hover:text-red-700" onClick={() => handleDelete(idx)} title={t('common.delete', { ns: 'translation', defaultValue: 'Delete' })}>
+                        <FiTrash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -367,6 +313,66 @@ function Leave() {
           </table>
         </div>
       </div>
+
+      {editItem && (
+        <div>
+          <div onClick={closeEdit} className="bg-black opacity-50 fixed inset-0 z-51"></div>
+          <div role="dialog" className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-xl max-h-[90vh] overflow-y-auto bg-white border rounded-lg shadow-lg p-6">
+            <button className="absolute top-4 right-4 opacity-70 hover:opacity-100 focus:ring-2 focus:ring-blue-500 focus:outline-none" onClick={closeEdit}>
+              <FiX className="w-4 h-4" />
+              <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
+            </button>
+            <div className="flex flex-col gap-2 text-center sm:text-left">
+              <h2 className="text-lg font-semibold">{t('pages.hr.leave.balance.editTitle', { defaultValue: 'Edit Leave Balance' })}</h2>
+            </div>
+            <div className="space-y-4 py-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.leave.table.employee', { defaultValue: 'Employee' })}</label>
+                  <input className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500" value={editItem.name} onChange={(e) => handleEditChange('name', e.target.value)} />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.leave.table.department', { defaultValue: 'Department' })}</label>
+                  <select className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" value={editItem.departmentKey} onChange={(e) => handleEditChange('departmentKey', e.target.value)}>
+                    <option value="finance">{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</option>
+                    <option value="it">{t('pages.hr.departments.it', { defaultValue: 'IT Department' })}</option>
+                    <option value="marketing">{t('pages.hr.departments.marketing', { defaultValue: 'Marketing' })}</option>
+                    <option value="sales">{t('pages.hr.departments.sales', { defaultValue: 'Sales' })}</option>
+                    <option value="hr">{t('pages.hr.departments.hr', { defaultValue: 'Human Resources' })}</option>
+                  </select>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.leave.table.total', { defaultValue: 'Total Entitlement' })}</label>
+                  <input type="number" min="0" className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500" value={editItem.total} onChange={(e) => handleEditChange('total', e.target.value)} />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.leave.table.used', { defaultValue: 'Used' })}</label>
+                  <input type="number" min="0" className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500" value={editItem.used} onChange={(e) => handleEditChange('used', e.target.value)} />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.leave.table.status', { defaultValue: 'Status' })}</label>
+                  <select className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" value={editItem.statusKey} onChange={(e) => handleEditChange('statusKey', e.target.value)}>
+                    <option value="active">{t('pages.hr.employees.status.active', { defaultValue: 'Active' })}</option>
+                    <option value="onLeave">{t('pages.hr.employees.status.onLeave', { defaultValue: 'On Leave' })}</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.leave.table.remaining', { defaultValue: 'Remaining' })}</label>
+                  <input disabled className="w-full h-9 px-3 py-1 border rounded-md bg-gray-100 text-base" value={Math.max(0, toInt(editItem.total) - Math.min(toInt(editItem.used), toInt(editItem.total)))} />
+                </div>
+              </div>
+              <div className="flex justify-end gap-2 pt-2">
+                <button className="px-4 py-2 border rounded-md bg-white text-gray-900 hover:bg-gray-100" onClick={closeEdit}>{t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}</button>
+                <button className="px-4 py-2 bg-black text-white rounded-md hover:opacity-50" onClick={saveEdit}>{t('pages.hr.employees.modal.save', { defaultValue: 'Save' })}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

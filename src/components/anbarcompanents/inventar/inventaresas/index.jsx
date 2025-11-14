@@ -17,6 +17,7 @@ export default function Inventar() {
     });
 
     const [inventoryData, setInventoryData] = useState([]);
+    const [newInvOpen, setNewInvOpen] = useState(false);
 
     // Cədvəl faylını yükləmə
     const handleFileUpload = (e) => {
@@ -60,7 +61,7 @@ export default function Inventar() {
                             />
                         </label>
 
-                        <button className="px-4 py-2 flex items-center gap-1 rounded bg-black text-white">
+                        <button onClick={() => setNewInvOpen(true)} className="px-4 py-2 flex items-center gap-1 rounded bg-black text-white">
                             <HiClipboardList className="blok" />
                             {t('pages.warehouse.inventory.control.newInventory')}
                         </button>
@@ -71,13 +72,13 @@ export default function Inventar() {
 
             {/* Statistik kartlar */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-white border rounded-2xl p-4">
+                <div className="bg-white border border-gray-200 rounded-2xl p-4">
                     <h3 className="text-sm text-gray-500 mb-1">{t('pages.warehouse.inventory.cards.totalProducts')}</h3>
                     <p className="text-2xl font-semibold">{inventoryStats.totalProducts}</p>
                     <span className="text-xs text-gray-400">{t('pages.warehouse.inventory.cards.skuCount')}</span>
                 </div>
 
-                <div className="bg-white border rounded-2xl p-4">
+                <div className="bg-white border border-gray-200 rounded-2xl p-4">
                     <h3 className="text-sm text-gray-500 mb-1">{t('pages.warehouse.inventory.cards.totalValue')}</h3>
                     <p className="text-2xl font-semibold">
                         ₼{inventoryStats.totalValue.toLocaleString("az-Latn-AZ")}
@@ -85,7 +86,7 @@ export default function Inventar() {
                     <span className="text-xs text-gray-400">{t('pages.warehouse.inventory.cards.systemBalance')}</span>
                 </div>
 
-                <div className="bg-white border rounded-2xl p-4">
+                <div className="bg-white border border-gray-200 rounded-2xl p-4">
                     <h3 className="text-sm text-gray-500 mb-1">{t('pages.warehouse.inventory.cards.countStatus')}</h3>
                     <p className="text-2xl font-semibold">
                         {inventoryStats.counted} / {inventoryStats.totalProducts}
@@ -93,7 +94,7 @@ export default function Inventar() {
                     <span className="text-xs text-gray-400">{t('pages.warehouse.inventory.cards.countedProducts')}</span>
                 </div>
 
-                <div className="bg-white border rounded-2xl p-4">
+                <div className="bg-white border border-gray-200 rounded-2xl p-4">
                     <h3 className="text-sm text-gray-500 mb-1">{t('pages.warehouse.inventory.cards.difference')}</h3>
                     <p className="text-2xl font-semibold">{inventoryStats.difference}</p>
                     <span className="text-xs text-gray-400">{t('pages.warehouse.inventory.cards.countDifference')}</span>
@@ -103,13 +104,13 @@ export default function Inventar() {
 
             {/* Yüklənmiş cədvəl */}
             {inventoryData.length > 0 && (
-                <div className="mt-6 bg-white border rounded-2xl p-4 overflow-x-auto">
+                <div className="mt-6 bg-white border border-gray-200 rounded-2xl p-4 overflow-x-auto">
                     <h3 className="text-md font-semibold mb-3">{t('pages.warehouse.inventory.control.uploadedSheet')}</h3>
-                    <table className="w-full text-sm border-collapse">
+                    <table className="w-full text-sm border-collapse border-gray-200">
                         <thead>
                             <tr className="bg-gray-50 text-gray-600">
                                 {Object.keys(inventoryData[0]).map((key) => (
-                                    <th key={key} className="border-b py-2 px-3 text-left">
+                                    <th key={key} className="border-b border-gray-200 py-2 px-3 text-left">
                                         {key}
                                     </th>
                                 ))}
@@ -119,7 +120,7 @@ export default function Inventar() {
                             {inventoryData.map((row, i) => (
                                 <tr key={i} className="hover:bg-gray-50">
                                     {Object.values(row).map((val, j) => (
-                                        <td key={j} className="border-b py-2 px-3">
+                                        <td key={j} className="border-b border-gray-200 py-2 px-3">
                                             {val}
                                         </td>
                                     ))}
@@ -131,7 +132,7 @@ export default function Inventar() {
             )}
 
             <Inventarnav />
-            <Outlet context={{ setInventoryStats }} />
+            <Outlet context={{ setInventoryStats, newInvOpen, setNewInvOpen }} />
 
 
         </div>

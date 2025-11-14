@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import {
   FiPlus,
   FiSearch,
-  FiChevronDown,
   FiDownload,
   FiEye,
   FiEdit2,
   FiTrash2,
+  FiX,
 } from "react-icons/fi";
 import AddEmployeeDialog from "./newemployeemodule";
 
 const Employees = () => {
   const { t } = useTranslation();
-  const employees = [
+  const initialEmployees = [
     {
       id: "EMP001",
       name: "Nigar Əliyeva",
@@ -75,12 +75,81 @@ const Employees = () => {
       statusColor: "green",
     },
   ];
+  const [employees, setEmployees] = useState(initialEmployees);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  if (isDialogOpen) {
+  const [viewEmployee, setViewEmployee] = useState(null);
+  const [editEmployee, setEditEmployee] = useState(null);
+  const [editIndex, setEditIndex] = useState(-1);
+  const [search, setSearch] = useState("");
+
+  const anyModalOpen = useMemo(
+    () => isDialogOpen || !!viewEmployee || !!editEmployee,
+    [isDialogOpen, viewEmployee, editEmployee]
+  );
+  if (anyModalOpen) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "auto";
   }
+
+  const openView = (emp) => setViewEmployee(emp);
+  const closeView = () => setViewEmployee(null);
+  const openEdit = (emp, idx) => {
+    setEditEmployee({ ...emp });
+    setEditIndex(idx);
+  };
+  const closeEdit = () => {
+    setEditEmployee(null);
+    setEditIndex(-1);
+  };
+  const handleEditChange = (field, value) => {
+    setEditEmployee((prev) => ({ ...prev, [field]: value }));
+  };
+  const normalizeStatusColor = (statusKey) =>
+    statusKey === "active" ? "green" : "orange";
+  const ensureSalaryFormat = (salary) => {
+    if (salary == null) return "";
+    const s = String(salary).trim();
+    return s.startsWith("₼") ? s : `₼${s}`;
+  };
+  const saveEdit = () => {
+    if (editIndex < 0 || !editEmployee) return;
+    const updated = [...employees];
+    updated[editIndex] = {
+      ...editEmployee,
+      salary: ensureSalaryFormat(editEmployee.salary),
+      statusColor: normalizeStatusColor(editEmployee.statusKey),
+    };
+    setEmployees(updated);
+    closeEdit();
+  };
+  const handleDelete = (idx) => {
+    const emp = employees[idx];
+    const confirmed = window.confirm(
+      t("pages.hr.employees.confirmDelete", {
+        defaultValue: "Delete {{name}} ({{id}})?",
+        name: emp?.name,
+        id: emp?.id,
+      })
+    );
+    if (!confirmed) return;
+    setEmployees((prev) => prev.filter((_, i) => i !== idx));
+  };
+
+  const filteredEmployees = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    if (!q) return employees;
+    const tokens = q.split(/\s+/);
+    return employees.filter((emp) =>
+      tokens.every((tok) =>
+        (emp.name && emp.name.toLowerCase().includes(tok)) ||
+        (emp.position && emp.position.toLowerCase().includes(tok)) ||
+        (emp.id && emp.id.toLowerCase().includes(tok)) ||
+        (emp.email && emp.email.toLowerCase().includes(tok)) ||
+        (emp.departmentKey && emp.departmentKey.toLowerCase().includes(tok))
+      )
+    );
+  }, [employees, search]);
 
   return (
     <div className="flex-1 overflow-auto p-6 space-y-6">
@@ -110,7 +179,19 @@ const Employees = () => {
             <input
               className="w-full pl-10 pr-3 py-2 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder={t('pages.hr.employees.searchPlaceholder', { defaultValue: 'Search employee (name, position, ID)' })}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
+            {search && (
+              <button
+                type="button"
+                onClick={() => setSearch("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                aria-label={t('common.clear', { ns: 'translation', defaultValue: 'Clear' })}
+              >
+                <FiX className="w-4 h-4" />
+              </button>
+            )}
           </div>
           <select className="flex items-center justify-between gap-2 px-3 py-2 border border-gray-200 rounded-md bg-white text-sm w-full sm:w-48">
             <option>{t('pages.hr.employees.filters.label', { defaultValue: 'Filter' })}</option>
@@ -152,7 +233,14 @@ const Employees = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {employees.map((employee) => (
+            {filteredEmployees.length === 0 && (
+              <tr>
+                <td colSpan={6} className="px-6 py-6 text-center text-sm text-gray-500">
+                  {t('common.noResults', { ns: 'translation', defaultValue: 'No results found' })}
+                </td>
+              </tr>
+            )}
+            {filteredEmployees.map((employee, idx) => (
               <tr key={employee.id} className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
@@ -188,13 +276,13 @@ const Employees = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center gap-2">
-                    <button className="p-2 rounded-md hover:bg-gray-100">
+                    <button className="p-2 rounded-md hover:bg-gray-100" onClick={() => openView(employee)}>
                       <FiEye className="w-4 h-4" />
                     </button>
-                    <button className="p-2 rounded-md hover:bg-gray-100">
+                    <button className="p-2 rounded-md hover:bg-gray-100" onClick={() => openEdit(employee, idx)}>
                       <FiEdit2 className="w-4 h-4" />
                     </button>
-                    <button className="p-2 rounded-md text-red-600 hover:text-red-700">
+                    <button className="p-2 rounded-md text-red-600 hover:text-red-700" onClick={() => handleDelete(idx)}>
                       <FiTrash2 className="w-4 h-4" />
                     </button>
                   </div>
@@ -205,8 +293,171 @@ const Employees = () => {
         </table>
       </div>
       <div className="text-sm text-gray-500">
-        {t('pages.hr.employees.footer.showing', { count: employees.length, total: employees.length, defaultValue: 'Showing: {{count}} results (Total: {{total}} employees)' })}
+        {t('pages.hr.employees.footer.showing', { count: filteredEmployees.length, total: employees.length, defaultValue: 'Showing: {{count}} results (Total: {{total}} employees)' })}
       </div>
+      {viewEmployee && (
+        <div>
+          <div onClick={closeView} className="bg-black opacity-50 fixed inset-0 z-51"></div>
+          <div
+            role="dialog"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border rounded-lg shadow-lg p-6 sm:max-w-lg"
+          >
+            <button
+              className="absolute top-4 right-4 opacity-70 hover:opacity-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              onClick={closeView}
+            >
+              <FiX className="w-4 h-4" />
+              <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
+            </button>
+            <div className="flex flex-col gap-2 text-center sm:text-left">
+              <h2 className="text-lg font-semibold">{t('pages.hr.employees.viewTitle', { defaultValue: 'Employee Details' })}</h2>
+            </div>
+            <div className="space-y-4 py-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.employee', { defaultValue: 'Employee' })}</div>
+                  <div className="font-medium">{viewEmployee.name} ({viewEmployee.id})</div>
+                </div>
+                <div>
+                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.position', { defaultValue: 'Position' })}</div>
+                  <div className="font-medium">{viewEmployee.position}</div>
+                </div>
+                <div>
+                  <div className="text-sm text-gray-500">Email</div>
+                  <div className="font-medium">{viewEmployee.email}</div>
+                </div>
+                <div>
+                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.department', { defaultValue: 'Department' })}</div>
+                  <div className="font-medium">{t(`pages.hr.departments.${viewEmployee.departmentKey}`, { defaultValue: viewEmployee.departmentKey })}</div>
+                </div>
+                <div>
+                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.salary', { defaultValue: 'Salary' })}</div>
+                  <div className="font-medium">{viewEmployee.salary}</div>
+                </div>
+                <div>
+                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.status', { defaultValue: 'Status' })}</div>
+                  <div className="font-medium">{t(`pages.hr.employees.status.${viewEmployee.statusKey}`, { defaultValue: viewEmployee.statusKey })}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {editEmployee && (
+        <div>
+          <div onClick={closeEdit} className="bg-black opacity-50 fixed inset-0 z-51"></div>
+          <div
+            role="dialog"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border rounded-lg shadow-lg p-6 sm:max-w-lg"
+          >
+            <button
+              className="absolute top-4 right-4 opacity-70 hover:opacity-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              onClick={closeEdit}
+            >
+              <FiX className="w-4 h-4" />
+              <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
+            </button>
+            <div className="flex flex-col gap-2 text-center sm:text-left">
+              <h2 className="text-lg font-semibold">{t('pages.hr.employees.editTitle', { defaultValue: 'Edit Employee' })}</h2>
+            </div>
+            <div className="space-y-4 py-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.employees.modal.name', { defaultValue: 'Name' })}</label>
+                  <input
+                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={editEmployee.name}
+                    onChange={(e) => handleEditChange('name', e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">ID</label>
+                  <input
+                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={editEmployee.id}
+                    onChange={(e) => handleEditChange('id', e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.employees.table.position', { defaultValue: 'Position' })}</label>
+                  <input
+                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={editEmployee.position}
+                    onChange={(e) => handleEditChange('position', e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Email</label>
+                  <input
+                    type="email"
+                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={editEmployee.email}
+                    onChange={(e) => handleEditChange('email', e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.employees.table.department', { defaultValue: 'Department' })}</label>
+                  <select
+                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={editEmployee.departmentKey}
+                    onChange={(e) => handleEditChange('departmentKey', e.target.value)}
+                  >
+                    <option value="finance">{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</option>
+                    <option value="it">{t('pages.hr.departments.it', { defaultValue: 'IT Department' })}</option>
+                    <option value="marketing">{t('pages.hr.departments.marketing', { defaultValue: 'Marketing' })}</option>
+                    <option value="sales">{t('pages.hr.departments.sales', { defaultValue: 'Sales' })}</option>
+                    <option value="hr">{t('pages.hr.departments.hr', { defaultValue: 'Human Resources' })}</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.employees.table.salary', { defaultValue: 'Salary' })}</label>
+                  <input
+                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={editEmployee.salary}
+                    onChange={(e) => handleEditChange('salary', e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">{t('pages.hr.employees.table.status', { defaultValue: 'Status' })}</label>
+                  <select
+                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={editEmployee.statusKey}
+                    onChange={(e) => handleEditChange('statusKey', e.target.value)}
+                  >
+                    <option value="active">{t('pages.hr.employees.status.active', { defaultValue: 'Active' })}</option>
+                    <option value="onLeave">{t('pages.hr.employees.status.onLeave', { defaultValue: 'On Leave' })}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-2 pt-4">
+                <button
+                  className="px-4 py-2 border rounded-md bg-white text-gray-900 hover:bg-gray-100"
+                  onClick={closeEdit}
+                >
+                  {t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}
+                </button>
+                <button
+                  onClick={saveEdit}
+                  className="px-4 py-2 bg-black text-white rounded-md hover:opacity-50"
+                >
+                  {t('pages.hr.employees.modal.save', { defaultValue: 'Save' })}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

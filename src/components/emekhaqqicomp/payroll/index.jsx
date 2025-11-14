@@ -130,7 +130,7 @@ const PayrollManagement = () => {
             <FaCalculator className="w-6 h-6" />
           </div>
         </div>
-        <div className="bg-white border border-gray-200rounded-xl p-6 flex items-center justify-between">
+        <div className="bg-white border border-gray-200 rounded-xl p-6 flex items-center justify-between">
           <div>
             <p className="text-sm text-gray-500">{t('pages.hr.payroll.cards.bonuses', { defaultValue: 'Bonuses' })}</p>
             <p className="text-gray-900 mt-1">₼25.400</p>

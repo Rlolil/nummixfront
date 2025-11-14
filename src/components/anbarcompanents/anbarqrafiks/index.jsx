@@ -8,7 +8,7 @@ export function MonthlyStockChart() {
   const { t } = useTranslation();
   const Adata = AdataRaw.map(key => ({ name: t(`common.months.${key}`), value: ({jan:450,feb:520,mar:390,apr:610,may:480,jun:530}[key]) }));
   return (
-    <div className="bg-white border rounded-xl p-5 shadow-sm">
+    <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
       <h3 className="text-lg font-semibold mb-4">{t('pages.warehouse.charts.monthlyStock')}</h3>
       <ResponsiveContainer width="100%" height={250}>
         <BarChart data={Adata}>
@@ -16,7 +16,7 @@ export function MonthlyStockChart() {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="value" fill="#000000" radius={[6, 6, 0, 0]} />
+          <Bar dataKey="value" fill="#8884d8" radius={[6, 6, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -26,13 +26,13 @@ export function MonthlyStockChart() {
 
 const SdataKeys = ["rawMaterials","finishedGoods","spareParts","packaging"];
 
-const COLORS = ["#000000", "#4B5563", "#9CA3AF", "#D1D5DB"];
+const COLORS = ["#8884d8", "#82ca9d", "#ffc658", "#ff8042"];
 
 export function CategoryDistributionChart() {
   const { t } = useTranslation();
   const Sdata = SdataKeys.map(k => ({ name: t(`pages.warehouse.categories.${k}`), value: ({rawMaterials:35,finishedGoods:28,spareParts:22,packaging:15}[k]) }));
   return (
-    <div className="bg-white border rounded-xl p-5 shadow-sm">
+    <div className="bg-white border-gray-200 border rounded-xl p-5 shadow-sm">
       <h3 className="text-lg font-semibold mb-4">{t('pages.warehouse.charts.categoryDistribution')}</h3>
       <ResponsiveContainer width="100%" height={250}>
         <PieChart>
@@ -99,7 +99,7 @@ export function AnbarDeyeriChart() {
             <XAxis dataKey="ay" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="deyer" fill="#000000" />
+            <Bar dataKey="deyer" fill="#8884d8" />
           </BarChart>
         </ResponsiveContainer>
       </div>

@@ -185,6 +185,7 @@ export const routers = createBrowserRouter([
             path: "/anbar/warehouseoperations",
             element: <Anbaremeliyyat />,
             children: [
+              { index: true, element: <Navigate to="grn" replace /> },
               { path: "grn", element: <Anbargrn /> },
               { path: "dn", element: <Anbardn /> },
               { path: "transfer", element: <AnbarTransfer /> },
@@ -195,6 +196,7 @@ export const routers = createBrowserRouter([
           {
             path: "/anbar/inventory", element: <Inventar />,
             children: [
+              { index: true, element: <Navigate to="currentbalances" replace /> },
               { path: "currentbalances", element: <CariQaliqlar /> },
               { path: "inventorycount", element: <InventarSayimi /> },
             ]

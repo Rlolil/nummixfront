@@ -20,6 +20,7 @@
         },
         "aiAnalysisLabel": "Анализ AI:",
         "aiRecommendation": "Рекомендация AI:",
+        "warningLabel": "Предупреждение",
         "days": "дн.",
         "months": {
           "jan": "Янв",

@@ -1,35 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FiBarChart2, FiPlusCircle } from "react-icons/fi";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 function ChangeEquity() {
   const { t } = useTranslation();
-  const data = {
-    beginning: { shareCapital: 500000, retainedEarnings: 102500 },
-    netIncome: { shareCapital: 0, retainedEarnings: 54000 },
-    dividends: { shareCapital: 0, retainedEarnings: 0 },
-  };
+  const [rows, setRows] = useState([
+    { label: t('pages.accounting.financialReports.equityChanges.rows.beginning'), shareCapital: 500000, retainedEarnings: 102500 },
+    { label: t('pages.accounting.financialReports.equityChanges.rows.netIncome'), shareCapital: 0, retainedEarnings: 54000 },
+    { label: t('pages.accounting.financialReports.equityChanges.rows.dividends'), shareCapital: 0, retainedEarnings: 0 },
+  ]);
+  const [editing, setEditing] = useState(null); // { index, label, shareCapital, retainedEarnings }
 
-  const totals = {
-    beginning: data.beginning.shareCapital + data.beginning.retainedEarnings,
-    netIncome: data.netIncome.shareCapital + data.netIncome.retainedEarnings,
-    dividends: data.dividends.shareCapital + data.dividends.retainedEarnings,
-  };
-
+  const sum = (arr) => arr.reduce((s, n) => s + Number(n || 0), 0);
+  const totalsRow = rows.map(r => ({ ...r, total: Number(r.shareCapital) + Number(r.retainedEarnings) }));
   const ending = {
-    shareCapital:
-      data.beginning.shareCapital +
-      data.netIncome.shareCapital +
-      data.dividends.shareCapital,
-    retainedEarnings:
-      data.beginning.retainedEarnings +
-      data.netIncome.retainedEarnings +
-      data.dividends.retainedEarnings,
+    shareCapital: sum(rows.map(r => r.shareCapital)),
+    retainedEarnings: sum(rows.map(r => r.retainedEarnings)),
   };
-
-  function formatAZN(value) {
-    return value === 0 ? "-" : `₼${value.toLocaleString("en-US")}`;
-  }
+  const fmtAZN = (v) => `₼${Number(v).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
 
   return (
     <div className="border border-gray-300 space-y-4 p-3 sm:p-4 my-4 rounded-lg shadow-sm bg-white">
@@ -59,36 +47,64 @@ function ChangeEquity() {
               <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.financialReports.equityChanges.columns.shareCapital')}</th>
               <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.financialReports.equityChanges.columns.retainedEarnings')}</th>
               <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.financialReports.equityChanges.columns.totalEquity')}</th>
+              <th className="text-right p-1 sm:p-2 font-medium">{t('common.actions', { defaultValue: 'Fəaliyyətlər' })}</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="border-b">
-              <td className="p-1 sm:p-2">{t('pages.accounting.financialReports.equityChanges.rows.beginning')}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(data.beginning.shareCapital)}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(data.beginning.retainedEarnings)}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(totals.beginning)}</td>
-            </tr>
-            <tr className="border-b">
-              <td className="p-1 sm:p-2">{t('pages.accounting.financialReports.equityChanges.rows.netIncome')}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(data.netIncome.shareCapital)}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(data.netIncome.retainedEarnings)}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(totals.netIncome)}</td>
-            </tr>
-            <tr className="border-b">
-              <td className="p-1 sm:p-2">{t('pages.accounting.financialReports.equityChanges.rows.dividends')}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(data.dividends.shareCapital)}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(data.dividends.retainedEarnings)}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(totals.dividends)}</td>
-            </tr>
+            {totalsRow.map((r, i) => (
+              <tr key={`eq-${i}`} className="border-b">
+                <td className="p-1 sm:p-2">{r.label}</td>
+                <td className="p-1 sm:p-2 text-right">{fmtAZN(r.shareCapital)}</td>
+                <td className="p-1 sm:p-2 text-right">{fmtAZN(r.retainedEarnings)}</td>
+                <td className="p-1 sm:p-2 text-right">{fmtAZN(r.total)}</td>
+                <td className="p-1 sm:p-2 text-right">
+                  <button onClick={() => setEditing({ index: i, label: r.label, shareCapital: String(r.shareCapital), retainedEarnings: String(r.retainedEarnings) })} className="inline-flex items-center gap-1 px-2 py-1 border rounded text-blue-600 border-blue-200 hover:bg-blue-50 mr-2"><FaEdit /></button>
+                  <button onClick={() => { const c = t('common.confirmDeleteRow', { defaultValue: 'Sətir silinsin?' }); if (window.confirm(c)) setRows(prev => prev.filter((_, idx) => idx !== i)); }} className="inline-flex items-center gap-1 px-2 py-1 border rounded text-red-600 border-red-200 hover:bg-red-50"><FaTrash /></button>
+                </td>
+              </tr>
+            ))}
             <tr className="border-t-2 font-bold">
               <td className="p-1 sm:p-2">{t('pages.accounting.financialReports.equityChanges.rows.ending')}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(ending.shareCapital)}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(ending.retainedEarnings)}</td>
-              <td className="p-1 sm:p-2 text-right">{formatAZN(ending.shareCapital + ending.retainedEarnings)}</td>
+              <td className="p-1 sm:p-2 text-right">{fmtAZN(ending.shareCapital)}</td>
+              <td className="p-1 sm:p-2 text-right">{fmtAZN(ending.retainedEarnings)}</td>
+              <td className="p-1 sm:p-2 text-right">{fmtAZN(ending.shareCapital + ending.retainedEarnings)}</td>
+              <td></td>
             </tr>
           </tbody>
         </table>
       </div>
+
+      {editing && (
+        <div className="p-6">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" onClick={() => setEditing(null)}></div>
+          <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-md -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6">
+            <div className="flex justify-between items-center border-b pb-3">
+              <h2 className="text-lg font-semibold">{t('common.editRow', { defaultValue: 'Sətiri redaktə et' })}</h2>
+              <button onClick={() => setEditing(null)} className="text-gray-500 hover:text-gray-700 text-xl">×</button>
+            </div>
+            <div className="mt-4 space-y-3">
+              <div>
+                <label className="block text-sm font-medium">{t('common.description', { defaultValue: 'Təsvir' })}</label>
+                <input type="text" className="mt-1 w-full border rounded-md px-3 py-2" value={editing.label} onChange={(e) => setEditing(prev => ({ ...prev, label: e.target.value }))} />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-sm font-medium">{t('pages.accounting.financialReports.equityChanges.columns.shareCapital')}</label>
+                  <input type="number" className="mt-1 w-full border rounded-md px-3 py-2" value={editing.shareCapital} onChange={(e) => setEditing(prev => ({ ...prev, shareCapital: e.target.value }))} />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium">{t('pages.accounting.financialReports.equityChanges.columns.retainedEarnings')}</label>
+                  <input type="number" className="mt-1 w-full border rounded-md px-3 py-2" value={editing.retainedEarnings} onChange={(e) => setEditing(prev => ({ ...prev, retainedEarnings: e.target.value }))} />
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-end gap-2 pt-4 border-t mt-4">
+              <button onClick={() => setEditing(null)} className="px-4 py-2 border rounded-md hover:bg-gray-100">{t('common.cancel', { defaultValue: 'Cancel' })}</button>
+              <button onClick={() => { setRows(prev => prev.map((r, i) => (i === editing.index ? { label: editing.label, shareCapital: Number(editing.shareCapital), retainedEarnings: Number(editing.retainedEarnings) } : r))); setEditing(null); }} className="px-4 py-2 rounded-md text-white bg-blue-600 hover:bg-blue-700">{t('common.save', { defaultValue: 'Save' })}</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

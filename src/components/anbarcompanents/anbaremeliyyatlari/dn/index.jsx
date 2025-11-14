@@ -40,7 +40,7 @@ const Anbardn = () => {
 
 
             {/* Form */}
-            <div className="bg-white rounded-2xl border p-4 sm:p-6 space-y-6">
+            <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 space-y-6">
                 {/* Başlıq */}
                 <div>
                     <h2 className="text-lg font-semibold">{t('pages.warehouse.operations.dn.title')}</h2>

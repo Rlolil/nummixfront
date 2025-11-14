@@ -58,6 +58,7 @@ export default function FinancialReports() {
             </button>
           </div>
         </div>
+        {/* Cards section removed per request; only tabs remain */}
         <div>
           <div className="grid grid-cols-2 sm:grid-cols-4 bg-gray-100 rounded-2xl px-1 sm:px-2 py-2 overflow-x-auto text-xs sm:text-sm font-medium">
             {tabs.map((tab) => (
@@ -82,6 +83,8 @@ export default function FinancialReports() {
           </div>
         </div>
       </div>
+
+      {/* Card edit/delete modal removed */}
     </div>
   );
 }

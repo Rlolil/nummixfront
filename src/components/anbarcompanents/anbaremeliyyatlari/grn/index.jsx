@@ -57,7 +57,7 @@ const Anbargrn = () => {
 
 
             {/* Form hissəsi */}
-            <div className="bg-white rounded-2xl border p-4 sm:p-6 space-y-6">
+            <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 space-y-6">
                 {/* Başlıq */}
                 <h2 className="text-lg font-semibold">{t('pages.warehouse.operations.grn.title')}</h2>
 

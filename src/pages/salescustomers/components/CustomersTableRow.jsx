@@ -1,12 +1,13 @@
 import { useState, useRef } from "react";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { FiEdit2, FiTrash2 } from "react-icons/fi";
 
 import Info from "./ShowMore/Info";
 import SalesHistory from "./ShowMore/SalesHistory";
 import Payments from "./ShowMore/Payments";
 import { useTranslation } from "react-i18next";
 
-export default function CustomersTableRow({ item }) {
+export default function CustomersTableRow({ item, index, onEditClick, onDelete }) {
     const { t } = useTranslation();
     const dialogRef = useRef(null);
     const [currentTab, setCurrentTab] = useState(1);
@@ -57,6 +58,20 @@ export default function CustomersTableRow({ item }) {
                     onClick={() => dialogRef.current && dialogRef.current.showModal()}
                 >
                     <MdOutlineRemoveRedEye className="size-5" />
+                </button>
+                <button
+                    className="hover:bg-zinc-200 p-2 rounded-lg transition-all ml-2"
+                    onClick={() => onEditClick && onEditClick(index)}
+                    title="Edit"
+                >
+                    <FiEdit2 className="size-5" />
+                </button>
+                <button
+                    className="hover:bg-zinc-200 p-2 rounded-lg transition-all ml-2"
+                    onClick={() => onDelete && onDelete(index)}
+                    title="Delete"
+                >
+                    <FiTrash2 className="size-5" />
                 </button>
                 <dialog ref={dialogRef} className="modal text-left">
                     <div className="modal-box">

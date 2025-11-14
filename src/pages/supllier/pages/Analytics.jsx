@@ -1,3 +1,4 @@
+import { useState } from "react";
 import HeadCard from "../../salescustomers/components/HeadCard";
 import BodyCard from "../../salescustomers/components/BodyCard";
 import { FaDollarSign, FaCalendarAlt, FaShoppingCart, FaChartLine } from "react-icons/fa";
@@ -21,6 +22,82 @@ import { useTranslation } from "react-i18next";
 
 export default function Analytics() {
     const { t } = useTranslation();
+    const [performanceData, setPerformanceData] = useState(() => [
+        {
+            id: "aztechizat",
+            name: "AzərTəchizat MMC",
+            category: t("pages.supplier.analytics.categories.officeSupplies"),
+            debt: "15420.5 AZN",
+            rating: "⭐ 4.5",
+            orders: "1",
+            payments: "1",
+        },
+        {
+            id: "globalsupply",
+            name: "GlobalSupply LLC",
+            category: t("pages.supplier.analytics.categories.technicalEquipment"),
+            debt: "8950 USD",
+            rating: "⭐ 4.8",
+            orders: "1",
+            payments: "1",
+        },
+        {
+            id: "euromaterials",
+            name: "Euro Materials",
+            category: t("pages.supplier.analytics.categories.constructionMaterials"),
+            debt: "0 EUR",
+            rating: "⭐ 4.2",
+            orders: "0",
+            payments: "0",
+        },
+        {
+            id: "azerbaycankimya",
+            name: "Azərbaycan Kimya MMC",
+            category: t("pages.supplier.analytics.categories.chemicals"),
+            debt: "22350.75 AZN",
+            rating: "⭐ 4.6",
+            orders: "1",
+            payments: "1",
+        },
+    ]);
+    const [editingId, setEditingId] = useState(null);
+    const [editForm, setEditForm] = useState(null);
+
+    const inputClasses = "w-full border border-zinc-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
+
+    const handleDelete = (id) => {
+        setPerformanceData((prev) => prev.filter((item) => item.id !== id));
+        if (editingId === id) {
+            setEditingId(null);
+            setEditForm(null);
+        }
+    };
+
+    const startEdit = (supplier) => {
+        setEditingId(supplier.id);
+        setEditForm({ ...supplier });
+    };
+
+    const cancelEdit = () => {
+        setEditingId(null);
+        setEditForm(null);
+    };
+
+    const handleEditChange = (field, value) => {
+        setEditForm((prev) => (prev ? { ...prev, [field]: value } : prev));
+    };
+
+    const saveEdit = () => {
+        if (!editForm || !editingId) {
+            return;
+        }
+
+        setPerformanceData((prev) =>
+            prev.map((item) => (item.id === editingId ? { ...item, ...editForm } : item))
+        );
+        setEditingId(null);
+        setEditForm(null);
+    };
     // Static demo data (design-only) with i18n labels
     const monthlyExpense = [
         { name: t("pages.finance.common.months.jan"), amount: 42000 },
@@ -241,70 +318,165 @@ export default function Analytics() {
                             <p className="text-zinc-500">{t("pages.supplier.analytics.performance.subtitle")}</p>
                         </div>
                         <div className="space-y-4">
-                            {[
-                                {
-                                    name: "AzərTəchizat MMC",
-                                    category: t("pages.supplier.analytics.categories.officeSupplies"),
-                                    debt: "15420.5 AZN",
-                                    rating: "⭐ 4.5",
-                                    orders: "1",
-                                    payments: "1",
-                                },
-                                {
-                                    name: "GlobalSupply LLC",
-                                    category: t("pages.supplier.analytics.categories.technicalEquipment"),
-                                    debt: "8950 USD",
-                                    rating: "⭐ 4.8",
-                                    orders: "1",
-                                    payments: "1",
-                                },
-                                {
-                                    name: "Euro Materials",
-                                    category: t("pages.supplier.analytics.categories.constructionMaterials"),
-                                    debt: "0 EUR",
-                                    rating: "⭐ 4.2",
-                                    orders: "0",
-                                    payments: "0",
-                                },
-                                {
-                                    name: "Azərbaycan Kimya MMC",
-                                    category: t("pages.supplier.analytics.categories.chemicals"),
-                                    debt: "22350.75 AZN",
-                                    rating: "⭐ 4.6",
-                                    orders: "1",
-                                    payments: "1",
-                                },
-                            ].map((s, i) => (
-                                <div
-                                    key={i}
-                                    className="flex items-center justify-between p-4 border-1 border-zinc-300 rounded-lg"
-                                >
-                                    <div className="flex-1">
-                                        <div className="flex items-center justify-between mb-2">
-                                            <p className="font-medium">{s.name}</p>
-                                            <p className="text-zinc-500 text-sm">{s.category}</p>
-                                        </div>
-                                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
-                                            <div>
-                                                <p className="text-zinc-500">{t("pages.supplier.common.debt")}</p>
-                                                <p className="font-medium">{s.debt}</p>
-                                            </div>
-                                            <div>
-                                                <p className="text-zinc-500">{t("pages.supplier.common.rating")}</p>
-                                                <p className="font-medium">{s.rating}</p>
-                                            </div>
-                                            <div>
-                                                <p className="text-zinc-500">{t("pages.supplier.common.orders")}</p>
-                                                <p className="font-medium">{s.orders}</p>
-                                            </div>
-                                            <div>
-                                                <p className="text-zinc-500">{t("pages.supplier.common.payments")}</p>
-                                                <p className="font-medium">{s.payments}</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            {performanceData.length === 0 ? (
+                                <div className="p-6 text-center text-sm text-zinc-500 border border-dashed border-zinc-300 rounded-lg">
+                                    {t("pages.supplier.analytics.performance.empty", { defaultValue: "Supplier performance məlumatı yoxdur" })}
                                 </div>
-                            ))}
+                            ) : (
+                                performanceData.map((supplier) => {
+                                    const isEditing = editingId === supplier.id;
+                                    const currentValues = isEditing && editForm ? editForm : supplier;
+
+                                    return (
+                                        <div
+                                            key={supplier.id}
+                                            className="flex flex-col gap-3 p-4 border border-zinc-300 rounded-lg"
+                                        >
+                                            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                                                <div className="flex-1">
+                                                    {isEditing ? (
+                                                        <div className="space-y-2">
+                                                            <div>
+                                                                <label className="text-xs font-medium text-zinc-500 uppercase tracking-wide">
+                                                                    {t("pages.supplier.analytics.performance.labels.supplier", { defaultValue: "Təchizatçı" })}
+                                                                </label>
+                                                                <input
+                                                                    type="text"
+                                                                    className={inputClasses}
+                                                                    value={currentValues.name}
+                                                                    onChange={(event) => handleEditChange("name", event.target.value)}
+                                                                />
+                                                            </div>
+                                                            <div>
+                                                                <label className="text-xs font-medium text-zinc-500 uppercase tracking-wide">
+                                                                    {t("pages.supplier.analytics.performance.labels.category", { defaultValue: "Kateqoriya" })}
+                                                                </label>
+                                                                <input
+                                                                    type="text"
+                                                                    className={inputClasses}
+                                                                    value={currentValues.category}
+                                                                    onChange={(event) => handleEditChange("category", event.target.value)}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    ) : (
+                                                        <>
+                                                            <p className="font-medium">{supplier.name}</p>
+                                                            <p className="text-zinc-500 text-sm">{supplier.category}</p>
+                                                        </>
+                                                    )}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    {isEditing ? (
+                                                        <>
+                                                            <button
+                                                                type="button"
+                                                                onClick={cancelEdit}
+                                                                className="px-3 py-1.5 text-sm font-medium border border-zinc-300 rounded-md hover:bg-zinc-100 transition-colors"
+                                                            >
+                                                                {t("common.cancel", { defaultValue: "İmtina" })}
+                                                            </button>
+                                                            <button
+                                                                type="button"
+                                                                onClick={saveEdit}
+                                                                className="px-3 py-1.5 text-sm font-medium bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                                                            >
+                                                                {t("common.save", { defaultValue: "Yadda saxla" })}
+                                                            </button>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => startEdit(supplier)}
+                                                                className="px-3 py-1.5 text-sm font-medium border border-zinc-300 rounded-md hover:bg-zinc-100 transition-colors"
+                                                                title={t("common.edit", { defaultValue: "Redaktə et" })}
+                                                            >
+                                                                {t("common.edit", { defaultValue: "Redaktə et" })}
+                                                            </button>
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => handleDelete(supplier.id)}
+                                                                className="px-3 py-1.5 text-sm font-medium border border-red-200 text-red-600 rounded-md hover:bg-red-50 transition-colors"
+                                                                title={t("common.delete", { defaultValue: "Sil" })}
+                                                            >
+                                                                {t("common.delete", { defaultValue: "Sil" })}
+                                                            </button>
+                                                        </>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            {isEditing ? (
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                                                    <div className="flex flex-col gap-1">
+                                                        <label className="text-xs font-medium text-zinc-500 uppercase tracking-wide">
+                                                            {t("pages.supplier.common.debt")}
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            className={inputClasses}
+                                                            value={currentValues.debt}
+                                                            onChange={(event) => handleEditChange("debt", event.target.value)}
+                                                        />
+                                                    </div>
+                                                    <div className="flex flex-col gap-1">
+                                                        <label className="text-xs font-medium text-zinc-500 uppercase tracking-wide">
+                                                            {t("pages.supplier.common.rating")}
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            className={inputClasses}
+                                                            value={currentValues.rating}
+                                                            onChange={(event) => handleEditChange("rating", event.target.value)}
+                                                        />
+                                                    </div>
+                                                    <div className="flex flex-col gap-1">
+                                                        <label className="text-xs font-medium text-zinc-500 uppercase tracking-wide">
+                                                            {t("pages.supplier.common.orders")}
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            className={inputClasses}
+                                                            value={currentValues.orders}
+                                                            onChange={(event) => handleEditChange("orders", event.target.value)}
+                                                        />
+                                                    </div>
+                                                    <div className="flex flex-col gap-1">
+                                                        <label className="text-xs font-medium text-zinc-500 uppercase tracking-wide">
+                                                            {t("pages.supplier.common.payments")}
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            className={inputClasses}
+                                                            value={currentValues.payments}
+                                                            onChange={(event) => handleEditChange("payments", event.target.value)}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+                                                    <div>
+                                                        <p className="text-zinc-500">{t("pages.supplier.common.debt")}</p>
+                                                        <p className="font-medium">{supplier.debt}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-zinc-500">{t("pages.supplier.common.rating")}</p>
+                                                        <p className="font-medium">{supplier.rating}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-zinc-500">{t("pages.supplier.common.orders")}</p>
+                                                        <p className="font-medium">{supplier.orders}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-zinc-500">{t("pages.supplier.common.payments")}</p>
+                                                        <p className="font-medium">{supplier.payments}</p>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })
+                            )}
                         </div>
                     </div>
                 }
