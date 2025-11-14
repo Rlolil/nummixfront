@@ -23,8 +23,8 @@ const Ai = () => {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen dark:bg-zinc-800">
-      <div className="flex dark:bg-zinc-800 dark:text-white items-center justify-between px-6 py-3 mt-20 sm:mt-0 bg-white shadow-lg rounded-sm relative z-10 sm:ml-[80px]">
+    <div className="sm:ml-[100px] ml-0 flex flex-col min-h-screen dark:bg-zinc-800">
+      <div className="flex dark:bg-zinc-800 dark:text-white items-center justify-between px-6 py-3 mt-20 sm:mt-0 bg-white shadow-lg rounded-sm relative z-10 ">
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600">
             <svg
