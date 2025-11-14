@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+
+import React, { useEffect, useRef, useState } from 'react';
 import { Package, Box, TrendingDown, Grid3x3, Search, Plus, MoreVertical, Download, FileText, Eye } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 export default function EsasVesaitler() {
-  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('management');
   const [searchQuery, setSearchQuery] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
@@ -25,8 +25,20 @@ export default function EsasVesaitler() {
     warranty: '',
     notes: ''
   });
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
+  const [activeMenuId, setActiveMenuId] = useState(null);
 
-  // vesaitler
+  useEffect(() => {
+    const handler = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
   const assets = [
     {
       invNo: 'INV-2024-001',
@@ -80,63 +92,61 @@ export default function EsasVesaitler() {
     }
   ];
 
-  // Dashboard 
   const stats = [
     {
-      title: t('pages.assets.stats.totalValue', { defaultValue: 'Ümumi dəyər' }),
+      title: 'Ümumi dəyər',
       value: '549,150',
-      subtitle: t('pages.assets.stats.totalValueSubtitle', { defaultValue: 'İlkin dəyər' }),
+      subtitle: 'İlkin dəyər',
       icon: <Package className="w-5 h-5" />
     },
     {
-      title: t('pages.assets.stats.currentValue', { defaultValue: 'Cari dəyər' }),
+      title: 'Cari dəyər',
       value: '481,037.5',
-      subtitle: t('pages.assets.stats.currentValueSubtitle', { defaultValue: 'Amortizasiya sonrası' }),
+      subtitle: 'Amortizasiya sonrası',
       icon: <Box className="w-5 h-5" />
     },
     {
-      title: t('pages.assets.stats.depreciation', { defaultValue: 'Amortizasiya' }),
+      title: 'Amortizasiya',
       value: '68,112.5',
-      subtitle: t('pages.assets.stats.depreciationSubtitle', { defaultValue: 'Yığılmış' }),
+      subtitle: 'Yığılmış',
       icon: <TrendingDown className="w-5 h-5" />
     },
     {
-      title: t('pages.assets.stats.assetCount', { defaultValue: 'Aktiv sayı' }),
+      title: 'Aktiv sayı',
       value: String(assets.length),
-      subtitle: t('pages.assets.stats.assetCountSubtitle', { count: assets.length, defaultValue: `Cəmi ${assets.length} aktivdən` }),
+      subtitle: `Cəmi ${assets.length} aktivdən`,
       icon: <Grid3x3 className="w-5 h-5" />
     }
   ];
 
   const categories = [
-    { name: t('pages.assets.form.categoryOptions.property'), count: 1, percentage: 65, color: '#FF8A65' },
-    { name: t('pages.assets.form.categoryOptions.officeEquipment'), count: 1, percentage: 15, color: '#FFB74D' },
-    { name: t('pages.assets.form.categoryOptions.vehicles'), count: 1, percentage: 10, color: '#4DB6AC' },
-    { name: t('pages.assets.form.categoryOptions.computerEquipment'), count: 2, percentage: 10, color: '#64B5F6' }
+    { name: 'Əmlak', count: 1, percentage: 65, color: '#FF8A65' },
+    { name: 'Ofis avadanlığı', count: 1, percentage: 15, color: '#FFB74D' },
+    { name: 'Nəqliyyat vasitələri', count: 1, percentage: 10, color: '#4DB6AC' },
+    { name: 'Kompüter avadanlığı', count: 2, percentage: 10, color: '#64B5F6' }
   ];
 
-  // Branch data
   const branchData = [
-    { name: t('pages.assets.form.branchOptions.it'), value: 25000 },
-    { name: t('pages.assets.form.branchOptions.transport', { defaultValue: 'Transport' }), value: 55000 },
-    { name: t('pages.assets.form.branchOptions.accounting'), value: 35000 },
-    { name: t('pages.assets.form.locationOptions.bakuOffice'), value: 420000 },
-    { name: t('pages.assets.form.branchOptions.design', { defaultValue: 'Design Department' }), value: 15000 }
+    { name: 'IT Şöbəsi', value: 25000 },
+    { name: 'Transport', value: 55000 },
+    { name: 'Mühasibatlıq', value: 35000 },
+    { name: 'Bakı Ofisi', value: 420000 },
+    { name: 'Dizayn Şöbəsi', value: 15000 }
   ];
 
   const maxValue = Math.max(...branchData.map(d => d.value));
 
   const generateExcelReport = () => {
     const headers = [
-      t('pages.assets.table.invNo'),
-      t('pages.assets.table.name'),
-      t('pages.assets.table.category'),
-      t('pages.assets.table.account'),
-      t('pages.assets.table.location'),
-      t('pages.assets.table.initialValue') + ' (₼)',
-      t('pages.assets.table.currentValue') + ' (₼)',
-      t('pages.assets.categoryReportModal.headers.depreciation') + ' (₼)',
-      t('pages.assets.table.status')
+      'İnv. №',
+      'Ad',
+      'Kateqoriya',
+      'Hesab',
+      'Yerləşmə',
+      'İlkin Dəyər (₼)',
+      'Cari Dəyər (₼)',
+      'Amortizasiya (₼)',
+      'Status'
     ];
 
     const csvContent = [
@@ -158,10 +168,9 @@ export default function EsasVesaitler() {
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     const date = new Date().toISOString().split('T')[0];
-    link.download = t('pages.assets.export.fileNames.generalCsv', { date, defaultValue: `assets_${date}.csv` });
+    link.download = `assets_${date}.csv`;
     link.click();
   };
-
 
   const generateDepreciationPDF = () => {
     const reportContent = `
@@ -188,21 +197,19 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     const date = new Date().toISOString().split('T')[0];
-    link.download = t('pages.assets.export.fileNames.depreciationTxt', { date, defaultValue: `depreciation_report_${date}.txt` });
+    link.download = `depreciation_report_${date}.txt`;
     link.click();
   };
 
-  // Category report data
   const categoryReportData = [
-    { name: t('pages.assets.form.categoryOptions.property'), count: 1, totalValue: 500000, currentValue: 445000, depreciation: 55000 },
-    { name: t('pages.assets.form.categoryOptions.vehicles'), count: 1, totalValue: 45000, currentValue: 32500, depreciation: 12500 },
-    { name: t('pages.assets.form.categoryOptions.computerEquipment'), count: 2, totalValue: 2950, currentValue: 2487.5, depreciation: 462.5 },
-    { name: t('pages.assets.form.categoryOptions.officeEquipment'), count: 1, totalValue: 1200, currentValue: 1050, depreciation: 150 }
+    { name: 'Əmlak', count: 1, totalValue: 500000, currentValue: 445000, depreciation: 55000 },
+    { name: 'Nəqliyyat vasitələri', count: 1, totalValue: 45000, currentValue: 32500, depreciation: 12500 },
+    { name: 'Kompüter avadanlığı', count: 2, totalValue: 2950, currentValue: 2487.5, depreciation: 462.5 },
+    { name: 'Ofis avadanlığı', count: 1, totalValue: 1200, currentValue: 1050, depreciation: 150 }
   ];
 
-  // Branch report data ...........................
   const branchReportData = [
-    { name: t('pages.assets.form.locationOptions.bakuOffice'), count: 4, totalValue: 49150, currentValue: 35737.5 },
+    { name: 'Bakı Ofisi', count: 4, totalValue: 49150, currentValue: 35737.5 },
     { name: '28 May metrosu yaxınlığı', count: 1, totalValue: 500000, currentValue: 445000 }
   ];
 
@@ -213,63 +220,63 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8 ml-[0px] sm:ml-[100px]">
+    <div className="min-h-screen bg-[#FFFFFF] p-8 ml-[0px] sm:ml-[100px]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              {t('pages.assets.title')}
+            <h1 className="text-3xl font-bold text-[#001233] mb-2">
+              Əsas Vəsaitlərin İdarə Edilməsi
             </h1>
-            <p className="text-gray-600">
-              {t('pages.assets.subtitle')}
+            <p className="text-[#5C677D]">
+              Aktivlərin uçotu və amortizasiya hesablamaları
             </p>
           </div>
           {activeTab === 'assets' && (
             <button 
               onClick={() => setShowAddModal(true)}
-              className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors"
+              className="flex items-center gap-2 bg-[#0466CB] text-white px-4 py-2 rounded-lg hover:bg-[#0453A4] transition-colors shadow-sm"
             >
               <Plus className="w-5 h-5" />
-              {t('pages.assets.actions.newAsset')}
+              Yeni aktiv
             </button>
           )}
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-6 bg-white rounded-lg p-2 shadow-sm">
+        <div className="flex gap-2 mb-6 bg-white rounded-lg p-2 shadow-sm border border-[#979DAC]">
           <button
             onClick={() => setActiveTab('management')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
               activeTab === 'management'
-                ? 'bg-gray-100 text-gray-900'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-[#0466CB] text-white shadow-md'
+                : 'text-[#001233] hover:bg-[#979DAC]/10'
             }`}
           >
             <Package className="w-4 h-4" />
-            {t('pages.assets.tabs.management')}
+            İdarəetmə
           </button>
           <button
             onClick={() => setActiveTab('assets')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
               activeTab === 'assets'
-                ? 'bg-gray-100 text-gray-900'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-[#0466CB] text-white shadow-md'
+                : 'text-[#001233] hover:bg-[#979DAC]/10'
             }`}
           >
             <Grid3x3 className="w-4 h-4" />
-            {t('pages.assets.tabs.assets')}
+            Aktivlər
           </button>
           <button
             onClick={() => setActiveTab('reports')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
               activeTab === 'reports'
-                ? 'bg-gray-100 text-gray-900'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-[#0466CB] text-white shadow-md'
+                : 'text-[#001233] hover:bg-[#979DAC]/10'
             }`}
           >
             <TrendingDown className="w-4 h-4" />
-            {t('pages.assets.tabs.reports')}
+            Hesabatlar
           </button>
         </div>
 
@@ -280,29 +287,29 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border border-[#979DAC]"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-gray-600 text-sm">{stat.title}</span>
-                    <div className="text-gray-400">{stat.icon}</div>
+                    <span className="text-[#5C677D] text-sm font-medium">{stat.title}</span>
+                    <div className="text-[#0466CB]">{stat.icon}</div>
                   </div>
                   <div className="mb-1">
-                    <span className="text-3xl font-bold text-gray-900">
+                    <span className="text-3xl font-bold text-[#023E7D]">
                       {stat.value}
                     </span>
-                    {index < 3 && <span className="text-xl text-gray-500 ml-1">₼</span>}
+                    {index < 3 && <span className="text-xl text-[#7D8597] ml-1">₼</span>}
                   </div>
-                  <div className="text-sm text-gray-500">{stat.subtitle}</div>
+                  <div className="text-sm text-[#7D8597]">{stat.subtitle}</div>
                 </div>
               ))}
             </div>
 
             {/* Charts Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Category */}
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <h2 className="text-lg font-semibold text-gray-900 mb-6">
-                  {t('pages.assets.charts.categoryDistribution')}
+              {/* Category Chart */}
+              <div className="bg-white rounded-lg p-6 shadow-md border border-[#979DAC]">
+                <h2 className="text-lg font-semibold text-[#023E7D] mb-6">
+                  Kateqoriyalar üzrə bölgü
                 </h2>
                 <div className="flex items-center justify-center">
                   <div className="relative w-64 h-64">
@@ -337,7 +344,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                           className="w-3 h-3 rounded-sm"
                           style={{ backgroundColor: cat.color }}
                         />
-                        <span className="text-sm text-gray-700">
+                        <span className="text-sm text-[#001233]">
                           {cat.name} ({cat.count})
                         </span>
                       </div>
@@ -346,26 +353,25 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                 </div>
               </div>
 
-              {/* sobeler*/}
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <h2 className="text-lg font-semibold text-gray-900 mb-6 flex-auto">
-                  {t('pages.assets.charts.valueByDepartment')}
+              {/* Branch Chart */}
+              <div className="bg-white rounded-lg p-6 shadow-md border border-[#979DAC]">
+                <h2 className="text-lg font-semibold text-[#023E7D] mb-6">
+                  Şöbələr üzrə dəyər
                 </h2>
-                <div className="h-80 flex items justify-between gap-4 pl-5 pb-3 relative">
-                  <div className="absolute left-0 top-0 bottom-4 flex flex-col justify-between text-xs text-gray-700">
-                    <span>600000</span>
-                    <span>450000</span>
-                    <span>300000</span>
-                    <span>150000</span>
+                <div className="h-80 flex items justify-between gap-4 pl-12 pb-3 relative">
+                  <div className="absolute left-0 top-0 bottom-4 flex flex-col justify-between text-xs text-[#5C677D] font-medium">
+                    <span>600K</span>
+                    <span>450K</span>
+                    <span>300K</span>
+                    <span>150K</span>
                     <span>0</span>
                   </div>
                   
-                  {/* şobeler uzre deyer */}
                   {branchData.map((branch, index) => (
                     <div key={index} className="flex-auto flex-col items-center">
                       <div className="w-full flex items-end justify-center" style={{ height: '270px' }}>
                         <div
-                          className="w-14 bg-indigo-500 rounded-t transition-all duration-700 hover:bg-indigo-600"
+                          className="w-14 bg-[#0466CB] rounded-t transition-all duration-700 hover:bg-[#0453A4] cursor-pointer"
                           style={{ 
                             height: `${(branch.value / maxValue) * 100}%`,
                             minHeight: '4px'
@@ -373,7 +379,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                           title={`${branch.value.toLocaleString()} ₼`}
                         />
                       </div>
-                      <span className="text-xs text-gray-800 text-center transform -rotate- origin-top-left mt- whitespace-nowrap">
+                      <span className="text-xs text-[#001233] text-center mt-2 whitespace-nowrap">
                         {branch.name}
                       </span>
                     </div>
@@ -385,17 +391,17 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
         )}
 
         {activeTab === 'assets' && (
-          <div className="bg-white rounded-lg shadow-sm">
+          <div className="bg-white rounded-lg shadow-md border border-[#979DAC]">
             {/* Search Bar */}
-            <div className="p-4 border-b border-gray-200">
+            <div className="p-4 border-b border-[#979DAC]">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7D8597] w-5 h-5" />
                 <input
                   type="text"
-                  placeholder={t('pages.assets.searchPlaceholder')}
+                  placeholder="Aktiv axtar..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] focus:border-transparent"
                 />
               </div>
             </div>
@@ -403,72 +409,101 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
             {/* Table */}
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-200">
+                <thead className="bg-[#002855] border-b border-[#33415C]">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      {t('pages.assets.table.invNo')}
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      İnv. №
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      {t('pages.assets.table.name')}
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      Ad
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      {t('pages.assets.table.category')}
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      Kateqoriya
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      {t('pages.assets.table.account')}
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      Hesab
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      {t('pages.assets.table.location')}
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      Yerləşmə
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      {t('pages.assets.table.initialValue')}
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      İlkin dəyər
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      {t('pages.assets.table.currentValue')}
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      Cari dəyər
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
-                      {t('pages.assets.table.status')}
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {filteredAssets.map((asset, index) => (
-                    <tr key={index} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {asset.invNo}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {asset.name}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        {asset.category}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        {asset.account}
-                      </td>
-                      <td className="px-6 py-4 text-sm text-gray-700">
-                        {asset.location}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {asset.initialValue} ₼
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {asset.currentValue} ₼
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-3 py-1 inline-flex text-xs leading-5 font-medium rounded-full bg-black text-white">
-                          {asset.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <button className="hover:text-gray-700">
-                          <MoreVertical className="w-5 h-5" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                <tbody className="bg-white divide-y divide-[#979DAC]">
+                  {filteredAssets.map((asset, index) => {
+                    const isOpen = activeMenuId === index;
+
+                    return (
+                      <tr key={index} className="hover:bg-[#979DAC]/10 transition-colors">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-[#001233] font-medium">
+                          {asset.invNo}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-[#001233]">
+                          {asset.name}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-[#5C677D]">
+                          {asset.category}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-[#5C677D]">
+                          {asset.account}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-[#5C677D]">
+                          {asset.location}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-[#023E7D] font-semibold">
+                          {asset.initialValue} ₼
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-[#023E7D] font-semibold">
+                          {asset.currentValue} ₼
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className="px-3 py-1 inline-flex text-xs leading-5 font-medium rounded-full bg-[#0466CB] text-white">
+                            {asset.status}
+                          </span>
+                        </td>
+
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-[#5C677D] relative">
+                          <button
+                            className="hover:text-[#001233]"
+                            onClick={() => setActiveMenuId(isOpen ? null : index)}
+                            >
+                            <MoreVertical className="w-5 h-5" />
+                          </button>
+
+                          {isOpen && (
+                            <div
+                              ref={menuRef}
+                              className="absolute right-0 mt-2 w-32 bg-white shadow-lg rounded-md border border-[#979DAC] z-50"
+                            >
+                              <button
+                                className="block w-full text-left px-4 py-2 hover:bg-[#979DAC]/10 text-[#001233]"
+                                onClick={() => alert("Redaktə et")}
+                              >
+                                Redaktə et
+                              </button>
+
+                              <button
+                                className="block w-full text-left px-4 py-2 hover:bg-red-50 text-red-600"
+                                onClick={() => alert("Sil")}
+                              >
+                                Sil
+                              </button>
+                            </div>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -478,70 +513,70 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
         {activeTab === 'reports' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* General report */}
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                {t('pages.assets.reports.general.title')}
+            <div className="bg-white rounded-lg p-6 shadow-md border border-[#979DAC]">
+              <h2 className="text-lg font-semibold text-[#023E7D] mb-2">
+                Ümumi hesabat
               </h2>
-              <p className="text-gray-600 text-sm mb-6">
-                {t('pages.assets.reports.general.desc')}
+              <p className="text-[#5C677D] text-sm mb-6">
+                Bütün aktivlərin tam siyahısı və məlumatları
               </p>
               <button 
                 onClick={generateExcelReport}
-                className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 border border-[#0466CB] text-[#0466CB] rounded-lg text-sm font-medium hover:bg-[#0466CB] hover:text-white transition-colors"
               >
                 <Download className="w-4 h-4" />
-                {t('pages.assets.reports.general.downloadExcel')}
+                Excel yüklə
               </button>
             </div>
 
             {/* Depreciation report */}
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                {t('pages.assets.reports.depreciation.title')}
+            <div className="bg-white rounded-lg p-6 shadow-md border border-[#979DAC]">
+              <h2 className="text-lg font-semibold text-[#023E7D] mb-2">
+                Amortizasiya hesabatı
               </h2>
-              <p className="text-gray-600 text-sm mb-6">
-                {t('pages.assets.reports.depreciation.desc')}
+              <p className="text-[#5C677D] text-sm mb-6">
+                Aktivlərin amortizasiya məlumatları
               </p>
               <button 
                 onClick={generateDepreciationPDF}
-                className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 border border-[#0466CB] text-[#0466CB] rounded-lg text-sm font-medium hover:bg-[#0466CB] hover:text-white transition-colors"
               >
                 <FileText className="w-4 h-4" />
-                {t('pages.assets.reports.depreciation.downloadPDF')}
+                PDF yüklə
               </button>
             </div>
 
             {/* By Category */}
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                {t('pages.assets.reports.byCategory.title')}
+            <div className="bg-white rounded-lg p-6 shadow-md border border-[#979DAC]">
+              <h2 className="text-lg font-semibold text-[#023E7D] mb-2">
+                Kateqoriyalar üzrə
               </h2>
-              <p className="text-gray-600 text-sm mb-6">
-                {t('pages.assets.reports.byCategory.desc')}
+              <p className="text-[#5C677D] text-sm mb-6">
+                Aktivlərin kateqoriyalar üzrə təhlili
               </p>
               <button 
                 onClick={() => setShowCategoryReport(true)}
-                className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 border border-[#0466CB] text-[#0466CB] rounded-lg text-sm font-medium hover:bg-[#0466CB] hover:text-white transition-colors"
               >
                 <Eye className="w-4 h-4" />
-                {t('pages.assets.actions.view')}
+                Bax
               </button>
             </div>
 
             {/* By Department */}
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                {t('pages.assets.reports.byDepartment.title')}
+            <div className="bg-white rounded-lg p-6 shadow-md border border-[#979DAC]">
+              <h2 className="text-lg font-semibold text-[#023E7D] mb-2">
+                Yerləşmə üzrə
               </h2>
-              <p className="text-gray-600 text-sm mb-6">
-                {t('pages.assets.reports.byDepartment.desc')}
+              <p className="text-[#5C677D] text-sm mb-6">
+                Aktivlərin yerləşmə üzrə bölgüsü
               </p>
               <button 
                 onClick={() => setShowBranchReport(true)}
-                className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 border border-[#0466CB] text-[#0466CB] rounded-lg text-sm font-medium hover:bg-[#0466CB] hover:text-white transition-colors"
               >
                 <Eye className="w-4 h-4" />
-                {t('pages.assets.actions.view')}
+                Bax
               </button>
             </div>
           </div>
@@ -551,12 +586,12 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
       {/* Add Asset Modal */}
       {showAddModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowAddModal(false)}>
-          <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900">{t('pages.assets.modal.add.title')}</h2>
+          <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 bg-[#002855] px-6 py-4 flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-white">Yeni aktiv əlavə et</h2>
               <button 
                 onClick={() => setShowAddModal(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-white hover:text-[#979DAC]"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -566,19 +601,17 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Asset name */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('pages.assets.form.assetName')} <span className="text-red-500">*</span>
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
+                    Aktivin adı <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
                   />
                 </div>
-
                 {/* Inventory number */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -640,42 +673,41 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
-
-                {/* Initial value */}
+{/* Initial value */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.initialValue')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="number"
                     value={formData.initialValue}
                     onChange={(e) => setFormData({...formData, initialValue: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   />
                 </div>
 
                 {/* Residual value */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.residualValue')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="number"
                     value={formData.residualValue}
                     onChange={(e) => setFormData({...formData, residualValue: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   />
                 </div>
 
                 {/* Depreciation method */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.depreciationMethod')} <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={formData.depreciationMethod}
                     onChange={(e) => setFormData({...formData, depreciationMethod: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   >
                     <option value="Düzxətli">{t('pages.assets.form.depreciationMethods.straightLine')}</option>
                     <option value="Azalan qalıq">{t('pages.assets.form.depreciationMethods.decliningBalance')}</option>
@@ -685,26 +717,26 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
                 {/* Useful life */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.usefulLifeMonths')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="number"
                     value={formData.warranty}
                     onChange={(e) => setFormData({...formData, warranty: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   />
                 </div>
 
                 {/* Location */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.location')} <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={formData.location}
                     onChange={(e) => setFormData({...formData, location: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   >
                     <option value="">{t('pages.assets.form.selectLocation')}</option>
                     <option value="Bakı Ofisi">{t('pages.assets.form.locationOptions.bakuOffice')}</option>
@@ -715,13 +747,13 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
                 {/* Branch */}
                 <div >
-                  <label className="block text-sm font-medium  text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.branch')} <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={formData.branch}
                     onChange={(e) => setFormData({...formData, branch: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   >
                     <option value="">{t('pages.assets.form.selectBranch')}</option>
                     <option value="IT Şöbəsi">{t('pages.assets.form.branchOptions.it')}</option>
@@ -733,71 +765,71 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
                 {/* Supplier */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.supplier')} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     value={formData.responsible}
                     onChange={(e) => setFormData({...formData, responsible: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   />
                 </div>
 
                 {/* Serial number */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.serialNumber')}
                   </label>
                   <input
                     type="text"
                     value={formData.serialNo}
                     onChange={(e) => setFormData({...formData, serialNo: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   />
                 </div>
 
                 {/* Assigned to */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.assignedTo')}
                   </label>
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   />
                 </div>
 
                 {/* Warranty period */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.warrantyPeriodMonths')}
                   </label>
                   <input
                     type="time"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   />
                 </div>
 
                 {/* Notes - Full width */}
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#001233] mb-2">
                     {t('pages.assets.form.note')}
                   </label>
                   <textarea
                     value={formData.notes}
                     onChange={(e) => setFormData({...formData, notes: e.target.value})}
                     rows="3"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white"
                   />
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-gray-200">
+              <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-[#979DAC]">
                 <button
                   onClick={() => setShowAddModal(false)} 
-                  className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+                  className="px-4 py-2 border border-[#979DAC] rounded-lg text-[#001233] hover:bg-[#FFFFFF] transition-colors"
                   >
                   {t('pages.assets.buttons.cancel')}
                 </button>
@@ -805,7 +837,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                   onClick={() => {
                     setShowAddModal(false);
                   }}
-                  className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+                  className="px-4 py-2 bg-[#0466CB] text-white rounded-lg hover:bg-[#0453A4] transition-colors"
                 >
                   {t('pages.assets.buttons.save')}
                 </button>
@@ -819,11 +851,11 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
       {showCategoryReport && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowCategoryReport(false)}>
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900">{t('pages.assets.categoryReportModal.title')}</h2>
+            <div className="sticky top-0 bg-white border-b border-[#979DAC] px-6 py-4 flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-[#023E7D]">{t('pages.assets.categoryReportModal.title')}</h2>
               <button 
                 onClick={() => setShowCategoryReport(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-[#7D8597] hover:text-[#001233]"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -834,45 +866,45 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
             <div className="p-6">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gray-50 border-b-2 border-gray-200">
+                  <thead className="bg-[#002855] border-b-2 border-[#33415C]">
                     <tr>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.category')}</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.assetCount')}</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.initial')}</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.current')}</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.depreciation')}</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.categoryReportModal.headers.percent')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.categoryReportModal.headers.category')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.categoryReportModal.headers.assetCount')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.categoryReportModal.headers.initial')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.categoryReportModal.headers.current')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.categoryReportModal.headers.depreciation')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.categoryReportModal.headers.percent')}</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200">
+                  <tbody className="divide-y divide-[#979DAC]">
                     {categoryReportData.map((cat, index) => {
                       const percentage = ((cat.depreciation / cat.totalValue) * 100).toFixed(2);
                       return (
-                        <tr key={index} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 text-sm text-gray-900 font-medium">{cat.name}</td>
-                          <td className="px-6 py-4 text-sm text-gray-700">{cat.count}</td>
-                          <td className="px-6 py-4 text-sm text-gray-900">{cat.totalValue.toLocaleString()} ₼</td>
-                          <td className="px-6 py-4 text-sm text-gray-900">{cat.currentValue.toLocaleString()} ₼</td>
-                          <td className="px-6 py-4 text-sm text-gray-900">{cat.depreciation.toLocaleString()} ₼</td>
-                          <td className="px-6 py-4 text-sm text-gray-700">{percentage}%</td>
+                        <tr key={index} className="hover:bg-[#FFFFFF]">
+                          <td className="px-6 py-4 text-sm text-[#001233] font-medium">{cat.name}</td>
+                          <td className="px-6 py-4 text-sm text-[#5C677D]">{cat.count}</td>
+                          <td className="px-6 py-4 text-sm text-[#001233]">{cat.totalValue.toLocaleString()} ₼</td>
+                          <td className="px-6 py-4 text-sm text-[#001233]">{cat.currentValue.toLocaleString()} ₼</td>
+                          <td className="px-6 py-4 text-sm text-[#001233]">{cat.depreciation.toLocaleString()} ₼</td>
+                          <td className="px-6 py-4 text-sm text-[#5C677D]">{percentage}%</td>
                         </tr>
                       );
                     })}
-                    <tr className="bg-gray-50 font-semibold">
-                      <td className="px-6 py-4 text-sm text-gray-900">{t('pages.assets.categoryReportModal.total')}</td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                    <tr className="bg-[#001845] font-semibold">
+                      <td className="px-6 py-4 text-sm text-white">{t('pages.assets.categoryReportModal.total')}</td>
+                      <td className="px-6 py-4 text-sm text-white">
                         {categoryReportData.reduce((sum, cat) => sum + cat.count, 0)}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-4 text-sm text-white">
                         {categoryReportData.reduce((sum, cat) => sum + cat.totalValue, 0).toLocaleString()} ₼
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-4 text-sm text-white">
                         {categoryReportData.reduce((sum, cat) => sum + cat.currentValue, 0).toLocaleString()} ₼
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-4 text-sm text-white">
                         {categoryReportData.reduce((sum, cat) => sum + cat.depreciation, 0).toLocaleString()} ₼
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-700">
+                      <td className="px-6 py-4 text-sm text-white">
                         {((categoryReportData.reduce((sum, cat) => sum + cat.depreciation, 0) / 
                            categoryReportData.reduce((sum, cat) => sum + cat.totalValue, 0)) * 100).toFixed(2)}%
                       </td>
@@ -889,11 +921,11 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
       {showBranchReport && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowBranchReport(false)}>
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900">{t('pages.assets.branchReportModal.title')}</h2>
+            <div className="sticky top-0 bg-white border-b border-[#979DAC] px-6 py-4 flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-[#023E7D]">{t('pages.assets.branchReportModal.title')}</h2>
               <button 
                 onClick={() => setShowBranchReport(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-[#7D8597] hover:text-[#001233]"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -904,41 +936,41 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
             <div className="p-6">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gray-50 border-b-2 border-gray-200">
+                  <thead className="bg-[#002855] border-b-2 border-[#33415C]">
                     <tr>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.location')}</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.assetCount')}</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.initial')}</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.current')}</th>
-                      <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">{t('pages.assets.branchReportModal.headers.share')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.branchReportModal.headers.location')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.branchReportModal.headers.assetCount')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.branchReportModal.headers.initial')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.branchReportModal.headers.current')}</th>
+                      <th className="px-6 py-3 text-left text-sm font-semibold text-white">{t('pages.assets.branchReportModal.headers.share')}</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200">
+                  <tbody className="divide-y divide-[#979DAC]">
                     {branchReportData.map((branch, index) => {
                       const totalValue = branchReportData.reduce((sum, b) => sum + b.totalValue, 0);
                       const share = ((branch.totalValue / totalValue) * 100).toFixed(2);
                       return (
-                        <tr key={index} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 text-sm text-gray-900 font-medium">{branch.name}</td>
-                          <td className="px-6 py-4 text-sm text-gray-700">{branch.count}</td>
-                          <td className="px-6 py-4 text-sm text-gray-900">{branch.totalValue.toLocaleString()} ₼</td>
-                          <td className="px-6 py-4 text-sm text-gray-900">{branch.currentValue.toLocaleString()} ₼</td>
-                          <td className="px-6 py-4 text-sm text-gray-700">{share}%</td>
+                        <tr key={index} className="hover:bg-[#FFFFFF]">
+                          <td className="px-6 py-4 text-sm text-[#001233] font-medium">{branch.name}</td>
+                          <td className="px-6 py-4 text-sm text-[#5C677D]">{branch.count}</td>
+                          <td className="px-6 py-4 text-sm text-[#001233]">{branch.totalValue.toLocaleString()} ₼</td>
+                          <td className="px-6 py-4 text-sm text-[#001233]">{branch.currentValue.toLocaleString()} ₼</td>
+                          <td className="px-6 py-4 text-sm text-[#5C677D]">{share}%</td>
                         </tr>
                       );
                     })}
-                    <tr className="bg-gray-50 font-semibold">
-                      <td className="px-6 py-4 text-sm text-gray-900">{t('pages.assets.branchReportModal.total')}</td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                    <tr className="bg-[#001845] font-semibold">
+                      <td className="px-6 py-4 text-sm text-white">{t('pages.assets.branchReportModal.total')}</td>
+                      <td className="px-6 py-4 text-sm text-white">
                         {branchReportData.reduce((sum, b) => sum + b.count, 0)}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-4 text-sm text-white">
                         {branchReportData.reduce((sum, b) => sum + b.totalValue, 0).toLocaleString()} ₼
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-4 text-sm text-white">
                         {branchReportData.reduce((sum, b) => sum + b.currentValue, 0).toLocaleString()} ₼
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-700">100%</td>
+                      <td className="px-6 py-4 text-sm text-white">100%</td>
                     </tr>
                   </tbody>
                 </table>
