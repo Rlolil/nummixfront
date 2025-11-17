@@ -65,7 +65,7 @@
 // export default CashFlow;
 
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
 import {
   LineChart,
@@ -81,7 +81,22 @@ import {
 const CashFlow = () => {
   const { t } = useTranslation();
 
-  const isDark = document.documentElement.classList.contains('dark'); // Dark mode yoxlanışı
+  const [isDark, setIsDark] = useState(
+    document.documentElement.classList.contains("dark")
+  );
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const data = [
     { name: t('pages.finance.common.months.jun', 'Jun'), actual: 68000, forecast: null },
@@ -93,48 +108,74 @@ const CashFlow = () => {
   ];
 
   return (
-    <div className={`p-4 rounded-xl shadow-md ${isDark ? "bg-gray-800" : "bg-white"}`}>
-      <h2 className={`text-lg font-bold mb-1 ${isDark ? "text-white" : "text-gray-900"}`}>
-        {t('pages.finance.analytics.cashFlow.title')}
+    <div
+      className={`p-4 rounded-xl shadow-md border ${
+        isDark
+          ? "bg-[#33415C] border-[#5C677D]"
+          : "bg-white border-[#979DAC]"
+      }`}
+    >
+      <h2
+        className={`text-lg font-bold mb-1 ${
+          isDark ? "text-white" : "text-[#023E7D]"
+        }`}
+      >
+        {t("pages.finance.analytics.cashFlow.title")}
       </h2>
-      <p className={`mb-4 ${isDark ? "text-gray-300" : "text-gray-500"}`}>
-        {t('pages.finance.analytics.cashFlow.subtitle')}
+
+      <p
+        className={`mb-4 ${isDark ? "text-[#D7E3FC]" : "text-[#7D8597]"}`}
+      >
+        {t("pages.finance.analytics.cashFlow.subtitle")}
       </p>
 
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "#374151" : "#E5E7EB"} />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke={isDark ? "#5C677D" : "#E5E7EB"}
+          />
+
           <XAxis
             dataKey="name"
-            stroke={isDark ? "#A6A4A4" : "#374151"}
-            tick={{ fill: isDark ? "#A6A4A4" : "#374151" }}
+            stroke={isDark ? "#D7E3FC" : "#023E7D"}
+            tick={{ fill: isDark ? "#D7E3FC" : "#023E7D" }}
           />
+
           <YAxis
-            stroke={isDark ? "#A6A4A4" : "#374151"}
-            tick={{ fill: isDark ? "#A6A4A4" : "#374151" }}
+            stroke={isDark ? "#D7E3FC" : "#023E7D"}
+            tick={{ fill: isDark ? "#D7E3FC" : "#023E7D" }}
           />
+
           <Tooltip
             contentStyle={{
-              backgroundColor: isDark ? "#1F2937" : "#fff",
-              borderColor: isDark ? "#374151" : "#E5E7EB",
-              color: isDark ? "#A6A4A4" : "#000",
+              backgroundColor: isDark ? "#001845" : "#fff",
+              borderColor: isDark ? "#5C677D" : "#E5E7EB",
+              color: isDark ? "#fff" : "#023E7D",
             }}
           />
-          <Legend wrapperStyle={{ color: isDark ? "#A6A4A4" : "#374151" }} />
+
+          <Legend
+            wrapperStyle={{
+              color: isDark ? "#D7E3FC" : "#023E7D",
+            }}
+          />
+
           <Line
             type="monotone"
             dataKey="actual"
-            name={t('pages.finance.analytics.cashFlow.legend.actual', 'Actual')}
-            stroke="#2563eb"
+            name={t('pages.finance.analytics.cashFlow.legend.actual')}
+            stroke="#0466CB"
             strokeWidth={3}
             dot={{ r: 5 }}
             activeDot={{ r: 6 }}
           />
+
           <Line
             type="monotone"
             dataKey="forecast"
-            name={t('pages.finance.analytics.cashFlow.legend.forecast', 'Forecast')}
-            stroke="#10b981"
+            name={t('pages.finance.analytics.cashFlow.legend.forecast')}
+            stroke="#2BBF6A"
             strokeWidth={3}
             dot={{ r: 5 }}
             strokeDasharray="5 5"
@@ -142,11 +183,22 @@ const CashFlow = () => {
         </LineChart>
       </ResponsiveContainer>
 
-      <div className={`mt-4 p-3 rounded-lg ${isDark ? "bg-gray-700 text-white" : "bg-blue-50 text-gray-800"}`}>
-        <strong>{t('pages.finance.analytics.cashFlow.ai.title')}</strong> {t('pages.finance.analytics.cashFlow.ai.text', { avg: '72,667 AZN', max: '75,000 AZN' })}
+      <div
+        className={`mt-4 p-3 rounded-lg ${
+          isDark
+            ? "bg-[#001845] text-white"
+            : "bg-[#EFF6FF] text-[#023E7D]"
+        }`}
+      >
+        <strong>{t("pages.finance.analytics.cashFlow.ai.title")}</strong>{" "}
+        {t("pages.finance.analytics.cashFlow.ai.text", {
+          avg: "72,667 AZN",
+          max: "75,000 AZN",
+        })}
       </div>
     </div>
   );
 };
 
 export default CashFlow;
+

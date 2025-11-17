@@ -8,7 +8,7 @@ function XercLimiti() {
   const faiz = Math.round((cariXerc / limit) * 100);
 
   return (
-    <div className="bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-xl shadow-sm p-5 flex-1">
+    <div className="bg-[#FFFFFF] dark:bg-[#33415C] border border-[#979DAC] dark:border-[#5C677D] rounded-xl shadow-sm p-5 flex-1">
       <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">
         {t("pages.ai.dashboard.expenseLimit.title")}
       </h2>

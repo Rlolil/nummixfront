@@ -8,10 +8,11 @@ const SatisHedefi = () => {
   const faiz = Math.round((cariSatis / hedef) * 100);
 
   return (
-    <div className="bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-xl shadow-sm p-5 flex-1">
+    <div className="bg-[#FFFFFF] dark:bg-[#33415C] border border-[#979DAC] dark:border-[#5C677D] rounded-xl shadow-sm p-5 flex-1">
       <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">
         {t("pages.ai.dashboard.salesTarget.title")}
       </h2>
+
       <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
         {t("pages.ai.dashboard.salesTarget.subtitle")}
       </p>
@@ -25,7 +26,7 @@ const SatisHedefi = () => {
 
       <div className="w-full bg-gray-200 dark:bg-zinc-700 h-2 rounded-full overflow-hidden">
         <div
-          className="bg-gray-900 dark:bg-green-500 h-full rounded-full"
+          className="bg-[#023E7D] dark:bg-green-500 h-full rounded-full"
           style={{ width: `${faiz}%` }}
         ></div>
       </div>

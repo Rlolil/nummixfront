@@ -166,7 +166,7 @@ const IdarePaneli = () => {
   ];
 
   return (
-    <div className="container mx-auto px-2 py-4 bg-[#FFFFFF] dark:bg-[#001233] ">
+    <div className="container mx-auto bg-[#FFFFFF] dark:bg-[#001233] ">
       <div>
         <h1 className="text-[24px] font-semibold text-[#023E7D] dark:text-[#FFFFFF]">
           {t("pages.finance.controlPanel.title")}

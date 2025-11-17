@@ -39,7 +39,7 @@ const suppliers = [
 const Techizad = () => {
   const { t } = useTranslation();
   return (
-    <div className="p-6 mt-10 bg-gray-50 dark:bg-zinc-900 rounded-xl shadow-sm transition-colors">
+    <div className="p-6 mt-10 bg-[#FFFFFF] dark:bg-[#33415C] border border-[#979DAC] dark:border-[#5C677D]  rounded-xl shadow-sm transition-colors">
       <h2 className="text-lg font-semibold mb-1 text-gray-800 dark:text-gray-100">
         {t("pages.ai.warehouse.suppliers.title")}
       </h2>

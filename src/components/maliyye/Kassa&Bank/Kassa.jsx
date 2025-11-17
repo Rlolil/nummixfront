@@ -119,7 +119,7 @@ const Kassa = () => {
   else document.body.style.overflow = "auto";
 
   return (
-    <div className="container mx-auto px-2 py-4 bg-[#FFFFFF] dark:bg-[#001233] min-h-screen">
+    <div className="container mx-auto  bg-[#FFFFFF] dark:bg-[#001233] min-h-screen">
       <div className='flex flex-col sm:flex-row justify-between sm:items-center'>
         <div>
           <h1 className="text-[24px] font-semibold text-[#023E7D] dark:text-[#FFFFFF]">{t('pages.finance.cashBank.title')}</h1>
