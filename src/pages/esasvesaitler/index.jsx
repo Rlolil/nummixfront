@@ -360,10 +360,10 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                 </h2>
                 <div className="h-80 flex items justify-between gap-4 pl-12 pb-3 relative">
                   <div className="absolute left-0 top-0 bottom-4 flex flex-col justify-between text-xs text-[#5C677D] font-medium">
-                    <span>600K</span>
-                    <span>450K</span>
-                    <span>300K</span>
-                    <span>150K</span>
+                    <span>600</span>
+                    <span>450</span>
+                    <span>300</span>
+                    <span>150</span>
                     <span>0</span>
                   </div>
                   
@@ -525,7 +525,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
                 className="flex items-center gap-2 px-4 py-2 border border-[#0466CB] text-[#0466CB] rounded-lg text-sm font-medium hover:bg-[#0466CB] hover:text-white transition-colors"
               >
                 <Download className="w-4 h-4" />
-                Excel yüklə
+               <p>Excel yüklə</p> 
               </button>
             </div>
 
@@ -585,7 +585,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
       {/* Add Asset Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowAddModal(false)}>
+        <div className="fixed inset-0 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowAddModal(false)}>
           <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="sticky top-0 bg-[#002855] px-6 py-4 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-white">Yeni aktiv əlavə et</h2>
@@ -849,7 +849,7 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
 
       {/*  Modal */}
       {showCategoryReport && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowCategoryReport(false)}>
+        <div className="fixed inset-0 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowCategoryReport(false)}>
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="sticky top-0 bg-white border-b border-[#979DAC] px-6 py-4 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-[#023E7D]">{t('pages.assets.categoryReportModal.title')}</h2>
@@ -917,9 +917,9 @@ Hesabat tarixi: ${new Date().toLocaleString('az-AZ')}
         </div>
       )}
 
-      {/*  Modal */}
+      {/*  the last one Modal */}
       {showBranchReport && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowBranchReport(false)}>
+        <div className="fixed inset-0 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowBranchReport(false)}>
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="sticky top-0 bg-white border-b border-[#979DAC] px-6 py-4 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-[#023E7D]">{t('pages.assets.branchReportModal.title')}</h2>
