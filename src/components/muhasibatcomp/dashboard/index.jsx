@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   FiDollarSign,
   FiTrendingUp,
@@ -52,89 +53,95 @@ const taxesBase = [
 
 const DashboardCards = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    const theme = localStorage.getItem('theme') || 'light';
+    const root = window.document.documentElement;
+    if (theme === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, []);
   const taxes = taxesBase.map((x) => ({
     ...x,
     name: t(x.nameKey),
     status: t(x.statusKey),
   }));
   return (
-    <div>
+    <div className="bg-[#FFFFFF] text-[#001233]">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4  my-4">
-        <div className="bg-white text-gray-900 flex flex-col gap-4 rounded-xl border shadow-sm border-gray-300 p-6">
+        <div className="bg-[#FFFFFF] text-[#001233] flex flex-col gap-4 rounded-xl border shadow-sm border-[#33415C] p-6">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium">{t('pages.accounting.dashboard.cards.totalRevenue')}</h4>
-            <FiDollarSign className="text-gray-500" />
+            <h4 className="font-medium text-[#5C677D]">{t('pages.accounting.dashboard.cards.totalRevenue')}</h4>
+            <FiDollarSign className="text-[#001233]" />
           </div>
           <div>
             <div className="text-2xl font-semibold">₼675.000</div>
-            <p className="text-xs text-gray-500 flex items-center gap-1 mt-1">
+            <p className="text-xs text-[#7D8597] flex items-center gap-1 mt-1">
               <FiTrendingUp className="text-green-600" />
               <span className="text-green-600 font-medium">+12.5%</span>
               {t('pages.accounting.dashboard.cards.fromLastQuarter', { defaultValue: 'from last quarter' })}
             </p>
           </div>
         </div>
-        <div className="bg-white text-gray-900 flex flex-col gap-4 rounded-xl border  shadow-sm border-gray-300 p-6">
+        <div className="bg-[#FFFFFF] text-[#001233] flex flex-col gap-4 rounded-xl border  shadow-sm border-[#33415C] p-6">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium">{t('pages.accounting.dashboard.cards.netIncome')}</h4>
-            <FiTrendingUp className="text-gray-500" />
+            <h4 className="font-medium text-[#5C677D]">{t('pages.accounting.dashboard.cards.netIncome')}</h4>
+            <FiTrendingUp className="text-[#001233]" />
           </div>
           <div>
             <div className="text-2xl font-semibold">₼54.000</div>
-            <p className="text-xs text-gray-500 flex items-center gap-1 mt-1">
+            <p className="text-xs text-[#7D8597] flex items-center gap-1 mt-1">
               <FiTrendingDown className="text-red-600" />
               <span className="text-red-600 font-medium">-8.2%</span>
               {t('pages.accounting.dashboard.cards.fromLastQuarter', { defaultValue: 'from last quarter' })}
             </p>
           </div>
         </div>
-        <div className="bg-white text-gray-900 flex flex-col gap-4 rounded-xl border  shadow-sm border-gray-300 p-6">
+        <div className="bg-[#FFFFFF] text-[#001233] flex flex-col gap-4 rounded-xl border  shadow-sm border-[#33415C] p-6">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium">{t('pages.accounting.dashboard.cards.totalAssets')}</h4>
-            <FiFileText className="text-gray-500" />
+            <h4 className="font-medium text-[#5C677D]">{t('pages.accounting.dashboard.cards.totalAssets')}</h4>
+            <FiFileText className="text-[#001233]" />
           </div>
           <div>
             <div className="text-2xl font-semibold">₼1.000.000</div>
-            <p className="text-xs text-gray-500 mt-1">{t('pages.accounting.dashboard.cards.liabilities')}: \u20bc265.500</p>
+            <p className="text-xs text-[#7D8597] mt-1">{t('pages.accounting.dashboard.cards.liabilities')}: \u20bc265.500</p>
           </div>
         </div>
-        <div className="bg-white text-gray-900 flex flex-col gap-4 rounded-xl border  shadow-sm border-gray-300 p-6">
+        <div className="bg-[#FFFFFF] text-[#001233] flex flex-col gap-4 rounded-xl border  shadow-sm border-[#33415C] p-6">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium">{t('pages.accounting.dashboard.cards.pendingTaxes')}</h4>
-            <FiAlertCircle className="text-gray-500" />
+            <h4 className="font-medium text-[#5C677D]">{t('pages.accounting.dashboard.cards.pendingTaxes')}</h4>
+            <FiAlertCircle className="text-[#001233]" />
           </div>
           <div>
             <div className="text-2xl font-semibold">2</div>
-            <p className="text-xs text-gray-500 mt-1">{t('pages.accounting.dashboard.cards.actionRequired')}</p>
+            <p className="text-xs text-[#7D8597] mt-1">{t('pages.accounting.dashboard.cards.actionRequired')}</p>
           </div>
         </div>
       </div>
       <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4 my-4">
-        <div className="border border-gray-300 p-4 rounded-xl shadow-sm bg-white">
-          <h3 className="text-lg font-medium mb-2">{t('pages.accounting.dashboard.charts.revenueVsExpenses6m')}</h3>
+        <div className="border border-[#33415C] p-4 rounded-xl shadow-sm bg-[#FFFFFF]">
+          <h3 className="text-lg font-medium mb-2 text-[#023E7D]">{t('pages.accounting.dashboard.charts.revenueVsExpenses6m')}</h3>
           <RevenueExpenseChart />
         </div>
-        <div className="border border-gray-300 p-4 rounded-xl shadow-sm bg-white">
-          <h3 className="text-lg font-medium mb-2">{t('pages.accounting.dashboard.charts.profitTrend')}</h3>
+        <div className="border border-[#33415C] p-4 rounded-xl shadow-sm bg-[#FFFFFF]">
+          <h3 className="text-lg font-medium mb-2 text-[#023E7D]">{t('pages.accounting.dashboard.charts.profitTrend')}</h3>
           <NetProfitChart />
         </div>
       </div>
       <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4 my-4">
-        <div className="border border-gray-300 p-4 rounded-xl shadow-sm bg-white">
-          <h3 className="text-lg font-medium mb-2">{t('pages.accounting.dashboard.charts.balanceSheetDistribution')}</h3>
+        <div className="border border-[#33415C] p-4 rounded-xl shadow-sm bg-[#FFFFFF]">
+          <h3 className="text-lg font-medium mb-2 text-[#023E7D]">{t('pages.accounting.dashboard.charts.balanceSheetDistribution')}</h3>
           <BalancePieChart />
         </div>
-        <div className="border border-gray-300 p-4 rounded-xl shadow-sm bg-white">
-          <h3 className="text-lg font-medium mb-2">{t('pages.accounting.dashboard.upcomingTaxObligations')}</h3>
+        <div className="border border-[#33415C] p-4 rounded-xl shadow-sm bg-[#FFFFFF]">
+          <h3 className="text-lg font-medium mb-2 text-[#023E7D]">{t('pages.accounting.dashboard.upcomingTaxObligations')}</h3>
           <div className="pb-6 space-y-4">
             {taxes.map((tax, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between border-b pb-3 last:border-0"
+                className="flex items-center justify-between border-b border-[#979DAC] pb-3 last:border-0"
               >
                 <div>
                   <p className="font-medium">{tax.name}</p>
-                  <p className="text-sm text-muted-foreground">{tax.period}</p>
+                  <p className="text-sm text-[#7D8597]">{tax.period}</p>
                 </div>
                 <div className="text-right">
                   <p>{tax.amount}</p>

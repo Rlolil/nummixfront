@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineCheckCircle, AiOutlineAlert } from "react-icons/ai";
 import VatDecleration from "./vatdecleration";
 import ProfitTax from "./profittax";
@@ -53,6 +53,12 @@ const tabs = [
 export default function TaxDashboard() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("vat-declaration");
+  useEffect(() => {
+    const theme = localStorage.getItem('theme') || 'light';
+    const root = window.document.documentElement;
+    if (theme === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, []);
   const totalOutput = taxData.vat.output.reduce(
     (acc, item) => acc + item.vat,
     0
@@ -61,11 +67,11 @@ export default function TaxDashboard() {
   const vatPayable = totalOutput - totalInput;
 
   return (
-    <div className="p-4 sm:p-6">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">{t('pages.accounting.tabs.taxReports')}</h2>
+    <div className="p-4 sm:p-6 bg-[#FFFFFF] text-[#001233]">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-[#023E7D]">{t('pages.accounting.tabs.taxReports')}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
         {taxData.cards.map((card, idx) => (
-          <div key={idx} className="p-3 sm:p-4 border border-gray-200 rounded-lg shadow-sm">
+          <div key={idx} className="p-3 sm:p-4 border border-[#33415C] rounded-lg shadow-sm bg-[#FFFFFF]">
             <h4 className="text-xs sm:text-sm font-medium">{t(`pages.accounting.taxReports.cards.names.${card.title}`, { defaultValue: card.title })}</h4>
             <div className="text-xl sm:text-2xl mt-2 mb-2">
               ₼{card.amount.toLocaleString()}
@@ -82,36 +88,36 @@ export default function TaxDashboard() {
               )}
               <span>{t(`pages.accounting.taxReports.status.${card.status.toLowerCase()}`, { defaultValue: card.status })}</span>
             </div>
-            <p className="text-xs text-gray-500 mt-1">{t('pages.accounting.taxReports.due')}: {card.due}</p>
+            <p className="text-xs text-[#7D8597] mt-1">{t('pages.accounting.taxReports.due')}: {card.due}</p>
           </div>
         ))}
       </div>
-      <div className="p-3 sm:p-4 mb-4 sm:mb-6 border border-gray-200 rounded-lg bg-blue-50">
-        <h3 className="text-blue-900 text-sm sm:text-base font-medium mb-2 sm:mb-3">
+      <div className="p-3 sm:p-4 mb-4 sm:mb-6 border border-[#33415C] rounded-lg bg-[#0453A4]/10">
+        <h3 className="text-[#023E7D] text-sm sm:text-base font-medium mb-2 sm:mb-3">
           {t('pages.accounting.taxReports.egov.title')}
         </h3>
         <div className="flex flex-col gap-2 sm:gap-3">
           {taxData.egov.map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 sm:gap-3">
-              <AiOutlineCheckCircle className="text-blue-600 w-5 h-5 sm:w-6 sm:h-6" />
+              <AiOutlineCheckCircle className="text-[#0466CB] w-5 h-5 sm:w-6 sm:h-6" />
               <div>
-                <p className="font-medium text-blue-900 text-xs sm:text-sm">{t(`pages.accounting.taxReports.egov.names.${idx}`, { defaultValue: item.name })}</p>
-                <p className="text-xs sm:text-sm text-blue-700">{t(`pages.accounting.taxReports.egov.items.${idx}`, { defaultValue: item.desc })}</p>
-                <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">{item.link}</a>
+                <p className="font-medium text-[#023E7D] text-xs sm:text-sm">{t(`pages.accounting.taxReports.egov.names.${idx}`, { defaultValue: item.name })}</p>
+                <p className="text-xs sm:text-sm text-[#001233]">{t(`pages.accounting.taxReports.egov.items.${idx}`, { defaultValue: item.desc })}</p>
+                <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-[#0466CB] underline">{item.link}</a>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-2 bg-gray-100 rounded-2xl px-1 sm:px-2 py-2 mb-4 sm:mb-6 overflow-x-auto text-xs sm:text-sm font-medium">
+      <div className="grid grid-cols-2 bg-[#FFFFFF] border border-[#33415C] rounded-2xl px-1 sm:px-2 py-2 mb-4 sm:mb-6 overflow-x-auto text-xs sm:text-sm font-medium">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`py-1 sm:py-2 rounded-2xl text-center transition ${
               activeTab === tab.id
-                ? "bg-white text-black font-semibold"
-                : "text-gray-600 hover:bg-gray-50"
+                ? "bg-[#0466CB] text-white font-semibold"
+                : "text-[#001233] hover:bg-[#0453A4] hover:text-white"
             }`}
           >
             {t(tab.labelKey)}

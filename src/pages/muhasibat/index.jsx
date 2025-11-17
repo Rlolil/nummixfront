@@ -15,6 +15,13 @@ function Muhasibat() {
   const { t } = useTranslation();
   const location = useLocation();
   const currentPath = location.pathname.split("/").pop();
+  // Apply saved theme on mount to respect dark/light
+  useEffect(() => {
+    const stored = localStorage.getItem('theme') || 'light';
+    const root = window.document.documentElement;
+    if (stored === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, []);
 
   const items = useMemo(
     () => navConfig.map((n) => ({ ...n, label: t(n.labelKey) })),
@@ -28,19 +35,22 @@ function Muhasibat() {
     setActiveItem(match?.label);
   }, [currentPath, items]);
   return (
-    <div className=" sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-[0px] px-4 sm:px-6 lg:px-8">
-  <h2 className="md:text-4xl  text-2xl font-bold mb-4">{t("pages.accounting.title")}</h2>
-      <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1  items-center justify-between gap-4 bg-gray-200 p-2 rounded-md w-full">
+    <div className="accounting-theme sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-[0px] px-4 sm:px-6 lg:px-8">
+      <h2 className="md:text-4xl text-2xl font-bold mb-4 acc-heading">{t("pages.accounting.title")}</h2>
+      <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 items-center justify-between gap-4 acc-card p-2 rounded-md w-full border acc-border">
         {items.map((item) => (
           <Link
             onClick={() => setActiveItem(item.label)}
             to={`/muhasibat/${item.to}`}
             key={item.to}
-            className={` ${
-              activeItem === item.label ? "bg-gray-300" : ""
-            } w-full flex-1 py-2 px-4 text-center rounded-md hover:bg-gray-300 transition-colors duration-200`}
+            className={`w-full flex-1 text-center rounded-md transition-colors duration-200`}
           >
-            <button key={item.to}>{item.label}</button>
+            <button
+              key={item.to}
+              className={`acc-btn w-full py-2 px-4 rounded-md ${activeItem === item.label ? "active" : ""}`}
+            >
+              {item.label}
+            </button>
           </Link>
         ))}
       </div>

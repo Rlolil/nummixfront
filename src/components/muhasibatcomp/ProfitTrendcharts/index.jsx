@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ResponsiveContainer,
   LineChart,
@@ -20,6 +20,12 @@ const data = [
 ];
 
 export default function NetProfitChart() {
+  useEffect(() => {
+    const theme = localStorage.getItem('theme') || 'light';
+    const root = window.document.documentElement;
+    if (theme === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, []);
   return (
     <div className="px-6 pb-6">
       <div className="w-full h-[300px]">
@@ -28,11 +34,11 @@ export default function NetProfitChart() {
             data={data}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
-            {/* Izgara çizgileri */}
-            <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
-            {/* Eksenler */}
-            <XAxis dataKey="month" stroke="#666" />
-            <YAxis stroke="#666" />
+            {/* Grid */}
+            <CartesianGrid strokeDasharray="3 3" stroke="#33415C" />
+            {/* Axes */}
+            <XAxis dataKey="month" stroke="#001233" />
+            <YAxis stroke="#001233" />
             {/* Tooltip ve Legend */}
             <Tooltip />
             <Legend />

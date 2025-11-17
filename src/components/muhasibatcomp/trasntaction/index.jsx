@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaPlus, FaFileInvoice, FaEdit, FaTrash } from "react-icons/fa";
 import CreateJournalEntry from "../newjournalmodule";
 import { useTranslation } from "react-i18next";
@@ -7,6 +7,12 @@ const Transactions = () => {
   const [moduleOpen, setModuleOpen] = useState(false);
   const [selectedTxn, setSelectedTxn] = useState(null);
   const { t } = useTranslation();
+  useEffect(() => {
+    const theme = localStorage.getItem('theme') || 'light';
+    const root = window.document.documentElement;
+    if (theme === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, []);
   // Helpers first so we can use them when initializing state
   function getTotalNumber(entries) {
     let debit = 0;
@@ -241,16 +247,16 @@ const Transactions = () => {
   };
 
   return (
-    <main className="flex-1 overflow-auto">
+    <main className="flex-1 overflow-auto bg-[#FFFFFF] text-[#001233]">
       <div className="container mx-auto p-4 sm:p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold">{t('pages.accounting.transactions.title')}</h2>
-            <p className="text-gray-500 text-sm sm:text-base">{t('pages.accounting.transactions.subtitle', { defaultValue: 'View and create accounting entries' })}</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#023E7D]">{t('pages.accounting.transactions.title')}</h2>
+            <p className="text-[#7D8597] text-sm sm:text-base">{t('pages.accounting.transactions.subtitle', { defaultValue: 'View and create accounting entries' })}</p>
           </div>
           <button
             onClick={() => { setSelectedTxn(null); setModuleOpen(true); }}
-            className="flex items-center gap-2 bg-black text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-md hover:bg-gray-600 transition mt-4 sm:mt-0"
+            className="flex items-center gap-2 bg-[#0466CB] text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-md hover:bg-[#0453A4] transition mt-4 sm:mt-0"
           >
             <FaPlus className="text-xs sm:text-sm" /> {t('pages.accounting.transactions.newJournalEntry')}
           </button>
@@ -267,23 +273,23 @@ const Transactions = () => {
           {transactions.map((txn) => {
             const totals = getTotals(txn.entries);
             return (
-              <div key={txn.id} className="border rounded-lg p-3 sm:p-4 border-gray-300 bg-white shadow-sm">
+              <div key={txn.id} className="border rounded-lg p-3 sm:p-4 border-[#33415C] bg-[#FFFFFF] shadow-sm">
                 <div className="flex flex-col sm:flex-row items-start justify-between mb-3">
                   <div>
                     <div className="flex items-center gap-2">
-                      <FaFileInvoice className="text-gray-500 text-sm sm:text-base" />
+                      <FaFileInvoice className="text-[#001233] text-sm sm:text-base" />
                       <span className="font-medium text-sm sm:text-base">{txn.id}</span>
                     </div>
-                    <p className="text-xs sm:text-sm text-gray-500 mt-1">{t(txn.titleKey, { defaultValue: txn.titleParams?.id ? `${txn.titleParams?.id}` : '', ...txn.titleParams })}</p>
+                    <p className="text-xs sm:text-sm text-[#7D8597] mt-1">{t(txn.titleKey, { defaultValue: txn.titleParams?.id ? `${txn.titleParams?.id}` : '', ...txn.titleParams })}</p>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-500 mt-2 sm:mt-0">
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-[#7D8597] mt-2 sm:mt-0">
                     <div className="text-right">
                       <p>{txn.date}</p>
                       <p>{t('common.byUser', { user: txn.user, defaultValue: 'by {{user}}' })}</p>
                     </div>
                     <button
                       onClick={() => { setSelectedTxn(txn); setModuleOpen(true); }}
-                      className="inline-flex items-center gap-1 px-2 py-1 border rounded text-blue-600 border-blue-200 hover:bg-blue-50"
+                      className="inline-flex items-center gap-1 px-2 py-1 border border-[#33415C] rounded text-[#0466CB] hover:bg-[#0453A4] hover:text-white transition-colors"
                       title={t('common.edit', { defaultValue: 'Edit' })}
                     >
                       <FaEdit className="text-xs" />
@@ -301,7 +307,7 @@ const Transactions = () => {
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-xs sm:text-sm">
-                    <thead className="border-b bg-gray-50">
+                    <thead className="border-b border-[#979DAC] bg-[#FFFFFF]">
                       <tr>
                         <th className="text-left p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.accountCode')}</th>
                         <th className="text-left p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.accountName')}</th>
@@ -314,7 +320,7 @@ const Transactions = () => {
                     </thead>
                     <tbody>
                       {txn.entries.map((e, i) => (
-                        <tr key={i} className="border-b hover:bg-gray-50">
+                        <tr key={i} className="border-b border-[#979DAC] hover:bg-[#0453A4]/10">
                           <td className="p-1 sm:p-2">{e.code}</td>
                           <td className="p-1 sm:p-2">{t(`pages.accounting.transactions.accounts.${e.nameKey}`, { defaultValue: e.nameKey })}</td>
                           <td className="p-1 sm:p-2 text-right">{e.debit}</td>
@@ -324,7 +330,7 @@ const Transactions = () => {
                           <td className="p-1 sm:p-2 text-right">{i === 0 ? txn.mayeValue : ''}</td>
                         </tr>
                       ))}
-                      <tr className="font-medium border-t">
+                      <tr className="font-medium border-t border-[#979DAC]">
                         <td colSpan="2" className="p-1 sm:p-2">
                           {t('common.total', { defaultValue: 'Total' })}
                         </td>

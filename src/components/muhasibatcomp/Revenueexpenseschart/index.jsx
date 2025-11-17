@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ResponsiveContainer,
   BarChart,
@@ -20,6 +20,12 @@ const data = [
 ];
 
 export default function RevenueExpenseChart() {
+  useEffect(() => {
+    const theme = localStorage.getItem('theme') || 'light';
+    const root = window.document.documentElement;
+    if (theme === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, []);
   return (
     <div style={{ width: "100%", height: 300 }}>
       <ResponsiveContainer>
@@ -28,10 +34,10 @@ export default function RevenueExpenseChart() {
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
         >
           {/* Grid */}
-          <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
-          {/* X ve Y eksenleri */}
-          <XAxis dataKey="month" stroke="#666" />
-          <YAxis stroke="#666" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#33415C" />
+          {/* Axes */}
+          <XAxis dataKey="month" stroke="#001233" />
+          <YAxis stroke="#001233" />
           {/* Tooltip & Legend */}
           <Tooltip />
           <Legend />

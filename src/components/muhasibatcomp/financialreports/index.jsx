@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import BalanceSheet from "./balancesheet";
 import IncomeStatement from "./income";
@@ -8,6 +8,12 @@ import ChangeEquity from "./changesequity";
 export default function FinancialReports() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("balance-sheet");
+  useEffect(() => {
+    const theme = localStorage.getItem('theme') || 'light';
+    const root = window.document.documentElement;
+    if (theme === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, []);
 
   const tabs = [
     { id: "balance-sheet", label: t('pages.accounting.financialReports.tabs.balanceSheet') },
@@ -22,17 +28,17 @@ export default function FinancialReports() {
   };
 
   return (
-    <div className="flex-1 overflow-auto">
+    <div className="flex-1 overflow-auto bg-[#FFFFFF] text-[#001233]">
       <div className="container mx-auto p-4 sm:p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold">{t('pages.accounting.tabs.financialReports')}</h2>
-            <p className="text-gray-500 text-sm sm:text-base">{t('pages.accounting.financialReports.subtitle', { defaultValue: 'Standard financial statements' })}</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#023E7D]">{t('pages.accounting.tabs.financialReports')}</h2>
+            <p className="text-[#7D8597] text-sm sm:text-base">{t('pages.accounting.financialReports.subtitle', { defaultValue: 'Standard financial statements' })}</p>
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-4 sm:mt-0">
             <select
               defaultValue="Q3 2025"
-              className="border rounded-md px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm bg-gray-100 text-black w-full sm:w-auto"
+              className="border border-[#33415C] rounded-md px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm bg-[#FFFFFF] text-[#001233] w-full sm:w-auto"
             >
               <option>{t('common.quarter', { quarter: 'Q1', year: 2025, defaultValue: 'Q1 2025' })}</option>
               <option>{t('common.quarter', { quarter: 'Q2', year: 2025, defaultValue: 'Q2 2025' })}</option>
@@ -41,7 +47,7 @@ export default function FinancialReports() {
             </select>
             <button
               onClick={exportPDF}
-              className="flex items-center gap-2 border font-bold px-2 py-1.5 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm hover:bg-gray-100 w-full sm:w-auto"
+              className="flex items-center gap-2 border border-[#33415C] font-bold px-2 py-1.5 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm bg-[#FFFFFF] text-[#001233] hover:bg-[#0453A4] hover:text-white transition-colors w-full sm:w-auto"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -58,17 +64,18 @@ export default function FinancialReports() {
             </button>
           </div>
         </div>
-        {/* Cards section removed per request; only tabs remain */}
+        {/* Cards section removed per request; only tabs remain */
+        }
         <div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 bg-gray-100 rounded-2xl px-1 sm:px-2 py-2 overflow-x-auto text-xs sm:text-sm font-medium">
+          <div className="grid grid-cols-2 sm:grid-cols-4 bg-[#FFFFFF] border border-[#33415C] rounded-2xl px-1 sm:px-2 py-2 overflow-x-auto text-xs sm:text-sm font-medium">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`py-1 sm:py-2 rounded-2xl text-center transition ${
                   activeTab === tab.id
-                    ? "bg-white text-black font-semibold"
-                    : "text-gray-600 hover:bg-gray-50"
+                    ? "bg-[#0466CB] text-white font-semibold"
+                    : "text-[#001233] hover:bg-[#0453A4] hover:text-white"
                 }`}
               >
                 {tab.label}

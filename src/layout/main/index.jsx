@@ -9,6 +9,13 @@ function MainLayout() {
   useEffect(() => {
     navigate("muhasibat/dashboard")
   }, [])
+  // Ensure saved theme is applied on initial load (dark/light)
+  useEffect(() => {
+    const stored = localStorage.getItem('theme') || 'light'
+    const root = window.document.documentElement
+    if (stored === 'dark') root.classList.add('dark')
+    else root.classList.remove('dark')
+  }, [])
   return (
     <div className="flex overflow-x-hidden">
       <Sidebar />

@@ -165,7 +165,7 @@ const Məhsullar = () => {
         });
         setOpen(true);
     };
-
+    
     const handleDelete = (index) => {
         if (window.confirm('Bu məhsulu silmək istəyirsiniz?')) {
             setProducts(prev => prev.filter((_, i) => i !== index));

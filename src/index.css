@@ -12,3 +12,79 @@
 @utility tab {
     @apply h-8
 }
+
+/* Accounting (Muhasibatlıq) light theme tokens */
+.accounting-theme {
+  --acc-bg: #ffffff;           /* Əsas fon */
+  --acc-header: #0466cb;       /* Üst menyu, aktiv düymə */
+  --acc-hover: #0453a4;        /* Hover düymə */
+  --acc-heading: #023e7d;      /* Qrafik başlıqları, vurğular */
+  --acc-sidebar-bg: #002855;   /* Sidebar arxa planı */
+  --acc-sidebar-active: #001845;/* Sidebar seçilmiş element fonu */
+  --acc-icon: #001233;         /* Yazı ikon əsas rəngi */
+  --acc-lines: #33415c;        /* Qrafik xəttləri, kart çərçivələri */
+  --acc-subtitle: #5c677d;     /* Kiçik başlıqlar */
+  --acc-secondary: #7d8597;    /* İkinci dərəcəli yazılar */
+  --acc-divider: #979dac;      /* Bölmə xəttləri, konturlar */
+  --acc-card-bg: #ffffff;      /* Kartların iç fonu */
+}
+
+/* Minimal utilities scoped to accounting theme */
+.accounting-theme .acc-bg { background-color: var(--acc-bg); }
+.accounting-theme .acc-card { background-color: var(--acc-card-bg); border-color: var(--acc-divider); }
+.accounting-theme .acc-heading { color: var(--acc-heading); }
+.accounting-theme .acc-text-secondary { color: var(--acc-secondary); }
+.accounting-theme .acc-btn { background-color: transparent; color: var(--acc-heading); border: 1px solid var(--acc-divider); }
+.accounting-theme .acc-btn:hover { background-color: var(--acc-hover); color: #ffffff; border-color: var(--acc-hover); }
+.accounting-theme .acc-btn.active { background-color: var(--acc-header); color: #ffffff; border-color: var(--acc-header); }
+.accounting-theme .acc-border { border-color: var(--acc-divider); }
+
+/* Sidebar styling when inside accounting routes */
+.accounting-theme-sidebar {
+  background-color: var(--acc-sidebar-bg);
+  color: #ffffff;
+}
+.accounting-theme-sidebar svg { color: var(--acc-icon); stroke: currentColor; }
+.accounting-theme-sidebar button {
+  background: transparent;
+  color: #ffffff;
+}
+.accounting-theme-sidebar button:hover {
+  background-color: var(--acc-sidebar-active);
+}
+.accounting-theme-sidebar .active {
+  background-color: var(--acc-sidebar-active);
+}
+.accounting-theme-sidebar hr { border-color: rgba(255,255,255,0.15); }
+
+/* Header styling for accounting routes */
+.accounting-theme-header {
+  background-color: var(--acc-header) !important;
+  border-color: transparent !important;
+  color: #ffffff;
+}
+.accounting-theme-header svg { color: var(--acc-icon); stroke: currentColor; }
+.accounting-theme-header button:hover { background-color: rgba(255,255,255,0.15) !important; }
+.accounting-theme-header input {
+  background-color: #ffffff;
+  color: var(--acc-icon);
+  border-color: transparent;
+}
+.accounting-theme-header input::placeholder { color: #5c677d; }
+
+/* --- Accounting theme: map common Tailwind utility colors used in module (light only) --- */
+/* Cards and surfaces */
+:root:not(.dark) .accounting-theme .bg-white { background-color: var(--acc-card-bg) !important; }
+:root:not(.dark) .accounting-theme .bg-gray-100 { background-color: #f5f8ff !important; }
+:root:not(.dark) .accounting-theme .hover\:bg-gray-50:hover { background-color: #f5f8ff !important; }
+:root:not(.dark) .accounting-theme .hover\:bg-gray-200:hover { background-color: #e9eef7 !important; }
+
+/* Borders and dividers */
+:root:not(.dark) .accounting-theme .border-gray-200 { border-color: var(--acc-divider) !important; }
+:root:not(.dark) .accounting-theme .border-gray-300 { border-color: var(--acc-divider) !important; }
+:root:not(.dark) .accounting-theme .border-b { border-color: var(--acc-divider) !important; }
+
+/* Text tones */
+:root:not(.dark) .accounting-theme .text-gray-900 { color: var(--acc-heading) !important; }
+:root:not(.dark) .accounting-theme .text-gray-600 { color: var(--acc-subtitle) !important; }
+:root:not(.dark) .accounting-theme .text-gray-500 { color: var(--acc-secondary) !important; }

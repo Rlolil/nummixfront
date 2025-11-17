@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   ResponsiveContainer,
@@ -12,6 +12,12 @@ const COLORS = ["#3b82f6", "#ef4444", "#10b981"];
 
 export default function BalancePieChart() {
   const { t } = useTranslation();
+  useEffect(() => {
+    const theme = localStorage.getItem('theme') || 'light';
+    const root = window.document.documentElement;
+    if (theme === 'dark') root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, []);
 
   const data = [
     {
