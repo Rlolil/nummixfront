@@ -163,33 +163,28 @@ const Departmenler = () => {
         return (
           <div
             key={i}
-            className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-5 md:p-6 shadow-sm"
+            className="bg-white dark:bg-[#002855] rounded-2xl border border-[#979DAC] dark:border-[#33415C] p-5 md:p-6 shadow-sm"
           >
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3 gap-2">
-              <h2 className="text-[17px] font-medium text-gray-900 dark:text-gray-100">
+              <h2 className="text-[17px] font-medium text-[#023E7D] dark:text-white">
                 {dep.title}
               </h2>
               <div className="flex items-center gap-2 flex-wrap">
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                  {dep.total.toLocaleString()} /{" "}
-                  {dep.budget.toLocaleString()} AZN
+                <p className="text-sm font-medium text-[#7D8597] dark:text-[#5C677D]">
+                  {dep.total.toLocaleString()} / {dep.budget.toLocaleString()} AZN
                 </p>
                 {depPercent > 100 && (
-                  <span className="bg-red-600 text-white text-xs font-medium px-2 py-[2px] rounded-md whitespace-nowrap">
+                  <span className="bg-[#D00000] text-white text-xs font-medium px-2 py-[2px] rounded-md whitespace-nowrap">
                     {t('pages.finance.budgeting.labels.overBudget')}
                   </span>
                 )}
               </div>
             </div>
 
-            <div className="relative w-full bg-gray-200 dark:bg-gray-700 h-2.5 rounded-full overflow-hidden mb-5">
+            <div className="relative w-full bg-[#979DAC] dark:bg-[#33415C] h-2.5 rounded-full overflow-hidden mb-5">
               <div
-                className={`h-2.5 rounded-full ${
-                  depPercent > 100 ? "bg-red-600" : "bg-gray-900 dark:bg-gray-300"
-                }`}
-                style={{
-                  width: `${Math.min(depPercent, 100)}%`,
-                }}
+                className={`h-2.5 rounded-full ${depPercent > 100 ? "bg-[#D00000]" : "bg-[#0466CB] dark:bg-[#0466CB]"}`}
+                style={{ width: `${Math.min(depPercent, 100)}%` }}
               ></div>
             </div>
 
@@ -201,22 +196,19 @@ const Departmenler = () => {
                     key={j}
                     className="flex flex-col md:flex-row md:items-center md:justify-between gap-2"
                   >
-                    <span className="text-[15px] text-gray-700 dark:text-gray-300 w-full md:w-32">
+                    <span className="text-[15px] text-[#5C677D] dark:text-[#979DAC] w-full md:w-32">
                       {item.name}
                     </span>
 
                     <div className="flex flex-col md:flex-row md:items-center w-full md:w-auto gap-1 md:gap-3">
-                      <div className="relative w-full md:w-[150px] bg-gray-200 dark:bg-gray-700 h-2.5 rounded-full overflow-hidden">
+                      <div className="relative w-full md:w-[150px] bg-[#979DAC] dark:bg-[#33415C] h-2.5 rounded-full overflow-hidden">
                         <div
-                          className="h-2.5 rounded-full bg-gray-900 dark:bg-gray-300"
-                          style={{
-                            width: `${Math.min(itemPercent, 100)}%`,
-                          }}
+                          className={`h-2.5 rounded-full ${itemPercent > 100 ? "bg-[#D00000]" : "bg-[#0466CB] dark:bg-[#0466CB]"}`}
+                          style={{ width: `${Math.min(itemPercent, 100)}%` }}
                         ></div>
                       </div>
-                      <span className="text-[15px] text-gray-700 dark:text-gray-300 text-right">
-                        {item.spent.toLocaleString()} /{" "}
-                        {item.budget.toLocaleString()}
+                      <span className="text-[15px] text-[#7D8597] dark:text-[#5C677D] text-right">
+                        {item.spent.toLocaleString()} / {item.budget.toLocaleString()}
                       </span>
                     </div>
                   </div>

@@ -157,7 +157,7 @@ import { useTranslation } from 'react-i18next';
 
 const Analitika = () => {
   const [activeTab, setActiveTab] = useState("cashflow");
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const financeCards = [
     {
@@ -205,11 +205,16 @@ const Analitika = () => {
   ];
 
   return (
-    <div className="container mx-auto px-2 py-4">
+    <div className="container mx-auto">
+
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-[24px] font-semibold dark:text-white">{t('pages.finance.analytics.title')}</h1>
-          <p className="text-[#717182] text-[16px] mt-2 mb-5 dark:text-gray-400">{t('pages.finance.analytics.subtitle')}</p>
+          <h1 className="text-[24px] font-semibold text-[#023E7D] dark:text-white">
+            {t('pages.finance.analytics.title')}
+          </h1>
+          <p className="text-[16px] mt-2 mb-5 text-[#7D8597] dark:text-[#5C677D]">
+            {t('pages.finance.analytics.subtitle')}
+          </p>
         </div>
       </div>
 
@@ -217,22 +222,36 @@ const Analitika = () => {
         {financeCards.map((item, index) => (
           <div
             key={index}
-            className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6 flex flex-col justify-between"
+            className="bg-white dark:bg-[#33415C] rounded-xl 
+                      border border-[#979DAC] dark:border-[#33415C] 
+                      shadow-sm p-6 flex flex-col justify-between"
           >
             <div>
-              <h3 className="text-gray-800 dark:text-gray-200 font-medium text-[15px]">{item.title}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.subtitle}</p>
+              <h3 className="text-[#023E7D] dark:text-white font-medium text-[15px]">
+                {item.title}
+              </h3>
+              <p className="text-sm text-[#7D8597] dark:text-[#5C677D] mt-1">
+                {item.subtitle}
+              </p>
             </div>
+
             <div className="flex justify-between items-center mt-6">
-              <p className="text-3xl font-semibold text-gray-900 dark:text-white">{item.value}</p>
+              <p className="text-3xl font-semibold text-[#001233] dark:text-white">
+                {item.value}
+              </p>
+
               <span
                 className={`flex items-center gap-1 text-sm font-medium px-3 py-1 rounded-md ${
                   item.positive
-                    ? "bg-black dark:bg-gray-200 text-white dark:text-black"
-                    : "bg-gray-900 dark:bg-gray-600 text-white dark:text-white"
+                    ? "bg-[#0466CB] text-white"
+                    : "bg-[#D00000] text-white"
                 }`}
               >
-                {item.positive ? <FiArrowUpRight className="text-white dark:text-black" /> : <FiArrowDownRight className="text-white dark:text-white" />}
+                {item.positive ? (
+                  <FiArrowUpRight />
+                ) : (
+                  <FiArrowDownRight />
+                )}
                 {item.change}
               </span>
             </div>
@@ -240,37 +259,23 @@ const Analitika = () => {
         ))}
       </div>
 
-      <div className="inline-flex mt-8 mb-6 overflow-hidden p-1 rounded-full bg-gray-200 dark:bg-gray-700">
-        <button
-          onClick={() => setActiveTab("cashflow")}
-          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full ${
-            activeTab === "cashflow"
-              ? "bg-white dark:bg-gray-800 text-black dark:text-white shadow-sm"
-              : "text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
-          }`}
-        >
-          {t('pages.finance.analytics.tabs.cashFlow')}
-        </button>
-        <button
-          onClick={() => setActiveTab("rentabel")}
-          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full ${
-            activeTab === "rentabel"
-              ? "bg-white dark:bg-gray-800 text-black dark:text-white shadow-sm"
-              : "text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
-          }`}
-        >
-          {t('pages.finance.analytics.tabs.profitability')}
-        </button>
-        <button
-          onClick={() => setActiveTab("likvid")}
-          className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full ${
-            activeTab === "likvid"
-              ? "bg-white dark:bg-gray-800 text-black dark:text-white shadow-sm"
-              : "text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
-          }`}
-        >
-          {t('pages.finance.analytics.tabs.liquidity')}
-        </button>
+      <div className="inline-flex mt-8 mb-6 overflow-hidden p-1 
+                      rounded-full bg-[#979DAC] dark:bg-[#33415C]">
+
+        {["cashflow", "rentabel", "likvid"].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`px-4 sm:px-6 py-1.5 sm:py-2 
+                        text-xs sm:text-sm font-medium transition-all duration-200 rounded-full ${
+              activeTab === tab
+                ? "bg-white dark:bg-[#023E7D] text-[#001233] dark:text-white shadow-sm"
+                : "text-[#5C677D] dark:text-[#979DAC] hover:text-[#023E7D]"
+            }`}
+          >
+            {t(`pages.finance.analytics.tabs.${tab === "cashflow" ? "cashFlow" : tab === "rentabel" ? "profitability" : "liquidity"}`)}
+          </button>
+        ))}
       </div>
 
       {activeTab === "cashflow" && <CashFlow />}
@@ -283,4 +288,3 @@ const Analitika = () => {
 };
 
 export default Analitika;
-

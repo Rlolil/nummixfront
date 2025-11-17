@@ -131,7 +131,6 @@ const YeniBudceModal = ({ onClose }) => {
     notes: "",
   });
 
-  // Scroll disable when modal open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -152,31 +151,27 @@ const YeniBudceModal = ({ onClose }) => {
 
   return (
     <Overlay onClose={onClose}>
-      <div className="bg-white dark:bg-gray-900 w-[90%] md:w-[600px] max-w-lg rounded-xl shadow-xl overflow-hidden flex flex-col max-h-[90vh] mx-auto">
-        {/* Header */}
-        <div className="flex justify-between items-center border-b dark:border-gray-700 px-6 py-4">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+      <div className="bg-white dark:bg-[#001233] w-[90%] md:w-[600px] rounded-2xl shadow-lg p-5 md:p-6 relative mx-auto overflow-y-auto max-h-[90vh] text-[#001233] dark:text-white">
+        
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-[18px] font-semibold">
             Yeni Büdcə Yarat
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-xl leading-none"
+            className="text-[#5C677D] dark:text-[#7D8597] hover:text-[#0466CB] dark:hover:text-[#0466CB] transition"
           >
             ×
           </button>
         </div>
 
-        {/* Body */}
-        <form
-          onSubmit={handleSubmit}
-          className="overflow-y-auto px-6 py-4 space-y-4"
-        >
-          <p className="text-gray-500 dark:text-gray-400 text-sm">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <p className="text-sm text-[#7D8597] dark:text-[#5C677D]">
             Kateqoriya və ya departament üçün büdcə planlaması
           </p>
 
           <div>
-            <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+            <label className="block text-sm font-medium mb-1">
               Büdcə adı *
             </label>
             <input
@@ -185,20 +180,20 @@ const YeniBudceModal = ({ onClose }) => {
               onChange={handleChange}
               type="text"
               placeholder="Məs: 2025 IT Büdcəsi"
-              className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+            <label className="block text-sm font-medium mb-1">
               Dövr *
             </label>
             <select
               name="period"
               value={form.period}
               onChange={handleChange}
-              className="w-full border rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             >
               <option>Aylıq</option>
@@ -208,14 +203,14 @@ const YeniBudceModal = ({ onClose }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+            <label className="block text-sm font-medium mb-1">
               Növ *
             </label>
             <select
               name="type"
               value={form.type}
               onChange={handleChange}
-              className="w-full border rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             >
               <option>Kateqoriya</option>
@@ -224,14 +219,14 @@ const YeniBudceModal = ({ onClose }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+            <label className="block text-sm font-medium mb-1">
               Kateqoriya *
             </label>
             <select
               name="category"
               value={form.category}
               onChange={handleChange}
-              className="w-full border rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             >
               <option value="">Seçin...</option>
@@ -242,7 +237,7 @@ const YeniBudceModal = ({ onClose }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+            <label className="block text-sm font-medium mb-1">
               Planlaşdırılan məbləğ (AZN) *
             </label>
             <input
@@ -251,14 +246,14 @@ const YeniBudceModal = ({ onClose }) => {
               onChange={handleChange}
               type="number"
               placeholder="0.00"
-              className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+              <label className="block text-sm font-medium mb-1">
                 Başlanğıc tarixi *
               </label>
               <input
@@ -266,12 +261,13 @@ const YeniBudceModal = ({ onClose }) => {
                 value={form.startDate}
                 onChange={handleChange}
                 type="date"
-                className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
                 required
               />
             </div>
+
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+              <label className="block text-sm font-medium mb-1">
                 Bitmə tarixi *
               </label>
               <input
@@ -279,14 +275,14 @@ const YeniBudceModal = ({ onClose }) => {
                 value={form.endDate}
                 onChange={handleChange}
                 type="date"
-                className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
                 required
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
+            <label className="block text-sm font-medium mb-1">
               Qeydlər
             </label>
             <textarea
@@ -294,22 +290,22 @@ const YeniBudceModal = ({ onClose }) => {
               value={form.notes}
               onChange={handleChange}
               placeholder="Büdcə haqqında əlavə məlumat..."
-              className="w-full border rounded-lg px-3 py-2 text-sm h-20 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm h-20 resize-none focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
             />
           </div>
 
-          {/* Buttons */}
-          <div className="flex justify-end gap-3 border-t pt-3">
+          <div className="flex justify-end gap-2 pt-3">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="px-4 py-2 text-sm border border-[#979DAC] dark:border-[#33415C] rounded-md text-[#001233] dark:text-white hover:bg-[#F0F0F0] dark:hover:bg-[#0453A4] transition"
             >
               Ləğv et
             </button>
+
             <button
               type="submit"
-              className="px-4 py-2 rounded-lg bg-black text-white hover:bg-gray-800"
+              className="px-5 py-2 text-sm rounded-md bg-[#0466CB] dark:bg-[#0453A4] text-white hover:bg-[#023E7D] dark:hover:bg-[#0466CB] transition"
             >
               + Yarat
             </button>
@@ -321,4 +317,3 @@ const YeniBudceModal = ({ onClose }) => {
 };
 
 export default YeniBudceModal;
-

@@ -98,7 +98,7 @@
 // export default Rentabel;
 
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
 import {
     AreaChart,
@@ -114,7 +114,23 @@ import {
 
 const Rentabel = () => {
     const { t } = useTranslation();
-    const isDark = document.documentElement.classList.contains('dark');
+
+    const [isDark, setIsDark] = useState(
+        document.documentElement.classList.contains("dark")
+    );
+
+    useEffect(() => {
+        const observer = new MutationObserver(() => {
+            setIsDark(document.documentElement.classList.contains("dark"));
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"],
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     const data = [
         { name: t('pages.finance.common.months.jan', 'Jan'), gelir: 120000, xercler: 95000, menfeet: 25000 },
@@ -126,11 +142,26 @@ const Rentabel = () => {
     ];
 
     return (
-        <div className={`p-5 rounded-xl shadow-sm ${isDark ? "bg-gray-800" : "bg-white"}`}>
-            <h2 className={`text-lg font-semibold mb-1 ${isDark ? "text-white" : "text-gray-900"}`}>
+        <div
+            className={`p-5 rounded-xl shadow-md border ${
+                isDark
+                    ? "bg-[#33415C] border-[#5C677D]"
+                    : "bg-white border-[#979DAC]"
+            }`}
+        >
+            <h2
+                className={`text-lg font-semibold mb-1 ${
+                    isDark ? "text-white" : "text-[#023E7D]"
+                }`}
+            >
                 {t('pages.finance.analytics.profitability.title')}
             </h2>
-            <p className={`text-sm mb-4 ${isDark ? "text-gray-300" : "text-gray-500"}`}>
+
+            <p
+                className={`text-sm mb-4 ${
+                    isDark ? "text-[#D7E3FC]" : "text-[#7D8597]"
+                }`}
+            >
                 {t('pages.finance.analytics.profitability.subtitle')}
             </p>
 
@@ -138,8 +169,8 @@ const Rentabel = () => {
                 <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                     <defs>
                         <linearGradient id="colorGelir" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
-                            <stop offset="95%" stopColor="#10b981" stopOpacity={0.1} />
+                            <stop offset="5%" stopColor="#2BBF6A" stopOpacity={0.8} />
+                            <stop offset="95%" stopColor="#2BBF6A" stopOpacity={0.1} />
                         </linearGradient>
                         <linearGradient id="colorXercler" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
@@ -147,21 +178,36 @@ const Rentabel = () => {
                         </linearGradient>
                     </defs>
 
-                    <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "#374151" : "#E5E7EB"} vertical={false} />
+                    <CartesianGrid
+                        strokeDasharray="3 3"
+                        stroke={isDark ? "#5C677D" : "#E5E7EB"}
+                        vertical={false}
+                    />
+
                     <XAxis
                         dataKey="name"
-                        stroke={isDark ? "#A6A4A4" : "#374151"}
-                        tick={{ fill: isDark ? "#A6A4A4" : "#374151" }}
+                        stroke={isDark ? "#D7E3FC" : "#023E7D"}
+                        tick={{ fill: isDark ? "#D7E3FC" : "#023E7D" }}
                     />
-                    <YAxis stroke={isDark ? "#A6A4A4" : "#374151"} tick={{ fill: isDark ? "#A6A4A4" : "#374151" }} />
+
+                    <YAxis
+                        stroke={isDark ? "#D7E3FC" : "#023E7D"}
+                        tick={{ fill: isDark ? "#D7E3FC" : "#023E7D" }}
+                    />
+
                     <Tooltip
                         contentStyle={{
-                            backgroundColor: isDark ? "#1F2937" : "#A6A4A4",
-                            borderColor: isDark ? "#374151" : "#E5E7EB",
-                            color: isDark ? "#A6A4A4" : "#000",
+                            backgroundColor: isDark ? "#001845" : "#fff",
+                            borderColor: isDark ? "#5C677D" : "#E5E7EB",
+                            color: isDark ? "#fff" : "#023E7D",
                         }}
                     />
-                    <Legend wrapperStyle={{ color: isDark ? "#A6A4A4" : "#374151" }} />
+
+                    <Legend
+                        wrapperStyle={{
+                            color: isDark ? "#D7E3FC" : "#023E7D"
+                        }}
+                    />
 
                     <Area
                         type="monotone"
@@ -169,47 +215,79 @@ const Rentabel = () => {
                         stackId="1"
                         stroke="#ef4444"
                         fill="url(#colorXercler)"
-                        name={t('pages.finance.analytics.profitability.legend.expenses', 'Xərclər')}
+                        name={t('pages.finance.analytics.profitability.legend.expenses')}
                     />
+
                     <Area
                         type="monotone"
                         dataKey="gelir"
                         stackId="1"
-                        stroke="#10b981"
+                        stroke="#2BBF6A"
                         fill="url(#colorGelir)"
-                        name={t('pages.finance.analytics.profitability.legend.revenue', 'Gəlir')}
+                        name={t('pages.finance.analytics.profitability.legend.revenue')}
                     />
+
                     <Line
                         type="monotone"
                         dataKey="menfeet"
-                        stroke="#3b82f6"
-                        strokeWidth={2}
+                        stroke="#0466CB"
+                        strokeWidth={3}
                         dot={{ r: 4 }}
                         activeDot={{ r: 6 }}
-                        name={t('pages.finance.analytics.profitability.legend.netProfit', 'Xalis Mənfəət')}
+                        name={t('pages.finance.analytics.profitability.legend.netProfit')}
                     />
                 </AreaChart>
             </ResponsiveContainer>
 
             <div className="grid md:grid-cols-3 gap-4 mt-6">
-                <div className={`${isDark ? "bg-gray-700 text-white" : "bg-gray-50 text-gray-900"} p-4 rounded-xl text-center shadow-sm`}>
-                    <p className="text-sm mb-1">{t('pages.finance.analytics.profitability.avgRevenue')}</p>
-                    <p className="text-green-600 text-2xl font-semibold">141,167 AZN</p>
+                <div
+                    className={`p-4 rounded-xl text-center shadow-sm ${
+                        isDark
+                            ? "bg-[#023E7D] text-white"
+                            : "bg-[#EFF6FF] text-[#023E7D]"
+                    }`}
+                >
+                    <p className="text-sm mb-1">
+                        {t('pages.finance.analytics.profitability.avgRevenue')}
+                    </p>
+                    <p className="text-green-600 text-2xl font-semibold">
+                        141,167 AZN
+                    </p>
                 </div>
 
-                <div className={`${isDark ? "bg-gray-700 text-white" : "bg-gray-50 text-gray-900"} p-4 rounded-xl text-center shadow-sm`}>
-                    <p className="text-sm mb-1">{t('pages.finance.analytics.profitability.avgExpense')}</p>
-                    <p className="text-red-500 text-2xl font-semibold">103,333 AZN</p>
+                <div
+                    className={`p-4 rounded-xl text-center shadow-sm ${
+                        isDark
+                            ? "bg-[#023E7D] text-white"
+                            : "bg-[#EFF6FF] text-[#023E7D]"
+                    }`}
+                >
+                    <p className="text-sm mb-1">
+                        {t('pages.finance.analytics.profitability.avgExpense')}
+                    </p>
+                    <p className="text-red-500 text-2xl font-semibold">
+                        103,333 AZN
+                    </p>
                 </div>
 
-                <div className={`${isDark ? "bg-gray-700 text-white" : "bg-gray-50 text-gray-900"} p-4 rounded-xl text-center shadow-sm`}>
-                    <p className="text-sm mb-1">{t('pages.finance.analytics.profitability.avgProfit')}</p>
-                    <p className="text-blue-600 text-2xl font-semibold">37,833 AZN</p>
+                <div
+                    className={`p-4 rounded-xl text-center shadow-sm ${
+                        isDark
+                            ? "bg-[#023E7D] text-white"
+                            : "bg-[#EFF6FF] text-[#023E7D]"
+                    }`}
+                >
+                    <p className="text-sm mb-1">
+                        {t('pages.finance.analytics.profitability.avgProfit')}
+                    </p>
+                    <p className="text-blue-600 text-2xl font-semibold">
+                        37,833 AZN
+                    </p>
                 </div>
             </div>
-
         </div>
     );
 };
 
 export default Rentabel;
+

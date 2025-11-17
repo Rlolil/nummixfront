@@ -149,7 +149,7 @@ const VergiOdenis = () => {
   const { t } = useTranslation();
   return (
     <div className="container mx-auto py-4">
-      <div className="bg-white dark:bg-zinc-800 border border-gray-300 dark:border-gray-700 rounded-xl shadow-sm p-5 mb-6">
+      <div className="bg-[#FFFFFF] dark:bg-[#002855] rounded-xl border border-[#979DAC] dark:border-[#33415C] shadow-sm p-5 mb-6">
         <h2 className="text-xl font-semibold mb-1 text-gray-800 dark:text-gray-100">
           {t("pages.ai.taxAi.upcomingPayments.title")}
         </h2>

@@ -112,7 +112,7 @@ const recommendations = [
 const Optimallasdirma = () => {
   const { t } = useTranslation();
   return (
-    <div className="p-4 sm:p-6 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 transition-colors">
+    <div className="p-4  bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 transition-colors">
       <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
         {t("pages.ai.taxAi.optimization.title")}
       </h2>

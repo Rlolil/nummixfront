@@ -8,7 +8,6 @@
   @apply max-w-fit h-10 mb-6;
 }
 
-/* Tab write font-bold */
 @utility tab {
     @apply h-8
 }
@@ -88,3 +87,12 @@
 :root:not(.dark) .accounting-theme .text-gray-900 { color: var(--acc-heading) !important; }
 :root:not(.dark) .accounting-theme .text-gray-600 { color: var(--acc-subtitle) !important; }
 :root:not(.dark) .accounting-theme .text-gray-500 { color: var(--acc-secondary) !important; }
+@layer base {
+  body {
+    @apply bg-white text-black transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-[#001233] text-white;
+  }
+}
