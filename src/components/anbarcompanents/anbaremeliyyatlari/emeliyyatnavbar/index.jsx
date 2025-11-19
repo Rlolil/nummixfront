@@ -8,18 +8,19 @@ export default function EmeliyyatNavbar() {
     const { t } = useTranslation();
 
 
+    const base = 'px-4 py-2 rounded-full font-semibold transition-colors';
     const getLinkClass = ({ isActive }) =>
         isActive
-            ? 'bg-white text-black px-4 py-2 rounded-full font-semibold'
-            : ' text-black px-4 py-2 rounded-full font-semibold';
+            ? `${base} bg-[#0466CB] text-white dark:text-white`
+            : `${base} text-[#023E7D] hover:bg-[#0453A4] hover:text-white dark:text-white`;
 
     return (
-        <div className=" flex flex-col   md:items-start md:justify-start gap-10    mb-6 px-4 md:px-0">
+        <div className="flex flex-col md:items-start md:justify-start gap-10 mb-6 px-4 md:px-0">
             <div>
-                <h1 className="text-2xl font-bold text-gray-800">{t('pages.warehouse.operations.title')}</h1>
-                <p className="text-gray-500 text-sm">{t('pages.warehouse.operations.subtitle')}</p>
+                <h1 className="text-2xl font-bold  dark:text-white text-[#023E7D]">{t('pages.warehouse.operations.title')}</h1>
+                <p className="text-sm text-[#7D8597]">{t('pages.warehouse.operations.subtitle')}</p>
             </div>
-            <div className=" flex flex-wrap w-fit items-center bg-gray-200 rounded-full gap-4 p-2">
+            <div className="flex flex-wrap w-fit items-center bg-[#FFFFFF] dark:bg-[#001233] dark:border-[#33415C] border border-[#979DAC] rounded-full gap-4 p-2">
                 <NavLink to="/anbar/warehouseoperations/grn" className={getLinkClass} >
                     <FiArrowUpCircle className="inline-block mr-1" />   {t('pages.warehouse.operations.nav.grn')}
 

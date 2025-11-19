@@ -30,17 +30,19 @@ function EmekHaqqi() {
     setActiveItem(match?.label);
   }, [currentPath, items]);
   return (
-    <div className=" sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-[0px] px-4 sm:px-6 lg:px-8">
-  <h2 className="md:text-4xl  text-2xl font-bold mb-4">{t("pages.hr.title")}</h2>
-      <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1  items-center justify-between gap-4 bg-gray-200 p-2 rounded-md w-full">
+    <div className=" sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-[0px] px-4 sm:px-6 lg:px-8 text-[#001233]">
+  <h2 className="md:text-4xl  text-2xl font-bold mb-4 text-[#023E7D]">{t("pages.hr.title")}</h2>
+      <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 items-center justify-between gap-4 bg-[#FFFFFF] border border-[#33415C] p-2 rounded-xl w-full">
         {items.map((item) => (
           <Link
             onClick={() => setActiveItem(item.label)}
             to={`/emekhaqqi/${item.to}`}
             key={item.to}
-            className={` ${
-              activeItem === item.label ? "bg-gray-300" : ""
-            } w-full flex-1 py-2 px-4 text-center rounded-md hover:bg-gray-300 transition-colors duration-200`}
+            className={`${
+              activeItem === item.label
+                ? "bg-[#0466CB] hover:bg-[#0453A4] text-white border-transparent"
+                : "bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]"
+            } w-full flex-1 py-2 px-4 text-center rounded-md border border-[#979DAC] transition-colors duration-200`}
           >
             <button key={item.to}>{item.label}</button>
           </Link>

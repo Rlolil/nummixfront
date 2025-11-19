@@ -77,7 +77,7 @@ function Reports() {
           {/* Excel Button */}
           <button
             type="button"
-            className="flex items-center gap-2 px-4 py-2 h-9 rounded-md text-sm bg-black text-white hover:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 h-9 rounded-md text-sm bg-[#0466CB] text-white hover:opacity-50"
           >
             <FaDownload className="w-4 h-4" />
             {t('common.export', { ns: 'translation', defaultValue: 'Export' })}

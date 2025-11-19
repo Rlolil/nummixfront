@@ -34,10 +34,10 @@ export default function RevenueExpenseChart() {
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
         >
           {/* Grid */}
-          <CartesianGrid strokeDasharray="3 3" stroke="#33415C" />
+          <CartesianGrid strokeDasharray="3 3" stroke={document.documentElement.classList.contains('dark') ? '#33415C' : '#33415C'} />
           {/* Axes */}
-          <XAxis dataKey="month" stroke="#001233" />
-          <YAxis stroke="#001233" />
+          <XAxis dataKey="month" stroke={document.documentElement.classList.contains('dark') ? '#E0E0E0' : '#001233'} />
+          <YAxis stroke={document.documentElement.classList.contains('dark') ? '#E0E0E0' : '#001233'} />
           {/* Tooltip & Legend */}
           <Tooltip />
           <Legend />

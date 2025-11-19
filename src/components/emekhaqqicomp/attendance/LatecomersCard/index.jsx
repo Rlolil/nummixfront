@@ -10,9 +10,9 @@ const latecomers = [
 function LatecomersCard() {
   const { t } = useTranslation();
   return (
-    <div className="bg-base-100 text-base-content flex flex-col gap-6 rounded-xl border border-base-300 p-6 shadow-lg">
+    <div className="bg-[#FFFFFF] text-[#001233] flex flex-col gap-6 rounded-xl border border-[#33415C] p-6 shadow-sm">
       <header>
-        <h4 className="text-xl font-semibold leading-none">{t('pages.hr.attendance.latecomers.title', { defaultValue: 'Latecomers This Week' })}</h4>
+        <h4 className="text-xl font-semibold leading-none text-[#023E7D]">{t('pages.hr.attendance.latecomers.title', { defaultValue: 'Latecomers This Week' })}</h4>
       </header>
 
       <div className="space-y-3">
@@ -23,13 +23,13 @@ function LatecomersCard() {
                 {name[0]}
               </div>
               <div>
-                <p className="text-gray-900">{name}</p>
-                <p className="text-sm text-gray-600">{t(`pages.hr.departments.${departmentKey}`, { defaultValue: departmentKey })}</p>
+                <p className="text-[#001233]">{name}</p>
+                <p className="text-sm text-[#7D8597]">{t(`pages.hr.departments.${departmentKey}`, { defaultValue: departmentKey })}</p>
               </div>
             </div>
             <div className="text-right">
               <p className="text-orange-600">{lateBy} {t('pages.hr.attendance.latecomers.minutesSuffix', { defaultValue: 'min' })}</p>
-              <p className="text-sm text-gray-500">{t('pages.hr.attendance.latecomers.entryLabel', { defaultValue: 'Check-in' })}: {entryTime}</p>
+              <p className="text-sm text-[#7D8597]">{t('pages.hr.attendance.latecomers.entryLabel', { defaultValue: 'Check-in' })}: {entryTime}</p>
             </div>
           </div>
         ))}

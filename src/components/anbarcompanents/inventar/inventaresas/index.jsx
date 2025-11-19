@@ -36,14 +36,14 @@ export default function Inventar() {
     };
 
     return (
-        <div className="p-6 space-y-8" >
+        <div className="p-6 space-y-8 bg-[#FFFFFF]  dark:bg-[#001233] text-[#001233] dark:text-white" >
 
             {/* Başlıq */}
 
             <div className=" flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-800">{t('pages.warehouse.inventory.control.title')}</h1>
-                    <p className="text-gray-500 text-sm">
+                    <h1 className="text-2xl font-bold  dark:text-white text-[#023E7D]">{t('pages.warehouse.inventory.control.title')}</h1>
+                    <p className="text-[#7D8597] text-sm">
                         {t('pages.warehouse.inventory.control.subtitle')}
                     </p>
                 </div>
@@ -51,7 +51,7 @@ export default function Inventar() {
 
 
                     <div className="flex items-center gap-2">
-                        <label className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded bg-gray-100 hover:bg-gray-200 text-black">
+                        <label className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded border border-[#979DAC] bg-[#FFFFFF] dark:bg-[#001233]  dark:text-white dark:hover:bg-[#002244] text-[#023E7D] hover:bg-[#F5F8FF]">
                             <FiUpload /> {t('pages.warehouse.inventory.control.uploadSheet')}
                             <input
                                 type="file"
@@ -61,7 +61,7 @@ export default function Inventar() {
                             />
                         </label>
 
-                        <button onClick={() => setNewInvOpen(true)} className="px-4 py-2 flex items-center gap-1 rounded bg-black text-white">
+                        <button onClick={() => setNewInvOpen(true)} className="px-4 py-2 flex items-center gap-1 rounded bg-[#0466CB] hover:bg-[#0453A4] text-white">
                             <HiClipboardList className="blok" />
                             {t('pages.warehouse.inventory.control.newInventory')}
                         </button>
@@ -72,45 +72,45 @@ export default function Inventar() {
 
             {/* Statistik kartlar */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-white border border-gray-200 rounded-2xl p-4">
-                    <h3 className="text-sm text-gray-500 mb-1">{t('pages.warehouse.inventory.cards.totalProducts')}</h3>
-                    <p className="text-2xl font-semibold">{inventoryStats.totalProducts}</p>
-                    <span className="text-xs text-gray-400">{t('pages.warehouse.inventory.cards.skuCount')}</span>
+                <div className="bg-[#FFIFFFF] dark:bg-[#001233] dark:hover:bg-[#002244]  border border-[#33415C] rounded-2xl p-4 shadow-sm hover:bg-[#F5F8FF] transition-colors">
+                    <h3 className="text-sm dark:text-white text-[#5C677D] mb-1">{t('pages.warehouse.inventory.cards.totalProducts')}</h3>
+                    <p className="text-2xl font-semibold dark:text-white text-[#023E7D]">{inventoryStats.totalProducts}</p>
+                    <span className="text-xs dark:text-white text-[#7D8597]">{t('pages.warehouse.inventory.cards.skuCount')}</span>
                 </div>
 
-                <div className="bg-white border border-gray-200 rounded-2xl p-4">
-                    <h3 className="text-sm text-gray-500 mb-1">{t('pages.warehouse.inventory.cards.totalValue')}</h3>
-                    <p className="text-2xl font-semibold">
+                <div className="bg-[#FFFFFF] dark:bg-[#001233] dark:hover:bg-[#002244]  border border-[#33415C] rounded-2xl p-4 shadow-sm hover:bg-[#F5F8FF] transition-colors">
+                    <h3 className="text-sm dark:text-white text-[#5C677D] mb-1">{t('pages.warehouse.inventory.cards.totalValue')}</h3>
+                    <p className="text-2xl font-semibold dark:text-white text-[#023E7D]">
                         ₼{inventoryStats.totalValue.toLocaleString("az-Latn-AZ")}
                     </p>
-                    <span className="text-xs text-gray-400">{t('pages.warehouse.inventory.cards.systemBalance')}</span>
+                    <span className="text-xs dark:text-white">{t('pages.warehouse.inventory.cards.systemBalance')}</span>
                 </div>
 
-                <div className="bg-white border border-gray-200 rounded-2xl p-4">
-                    <h3 className="text-sm text-gray-500 mb-1">{t('pages.warehouse.inventory.cards.countStatus')}</h3>
-                    <p className="text-2xl font-semibold">
+                <div className="bg-[#FFFFFF] dark:bg-[#001233] dark:hover:bg-[#002244]  border border-[#33415C] rounded-2xl p-4 shadow-sm hover:bg-[#F5F8FF] transition-colors">
+                    <h3 className="text-sm dark:text-white text-[#5C677D] mb-1">{t('pages.warehouse.inventory.cards.countStatus')}</h3>
+                    <p className="text-2xl font-semibold dark:text-white text-[#023E7D]">
                         {inventoryStats.counted} / {inventoryStats.totalProducts}
                     </p>
-                    <span className="text-xs text-gray-400">{t('pages.warehouse.inventory.cards.countedProducts')}</span>
+                    <span className="text-xs dark:text-white">{t('pages.warehouse.inventory.cards.countedProducts')}</span>
                 </div>
 
-                <div className="bg-white border border-gray-200 rounded-2xl p-4">
-                    <h3 className="text-sm text-gray-500 mb-1">{t('pages.warehouse.inventory.cards.difference')}</h3>
-                    <p className="text-2xl font-semibold">{inventoryStats.difference}</p>
-                    <span className="text-xs text-gray-400">{t('pages.warehouse.inventory.cards.countDifference')}</span>
+                <div className="bg-[#FFFFFF] dark:bg-[#001233] dark:hover:bg-[#002244]  border border-[#33415C] rounded-2xl p-4 shadow-sm hover:bg-[#F5F8FF] transition-colors">
+                    <h3 className="text-sm dark:text-white text-[#5C677D] mb-1">{t('pages.warehouse.inventory.cards.difference')}</h3>
+                    <p className="text-2xl font-semibold dark:text-white text-[#023E7D]">{inventoryStats.difference}</p>
+                    <span className="text-xs dark:text-white">{t('pages.warehouse.inventory.cards.countDifference')}</span>
                 </div>
             </div>
 
 
             {/* Yüklənmiş cədvəl */}
             {inventoryData.length > 0 && (
-                <div className="mt-6 bg-white border border-gray-200 rounded-2xl p-4 overflow-x-auto">
-                    <h3 className="text-md font-semibold mb-3">{t('pages.warehouse.inventory.control.uploadedSheet')}</h3>
-                    <table className="w-full text-sm border-collapse border-gray-200">
+                <div className="mt-6 bg-[#FFFFFF] dark:bg-[#001233] border dark:text-white border-[#33415C] rounded-2xl p-4 overflow-x-auto">
+                    <h3 className="text-md font-semibold dark:text-white text-[#023E7D] mb-3">{t('pages.warehouse.inventory.control.uploadedSheet')}</h3>
+                    <table className="w-full text-sm border-collapse border-[#979DAC]">
                         <thead>
-                            <tr className="bg-gray-50 text-gray-600">
+                            <tr className="bg-[#F5F8FF] dark:bg-[#001233] text-[#5C677D] dark:text-white">
                                 {Object.keys(inventoryData[0]).map((key) => (
-                                    <th key={key} className="border-b border-gray-200 py-2 px-3 text-left">
+                                    <th key={key} className="border-b border-[#979DAC] py-2 px-3 text-left">
                                         {key}
                                     </th>
                                 ))}
@@ -118,9 +118,9 @@ export default function Inventar() {
                         </thead>
                         <tbody>
                             {inventoryData.map((row, i) => (
-                                <tr key={i} className="hover:bg-gray-50">
+                                <tr key={i} className="hover:bg-[#F5F8FF]">
                                     {Object.values(row).map((val, j) => (
-                                        <td key={j} className="border-b border-gray-200 py-2 px-3">
+                                        <td key={j} className="border-b border-[#979DAC] py-2 px-3">
                                             {val}
                                         </td>
                                     ))}

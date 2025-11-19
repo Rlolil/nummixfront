@@ -42,14 +42,14 @@ export default function CreateJournalEntry({ setModuleOpen, mode = "create", ini
   };
 
   return (
-    <div className="p-6 text-[#001233]">
+    <div className="p-6 text-[#001233] ">
         <>
           <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
             onClick={closeModal}
           ></div>
-          <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[#FFFFFF] rounded-lg shadow-lg p-6 max-h-[80vh] overflow-y-auto">
-            <div className="flex justify-between items-center border-b border-[#979DAC] pb-3">
+          <div className="fixed  dark:bg-[#002855] dark:text-white top-1/2 left-1/2 z-51 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[#FFFFFF] rounded-lg shadow-lg p-6 max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between items-center border-b border-[#979DAC] dark:border-[#979DAC] pb-3">
               <h2 className="text-lg font-semibold">
                 {mode === 'edit'
                   ? t('pages.accounting.transactions.modal.editTitle', { defaultValue: 'Edit Journal Entry' })
@@ -65,7 +65,7 @@ export default function CreateJournalEntry({ setModuleOpen, mode = "create", ini
                   <label className="block text-sm font-medium">{t('pages.accounting.transactions.modal.dateLabel', { defaultValue: 'Date' })}</label>
                   <input
                     type="date"
-                    className="mt-1 w-full border border-[#33415C] rounded-md px-3 py-2"
+                    className="mt-1 w-full border border-[#33415C] dark:border-[#979DAC] rounded-md px-3 py-2"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                   />
@@ -75,7 +75,7 @@ export default function CreateJournalEntry({ setModuleOpen, mode = "create", ini
                   <input
                     type="text"
                     placeholder={t('pages.accounting.transactions.modal.referencePlaceholder', { defaultValue: 'e.g., INV-2025-1046' })}
-                    className="mt-1 w-full border border-[#33415C] rounded-md px-3 py-2"
+                    className="mt-1 w-full border border-[#33415C] dark:border-[#979DAC] rounded-md px-3 py-2"
                     value={reference}
                     onChange={(e) => setReference(e.target.value)}
                   />
@@ -87,7 +87,7 @@ export default function CreateJournalEntry({ setModuleOpen, mode = "create", ini
                 <div>
                   <label className="block text-sm font-medium">{t('pages.accounting.transactions.modal.currency', { defaultValue: 'Valyuta' })}</label>
                   <select
-                    className="mt-1 w-full border border-[#33415C] rounded-md px-3 py-2"
+                    className="mt-1 w-full border border-[#33415C] dark:border-[#979DAC] dark:bg-[#002855] rounded-md px-3 py-2"
                     value={currency}
                     onChange={(e) => setCurrency(e.target.value)}
                   >
@@ -103,7 +103,7 @@ export default function CreateJournalEntry({ setModuleOpen, mode = "create", ini
                   <input
                     type="number"
                     placeholder={t('pages.accounting.transactions.modal.amountPlaceholder', { defaultValue: '0.00' })}
-                    className="mt-1 w-full border border-[#33415C] rounded-md px-3 py-2"
+                    className="mt-1 w-full border border-[#33415C] dark:border-[#979DAC] rounded-md px-3 py-2"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                   />
@@ -117,7 +117,7 @@ export default function CreateJournalEntry({ setModuleOpen, mode = "create", ini
                   <input
                     type="number"
                     placeholder={t('pages.accounting.transactions.modal.liquidValuePlaceholder', { defaultValue: '0.00' })}
-                    className="mt-1 w-full border border-[#33415C] rounded-md px-3 py-2"
+                    className="mt-1 w-full border border-[#33415C] dark:border-[#979DAC] rounded-md px-3 py-2"
                     value={mayeValue}
                     onChange={(e) => setMayeValue(e.target.value)}
                   />
@@ -129,7 +129,7 @@ export default function CreateJournalEntry({ setModuleOpen, mode = "create", ini
                 <input
                   type="text"
                   placeholder={t('pages.accounting.transactions.modal.descriptionPlaceholder', { defaultValue: 'Transaction description' })}
-                  className="mt-1 w-full border border-[#33415C] rounded-md px-3 py-2"
+                  className="mt-1 w-full border border-[#33415C] dark:border-[#979DAC] rounded-md px-3 py-2"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
@@ -145,9 +145,9 @@ export default function CreateJournalEntry({ setModuleOpen, mode = "create", ini
                   </button>
                 </div>
 
-                <div className="border border-[#33415C] rounded-lg overflow-hidden">
+                <div className="border border-[#33415C] dark:border-[#979DAC] rounded-lg overflow-hidden">
                   <table className="w-full text-sm">
-                    <thead className="bg-[#FFFFFF] border-b border-[#979DAC]">
+                    <thead className="bg-[#FFFFFF] dark:bg-[#002855] border-b border-[#979DAC]">
                       <tr>
                         <th className="text-left px-2 py-2 w-[40%]">{t('pages.accounting.transactions.modal.table.account', { defaultValue: 'Account' })}</th>
                         <th className="text-left px-2 py-2 w-[25%]">{t('pages.accounting.transactions.modal.table.debit ', { defaultValue: 'Debit' })}</th>
@@ -162,7 +162,7 @@ export default function CreateJournalEntry({ setModuleOpen, mode = "create", ini
                             <select
                               value={entry.account}
                               onChange={(e) => handleChange(i, "account", e.target.value)}
-                              className="w-full border border-[#33415C] rounded-md px-2 py-1"
+                              className="w-full border border-[#33415C] dark:border-[#979DAC] dark:bg-[#002855] rounded-md px-2 py-1"
                             >
                               <option value="">{t('pages.accounting.transactions.modal.table.selectAccount', { defaultValue: 'Select account' })}</option>
                               <option value="cash">{t('pages.accounting.transactions.modal.table.options.cash', { defaultValue: 'Cash' })}</option>

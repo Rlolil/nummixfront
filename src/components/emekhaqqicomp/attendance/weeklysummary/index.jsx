@@ -12,34 +12,34 @@ const data = [
 function WeeklySummary() {
   const { t } = useTranslation();
   return (
-    <div className="bg-base-100 text-base-content flex flex-col gap-6 rounded-xl border border-base-300 p-6 shadow-lg">
+    <div className="bg-[#FFFFFF] text-[#001233] flex flex-col gap-6 rounded-xl border border-[#33415C] p-6 shadow-sm">
       <header className="mb-4">
-        <h4 className="text-xl font-semibold">{t('pages.hr.attendance.weeklySummary.title', { defaultValue: 'Weekly Summary' })}</h4>
+        <h4 className="text-xl font-semibold text-[#023E7D]">{t('pages.hr.attendance.weeklySummary.title', { defaultValue: 'Weekly Summary' })}</h4>
       </header>
 
       <div className="overflow-x-auto">
         <table className="w-full table-auto border-collapse">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-[#F5F8FF] border-b border-[#979DAC]">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.day', { defaultValue: 'Day' })}</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.date', { defaultValue: 'Date' })}</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.present', { defaultValue: 'Present' })}</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.late', { defaultValue: 'Late' })}</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.involuntary', { defaultValue: 'Unexcused' })}</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">{t('pages.hr.attendance.weeklySummary.headers.attendancePct', { defaultValue: 'Attendance %' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-[#5C677D] uppercase">{t('pages.hr.attendance.weeklySummary.headers.day', { defaultValue: 'Day' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-[#5C677D] uppercase">{t('pages.hr.attendance.weeklySummary.headers.date', { defaultValue: 'Date' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-[#5C677D] uppercase">{t('pages.hr.attendance.weeklySummary.headers.present', { defaultValue: 'Present' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-[#5C677D] uppercase">{t('pages.hr.attendance.weeklySummary.headers.late', { defaultValue: 'Late' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-[#5C677D] uppercase">{t('pages.hr.attendance.weeklySummary.headers.involuntary', { defaultValue: 'Unexcused' })}</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-[#5C677D] uppercase">{t('pages.hr.attendance.weeklySummary.headers.attendancePct', { defaultValue: 'Attendance %' })}</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-[#979DAC]">
             {data.map(({ day, date, present, late, involuntary, attendance, trendingUp }) => (
-              <tr key={date} className="hover:bg-gray-50">
-                <td className="px-6 py-4 text-gray-900">{day}</td>
-                <td className="px-6 py-4 text-gray-600">{date}</td>
+              <tr key={date} className="hover:bg-[#F5F8FF]">
+                <td className="px-6 py-4 text-[#001233]">{day}</td>
+                <td className="px-6 py-4 text-[#7D8597]">{date}</td>
                 <td className="px-6 py-4 text-green-600">{present}</td>
                 <td className="px-6 py-4 text-orange-600">{late}</td>
                 <td className="px-6 py-4 text-purple-600">{involuntary}</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-gray-900">{attendance.toFixed(1)}%</span>
+                    <span className="text-[#001233]">{attendance.toFixed(1)}%</span>
                     {trendingUp && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

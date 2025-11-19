@@ -54,19 +54,19 @@ export default function AnbarTransfer() {
     };
 
     return (
-        <div className="p-6 bg-white rounded-xl shadow-sm">
-            <h2 className="text-xl font-semibold mb-4">{t('pages.warehouse.operations.transfer.title')}</h2>
+        <div className="bg-[#FFFFFF] dark:bg-[#001233] dark:text-white rounded-2xl border border-[#33415C] p-4 sm:p-6 text-[#001233]">
+            <h2 className="text-xl font-semibold dark:text-white mb-4 text-[#023E7D]">{t('pages.warehouse.operations.transfer.title')}</h2>
 
             {/* Ümumi məlumat */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div>
-                    <label className="block text-sm font-medium mb-1">{t('pages.warehouse.operations.transfer.from')}</label>
+                    <label className="block text-sm font-medium mb-1 dark:text-white text-[#5C677D]">{t('pages.warehouse.operations.transfer.from')}</label>
                     <select
                         value={transfer.from}
                         onChange={(e) =>
                             setTransfer({ ...transfer, from: e.target.value })
                         }
-                        className="w-full bg-gray-100 rounded px-3 py-2"
+                        className="w-full bg-[#FFFFFF] dark:bg-[#001233]   border border-[#979DAC] rounded px-3 py-2 text-[#001233] dark:text-white"
                     >
                         <option hidden>{t('pages.warehouse.operations.common.select')}</option>
                         <option value="anbar_bakı">{t('pages.warehouse.operations.common.warehouses.mainBaku')}</option>
@@ -76,11 +76,11 @@ export default function AnbarTransfer() {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium mb-1">{t('pages.warehouse.operations.transfer.to')}</label>
+                    <label className="block text-sm font-medium mb-1 dark:text-white text-[#5C677D]">{t('pages.warehouse.operations.transfer.to')}</label>
                     <select
                         value={transfer.to}
                         onChange={(e) => setTransfer({ ...transfer, to: e.target.value })}
-                        className="w-full bg-gray-100 rounded px-3 py-2"
+                        className="w-full bg-[#FFFFFF] dark:bg-[#001233] border border-[#979DAC] rounded px-3 py-2 text-[#001233] dark:text-white"
                     >
                         <option hidden>{t('pages.warehouse.operations.common.select')}</option>
                         <option value="anbar_bakı">{t('pages.warehouse.operations.common.warehouses.mainBaku')}</option>
@@ -90,20 +90,20 @@ export default function AnbarTransfer() {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium mb-1">{t('pages.warehouse.operations.common.date')}</label>
+                    <label className="block text-sm font-medium mb-1 dark:text-white text-[#5C677D]">{t('pages.warehouse.operations.common.date')}</label>
                     <input
                         type="date"
                         value={transfer.date}
                         onChange={(e) =>
                             setTransfer({ ...transfer, date: e.target.value })
                         }
-                        className="w-full bg-gray-100 rounded px-3 py-2"
+                        className="w-full bg-[#FFFFFF] dark:bg-[#001233] border border-[#979DAC] rounded px-3 py-2 text-[#001233] dark:text-white"
                     />
                 </div>
             </div>
 
             {/* Məhsullar */}
-            <h3 className="font-semibold mb-2">{t('pages.warehouse.operations.transfer.productsTitle')}</h3>
+            <h3 className="font-semibold mb-2  dark:text-white text-[#023E7D]">{t('pages.warehouse.operations.transfer.productsTitle')}</h3>
             <div className="space-y-3 mb-4">
                 {transfer.products.map((item) => (
                     <div
@@ -111,13 +111,13 @@ export default function AnbarTransfer() {
                         className="grid grid-cols-1 md:grid-cols-3 gap-3 items-center"
                     >
                         <div className="flex flex-col  gap-2">
-                            <label >{t('pages.warehouse.operations.common.product')}</label>
+                            <label className="text-[#5C677D] dark:text-white">{t('pages.warehouse.operations.common.product')}</label>
                             <select
                                 value={item.product}
                                 onChange={(e) =>
                                     handleChange(item.id, "product", e.target.value)
                                 }
-                                className="bg-gray-100 rounded px-3 py-2"
+                                className="bg-[#FFFFFF] dark:bg-[#001233] border border-[#979DAC] rounded px-3 py-2 text-[#001233] dark:text-white"
                             >
                                 <option hidden>{t('pages.warehouse.operations.common.select')}</option>
                                 <option value="HM-B205 - Hazır məhsul B-205">
@@ -133,7 +133,7 @@ export default function AnbarTransfer() {
                         </div>
 
                         <div className="flex flex-col  gap-2">
-                            <label >{t('pages.warehouse.operations.common.quantity')}</label>
+                            <label className="text-[#5C677D]">{t('pages.warehouse.operations.common.quantity')}</label>
                             <input
                                 type="number"
 
@@ -141,11 +141,11 @@ export default function AnbarTransfer() {
                                 onChange={(e) =>
                                     handleChange(item.id, "quantity", e.target.value)
                                 }
-                                className="bg-gray-100 rounded px-3 py-2"
+                                className="bg-[#FFFFFF] dark:bg-[#001233]   border border-[#979DAC] rounded px-3 py-2 text-[#001233] dark:text-white"
                             />
                         </div>
 
-                        <div className="flex flex-col  gap-2"> <label >{t('pages.warehouse.operations.transfer.newLocation')}</label>
+                        <div className="flex flex-col  gap-2"> <label className="text-[#5C677D] dark:text-white">{t('pages.warehouse.operations.transfer.newLocation')}</label>
 
                             <input
 
@@ -155,7 +155,7 @@ export default function AnbarTransfer() {
                                 onChange={(e) =>
                                     handleChange(item.id, "newLocation", e.target.value)
                                 }
-                                className="bg-gray-100 rounded px-3 py-2"
+                                className="bg-[#FFFFFF] dark:bg-[#001233] border border-[#979DAC] rounded px-3 py-2 text-[#001233] placeholder:text-[#7D8597] dark:text-white"
                             />
                         </div>
                     </div>
@@ -164,7 +164,7 @@ export default function AnbarTransfer() {
 
             <button
                 onClick={addProduct}
-                className="text-sm font-medium text-blue-600 mb-4"
+                className="text-sm font-medium mb-4 px-3 py-1 border dark:bg-[#001233] dark:text-white dark:hover:bg-[#002244] border-[#979DAC] rounded bg-[#FFFFFF] hover:bg-[#F5F8FF] text-[#023E7D]"
             >
                 + {t('pages.warehouse.operations.common.addProduct')}
             </button>
@@ -173,13 +173,13 @@ export default function AnbarTransfer() {
             <div className="flex justify-end gap-3">
                 <button
                     onClick={handleReset}
-                    className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded"
+                    className="px-4 py-2 rounded  dark:bg-[#001233] dark:text-white dark:hover:bg-[#002244] transition-all duration-400 bg-[#FFFFFF] border border-[#979DAC] text-[#023E7D] hover:bg-[#F5F8FF]"
                 >
                     {t('common.cancel')}
                 </button>
                 <button
                     onClick={handleSubmit}
-                    className="bg-black text-white px-4 py-2 rounded"
+                    className="bg-[#0466CB] hover:bg-[#0453A4] text-white px-4 py-2 rounded"
                 >
                     {t('pages.warehouse.operations.transfer.confirm')}
                 </button>

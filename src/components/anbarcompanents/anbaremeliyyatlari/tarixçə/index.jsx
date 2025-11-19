@@ -45,35 +45,35 @@ const getTypeIcon = (type) => {
 const getTypeStyle = (type) => {
     switch (type) {
         case "Giriş":
-            return "bg-black text-white";
+            return "bg-[#0466CB] text-white";
         case "Çıxış":
-            return "bg-gray-200 text-black";
+            return "bg-[#023E7D] text-white";
         case "Transfer":
-            return "bg-gray-100 text-black";
+            return "bg-[#979DAC] text-white";
         default:
-            return "bg-gray-100 text-black";
+            return "bg-[#979DAC] text-white";
     }
 };
 
 const getStatusStyle = (status) => {
     switch (status) {
         case "Tamamlandı":
-            return "bg-black text-white";
+            return "bg-[#0466CB] text-white";
         case "Yoldadır":
-            return "bg-gray-200 text-black";
+            return "bg-[#979DAC] text-white";
         default:
-            return "bg-gray-100 text-black";
+            return "bg-[#979DAC] text-white";
     }
 };
 
 const AnbarHistory = () => {
     const { t } = useTranslation();
     return (
-        <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 mt-6">
-            <h2 className="text-lg font-semibold mb-4">{t('pages.warehouse.operations.history.title')}</h2>
+        <div className="bg-[#FFFFFF] rounded-2xl dark:bg-[#001233]  border border-[#33415C] p-4 sm:p-6 mt-6 text-[#001233] dark:text-white">
+            <h2 className="text-lg font-semibold mb-4 dark:text-white text-[#023E7D]">{t('pages.warehouse.operations.history.title')}</h2>
             <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                    <thead className="border-b text-gray-600">
+                    <thead className="border-b border-[#979DAC] text-[#5C677D] dark:text-white">
                         <tr className="text-left">
                             <th className="py-2">{t('pages.warehouse.operations.history.columns.docNo')}</th>
                             <th className="py-2">{t('pages.warehouse.operations.history.columns.type')}</th>
@@ -85,7 +85,7 @@ const AnbarHistory = () => {
                     </thead>
                     <tbody>
                         {operations.map((op, index) => (
-                            <tr key={index} className="border-b last:border-none hover:bg-gray-50">
+                            <tr key={index} className="border-b border-[#979DAC] last:border-none dark:hover:bg-[#002244] hover:bg-[#F5F8FF]">
                                 <td className="py-2">{op.id}</td>
                                 <td className="py-2">
                                     <span

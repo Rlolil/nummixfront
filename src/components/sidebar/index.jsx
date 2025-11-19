@@ -5,18 +5,18 @@ import { useTranslation } from "react-i18next";
 function SidebarComp() {
     const { t } = useTranslation();
     return (
-        <div className="top-[1px] hidden md:block max-w-72 md:fixed left-0 w-20 hover:w-72 transition-all duration-400 h-screen group bg-white text-black z-50">
+        <div className="top-[1px] hidden md:block max-w-72 md:fixed left-0 w-20 hover:w-72 transition-all duration-400 h-screen group bg-white dark:bg-[#001845] dark:text-white z-50">
             <div className="flex items-center gap-[20px] p-4">
                 <img src={image} alt={t("common.logoAlt")} className="max-w-12 h-auto" />
                 <h2 className="text-md group-hover:text-xl font-bold group-hover:opacity-100 opacity-0 transition-opacity duration-200">
                     {t("brand.name")}
                 </h2>
             </div>
-            <hr className="border-gray-200" />
-            <div className="flex flex-col p-4 gap-[10px] mb-[50px] text-black font-medium">
+            <hr className="border-gray-200 dark:border-gray-700" />
+            <div className="flex flex-col dark:text-white p-4 gap-[10px] mb-[50px] text-black font-medium">
                 <div>
                     <Link to="/muhasibat/dashboard">
-                        <button className="flex items-center rounded-md text-md font-medium transition-all outline-none hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                        <button className="flex items-center rounded-md text-md font-medium transition-all outline-none hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -42,7 +42,7 @@ function SidebarComp() {
                 </div>
                 <div>
                     <Link to="/maliyye">
-                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -71,7 +71,7 @@ function SidebarComp() {
                 </div>
                 <div>
                     <Link to="/salescustomers">
-                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -95,7 +95,7 @@ function SidebarComp() {
                 </div>
                 <div>
                     <Link to="/supplier">
-                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -121,7 +121,7 @@ function SidebarComp() {
                 </div>
                 <div>
                     <Link to="/anbar/dashboard">
-                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -145,7 +145,7 @@ function SidebarComp() {
                 </div>
                 <div>
                     <Link to="/esasvesaitler">
-                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 dark:hover:bg-[#023E7D]  h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -172,7 +172,7 @@ function SidebarComp() {
                 </div>
                 <div>
                     <Link to="/emekhaqqi/dashboard">
-                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -198,7 +198,7 @@ function SidebarComp() {
                 </div>
                 <div>
                     <Link to="/ai">
-                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                        <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -223,7 +223,7 @@ function SidebarComp() {
                 </div>
                 <div>
                     <Link to="/settings">
-                        <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                        <button className="block group-hover:flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -246,10 +246,10 @@ function SidebarComp() {
                     </Link>
                 </div>
             </div>
-            <hr className="border-gray-200" />
+            <hr className="border-gray-200 dark:border-[#979DAC]" />
             <div className="text-gray-500 p-4 absolute bottom-0 w-full">
                 <Link to="/login">
-                    <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+                    <button className="flex items-center rounded-md text-md font-medium transition-all hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

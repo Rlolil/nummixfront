@@ -8,8 +8,8 @@ export function MonthlyStockChart() {
   const { t } = useTranslation();
   const Adata = AdataRaw.map(key => ({ name: t(`common.months.${key}`), value: ({jan:450,feb:520,mar:390,apr:610,may:480,jun:530}[key]) }));
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-      <h3 className="text-lg font-semibold mb-4">{t('pages.warehouse.charts.monthlyStock')}</h3>
+    <div className="bg-[#FFFFFF] dark:bg-[#001233] dark:border-[#979DAC] border border-[#33415C] rounded-xl p-5 shadow-sm">
+      <h3 className="text-lg font-semibold dark:text-white  text-[#023E7D] mb-4">{t('pages.warehouse.charts.monthlyStock')}</h3>
       <ResponsiveContainer width="100%" height={250}>
         <BarChart data={Adata}>
           <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
@@ -32,8 +32,8 @@ export function CategoryDistributionChart() {
   const { t } = useTranslation();
   const Sdata = SdataKeys.map(k => ({ name: t(`pages.warehouse.categories.${k}`), value: ({rawMaterials:35,finishedGoods:28,spareParts:22,packaging:15}[k]) }));
   return (
-    <div className="bg-white border-gray-200 border rounded-xl p-5 shadow-sm">
-      <h3 className="text-lg font-semibold mb-4">{t('pages.warehouse.charts.categoryDistribution')}</h3>
+    <div className="bg-[#FFFFFF] dark:bg-[#001233] dark:border-[#979DAC] border-[#33415C] border rounded-xl p-5 shadow-sm">
+      <h3 className="text-lg font-semibold dark:text-white text-[#023E7D] mb-4">{t('pages.warehouse.charts.categoryDistribution')}</h3>
       <ResponsiveContainer width="100%" height={250}>
         <PieChart>
           <Pie
@@ -69,8 +69,8 @@ export function StokDovriyeChart() {
   const { t } = useTranslation();
   const stokDovriyeData = stokDovriyeKeys.map(k => ({ ay: t(`common.months.${k}`), deyer: ({jan:4.2,feb:4.5,mar:4.1,apr:4.8,may:4.6,jun:4.9}[k]) }));
   return (
-    <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
-      <h3 className="text-lg font-medium mb-4">{t('pages.warehouse.charts.stockTurnoverRatio')}</h3>
+    <div className="bg-[#FFFFFF] dark:bg-[#001233] border border-[#33415C] rounded-2xl p-4 shadow-sm">
+      <h3 className="text-lg font-medium dark:text-white text-[#023E7D] mb-4">{t('pages.warehouse.charts.stockTurnoverRatio')}</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={stokDovriyeData}>
@@ -90,8 +90,8 @@ export function AnbarDeyeriChart() {
   const { t } = useTranslation();
   const anbarDeyeriData = anbarDeyeriKeys.map(k => ({ ay: t(`common.months.${k}`), deyer: ({jan:420000,feb:450000,mar:430000,apr:470000,may:460000,jun:480000}[k]) }));
   return (
-    <div className="border border-gray-200 rounded-2xl p-4 shadow-sm">
-      <h3 className="text-lg font-medium mb-4">{t('pages.warehouse.charts.inventoryValueDynamics')}</h3>
+    <div className="bg-[#FFFFFF] dark:bg-[#001233] border border-[#33415C] rounded-2xl p-4 shadow-sm">
+      <h3 className="text-lg font-medium dark:text-white mb-4">{t('pages.warehouse.charts.inventoryValueDynamics')}</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={anbarDeyeriData}>

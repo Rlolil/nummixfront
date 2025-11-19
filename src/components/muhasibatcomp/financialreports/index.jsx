@@ -28,17 +28,17 @@ export default function FinancialReports() {
   };
 
   return (
-    <div className="flex-1 overflow-auto bg-[#FFFFFF] text-[#001233]">
+    <div className="flex-1 overflow-auto bg-[#FFFFFF] text-[#001233] dark:bg-[#001233] dark:text-white">
       <div className="container mx-auto p-4 sm:p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-[#023E7D]">{t('pages.accounting.tabs.financialReports')}</h2>
-            <p className="text-[#7D8597] text-sm sm:text-base">{t('pages.accounting.financialReports.subtitle', { defaultValue: 'Standard financial statements' })}</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#023E7D] dark:text-[#89A4D6]">{t('pages.accounting.tabs.financialReports')}</h2>
+            <p className="text-[#7D8597] dark:text-[#B0B8C5] text-sm sm:text-base">{t('pages.accounting.financialReports.subtitle', { defaultValue: 'Standard financial statements' })}</p>
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-4 sm:mt-0">
             <select
               defaultValue="Q3 2025"
-              className="border border-[#33415C] rounded-md px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm bg-[#FFFFFF] text-[#001233] w-full sm:w-auto"
+              className="border border-[#33415C] dark:border-[#979DAC] rounded-md px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm bg-[#FFFFFF] dark:bg-[#002855] text-[#001233] dark:text-white w-full sm:w-auto"
             >
               <option>{t('common.quarter', { quarter: 'Q1', year: 2025, defaultValue: 'Q1 2025' })}</option>
               <option>{t('common.quarter', { quarter: 'Q2', year: 2025, defaultValue: 'Q2 2025' })}</option>
@@ -47,11 +47,11 @@ export default function FinancialReports() {
             </select>
             <button
               onClick={exportPDF}
-              className="flex items-center gap-2 border border-[#33415C] font-bold px-2 py-1.5 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm bg-[#FFFFFF] text-[#001233] hover:bg-[#0453A4] hover:text-white transition-colors w-full sm:w-auto"
+              className="flex items-center gap-2 border  border-[#33415C] dark:border-[#979DAC] font-bold px-2 py-1.5 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm bg-[#FFFFFF] dark:bg-[#002855] text-[#001233] dark:text-white hover:bg-[#0453A4] hover:text-white transition-colors w-full sm:w-auto"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-black"
+                className="h-4 w-4 text-black dark:text-white"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -67,15 +67,15 @@ export default function FinancialReports() {
         {/* Cards section removed per request; only tabs remain */
         }
         <div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 bg-[#FFFFFF] border border-[#33415C] rounded-2xl px-1 sm:px-2 py-2 overflow-x-auto text-xs sm:text-sm font-medium">
+          <div className="grid grid-cols-2 sm:grid-cols-4 bg-[#FFFFFF] dark:bg-[#002855] border border-[#33415C] dark:border-[#979DAC] rounded-2xl px-1 sm:px-2 py-2 overflow-x-auto text-xs sm:text-sm font-medium">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`py-1 sm:py-2 rounded-2xl text-center transition ${
                   activeTab === tab.id
-                    ? "bg-[#0466CB] text-white font-semibold"
-                    : "text-[#001233] hover:bg-[#0453A4] hover:text-white"
+                    ? "bg-[#0466CB] text-white font-semibold dark:bg-[#023E7D]"
+                    : "text-[#001233] dark:text-[#E0E0E0] hover:bg-[#0453A4] hover:text-white dark:hover:bg-[#0453A4]"
                 }`}
               >
                 {tab.label}

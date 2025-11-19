@@ -152,15 +152,15 @@ const Employees = () => {
   }, [employees, search]);
 
   return (
-    <div className="flex-1 overflow-auto p-6 space-y-6">
+    <div className="flex-1 overflow-auto p-6 space-y-6 text-[#001233]">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">{t('pages.hr.employees.title', { defaultValue: 'Employees' })}</h2>
-          <p className="text-gray-500">{t('pages.hr.employees.subtitle', { defaultValue: 'Manage all employees' })}</p>
+          <h2 className="text-xl font-bold text-[#023E7D]">{t('pages.hr.employees.title', { defaultValue: 'Employees' })}</h2>
+          <p className="text-[#7D8597]">{t('pages.hr.employees.subtitle', { defaultValue: 'Manage all employees' })}</p>
         </div>
         <button
           onClick={() => setIsDialogOpen(true)}
-          className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md hover:opacity-50"
+          className="flex items-center gap-2 bg-[#0466CB] hover:bg-[#0453A4] text-white px-4 py-2 rounded-md"
         >
           <FiPlus className="w-4 h-4" />
           {t('pages.hr.employees.new', { defaultValue: 'New Employee' })}
@@ -172,12 +172,12 @@ const Employees = () => {
           />
         )}
       </div>
-      <div className="bg-white border border-gray-200 rounded-xl p-4">
+      <div className="bg-[#FFFFFF] border border-[#33415C] rounded-xl p-4">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1">
-            <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#7D8597]" />
             <input
-              className="w-full pl-10 pr-3 py-2 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-3 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] placeholder:text-[#7D8597] focus:outline-none"
               placeholder={t('pages.hr.employees.searchPlaceholder', { defaultValue: 'Search employee (name, position, ID)' })}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -186,14 +186,14 @@ const Employees = () => {
               <button
                 type="button"
                 onClick={() => setSearch("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#7D8597] hover:text-[#023E7D]"
                 aria-label={t('common.clear', { ns: 'translation', defaultValue: 'Clear' })}
               >
                 <FiX className="w-4 h-4" />
               </button>
             )}
           </div>
-          <select className="flex items-center justify-between gap-2 px-3 py-2 border border-gray-200 rounded-md bg-white text-sm w-full sm:w-48">
+          <select className="flex items-center justify-between gap-2 px-3 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm w-full sm:w-48">
             <option>{t('pages.hr.employees.filters.label', { defaultValue: 'Filter' })}</option>
             <option>{t('pages.hr.employees.filters.allDepartments', { defaultValue: 'All departments' })}</option>
             <option>{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</option>
@@ -202,65 +202,65 @@ const Employees = () => {
             <option>{t('pages.hr.departments.sales', { defaultValue: 'Sales' })}</option>
             <option>{t('pages.hr.departments.hr', { defaultValue: 'Human Resources' })}</option>
           </select>
-          <button className="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-md bg-white text-sm hover:bg-gray-100">
+          <button className="flex items-center gap-2 px-3 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#023E7D] hover:bg-[#F5F8FF]">
             <FiDownload className="w-4 h-4" />
             <span className="hidden sm:inline">{t('common.export', { ns: 'translation', defaultValue: 'Export' })}</span>
           </button>
         </div>
       </div>
-      <div className="bg-white border border-gray-200 rounded-xl overflow-x-auto">
+      <div className="bg-[#FFFFFF] border border-[#33415C] rounded-xl overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b">
+          <thead className="bg-[#F5F8FF] border-b border-[#979DAC]">
             <tr>
-              <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
                 {t('pages.hr.employees.table.employee', { defaultValue: 'Employee' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
                 {t('pages.hr.employees.table.position', { defaultValue: 'Position' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
                 {t('pages.hr.employees.table.department', { defaultValue: 'Department' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
                 {t('pages.hr.employees.table.salary', { defaultValue: 'Salary' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
                 {t('pages.hr.employees.table.status', { defaultValue: 'Status' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-gray-500 uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
                 {t('pages.hr.employees.table.actions', { defaultValue: 'Actions' })}
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-[#979DAC]">
             {filteredEmployees.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-6 py-6 text-center text-sm text-gray-500">
+                <td colSpan={6} className="px-6 py-6 text-center text-sm text-[#7D8597]">
                   {t('common.noResults', { ns: 'translation', defaultValue: 'No results found' })}
                 </td>
               </tr>
             )}
             {filteredEmployees.map((employee, idx) => (
-              <tr key={employee.id} className="hover:bg-gray-50">
+              <tr key={employee.id} className="hover:bg-[#F5F8FF]">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
                       {employee.name[0]}
                     </div>
                     <div className="ml-4">
-                      <div className="text-gray-900">{employee.name}</div>
-                      <div className="text-sm text-gray-500">{employee.id}</div>
+                      <div className="text-[#001233]">{employee.name}</div>
+                      <div className="text-sm text-[#7D8597]">{employee.id}</div>
                     </div>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-gray-900">{employee.position}</div>
-                  <div className="text-sm text-gray-500">{employee.email}</div>
+                  <div className="text-[#001233]">{employee.position}</div>
+                  <div className="text-sm text-[#7D8597]">{employee.email}</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-[#001233]">
                   {t(`pages.hr.departments.${employee.departmentKey}`, { defaultValue: employee.departmentKey })}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-[#001233]">
                   {employee.salary}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -276,10 +276,10 @@ const Employees = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center gap-2">
-                    <button className="p-2 rounded-md hover:bg-gray-100" onClick={() => openView(employee)}>
+                    <button className="p-2 rounded-md hover:bg-[#F5F8FF]" onClick={() => openView(employee)}>
                       <FiEye className="w-4 h-4" />
                     </button>
-                    <button className="p-2 rounded-md hover:bg-gray-100" onClick={() => openEdit(employee, idx)}>
+                    <button className="p-2 rounded-md hover:bg-[#F5F8FF]" onClick={() => openEdit(employee, idx)}>
                       <FiEdit2 className="w-4 h-4" />
                     </button>
                     <button className="p-2 rounded-md text-red-600 hover:text-red-700" onClick={() => handleDelete(idx)}>
@@ -292,7 +292,7 @@ const Employees = () => {
           </tbody>
         </table>
       </div>
-      <div className="text-sm text-gray-500">
+      <div className="text-sm text-[#7D8597]">
         {t('pages.hr.employees.footer.showing', { count: filteredEmployees.length, total: employees.length, defaultValue: 'Showing: {{count}} results (Total: {{total}} employees)' })}
       </div>
       {viewEmployee && (
@@ -300,7 +300,7 @@ const Employees = () => {
           <div onClick={closeView} className="bg-black opacity-50 fixed inset-0 z-51"></div>
           <div
             role="dialog"
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border rounded-lg shadow-lg p-6 sm:max-w-lg"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow-lg p-6 sm:max-w-lg"
           >
             <button
               className="absolute top-4 right-4 opacity-70 hover:opacity-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -310,32 +310,32 @@ const Employees = () => {
               <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
             </button>
             <div className="flex flex-col gap-2 text-center sm:text-left">
-              <h2 className="text-lg font-semibold">{t('pages.hr.employees.viewTitle', { defaultValue: 'Employee Details' })}</h2>
+              <h2 className="text-lg font-semibold text-[#023E7D]">{t('pages.hr.employees.viewTitle', { defaultValue: 'Employee Details' })}</h2>
             </div>
             <div className="space-y-4 py-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.employee', { defaultValue: 'Employee' })}</div>
+                  <div className="text-sm text-[#7D8597]">{t('pages.hr.employees.table.employee', { defaultValue: 'Employee' })}</div>
                   <div className="font-medium">{viewEmployee.name} ({viewEmployee.id})</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.position', { defaultValue: 'Position' })}</div>
+                  <div className="text-sm text-[#7D8597]">{t('pages.hr.employees.table.position', { defaultValue: 'Position' })}</div>
                   <div className="font-medium">{viewEmployee.position}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500">Email</div>
+                  <div className="text-sm text-[#7D8597]">Email</div>
                   <div className="font-medium">{viewEmployee.email}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.department', { defaultValue: 'Department' })}</div>
+                  <div className="text-sm text-[#7D8597]">{t('pages.hr.employees.table.department', { defaultValue: 'Department' })}</div>
                   <div className="font-medium">{t(`pages.hr.departments.${viewEmployee.departmentKey}`, { defaultValue: viewEmployee.departmentKey })}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.salary', { defaultValue: 'Salary' })}</div>
+                  <div className="text-sm text-[#7D8597]">{t('pages.hr.employees.table.salary', { defaultValue: 'Salary' })}</div>
                   <div className="font-medium">{viewEmployee.salary}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500">{t('pages.hr.employees.table.status', { defaultValue: 'Status' })}</div>
+                  <div className="text-sm text-[#7D8597]">{t('pages.hr.employees.table.status', { defaultValue: 'Status' })}</div>
                   <div className="font-medium">{t(`pages.hr.employees.status.${viewEmployee.statusKey}`, { defaultValue: viewEmployee.statusKey })}</div>
                 </div>
               </div>
@@ -349,7 +349,7 @@ const Employees = () => {
           <div onClick={closeEdit} className="bg-black opacity-50 fixed inset-0 z-51"></div>
           <div
             role="dialog"
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border rounded-lg shadow-lg p-6 sm:max-w-lg"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow-lg p-6 sm:max-w-lg"
           >
             <button
               className="absolute top-4 right-4 opacity-70 hover:opacity-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -359,14 +359,14 @@ const Employees = () => {
               <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
             </button>
             <div className="flex flex-col gap-2 text-center sm:text-left">
-              <h2 className="text-lg font-semibold">{t('pages.hr.employees.editTitle', { defaultValue: 'Edit Employee' })}</h2>
+              <h2 className="text-lg font-semibold text-[#023E7D]">{t('pages.hr.employees.editTitle', { defaultValue: 'Edit Employee' })}</h2>
             </div>
             <div className="space-y-4 py-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.modal.name', { defaultValue: 'Name' })}</label>
                   <input
-                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.name}
                     onChange={(e) => handleEditChange('name', e.target.value)}
                   />
@@ -374,7 +374,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">ID</label>
                   <input
-                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.id}
                     onChange={(e) => handleEditChange('id', e.target.value)}
                   />
@@ -385,7 +385,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.table.position', { defaultValue: 'Position' })}</label>
                   <input
-                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.position}
                     onChange={(e) => handleEditChange('position', e.target.value)}
                   />
@@ -394,7 +394,7 @@ const Employees = () => {
                   <label className="text-sm font-medium">Email</label>
                   <input
                     type="email"
-                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.email}
                     onChange={(e) => handleEditChange('email', e.target.value)}
                   />
@@ -405,7 +405,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.table.department', { defaultValue: 'Department' })}</label>
                   <select
-                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none"
                     value={editEmployee.departmentKey}
                     onChange={(e) => handleEditChange('departmentKey', e.target.value)}
                   >
@@ -419,7 +419,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.table.salary', { defaultValue: 'Salary' })}</label>
                   <input
-                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.salary}
                     onChange={(e) => handleEditChange('salary', e.target.value)}
                   />
@@ -430,7 +430,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.table.status', { defaultValue: 'Status' })}</label>
                   <select
-                    className="w-full h-9 px-3 py-1 border rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none"
                     value={editEmployee.statusKey}
                     onChange={(e) => handleEditChange('statusKey', e.target.value)}
                   >
@@ -439,17 +439,16 @@ const Employees = () => {
                   </select>
                 </div>
               </div>
-
               <div className="flex justify-end gap-2 pt-4">
                 <button
-                  className="px-4 py-2 border rounded-md bg-white text-gray-900 hover:bg-gray-100"
+                  className="px-4 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]"
                   onClick={closeEdit}
                 >
                   {t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}
                 </button>
                 <button
                   onClick={saveEdit}
-                  className="px-4 py-2 bg-black text-white rounded-md hover:opacity-50"
+                  className="px-4 py-2 bg-[#0466CB] hover:bg-[#0453A4] text-white rounded-md"
                 >
                   {t('pages.hr.employees.modal.save', { defaultValue: 'Save' })}
                 </button>

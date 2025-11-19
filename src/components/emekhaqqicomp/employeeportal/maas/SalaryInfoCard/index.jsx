@@ -1,10 +1,10 @@
 
 const SalaryInfoCard = ({ title, amount, iconBg, textColor }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 flex justify-between items-center shadow-sm">
+    <div className="bg-[#FFFFFF] border border-[#33415C] rounded-xl p-6 flex justify-between items-center shadow-sm">
       <div>
-        <p className="text-sm text-gray-500">{title}</p>
-        <p className={`text-2xl mt-1 ${textColor}`}>{amount}</p>
+        <p className="text-sm text-[#5C677D]">{title}</p>
+        <p className={`text-2xl mt-1 text-[#001233]`}>{amount}</p>
       </div>
       <div className={`p-3 rounded-lg ${iconBg} ${textColor}`}>
         <svg xmlns="http://www.w3.org/2000/svg" 

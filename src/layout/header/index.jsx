@@ -7,7 +7,7 @@ function Header() {
     i18n.changeLanguage(lang);
   }
   return (
-    <div className="p-[19px] w-full border-b sm:block hidden bg-white border-gray-200 pr-[80px]">
+    <div className="p-[19px] w-full border-b sm:block hidden bg-white dark:bg-[#002855] border-gray-200 pr-[80px]">
       <div className="flex items-center justify-between">
         <div className="relative ml-[100px]">
           <svg
@@ -27,7 +27,7 @@ function Header() {
           </svg>
           <input
             onChange={(e) => console.log(e.target.value)}
-            className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-80 pl-10"
+            className="flex h-10 rounded-md border dark:text-white border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-80 pl-10"
             placeholder={t("search_placeholder", { ns: 'translation' })}
           />
         </div>

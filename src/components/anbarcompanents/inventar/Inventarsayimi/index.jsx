@@ -126,12 +126,12 @@ export default function InventarSayimi() {
     return (
         <div className="space-y-8">
             {/* Fiziki inventar cədvəli */}
-            <div className="p-6 bg-white rounded-xl shadow-sm">
-                <h2 className="text-lg font-semibold mb-3">{t('pages.warehouse.inventory.count.title')}</h2>
+            <div className="p-6 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white rounded-xl shadow-sm border border-[#33415C]">
+                <h2 className="text-lg font-semibold dark:text-white text-[#023E7D] mb-3">{t('pages.warehouse.inventory.count.title')}</h2>
 
-                <div className="border border-gray-200 p-3 rounded-lg bg-blue-50 flex gap-2 items-start mb-4">
-                    <AiOutlineInfoCircle className="text-blue-500 w-5 h-5 mt-1" />
-                    <p className="text-sm text-blue-800">
+                <div className="border border-[#979DAC] p-3 rounded-lg bg-[#F5F8FF] dark:bg-[#002244] flex gap-2 items-start mb-4">
+                    <AiOutlineInfoCircle className="text-[#0466CB] w-5 h-5 mt-1" />
+                    <p className="text-sm dark:text-white text-[#023E7D]">
                         {t('pages.warehouse.inventory.count.info')}
                     </p>
                 </div>
@@ -142,13 +142,13 @@ export default function InventarSayimi() {
                         value={search}
                         onChange={(e)=>setSearch(e.target.value)}
                         placeholder={t('pages.warehouse.inventory.count.searchPlaceholder', { defaultValue: 'SKU, ad və ya yer...' })}
-                        className="w-72 px-3 py-2 border border-gray-200 rounded-lg bg-gray-100 outline-none"
+                        className="w-72 px-3 py-2 border border-[#979DAC] rounded-lg bg-[#FFFFFF] dark:bg-[#001233]  dark:text-white outline-none text-[#001233] placeholder:text-[#7D8597]"
                     />
                 </div>
 
-                <table className="w-full text-sm border-t border-gray-200">
+                <table className="w-full text-sm border-t border-[#979DAC]">
                     <thead>
-                        <tr className="text-left border-b border-gray-200">
+                        <tr className="text-left border-b border-[#979DAC] text-[#5C677D] dark:text-[#7D8597]">
                             <th className="py-2 px-2"></th>
                             <th className="py-2 px-2">{t('pages.warehouse.inventory.count.table.sku')}</th>
                             <th className="py-2 px-2">{t('pages.warehouse.inventory.count.table.product')}</th>
@@ -167,7 +167,7 @@ export default function InventarSayimi() {
                             const diff = real !== null && !isNaN(real) ? real - item.systemQty : null;
 
                             let status = t('pages.warehouse.inventory.count.status.pending');
-                            let statusColor = "bg-gray-100 text-gray-700";
+                            let statusColor = "bg-[#979DAC] text-white";
 
                             if (diff !== null) {
                                 if (diff === 0) {
@@ -183,7 +183,7 @@ export default function InventarSayimi() {
                             }
 
                             return (
-                                <tr key={item.sku} className="border-b border-gray-200 hover:bg-gray-50 transition">
+                                <tr key={item.sku} className="border-b border-[#979DAC] hover:bg-[#F5F8FF] dark:hover:bg-[#002244] transition">
                                     <td className="py-2 px-2">
                                         <input type="checkbox" />
                                     </td>
@@ -201,7 +201,7 @@ export default function InventarSayimi() {
                                             pattern="[0-9]*"
                                             value={counts[item.sku]}
                                             onChange={(e) => handleChange(item.sku, e.target.value)}
-                                            className="border border-gray-200 rounded-md px-2 py-1 w-20 text-sm text-center"
+                                            className="border border-[#979DAC] rounded-md px-2 py-1 w-20 text-sm text-center"
                                         />
                                     </td>
 
@@ -231,7 +231,7 @@ export default function InventarSayimi() {
                                         </span>
                                     </td>
                                     <td className="py-2 px-2 text-right whitespace-nowrap">
-                                        <button onClick={() => openEdit(items.findIndex(x=>x.sku===item.sku))} className="inline-flex items-center gap-1 px-2 py-1 border rounded text-blue-600 border-blue-200 hover:bg-blue-50 mr-2">
+                                        <button onClick={() => openEdit(items.findIndex(x=>x.sku===item.sku))} className="inline-flex items-center gap-1 px-2 py-1 border rounded border-[#0466CB] text-[#0466CB] hover:bg-[#0453A4] hover:text-white mr-2">
                                             {t('common.edit', { defaultValue: 'Edit' })}
                                         </button>
                                         <button onClick={() => handleDelete(items.findIndex(x=>x.sku===item.sku))} className="inline-flex items-center gap-1 px-2 py-1 border rounded text-red-600 border-red-200 hover:bg-red-50">
@@ -254,12 +254,12 @@ export default function InventarSayimi() {
                                 "QT-500": "",
                             })
                         }
-                        className="px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-100"
+                        className="px-4 py-2 border border-[#979DAC] rounded-md dark:bg-[#001233]  dark:text-white  dark:hover:bg-[#002244] bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]"
                     >
                         {t('common.cancel')}
                     </button>
 
-                    <button className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700">
+                    <button className="px-4 py-2 bg-[#0466CB]  hover:bg-[#0453A4] text-white rounded-md">
                         {t('pages.warehouse.inventory.count.confirm', { count: Object.values(counts).filter((v) => v).length })}
                     </button>
                 </div>
@@ -268,35 +268,35 @@ export default function InventarSayimi() {
             {editing && (
                 <div>
                     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50" onClick={closeEdit}></div>
-                    <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6">
-                        <div className="flex justify-between items-center border-b pb-3">
-                            <h3 className="text-lg font-semibold">{t('pages.warehouse.inventory.count.editRow', { defaultValue: 'Sətiri redaktə et' })}</h3>
-                            <button onClick={closeEdit} className="text-xl text-gray-500 hover:text-gray-700">×</button>
+                    <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 dark:bg-[#001233]  dark:text-white bg-[#FFFFFF] rounded-lg shadow-lg p-6 border border-[#33415C]">
+                        <div className="flex justify-between items-center border-b border-[#979DAC] pb-3">
+                            <h3 className="text-lg font-semibold  dark:text-white text-[#023E7D]">{t('pages.warehouse.inventory.count.editRow', { defaultValue: 'Sətiri redaktə et' })}</h3>
+                            <button onClick={closeEdit} className="text-xl text-[#7D8597] hover:text-[#023E7D]">×</button>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div>
                                 <label className="block text-sm font-medium">SKU</label>
-                                <input className="mt-1 w-full border rounded px-3 py-2" value={editing.data.sku} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, sku:e.target.value}}))} />
+                                <input className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={editing.data.sku} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, sku:e.target.value}}))} />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium">{t('pages.warehouse.inventory.count.table.product')}</label>
-                                <input className="mt-1 w-full border rounded px-3 py-2" value={editing.data.name} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, name:e.target.value}}))} />
+                                <input className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={editing.data.name} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, name:e.target.value}}))} />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium">{t('pages.warehouse.inventory.count.table.location')}</label>
-                                <input className="mt-1 w-full border rounded px-3 py-2" value={editing.data.location} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, location:e.target.value}}))} />
+                                <input className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={editing.data.location} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, location:e.target.value}}))} />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium">{t('pages.warehouse.inventory.count.table.systemQty')}</label>
-                                <input type="number" className="mt-1 w-full border rounded px-3 py-2" value={editing.data.systemQty} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, systemQty:Number(e.target.value)}}))} />
+                                <input type="number" className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={editing.data.systemQty} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, systemQty:Number(e.target.value)}}))} />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium">{t('pages.warehouse.inventory.count.table.status')}</label>
-                                <input disabled className="mt-1 w-full border rounded px-3 py-2 bg-gray-100" value={''} />
+                                <input disabled className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium">Vahid</label>
-                                <select className="mt-1 w-full border rounded px-3 py-2" value={editing.data.unit} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, unit:e.target.value}}))}>
+                                <select className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={editing.data.unit} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, unit:e.target.value}}))}>
                                     <option value="ədəd">ədəd</option>
                                     <option value="kq">kq</option>
                                     <option value="litr">litr</option>
@@ -304,9 +304,9 @@ export default function InventarSayimi() {
                                 </select>
                             </div>
                         </div>
-                        <div className="flex justify-end gap-2 border-t mt-4 pt-4">
-                            <button onClick={closeEdit} className="px-4 py-2 border rounded hover:bg-gray-100">{t('common.cancel',{defaultValue:'Cancel'})}</button>
-                            <button onClick={saveEdit} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">{t('common.save',{defaultValue:'Save'})}</button>
+                        <div className="flex justify-end gap-2 border-t border-[#979DAC] mt-4 pt-4">
+                            <button onClick={closeEdit} className="px-4 py-2 border border-[#979DAC] rounded dark:bg-[#001233] dark:text-white dark:hover:bg-[#002244] bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]">{t('common.cancel',{defaultValue:'Cancel'})}</button>
+                            <button onClick={saveEdit} className="px-4 py-2 bg-[#0466CB] text-white rounded hover:bg-[#0453A4]">{t('common.save',{defaultValue:'Save'})}</button>
                         </div>
                     </div>
                 </div>
@@ -316,9 +316,9 @@ export default function InventarSayimi() {
             {newInvOpen && (
                 <div>
                     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50" onClick={()=>{ setNewInvOpen(false); resetForm(); }}></div>
-                    <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6">
+                    <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl -translate-x-1/2 -translate-y-1/2  dark:bg-[#001233]  dark:text-white bg-white rounded-lg shadow-lg p-6">
                         <div className="flex justify-between items-center border-b pb-3">
-                            <h3 className="text-lg font-semibold">{t('pages.warehouse.inventory.count.newInventory', { defaultValue: 'Yeni inventar' })}</h3>
+                            <h3 className="text-lg font-semibold  dark:text-white">{t('pages.warehouse.inventory.count.newInventory', { defaultValue: 'Yeni inventar' })}</h3>
                             <button onClick={()=>{ setNewInvOpen(false); resetForm(); }} className="text-xl text-gray-500 hover:text-gray-700">×</button>
                         </div>
                         <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4" onSubmit={handleCreate}>
@@ -340,7 +340,7 @@ export default function InventarSayimi() {
                             </div>
                             <div>
                                 <label className="block text-sm font-medium">Vahid</label>
-                                <select className="mt-1 w-full border rounded px-3 py-2" value={form.unit} onChange={(e)=>setForm(prev=>({...prev, unit:e.target.value}))}>
+                                <select className="mt-1 w-full border rounded dark:bg-[#001233]  dark:text-white px-3 py-2" value={form.unit} onChange={(e)=>setForm(prev=>({...prev, unit:e.target.value}))}>
                                     <option value="ədəd">ədəd</option>
                                     <option value="kq">kq</option>
                                     <option value="litr">litr</option>
@@ -348,8 +348,8 @@ export default function InventarSayimi() {
                                 </select>
                             </div>
                             <div className="sm:col-span-2 flex justify-end gap-2 border-t pt-4 mt-2">
-                                <button type="button" onClick={()=>{ setNewInvOpen(false); resetForm(); }} className="px-4 py-2 border rounded hover:bg-gray-100">{t('common.cancel',{defaultValue:'Cancel'})}</button>
-                                <button type="submit" className="px-4 py-2 bg-black text-white rounded">{t('common.save',{defaultValue:'Save'})}</button>
+                                <button type="button" onClick={()=>{ setNewInvOpen(false); resetForm(); }} className="px-4 py-2 border rounded dark:border-[#33415C] dark:hover:bg-[#002244] hover:bg-gray-100">{t('common.cancel',{defaultValue:'Cancel'})}</button>
+                                <button type="submit" className="px-4 py-2 bg-[#0466CB] text-white rounded">{t('common.save',{defaultValue:'Save'})}</button>
                             </div>
                         </form>
                     </div>

@@ -55,9 +55,9 @@ function UpcomingEventsCard() {
     },
   ]), [t]);
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col gap-6 shadow-sm">
+    <div className="bg-[#FFFFFF] border border-[#33415C] rounded-xl p-6 flex flex-col gap-6 shadow-sm text-[#001233]">
       <div>
-        <h4 className="text-lg font-semibold">{t('pages.hr.calendar.upcomingTitle', { defaultValue: 'Upcoming Events' })}</h4>
+        <h4 className="text-lg font-semibold text-[#023E7D]">{t('pages.hr.calendar.upcomingTitle', { defaultValue: 'Upcoming Events' })}</h4>
       </div>
       <div className="space-y-3">
         {upcomingEvents.map((event, index) => {

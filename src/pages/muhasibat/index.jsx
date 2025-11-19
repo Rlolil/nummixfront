@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 
-// Use stable route slugs and translate only labels
+// Route slugs (constant) + i18n keys
 const navConfig = [
   { labelKey: "pages.accounting.tabs.dashboard", to: "dashboard" },
   { labelKey: "pages.accounting.tabs.ledger", to: "generalledger" },
@@ -14,14 +14,8 @@ const navConfig = [
 function Muhasibat() {
   const { t } = useTranslation();
   const location = useLocation();
+
   const currentPath = location.pathname.split("/").pop();
-  // Apply saved theme on mount to respect dark/light
-  useEffect(() => {
-    const stored = localStorage.getItem('theme') || 'light';
-    const root = window.document.documentElement;
-    if (stored === 'dark') root.classList.add('dark');
-    else root.classList.remove('dark');
-  }, []);
 
   const items = useMemo(
     () => navConfig.map((n) => ({ ...n, label: t(n.labelKey) })),
@@ -31,23 +25,44 @@ function Muhasibat() {
   const [activeItem, setActiveItem] = useState(items[0]?.label);
 
   useEffect(() => {
-    const match = items.find((n) => n.to === currentPath) || items[0];
-    setActiveItem(match?.label);
+    const matched = items.find((n) => n.to === currentPath) || items[0];
+    setActiveItem(matched.label);
   }, [currentPath, items]);
+
   return (
-    <div className="accounting-theme sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-[0px] px-4 sm:px-6 lg:px-8">
-      <h2 className="md:text-4xl text-2xl font-bold mb-4 acc-heading">{t("pages.accounting.title")}</h2>
-      <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 items-center justify-between gap-4 acc-card p-2 rounded-md w-full border acc-border">
+    <div className="accounting-theme sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-0 px-4 sm:px-6 lg:px-8">
+      <h2 className="md:text-4xl text-2xl font-bold mb-4 acc-heading">
+        {t("pages.accounting.title")}
+      </h2>
+
+      {/* Navigation Tabs */}
+      <div
+        className="
+          grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 gap-4 p-2 w-full
+          bg-white dark:bg-[#002855]
+          dark:text-white
+          border border-[#33415C] dark:border-[#979DAC]
+          rounded-md 
+        "
+      >
         {items.map((item) => (
           <Link
-            onClick={() => setActiveItem(item.label)}
-            to={`/muhasibat/${item.to}`}
             key={item.to}
-            className={`w-full flex-1 text-center rounded-md transition-colors duration-200`}
+            to={`/muhasibat/${item.to}`}
+            onClick={() => setActiveItem(item.label)}
+            className="
+              w-full flex-1 text-center rounded-md transition-colors duration-200
+              bg-white text-[#001233] border-[#33415C]
+              hover:bg-[#0453A4] hover:text-white
+              dark:bg-[#002855] dark:text-white dark:border-[#979DAC]
+              dark:hover:bg-[#0453A4]
+            "
           >
             <button
-              key={item.to}
-              className={`acc-btn w-full py-2 px-4 rounded-md ${activeItem === item.label ? "active" : ""}`}
+              className={`
+                text-[#023e7d] w-full py-2 px-4 rounded-md dark:text-white border hover:bg-[#0453A4] transition-all duration-300 hover:text-white
+                ${activeItem === item.label ? "active" : ""}
+              `}
             >
               {item.label}
             </button>

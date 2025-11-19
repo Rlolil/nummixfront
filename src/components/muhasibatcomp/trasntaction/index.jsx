@@ -247,12 +247,12 @@ const Transactions = () => {
   };
 
   return (
-    <main className="flex-1 overflow-auto bg-[#FFFFFF] text-[#001233]">
+    <main className="flex-1 overflow-auto bg-[#FFFFFF] text-[#001233] dark:bg-[#001233] dark:text-white">
       <div className="container mx-auto p-4 sm:p-6 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-[#023E7D]">{t('pages.accounting.transactions.title')}</h2>
-            <p className="text-[#7D8597] text-sm sm:text-base">{t('pages.accounting.transactions.subtitle', { defaultValue: 'View and create accounting entries' })}</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#023E7D] dark:text-[#89A4D6]">{t('pages.accounting.transactions.title')}</h2>
+            <p className="text-[#7D8597] dark:text-[#B0B8C5] text-sm sm:text-base">{t('pages.accounting.transactions.subtitle', { defaultValue: 'View and create accounting entries' })}</p>
           </div>
           <button
             onClick={() => { setSelectedTxn(null); setModuleOpen(true); }}
@@ -273,23 +273,23 @@ const Transactions = () => {
           {transactions.map((txn) => {
             const totals = getTotals(txn.entries);
             return (
-              <div key={txn.id} className="border rounded-lg p-3 sm:p-4 border-[#33415C] bg-[#FFFFFF] shadow-sm">
+              <div key={txn.id} className="border rounded-lg p-3 sm:p-4 border-[#33415C] dark:border-[#979DAC] bg-[#FFFFFF] dark:bg-[#002855] shadow-sm">
                 <div className="flex flex-col sm:flex-row items-start justify-between mb-3">
                   <div>
                     <div className="flex items-center gap-2">
-                      <FaFileInvoice className="text-[#001233] text-sm sm:text-base" />
+                      <FaFileInvoice className="text-[#001233] dark:text-white text-sm sm:text-base" />
                       <span className="font-medium text-sm sm:text-base">{txn.id}</span>
                     </div>
-                    <p className="text-xs sm:text-sm text-[#7D8597] mt-1">{t(txn.titleKey, { defaultValue: txn.titleParams?.id ? `${txn.titleParams?.id}` : '', ...txn.titleParams })}</p>
+                    <p className="text-xs sm:text-sm text-[#7D8597] dark:text-[#B0B8C5] mt-1">{t(txn.titleKey, { defaultValue: txn.titleParams?.id ? `${txn.titleParams?.id}` : '', ...txn.titleParams })}</p>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-[#7D8597] mt-2 sm:mt-0">
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-[#7D8597] dark:text-[#B0B8C5] mt-2 sm:mt-0">
                     <div className="text-right">
                       <p>{txn.date}</p>
                       <p>{t('common.byUser', { user: txn.user, defaultValue: 'by {{user}}' })}</p>
                     </div>
                     <button
                       onClick={() => { setSelectedTxn(txn); setModuleOpen(true); }}
-                      className="inline-flex items-center gap-1 px-2 py-1 border border-[#33415C] rounded text-[#0466CB] hover:bg-[#0453A4] hover:text-white transition-colors"
+                      className="inline-flex items-center gap-1 px-2 py-1 border border-[#33415C] dark:border-[#979DAC] rounded text-[#0466CB] hover:bg-[#0453A4] hover:text-white transition-colors"
                       title={t('common.edit', { defaultValue: 'Edit' })}
                     >
                       <FaEdit className="text-xs" />
@@ -297,7 +297,7 @@ const Transactions = () => {
                     </button>
                     <button
                       onClick={() => handleDelete(txn)}
-                      className="inline-flex items-center gap-1 px-2 py-1 border rounded text-red-600 border-red-200 hover:bg-red-50"
+                      className="inline-flex items-center gap-1 px-2 py-1 border rounded text-red-600 border-red-200 dark:border-red-400/40 dark:hover:bg-red-900/30 hover:bg-red-50"
                       title={t('common.delete', { defaultValue: 'Delete' })}
                     >
                       <FaTrash className="text-xs" />
@@ -307,7 +307,7 @@ const Transactions = () => {
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-xs sm:text-sm">
-                    <thead className="border-b border-[#979DAC] bg-[#FFFFFF]">
+                    <thead className="border-b border-[#979DAC] dark:border-[#33415C] bg-[#FFFFFF] dark:bg-[#002855]">
                       <tr>
                         <th className="text-left p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.accountCode')}</th>
                         <th className="text-left p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.accountName')}</th>
@@ -320,7 +320,7 @@ const Transactions = () => {
                     </thead>
                     <tbody>
                       {txn.entries.map((e, i) => (
-                        <tr key={i} className="border-b border-[#979DAC] hover:bg-[#0453A4]/10">
+                        <tr key={i} className="border-b border-[#979DAC] dark:border-[#33415C] hover:bg-[#0453A4]/10 dark:hover:bg-[#0453A4]/30">
                           <td className="p-1 sm:p-2">{e.code}</td>
                           <td className="p-1 sm:p-2">{t(`pages.accounting.transactions.accounts.${e.nameKey}`, { defaultValue: e.nameKey })}</td>
                           <td className="p-1 sm:p-2 text-right">{e.debit}</td>
@@ -330,7 +330,7 @@ const Transactions = () => {
                           <td className="p-1 sm:p-2 text-right">{i === 0 ? txn.mayeValue : ''}</td>
                         </tr>
                       ))}
-                      <tr className="font-medium border-t border-[#979DAC]">
+                      <tr className="font-medium border-t border-[#979DAC] dark:border-[#33415C]">
                         <td colSpan="2" className="p-1 sm:p-2">
                           {t('common.total', { defaultValue: 'Total' })}
                         </td>

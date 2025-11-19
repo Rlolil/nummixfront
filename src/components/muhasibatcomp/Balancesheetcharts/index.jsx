@@ -60,7 +60,7 @@ export default function BalancePieChart() {
                 <Cell key={`cell-${index}`} fill={COLORS[index]} stroke="#fff" />
               ))}
             </Pie>
-            <Tooltip />
+            <Tooltip contentStyle={{ backgroundColor: document.documentElement.classList.contains('dark') ? '#002855' : '#FFFFFF', color: document.documentElement.classList.contains('dark') ? '#E0E0E0' : '#001233' }} />
           </PieChart>
         </ResponsiveContainer>
       </div>
