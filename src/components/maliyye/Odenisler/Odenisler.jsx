@@ -155,16 +155,18 @@
 // export default Odenisler;
 
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiPlus } from "react-icons/fi";
 import OdenisTab from "./OdenisTab";
 import DaxilolmaTab from "./DaxilolmaTab";
 import { useTranslation } from "react-i18next";
 import NewPlanModal from "./NewPlanModal";
+import { paymentsSchedule } from "../../../services";
 
 const Odenisler = () => {
   const [activeTab, setActiveTab] = useState("odenis");
   const [isOpen, setIsOpen] = useState(false);
+  const [schedule, setSchedule] = useState([]);
   const { t } = useTranslation();
 
   const cards = [
@@ -174,13 +176,17 @@ const Odenisler = () => {
     { key: "overdueReceivables", amount: "1", color: "text-[#001233] dark:text-white" },
   ];
 
-  const schedule = [
-    { date: "2025-10-08", type: "receipt", name: "XYZ Trading - Gecikmiş", urgent: true, amount: "+8,500 AZN", color: "text-green-600" },
-    { date: "2025-10-10", type: "receipt", name: "ABC Corporation", amount: "+15,000 AZN", color: "text-green-600" },
-    { date: "2025-10-12", type: "payment", name: "OfficeWorld", amount: "-2,300 AZN", color: "text-red-600" },
-    { date: "2025-10-14", type: "receipt", name: "Tech Solutions", amount: "+22,000 AZN", color: "text-green-600" },
-    { date: "2025-10-15", type: "payment", name: "Marketing Pro", amount: "-8,000 AZN", color: "text-red-600" },
-  ];
+  useEffect(() => {
+    const fetchSchedule = async () => {
+      try {
+        const data = await paymentsSchedule();
+        setSchedule(data);
+      } catch (err) {
+        console.error("Schedule loading error:", err);
+      }
+    };
+    fetchSchedule();
+  }, []);
 
   if (isOpen) document.body.style.overflow = "hidden";
   else document.body.style.overflow = "auto";
@@ -241,7 +247,6 @@ const Odenisler = () => {
           {t('pages.finance.payments.tabs.inflows')}
         </button>
       </div>
-
 
       {activeTab === "odenis" && <OdenisTab />}
       {activeTab === "daxilolma" && <DaxilolmaTab />}

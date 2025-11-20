@@ -1,6 +1,6 @@
 export default function HeadCard({ title, amount, greenText, description, icon }) {
     return (
-        <div className="border-1 border-zinc-300 rounded-xl p-6 flex flex-col justify-center gap-6">
+        <div className="bg-[#FFFFFF] dark:bg-[#33415C] border border-[#979DAC] rounded-xl p-6 flex flex-col justify-center gap-6">
             {title && (
                 <div className="text-sm text-zinc-500 flex justify-between items-center gap-2 w-full">
                     {title}
