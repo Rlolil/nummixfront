@@ -1291,153 +1291,7 @@
       "title": "Settings",
       "subtitle": "Manage your account and preferences"
     },
-    "assets": {
-      "title": "Fixed Assets",
-      "subtitle": "Manage and report your assets",
-      "charts": {
-        "categoryDistribution": "Category distribution",
-        "valueByDepartment": "Value by department"
-      },
-      "tabs": {
-        "management": "Management",
-        "assets": "Assets",
-        "reports": "Reports"
-      },
-      "stats": {
-        "totalValue": "Total Value",
-        "totalValueSubtitle": "Initial value",
-        "currentValue": "Current Value",
-        "currentValueSubtitle": "After depreciation",
-        "depreciation": "Depreciation",
-        "depreciationSubtitle": "Accumulated",
-        "assetCount": "Assets count",
-        "assetCountSubtitle": "Total {{count}} assets"
-      },
-      "actions": {
-        "newAsset": "New Asset",
-        "view": "View"
-      },
-      "searchPlaceholder": "Search by name, inv. no, category...",
-      "table": {
-        "invNo": "Inv. No",
-        "name": "Name",
-        "category": "Category",
-        "account": "Account",
-        "location": "Location",
-        "initialValue": "Initial Value",
-        "currentValue": "Current Value",
-        "status": "Status"
-      },
-      "reports": {
-        "general": {
-          "title": "General Report",
-          "desc": "Download asset list as Excel",
-          "downloadExcel": "Download Excel"
-        },
-        "depreciation": {
-          "title": "Depreciation Report",
-          "desc": "Generate depreciation details",
-          "downloadPDF": "Download PDF"
-        },
-        "byCategory": {
-          "title": "By Category",
-          "desc": "Summary by asset categories"
-        },
-        "byDepartment": {
-          "title": "By Department",
-          "desc": "Summary by departments/branches"
-        }
-      },
-      "export": {
-        "fileNames": {
-          "generalCsv": "general_report_{{date}}.csv",
-          "depreciationTxt": "depreciation_report_{{date}}.txt"
-        }
-      },
-      "modal": {
-        "add": {
-          "title": "Add Asset"
-        }
-      },
-      "form": {
-        "assetName": "Asset Name",
-        "inventoryNo": "Inventory No",
-        "category": "Category",
-        "selectCategory": "Select category",
-        "categoryOptions": {
-          "computerEquipment": "Computer equipment",
-          "vehicles": "Vehicles",
-          "officeEquipment": "Office equipment",
-          "property": "Property"
-        },
-        "accountCode": "Account Code",
-        "accountOptions": {
-          "111": "111",
-          "112": "112",
-          "113": "113"
-        },
-        "purchaseDate": "Purchase Date",
-        "purchaseDatePlaceholder": "Select purchase date",
-        "initialValue": "Initial Value",
-        "residualValue": "Residual Value",
-        "depreciationMethod": "Depreciation Method",
-        "depreciationMethods": {
-          "straightLine": "Straight-line",
-          "decliningBalance": "Declining balance",
-          "unitsOfProduction": "Units of production"
-        },
-        "usefulLifeMonths": "Useful life (months)",
-        "location": "Location",
-        "selectLocation": "Select location",
-        "locationOptions": {
-          "bakuOffice": "Baku Office",
-          "sumgaitBranch": "Sumgait Branch",
-          "ganjaBranch": "Ganja Branch"
-        },
-        "branch": "Department/Branch",
-        "selectBranch": "Select department",
-        "branchOptions": {
-          "it": "IT Department",
-          "accounting": "Accounting",
-          "sales": "Sales Department",
-          "hr": "Human Resources",
-          "transport": "Transport",
-          "design": "Design Department"
-        },
-        "supplier": "Supplier",
-        "serialNumber": "Serial Number",
-        "assignedTo": "Assigned To",
-        "warrantyPeriodMonths": "Warranty period (months)",
-        "note": "Note"
-      },
-      "buttons": {
-        "cancel": "Cancel",
-        "save": "Save"
-      },
-      "categoryReportModal": {
-        "title": "Category Report",
-        "headers": {
-          "category": "Category",
-          "assetCount": "Assets",
-          "initial": "Initial Value",
-          "current": "Current Value",
-          "depreciation": "Depreciation",
-          "percent": "%"
-        },
-        "total": "Total"
-      },
-      "branchReportModal": {
-        "title": "Department Report",
-        "headers": {
-          "location": "Location",
-          "assetCount": "Assets",
-          "initial": "Initial Value",
-          "current": "Current Value",
-          "share": "Share"
-        },
-        "total": "Total"
-      }
-    },
+
     "warehouse": {
       "title": "Warehouse",
       "dashboard": {
@@ -2510,6 +2364,133 @@
           }
         }
       }
+    },
+    "assets": {
+      "title": "Fixed Assets Management",
+      "subtitle": "Tracking assets and depreciation",
+      "tabs": {
+        "management": "Management",
+        "assets": "Assets",
+        "reports": "Reports"
+      },
+      "stats": {
+        "totalValue": {"title": "Total Value", "subtitle": "Initial value"},
+        "currentValue": {"title": "Current Value", "subtitle": "After depreciation"},
+        "depreciation": {"title": "Depreciation", "subtitle": "Accumulated"},
+        "assetCount": {"title": "Asset Count", "subtitle": "Out of {{count}} total assets"}
+      },
+      "charts": {
+        "categoriesDistribution": "Distribution by Categories",
+        "branchValueDistribution": "Value by Department"
+      },
+      "categories": {
+        "property": "Property",
+        "officeEquipment": "Office Equipment",
+        "vehicles": "Vehicles",
+        "computerEquipment": "Computer Equipment"
+      },
+      "search": {"placeholder": "Search asset..."},
+      "table": {
+        "headers": {
+          "inventoryNo": "Inv. No",
+          "name": "Name",
+          "category": "Category",
+          "account": "Account",
+          "location": "Location",
+          "initialValue": "Initial Value",
+          "currentValue": "Current Value",
+          "status": "Status"
+        }
+      },
+      "status": {"active": "Active"},
+      "actions": {"edit": "Edit", "delete": "Delete"},
+      "reports": {
+        "general": {"title": "General Report", "desc": "Full list of assets and data", "downloadExcel": "Download Excel"},
+        "depreciation": {"title": "Depreciation Report", "desc": "Depreciation data of assets", "downloadPdf": "Download PDF"},
+        "byCategory": {"title": "By Categories", "desc": "Analysis by categories", "view": "View"},
+        "byLocation": {"title": "By Location", "desc": "Distribution by location", "view": "View"}
+      },
+      "buttons": {"cancel": "Cancel", "save": "Save", "newAsset": "New Asset"},
+      "addModal": {"title": "Add New Asset"},
+      "form": {
+        "inventoryNo": "Inventory No",
+        "category": "Category",
+        "selectCategory": "Select category",
+        "categoryOptions": {
+          "computerEquipment": "Computer Equipment",
+          "vehicles": "Vehicles",
+          "officeEquipment": "Office Equipment",
+          "property": "Property"
+        },
+        "accountCode": "Account Code",
+        "accountOptions": {"111": "111", "112": "112", "113": "113"},
+        "purchaseDate": "Purchase Date",
+        "purchaseDatePlaceholder": "YYYY-MM-DD (e.g. 2025-11-20)",
+        "initialValue": "Initial Value",
+        "residualValue": "Residual Value",
+        "depreciationMethod": "Depreciation Method",
+        "depreciationMethods": {
+          "straightLine": "Straight Line",
+          "decliningBalance": "Declining Balance",
+          "unitsOfProduction": "Units of Production"
+        },
+        "usefulLifeMonths": "Useful Life (months)",
+        "location": "Location",
+        "selectLocation": "Select location",
+        "locationOptions": {"bakuOffice": "Baku Office", "sumgaitBranch": "Sumgait Branch", "ganjaBranch": "Ganja Branch"},
+        "branch": "Department",
+        "selectBranch": "Select department",
+        "branchOptions": {"it": "IT Department", "accounting": "Accounting", "sales": "Sales Department", "hr": "Human Resources"},
+        "supplier": "Supplier",
+        "serialNumber": "Serial Number",
+        "assignedTo": "Assigned To",
+        "warrantyPeriodMonths": "Warranty Period (months)",
+        "note": "Notes",
+        "assetName": "Asset Name",
+        "assetNamePlaceholder": "Enter asset name"
+      },
+      "categoryReportModal": {
+        "title": "Category Report",
+        "headers": {
+          "category": "Category",
+          "assetCount": "Asset Count",
+          "initial": "Initial Value",
+          "current": "Current Value",
+          "depreciation": "Depreciation",
+          "percent": "Depreciation %"
+        },
+        "total": "Total"
+      },
+      "branchReportModal": {
+        "title": "Location Report",
+        "headers": {
+          "location": "Location",
+          "assetCount": "Asset Count",
+          "initial": "Initial Value",
+          "current": "Current Value",
+          "share": "Share %"
+        },
+        "total": "Total"
+      }
+    }
+  },
+  "assetsExtra": {
+    "reportText": {
+      "depreciationReportTitle": "DEPRECIATION REPORT",
+      "dateLabel": "Date",
+      "generatedLabel": "Report generated at",
+      "inventoryNo": "Inv. No",
+      "category": "Category",
+      "initialValue": "Initial value",
+      "currentValue": "Current value",
+      "depreciation": "Depreciation"
+    },
+    "branchOptions": {
+      "transport": "Transport",
+      "design": "Design Department"
+    },
+    "locationOptions": {
+      "may28Area": "28 May metro area"
     }
   },
   "brand": {

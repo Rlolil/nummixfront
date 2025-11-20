@@ -11,9 +11,10 @@ import {
   FileText,
   Eye,
 } from "lucide-react";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export default function EsasVesaitler() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("management");
   const [searchQuery, setSearchQuery] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
@@ -27,7 +28,7 @@ export default function EsasVesaitler() {
     purchaseDate: "",
     initialValue: "",
     residualValue: "",
-    depreciationMethod: "Düzxətli",
+    depreciationMethod: "straightLine",
     location: "",
     branch: "",
     responsible: "",
@@ -53,115 +54,110 @@ export default function EsasVesaitler() {
     {
       invNo: "INV-2024-001",
       name: "Dell Kompüter",
-      category: "Kompüter avadanlığı",
+      category: t("pages.assets.categories.computerEquipment"),
       account: "111",
-      location: "Bakı Ofisi",
+      location: t("pages.assets.form.locationOptions.bakuOffice"),
       initialValue: "2,500",
       currentValue: "2,187.5",
-      status: "Aktiv",
+      status: "active",
     },
     {
       invNo: "INV-2023-045",
       name: "Toyota Camry",
-      category: "Nəqliyyat vasitələri",
+      category: t("pages.assets.categories.vehicles"),
       account: "112",
-      location: "Bakı Ofisi",
+      location: t("pages.assets.form.locationOptions.bakuOffice"),
       initialValue: "45,000",
       currentValue: "32,500",
-      status: "Aktiv",
+      status: "active",
     },
     {
       invNo: "INV-2024-012",
       name: "HP Printer LaserJet",
-      category: "Ofis avadanlığı",
+      category: t("pages.assets.categories.officeEquipment"),
       account: "111",
-      location: "Bakı Ofisi",
+      location: t("pages.assets.form.locationOptions.bakuOffice"),
       initialValue: "1,200",
       currentValue: "1,050",
-      status: "Aktiv",
+      status: "active",
     },
     {
       invNo: "INV-2020-001",
-      name: "Ofis binası",
-      category: "Əmlak",
+      name: t("pages.assets.categories.property") + " " + t("assetsExtra.locationOptions.may28Area"),
+      category: t("pages.assets.categories.property"),
       account: "113",
-      location: "28 May metrosu yaxınlığı",
+      location: t("assetsExtra.locationOptions.may28Area"),
       initialValue: "500,000",
       currentValue: "445,000",
-      status: "Aktiv",
+      status: "active",
     },
     {
       invNo: "INV-2023-089",
       name: 'Samsung Monitor 27"',
-      category: "Kompüter avadanlığı",
+      category: t("pages.assets.categories.computerEquipment"),
       account: "111",
-      location: "Bakı Ofisi",
+      location: t("pages.assets.form.locationOptions.bakuOffice"),
       initialValue: "450",
       currentValue: "300",
-      status: "Aktiv",
+      status: "active",
     },
   ];
 
   const stats = [
     {
-      title: "Ümumi dəyər",
+      title: t("pages.assets.stats.totalValue.title"),
       value: "549,150",
-      subtitle: "İlkin dəyər",
+      subtitle: t("pages.assets.stats.totalValue.subtitle"),
       icon: <Package className="w-5 h-5" />,
     },
     {
-      title: "Cari dəyər",
+      title: t("pages.assets.stats.currentValue.title"),
       value: "481,037.5",
-      subtitle: "Amortizasiya sonrası",
+      subtitle: t("pages.assets.stats.currentValue.subtitle"),
       icon: <Box className="w-5 h-5" />,
     },
     {
-      title: "Amortizasiya",
+      title: t("pages.assets.stats.depreciation.title"),
       value: "68,112.5",
-      subtitle: "Yığılmış",
+      subtitle: t("pages.assets.stats.depreciation.subtitle"),
       icon: <TrendingDown className="w-5 h-5" />,
     },
     {
-      title: "Aktiv sayı",
+      title: t("pages.assets.stats.assetCount.title"),
       value: String(assets.length),
-      subtitle: `Cəmi ${assets.length} aktivdən`,
+      subtitle: t("pages.assets.stats.assetCount.subtitle", { count: assets.length }),
       icon: <Grid3x3 className="w-5 h-5" />,
     },
   ];
 
   const categories = [
-    { name: "Əmlak", count: 1, percentage: 65, color: "#FF8A65" },
-    { name: "Ofis avadanlığı", count: 1, percentage: 15, color: "#FFB74D" },
-    {
-      name: "Nəqliyyat vasitələri",
-      count: 1,
-      percentage: 10,
-      color: "#4DB6AC",
-    },
-    { name: "Kompüter avadanlığı", count: 2, percentage: 10, color: "#64B5F6" },
+    { name: t("pages.assets.categories.property"), count: 1, percentage: 65, color: "#FF8A65" },
+    { name: t("pages.assets.categories.officeEquipment"), count: 1, percentage: 15, color: "#FFB74D" },
+    { name: t("pages.assets.categories.vehicles"), count: 1, percentage: 10, color: "#4DB6AC" },
+    { name: t("pages.assets.categories.computerEquipment"), count: 2, percentage: 10, color: "#64B5F6" },
   ];
 
   const branchData = [
-    { name: "IT Şöbəsi", value: 25000 },
-    { name: "Transport", value: 55000 },
-    { name: "Mühasibatlıq", value: 35000 },
-    { name: "Bakı Ofisi", value: 420000 },
-    { name: "Dizayn Şöbəsi", value: 15000 },
+    { name: t("pages.assets.form.branchOptions.it"), value: 25000 },
+    { name: t("assetsExtra.branchOptions.transport"), value: 55000 },
+    { name: t("pages.assets.form.branchOptions.accounting"), value: 35000 },
+    { name: t("pages.assets.form.locationOptions.bakuOffice"), value: 420000 },
+    { name: t("assetsExtra.branchOptions.design"), value: 15000 },
   ];
 
   const maxValue = Math.max(...branchData.map((d) => d.value));
 
   const generateExcelReport = () => {
     const headers = [
-      "İnv. №",
-      "Ad",
-      "Kateqoriya",
-      "Hesab",
-      "Yerləşmə",
-      "İlkin Dəyər (₼)",
-      "Cari Dəyər (₼)",
-      "Amortizasiya (₼)",
-      "Status",
+      t("assetsExtra.reportText.inventoryNo"),
+      t("pages.assets.table.headers.name"),
+      t("pages.assets.table.headers.category"),
+      t("pages.assets.table.headers.account"),
+      t("pages.assets.table.headers.location"),
+      t("pages.assets.table.headers.initialValue") + " (₼)",
+      t("pages.assets.table.headers.currentValue") + " (₼)",
+      t("assetsExtra.reportText.depreciation") + " (₼)",
+      t("pages.assets.table.headers.status"),
     ];
 
     const csvContent = [
@@ -196,8 +192,8 @@ export default function EsasVesaitler() {
 
   const generateDepreciationPDF = () => {
     const reportContent = `
-AMORTIZASIYA HESABATI
-Tarix: ${new Date().toLocaleDateString("az-AZ")}
+${t("assetsExtra.reportText.depreciationReportTitle")}
+${t("assetsExtra.reportText.dateLabel")}: ${new Date().toLocaleDateString()}
 ${assets
   .map((asset) => {
     const depreciation =
@@ -209,17 +205,17 @@ ${assets
     ).toFixed(2);
     return `
 ${asset.name}
-  İnv. №: ${asset.invNo}
-  Kateqoriya: ${asset.category}
-  İlkin dəyər: ${asset.initialValue} ₼
-  Cari dəyər: ${asset.currentValue} ₼
-  Amortizasiya: ${depreciation.toFixed(2)} ₼ (${depreciationRate}%)
+  ${t("assetsExtra.reportText.inventoryNo")}: ${asset.invNo}
+  ${t("assetsExtra.reportText.category")}: ${asset.category}
+  ${t("assetsExtra.reportText.initialValue")}: ${asset.initialValue} ₼
+  ${t("assetsExtra.reportText.currentValue")}: ${asset.currentValue} ₼
+  ${t("assetsExtra.reportText.depreciation")}: ${depreciation.toFixed(2)} ₼ (${depreciationRate}%)
   ─────────────────────────────────────────────────────────────`;
   })
   .join("")}
 
 ═══════════════════════════════════════════════════════════════
-Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
+${t("assetsExtra.reportText.generatedLabel")}: ${new Date().toLocaleString()}
 `;
 
     const blob = new Blob([reportContent], {
@@ -234,28 +230,28 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
 
   const categoryReportData = [
     {
-      name: "Əmlak",
+      name: t("pages.assets.categories.property"),
       count: 1,
       totalValue: 500000,
       currentValue: 445000,
       depreciation: 55000,
     },
     {
-      name: "Nəqliyyat vasitələri",
+      name: t("pages.assets.categories.vehicles"),
       count: 1,
       totalValue: 45000,
       currentValue: 32500,
       depreciation: 12500,
     },
     {
-      name: "Kompüter avadanlığı",
+      name: t("pages.assets.categories.computerEquipment"),
       count: 2,
       totalValue: 2950,
       currentValue: 2487.5,
       depreciation: 462.5,
     },
     {
-      name: "Ofis avadanlığı",
+      name: t("pages.assets.categories.officeEquipment"),
       count: 1,
       totalValue: 1200,
       currentValue: 1050,
@@ -264,9 +260,9 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
   ];
 
   const branchReportData = [
-    { name: "Bakı Ofisi", count: 4, totalValue: 49150, currentValue: 35737.5 },
+    { name: t("pages.assets.form.locationOptions.bakuOffice"), count: 4, totalValue: 49150, currentValue: 35737.5 },
     {
-      name: "28 May metrosu yaxınlığı",
+      name: t("assetsExtra.locationOptions.may28Area"),
       count: 1,
       totalValue: 500000,
       currentValue: 445000,
@@ -287,11 +283,9 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
         <div className="flex justify-between items-start mb-8">
           <div>
             <h1 className="text-3xl font-bold dark:text-white mb-2">
-              Əsas Vəsaitlərin İdarə Edilməsi
+              {t("pages.assets.title")}
             </h1>
-            <p className="text-[#5C677D]">
-              Aktivlərin uçotu və amortizasiya hesablamaları
-            </p>
+            <p className="text-[#5C677D]">{t("pages.assets.subtitle")}</p>
           </div>
           {activeTab === "assets" && (
             <button
@@ -299,7 +293,7 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
               className="flex items-center gap-2 bg-[#0466CB] text-white px-4 py-2 rounded-lg hover:bg-[#0453A4] transition-colors shadow-sm"
             >
               <Plus className="w-5 h-5" />
-              Yeni aktiv
+              {t("pages.assets.buttons.newAsset")}
             </button>
           )}
         </div>
@@ -315,7 +309,7 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
             }`}
           >
             <Package className="w-4 h-4" />
-            İdarəetmə
+            {t("pages.assets.tabs.management")}
           </button>
           <button
             onClick={() => setActiveTab("assets")}
@@ -326,7 +320,7 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
             }`}
           >
             <Grid3x3 className="w-4 h-4" />
-            Aktivlər
+            {t("pages.assets.tabs.assets")}
           </button>
           <button
             onClick={() => setActiveTab("reports")}
@@ -337,7 +331,7 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
             }`}
           >
             <TrendingDown className="w-4 h-4" />
-            Hesabatlar
+            {t("pages.assets.tabs.reports")}
           </button>
         </div>
 
@@ -376,7 +370,7 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
               {/* Category Chart */}
               <div className="bg-white dark:bg-[#001233] dark:text-white rounded-lg p-6 shadow-md border border-[#979DAC]">
                 <h2 className="text-lg font-semibold dark:text-white text-[#023E7D] mb-6">
-                  Kateqoriyalar üzrə bölgü
+                  {t("pages.assets.charts.categoriesDistribution")}
                 </h2>
                 <div className="flex items-center justify-center">
                   <div className="relative w-64 h-64">
@@ -431,7 +425,7 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
               {/* Branch Chart */}
               <div className="bg-white  dark:bg-[#001233] rounded-lg p-6 shadow-md border border-[#979DAC]">
                 <h2 className="text-lg font-semibold dark:text-white text-[#023E7D] mb-6">
-                  Şöbələr üzrə dəyər
+                  {t("pages.assets.charts.branchValueDistribution")}
                 </h2>
                 <div className="h-80 flex items justify-between gap-4 pl-12 pb-3 relative">
                   <div className="absolute left-0 top-0 bottom-4 flex flex-col justify-between text-xs text-[#5C677D] font-medium">
@@ -479,7 +473,7 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7D8597] w-5 h-5" />
                 <input
                   type="text"
-                  placeholder="Aktiv axtar..."
+                  placeholder={t("pages.assets.search.placeholder")}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-[#979DAC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] focus:border-transparent"
@@ -493,28 +487,28 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
                 <thead className="bg-[#002855] border-b border-[#33415C]">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      İnv. №
+                      {t("pages.assets.table.headers.inventoryNo")}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Ad
+                      {t("pages.assets.table.headers.name")}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Kateqoriya
+                      {t("pages.assets.table.headers.category")}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Hesab
+                      {t("pages.assets.table.headers.account")}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Yerləşmə
+                      {t("pages.assets.table.headers.location")}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      İlkin dəyər
+                      {t("pages.assets.table.headers.initialValue")}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Cari dəyər
+                      {t("pages.assets.table.headers.currentValue")}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      Status
+                      {t("pages.assets.table.headers.status")}
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"></th>
                   </tr>
@@ -551,7 +545,7 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className="px-3 py-1 inline-flex text-xs leading-5 font-medium rounded-full bg-[#0466CB] text-white">
-                            {asset.status}
+                            {t(`pages.assets.status.${asset.status}`)}
                           </span>
                         </td>
 
@@ -572,16 +566,16 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
                             >
                               <button
                                 className="block w-full text-left px-4 py-2 hover:bg-[#979DAC]/10  dark:text-white text-[#001233]"
-                                onClick={() => alert("Redaktə et")}
+                                onClick={() => alert(t("pages.assets.actions.edit"))}
                               >
-                                Redaktə et
+                                {t("pages.assets.actions.edit")}
                               </button>
 
                               <button
                                 className="block w-full text-left px-4 py-2 hover:bg-red-50 text-red-600"
-                                onClick={() => alert("Sil")}
+                                onClick={() => alert(t("pages.assets.actions.delete"))}
                               >
-                                Sil
+                                {t("pages.assets.actions.delete")}
                               </button>
                             </div>
                           )}
@@ -600,68 +594,68 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
             {/* General report */}
             <div className="bg-white dark:bg-[#001233] rounded-lg p-6 shadow-md border border-[#979DAC]">
               <h2 className="text-lg font-semibold dark:text-white text-[#023E7D] mb-2">
-                Ümumi hesabat
+                {t("pages.assets.reports.general.title")}
               </h2>
               <p className="text-[#5C677D] dark:text-white text-sm mb-6">
-                Bütün aktivlərin tam siyahısı və məlumatları
+                {t("pages.assets.reports.general.desc")}
               </p>
               <button
                 onClick={generateExcelReport}
                 className="flex items-center gap-2 px-4 py-2 border border-[#0466CB] text-[#0466CB] rounded-lg text-sm font-medium hover:bg-[#0466CB] hover:text-white transition-colors"
               >
                 <Download className="w-4 h-4" />
-                <p>Excel yüklə</p>
+                <p>{t("pages.assets.reports.general.downloadExcel")}</p>
               </button>
             </div>
 
             {/* Depreciation report */}
             <div className="bg-white dark:bg-[#001233] rounded-lg p-6 shadow-md border border-[#979DAC]">
               <h2 className="text-lg font-semibold dark:text-white text-[#023E7D] mb-2">
-                Amortizasiya hesabatı
+                {t("pages.assets.reports.depreciation.title")}
               </h2>
               <p className="text-[#5C677D] dark:text-white text-sm mb-6">
-                Aktivlərin amortizasiya məlumatları
+                {t("pages.assets.reports.depreciation.desc")}
               </p>
               <button
                 onClick={generateDepreciationPDF}
                 className="flex items-center gap-2 px-4 py-2 border border-[#0466CB] text-[#0466CB] rounded-lg text-sm font-medium hover:bg-[#0466CB] hover:text-white transition-colors"
               >
                 <FileText className="w-4 h-4" />
-                PDF yüklə
+                {t("pages.assets.reports.depreciation.downloadPdf")}
               </button>
             </div>
 
             {/* By Category */}
             <div className="bg-white dark:bg-[#001233] rounded-lg p-6 shadow-md border border-[#979DAC]">
               <h2 className="text-lg font-semibold dark:text-white text-[#023E7D] mb-2">
-                Kateqoriyalar üzrə
+                {t("pages.assets.reports.byCategory.title")}
               </h2>
               <p className="text-[#5C677D] dark:text-white text-sm mb-6">
-                Aktivlərin kateqoriyalar üzrə təhlili
+                {t("pages.assets.reports.byCategory.desc")}
               </p>
               <button
                 onClick={() => setShowCategoryReport(true)}
                 className="flex items-center gap-2 px-4 py-2 border border-[#0466CB] text-[#0466CB] rounded-lg text-sm font-medium hover:bg-[#0466CB] hover:text-white transition-colors"
               >
                 <Eye className="w-4 h-4" />
-                Bax
+                {t("pages.assets.reports.byCategory.view")}
               </button>
             </div>
 
             {/* By Department */}
             <div className="bg-white dark:bg-[#001233] rounded-lg p-6 shadow-md border border-[#979DAC]">
               <h2 className="text-lg font-semibold dark:text-white text-[#023E7D] mb-2">
-                Yerləşmə üzrə
+                {t("pages.assets.reports.byLocation.title")}
               </h2>
               <p className="text-[#5C677D] dark:text-white text-sm mb-6">
-                Aktivlərin yerləşmə üzrə bölgüsü
+                {t("pages.assets.reports.byLocation.desc")}
               </p>
               <button
                 onClick={() => setShowBranchReport(true)}
                 className="flex items-center gap-2 px-4 py-2 border border-[#0466CB] text-[#0466CB] rounded-lg text-sm font-medium hover:bg-[#0466CB] hover:text-white transition-colors"
               >
                 <Eye className="w-4 h-4" />
-                Bax
+                {t("pages.assets.reports.byLocation.view")}
               </button>
             </div>
           </div>
@@ -680,7 +674,7 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
           >
             <div className="sticky top-0 bg-[#002855] dark:bg-[#001233] px-6 py-4 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-white">
-                Yeni aktiv əlavə et
+                {t("pages.assets.addModal.title")}
               </h2>
               <button
                 onClick={() => setShowAddModal(false)}
@@ -706,10 +700,11 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium  dark:text-white text-[#001233] mb-2">
-                    Aktivin adı <span className="text-red-500">*</span>
+                    {t("pages.assets.form.assetName")} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
+                    placeholder={t("pages.assets.form.assetNamePlaceholder")}
                     value={formData.name}
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
@@ -857,18 +852,14 @@ Hesabat tarixi: ${new Date().toLocaleString("az-AZ")}
                     }
                     className="w-full px-3 py-2 border border-[#979DAC] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0466CB] bg-white dark:bg-[#001233] dark:border-gray-600 dark:focus:ring-[#0466CB]"
                   >
-                    <option value="Düzxətli">
+                    <option value="straightLine">
                       {t("pages.assets.form.depreciationMethods.straightLine")}
                     </option>
-                    <option value="Azalan qalıq">
-                      {t(
-                        "pages.assets.form.depreciationMethods.decliningBalance"
-                      )}
+                    <option value="decliningBalance">
+                      {t("pages.assets.form.depreciationMethods.decliningBalance")}
                     </option>
-                    <option value="İstehsal həcmi">
-                      {t(
-                        "pages.assets.form.depreciationMethods.unitsOfProduction"
-                      )}
+                    <option value="unitsOfProduction">
+                      {t("pages.assets.form.depreciationMethods.unitsOfProduction")}
                     </option>
                   </select>
                 </div>

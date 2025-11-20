@@ -2164,6 +2164,133 @@
           "confirm": "İnventarı Təsdiqlə ({{count}} məhsul)"
         }
       }
+    },
+    "assets": {
+      "title": "Əsas Vəsaitlərin İdarə Edilməsi",
+      "subtitle": "Aktivlərin uçotu və amortizasiya",
+      "tabs": {
+        "management": "İdarəetmə",
+        "assets": "Aktivlər",
+        "reports": "Hesabatlar"
+      },
+      "stats": {
+        "totalValue": {"title": "Ümumi dəyər", "subtitle": "İlkin dəyər"},
+        "currentValue": {"title": "Cari dəyər", "subtitle": "Amortizasiya sonrası"},
+        "depreciation": {"title": "Amortizasiya", "subtitle": "Yığılmış"},
+        "assetCount": {"title": "Aktiv sayı", "subtitle": "Cəmi {{count}} aktivdən"}
+      },
+      "charts": {
+        "categoriesDistribution": "Kateqoriyalar üzrə bölgü",
+        "branchValueDistribution": "Şöbələr üzrə dəyər"
+      },
+      "categories": {
+        "property": "Əmlak",
+        "officeEquipment": "Ofis avadanlığı",
+        "vehicles": "Nəqliyyat vasitələri",
+        "computerEquipment": "Kompüter avadanlığı"
+      },
+      "search": {"placeholder": "Aktiv axtar..."},
+      "table": {
+        "headers": {
+          "inventoryNo": "İnv. №",
+          "name": "Ad",
+          "category": "Kateqoriya",
+          "account": "Hesab",
+          "location": "Yerləşmə",
+          "initialValue": "İlkin dəyər",
+          "currentValue": "Cari dəyər",
+          "status": "Status"
+        }
+      },
+      "status": {"active": "Aktiv"},
+      "actions": {"edit": "Redaktə et", "delete": "Sil"},
+      "reports": {
+        "general": {"title": "Ümumi hesabat", "desc": "Bütün aktivlərin tam siyahısı və məlumatları", "downloadExcel": "Excel yüklə"},
+        "depreciation": {"title": "Amortizasiya hesabatı", "desc": "Aktivlərin amortizasiya məlumatları", "downloadPdf": "PDF yüklə"},
+        "byCategory": {"title": "Kateqoriyalar üzrə", "desc": "Aktivlərin kateqoriyalar üzrə təhlili", "view": "Bax"},
+        "byLocation": {"title": "Yerləşmə üzrə", "desc": "Aktivlərin yerləşmə üzrə bölgüsü", "view": "Bax"}
+      },
+      "buttons": {"cancel": "Ləğv et", "save": "Yadda saxla", "newAsset": "Yeni aktiv"},
+      "addModal": {"title": "Yeni aktiv əlavə et"},
+      "form": {
+        "inventoryNo": "Inventar №",
+        "category": "Kateqoriya",
+        "selectCategory": "Kateqoriya seçin",
+        "categoryOptions": {
+          "computerEquipment": "Kompüter avadanlığı",
+          "vehicles": "Nəqliyyat vasitələri",
+          "officeEquipment": "Ofis avadanlığı",
+          "property": "Əmlak"
+        },
+        "accountCode": "Hesab kodu",
+        "accountOptions": {"111": "111", "112": "112", "113": "113"},
+        "purchaseDate": "Alış tarixi",
+        "purchaseDatePlaceholder": "YYYY-AA-GG (məs: 2025-11-20)",
+        "initialValue": "İlkin dəyər",
+        "residualValue": "Qalıq dəyər",
+        "depreciationMethod": "Amortizasiya metodu",
+        "depreciationMethods": {
+          "straightLine": "Düzxətli",
+          "decliningBalance": "Azalan qalıq",
+          "unitsOfProduction": "İstehsal həcmi"
+        },
+        "usefulLifeMonths": "İstifadə müddəti (ay)",
+        "location": "Yerləşmə",
+        "selectLocation": "Yerləşmə seçin",
+        "locationOptions": {"bakuOffice": "Bakı Ofisi", "sumgaitBranch": "Sumqayıt filialı", "ganjaBranch": "Gəncə filialı"},
+        "branch": "Şöbə",
+        "selectBranch": "Şöbə seçin",
+        "branchOptions": {"it": "IT Şöbəsi", "accounting": "Mühasibatlıq", "sales": "Satış şöbəsi", "hr": "İnsan resursları"},
+        "supplier": "Təchizatçı",
+        "serialNumber": "Seriya nömrəsi",
+        "assignedTo": "Təyin olunub",
+        "warrantyPeriodMonths": "Zəmanət müddəti (ay)",
+        "note": "Qeyd",
+        "assetName": "Aktivin adı",
+        "assetNamePlaceholder": "Aktivin adını daxil edin"
+      },
+      "categoryReportModal": {
+        "title": "Kateqoriya Hesabatı",
+        "headers": {
+          "category": "Kateqoriya",
+          "assetCount": "Aktiv sayı",
+          "initial": "İlkin dəyər",
+          "current": "Cari dəyər",
+          "depreciation": "Amortizasiya",
+          "percent": "Amortizasiya %"
+        },
+        "total": "Cəm"
+      },
+      "branchReportModal": {
+        "title": "Yerləşmə Hesabatı",
+        "headers": {
+          "location": "Yerləşmə",
+          "assetCount": "Aktiv sayı",
+          "initial": "İlkin dəyər",
+          "current": "Cari dəyər",
+          "share": "Pay %"
+        },
+        "total": "Cəm"
+      }
+    }
+  },
+  "assetsExtra": {
+    "reportText": {
+      "depreciationReportTitle": "AMORTİZASİYA HESABATI",
+      "dateLabel": "Tarix",
+      "generatedLabel": "Hesabat tarixi",
+      "inventoryNo": "İnv. №",
+      "category": "Kateqoriya",
+      "initialValue": "İlkin dəyər",
+      "currentValue": "Cari dəyər",
+      "depreciation": "Amortizasiya"
+    },
+    "branchOptions": {
+      "transport": "Transport",
+      "design": "Dizayn şöbəsi"
+    },
+    "locationOptions": {
+      "may28Area": "28 May metrosu yaxınlığı"
     }
   },
   "brand": {

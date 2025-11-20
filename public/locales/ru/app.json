@@ -220,7 +220,11 @@
         "tasks": {
           "title": "Задачи по соблюдению",
           "subtitle": "Сроки и статус",
-          "status": { "completed": "Выполнено", "pending": "Ожидает", "delayed": "Задержка" }
+          "status": {
+            "completed": "Выполнено",
+            "pending": "Ожидает",
+            "delayed": "Задержка"
+          }
         },
         "series": {
           "incomeTax": "Подоходный налог",
@@ -273,15 +277,18 @@
         "stockAlerts": {
           "title": "Предупреждения о минимальных запасах",
           "subtitle": "Товары, требующие срочного заказа по прогнозу AI",
-          "status": { "critical": "Критично", "warning": "Предупреждение", "normal": "Норма" },
+          "status": {
+            "critical": "Критично",
+            "warning": "Предупреждение",
+            "normal": "Норма"
+          },
           "current": "Текущий",
           "minimum": "Минимум",
           "timeToDeplete": "До исчерпания",
           "orderNow": "Заказать",
           "orderSuggestion": "Закажите {{count}} шт."
         }
-      }
-      ,
+      },
       "hrAi": {
         "attendanceByDept": {
           "title": "Посещаемость по отделам",
@@ -296,7 +303,10 @@
         "departmentPerformance": {
           "title": "Эффективность отделов",
           "subtitle": "Показатели эффективности и удовлетворенности сотрудников",
-          "legend": { "performance": "Эффективность", "satisfaction": "Удовлетворенность" }
+          "legend": {
+            "performance": "Эффективность",
+            "satisfaction": "Удовлетворенность"
+          }
         },
         "departments": {
           "sales": "Продажи",
@@ -317,7 +327,11 @@
           "title": "Анализ риска текучести персонала",
           "subtitle": "Отделы с повышенным риском по оценке AI",
           "reasons": "Причины:",
-          "level": { "high": "Высокий риск", "medium": "Средний риск", "low": "Низкий риск" }
+          "level": {
+            "high": "Высокий риск",
+            "medium": "Средний риск",
+            "low": "Низкий риск"
+          }
         }
       }
     },
@@ -610,7 +624,11 @@
           "selectEmployee": "Выберите сотрудника",
           "leaveType": "Тип отпуска",
           "selectType": "Выберите тип",
-          "types": { "annual": "Ежегодный", "sick": "Больничный", "other": "Другое" },
+          "types": {
+            "annual": "Ежегодный",
+            "sick": "Больничный",
+            "other": "Другое"
+          },
           "startDate": "Дата начала",
           "endDate": "Дата окончания",
           "reason": "Причина",
@@ -632,10 +650,22 @@
           }
         },
         "cards": {
-          "salaryReport": { "title": "Отчет по зарплате", "desc": "Анализ месячного и годового фонда оплаты труда" },
-          "employeeTurnover": { "title": "Текучесть кадров", "desc": "Найм и увольнения" },
-          "attendanceReport": { "title": "Отчет по посещаемости", "desc": "Рабочие часы и статистика посещаемости" },
-          "departmentAnalysis": { "title": "Анализ по отделам", "desc": "Затраты и численность по отделам" }
+          "salaryReport": {
+            "title": "Отчет по зарплате",
+            "desc": "Анализ месячного и годового фонда оплаты труда"
+          },
+          "employeeTurnover": {
+            "title": "Текучесть кадров",
+            "desc": "Найм и увольнения"
+          },
+          "attendanceReport": {
+            "title": "Отчет по посещаемости",
+            "desc": "Рабочие часы и статистика посещаемости"
+          },
+          "departmentAnalysis": {
+            "title": "Анализ по отделам",
+            "desc": "Затраты и численность по отделам"
+          }
         },
         "charts": {
           "payrollDynamics": {
@@ -646,11 +676,17 @@
         "turnover": {
           "title": "Текучесть кадров",
           "series": { "hired": "Наняты", "left": "Уволены" },
-          "totals": { "hired6m": "Всего нанято (6 мес)", "left6m": "Всего уволено (6 мес)" }
+          "totals": {
+            "hired6m": "Всего нанято (6 мес)",
+            "left6m": "Всего уволено (6 мес)"
+          }
         },
         "attendanceChart": {
           "title": "Статистика посещаемости",
-          "series": { "attendancePct": "Посещаемость %", "delayPct": "Опоздания %" }
+          "series": {
+            "attendancePct": "Посещаемость %",
+            "delayPct": "Опоздания %"
+          }
         },
         "departmentDistribution": { "title": "Распределение по отделам" },
         "monthlyReport": {
@@ -813,17 +849,17 @@
           "forPeriodEnding": "За период, заканчивающийся {{date}}"
         },
         "balanceSheet": {
-        "rows": {
-          "cash": "Денежные средства",
-          "accountsReceivable": "Дебиторская задолженность",
-          "inventory": "Запасы",
-          "fixedAssets241": "Основные средства (241)",
-          "accountsPayable331": "Кредиторская задолженность (331)",
-          "vatPayable341": "НДС к уплате (341)",
-          "incomeTaxPayable351": "Налог на прибыль к уплате (351)",
-          "shareCapital401": "Уставный капитал (401)",
-          "retainedEarnings421": "Нераспределенная прибыль (421)"
-        },
+          "rows": {
+            "cash": "Денежные средства",
+            "accountsReceivable": "Дебиторская задолженность",
+            "inventory": "Запасы",
+            "fixedAssets241": "Основные средства (241)",
+            "accountsPayable331": "Кредиторская задолженность (331)",
+            "vatPayable341": "НДС к уплате (341)",
+            "incomeTaxPayable351": "Налог на прибыль к уплате (351)",
+            "shareCapital401": "Уставный капитал (401)",
+            "retainedEarnings421": "Нераспределенная прибыль (421)"
+          },
           "title": "Баланс",
           "assets": {
             "title": "Активы",
@@ -848,16 +884,16 @@
           }
         },
         "income": {
-        "rows": {
-          "salesRevenue701": "Выручка от продаж (701)",
-          "serviceRevenue711": "Выручка от услуг (711)",
-          "costOfSales601": "Себестоимость продаж (601)",
-          "payroll543": "ФОТ (543)",
-          "socialContributions551": "Социальные отчисления (551)",
-          "administrativeExpenses731": "Административные расходы (731)",
-          "salesExpenses741": "Расходы на сбыт (741)",
-          "operatingExpenses721": "Операционные расходы (721)"
-        },
+          "rows": {
+            "salesRevenue701": "Выручка от продаж (701)",
+            "serviceRevenue711": "Выручка от услуг (711)",
+            "costOfSales601": "Себестоимость продаж (601)",
+            "payroll543": "ФОТ (543)",
+            "socialContributions551": "Социальные отчисления (551)",
+            "administrativeExpenses731": "Административные расходы (731)",
+            "salesExpenses741": "Расходы на сбыт (741)",
+            "operatingExpenses721": "Операционные расходы (721)"
+          },
           "title": "Отчет о прибылях и убытках",
           "columns": {
             "revenue": "Выручка",
@@ -876,14 +912,14 @@
           }
         },
         "cashFlow": {
-        "rows": {
-          "netIncome": "Чистая прибыль",
-          "adjustmentsNonCash": "Корректировки по неденежным статьям",
-          "changesWorkingCapital": "Изменения в оборотном капитале",
-          "purchaseFixedAssets": "Приобретение основных средств",
-          "proceedsLoans": "Поступления по займам",
-          "repaymentLoans": "Погашение займов"
-        },
+          "rows": {
+            "netIncome": "Чистая прибыль",
+            "adjustmentsNonCash": "Корректировки по неденежным статьям",
+            "changesWorkingCapital": "Изменения в оборотном капитале",
+            "purchaseFixedAssets": "Приобретение основных средств",
+            "proceedsLoans": "Поступления по займам",
+            "repaymentLoans": "Погашение займов"
+          },
           "title": "Отчет о движении денежных средств",
           "columns": {
             "operating": "Операционная деятельность",
@@ -1090,13 +1126,25 @@
         "subtitle": "Платежи поставщикам и поступления от клиентов",
         "newPlan": "Запланировать платеж",
         "tabs": { "outflows": "Платежи (Списания)", "inflows": "Поступления" },
-        "outflows": { "title": "Платежи поставщикам", "subtitle": "Запланированные и ожидающие платежи" },
-        "inflows": { "title": "Поступления от клиентов", "subtitle": "Ожидаемые платежи и счета" },
+        "outflows": {
+          "title": "Платежи поставщикам",
+          "subtitle": "Запланированные и ожидающие платежи"
+        },
+        "inflows": {
+          "title": "Поступления от клиентов",
+          "subtitle": "Ожидаемые платежи и счета"
+        },
         "cards": {
           "payable": { "title": "К оплате", "desc": "Поставщикам" },
           "receivable": { "title": "К поступлению", "desc": "От клиентов" },
-          "overduePayments": { "title": "Просроченные платежи", "desc": "Требуют срочного внимания" },
-          "overdueReceivables": { "title": "Просроченная дебиторка", "desc": "Отправить напоминание" }
+          "overduePayments": {
+            "title": "Просроченные платежи",
+            "desc": "Требуют срочного внимания"
+          },
+          "overdueReceivables": {
+            "title": "Просроченная дебиторка",
+            "desc": "Отправить напоминание"
+          }
         },
         "schedule": {
           "title": "График на ближайшие 7 дней",
@@ -1104,8 +1152,17 @@
           "urgent": "Срочно"
         },
         "types": { "payment": "Платеж", "receipt": "Поступление" },
-        "status": { "pending": "Ожидает", "overdue": "Просрочен", "scheduled": "Запланирован", "paid": "Оплачен" },
-        "actions": { "title": "Действия", "pay": "Оплатить", "collect": "Получить" }
+        "status": {
+          "pending": "Ожидает",
+          "overdue": "Просрочен",
+          "scheduled": "Запланирован",
+          "paid": "Оплачен"
+        },
+        "actions": {
+          "title": "Действия",
+          "pay": "Оплатить",
+          "collect": "Получить"
+        }
       },
       "agreements": {
         "title": "Соглашения",
@@ -1122,14 +1179,30 @@
           "paymentTerms": "Условия оплаты",
           "notes": "Примечания"
         },
-        "placeholders": { "contractNo": "Напр.: CNT-2025-001", "amount": "Напр.: 1500" },
-        "paymentTerms": { "days30": "В течение 30 дней", "days60": "В течение 60 дней", "days90": "В течение 90 дней" },
+        "placeholders": {
+          "contractNo": "Напр.: CNT-2025-001",
+          "amount": "Напр.: 1500"
+        },
+        "paymentTerms": {
+          "days30": "В течение 30 дней",
+          "days60": "В течение 60 дней",
+          "days90": "В течение 90 дней"
+        },
         "status": { "active": "Активен" },
         "searchPlaceholder": "Поиск по соглашениям...",
         "cards": {
-          "active": { "title": "Активные соглашения", "description": "Действующие соглашения" },
-          "expiring": { "title": "Скоро истекают", "description": "Соглашения с близким сроком окончания" },
-          "totalValue": { "title": "Общая сумма", "description": "Сумма всех соглашений" }
+          "active": {
+            "title": "Активные соглашения",
+            "description": "Действующие соглашения"
+          },
+          "expiring": {
+            "title": "Скоро истекают",
+            "description": "Соглашения с близким сроком окончания"
+          },
+          "totalValue": {
+            "title": "Общая сумма",
+            "description": "Сумма всех соглашений"
+          }
         },
         "sample": {
           "amount": "Сумма:",
@@ -1147,7 +1220,10 @@
         "newOperation": "Новая операция",
         "tabs": { "cash": "Операции кассы", "bank": "Банковские операции" },
         "cash": { "subtitle": "Движение наличных" },
-        "bank": { "subtitle": "Операции по банковским счетам", "account": "Счет" },
+        "bank": {
+          "subtitle": "Операции по банковским счетам",
+          "account": "Счет"
+        },
         "modal": {
           "newOperationTitle": "Новая операция",
           "newOperationSubtitle": "Добавьте операцию кассы или банка"
@@ -1163,16 +1239,27 @@
         "report": "Отчет",
         "newBudget": "Новый бюджет",
         "cards": {
-          "planned": { "title": "План (Этот месяц)", "desc": "Запланированные расходы" },
+          "planned": {
+            "title": "План (Этот месяц)",
+            "desc": "Запланированные расходы"
+          },
           "actual": { "title": "Факт", "desc": "Фактические расходы" },
           "variance": { "title": "Отклонение", "desc": "-2,7% экономия" },
           "utilization": { "title": "Уровень использования" }
         },
-        "yearly": { "title": "Годовая эффективность бюджета", "subtitle": "Сравнение плана и факта расходов" },
+        "yearly": {
+          "title": "Годовая эффективность бюджета",
+          "subtitle": "Сравнение плана и факта расходов"
+        },
         "tabs": { "categories": "Категории", "departments": "Отделы" },
         "categoriesTitle": "Бюджет по категориям",
         "categoriesSubtitle": "Анализ расходов по категориям за текущий месяц",
-        "labels": { "used": "использовано", "remaining": "осталось", "saving": "Экономия", "overBudget": "Превышение бюджета" },
+        "labels": {
+          "used": "использовано",
+          "remaining": "осталось",
+          "saving": "Экономия",
+          "overBudget": "Превышение бюджета"
+        },
         "categories": {
           "officeExpenses": "Офисные расходы",
           "itAndTech": "IT и Технологии",
@@ -1202,14 +1289,36 @@
       "analytics": {
         "title": "Финансовая аналитика",
         "subtitle": "Показатели рентабельности, ликвидности и капитала",
-        "tabs": { "cashFlow": "Прогноз ДДС", "profitability": "Рентабельность", "liquidity": "Ликвидность" },
+        "tabs": {
+          "cashFlow": "Прогноз ДДС",
+          "profitability": "Рентабельность",
+          "liquidity": "Ликвидность"
+        },
         "cards": {
-          "roi": { "title": "ROI (Доходность инвестиций)", "subtitle": "Возврат на инвестиции" },
-          "grossMargin": { "title": "Валовая маржа", "subtitle": "После себестоимости продаж" },
-          "netProfitMargin": { "title": "Маржа чистой прибыли", "subtitle": "Чистая прибыль к выручке" },
-          "currentRatio": { "title": "Текущий коэффициент", "subtitle": "Краткосрочная ликвидность" },
-          "quickRatio": { "title": "Коэф. быстрой ликвидности", "subtitle": "Без учета запасов" },
-          "debtToEquity": { "title": "Долг/Капитал", "subtitle": "Финансовый рычаг" }
+          "roi": {
+            "title": "ROI (Доходность инвестиций)",
+            "subtitle": "Возврат на инвестиции"
+          },
+          "grossMargin": {
+            "title": "Валовая маржа",
+            "subtitle": "После себестоимости продаж"
+          },
+          "netProfitMargin": {
+            "title": "Маржа чистой прибыли",
+            "subtitle": "Чистая прибыль к выручке"
+          },
+          "currentRatio": {
+            "title": "Текущий коэффициент",
+            "subtitle": "Краткосрочная ликвидность"
+          },
+          "quickRatio": {
+            "title": "Коэф. быстрой ликвидности",
+            "subtitle": "Без учета запасов"
+          },
+          "debtToEquity": {
+            "title": "Долг/Капитал",
+            "subtitle": "Финансовый рычаг"
+          }
         },
         "cashFlow": {
           "title": "Прогноз движения денежных средств",
@@ -1222,7 +1331,11 @@
         "profitability": {
           "title": "Показатели рентабельности",
           "subtitle": "Динамика выручки, расходов и прибыли",
-          "legend": { "expenses": "Расходы", "revenue": "Выручка", "netProfit": "Чистая прибыль" },
+          "legend": {
+            "expenses": "Расходы",
+            "revenue": "Выручка",
+            "netProfit": "Чистая прибыль"
+          },
           "avgRevenue": "Средняя ежемесячная выручка",
           "avgExpense": "Средний ежемесячный расход",
           "avgProfit": "Средняя ежемесячная прибыль"
@@ -1279,10 +1392,19 @@
           "text": "Внимание: платеж поставщику \"{{supplier}}\" просрочен на {{days}} дн. Сумма: {{amount}}"
         },
         "cards": {
-          "totalBalance": { "title": "Общий баланс", "desc": "Касса + банковские счета" },
+          "totalBalance": {
+            "title": "Общий баланс",
+            "desc": "Касса + банковские счета"
+          },
           "cashBalance": { "title": "Баланс кассы", "desc": "Наличные" },
-          "bankBalance": { "title": "Баланс банка", "desc": "Банковские счета" },
-          "netCashFlow": { "title": "Чистый денежный поток", "desc": "В этом месяце" }
+          "bankBalance": {
+            "title": "Баланс банка",
+            "desc": "Банковские счета"
+          },
+          "netCashFlow": {
+            "title": "Чистый денежный поток",
+            "desc": "В этом месяце"
+          }
         },
         "charts": {
           "cashFlow": {
@@ -1297,7 +1419,10 @@
               "jun": "Июн"
             }
           },
-          "expenseDistribution": { "title": "Распределение расходов", "subtitle": "Расходы текущего месяца по категориям" }
+          "expenseDistribution": {
+            "title": "Распределение расходов",
+            "subtitle": "Расходы текущего месяца по категориям"
+          }
         },
         "budget": {
           "title": "Обзор бюджета - Текущий месяц",
@@ -1342,9 +1467,18 @@
         "title": "Управление продажами - Панель",
         "subtitle": "Обзор показателей продаж и активности клиентов",
         "cards": {
-          "monthlySales": { "title": "Продажи за месяц", "desc": "к прошлому месяцу" },
-          "activeCustomers": { "title": "Активные клиенты", "desc": "покупали за 30 дней" },
-          "salesCount": { "title": "Кол-во продаж", "desc": "завершенные заказы" },
+          "monthlySales": {
+            "title": "Продажи за месяц",
+            "desc": "к прошлому месяцу"
+          },
+          "activeCustomers": {
+            "title": "Активные клиенты",
+            "desc": "покупали за 30 дней"
+          },
+          "salesCount": {
+            "title": "Кол-во продаж",
+            "desc": "завершенные заказы"
+          },
           "profit": { "title": "Прибыль", "desc": "после себест-ти" }
         },
         "charts": {
@@ -1363,7 +1497,12 @@
         },
         "actions": { "add": "Добавить", "print": "Печать" },
         "empty": "Товары не найдены",
-        "cart": { "title": "Корзина", "decrease": "Уменьшить количество", "increase": "Увеличить количество", "remove": "Удалить" },
+        "cart": {
+          "title": "Корзина",
+          "decrease": "Уменьшить количество",
+          "increase": "Увеличить количество",
+          "remove": "Удалить"
+        },
         "summary": {
           "subtotal": "Промежуточный итог",
           "vat": "НДС ({{percent}}%)",
@@ -1393,8 +1532,16 @@
           "address": "Введите адрес"
         },
         "labels": { "taxIdShort": "ИНН" },
-        "tabs": { "info": "Инфо", "salesHistory": "История продаж", "payments": "Платежи" },
-        "segments": { "regular": "Постоянный", "new": "Новый", "overdue": "Просрочен" },
+        "tabs": {
+          "info": "Инфо",
+          "salesHistory": "История продаж",
+          "payments": "Платежи"
+        },
+        "segments": {
+          "regular": "Постоянный",
+          "new": "Новый",
+          "overdue": "Просрочен"
+        },
         "cards": {
           "totalCustomers": "Всего клиентов",
           "regularCustomers": "Постоянные",
@@ -1473,12 +1620,19 @@
             "status": "Статус"
           }
         },
-        "status": { "paid": "Оплачено", "unpaid": "Не оплачено", "overdue": "Просрочено" }
+        "status": {
+          "paid": "Оплачено",
+          "unpaid": "Не оплачено",
+          "overdue": "Просрочено"
+        }
       },
       "transactions": {
         "title": "Платежи",
         "subtitle": "Платежи клиентов по счетам",
-        "actions": { "newPayment": "Новый платеж", "notify": "Отправить напоминание" },
+        "actions": {
+          "newPayment": "Новый платеж",
+          "notify": "Отправить напоминание"
+        },
         "modal": { "title": "Записать платеж" },
         "form": {
           "customer": "Клиент",
@@ -1495,8 +1649,17 @@
           "method": "Наличные, банк...",
           "note": "Необязательное примечание"
         },
-        "cards": { "completed": "Завершено", "pending": "Ожидает", "overdue": "Просрочено", "toNotify": "Уведомить" },
-        "overdue": { "title": "Просроченные платежи", "invoice": "Счет", "date": "Дата" },
+        "cards": {
+          "completed": "Завершено",
+          "pending": "Ожидает",
+          "overdue": "Просрочено",
+          "toNotify": "Уведомить"
+        },
+        "overdue": {
+          "title": "Просроченные платежи",
+          "invoice": "Счет",
+          "date": "Дата"
+        },
         "table": {
           "title": "Платежи",
           "columns": {
@@ -1509,24 +1672,60 @@
             "status": "Статус"
           }
         },
-        "status": { "completed": "Завершено", "pending": "Ожидает", "overdue": "Просрочено" }
+        "status": {
+          "completed": "Завершено",
+          "pending": "Ожидает",
+          "overdue": "Просрочено"
+        }
       },
       "reports": {
         "title": "Отчеты по продажам",
         "subtitle": "KPI и аналитика продаж",
-        "actions": { "exportExcel": "Экспорт в Excel", "pdfReport": "PDF Отчет" },
-        "filters": { "range": { "thisMonth": "Этот месяц", "lastMonth": "Прошлый месяц", "last3Months": "Последние 3 месяца", "thisYear": "Этот год", "lastYear": "Прошлый год" } },
-        "tiles": { "totalSales": "Сумма продаж", "grossProfit": "Валовая прибыль", "productsSold": "Продано товаров", "profitMargin": "Маржа прибыли" },
+        "actions": {
+          "exportExcel": "Экспорт в Excel",
+          "pdfReport": "PDF Отчет"
+        },
+        "filters": {
+          "range": {
+            "thisMonth": "Этот месяц",
+            "lastMonth": "Прошлый месяц",
+            "last3Months": "Последние 3 месяца",
+            "thisYear": "Этот год",
+            "lastYear": "Прошлый год"
+          }
+        },
+        "tiles": {
+          "totalSales": "Сумма продаж",
+          "grossProfit": "Валовая прибыль",
+          "productsSold": "Продано товаров",
+          "profitMargin": "Маржа прибыли"
+        },
         "tables": {
           "topProducts": {
             "title": "Топ товары",
-            "columns": { "product": "Товар", "salesCount": "Кол-во продаж", "revenue": "Выручка" },
-            "sample": { "product1": "Товар 1", "product2": "Товар 2", "product3": "Товар 3" }
+            "columns": {
+              "product": "Товар",
+              "salesCount": "Кол-во продаж",
+              "revenue": "Выручка"
+            },
+            "sample": {
+              "product1": "Товар 1",
+              "product2": "Товар 2",
+              "product3": "Товар 3"
+            }
           },
           "topCustomers": {
             "title": "Топ клиенты",
-            "columns": { "customer": "Клиент", "orders": "Заказы", "revenue": "Выручка" },
-            "sample": { "customer1": "ABC LLC", "customer2": "DEF Holding", "customer3": "GHI Ltd" }
+            "columns": {
+              "customer": "Клиент",
+              "orders": "Заказы",
+              "revenue": "Выручка"
+            },
+            "sample": {
+              "customer1": "ABC LLC",
+              "customer2": "DEF Holding",
+              "customer3": "GHI Ltd"
+            }
           }
         },
         "kpi": {
@@ -1657,7 +1856,7 @@
           "title": "Ближайшие платежи",
           "empty": "Нет ближайших платежей"
         }
-  },
+      },
       "orders": {
         "title": "Заказы поставщикам",
         "subtitle": "Отслеживание и управление заказами",
@@ -1711,14 +1910,30 @@
           "paymentTerms": "Условия оплаты",
           "notes": "Примечания"
         },
-        "placeholders": { "contractNo": "Напр.: CNT-2025-001", "amount": "Напр.: 1500" },
-        "paymentTerms": { "days30": "В течение 30 дней", "days60": "В течение 60 дней", "days90": "В течение 90 дней" },
+        "placeholders": {
+          "contractNo": "Напр.: CNT-2025-001",
+          "amount": "Напр.: 1500"
+        },
+        "paymentTerms": {
+          "days30": "В течение 30 дней",
+          "days60": "В течение 60 дней",
+          "days90": "В течение 90 дней"
+        },
         "status": { "active": "Активен" },
         "searchPlaceholder": "Поиск по соглашениям...",
         "cards": {
-          "active": { "title": "Активные соглашения", "description": "Действующие соглашения" },
-          "expiring": { "title": "Скоро истекают", "description": "Соглашения с близким сроком окончания" },
-          "totalValue": { "title": "Общая сумма", "description": "Сумма всех соглашений" }
+          "active": {
+            "title": "Активные соглашения",
+            "description": "Действующие соглашения"
+          },
+          "expiring": {
+            "title": "Скоро истекают",
+            "description": "Соглашения с близким сроком окончания"
+          },
+          "totalValue": {
+            "title": "Общая сумма",
+            "description": "Сумма всех соглашений"
+          }
         },
         "sample": {
           "amount": "Сумма:",
@@ -1775,397 +1990,251 @@
       "title": "Настройки",
       "subtitle": "Управляйте аккаунтом и предпочтениями"
     },
-    "assets": {
-      "title": "Основные средства",
-      "subtitle": "Управляйте активами и формируйте отчеты",
-      "charts": {
-        "categoryDistribution": "Распределение по категориям",
-        "valueByDepartment": "Стоимость по отделам"
+    "warehouse": {
+      "title": "Склад",
+      "dashboard": {
+        "title": "Управление складом",
+        "subtitle": "Обзор и ключевые показатели",
+        "cards": {
+          "totalProducts": "Всего товаров",
+          "uniqueSkuCount": "Кол-во уникальных SKU",
+          "totalValue": "Общая стоимость",
+          "atCost": "По себестоимости",
+          "entriesThisMonth": "Поступления в этом месяце",
+          "exitsThisMonth": "Списания в этом месяце",
+          "vsPrevMonth": "{{change}} к прошлому месяцу"
+        },
+        "minStock": {
+          "title": "Предупреждение о минимальном остатке",
+          "current": "Текущий",
+          "minimum": "Минимум"
+        }
       },
-      "tabs": {
-        "management": "Управление",
-        "assets": "Активы",
+      "nav": {
+        "dashboard": "Главная",
+        "products": "Товары",
+        "operations": "Складские операции",
+        "inventory": "Инвентарь",
         "reports": "Отчеты"
       },
-      "stats": {
-        "totalValue": "Общая стоимость",
-        "totalValueSubtitle": "Начальная стоимость",
-        "currentValue": "Текущая стоимость",
-        "currentValueSubtitle": "После амортизации",
-        "depreciation": "Амортизация",
-        "depreciationSubtitle": "Накопленная",
-        "assetCount": "Количество активов",
-        "assetCountSubtitle": "Всего {{count}} активов"
-      },
-      "actions": {
-        "newAsset": "Новый актив",
-        "view": "Просмотр"
-      },
-      "searchPlaceholder": "Поиск по названию, инв. №, категории...",
-      "table": {
-        "invNo": "Инв. №",
-        "name": "Название",
-        "category": "Категория",
-        "account": "Счет",
-        "location": "Локация",
-        "initialValue": "Начальная стоимость",
-        "currentValue": "Текущая стоимость",
-        "status": "Статус"
-      },
       "reports": {
-        "general": {
-          "title": "Общий отчет",
-          "desc": "Скачать список активов (Excel)",
-          "downloadExcel": "Скачать Excel"
-        },
-        "depreciation": {
-          "title": "Отчет по амортизации",
-          "desc": "Детали амортизации",
-          "downloadPDF": "Скачать PDF"
-        },
-        "byCategory": {
-          "title": "По категориям",
-          "desc": "Сводка по категориям активов"
-        },
-        "byDepartment": {
-          "title": "По отделам",
-          "desc": "Сводка по отделам/филиалам"
-        }
+        "title": "Складские отчеты",
+        "subtitle": "Аналитика и отчеты по складу",
+        "lossAndWasteTitle": "Статистика потерь и брака"
       },
-      "export": {
-        "fileNames": {
-          "generalCsv": "obshchiy_otchet_{{date}}.csv",
-          "depreciationTxt": "otchet_amortizatsiya_{{date}}.txt"
-        }
-      },
-      "modal": {
-        "add": {
-          "title": "Добавить актив"
-        }
-      },
-      "form": {
-        "assetName": "Название актива",
-        "inventoryNo": "Инвентарный №",
-        "category": "Категория",
-        "selectCategory": "Выберите категорию",
-        "categoryOptions": {
-          "computerEquipment": "Компьютерное оборудование",
-          "vehicles": "Транспорт",
-          "officeEquipment": "Офисное оборудование",
-          "property": "Недвижимость"
-        },
-        "accountCode": "Код счета",
-        "accountOptions": {
-          "111": "111",
-          "112": "112",
-          "113": "113"
-        },
-        "purchaseDate": "Дата покупки",
-        "purchaseDatePlaceholder": "Выберите дату",
-        "initialValue": "Начальная стоимость",
-        "residualValue": "Остаточная стоимость",
-        "depreciationMethod": "Метод амортизации",
-        "depreciationMethods": {
-          "straightLine": "Прямолинейный",
-          "decliningBalance": "Уменьшаемого остатка",
-          "unitsOfProduction": "По объему производства"
-        },
-        "usefulLifeMonths": "Срок службы (мес)",
-        "location": "Локация",
-        "selectLocation": "Выберите локацию",
-        "locationOptions": {
-          "bakuOffice": "Бакинский офис",
-          "sumgaitBranch": "Филиал Сумгаит",
-          "ganjaBranch": "Филиал Гянджа"
-        },
-        "branch": "Отдел/Филиал",
-        "selectBranch": "Выберите отдел",
-        "branchOptions": {
-          "it": "IT отдел",
-          "accounting": "Бухгалтерия",
-          "sales": "Отдел продаж",
-          "hr": "HR",
-          "transport": "Транспорт",
-          "design": "Отдел дизайна"
-        },
-        "supplier": "Поставщик",
-        "serialNumber": "Серийный номер",
-        "assignedTo": "Ответственный",
-        "warrantyPeriodMonths": "Гарантия (мес)",
-        "note": "Примечание"
-      },
-      "buttons": {
-        "cancel": "Отмена",
-        "save": "Сохранить"
-      },
-      "categoryReportModal": {
-        "title": "Отчет по категориям",
-        "headers": {
-          "category": "Категория",
-          "assetCount": "Активов",
-          "initial": "Начальная стоимость",
-          "current": "Текущая стоимость",
-          "depreciation": "Амортизация",
-          "percent": "%"
-        },
+      "table": {
+        "date": "Дата",
+        "product": "Товар",
+        "quantity": "Количество",
+        "reason": "Причина",
+        "loss": "Потери",
         "total": "Итого"
       },
-      "branchReportModal": {
-        "title": "Отчет по отделам",
-        "headers": {
-          "location": "Локация",
-          "assetCount": "Активов",
-          "initial": "Начальная стоимость",
-          "current": "Текущая стоимость",
-          "share": "Доля"
-        },
-        "total": "Итого"
-      }
-    },
-    "warehouse": {
-        "title": "Склад",
-        "dashboard": {
-          "title": "Управление складом",
-          "subtitle": "Обзор и ключевые показатели",
-          "cards": {
-            "totalProducts": "Всего товаров",
-            "uniqueSkuCount": "Кол-во уникальных SKU",
-            "totalValue": "Общая стоимость",
-            "atCost": "По себестоимости",
-            "entriesThisMonth": "Поступления в этом месяце",
-            "exitsThisMonth": "Списания в этом месяце",
-            "vsPrevMonth": "{{change}} к прошлому месяцу"
-          },
-          "minStock": {
-            "title": "Предупреждение о минимальном остатке",
-            "current": "Текущий",
-            "minimum": "Минимум"
-          }
-        },
+      "metrics": {
+        "stockTurnover": "Оборачиваемость запасов",
+        "vsPrevMonth": "{{change}} к прошлому месяцу",
+        "avgTurnoverDays": "Средняя оборачиваемость (дни)",
+        "improvementDays": "Улучшение на {{days}} дн.",
+        "totalLoss": "Общие потери",
+        "thisMonthLoss": "За текущий месяц",
+        "inventoryAccuracy": "Точность инвентаризации",
+        "lastInventoryCount": "По последней инвентаризации"
+      },
+      "charts": {
+        "monthlyStock": "Месячный объем запасов",
+        "categoryDistribution": "Распределение по категориям",
+        "stockTurnoverRatio": "Коэффициент оборачиваемости",
+        "inventoryValueDynamics": "Динамика стоимости запасов"
+      },
+      "categories": {
+        "rawMaterials": "Сырье",
+        "finishedGoods": "Готовая продукция",
+        "spareParts": "Запчасти",
+        "packaging": "Упаковка"
+      },
+      "operations": {
+        "title": "Складские операции",
+        "subtitle": "Приемка, отгрузка и перемещения",
         "nav": {
-          "dashboard": "Главная",
-          "products": "Товары",
-          "operations": "Складские операции",
-          "inventory": "Инвентарь",
-          "reports": "Отчеты"
+          "grn": "Приемка (GRN)",
+          "dn": "Отгрузка (DN)",
+          "transfer": "Перемещение",
+          "history": "История"
         },
-        "reports": {
-          "title": "Складские отчеты",
-          "subtitle": "Аналитика и отчеты по складу",
-          "lossAndWasteTitle": "Статистика потерь и брака"
-        },
-        "table": {
+        "common": {
           "date": "Дата",
-          "product": "Товар",
+          "warehouse": "Склад",
+          "warehouses": {
+            "mainBaku": "Главный склад - Баку",
+            "branchGanja": "Филиал склад - Гянджа",
+            "production": "Производственный склад"
+          },
+          "products": "Товары",
+          "addProduct": "Добавить товар",
+          "skuProduct": "SKU / Товар",
+          "barcodeImageAlt": "Изображение штрихкода",
           "quantity": "Количество",
-          "reason": "Причина",
-          "loss": "Потери",
-          "total": "Итого"
+          "lot": "Лот/Серия",
+          "quality": "Качество",
+          "qualityOptions": { "accept": "Принять", "reject": "Отклонить" },
+          "notes": "Примечания",
+          "notesPlaceholder": "Дополнительные примечания...",
+          "removeRow": "Удалить строку",
+          "select": "Выберите",
+          "product": "Товар"
         },
-        "metrics": {
-          "stockTurnover": "Оборачиваемость запасов",
-          "vsPrevMonth": "{{change}} к прошлому месяцу",
-          "avgTurnoverDays": "Средняя оборачиваемость (дни)",
-          "improvementDays": "Улучшение на {{days}} дн.",
-          "totalLoss": "Общие потери",
-          "thisMonthLoss": "За текущий месяц",
-          "inventoryAccuracy": "Точность инвентаризации",
-          "lastInventoryCount": "По последней инвентаризации"
+        "grn": {
+          "title": "Приемка товара (GRN)",
+          "purchaseOrder": "Заказ на закупку",
+          "confirm": "Подтвердить GRN"
         },
-        "charts": {
-          "monthlyStock": "Месячный объем запасов",
-          "categoryDistribution": "Распределение по категориям",
-          "stockTurnoverRatio": "Коэффициент оборачиваемости",
-          "inventoryValueDynamics": "Динамика стоимости запасов"
-        },
-        "categories": {
-          "rawMaterials": "Сырье",
-          "finishedGoods": "Готовая продукция",
-          "spareParts": "Запчасти",
-          "packaging": "Упаковка"
-        },
-        "operations": {
-          "title": "Складские операции",
-          "subtitle": "Приемка, отгрузка и перемещения",
-          "nav": {
-            "grn": "Приемка (GRN)",
-            "dn": "Отгрузка (DN)",
-            "transfer": "Перемещение",
-            "history": "История"
+        "dn": {
+          "title": "Отгрузка товара (DN)",
+          "exitType": "Тип отгрузки",
+          "exitTypeOptions": {
+            "sale": "Продажа (Счет)",
+            "toProduction": "В производство",
+            "returnToSupplier": "Возврат поставщику",
+            "writeOff": "Списание/Брак"
           },
-          "common": {
+          "reference": "Ссылка №",
+          "confirm": "Подтвердить DN"
+        },
+        "transfer": {
+          "title": "Перемещение между складами",
+          "from": "Откуда",
+          "to": "Куда",
+          "productsTitle": "Товары для перемещения",
+          "newLocation": "Новое место",
+          "confirm": "Подтвердить перемещение",
+          "validation": {
+            "sameWarehouse": "Нельзя перемещать в тот же склад!"
+          },
+          "success": "Перемещение успешно записано (mock)"
+        },
+        "history": {
+          "title": "Последние операции",
+          "columns": {
+            "docNo": "№ документа",
+            "type": "Тип",
             "date": "Дата",
-            "warehouse": "Склад",
-            "warehouses": {
-              "mainBaku": "Главный склад - Баку",
-              "branchGanja": "Филиал склад - Гянджа",
-              "production": "Производственный склад"
-            },
-            "products": "Товары",
-            "addProduct": "Добавить товар",
-            "skuProduct": "SKU / Товар",
-            "barcodeImageAlt": "Изображение штрихкода",
-            "quantity": "Количество",
-            "lot": "Лот/Серия",
-            "quality": "Качество",
-            "qualityOptions": { "accept": "Принять", "reject": "Отклонить" },
-            "notes": "Примечания",
-            "notesPlaceholder": "Дополнительные примечания...",
-            "removeRow": "Удалить строку",
-            "select": "Выберите",
-            "product": "Товар"
-          },
-          "grn": {
-            "title": "Приемка товара (GRN)",
-            "purchaseOrder": "Заказ на закупку",
-            "confirm": "Подтвердить GRN"
-          },
-          "dn": {
-            "title": "Отгрузка товара (DN)",
-            "exitType": "Тип отгрузки",
-            "exitTypeOptions": {
-              "sale": "Продажа (Счет)",
-              "toProduction": "В производство",
-              "returnToSupplier": "Возврат поставщику",
-              "writeOff": "Списание/Брак"
-            },
-            "reference": "Ссылка №",
-            "confirm": "Подтвердить DN"
-          },
-          "transfer": {
-            "title": "Перемещение между складами",
-            "from": "Откуда",
-            "to": "Куда",
-            "productsTitle": "Товары для перемещения",
-            "newLocation": "Новое место",
-            "confirm": "Подтвердить перемещение",
-            "validation": { "sameWarehouse": "Нельзя перемещать в тот же склад!" },
-            "success": "Перемещение успешно записано (mock)"
-          },
-          "history": {
-            "title": "Последние операции",
-            "columns": {
-              "docNo": "№ документа",
-              "type": "Тип",
-              "date": "Дата",
-              "productCount": "Кол-во товаров",
-              "reference": "Ссылка",
-              "status": "Статус"
-            }
+            "productCount": "Кол-во товаров",
+            "reference": "Ссылка",
+            "status": "Статус"
+          }
+        }
+      },
+      "products": {
+        "title": "Товары ({{count}})",
+        "subtitle": "Полный список материалов",
+        "addNew": "Новый товар",
+        "searchPlaceholder": "SKU, название или штрихкод...",
+        "table": {
+          "headers": {
+            "sku": "SKU",
+            "product": "Товар",
+            "category": "Категория",
+            "stock": "Остаток",
+            "minMax": "Мин/Макс",
+            "status": "Статус",
+            "location": "Место",
+            "cost": "Себестоимость"
           }
         },
-        "products": {
-          "title": "Товары ({{count}})",
-          "subtitle": "Полный список материалов",
-          "addNew": "Новый товар",
-          "searchPlaceholder": "SKU, название или штрихкод...",
+        "status": {
+          "low": "Низкий",
+          "ok": "Норм",
+          "high": "Высокий"
+        },
+        "modal": {
+          "title": "Добавить новый товар",
+          "desc": "Введите данные товара"
+        },
+        "form": {
+          "sku": "SKU",
+          "barcode": "Штрихкод",
+          "name": "Название товара",
+          "category": "Категория",
+          "unit": "Ед. изм.",
+          "minStock": "Мин. остаток",
+          "maxStock": "Макс. остаток",
+          "cost": "Себестоимость (₼)",
+          "location": "Место хранения",
+          "select": "Выберите"
+        },
+        "placeholders": {
+          "name": "Введите название товара"
+        },
+        "units": {
+          "kg": "кг",
+          "pcs": "шт",
+          "liter": "литр",
+          "meter": "метр"
+        }
+      },
+      "inventory": {
+        "title": "Инвентаризация",
+        "subtitle": "Текущие остатки и инвентаризация",
+        "nav": {
+          "currentBalances": "Текущие остатки",
+          "inventoryCount": "Инвентаризация"
+        },
+        "control": {
+          "title": "Контроль инвентаризации",
+          "subtitle": "Просмотр остатков в реальном времени и учет",
+          "uploadSheet": "Загрузить таблицу",
+          "newInventory": "Новая инвентаризация",
+          "uploadedSheet": "Загруженная таблица"
+        },
+        "cards": {
+          "totalProducts": "Всего товаров",
+          "skuCount": "Количество SKU",
+          "totalValue": "Общая стоимость",
+          "systemBalance": "Системный остаток",
+          "countStatus": "Статус инвентаризации",
+          "countedProducts": "Посчитанные товары",
+          "difference": "Разница",
+          "countDifference": "Разница по учету"
+        },
+        "current": {
+          "title": "Остатки в реальном времени",
+          "filters": {
+            "allWarehouses": "Все склады"
+          },
+          "searchPlaceholder": "Поиск...",
           "table": {
-            "headers": {
-              "sku": "SKU",
-              "product": "Товар",
-              "category": "Категория",
-              "stock": "Остаток",
-              "minMax": "Мин/Макс",
-              "status": "Статус",
-              "location": "Место",
-              "cost": "Себестоимость"
-            }
+            "sku": "SKU",
+            "product": "Товар",
+            "warehouse": "Склад",
+            "location": "Местоположение",
+            "balance": "Остаток",
+            "cost": "Себестоимость",
+            "total": "Общая стоимость"
+          }
+        },
+        "count": {
+          "title": "Физическая инвентаризация",
+          "info": "Проведите физический подсчет и введите фактическое количество. Система автоматически рассчитает разницу.",
+          "table": {
+            "sku": "SKU",
+            "product": "Товар",
+            "location": "Местоположение",
+            "systemQty": "Системный остаток",
+            "actualQty": "Фактический остаток",
+            "difference": "Разница",
+            "status": "Статус"
           },
           "status": {
-            "low": "Низкий",
-            "ok": "Норм",
-            "high": "Высокий"
+            "pending": "В ожидании",
+            "match": "Совпадает",
+            "missing": "Недостает",
+            "excess": "Излишек"
           },
-          "modal": {
-            "title": "Добавить новый товар",
-            "desc": "Введите данные товара"
-          },
-          "form": {
-            "sku": "SKU",
-            "barcode": "Штрихкод",
-            "name": "Название товара",
-            "category": "Категория",
-            "unit": "Ед. изм.",
-            "minStock": "Мин. остаток",
-            "maxStock": "Макс. остаток",
-            "cost": "Себестоимость (₼)",
-            "location": "Место хранения",
-            "select": "Выберите"
-          },
-          "placeholders": {
-            "name": "Введите название товара"
-          },
-          "units": {
-            "kg": "кг",
-            "pcs": "шт",
-            "liter": "литр",
-            "meter": "метр"
-          }
-        }
-        ,
-        "inventory": {
-          "title": "Инвентаризация",
-          "subtitle": "Текущие остатки и инвентаризация",
-          "nav": {
-            "currentBalances": "Текущие остатки",
-            "inventoryCount": "Инвентаризация"
-          },
-          "control": {
-            "title": "Контроль инвентаризации",
-            "subtitle": "Просмотр остатков в реальном времени и учет",
-            "uploadSheet": "Загрузить таблицу",
-            "newInventory": "Новая инвентаризация",
-            "uploadedSheet": "Загруженная таблица"
-          },
-          "cards": {
-            "totalProducts": "Всего товаров",
-            "skuCount": "Количество SKU",
-            "totalValue": "Общая стоимость",
-            "systemBalance": "Системный остаток",
-            "countStatus": "Статус инвентаризации",
-            "countedProducts": "Посчитанные товары",
-            "difference": "Разница",
-            "countDifference": "Разница по учету"
-          },
-          "current": {
-            "title": "Остатки в реальном времени",
-            "filters": {
-              "allWarehouses": "Все склады"
-            },
-            "searchPlaceholder": "Поиск...",
-            "table": {
-              "sku": "SKU",
-              "product": "Товар",
-              "warehouse": "Склад",
-              "location": "Местоположение",
-              "balance": "Остаток",
-              "cost": "Себестоимость",
-              "total": "Общая стоимость"
-            }
-          },
-          "count": {
-            "title": "Физическая инвентаризация",
-            "info": "Проведите физический подсчет и введите фактическое количество. Система автоматически рассчитает разницу.",
-            "table": {
-              "sku": "SKU",
-              "product": "Товар",
-              "location": "Местоположение",
-              "systemQty": "Системный остаток",
-              "actualQty": "Фактический остаток",
-              "difference": "Разница",
-              "status": "Статус"
-            },
-            "status": {
-              "pending": "В ожидании",
-              "match": "Совпадает",
-              "missing": "Недостает",
-              "excess": "Излишек"
-            },
-            "confirm": "Подтвердить инвентаризацию ({{count}} поз.)"
-          }
+          "confirm": "Подтвердить инвентаризацию ({{count}} поз.)"
         }
       }
-    },
+    }
+  },
   "brand": {
     "name": "Nummix"
   },
@@ -2220,6 +2289,171 @@
       "successRedirect": "Пароль успешно сброшен! Перенаправляем ко входу..."
     }
   },
+  "assets": {
+    "title": "Управление Основными Средствами",
+    "subtitle": "Учёт активов и амортизации",
+    "tabs": {
+      "management": "Управление",
+      "assets": "Активы",
+      "reports": "Отчеты"
+    },
+    "stats": {
+      "totalValue": {
+        "title": "Общая стоимость",
+        "subtitle": "Начальная стоимость"
+      },
+      "currentValue": {
+        "title": "Текущая стоимость",
+        "subtitle": "После амортизации"
+      },
+      "depreciation": { "title": "Амортизация", "subtitle": "Накопленная" },
+      "assetCount": {
+        "title": "Количество активов",
+        "subtitle": "Из {{count}} активов"
+      }
+    },
+    "charts": {
+      "categoriesDistribution": "Распределение по категориям",
+      "branchValueDistribution": "Стоимость по отделам"
+    },
+    "categories": {
+      "property": "Недвижимость",
+      "officeEquipment": "Офисное оборудование",
+      "vehicles": "Транспорт",
+      "computerEquipment": "Компьютерное оборудование"
+    },
+    "search": { "placeholder": "Поиск актива..." },
+    "table": {
+      "headers": {
+        "inventoryNo": "Инв. №",
+        "name": "Название",
+        "category": "Категория",
+        "account": "Счет",
+        "location": "Локация",
+        "initialValue": "Начальная стоимость",
+        "currentValue": "Текущая стоимость",
+        "status": "Статус"
+      }
+    },
+    "status": { "active": "Актив" },
+    "actions": { "edit": "Редактировать", "delete": "Удалить" },
+    "reports": {
+      "general": {
+        "title": "Общий отчет",
+        "desc": "Полный список активов и данных",
+        "downloadExcel": "Скачать Excel"
+      },
+      "depreciation": {
+        "title": "Отчет по амортизации",
+        "desc": "Данные по амортизации активов",
+        "downloadPdf": "Скачать PDF"
+      },
+      "byCategory": {
+        "title": "По категориям",
+        "desc": "Анализ по категориям",
+        "view": "Просмотр"
+      },
+      "byLocation": {
+        "title": "По локациям",
+        "desc": "Распределение по локациям",
+        "view": "Просмотр"
+      }
+    },
+    "buttons": {
+      "cancel": "Отмена",
+      "save": "Сохранить",
+      "newAsset": "Новый актив"
+    },
+    "addModal": { "title": "Добавить новый актив" },
+    "form": {
+      "inventoryNo": "Инвентарный №",
+      "category": "Категория",
+      "selectCategory": "Выберите категорию",
+      "categoryOptions": {
+        "computerEquipment": "Компьютерное оборудование",
+        "vehicles": "Транспорт",
+        "officeEquipment": "Офисное оборудование",
+        "property": "Недвижимость"
+      },
+      "accountCode": "Код счета",
+      "accountOptions": { "111": "111", "112": "112", "113": "113" },
+      "purchaseDate": "Дата покупки",
+      "purchaseDatePlaceholder": "ГГГГ-ММ-ДД (напр. 2025-11-20)",
+      "initialValue": "Начальная стоимость",
+      "residualValue": "Остаточная стоимость",
+      "depreciationMethod": "Метод амортизации",
+      "depreciationMethods": {
+        "straightLine": "Прямолинейный",
+        "decliningBalance": "Уменьшающийся остаток",
+        "unitsOfProduction": "По объему производства"
+      },
+      "usefulLifeMonths": "Срок службы (мес)",
+      "location": "Локация",
+      "selectLocation": "Выберите локацию",
+      "locationOptions": {
+        "bakuOffice": "Бакинский офис",
+        "sumgaitBranch": "Сумгаитский филиал",
+        "ganjaBranch": "Гянджинский филиал"
+      },
+      "branch": "Отдел",
+      "selectBranch": "Выберите отдел",
+      "branchOptions": {
+        "it": "IT отдел",
+        "accounting": "Бухгалтерия",
+        "sales": "Отдел продаж",
+        "hr": "HR"
+      },
+      "supplier": "Поставщик",
+      "serialNumber": "Серийный номер",
+      "assignedTo": "Назначено",
+      "warrantyPeriodMonths": "Срок гарантии (мес)",
+      "note": "Примечание",
+      "assetName": "Название актива",
+      "assetNamePlaceholder": "Введите название актива"
+    },
+    "categoryReportModal": {
+      "title": "Отчет по категориям",
+      "headers": {
+        "category": "Категория",
+        "assetCount": "Кол-во активов",
+        "initial": "Начальная стоимость",
+        "current": "Текущая стоимость",
+        "depreciation": "Амортизация",
+        "percent": "Амортизация %"
+      },
+      "total": "Итого"
+    },
+    "branchReportModal": {
+      "title": "Отчет по локациям",
+      "headers": {
+        "location": "Локация",
+        "assetCount": "Кол-во активов",
+        "initial": "Начальная стоимость",
+        "current": "Текущая стоимость",
+        "share": "Доля %"
+      },
+      "total": "Итого"
+    }
+  },
+  "assetsExtra": {
+    "reportText": {
+      "depreciationReportTitle": "ОТЧЕТ ПО АМОРТИЗАЦИИ",
+      "dateLabel": "Дата",
+      "generatedLabel": "Отчет сформирован",
+      "inventoryNo": "Инв. №",
+      "category": "Категория",
+      "initialValue": "Начальная стоимость",
+      "currentValue": "Текущая стоимость",
+      "depreciation": "Амортизация"
+    },
+    "branchOptions": {
+      "transport": "Транспорт",
+      "design": "Отдел дизайна"
+    },
+    "locationOptions": {
+      "may28Area": "Район метро 28 Мая"
+    }
+  },
   "common": {
     "logoAlt": "Логотип",
     "menu": "Меню",
@@ -2234,9 +2468,9 @@
     "save": "Сохранить",
     "total": "Итого",
     "byUser": "от {{user}}",
-  "downloadPDF": "Скачать PDF",
-  "export": "Экспорт",
-  "monthYear": "{{month}} {{year}}",
+    "downloadPDF": "Скачать PDF",
+    "export": "Экспорт",
+    "monthYear": "{{month}} {{year}}",
     "period": {
       "thisMonth": "Этот месяц",
       "thisWeek": "Эта неделя",

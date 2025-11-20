@@ -62,11 +62,7 @@ i18n
 			console.log('[i18n] initialized', { err, resolvedLanguage: i18n.resolvedLanguage, language: i18n.language, languages: i18n.languages })
 			console.log('[i18n] options', { load: i18n.options.load, preload: i18n.options.preload, backend: !!i18n.options.backend })
 
-			// If English is intended to be default, ensure it's active for debugging
-			if (isDebug && i18n.resolvedLanguage !== 'en') {
-				console.log('[i18n] forcing language to en for diagnostics')
-				i18n.changeLanguage('en')
-			}
+			// Removed forced 'en' override to allow user-selected languages (e.g. 'ru') to persist in development.
 
 			// Check existence of a known key in both namespaces
 			namespaces.forEach((ns) => {
