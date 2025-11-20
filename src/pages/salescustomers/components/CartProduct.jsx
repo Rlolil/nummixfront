@@ -3,16 +3,16 @@ import { useTranslation } from "react-i18next";
 export default function CartProduct({ item }) {
     const { t } = useTranslation();
     return (
-        <div className="flex gap-4 items-center justify-between bg-zinc-100 rounded-lg px-3 py-2">
+        <div className="flex gap-4 items-center justify-between bg-[#FFFFFF] dark:bg-[#001233] rounded-lg px-3 py-2">
             <div>
-                <h3 className="font-semibold">{item.name}</h3>
-                <p className="text-zinc-500 text-sm">
+                <h3 className="font-semibold text-[#001233] dark:text-[#FFFFFF]">{item.name}</h3>
+                <p className="text-[#5C677D] dark:text-[#7D8597] text-sm">
                     <span>₼{item.price}</span> x <span>{item.quantity}</span>
                 </p>
             </div>
             <div className="flex items-center gap-4">
                 <button
-                    className="outline-1 outline-zinc-300 bg-white hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                    className="outline-1 outline-[#979DAC] bg-[#FFFFFF] dark:bg-[#023E7D] hover:bg-[#0453A4] dark:hover:bg-[#0466CB] p-2 rounded-lg transition-all"
                     title={t('pages.sales.pos.cart.decrease')}
                     aria-label={t('pages.sales.pos.cart.decrease')}
                 >
@@ -26,15 +26,15 @@ export default function CartProduct({ item }) {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="lucide lucide-minus h-3 w-3"
+                        className="lucide lucide-minus h-3 w-3 dark:text-[#FFFFFF]"
                         aria-hidden="true"
                     >
                         <path d="M5 12h14"></path>
                     </svg>
                 </button>
-                <p>{item.quantity}</p>
+                <p className="text-[#001233] dark:text-[#FFFFFF]">{item.quantity}</p>
                 <button
-                    className="outline-1 outline-zinc-300 bg-white hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                    className="outline-1 outline-[#979DAC] bg-[#FFFFFF] dark:bg-[#023E7D] hover:bg-[#0453A4] dark:hover:bg-[#0466CB] p-2 rounded-lg transition-all"
                     title={t('pages.sales.pos.cart.increase')}
                     aria-label={t('pages.sales.pos.cart.increase')}
                 >
@@ -48,7 +48,7 @@ export default function CartProduct({ item }) {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="lucide lucide-plus h-3 w-3"
+                        className="lucide lucide-plus h-3 w-3 dark:text-[#FFFFFF]"
                         aria-hidden="true"
                     >
                         <path d="M5 12h14"></path>
@@ -56,7 +56,7 @@ export default function CartProduct({ item }) {
                     </svg>
                 </button>
                 <button
-                    className="bg-white hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                    className="bg-[#FFFFFF] dark:bg-[#023E7D] hover:bg-[#0453A4] dark:hover:bg-[#0466CB] p-2 rounded-lg transition-all"
                     title={t('pages.sales.pos.cart.remove')}
                     aria-label={t('pages.sales.pos.cart.remove')}
                 >
@@ -70,7 +70,7 @@ export default function CartProduct({ item }) {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="lucide lucide-trash2 lucide-trash-2 h-3 w-3"
+                        className="lucide lucide-trash2 lucide-trash-2 h-3 w-3 dark:text-[#FFFFFF]"
                         aria-hidden="true"
                     >
                         <path d="M10 11v6"></path>
@@ -82,7 +82,7 @@ export default function CartProduct({ item }) {
                 </button>
             </div>
             <div>
-                <p>₼{item.price * item.quantity}</p>
+                <p className="text-[#001233] dark:text-[#FFFFFF]">₼{item.price * item.quantity}</p>
             </div>
         </div>
     );

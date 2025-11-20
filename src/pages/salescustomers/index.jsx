@@ -46,7 +46,9 @@ function SalesCustomers() {
             <TabSelector currentTab={currentTab} setCurrentTab={setCurrentTab} tabs={tabs} />
             <div>{renderTabContent()}</div>
         </div>
+
     );
+    
 }
 
 export default SalesCustomers;
