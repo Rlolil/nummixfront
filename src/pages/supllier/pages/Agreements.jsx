@@ -73,111 +73,175 @@ export default function Agreements() {
                 </div>
                 <div>
                     <button
-                        className="btn btn-neutral rounded-lg flex justify-between items-center gap-4"
+                        className="btn btn-neutral dark:bg-[#33415C] rounded-lg flex justify-between items-center gap-4"
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
-                        <p className="text-nowrap">{t("pages.supplier.agreements.newButton")}</p>
+                        <p className="text-nowrap">
+                            {t("pages.supplier.agreements.newButton")}
+                        </p>
                     </button>
+
                     <dialog id="addNew" className="modal">
-                        <div className="modal-box">
+                        <div className="modal-box bg-white dark:bg-[#0F172A] text-black dark:text-white">
+
+                            {/* Close button */}
                             <button
                                 type="button"
-                                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 dark:text-gray-300"
                                 onClick={() => document.getElementById("addNew").close()}
                             >
                                 ✕
                             </button>
+
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-bold text-lg">{t("pages.supplier.agreements.modal.title")}</h3>
+                                <h3 className="font-bold text-lg">
+                                    {t("pages.supplier.agreements.modal.title")}
+                                </h3>
+
                                 <form className="flex flex-col gap-4">
+
                                     <div className="grid grid-cols-2 gap-4">
+
+                                        {/* Contract No */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.contractNo")}</p>
                                             <input
                                                 type="text"
-                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                className="input h-fit py-2 w-full 
+                bg-zinc-100 dark:bg-[#1E293B]
+                text-black dark:text-gray-100 
+                placeholder:text-gray-600 dark:placeholder:text-gray-400 
+                border-0 focus:outline-2 focus:outline-zinc-400 dark:focus:outline-gray-500"
                                                 placeholder={t("pages.supplier.agreements.placeholders.contractNo")}
                                             />
                                         </label>
+
+                                        {/* Supplier */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.supplier")}</p>
-                                            <select className="select h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0">
+                                            <select
+                                                className="select h-fit py-2 w-full 
+                bg-zinc-100 dark:bg-[#1E293B] 
+                text-black dark:text-gray-100 
+                border-0 focus:outline-2 focus:outline-zinc-400 dark:focus:outline-gray-500"
+                                            >
                                                 <option value="1">AzərTəchizat</option>
                                                 <option value="2">EuroMaterials</option>
                                                 <option value="3">GlobalSupply LLC</option>
                                             </select>
                                         </label>
+
+                                        {/* Start Date */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.startDate")}</p>
                                             <input
                                                 type="date"
-                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                className="input h-fit py-2 w-full 
+                bg-zinc-100 dark:bg-[#1E293B] 
+                text-black dark:text-gray-100 
+                border-0 focus:outline-2 focus:outline-zinc-400 dark:focus:outline-gray-500"
                                             />
                                         </label>
+
+                                        {/* End Date */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.endDate")}</p>
                                             <input
                                                 type="date"
-                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                className="input h-fit py-2 w-full 
+                bg-zinc-100 dark:bg-[#1E293B]
+                text-black dark:text-gray-100
+                border-0 focus:outline-2 focus:outline-zinc-400 dark:focus:outline-gray-500"
                                             />
                                         </label>
+
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.amount")}</p>
                                             <input
-                                                type="number"
-                                                step="0.01"
-                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                type="number" step="0.01"
+                                                className="input h-fit py-2 w-full 
+                bg-zinc-100 dark:bg-[#1E293B]
+                text-black dark:text-gray-100
+                placeholder:text-gray-600 dark:placeholder:text-gray-400
+                border-0 focus:outline-2 focus:outline-zinc-400 dark:focus:outline-gray-500"
                                                 placeholder={t("pages.supplier.agreements.placeholders.amount")}
                                             />
                                         </label>
+
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.currency")}</p>
-                                            <select className="select h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0">
+                                            <select
+                                                className="select h-fit py-2 w-full 
+                bg-zinc-100 dark:bg-[#1E293B]
+                text-black dark:text-gray-100
+                border-0 focus:outline-2 focus:outline-zinc-400 dark:focus:outline-gray-500"
+                                            >
                                                 <option value="AZN">AZN</option>
                                                 <option value="USD">USD</option>
                                                 <option value="EUR">EUR</option>
                                             </select>
                                         </label>
+
+                                        {/* Payment Terms */}
                                         <label className="flex flex-col gap-2 col-span-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.paymentTerms")}</p>
-                                            <select className="select h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0">
+                                            <select
+                                                className="select h-fit py-2 w-full 
+                bg-zinc-100 dark:bg-[#1E293B]
+                text-black dark:text-gray-100
+                border-0 focus:outline-2 focus:outline-zinc-400 dark:focus:outline-gray-500"
+                                            >
                                                 <option value="1">{t("pages.supplier.agreements.paymentTerms.days30")}</option>
                                                 <option value="2">{t("pages.supplier.agreements.paymentTerms.days60")}</option>
                                                 <option value="3">{t("pages.supplier.agreements.paymentTerms.days90")}</option>
                                             </select>
                                         </label>
+
+                                        {/* Notes */}
                                         <label className="flex flex-col gap-2 col-span-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.notes")}</p>
                                             <input
                                                 type="text"
-                                                className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
+                                                className="input h-fit py-2 w-full 
+                bg-zinc-100 dark:bg-[#1E293B]
+                text-black dark:text-gray-100
+                placeholder:text-gray-600 dark:placeholder:text-gray-400
+                border-0 focus:outline-2 focus:outline-zinc-400 dark:focus:outline-gray-500"
                                             />
                                         </label>
+
                                     </div>
+
                                     <div className="flex gap-2 justify-end items-center">
                                         <button
                                             type="button"
-                                            className="btn rounded-lg mt-4"
+                                            className="btn rounded-lg mt-4 dark:bg-gray-700 dark:text-gray-200"
                                             onClick={() => document.getElementById("addNew").close()}
                                         >
                                             {t("common.cancel")}
                                         </button>
-                                        <button className="btn btn-neutral rounded-lg mt-4" type="submit">
+
+                                        <button
+                                            className="btn btn-neutral rounded-lg mt-4"
+                                            type="submit"
+                                        >
                                             {t("common.save")}
                                         </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
+
                         <div
-                            className="modal-backdrop"
+                            className="modal-backdrop bg-black/40 dark:bg-black/60"
                             onClick={() => document.getElementById("addNew").close()}
                         />
                     </dialog>
                 </div>
+
             </div>
-            <label className="input w-full rounded-xl bg-zinc-100 border-0">
+            <label className="input w-full rounded-xl bg-zinc-100 dark:bg-[#33415C] border-0">
                 <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g
                         strokeLinejoin="round"
@@ -190,11 +254,11 @@ export default function Agreements() {
                         <path d="m21 21-4.3-4.3"></path>
                     </g>
                 </svg>
-                <input type="search" className="grow placeholder:text-gray-600" placeholder={t("pages.supplier.agreements.searchPlaceholder")} />
+                <input type="search" className="grow placeholder:text-gray-600 dark:bg-[#33415C]" placeholder={t("pages.supplier.agreements.searchPlaceholder")} />
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {agreements.map((a, idx) => (
-                    <div key={a.id} className="border-1 hover:bg-zinc-100 transition border-zinc-300 rounded-lg p-4 flex flex-col gap-6">
+                    <div key={a.id} className="border-1  transition border-zinc-300 dark:bg-[#002855] dark:text-white rounded-lg p-4 flex flex-col gap-6">
                         <div className="flex items-center justify-between gap-4">
                             <div className="flex items-center gap-4">
                                 <div className="bg-zinc-200 p-3 w-fit rounded-lg">
@@ -226,21 +290,21 @@ export default function Agreements() {
                         <div className="flex flex-col gap-4">
                             <div className="badge badge-neutral text-xs font-semibold">{t(`pages.supplier.agreements.status.${a.status}`)}</div>
                             <div className="flex flex-col gap-2">
-                                <div className="text-zinc-500 justify-between flex items-center gap-2">
+                                <div className="text-zinc-500 dark:text-white justify-between flex items-center gap-2">
                                     <p className="text-sm">{t("pages.supplier.agreements.sample.amount")}</p>
-                                    <p className="text-black text-sm">{a.amount.toFixed(2)} {a.currency}</p>
+                                    <p className="text-black dark:text-white  text-sm">{a.amount.toFixed(2)} {a.currency}</p>
                                 </div>
-                                <div className="text-zinc-500 justify-between flex items-center gap-2">
+                                <div className="text-zinc-500 dark:text-white justify-between flex items-center gap-2">
                                     <p className="text-sm">{t("pages.supplier.agreements.sample.start")}</p>
-                                    <p className="text-black text-sm">{a.startDate}</p>
+                                    <p className="text-black dark:text-white text-sm">{a.startDate}</p>
                                 </div>
-                                <div className="text-zinc-500 justify-between flex items-center gap-2">
+                                <div className="text-zinc-500 dark:text-white justify-between flex items-center gap-2">
                                     <p className="text-sm">{t("pages.supplier.agreements.sample.end")}</p>
-                                    <p className="text-black text-sm">{a.endDate}</p>
+                                    <p className="text-black dark:text-white text-sm">{a.endDate}</p>
                                 </div>
-                                <div className="text-zinc-500 justify-between flex items-center gap-2">
+                                <div className="text-zinc-500 dark:text-white justify-between flex items-center gap-2">
                                     <p className="text-sm">{t("pages.supplier.agreements.sample.paymentTerm")}</p>
-                                    <p className="text-black text-sm">{t(`pages.supplier.agreements.paymentTerms.days${a.paymentTerm}`)}</p>
+                                    <p className="text-black dark:text-white text-sm">{t(`pages.supplier.agreements.paymentTerms.days${a.paymentTerm}`)}</p>
                                 </div>
                             </div>
                             <div className="w-full h-0.5 bg-zinc-300"></div>
@@ -251,7 +315,7 @@ export default function Agreements() {
                                 </div>
                             ) : null}
                             {a.daysLeft <= 60 && <div className="w-full h-0.5 bg-zinc-300"></div>}
-                            <p className="text-zinc-700">{a.notes}</p>
+                            <p className="text-zinc-700 dark:text-white">{a.notes}</p>
                         </div>
                     </div>
                 ))}

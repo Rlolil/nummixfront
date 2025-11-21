@@ -25,7 +25,7 @@ const Ai = () => {
   return (
 
     <div>
-      <div className="flex dark:bg-[#001233] dark:text-white items-center justify-between px-25 py-3 mt-20 sm:mt-0 bg-white shadow-lg rounded-sm relative z-10 ">
+      <div className="flex dark:bg-[#001233]  dark:text-white items-center justify-between px-25 py-3 mt-20 sm:mt-0 bg-white shadow-lg rounded-sm relative z-10 ">
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600">
             <svg
@@ -72,7 +72,7 @@ const Ai = () => {
           </button>
         </div>
       </div>
-      <div className="sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-[0px] px-4 sm:px-6 lg:px-8 dark:bg-[#001233] dark:text-white">
+      <div className="sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-0 px-4 sm:px-6 lg:px-8 dark:bg-[#001233] dark:text-white">
         <nav className="    grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2
     items-center justify-between gap-2
     p-3 rounded-md w-full sm:w-[1210px] mx-auto
@@ -84,24 +84,13 @@ const Ai = () => {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `w-full flex-1 py-2 text-center rounded-md text-sm font-medium 
-          transition-colors duration-200 border 
-          
-          border-[#33415C] text-[#001233] bg-white
-          hover:bg-[#0453A4] hover:text-white
-
-          dark:border-[#979DAC] dark:text-white dark:bg-[#002855]
-          dark:hover:bg-[#0453A4]
-
-          ${isActive
-                ? `
-                bg-[#0466CB] text-[#5C677D] border-[#0466CB]
-                dark:bg-[#023E7D] dark:border-[#023E7D]
-              `
-                : ""
-              }
-        `
-              }
+              `w-full flex-1 py-2 text-center rounded-md text-sm font-medium transition-colors duration-200 border 
+              ${
+                isActive
+                  ? "bg-[#0466CB] text-white border-[#0466CB] dark:bg-[#0453A4] dark:border-[#023E7D]"
+                  : "border-[#33415C] text-[#001233] bg-whit dark:border-[#979DAC] dark:text-white dark:bg-[#002855] dark:hover:bg-[#023E7D]"
+              }`
+            }
             >
               {item.label}
             </NavLink>

@@ -6,7 +6,6 @@ import Chart1 from "./Chart1";
 import Chart2 from "./Chart2";
 import Chart3 from "./Chart3";
 import { useTranslation } from "react-i18next";
-import SettingsButton from "../../SettingsButton.jsx/SettingsButton";
 
 const MaliyyeAI = () => {
   const { t } = useTranslation();
@@ -118,7 +117,6 @@ const MaliyyeAI = () => {
         </div>
       </div>
 
-      <SettingsButton />
     </div>
   );
 };

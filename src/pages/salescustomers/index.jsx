@@ -42,7 +42,7 @@ function SalesCustomers() {
     ];
 
     return (
-        <div className="sm:ml-16 mt-20 sm:mt-0 py-8 px-6 flex flex-col gap-6">
+        <div className="sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-0 py-8 px-4 sm:px-6 lg:px-8 flex flex-col gap-6">
             <TabSelector currentTab={currentTab} setCurrentTab={setCurrentTab} tabs={tabs} />
             <div>{renderTabContent()}</div>
         </div>
