@@ -6,7 +6,6 @@ import Chart1 from './Chart1';
 import ProductCustomer from './ProductCustomer';
 import SatisDovrleri from './SatisDovrleri';
 import { useTranslation } from "react-i18next";
-import SettingsButton from '../../SettingsButton.jsx/SettingsButton';
 
 const Satis = () => {
   const { t } = useTranslation();
@@ -57,7 +56,6 @@ const Satis = () => {
       <ProductCustomer />
       <SatisDovrleri />
 
-      <SettingsButton/>
     </div>
   );
 };

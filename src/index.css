@@ -9,8 +9,9 @@
 }
 
 @utility tab {
-    @apply h-8
+    @apply h-8;
 }
+
 
 /* Accounting (Muhasibatlıq) light theme tokens */
 

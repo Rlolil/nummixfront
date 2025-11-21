@@ -4,7 +4,6 @@ import { MdAttachMoney } from "react-icons/md";
 import SatisHedefi from "./SatisHedefi";
 import XercLimiti from "./XercLimiti";
 import { useTranslation } from "react-i18next";
-import SettingsButton from "../../SettingsButton.jsx/SettingsButton";
 
 const Dashboard = () => {
   const { t } = useTranslation();
@@ -180,7 +179,6 @@ const Dashboard = () => {
         <XercLimiti />
       </div>
 
-      <SettingsButton />
     </div>
   );
 };

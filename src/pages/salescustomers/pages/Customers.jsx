@@ -123,7 +123,7 @@ export default function Customers() {
                 </div>
                 <div>
                     <button
-                        className="btn btn-neutral rounded-lg flex justify-between items-center gap-4"
+                        className="btn bg-[#0466CB] text-[#FFFFFF] hover:bg-[#0453A4] dark:bg-[#0466CB] dark:hover:bg-[#0453A4] btn-neutral rounded-lg flex justify-between items-center gap-4"
                         onClick={() => document.getElementById("addNew").showModal()}
                     >
                         <HiPlus className="size-4.5 text-white" />
