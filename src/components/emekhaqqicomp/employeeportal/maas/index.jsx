@@ -12,20 +12,20 @@ const EmployeeSalaryTab = () => {
         <SalaryInfoCard
           title={t('pages.hr.portal.salary.cards.baseSalary')}
           amount="₼3200"
-          iconBg="bg-blue-50"
-          textColor="text-blue-600"
+          iconBg="bg-blue-50 dark:bg-blue-900/30"
+          textColor="text-blue-600 dark:text-blue-400"
         />
         <SalaryInfoCard
           title={t('pages.hr.portal.salary.cards.lastNetSalary')}
           amount="₼2812"
-          iconBg="bg-green-50"
-          textColor="text-green-600"
+          iconBg="bg-green-50 dark:bg-green-900/30"
+          textColor="text-green-600 dark:text-green-400"
         />
         <SalaryInfoCard
           title={t('pages.hr.portal.salary.cards.annualFund')}
           amount="₼38400"
-          iconBg="bg-purple-50"
-          textColor="text-purple-600"
+          iconBg="bg-purple-50 dark:bg-purple-900/30"
+          textColor="text-purple-600 dark:text-purple-400"
         />
       </div>
 

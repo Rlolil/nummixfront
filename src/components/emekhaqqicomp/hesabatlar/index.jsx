@@ -32,8 +32,8 @@ function Reports() {
     <div className="my-4 space-y-6 relative">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-gray-900 text-xl font-semibold">{t('pages.hr.reports.title', { defaultValue: 'Reports & Analytics' })}</h2>
-          <p className="text-gray-500">{t('pages.hr.reports.subtitle', { defaultValue: 'HR and payroll statistics' })}</p>
+          <h2 className="text-gray-900 dark:text-white text-xl font-semibold">{t('pages.hr.reports.title', { defaultValue: 'Reports & Analytics' })}</h2>
+          <p className="text-gray-500 dark:text-[#979DAC]">{t('pages.hr.reports.subtitle', { defaultValue: 'HR and payroll statistics' })}</p>
         </div>
 
         {/* Buttons */}
@@ -43,7 +43,7 @@ function Reports() {
             <button
               type="button"
               onClick={() => setOpen(!open)}
-              className="flex items-center justify-between gap-2 w-40 px-3 py-2 h-9 border rounded-md text-sm bg-white text-gray-700 hover:bg-gray-50"
+              className="flex items-center justify-between gap-2 w-40 px-3 py-2 h-9 border dark:border-[#979DAC] rounded-md text-sm bg-white dark:bg-[#33415C] text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-[#001233]"
             >
               {selectedPeriod}
               <FaChevronDown className="w-4 h-4 opacity-50" />
@@ -51,12 +51,12 @@ function Reports() {
 
             {/* Dropdown menu */}
             {open && (
-              <ul className="absolute z-10 mt-1 w-full bg-white border rounded-md shadow-md text-sm text-gray-700">
+              <ul className="absolute z-10 mt-1 w-full bg-white dark:bg-[#33415C] border dark:border-[#979DAC] rounded-md shadow-md text-sm text-gray-700 dark:text-white">
                 {options.map((option) => (
                   <li
                     key={option}
                     onClick={() => handleSelect(option)}
-                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                    className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-[#001233] cursor-pointer"
                   >
                     {option}
                   </li>
@@ -68,7 +68,7 @@ function Reports() {
           {/* PDF Button */}
           <button
             type="button"
-            className="flex items-center gap-2 px-4 py-2 h-9 border rounded-md text-sm bg-white text-gray-800 hover:bg-gray-100"
+            className="flex items-center gap-2 px-4 py-2 h-9 border dark:border-[#979DAC] rounded-md text-sm bg-white dark:bg-[#33415C] text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-[#001233]"
           >
             <FaDownload className="w-4 h-4" />
             {t('common.downloadPDF', { defaultValue: 'Download PDF' })}

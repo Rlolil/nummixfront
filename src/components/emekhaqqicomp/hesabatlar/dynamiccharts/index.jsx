@@ -23,10 +23,10 @@ const data = [
 export default function MaasFonduDinamikasi() {
   const { t } = useTranslation();
   return (
-    <div className="bg-white text-gray-900 rounded-xl border border-gray-200 p-6 shadow-md">
+    <div className="bg-white dark:bg-[#33415C] text-gray-900 dark:text-white rounded-xl border border-gray-200 dark:border-[#979DAC] p-6 shadow-md">
       <div className="flex justify-between items-center mb-4">
-        <h4 className="text-xl font-semibold">{t('pages.hr.reports.charts.payrollDynamics.title', { defaultValue: 'Payroll Fund Dynamics' })}</h4>
-        <div className="flex space-x-6 text-sm text-gray-600">
+        <h4 className="text-xl font-semibold dark:text-white">{t('pages.hr.reports.charts.payrollDynamics.title', { defaultValue: 'Payroll Fund Dynamics' })}</h4>
+        <div className="flex space-x-6 text-sm text-gray-600 dark:text-[#979DAC]">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
             <span>{t('pages.hr.reports.charts.payrollDynamics.legend.gross', { defaultValue: 'Gross' })}</span>
@@ -46,8 +46,8 @@ export default function MaasFonduDinamikasi() {
         <ResponsiveContainer>
           <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 20 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" stroke="#666" />
-            <YAxis stroke="#666" />
+            <XAxis dataKey="month" stroke="#979DAC" />
+            <YAxis stroke="#979DAC" />
             <Tooltip />
             <Legend />
             <Line

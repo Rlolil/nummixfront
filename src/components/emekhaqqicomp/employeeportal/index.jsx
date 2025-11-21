@@ -10,14 +10,14 @@ function EmployeePortal() {
   const { t } = useTranslation();
   const [activeItem, setActiveItem] = useState(t('pages.hr.portal.tabs.salary', { defaultValue: 'Salary' }));
   return (
-    <div className="overflow-auto my-4 space-y-6 text-[#001233]">
+    <div className="overflow-auto my-4 space-y-6 text-[#001233] dark:text-white">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-medium text-[#023E7D]">{t('pages.hr.portal.title', { defaultValue: 'Employee Portal' })}</h2>
-          <p className="text-[#7D8597]">{t('pages.hr.portal.subtitle', { defaultValue: 'Personal information and services' })}</p>
+          <h2 className="text-xl font-medium text-[#023E7D] dark:text-white">{t('pages.hr.portal.title', { defaultValue: 'Employee Portal' })}</h2>
+          <p className="text-[#7D8597] dark:text-[#979DAC]">{t('pages.hr.portal.subtitle', { defaultValue: 'Personal information and services' })}</p>
         </div>
         <div>
-          <button className="bg-[#FFFFFF] border border-[#33415C] rounded-xl flex items-center text-[#001233] py-2 px-4 hover:bg-[#F5F8FF]">
+          <button className="bg-[#FFFFFF] dark:bg-[#33415C] border border-[#33415C] dark:border-[#979DAC] rounded-xl flex items-center text-[#001233] dark:text-white py-2 px-4 hover:bg-[#F5F8FF] dark:hover:bg-[#001233]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -38,53 +38,53 @@ function EmployeePortal() {
           </button>
         </div>
       </div>
-      <div className="bg-[#FFFFFF] border border-[#33415C] rounded-xl p-6 flex flex-col gap-6 shadow-sm">
+      <div className="bg-[#FFFFFF] dark:bg-[#33415C] border border-[#33415C] dark:border-[#979DAC] rounded-xl p-6 flex flex-col gap-6 shadow-sm">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-          <div className="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl font-bold">
+          <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-200 rounded-full flex items-center justify-center text-3xl font-bold">
             K
           </div>
           <div className="flex-1">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-              <h3 className="text-xl font-semibold text-[#023E7D]">
+              <h3 className="text-xl font-semibold text-[#023E7D] dark:text-white">
                 Kamran Məmmədov
               </h3>
-              <span className="bg-blue-100 text-blue-600 text-xs font-medium px-2 py-0.5 rounded-md">
+              <span className="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-200 text-xs font-medium px-2 py-0.5 rounded-md">
                 EMP002
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 text-sm">
               <div>
-                <p className="text-[#5C677D]">{t('pages.hr.portal.profile.position', { defaultValue: 'Position' })}</p>
-                <p className="text-[#001233] font-medium">IT Meneceri</p>
+                <p className="text-[#5C677D] dark:text-[#979DAC]">{t('pages.hr.portal.profile.position', { defaultValue: 'Position' })}</p>
+                <p className="text-[#001233] dark:text-white font-medium">IT Meneceri</p>
               </div>
               <div>
-                <p className="text-[#5C677D]">{t('pages.hr.portal.profile.department', { defaultValue: 'Department' })}</p>
-                <p className="text-[#001233] font-medium">{t('pages.hr.departments.it', { defaultValue: 'IT Department' })}</p>
+                <p className="text-[#5C677D] dark:text-[#979DAC]">{t('pages.hr.portal.profile.department', { defaultValue: 'Department' })}</p>
+                <p className="text-[#001233] dark:text-white font-medium">{t('pages.hr.departments.it', { defaultValue: 'IT Department' })}</p>
               </div>
               <div>
-                <p className="text-[#5C677D]">{t('pages.hr.portal.profile.email', { defaultValue: 'Email' })}</p>
-                <p className="text-[#001233] font-medium">
+                <p className="text-[#5C677D] dark:text-[#979DAC]">{t('pages.hr.portal.profile.email', { defaultValue: 'Email' })}</p>
+                <p className="text-[#001233] dark:text-white font-medium">
                   kamran.mammadov@company.az
                 </p>
               </div>
               <div>
-                <p className="text-[#5C677D]">{t('pages.hr.portal.profile.phone', { defaultValue: 'Phone' })}</p>
-                <p className="text-[#001233] font-medium">+994 55 234 56 78</p>
+                <p className="text-[#5C677D] dark:text-[#979DAC]">{t('pages.hr.portal.profile.phone', { defaultValue: 'Phone' })}</p>
+                <p className="text-[#001233] dark:text-white font-medium">+994 55 234 56 78</p>
               </div>
             </div>
           </div>
-          <button className="flex items-center gap-2 px-4 py-2 border border-[#33415C] rounded-md text-sm text-[#001233] hover:bg-[#F5F8FF] transition">
+          <button className="flex items-center gap-2 px-4 py-2 border border-[#33415C] dark:border-[#979DAC] rounded-md text-sm text-[#001233] dark:text-white hover:bg-[#F5F8FF] dark:hover:bg-[#001233] transition">
             <FiEdit className="w-4 h-4" />
             {t('pages.hr.portal.edit', { defaultValue: 'Edit' })}
           </button>
         </div>
       </div>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 items-center justify-between gap-4 bg-[#FFFFFF] border border-[#33415C] p-2 rounded-md w-full">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 items-center justify-between gap-4 bg-[#FFFFFF] dark:bg-[#33415C] border border-[#33415C] dark:border-[#979DAC] p-2 rounded-md w-full">
         <button
           onClick={() => setActiveItem(t('pages.hr.portal.tabs.salary', { defaultValue: 'Salary' }))}
           className={`${
-            activeItem === t('pages.hr.portal.tabs.salary', { defaultValue: 'Salary' }) ? 'bg-[#0466CB] text-white' : 'bg-[#FFFFFF] text-[#001233] border border-[#33415C]'
+            activeItem === t('pages.hr.portal.tabs.salary', { defaultValue: 'Salary' }) ? 'bg-[#0466CB] text-white' : 'bg-[#FFFFFF] dark:bg-[#001233] text-[#001233] dark:text-white border border-[#33415C] dark:border-[#979DAC]'
           } w-full flex-1 py-2 px-4 text-center rounded-md hover:opacity-80 transition-colors duration-200`}
         >
           {t('pages.hr.portal.tabs.salary', { defaultValue: 'Salary' })}
@@ -92,7 +92,7 @@ function EmployeePortal() {
         <button
           onClick={() => setActiveItem(t('pages.hr.portal.tabs.leave', { defaultValue: 'Leave' }))}
           className={`${
-            activeItem === t('pages.hr.portal.tabs.leave', { defaultValue: 'Leave' }) ? 'bg-[#0466CB] text-white' : 'bg-[#FFFFFF] text-[#001233] border border-[#33415C]'
+            activeItem === t('pages.hr.portal.tabs.leave', { defaultValue: 'Leave' }) ? 'bg-[#0466CB] text-white' : 'bg-[#FFFFFF] dark:bg-[#001233] text-[#001233] dark:text-white border border-[#33415C] dark:border-[#979DAC]'
           } w-full flex-1 py-2 px-4 text-center rounded-md hover:opacity-80  transition-colors duration-200`}
         >
           {t('pages.hr.portal.tabs.leave', { defaultValue: 'Leave' })}
@@ -100,7 +100,7 @@ function EmployeePortal() {
         <button
           onClick={() => setActiveItem(t('pages.hr.portal.tabs.attendance', { defaultValue: 'Attendance' }))}
           className={`${
-            activeItem === t('pages.hr.portal.tabs.attendance', { defaultValue: 'Attendance' }) ? 'bg-[#0466CB] text-white' : 'bg-[#FFFFFF] text-[#001233] border border-[#33415C]'
+            activeItem === t('pages.hr.portal.tabs.attendance', { defaultValue: 'Attendance' }) ? 'bg-[#0466CB] text-white' : 'bg-[#FFFFFF] dark:bg-[#001233] text-[#001233] dark:text-white border border-[#33415C] dark:border-[#979DAC]'
           } w-full flex-1 py-2 px-4 text-center rounded-md hover:opacity-80 transition-colors duration-200`}
         >
           {t('pages.hr.portal.tabs.attendance', { defaultValue: 'Attendance' })}
@@ -108,7 +108,7 @@ function EmployeePortal() {
         <button
           onClick={() => setActiveItem(t('pages.hr.portal.tabs.documents', { defaultValue: 'Documents' }))}
           className={`${
-            activeItem === t('pages.hr.portal.tabs.documents', { defaultValue: 'Documents' }) ? 'bg-[#0466CB] text-white' : 'bg-[#FFFFFF] text-[#001233] border border-[#33415C]'
+            activeItem === t('pages.hr.portal.tabs.documents', { defaultValue: 'Documents' }) ? 'bg-[#0466CB] text-white' : 'bg-[#FFFFFF] dark:bg-[#001233] text-[#001233] dark:text-white border border-[#33415C] dark:border-[#979DAC]'
           } w-full flex-1 py-2 px-4 text-center rounded-md hover:opacity-80 transition-colors duration-200`}
         >
           {t('pages.hr.portal.tabs.documents', { defaultValue: 'Documents' })}
@@ -120,38 +120,38 @@ function EmployeePortal() {
         {activeItem === t('pages.hr.portal.tabs.attendance', { defaultValue: 'Attendance' }) && <AttendanceInfo />}
         {activeItem === t('pages.hr.portal.tabs.documents', { defaultValue: 'Documents' }) && <PersonalDocuments />}
       </div>
-      <div className="bg-[#FFFFFF] rounded-xl border border-[#33415C] p-6 shadow-sm">
+      <div className="bg-[#FFFFFF] dark:bg-[#33415C] rounded-xl border border-[#33415C] dark:border-[#979DAC] p-6 shadow-sm">
         <div className="flex justify-between items-center pb-4">
-          <h4 className="font-medium text-[#023E7D]">{t('pages.hr.portal.notifications.title', { defaultValue: 'Recent Notifications' })}</h4>
-          <FiBell className="w-6 h-6 text-[#7D8597]" />
+          <h4 className="font-medium text-[#023E7D] dark:text-white">{t('pages.hr.portal.notifications.title', { defaultValue: 'Recent Notifications' })}</h4>
+          <FiBell className="w-6 h-6 text-[#7D8597] dark:text-[#979DAC]" />
         </div>
         <div className="space-y-3 mt-4">
-          <div className="p-4 rounded-lg border bg-blue-50 border-blue-200">
+          <div className="p-4 rounded-lg border bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800">
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-blue-900">{t('pages.hr.portal.notifications.salaryPaid.title', { defaultValue: 'Salary paid' })}</p>
-                <p className="text-sm text-[#7D8597] mt-1">{t('pages.hr.portal.notifications.salaryPaid.message', { defaultValue: 'Your salary for this month has been transferred.' })}</p>
-                <p className="text-xs text-[#7D8597] mt-2">2025-10-01</p>
+                <p className="text-blue-900 dark:text-blue-200">{t('pages.hr.portal.notifications.salaryPaid.title', { defaultValue: 'Salary paid' })}</p>
+                <p className="text-sm text-[#7D8597] dark:text-[#979DAC] mt-1">{t('pages.hr.portal.notifications.salaryPaid.message', { defaultValue: 'Your salary for this month has been transferred.' })}</p>
+                <p className="text-xs text-[#7D8597] dark:text-[#979DAC] mt-2">2025-10-01</p>
               </div>
               <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0 mt-2"></div>
             </div>
           </div>
-          <div className="p-4 rounded-lg border bg-blue-50 border-blue-200">
+          <div className="p-4 rounded-lg border bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800">
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-blue-900">{t('pages.hr.portal.notifications.leaveApproved.title', { defaultValue: 'Leave approved' })}</p>
-                <p className="text-sm text-[#7D8597] mt-1">{t('pages.hr.portal.notifications.leaveApproved.message', { defaultValue: 'Your leave request has been approved by management.' })}</p>
-                <p className="text-xs text-[#7D8597] mt-2">2025-09-28</p>
+                <p className="text-blue-900 dark:text-blue-200">{t('pages.hr.portal.notifications.leaveApproved.title', { defaultValue: 'Leave approved' })}</p>
+                <p className="text-sm text-[#7D8597] dark:text-[#979DAC] mt-1">{t('pages.hr.portal.notifications.leaveApproved.message', { defaultValue: 'Your leave request has been approved by management.' })}</p>
+                <p className="text-xs text-[#7D8597] dark:text-[#979DAC] mt-2">2025-09-28</p>
               </div>
               <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0 mt-2"></div>
             </div>
           </div>
-          <div className="p-4 rounded-lg border bg-[#F5F8FF] border-[#979DAC]">
+          <div className="p-4 rounded-lg border bg-[#F5F8FF] dark:bg-[#001233] border-[#979DAC] dark:border-[#979DAC]">
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-[#001233]">{t('pages.hr.portal.notifications.documentReminder.title', { defaultValue: 'Document renewal reminder' })}</p>
-                <p className="text-sm text-[#7D8597] mt-1">{t('pages.hr.portal.notifications.documentReminder.message', { defaultValue: 'Your medical certificate expires this month. Please renew it.' })}</p>
-                <p className="text-xs text-[#7D8597] mt-2">2025-09-25</p>
+                <p className="text-[#001233] dark:text-white">{t('pages.hr.portal.notifications.documentReminder.title', { defaultValue: 'Document renewal reminder' })}</p>
+                <p className="text-sm text-[#7D8597] dark:text-[#979DAC] mt-1">{t('pages.hr.portal.notifications.documentReminder.message', { defaultValue: 'Your medical certificate expires this month. Please renew it.' })}</p>
+                <p className="text-xs text-[#7D8597] dark:text-[#979DAC] mt-2">2025-09-25</p>
               </div>
             </div>
           </div> 

@@ -4,19 +4,19 @@ import { useTranslation } from "react-i18next";
 
 const colorClasses = {
   red: {
-    bg: "bg-red-100",
-    text: "text-red-700",
-    border: "border-red-200",
+    bg: "bg-red-100 dark:bg-red-900/30",
+    text: "text-red-700 dark:text-red-200",
+    border: "border-red-200 dark:border-red-800",
   },
   orange: {
-    bg: "bg-orange-100",
-    text: "text-orange-700",
-    border: "border-orange-200",
+    bg: "bg-orange-100 dark:bg-orange-900/30",
+    text: "text-orange-700 dark:text-orange-200",
+    border: "border-orange-200 dark:border-orange-800",
   },
   blue: {
-    bg: "bg-blue-100",
-    text: "text-blue-700",
-    border: "border-blue-200",
+    bg: "bg-blue-100 dark:bg-blue-900/30",
+    text: "text-blue-700 dark:text-blue-200",
+    border: "border-blue-200 dark:border-blue-800",
   },
 };
 
@@ -55,9 +55,9 @@ function UpcomingEventsCard() {
     },
   ]), [t]);
   return (
-    <div className="bg-[#FFFFFF] border border-[#33415C] rounded-xl p-6 flex flex-col gap-6 shadow-sm text-[#001233]">
+    <div className="bg-[#FFFFFF] dark:bg-[#33415C] border border-[#33415C] dark:border-[#979DAC] rounded-xl p-6 flex flex-col gap-6 shadow-sm text-[#001233] dark:text-white">
       <div>
-        <h4 className="text-lg font-semibold text-[#023E7D]">{t('pages.hr.calendar.upcomingTitle', { defaultValue: 'Upcoming Events' })}</h4>
+        <h4 className="text-lg font-semibold text-[#023E7D] dark:text-white">{t('pages.hr.calendar.upcomingTitle', { defaultValue: 'Upcoming Events' })}</h4>
       </div>
       <div className="space-y-3">
         {upcomingEvents.map((event, index) => {

@@ -76,22 +76,22 @@ export default function MonthlyReport() {
   };
 
   return (
-    <div className="bg-white rounded-xl border  border-gray-200 shadow p-6">
-      <h4 className="text-xl font-semibold mb-6">{t('pages.hr.reports.monthlyReport.title', { defaultValue: 'Monthly Summary Report' })}</h4>
+    <div className="bg-white dark:bg-[#33415C] rounded-xl border border-gray-200 dark:border-[#979DAC] shadow p-6">
+      <h4 className="text-xl font-semibold mb-6 dark:text-white">{t('pages.hr.reports.monthlyReport.title', { defaultValue: 'Monthly Summary Report' })}</h4>
 
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
-          <thead className="bg-gray-50 border-b">
+          <thead className="bg-gray-50 dark:bg-[#001233] border-b dark:border-[#979DAC]">
             <tr>
-              <th className="text-left text-xs text-gray-500 uppercase px-6 py-3">{t('pages.hr.reports.monthlyReport.headers.indicator', { defaultValue: 'Indicator' })}</th>
-              <th className="text-left text-xs text-gray-500 uppercase px-6 py-3">{t('pages.hr.reports.monthlyReport.headers.thisMonth', { defaultValue: 'This month' })}</th>
-              <th className="text-left text-xs text-gray-500 uppercase px-6 py-3">{t('pages.hr.reports.monthlyReport.headers.lastMonth', { defaultValue: 'Last month' })}</th>
-              <th className="text-left text-xs text-gray-500 uppercase px-6 py-3">{t('pages.hr.reports.monthlyReport.headers.change', { defaultValue: 'Change' })}</th>
-              <th className="text-left text-xs text-gray-500 uppercase px-6 py-3">{t('common.actions', { ns: 'translation', defaultValue: 'Actions' })}</th>
+              <th className="text-left text-xs text-gray-500 dark:text-[#979DAC] uppercase px-6 py-3">{t('pages.hr.reports.monthlyReport.headers.indicator', { defaultValue: 'Indicator' })}</th>
+              <th className="text-left text-xs text-gray-500 dark:text-[#979DAC] uppercase px-6 py-3">{t('pages.hr.reports.monthlyReport.headers.thisMonth', { defaultValue: 'This month' })}</th>
+              <th className="text-left text-xs text-gray-500 dark:text-[#979DAC] uppercase px-6 py-3">{t('pages.hr.reports.monthlyReport.headers.lastMonth', { defaultValue: 'Last month' })}</th>
+              <th className="text-left text-xs text-gray-500 dark:text-[#979DAC] uppercase px-6 py-3">{t('pages.hr.reports.monthlyReport.headers.change', { defaultValue: 'Change' })}</th>
+              <th className="text-left text-xs text-gray-500 dark:text-[#979DAC] uppercase px-6 py-3">{t('common.actions', { ns: 'translation', defaultValue: 'Actions' })}</th>
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-200 dark:divide-[#979DAC]">
             {rows.length === 0 && (
               <tr>
                 <td colSpan={5} className="px-6 py-6 text-center text-gray-500 text-sm">
@@ -102,14 +102,14 @@ export default function MonthlyReport() {
             {rows.map(({ label, current, previous, change, positive }, idx) => (
               <tr
                 key={idx}
-                className="hover:bg-gray-50 transition-colors duration-150"
+                className="hover:bg-gray-50 dark:hover:bg-[#001233] transition-colors duration-150"
               >
-                <td className="px-6 py-4 text-gray-900">{label}</td>
-                <td className="px-6 py-4 text-gray-900">{current}</td>
-                <td className="px-6 py-4 text-gray-600">{previous}</td>
+                <td className="px-6 py-4 text-gray-900 dark:text-white">{label}</td>
+                <td className="px-6 py-4 text-gray-900 dark:text-white">{current}</td>
+                <td className="px-6 py-4 text-gray-600 dark:text-[#979DAC]">{previous}</td>
                 <td
                   className={`px-6 py-4 flex items-center gap-1 font-medium ${
-                    positive ? "text-green-600" : "text-red-600"
+                    positive ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"
                   }`}
                 >
                   {positive ? <HiArrowSmUp /> : <HiArrowSmDown />}
@@ -117,7 +117,7 @@ export default function MonthlyReport() {
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    <button className="p-2 rounded-md hover:bg-gray-100" title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })} onClick={() => openEdit({ label, current, previous, change, positive }, idx)}>
+                    <button className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-[#001233]" title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })} onClick={() => openEdit({ label, current, previous, change, positive }, idx)}>
                       <FiEdit2 className="w-4 h-4" />
                     </button>
                     <button className="p-2 rounded-md text-red-600 hover:text-red-700" title={t('common.delete', { ns: 'translation', defaultValue: 'Delete' })} onClick={() => handleDelete(idx)}>
@@ -134,39 +134,39 @@ export default function MonthlyReport() {
       {editRow && (
         <div>
           <div onClick={closeEdit} className="fixed inset-0 bg-black opacity-50 z-50"></div>
-          <div role="dialog" aria-modal="true" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-51 w-full max-w-md bg-white border border-gray-200 rounded-lg shadow p-6">
-            <button onClick={closeEdit} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+          <div role="dialog" aria-modal="true" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-51 w-full max-w-md bg-white dark:bg-[#33415C] border border-gray-200 dark:border-[#979DAC] rounded-lg shadow p-6">
+            <button onClick={closeEdit} className="absolute top-4 right-4 text-gray-500 dark:text-[#979DAC] hover:text-gray-700 dark:hover:text-white">
               <FiX className="w-5 h-5" />
               <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
             </button>
-            <h3 className="text-lg font-semibold mb-4">{t('pages.hr.reports.monthlyReport.editTitle', { defaultValue: 'Edit Row' })}</h3>
+            <h3 className="text-lg font-semibold mb-4 dark:text-white">{t('pages.hr.reports.monthlyReport.editTitle', { defaultValue: 'Edit Row' })}</h3>
             <div className="space-y-3">
               <div>
-                <label className="block text-sm mb-1">{t('pages.hr.reports.monthlyReport.headers.indicator', { defaultValue: 'Indicator' })}</label>
-                <input className="w-full border rounded-md px-3 py-2 text-sm" value={editRow.label} onChange={(e) => setEditRow(r => ({ ...r, label: e.target.value }))} />
+                <label className="block text-sm mb-1 dark:text-[#979DAC]">{t('pages.hr.reports.monthlyReport.headers.indicator', { defaultValue: 'Indicator' })}</label>
+                <input className="w-full border dark:border-[#979DAC] rounded-md px-3 py-2 text-sm dark:bg-[#001233] dark:text-white" value={editRow.label} onChange={(e) => setEditRow(r => ({ ...r, label: e.target.value }))} />
               </div>
               <div>
-                <label className="block text-sm mb-1">{t('pages.hr.reports.monthlyReport.headers.thisMonth', { defaultValue: 'This month' })}</label>
-                <input className="w-full border rounded-md px-3 py-2 text-sm" value={editRow.current} onChange={(e) => setEditRow(r => ({ ...r, current: e.target.value }))} />
+                <label className="block text-sm mb-1 dark:text-[#979DAC]">{t('pages.hr.reports.monthlyReport.headers.thisMonth', { defaultValue: 'This month' })}</label>
+                <input className="w-full border dark:border-[#979DAC] rounded-md px-3 py-2 text-sm dark:bg-[#001233] dark:text-white" value={editRow.current} onChange={(e) => setEditRow(r => ({ ...r, current: e.target.value }))} />
               </div>
               <div>
-                <label className="block text-sm mb-1">{t('pages.hr.reports.monthlyReport.headers.lastMonth', { defaultValue: 'Last month' })}</label>
-                <input className="w-full border rounded-md px-3 py-2 text-sm" value={editRow.previous} onChange={(e) => setEditRow(r => ({ ...r, previous: e.target.value }))} />
+                <label className="block text-sm mb-1 dark:text-[#979DAC]">{t('pages.hr.reports.monthlyReport.headers.lastMonth', { defaultValue: 'Last month' })}</label>
+                <input className="w-full border dark:border-[#979DAC] rounded-md px-3 py-2 text-sm dark:bg-[#001233] dark:text-white" value={editRow.previous} onChange={(e) => setEditRow(r => ({ ...r, previous: e.target.value }))} />
               </div>
               <div>
-                <label className="block text-sm mb-1">{t('pages.hr.reports.monthlyReport.headers.change', { defaultValue: 'Change' })}</label>
-                <input className="w-full border rounded-md px-3 py-2 text-sm" value={editRow.change} onChange={(e) => setEditRow(r => ({ ...r, change: e.target.value }))} />
+                <label className="block text-sm mb-1 dark:text-[#979DAC]">{t('pages.hr.reports.monthlyReport.headers.change', { defaultValue: 'Change' })}</label>
+                <input className="w-full border dark:border-[#979DAC] rounded-md px-3 py-2 text-sm dark:bg-[#001233] dark:text-white" value={editRow.change} onChange={(e) => setEditRow(r => ({ ...r, change: e.target.value }))} />
               </div>
               <div>
-                <label className="block text-sm mb-1">{t('pages.hr.reports.monthlyReport.headers.trend', { defaultValue: 'Trend' })}</label>
-                <select className="w-full border rounded-md px-3 py-2 text-sm" value={String(editRow.positive)} onChange={(e) => setEditRow(r => ({ ...r, positive: e.target.value === 'true' }))}>
+                <label className="block text-sm mb-1 dark:text-[#979DAC]">{t('pages.hr.reports.monthlyReport.headers.trend', { defaultValue: 'Trend' })}</label>
+                <select className="w-full border dark:border-[#979DAC] rounded-md px-3 py-2 text-sm dark:bg-[#001233] dark:text-white" value={String(editRow.positive)} onChange={(e) => setEditRow(r => ({ ...r, positive: e.target.value === 'true' }))}>
                   <option value="true">{t('pages.hr.reports.monthlyReport.trend.up', { defaultValue: 'Up (positive)' })}</option>
                   <option value="false">{t('pages.hr.reports.monthlyReport.trend.down', { defaultValue: 'Down (negative)' })}</option>
                 </select>
               </div>
             </div>
             <div className="flex justify-end gap-2 mt-4">
-              <button className="px-4 py-2 border rounded-md bg-white hover:bg-gray-50" onClick={closeEdit}>{t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}</button>
+              <button className="px-4 py-2 border dark:border-[#979DAC] rounded-md bg-white dark:bg-[#33415C] dark:text-white hover:bg-gray-50 dark:hover:bg-[#001233]" onClick={closeEdit}>{t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}</button>
               <button className="px-4 py-2 rounded-md bg-black text-white hover:opacity-80" onClick={saveEdit}>{t('pages.hr.employees.modal.save', { defaultValue: 'Save' })}</button>
             </div>
           </div>

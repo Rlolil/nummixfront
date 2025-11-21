@@ -21,15 +21,15 @@ const data = [
 export default function AttendanceChart() {
   const { t } = useTranslation();
   return (
-    <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-      <h4 className="text-lg font-semibold mb-6">{t('pages.hr.reports.attendanceChart.title', { defaultValue: 'Attendance Statistics' })}</h4>
+    <div className="bg-white dark:bg-[#33415C] p-6 rounded-xl border border-gray-200 dark:border-[#979DAC] shadow-sm">
+      <h4 className="text-lg font-semibold mb-6 dark:text-white">{t('pages.hr.reports.attendanceChart.title', { defaultValue: 'Attendance Statistics' })}</h4>
 
       <div style={{ width: "100%", height: 300 }}>
         <ResponsiveContainer>
           <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
-            <XAxis dataKey="week" stroke="#666" />
-            <YAxis stroke="#666" domain={[0, 100]} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#979DAC" />
+            <XAxis dataKey="week" stroke="#979DAC" />
+            <YAxis stroke="#979DAC" domain={[0, 100]} />
             <Tooltip />
             <Legend verticalAlign="bottom" height={36} />
             <Bar dataKey="attendance" name={t('pages.hr.reports.attendanceChart.series.attendancePct', { defaultValue: 'Attendance %' })} fill="#3b82f6" />

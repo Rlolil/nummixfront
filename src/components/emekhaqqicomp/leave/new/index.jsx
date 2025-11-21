@@ -22,20 +22,20 @@ function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = ""
       <div
         role="dialog"
         aria-modal="true"
-        className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 rounded-lg border border-gray-200 bg-base-100 p-6 shadow-lg"
+        className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 rounded-lg border border-gray-200 dark:border-[#979DAC] bg-white dark:bg-[#33415C] p-6 shadow-lg"
         tabIndex={-1}
       >
         <header className="mb-4 text-center sm:text-left">
-          <h2 className="text-lg font-semibold">{t('pages.hr.leave.modal.title', { defaultValue: 'Leave Request' })}</h2>
+          <h2 className="text-lg font-semibold dark:text-white">{t('pages.hr.leave.modal.title', { defaultValue: 'Leave Request' })}</h2>
         </header>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.employee', { defaultValue: 'Employee' })}</label>
+            <label className="block text-sm font-medium mb-1 dark:text-[#979DAC]">{t('pages.hr.leave.modal.employee', { defaultValue: 'Employee' })}</label>
             <select
               value={worker}
               onChange={(e) => setWorker(e.target.value)}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+              className="w-full rounded-md border border-gray-300 dark:border-[#979DAC] bg-white dark:bg-[#001233] dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
               required
             >
               <option value="" disabled>
@@ -47,11 +47,11 @@ function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = ""
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.leaveType', { defaultValue: 'Leave type' })}</label>
+            <label className="block text-sm font-medium mb-1 dark:text-[#979DAC]">{t('pages.hr.leave.modal.leaveType', { defaultValue: 'Leave type' })}</label>
             <select
               value={leaveType}
               onChange={(e) => setLeaveType(e.target.value)}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+              className="w-full rounded-md border border-gray-300 dark:border-[#979DAC] bg-white dark:bg-[#001233] dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
               required
             >
               <option value="" disabled>
@@ -64,34 +64,34 @@ function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = ""
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.startDate', { defaultValue: 'Start date' })}</label>
+              <label className="block text-sm font-medium mb-1 dark:text-[#979DAC]">{t('pages.hr.leave.modal.startDate', { defaultValue: 'Start date' })}</label>
               <input
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                className="w-full rounded-md border border-gray-300 dark:border-[#979DAC] bg-white dark:bg-[#001233] dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.endDate', { defaultValue: 'End date' })}</label>
+              <label className="block text-sm font-medium mb-1 dark:text-[#979DAC]">{t('pages.hr.leave.modal.endDate', { defaultValue: 'End date' })}</label>
               <input
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                className="w-full rounded-md border border-gray-300 dark:border-[#979DAC] bg-white dark:bg-[#001233] dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
                 required
               />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">{t('pages.hr.leave.modal.reason', { defaultValue: 'Reason' })}</label>
+            <label className="block text-sm font-medium mb-1 dark:text-[#979DAC]">{t('pages.hr.leave.modal.reason', { defaultValue: 'Reason' })}</label>
             <textarea
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               rows={3}
               placeholder={t('pages.hr.leave.modal.reasonPlaceholder', { defaultValue: 'Enter reason for leave' })}
-              className="w-full resize-none rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+              className="w-full resize-none rounded-md border border-gray-300 dark:border-[#979DAC] bg-white dark:bg-[#001233] dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
               required
             />
           </div>
@@ -99,7 +99,7 @@ function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = ""
             <button
               type="button"
               onClick={onClose}
-              className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-100"
+              className="rounded-md border border-gray-300 dark:border-[#979DAC] bg-white dark:bg-[#33415C] dark:text-white px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-[#001233]"
             >
               {t('pages.hr.leave.modal.cancel', { defaultValue: 'Cancel' })}
             </button>
@@ -114,7 +114,7 @@ function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = ""
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute top-4 right-4 rounded text-gray-500 hover:text-gray-700 focus:outline-none"
+          className="absolute top-4 right-4 rounded text-gray-500 dark:text-[#979DAC] hover:text-gray-700 dark:hover:text-white focus:outline-none"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

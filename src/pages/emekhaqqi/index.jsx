@@ -34,7 +34,7 @@ function EmekHaqqi() {
       <h2 className="md:text-4xl  text-2xl font-bold mb-4 dark:text-white text-[#023E7D]">
         {t("pages.hr.title")}
       </h2>
-      <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 items-center justify-between gap-4 dark:bg-[#002855] dark:text-white bg-[#FFFFFF] border border-[#33415C] p-2 rounded-xl w-full">
+      <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 items-center justify-between gap-4 dark:bg-[#33415C] dark:text-white bg-[#FFFFFF] border border-[#33415C] dark:border-[#979DAC] p-2 rounded-xl w-full">
         {items.map((item) => (
           <Link
             onClick={() => setActiveItem(item.label)}
@@ -43,8 +43,8 @@ function EmekHaqqi() {
             className={`${
               activeItem === item.label
                 ? "bg-[#0466CB] dark:bg-[#023E7D] hover:bg-[#0453A4] text-white border-transparent"
-                : "bg-[#FFFFFF] dark:bg-[#002855] dark:text-white dark:hover:bg-[#023E7D] text-[#023E7D] hover:bg-[#F5F8FF]"
-            } w-full flex-1 py-2 px-4 text-center rounded-md border border-[#979DAC] transition-colors duration-200`}
+                : "bg-[#FFFFFF] dark:bg-[#33415C] dark:text-white dark:hover:bg-[#023E7D] text-[#023E7D] hover:bg-[#F5F8FF]"
+            } w-full flex-1 py-2 px-4 text-center rounded-md border border-[#979DAC] dark:border-[#979DAC] transition-colors duration-200`}
           >
             <button key={item.to}>{item.label}</button>
           </Link>

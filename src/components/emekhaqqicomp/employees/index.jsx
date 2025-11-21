@@ -276,13 +276,13 @@ const Employees = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center gap-2">
-                    <button className="p-2 rounded-md hover:bg-[#F5F8FF]" onClick={() => openView(employee)}>
+                    <button className="p-2 rounded-md hover:bg-[#F5F8FF] dark:hover:bg-[#002244]" onClick={() => openView(employee)}>
                       <FiEye className="w-4 h-4" />
                     </button>
-                    <button className="p-2 rounded-md hover:bg-[#F5F8FF]" onClick={() => openEdit(employee, idx)}>
+                    <button className="p-2 rounded-md hover:bg-[#F5F8FF] dark:hover:bg-[#002244]" onClick={() => openEdit(employee, idx)}>
                       <FiEdit2 className="w-4 h-4" />
                     </button>
-                    <button className="p-2 rounded-md text-red-600 hover:text-red-700" onClick={() => handleDelete(idx)}>
+                    <button className="p-2 rounded-md text-red-600 hover:text-red-700 dark:hover:bg-[#002244]" onClick={() => handleDelete(idx)}>
                       <FiTrash2 className="w-4 h-4" />
                     </button>
                   </div>
@@ -300,7 +300,7 @@ const Employees = () => {
           <div onClick={closeView} className="bg-black opacity-50 fixed inset-0 z-51"></div>
           <div
             role="dialog"
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow-lg p-6 sm:max-w-lg"
+            className="fixed top-1/2 left-1/2 dark:bg-[#001233] dark:text-white transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow-lg p-6 sm:max-w-lg"
           >
             <button
               className="absolute top-4 right-4 opacity-70 hover:opacity-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -349,24 +349,24 @@ const Employees = () => {
           <div onClick={closeEdit} className="bg-black opacity-50 fixed inset-0 z-51"></div>
           <div
             role="dialog"
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow-lg p-6 sm:max-w-lg"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 dark:bg-[#001233] dark:text-white -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow-lg p-6 sm:max-w-lg"
           >
             <button
-              className="absolute top-4 right-4 opacity-70 hover:opacity-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="absolute top-4 right-4 opacity-70 hover:opacity-100  focus:ring-2 focus:ring-blue-500 focus:outline-none"
               onClick={closeEdit}
             >
               <FiX className="w-4 h-4" />
-              <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
+              <span className="sr-only dark:text-white">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
             </button>
             <div className="flex flex-col gap-2 text-center sm:text-left">
-              <h2 className="text-lg font-semibold text-[#023E7D]">{t('pages.hr.employees.editTitle', { defaultValue: 'Edit Employee' })}</h2>
+              <h2 className="text-lg font-semibold dark:text-white text-[#023E7D]">{t('pages.hr.employees.editTitle', { defaultValue: 'Edit Employee' })}</h2>
             </div>
             <div className="space-y-4 py-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.modal.name', { defaultValue: 'Name' })}</label>
                   <input
-                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
+                    className="w-full h-9 px-3 py-1 border dark:bg-[#001233] dark:text-white border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.name}
                     onChange={(e) => handleEditChange('name', e.target.value)}
                   />
@@ -374,7 +374,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">ID</label>
                   <input
-                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] dark:bg-[#001233] dark:text-white rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.id}
                     onChange={(e) => handleEditChange('id', e.target.value)}
                   />
@@ -385,7 +385,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.table.position', { defaultValue: 'Position' })}</label>
                   <input
-                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] dark:bg-[#001233] dark:text-white rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.position}
                     onChange={(e) => handleEditChange('position', e.target.value)}
                   />
@@ -394,7 +394,7 @@ const Employees = () => {
                   <label className="text-sm font-medium">Email</label>
                   <input
                     type="email"
-                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] dark:bg-[#001233] dark:text-white rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.email}
                     onChange={(e) => handleEditChange('email', e.target.value)}
                   />
@@ -405,7 +405,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.table.department', { defaultValue: 'Department' })}</label>
                   <select
-                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] dark:bg-[#001233] dark:text-white rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none"
                     value={editEmployee.departmentKey}
                     onChange={(e) => handleEditChange('departmentKey', e.target.value)}
                   >
@@ -419,7 +419,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.table.salary', { defaultValue: 'Salary' })}</label>
                   <input
-                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] dark:bg-[#001233] dark:text-white rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none"
                     value={editEmployee.salary}
                     onChange={(e) => handleEditChange('salary', e.target.value)}
                   />
@@ -430,7 +430,7 @@ const Employees = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{t('pages.hr.employees.table.status', { defaultValue: 'Status' })}</label>
                   <select
-                    className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none"
+                    className="w-full h-9 px-3 py-1 border border-[#979DAC] dark:bg-[#001233] dark:text-white rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none"
                     value={editEmployee.statusKey}
                     onChange={(e) => handleEditChange('statusKey', e.target.value)}
                   >
@@ -441,7 +441,7 @@ const Employees = () => {
               </div>
               <div className="flex justify-end gap-2 pt-4">
                 <button
-                  className="px-4 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]"
+                  className="px-4 py-2 border border-[#979DAC] dark:bg-[#001233] dark:text-white dark:hover:bg-[#002244] rounded-md bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]"
                   onClick={closeEdit}
                 >
                   {t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}

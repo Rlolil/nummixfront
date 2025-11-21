@@ -60,15 +60,15 @@ const AttendanceCard = () => {
   ];
 
   return (
-    <div className="p-6 bg-[#FFFFFF] rounded-xl border border-[#33415C] max-w-5xl text-[#001233]">
+    <div className="p-6 bg-[#FFFFFF] dark:bg-[#33415C] rounded-xl border border-[#33415C] dark:border-[#979DAC] max-w-5xl text-[#001233] dark:text-white">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-[#023E7D]">{t('pages.hr.attendance.todayTitle', { defaultValue: "Today's Attendance" })}</h2>
-        <span className="text-sm px-3 py-1 rounded bg-blue-50 text-blue-600">9 Oct 2025</span>
+        <h2 className="text-lg font-semibold text-[#023E7D] dark:text-white">{t('pages.hr.attendance.todayTitle', { defaultValue: "Today's Attendance" })}</h2>
+        <span className="text-sm px-3 py-1 rounded bg-blue-50 dark:bg-[#023E7D] text-blue-600 dark:text-[#0453A4]">9 Oct 2025</span>
       </div>
 
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
-          <thead className="bg-[#F5F8FF] text-[#5C677D] text-xs uppercase border-b border-[#979DAC]">
+          <thead className="bg-[#F5F8FF] dark:bg-[#002855] text-[#5C677D] dark:text-[#5C677D] text-xs uppercase border-b border-[#979DAC] dark:border-[#979DAC]">
             <tr>
               <th className="px-4 py-2 text-left">{t('pages.hr.attendance.table.employee', { defaultValue: 'Employee' })}</th>
               <th className="px-4 py-2 text-left">{t('pages.hr.attendance.table.checkIn', { defaultValue: 'Check-in' })}</th>
@@ -77,12 +77,12 @@ const AttendanceCard = () => {
               <th className="px-4 py-2 text-left">{t('pages.hr.attendance.table.status', { defaultValue: 'Status' })}</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#979DAC]">
+          <tbody className="divide-y divide-[#979DAC] dark:divide-[#979DAC]">
             {data.map((item, idx) => (
-              <tr key={idx} className="hover:bg-[#F5F8FF]">
+              <tr key={idx} className="hover:bg-[#F5F8FF] dark:hover:bg-[#002855]">
                 <td className="px-4 py-2">
                   <div className="font-medium">{item.name}</div>
-                  <div className="text-xs text-[#7D8597]">{t(`pages.hr.departments.${item.departmentKey}`, { defaultValue: item.departmentKey })}</div>
+                  <div className="text-xs text-[#7D8597] dark:text-[#5C677D]">{t(`pages.hr.departments.${item.departmentKey}`, { defaultValue: item.departmentKey })}</div>
                 </td>
                 <td className="px-4 py-2">{item.entry}</td>
                 <td className="px-4 py-2">{item.exit}</td>

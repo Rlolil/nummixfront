@@ -43,9 +43,9 @@ const SalaryHistoryTable = () => {
     setRows(prev => prev.filter((_, i) => i !== idx));
   };
   return (
-    <div className="bg-[#FFFFFF] border border-[#33415C] rounded-xl overflow-hidden shadow-sm text-[#001233]">
+    <div className="bg-[#FFFFFF] dark:bg-[#33415C] border border-[#33415C] dark:border-[#979DAC] rounded-xl overflow-hidden shadow-sm text-[#001233] dark:text-white">
       <div className="flex items-center justify-between px-6 pt-6">
-        <h4 className="font-medium text-[#023E7D]">{t('pages.hr.portal.salary.history.title')}</h4>
+        <h4 className="font-medium text-[#023E7D] dark:text-white">{t('pages.hr.portal.salary.history.title')}</h4>
         <button className="flex items-center gap-2 text-sm px-3 py-2 rounded-md bg-[#0466CB] text-white hover:bg-[#0453A4] transition">
           <FiDownload className="w-4 h-4" />
           {t('pages.hr.portal.salary.history.export')}
@@ -54,7 +54,7 @@ const SalaryHistoryTable = () => {
 
       <div className="overflow-x-auto">
         <table className="min-w-full text-sm mt-4 divide-y divide-[#979DAC]">
-          <thead className="bg-[#F5F8FF] text-[#5C677D] uppercase text-xs">
+          <thead className="bg-[#F5F8FF] dark:bg-[#001233] text-[#5C677D] dark:text-[#979DAC] uppercase text-xs">
             <tr>
               <th className="px-6 py-3 text-left">{t('pages.hr.portal.salary.history.headers.month')}</th>
               <th className="px-6 py-3 text-left">{t('pages.hr.portal.salary.history.headers.gross')}</th>
@@ -74,26 +74,26 @@ const SalaryHistoryTable = () => {
               </tr>
             )}
             {rows.map((item, idx) => (
-              <tr key={idx} className="hover:bg-[#F5F8FF]">
-                <td className="px-6 py-4 text-[#001233]">{item.month}</td>
-                <td className="px-6 py-4 text-[#001233]">{item.gross}</td>
-                <td className="px-6 py-4 text-[#001233]">{item.tax}</td>
-                <td className="px-6 py-4 text-[#001233]">{item.social}</td>
-                <td className="px-6 py-4 text-green-600">{item.net}</td>
+              <tr key={idx} className="hover:bg-[#F5F8FF] dark:hover:bg-[#001233]">
+                <td className="px-6 py-4 text-[#001233] dark:text-white">{item.month}</td>
+                <td className="px-6 py-4 text-[#001233] dark:text-white">{item.gross}</td>
+                <td className="px-6 py-4 text-[#001233] dark:text-white">{item.tax}</td>
+                <td className="px-6 py-4 text-[#001233] dark:text-white">{item.social}</td>
+                <td className="px-6 py-4 text-green-600 dark:text-green-400">{item.net}</td>
                 <td className="px-6 py-4">
-                  <span className="text-green-700 bg-green-100 text-xs px-2 py-0.5 rounded-md font-medium">
+                  <span className="text-green-700 dark:text-green-200 bg-green-100 dark:bg-green-900/30 text-xs px-2 py-0.5 rounded-md font-medium">
                     {t(`pages.hr.payroll.status.${item.status}`)}
                   </span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    <button className="p-2 hover:bg-[#F5F8FF] rounded-md" title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })} onClick={() => openEdit(item, idx)}>
+                    <button className="p-2 hover:bg-[#F5F8FF] dark:hover:bg-[#001233] rounded-md" title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })} onClick={() => openEdit(item, idx)}>
                       <FiEdit2 className="w-4 h-4" />
                     </button>
                     <button className="p-2 rounded-md text-red-600 hover:text-red-700" title={t('common.delete', { ns: 'translation', defaultValue: 'Delete' })} onClick={() => handleDelete(idx)}>
                       <FiTrash2 className="w-4 h-4" />
                     </button>
-                    <button className="p-2 hover:bg-[#F5F8FF] rounded-md" title={t('pages.hr.portal.salary.history.export')}>
+                    <button className="p-2 hover:bg-[#F5F8FF] dark:hover:bg-[#001233] rounded-md" title={t('pages.hr.portal.salary.history.export')}>
                       <FiDownload className="w-4 h-4" />
                     </button>
                   </div>

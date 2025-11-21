@@ -60,7 +60,7 @@ function MyBigCalendar() {
     },
   ]), [t]);
   return (
-    <div style={{ height: "500px" }}>
+    <div style={{ height: "500px" }} className="dark:text-white">
       <h3>{t('pages.hr.attendance.calendar.title', { defaultValue: 'Calendar' })}</h3>
       <Calendar
         localizer={localizer}

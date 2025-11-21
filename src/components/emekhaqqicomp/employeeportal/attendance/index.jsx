@@ -36,24 +36,24 @@ const AttendanceInfo = () => {
     setRows(prev => prev.filter((_, i) => i !== idx));
   };
   return (
-    <div className="space-y-6 text-[#001233]">
+    <div className="space-y-6 text-[#001233] dark:text-white">
       {/* Son Davamiyyət Qeydləri */}
-      <div className="bg-[#FFFFFF] text-[#001233] flex flex-col gap-6 rounded-xl border border-[#33415C] p-6">
+      <div className="bg-[#FFFFFF] dark:bg-[#33415C] text-[#001233] dark:text-white flex flex-col gap-6 rounded-xl border border-[#33415C] dark:border-[#979DAC] p-6">
         <div className="flex justify-between items-center">
-          <h4 className="text-lg font-semibold text-[#023E7D]">{t('pages.hr.portal.attendance.title')}</h4>
+          <h4 className="text-lg font-semibold text-[#023E7D] dark:text-white">{t('pages.hr.portal.attendance.title')}</h4>
         </div>
 
         {/* Attendance Table */}
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-[#F5F8FF] border-b border-[#979DAC]">
+            <thead className="bg-[#F5F8FF] dark:bg-[#001233] border-b border-[#979DAC]">
               <tr>
-                <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">{t('pages.hr.portal.attendance.headers.date')}</th>
-                <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">{t('pages.hr.portal.attendance.headers.checkIn')}</th>
-                <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">{t('pages.hr.portal.attendance.headers.checkOut')}</th>
-                <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">{t('pages.hr.portal.attendance.headers.hours')}</th>
-                <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">{t('pages.hr.portal.attendance.headers.status')}</th>
-                <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">{t('common.actions', { ns: 'translation', defaultValue: 'Actions' })}</th>
+                <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#979DAC] uppercase">{t('pages.hr.portal.attendance.headers.date')}</th>
+                <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#979DAC] uppercase">{t('pages.hr.portal.attendance.headers.checkIn')}</th>
+                <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#979DAC] uppercase">{t('pages.hr.portal.attendance.headers.checkOut')}</th>
+                <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#979DAC] uppercase">{t('pages.hr.portal.attendance.headers.hours')}</th>
+                <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#979DAC] uppercase">{t('pages.hr.portal.attendance.headers.status')}</th>
+                <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#979DAC] uppercase">{t('common.actions', { ns: 'translation', defaultValue: 'Actions' })}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#979DAC]">
@@ -65,19 +65,19 @@ const AttendanceInfo = () => {
                 </tr>
               )}
               {rows.map((r, idx) => (
-                <tr key={idx} className="hover:bg-[#F5F8FF]">
-                  <td className="px-6 py-4 text-[#001233]">{r.date}</td>
-                  <td className="px-6 py-4 text-[#001233]">{r.checkIn}</td>
-                  <td className="px-6 py-4 text-[#001233]">{r.checkOut}</td>
-                  <td className="px-6 py-4 text-[#001233]">{r.hours}</td>
+                <tr key={idx} className="hover:bg-[#F5F8FF] dark:hover:bg-[#001233]">
+                  <td className="px-6 py-4 text-[#001233] dark:text-white">{r.date}</td>
+                  <td className="px-6 py-4 text-[#001233] dark:text-white">{r.checkIn}</td>
+                  <td className="px-6 py-4 text-[#001233] dark:text-white">{r.checkOut}</td>
+                  <td className="px-6 py-4 text-[#001233] dark:text-white">{r.hours}</td>
                   <td className="px-6 py-4">
-                    <span className={`inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium ${r.status === 'late' ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'}`}>
+                    <span className={`inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium ${r.status === 'late' ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-200' : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-200'}`}>
                       {r.status === 'late' ? t('pages.hr.portal.attendance.status.late') : t('pages.hr.portal.attendance.status.present')}
                     </span>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
-                      <button className="p-2 hover:bg-[#F5F8FF] rounded-md" title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })} onClick={() => openEdit(r, idx)}>
+                      <button className="p-2 hover:bg-[#F5F8FF] dark:hover:bg-[#001233] rounded-md" title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })} onClick={() => openEdit(r, idx)}>
                         <FiEdit2 className="w-4 h-4" />
                       </button>
                       <button className="p-2 rounded-md text-red-600 hover:text-red-700" title={t('common.delete', { ns: 'translation', defaultValue: 'Delete' })} onClick={() => handleDelete(idx)}>
@@ -95,8 +95,8 @@ const AttendanceInfo = () => {
       {editRow && (
         <div>
           <div onClick={closeEdit} className="fixed inset-0 bg-black opacity-50 z-50"></div>
-          <div role="dialog" aria-modal="true" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-51 w-full max-w-md bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow p-6">
-            <button onClick={closeEdit} className="absolute top-4 right-4 text-[#7D8597] hover:text-[#023E7D]">
+          <div role="dialog" aria-modal="true" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-51 w-full max-w-md bg-[#FFFFFF] dark:bg-[#33415C] border border-[#33415C] dark:border-[#979DAC] rounded-lg shadow p-6">
+            <button onClick={closeEdit} className="absolute top-4 right-4 text-[#7D8597] dark:text-[#979DAC] hover:text-[#023E7D] dark:hover:text-white">
               <FiX className="w-5 h-5" />
               <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
             </button>

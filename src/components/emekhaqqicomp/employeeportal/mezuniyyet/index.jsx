@@ -34,32 +34,32 @@ const LeaveInfo = () => {
       setItems(prev => prev.filter((_, i) => i !== idx));
     };
   return (
-    <div className="space-y-6 text-[#001233]">
+    <div className="space-y-6 text-[#001233] dark:text-white">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-[#FFFFFF] flex flex-col gap-6 rounded-xl border border-[#33415C] p-6">
-          <p className="text-sm text-[#5C677D]">{t('pages.hr.leave.cards.totalDays')}</p>
-          <p className="text-3xl text-blue-600 mt-2">28</p>
-          <p className="text-sm text-[#7D8597] mt-1">{t('pages.hr.leave.common.daysSuffix')}</p>
+        <div className="bg-[#FFFFFF] dark:bg-[#33415C] flex flex-col gap-6 rounded-xl border border-[#33415C] dark:border-[#979DAC] p-6">
+          <p className="text-sm text-[#5C677D] dark:text-[#979DAC]">{t('pages.hr.leave.cards.totalDays')}</p>
+          <p className="text-3xl text-blue-600 dark:text-blue-400 mt-2">28</p>
+          <p className="text-sm text-[#7D8597] dark:text-[#979DAC] mt-1">{t('pages.hr.leave.common.daysSuffix')}</p>
         </div>
-        <div className="bg-[#FFFFFF] flex flex-col gap-6 rounded-xl border border-[#33415C] p-6">
-          <p className="text-sm text-[#5C677D]">{t('pages.hr.leave.cards.used')}</p>
-          <p className="text-3xl text-orange-600 mt-2">8</p>
-          <p className="text-sm text-[#7D8597] mt-1">{t('pages.hr.leave.common.daysSuffix')}</p>
+        <div className="bg-[#FFFFFF] dark:bg-[#33415C] flex flex-col gap-6 rounded-xl border border-[#33415C] dark:border-[#979DAC] p-6">
+          <p className="text-sm text-[#5C677D] dark:text-[#979DAC]">{t('pages.hr.leave.cards.used')}</p>
+          <p className="text-3xl text-orange-600 dark:text-orange-400 mt-2">8</p>
+          <p className="text-sm text-[#7D8597] dark:text-[#979DAC] mt-1">{t('pages.hr.leave.common.daysSuffix')}</p>
         </div>
-        <div className="bg-[#FFFFFF] flex flex-col gap-6 rounded-xl border border-[#33415C] p-6">
-          <p className="text-sm text-[#5C677D]">{t('pages.hr.leave.cards.remaining')}</p>
-          <p className="text-3xl text-green-600 mt-2">20</p>
-          <p className="text-sm text-[#7D8597] mt-1">{t('pages.hr.leave.common.daysSuffix')}</p>
+        <div className="bg-[#FFFFFF] dark:bg-[#33415C] flex flex-col gap-6 rounded-xl border border-[#33415C] dark:border-[#979DAC] p-6">
+          <p className="text-sm text-[#5C677D] dark:text-[#979DAC]">{t('pages.hr.leave.cards.remaining')}</p>
+          <p className="text-3xl text-green-600 dark:text-green-400 mt-2">20</p>
+          <p className="text-sm text-[#7D8597] dark:text-[#979DAC] mt-1">{t('pages.hr.leave.common.daysSuffix')}</p>
         </div>
-        <div className="bg-[#FFFFFF] flex flex-col gap-6 rounded-xl border border-[#33415C] p-6">
-          <p className="text-sm text-[#5C677D]">{t('pages.hr.leave.cards.pending')}</p>
-          <p className="text-3xl text-purple-600 mt-2">0</p>
-          <p className="text-sm text-[#7D8597] mt-1">{t('pages.hr.portal.leave.suffix.requests')}</p>
+        <div className="bg-[#FFFFFF] dark:bg-[#33415C] flex flex-col gap-6 rounded-xl border border-[#33415C] dark:border-[#979DAC] p-6">
+          <p className="text-sm text-[#5C677D] dark:text-[#979DAC]">{t('pages.hr.leave.cards.pending')}</p>
+          <p className="text-3xl text-purple-600 dark:text-purple-400 mt-2">0</p>
+          <p className="text-sm text-[#7D8597] dark:text-[#979DAC] mt-1">{t('pages.hr.portal.leave.suffix.requests')}</p>
         </div>
       </div>
-      <div className="bg-[#FFFFFF] flex flex-col gap-6 rounded-xl border border-[#33415C] p-6">
+      <div className="bg-[#FFFFFF] dark:bg-[#33415C] flex flex-col gap-6 rounded-xl border border-[#33415C] dark:border-[#979DAC] p-6">
         <div className="flex justify-between items-center">
-          <h4 className="text-lg font-semibold text-[#023E7D]">{t('pages.hr.portal.leave.history.title')}</h4>
+          <h4 className="text-lg font-semibold text-[#023E7D] dark:text-white">{t('pages.hr.portal.leave.history.title')}</h4>
           {modal && <NewQuestion setModal={setModal} />}
           <button
             onClick={() => setModal(true)}
@@ -76,23 +76,23 @@ const LeaveInfo = () => {
             </div>
           )}
           {items.map((it, idx) => (
-            <div key={idx} className="p-4 border border-[#979DAC] rounded-lg bg-[#FFFFFF]">
+            <div key={idx} className="p-4 border border-[#979DAC] rounded-lg bg-[#FFFFFF] dark:bg-[#001233]">
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className={`inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium ${it.type === 'sick' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'}`}>
+                    <span className={`inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium ${it.type === 'sick' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-200' : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-200'}`}>
                       {it.type === 'sick' ? t('pages.hr.leave.modal.types.sick') : t('pages.hr.leave.modal.types.annual')}
                     </span>
-                    <span className={`inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium ${it.status === 'approved' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                    <span className={`inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium ${it.status === 'approved' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-200' : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-200'}`}>
                       {it.status === 'approved' ? t('pages.hr.leave.requests.status.approved') : t('pages.hr.leave.requests.status.pending', { defaultValue: 'Pending' })}
                     </span>
                   </div>
-                  <p className="text-[#001233] mt-2">{it.start} - {it.end}</p>
-                  <p className="text-sm text-blue-600">{it.days} {t('pages.hr.leave.common.daysSuffix')}</p>
-                  <p className="text-sm text-[#7D8597] mt-1">{it.description}</p>
+                  <p className="text-[#001233] dark:text-white mt-2">{it.start} - {it.end}</p>
+                  <p className="text-sm text-blue-600 dark:text-blue-400">{it.days} {t('pages.hr.leave.common.daysSuffix')}</p>
+                  <p className="text-sm text-[#7D8597] dark:text-[#979DAC] mt-1">{it.description}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <button className="p-2 hover:bg-[#F5F8FF] rounded-md" title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })} onClick={() => openEdit(it, idx)}>
+                  <button className="p-2 hover:bg-[#F5F8FF] dark:hover:bg-[#001233] rounded-md" title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })} onClick={() => openEdit(it, idx)}>
                     <FiEdit2 className="w-4 h-4" />
                   </button>
                   <button className="p-2 rounded-md text-red-600 hover:text-red-700" title={t('common.delete', { ns: 'translation', defaultValue: 'Delete' })} onClick={() => handleDelete(idx)}>

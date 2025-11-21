@@ -60,8 +60,8 @@ function EventCalendar() {
     },
   ]), [t]);
   return (
-    <div className="h-[500px]">
-      <h3>{t('pages.hr.calendar.title', { defaultValue: 'Calendar' })}</h3>
+    <div className="h-[500px] dark:text-white">
+      <h3 className="text-[#001233] dark:text-white font-semibold mb-4">{t('pages.hr.calendar.title', { defaultValue: 'Calendar' })}</h3>
       <Calendar
         localizer={localizer}
         events={events}

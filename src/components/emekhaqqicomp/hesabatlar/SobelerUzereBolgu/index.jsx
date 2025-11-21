@@ -21,10 +21,10 @@ const data = [
 export default function SobelerUzereBolgu() {
   const { t } = useTranslation();
   return (
-    <div className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border border-gray-200 p-6">
+    <div className="bg-white dark:bg-[#33415C] text-gray-900 dark:text-white flex flex-col gap-6 rounded-xl border border-gray-200 dark:border-[#979DAC] p-6">
       {/* Başlıq */}
       <div className="grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 pb-6">
-        <h4 className="leading-none text-lg font-semibold">{t('pages.hr.reports.departmentDistribution.title', { defaultValue: 'Department Distribution' })}</h4>
+        <h4 className="leading-none text-lg font-semibold dark:text-white">{t('pages.hr.reports.departmentDistribution.title', { defaultValue: 'Department Distribution' })}</h4>
       </div>
 
       {/* Pie Chart */}
@@ -64,11 +64,11 @@ export default function SobelerUzereBolgu() {
                 className="w-3 h-3 rounded"
                 style={{ backgroundColor: color }}
               ></div>
-              <span className="text-gray-700">{name}</span>
+              <span className="text-gray-700 dark:text-white">{name}</span>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-gray-600">{t('pages.hr.common.employeeCount', { count: workers, defaultValue: '{{count}} employees' })}</span>
-              <span className="text-gray-900">₼{salary.toLocaleString()}</span>
+              <span className="text-gray-600 dark:text-[#979DAC]">{t('pages.hr.common.employeeCount', { count: workers, defaultValue: '{{count}} employees' })}</span>
+              <span className="text-gray-900 dark:text-white">₼{salary.toLocaleString()}</span>
             </div>
           </div>
         ))}
