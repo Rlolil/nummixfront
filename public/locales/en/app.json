@@ -1294,6 +1294,12 @@
 
     "warehouse": {
       "title": "Warehouse",
+      "common": {
+        "actions": "Actions",
+        "edit": "Edit",
+        "delete": "Delete",
+        "confirmDelete": "Do you want to delete this row?"
+      },
       "dashboard": {
         "title": "Warehouse Management",
         "subtitle": "Overview and key metrics",
@@ -1311,6 +1317,55 @@
           "current": "Current",
           "minimum": "Minimum"
         }
+      },
+      "products": {
+        "title": "Products",
+        "subtitle": "List of all goods and materials",
+        "newProduct": "New Product",
+        "searchPlaceholder": "SKU, name or barcode...",
+        "table": {
+          "image": "Image",
+          "sku": "SKU",
+          "product": "Product",
+          "category": "Category",
+          "quantity": "Quantity",
+          "minMax": "Min/Max",
+          "status": "Status",
+          "location": "Location",
+          "cost": "Cost",
+          "actions": ""
+        },
+        "status": {
+          "low": "Low",
+          "high": "High",
+          "good": "Good"
+        },
+        "modal": {
+          "title": "Add New Product",
+          "subtitle": "Enter product details",
+          "labels": {
+            "sku": "SKU",
+            "barcode": "Barcode",
+            "name": "Product Name",
+            "image": "Image",
+            "category": "Category",
+            "unit": "Unit of Measure",
+            "minStock": "Min. Stock",
+            "maxStock": "Max. Stock",
+            "cost": "Cost",
+            "initialQuantity": "Initial Quantity",
+            "location": "Storage Location"
+          },
+          "placeholders": {
+            "name": "Enter product name",
+            "select": "Select"
+          },
+          "buttons": {
+            "cancel": "Cancel",
+            "save": "Save"
+          }
+        },
+        "deleteConfirm": "Do you want to delete this product?"
       },
       "nav": {
         "dashboard": "Dashboard",
@@ -1429,54 +1484,7 @@
           }
         }
       },
-      "products": {
-        "title": "Products ({{count}})",
-        "subtitle": "Complete materials list",
-        "addNew": "New Product",
-        "searchPlaceholder": "SKU, name or barcode...",
-        "table": {
-          "headers": {
-            "sku": "SKU",
-            "product": "Product",
-            "category": "Category",
-            "stock": "Stock",
-            "minMax": "Min/Max",
-            "status": "Status",
-            "location": "Location",
-            "cost": "Cost"
-          }
-        },
-        "status": {
-          "low": "Low",
-          "ok": "OK",
-          "high": "High"
-        },
-        "modal": {
-          "title": "Add New Product",
-          "desc": "Enter product details"
-        },
-        "form": {
-          "sku": "SKU",
-          "barcode": "Barcode",
-          "name": "Product name",
-          "category": "Category",
-          "unit": "Unit",
-          "minStock": "Min. stock",
-          "maxStock": "Max. stock",
-          "cost": "Cost (₼)",
-          "location": "Storage location",
-          "select": "Select"
-        },
-        "placeholders": {
-          "name": "Enter product name"
-        },
-        "units": {
-          "kg": "kg",
-          "pcs": "pcs",
-          "liter": "liter",
-          "meter": "meter"
-        }
-      },
+
       "inventory": {
         "title": "Inventory",
         "subtitle": "Current balances and inventory count",
@@ -1520,6 +1528,8 @@
         "count": {
           "title": "Physical Inventory Count",
           "info": "Perform a physical count and enter the actual quantity. The system will automatically calculate the difference.",
+          "searchPlaceholder": "SKU, name or location...",
+          "confirmDelete": "Do you want to delete this row?",
           "table": {
             "sku": "SKU",
             "product": "Product",
@@ -2366,7 +2376,7 @@
       }
     },
     "assets": {
-      "title": "Fixed Assets Management",
+      "title": "Fixed Assets",
       "subtitle": "Tracking assets and depreciation",
       "tabs": {
         "management": "Management",
@@ -2548,6 +2558,7 @@
     }
   },
   "common": {
+    "actions": "Actions",
     "logoAlt": "Logo",
     "menu": "Menu",
     "loading": "Loading...",

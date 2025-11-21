@@ -34,7 +34,7 @@ function Header() {
         <div className="flex items-center gap-4">
           <LanguageSwitcher compact />
           <div>
-            <button className="relative hover:bg-gray-100 p-3 rounded-2xl">
+            <button className="relative  dark:hover:bg-[#002147] hover:bg-gray-100 p-3 rounded-2xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -54,7 +54,7 @@ function Header() {
             </button>
           </div>
           <div>
-            <button className="relative hover:bg-gray-100 p-3 font-bold text-black rounded-full">
+            <button className="relative dark:hover:bg-[#002147] dark:text-white hover:bg-gray-100 p-3 font-bold text-black rounded-full">
               <span className="flex size-full items-center justify-center">
                 {t("header.initials", { ns: 'translation' })}
               </span>

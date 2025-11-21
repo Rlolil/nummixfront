@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 export default function AnbarTransfer() {
     const { t } = useTranslation();
     const [transfer, setTransfer] = useState({
-        from: t('pages.warehouse.operations.common.warehouses.mainBaku'),
+        from: "anbar_bakı",
         to: "",
         date: new Date().toISOString().split("T")[0],
         products: [
@@ -36,7 +36,7 @@ export default function AnbarTransfer() {
     // “Ləğv et” – sıfırla
     const handleReset = () => {
         setTransfer({
-            from: t('pages.warehouse.operations.common.warehouses.mainBaku'),
+            from: "anbar_bakı",
             to: "",
             date: new Date().toISOString().split("T")[0],
             products: [{ id: 1, product: "", quantity: "", newLocation: "" }],

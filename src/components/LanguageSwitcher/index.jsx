@@ -42,7 +42,7 @@ export default function LanguageSwitcher({ compact = false, className = '' }) {
 
   if (compact) {
     return (
-      <button onClick={() => setOpen(!open)} className={`relative inline-flex items-center gap-2 px-3 py-1.5 rounded-md border hover:bg-gray-50 ${className}`}>
+      <button onClick={() => setOpen(!open)} className={`relative inline-flex items-center  dark:hover:bg-[#002147] gap-2 px-3 py-1.5 rounded-md border dark:bg-[#001233] dark:text-white hover:bg-gray-50 ${className}`}>
         <span>{FLAGS[current]}</span>
         <span className="text-sm hidden sm:inline">{current.toUpperCase()}</span>
         {open && (
@@ -54,7 +54,7 @@ export default function LanguageSwitcher({ compact = false, className = '' }) {
                 tabIndex={0}
                 onClick={() => change(it.code)}
                 onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); change(it.code); } }}
-                className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 ${current === it.code ? 'font-semibold' : ''}`}>
+                className={`w-full flex items-center  dark:bg-[#001233] dark:hover:bg-[#002147] gap-2 px-3 py-2 text-left hover:bg-gray-100 ${current === it.code ? 'font-semibold' : ''}`}>
                 <span>{FLAGS[it.code]}</span>
                 <span className="text-sm">{it.label}</span>
               </div>

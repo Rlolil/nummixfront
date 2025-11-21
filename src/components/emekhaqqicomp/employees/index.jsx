@@ -152,15 +152,15 @@ const Employees = () => {
   }, [employees, search]);
 
   return (
-    <div className="flex-1 overflow-auto p-6 space-y-6 text-[#001233]">
+    <div className="flex-1 overflow-auto p-6 space-y-6 text-[#001233] dark:text-white">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-[#023E7D]">{t('pages.hr.employees.title', { defaultValue: 'Employees' })}</h2>
-          <p className="text-[#7D8597]">{t('pages.hr.employees.subtitle', { defaultValue: 'Manage all employees' })}</p>
+          <h2 className="text-xl font-bold text-[#023E7D] dark:text-white">{t('pages.hr.employees.title', { defaultValue: 'Employees' })}</h2>
+          <p className="text-[#7D8597] dark:text-[#5C677D]">{t('pages.hr.employees.subtitle', { defaultValue: 'Manage all employees' })}</p>
         </div>
         <button
           onClick={() => setIsDialogOpen(true)}
-          className="flex items-center gap-2 bg-[#0466CB] hover:bg-[#0453A4] text-white px-4 py-2 rounded-md"
+          className="flex items-center gap-2 bg-[#0466CB] hover:bg-[#0453A4] dark:bg-[#023E7D] dark:hover:bg-[#0453A4] text-white px-4 py-2 rounded-md"
         >
           <FiPlus className="w-4 h-4" />
           {t('pages.hr.employees.new', { defaultValue: 'New Employee' })}
@@ -172,12 +172,12 @@ const Employees = () => {
           />
         )}
       </div>
-      <div className="bg-[#FFFFFF] border border-[#33415C] rounded-xl p-4">
+      <div className="bg-[#FFFFFF] dark:bg-[#33415C] border border-[#33415C] dark:border-[#979DAC] rounded-xl p-4">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1">
-            <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#7D8597]" />
+            <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#7D8597] dark:text-[#5C677D]" />
             <input
-              className="w-full pl-10 pr-3 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] placeholder:text-[#7D8597] focus:outline-none"
+              className="w-full pl-10 pr-3 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] dark:bg-[#002855] text-base text-[#001233] dark:text-white placeholder:text-[#7D8597] dark:placeholder:text-[#5C677D] focus:outline-none"
               placeholder={t('pages.hr.employees.searchPlaceholder', { defaultValue: 'Search employee (name, position, ID)' })}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -193,7 +193,7 @@ const Employees = () => {
               </button>
             )}
           </div>
-          <select className="flex items-center justify-between gap-2 px-3 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm w-full sm:w-48">
+          <select className="flex items-center justify-between gap-2 px-3 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] dark:bg-[#002855] dark:text-white text-sm w-full sm:w-48">
             <option>{t('pages.hr.employees.filters.label', { defaultValue: 'Filter' })}</option>
             <option>{t('pages.hr.employees.filters.allDepartments', { defaultValue: 'All departments' })}</option>
             <option>{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</option>
@@ -202,49 +202,49 @@ const Employees = () => {
             <option>{t('pages.hr.departments.sales', { defaultValue: 'Sales' })}</option>
             <option>{t('pages.hr.departments.hr', { defaultValue: 'Human Resources' })}</option>
           </select>
-          <button className="flex items-center gap-2 px-3 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#023E7D] hover:bg-[#F5F8FF]">
+          <button className="flex items-center gap-2 px-3 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] dark:bg-[#002855] text-sm text-[#023E7D] dark:text-white hover:bg-[#F5F8FF] dark:hover:bg-[#023E7D]">
             <FiDownload className="w-4 h-4" />
             <span className="hidden sm:inline">{t('common.export', { ns: 'translation', defaultValue: 'Export' })}</span>
           </button>
         </div>
       </div>
-      <div className="bg-[#FFFFFF] border border-[#33415C] rounded-xl overflow-x-auto">
+      <div className="bg-[#FFFFFF] dark:bg-[#33415C] border border-[#33415C] dark:border-[#979DAC] rounded-xl overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-[#F5F8FF] border-b border-[#979DAC]">
+          <thead className="bg-[#F5F8FF] dark:bg-[#002855] border-b border-[#979DAC] dark:border-[#979DAC]">
             <tr>
-              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#7D8597] uppercase">
                 {t('pages.hr.employees.table.employee', { defaultValue: 'Employee' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#7D8597] uppercase">
                 {t('pages.hr.employees.table.position', { defaultValue: 'Position' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#7D8597] uppercase">
                 {t('pages.hr.employees.table.department', { defaultValue: 'Department' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#7D8597] uppercase">
                 {t('pages.hr.employees.table.salary', { defaultValue: 'Salary' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#7D8597] uppercase">
                 {t('pages.hr.employees.table.status', { defaultValue: 'Status' })}
               </th>
-              <th className="px-6 py-3 text-left text-xs text-[#5C677D] uppercase">
+              <th className="px-6 py-3 text-left text-xs text-[#5C677D] dark:text-[#7D8597] uppercase">
                 {t('pages.hr.employees.table.actions', { defaultValue: 'Actions' })}
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#979DAC]">
+          <tbody className="divide-y divide-[#979DAC] dark:divide-[#979DAC]">
             {filteredEmployees.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-6 py-6 text-center text-sm text-[#7D8597]">
+                <td colSpan={6} className="px-6 py-6 text-center text-sm text-[#7D8597] dark:text-[#5C677D]">
                   {t('common.noResults', { ns: 'translation', defaultValue: 'No results found' })}
                 </td>
               </tr>
             )}
             {filteredEmployees.map((employee, idx) => (
-              <tr key={employee.id} className="hover:bg-[#F5F8FF]">
+              <tr key={employee.id} className="hover:bg-[#F5F8FF] dark:hover:bg-[#002855]">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-blue-100 dark:bg-[#023E7D] text-blue-600 dark:text-[#0453A4] rounded-full flex items-center justify-center">
                       {employee.name[0]}
                     </div>
                     <div className="ml-4">

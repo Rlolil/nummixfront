@@ -783,6 +783,152 @@
         }
       }
     },
+    "assets": {
+      "title": "Управление Основными",
+      "subtitle": "Учёт активов и амортизации",
+      "tabs": {
+        "management": "Управление",
+        "assets": "Активы",
+        "reports": "Отчеты"
+      },
+      "stats": {
+        "totalValue": {
+          "title": "Общая стоимость",
+          "subtitle": "Начальная стоимость"
+        },
+        "currentValue": {
+          "title": "Текущая стоимость",
+          "subtitle": "После амортизации"
+        },
+        "depreciation": { "title": "Амортизация", "subtitle": "Накопленная" },
+        "assetCount": {
+          "title": "Количество активов",
+          "subtitle": "Из {{count}} активов"
+        }
+      },
+      "charts": {
+        "categoriesDistribution": "Распределение по категориям",
+        "branchValueDistribution": "Стоимость по отделам"
+      },
+      "categories": {
+        "property": "Недвижимость",
+        "officeEquipment": "Офисное оборудование",
+        "vehicles": "Транспорт",
+        "computerEquipment": "Компьютерное оборудование"
+      },
+      "search": { "placeholder": "Поиск актива..." },
+      "table": {
+        "headers": {
+          "inventoryNo": "Инв. №",
+          "name": "Название",
+          "category": "Категория",
+          "account": "Счет",
+          "location": "Локация",
+          "initialValue": "Начальная стоимость",
+          "currentValue": "Текущая стоимость",
+          "status": "Статус"
+        }
+      },
+      "status": { "active": "Актив" },
+      "actions": { "edit": "Редактировать", "delete": "Удалить" },
+      "reports": {
+        "general": {
+          "title": "Общий отчет",
+          "desc": "Полный список активов и данных",
+          "downloadExcel": "Скачать Excel"
+        },
+        "depreciation": {
+          "title": "Отчет по амортизации",
+          "desc": "Данные по амортизации активов",
+          "downloadPdf": "Скачать PDF"
+        },
+        "byCategory": {
+          "title": "По категориям",
+          "desc": "Анализ по категориям",
+          "view": "Просмотр"
+        },
+        "byLocation": {
+          "title": "По локациям",
+          "desc": "Распределение по локациям",
+          "view": "Просмотр"
+        }
+      },
+      "buttons": {
+        "cancel": "Отмена",
+        "save": "Сохранить",
+        "newAsset": "Новый актив"
+      },
+      "addModal": { "title": "Добавить новый актив" },
+      "form": {
+        "inventoryNo": "Инвентарный №",
+        "category": "Категория",
+        "selectCategory": "Выберите категорию",
+        "categoryOptions": {
+          "computerEquipment": "Компьютерное оборудование",
+          "vehicles": "Транспорт",
+          "officeEquipment": "Офисное оборудование",
+          "property": "Недвижимость"
+        },
+        "accountCode": "Код счета",
+        "accountOptions": { "111": "111", "112": "112", "113": "113" },
+        "purchaseDate": "Дата покупки",
+        "purchaseDatePlaceholder": "ГГГГ-ММ-ДД (напр. 2025-11-20)",
+        "initialValue": "Начальная стоимость",
+        "residualValue": "Остаточная стоимость",
+        "depreciationMethod": "Метод амортизации",
+        "depreciationMethods": {
+          "straightLine": "Прямолинейный",
+          "decliningBalance": "Уменьшающийся остаток",
+          "unitsOfProduction": "По объему производства"
+        },
+        "usefulLifeMonths": "Срок службы (мес)",
+        "location": "Локация",
+        "selectLocation": "Выберите локацию",
+        "locationOptions": {
+          "bakuOffice": "Бакинский офис",
+          "sumgaitBranch": "Сумгаитский филиал",
+          "ganjaBranch": "Гянджинский филиал"
+        },
+        "branch": "Отдел",
+        "selectBranch": "Выберите отдел",
+        "branchOptions": {
+          "it": "IT отдел",
+          "accounting": "Бухгалтерия",
+          "sales": "Отдел продаж",
+          "hr": "HR"
+        },
+        "supplier": "Поставщик",
+        "serialNumber": "Серийный номер",
+        "assignedTo": "Назначено",
+        "warrantyPeriodMonths": "Срок гарантии (мес)",
+        "note": "Примечание",
+        "assetName": "Название актива",
+        "assetNamePlaceholder": "Введите название актива"
+      },
+      "categoryReportModal": {
+        "title": "Отчет по категориям",
+        "headers": {
+          "category": "Категория",
+          "assetCount": "Кол-во активов",
+          "initial": "Начальная стоимость",
+          "current": "Текущая стоимость",
+          "depreciation": "Амортизация",
+          "percent": "Амортизация %"
+        },
+        "total": "Итого"
+      },
+      "branchReportModal": {
+        "title": "Отчет по локациям",
+        "headers": {
+          "location": "Локация",
+          "assetCount": "Кол-во активов",
+          "initial": "Начальная стоимость",
+          "current": "Текущая стоимость",
+          "share": "Доля %"
+        },
+        "total": "Итого"
+      }
+    },
     "accounting": {
       "title": "Бухгалтерия",
       "tabs": {
@@ -1992,6 +2138,12 @@
     },
     "warehouse": {
       "title": "Склад",
+      "common": {
+        "actions": "Действия",
+        "edit": "Редактировать",
+        "delete": "Удалить",
+        "confirmDelete": "Вы хотите удалить эту строку?"
+      },
       "dashboard": {
         "title": "Управление складом",
         "subtitle": "Обзор и ключевые показатели",
@@ -2009,6 +2161,55 @@
           "current": "Текущий",
           "minimum": "Минимум"
         }
+      },
+      "products": {
+        "title": "Продукты",
+        "subtitle": "Список всех товаров и материалов",
+        "newProduct": "Новый продукт",
+        "searchPlaceholder": "SKU, название или штрих-код...",
+        "table": {
+          "image": "Изображение",
+          "sku": "SKU",
+          "product": "Продукт",
+          "category": "Категория",
+          "quantity": "Количество",
+          "minMax": "Мин/Макс",
+          "status": "Статус",
+          "location": "Местоположение",
+          "cost": "Стоимость",
+          "actions": ""
+        },
+        "status": {
+          "low": "Низкий",
+          "high": "Высокий",
+          "good": "Хороший"
+        },
+        "modal": {
+          "title": "Добавить новый продукт",
+          "subtitle": "Введите данные о продукте",
+          "labels": {
+            "sku": "SKU",
+            "barcode": "Штрих-код",
+            "name": "Название продукта",
+            "image": "Изображение",
+            "category": "Категория",
+            "unit": "Единица измерения",
+            "minStock": "Мин. запас",
+            "maxStock": "Макс. запас",
+            "cost": "Стоимость",
+            "initialQuantity": "Начальное количество",
+            "location": "Место хранения"
+          },
+          "placeholders": {
+            "name": "Введите название продукта",
+            "select": "Выберите"
+          },
+          "buttons": {
+            "cancel": "Отмена",
+            "save": "Сохранить"
+          }
+        },
+        "deleteConfirm": "Вы хотите удалить этот продукт?"
       },
       "nav": {
         "dashboard": "Главная",
@@ -2124,54 +2325,7 @@
           }
         }
       },
-      "products": {
-        "title": "Товары ({{count}})",
-        "subtitle": "Полный список материалов",
-        "addNew": "Новый товар",
-        "searchPlaceholder": "SKU, название или штрихкод...",
-        "table": {
-          "headers": {
-            "sku": "SKU",
-            "product": "Товар",
-            "category": "Категория",
-            "stock": "Остаток",
-            "minMax": "Мин/Макс",
-            "status": "Статус",
-            "location": "Место",
-            "cost": "Себестоимость"
-          }
-        },
-        "status": {
-          "low": "Низкий",
-          "ok": "Норм",
-          "high": "Высокий"
-        },
-        "modal": {
-          "title": "Добавить новый товар",
-          "desc": "Введите данные товара"
-        },
-        "form": {
-          "sku": "SKU",
-          "barcode": "Штрихкод",
-          "name": "Название товара",
-          "category": "Категория",
-          "unit": "Ед. изм.",
-          "minStock": "Мин. остаток",
-          "maxStock": "Макс. остаток",
-          "cost": "Себестоимость (₼)",
-          "location": "Место хранения",
-          "select": "Выберите"
-        },
-        "placeholders": {
-          "name": "Введите название товара"
-        },
-        "units": {
-          "kg": "кг",
-          "pcs": "шт",
-          "liter": "литр",
-          "meter": "метр"
-        }
-      },
+
       "inventory": {
         "title": "Инвентаризация",
         "subtitle": "Текущие остатки и инвентаризация",
@@ -2215,6 +2369,8 @@
         "count": {
           "title": "Физическая инвентаризация",
           "info": "Проведите физический подсчет и введите фактическое количество. Система автоматически рассчитает разницу.",
+          "searchPlaceholder": "SKU, название или место...",
+          "confirmDelete": "Вы хотите удалить эту строку?",
           "table": {
             "sku": "SKU",
             "product": "Товар",
@@ -2289,152 +2445,6 @@
       "successRedirect": "Пароль успешно сброшен! Перенаправляем ко входу..."
     }
   },
-  "assets": {
-    "title": "Управление Основными Средствами",
-    "subtitle": "Учёт активов и амортизации",
-    "tabs": {
-      "management": "Управление",
-      "assets": "Активы",
-      "reports": "Отчеты"
-    },
-    "stats": {
-      "totalValue": {
-        "title": "Общая стоимость",
-        "subtitle": "Начальная стоимость"
-      },
-      "currentValue": {
-        "title": "Текущая стоимость",
-        "subtitle": "После амортизации"
-      },
-      "depreciation": { "title": "Амортизация", "subtitle": "Накопленная" },
-      "assetCount": {
-        "title": "Количество активов",
-        "subtitle": "Из {{count}} активов"
-      }
-    },
-    "charts": {
-      "categoriesDistribution": "Распределение по категориям",
-      "branchValueDistribution": "Стоимость по отделам"
-    },
-    "categories": {
-      "property": "Недвижимость",
-      "officeEquipment": "Офисное оборудование",
-      "vehicles": "Транспорт",
-      "computerEquipment": "Компьютерное оборудование"
-    },
-    "search": { "placeholder": "Поиск актива..." },
-    "table": {
-      "headers": {
-        "inventoryNo": "Инв. №",
-        "name": "Название",
-        "category": "Категория",
-        "account": "Счет",
-        "location": "Локация",
-        "initialValue": "Начальная стоимость",
-        "currentValue": "Текущая стоимость",
-        "status": "Статус"
-      }
-    },
-    "status": { "active": "Актив" },
-    "actions": { "edit": "Редактировать", "delete": "Удалить" },
-    "reports": {
-      "general": {
-        "title": "Общий отчет",
-        "desc": "Полный список активов и данных",
-        "downloadExcel": "Скачать Excel"
-      },
-      "depreciation": {
-        "title": "Отчет по амортизации",
-        "desc": "Данные по амортизации активов",
-        "downloadPdf": "Скачать PDF"
-      },
-      "byCategory": {
-        "title": "По категориям",
-        "desc": "Анализ по категориям",
-        "view": "Просмотр"
-      },
-      "byLocation": {
-        "title": "По локациям",
-        "desc": "Распределение по локациям",
-        "view": "Просмотр"
-      }
-    },
-    "buttons": {
-      "cancel": "Отмена",
-      "save": "Сохранить",
-      "newAsset": "Новый актив"
-    },
-    "addModal": { "title": "Добавить новый актив" },
-    "form": {
-      "inventoryNo": "Инвентарный №",
-      "category": "Категория",
-      "selectCategory": "Выберите категорию",
-      "categoryOptions": {
-        "computerEquipment": "Компьютерное оборудование",
-        "vehicles": "Транспорт",
-        "officeEquipment": "Офисное оборудование",
-        "property": "Недвижимость"
-      },
-      "accountCode": "Код счета",
-      "accountOptions": { "111": "111", "112": "112", "113": "113" },
-      "purchaseDate": "Дата покупки",
-      "purchaseDatePlaceholder": "ГГГГ-ММ-ДД (напр. 2025-11-20)",
-      "initialValue": "Начальная стоимость",
-      "residualValue": "Остаточная стоимость",
-      "depreciationMethod": "Метод амортизации",
-      "depreciationMethods": {
-        "straightLine": "Прямолинейный",
-        "decliningBalance": "Уменьшающийся остаток",
-        "unitsOfProduction": "По объему производства"
-      },
-      "usefulLifeMonths": "Срок службы (мес)",
-      "location": "Локация",
-      "selectLocation": "Выберите локацию",
-      "locationOptions": {
-        "bakuOffice": "Бакинский офис",
-        "sumgaitBranch": "Сумгаитский филиал",
-        "ganjaBranch": "Гянджинский филиал"
-      },
-      "branch": "Отдел",
-      "selectBranch": "Выберите отдел",
-      "branchOptions": {
-        "it": "IT отдел",
-        "accounting": "Бухгалтерия",
-        "sales": "Отдел продаж",
-        "hr": "HR"
-      },
-      "supplier": "Поставщик",
-      "serialNumber": "Серийный номер",
-      "assignedTo": "Назначено",
-      "warrantyPeriodMonths": "Срок гарантии (мес)",
-      "note": "Примечание",
-      "assetName": "Название актива",
-      "assetNamePlaceholder": "Введите название актива"
-    },
-    "categoryReportModal": {
-      "title": "Отчет по категориям",
-      "headers": {
-        "category": "Категория",
-        "assetCount": "Кол-во активов",
-        "initial": "Начальная стоимость",
-        "current": "Текущая стоимость",
-        "depreciation": "Амортизация",
-        "percent": "Амортизация %"
-      },
-      "total": "Итого"
-    },
-    "branchReportModal": {
-      "title": "Отчет по локациям",
-      "headers": {
-        "location": "Локация",
-        "assetCount": "Кол-во активов",
-        "initial": "Начальная стоимость",
-        "current": "Текущая стоимость",
-        "share": "Доля %"
-      },
-      "total": "Итого"
-    }
-  },
   "assetsExtra": {
     "reportText": {
       "depreciationReportTitle": "ОТЧЕТ ПО АМОРТИЗАЦИИ",
@@ -2455,6 +2465,7 @@
     }
   },
   "common": {
+    "actions": "Действия",
     "logoAlt": "Логотип",
     "menu": "Меню",
     "loading": "Загрузка...",

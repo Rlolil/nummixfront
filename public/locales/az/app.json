@@ -1775,155 +1775,14 @@
       "title": "Ayarlar",
       "subtitle": "Hesab və üstünlüklərinizi idarə edin"
     },
-    "assets": {
-      "title": "Əsas Vəsaitlər",
-      "subtitle": "Vəsaitlərinizi idarə edin və hesabatlar alın",
-      "charts": {
-        "categoryDistribution": "Kateqoriya üzrə bölgü",
-        "valueByDepartment": "Şöbələr üzrə dəyər"
-      },
-      "tabs": {
-        "management": "İdarəetmə",
-        "assets": "Vəsaitlər",
-        "reports": "Hesabatlar"
-      },
-      "stats": {
-        "totalValue": "Ümumi dəyər",
-        "totalValueSubtitle": "İlkin dəyər",
-        "currentValue": "Cari dəyər",
-        "currentValueSubtitle": "Amortizasiya sonrası",
-        "depreciation": "Amortizasiya",
-        "depreciationSubtitle": "Yığılmış",
-        "assetCount": "Aktiv sayı",
-        "assetCountSubtitle": "Cəmi {{count}} aktivdən"
-      },
-      "actions": {
-        "newAsset": "Yeni vəsait",
-        "view": "Bax"
-      },
-      "searchPlaceholder": "Ad, inventar №, kateqoriya üzrə axtarış...",
-      "table": {
-        "invNo": "İnv. №",
-        "name": "Ad",
-        "category": "Kateqoriya",
-        "account": "Hesab",
-        "location": "Yer",
-        "initialValue": "İlkin dəyər",
-        "currentValue": "Cari dəyər",
-        "status": "Status"
-      },
-      "reports": {
-        "general": {
-          "title": "Ümumi hesabat",
-          "desc": "Vəsait siyahısını Excel kimi yüklə",
-          "downloadExcel": "Excel yüklə"
-        },
-        "depreciation": {
-          "title": "Amortizasiya hesabatı",
-          "desc": "Amortizasiya detalları",
-          "downloadPDF": "PDF yüklə"
-        },
-        "byCategory": {
-          "title": "Kateqoriya üzrə",
-          "desc": "Kateqoriyalar üzrə xülasə"
-        },
-        "byDepartment": {
-          "title": "Şöbə/filial üzrə",
-          "desc": "Şöbələr üzrə xülasə"
-        }
-      },
-      "export": {
-        "fileNames": {
-          "generalCsv": "umumi_hesabat_{{date}}.csv",
-          "depreciationTxt": "amortizasiya_hesabati_{{date}}.txt"
-        }
-      },
-      "modal": {
-        "add": {
-          "title": "Vəsait əlavə et"
-        }
-      },
-      "form": {
-        "assetName": "Vəsaitin adı",
-        "inventoryNo": "Inventar №",
-        "category": "Kateqoriya",
-        "selectCategory": "Kateqoriya seçin",
-        "categoryOptions": {
-          "computerEquipment": "Kompüter avadanlığı",
-          "vehicles": "Nəqliyyat vasitələri",
-          "officeEquipment": "Ofis avadanlığı",
-          "property": "Əmlak"
-        },
-        "accountCode": "Hesab kodu",
-        "accountOptions": {
-          "111": "111",
-          "112": "112",
-          "113": "113"
-        },
-        "purchaseDate": "Alış tarixi",
-        "purchaseDatePlaceholder": "Tarix seçin",
-        "initialValue": "İlkin dəyər",
-        "residualValue": "Qalıq dəyər",
-        "depreciationMethod": "Amortizasiya metodu",
-        "depreciationMethods": {
-          "straightLine": "Düzxətli",
-          "decliningBalance": "Azalan qalıq",
-          "unitsOfProduction": "İstehsal həcmi"
-        },
-        "usefulLifeMonths": "Faydalı istismar (ay)",
-        "location": "Yer",
-        "selectLocation": "Yer seçin",
-        "locationOptions": {
-          "bakuOffice": "Bakı Ofisi",
-          "sumgaitBranch": "Sumqayıt filialı",
-          "ganjaBranch": "Gəncə filialı"
-        },
-        "branch": "Şöbə/Filial",
-        "selectBranch": "Şöbə seçin",
-        "branchOptions": {
-          "it": "IT Şöbəsi",
-          "accounting": "Mühasibatlıq",
-          "sales": "Satış şöbəsi",
-          "hr": "İnsan resursları",
-          "transport": "Nəqliyyat",
-          "design": "Dizayn Şöbəsi"
-        },
-        "supplier": "Tədarükçü",
-        "serialNumber": "Seriya nömrəsi",
-        "assignedTo": "Məsul şəxs",
-        "warrantyPeriodMonths": "Zəmanət müddəti (ay)",
-        "note": "Qeyd"
-      },
-      "buttons": {
-        "cancel": "Ləğv et",
-        "save": "Yadda saxla"
-      },
-      "categoryReportModal": {
-        "title": "Kateqoriya hesabatı",
-        "headers": {
-          "category": "Kateqoriya",
-          "assetCount": "Vəsaitlər",
-          "initial": "İlkin dəyər",
-          "current": "Cari dəyər",
-          "depreciation": "Amortizasiya",
-          "percent": "%"
-        },
-        "total": "Cəmi"
-      },
-      "branchReportModal": {
-        "title": "Şöbə hesabatı",
-        "headers": {
-          "location": "Yer",
-          "assetCount": "Vəsaitlər",
-          "initial": "İlkin dəyər",
-          "current": "Cari dəyər",
-          "share": "Pay"
-        },
-        "total": "Cəmi"
-      }
-    },
     "warehouse": {
       "title": "Anbar",
+      "common": {
+        "actions": "Fəaliyyətlər",
+        "edit": "Redaktə",
+        "delete": "Sil",
+        "confirmDelete": "Bu sətiri silmək istəyirsiniz?"
+      },
       "dashboard": {
         "title": "Anbar İdarəetməsi",
         "subtitle": "Ümumi məlumat və əsas göstəricilər",
@@ -1941,6 +1800,55 @@
           "current": "Cari",
           "minimum": "Minimum"
         }
+      },
+      "products": {
+        "title": "Məhsullar",
+        "subtitle": "Bütün mal-material siyahısı",
+        "newProduct": "Yeni Məhsul",
+        "searchPlaceholder": "SKU, ad və ya ştrixkod...",
+        "table": {
+          "image": "Şəkil",
+          "sku": "SKU",
+          "product": "Məhsul",
+          "category": "Kateqoriya",
+          "quantity": "Qalıq",
+          "minMax": "Min/Max",
+          "status": "Status",
+          "location": "Yer",
+          "cost": "Maya",
+          "actions": ""
+        },
+        "status": {
+          "low": "Aşağı",
+          "high": "Yuxarı",
+          "good": "Yaxşı"
+        },
+        "modal": {
+          "title": "Yeni Məhsul Əlavə Et",
+          "subtitle": "Məhsul məlumatlarını daxil edin",
+          "labels": {
+            "sku": "SKU",
+            "barcode": "Ştrixkod",
+            "name": "Məhsul adı",
+            "image": "Şəkil",
+            "category": "Kateqoriya",
+            "unit": "Ölçü vahidi",
+            "minStock": "Min. Stok",
+            "maxStock": "Max. Stok",
+            "cost": "Maya dəyəri (₼)",
+            "initialQuantity": "İlkin Qalıq",
+            "location": "Saxlama yeri"
+          },
+          "placeholders": {
+            "name": "Məhsul adını daxil edin",
+            "select": "Seçin"
+          },
+          "buttons": {
+            "cancel": "Ləğv et",
+            "save": "Yadda saxla"
+          }
+        },
+        "deleteConfirm": "Bu məhsulu silmək istəyirsiniz?"
       },
       "nav": {
         "dashboard": "Əsas Səhifə",
@@ -2054,55 +1962,7 @@
           }
         }
       },
-      "products": {
-        "title": "Məhsullar ({{count}})",
-        "subtitle": "Bütün mal-material siyahısı",
-        "addNew": "Yeni Məhsul",
-        "searchPlaceholder": "SKU, ad və ya ştrixkod...",
-        "table": {
-          "headers": {
-            "sku": "SKU",
-            "product": "Məhsul",
-            "category": "Kateqoriya",
-            "stock": "Qalıq",
-            "minMax": "Min/Max",
-            "status": "Status",
-            "location": "Yer",
-            "cost": "Maya"
-          }
-        },
-        "status": {
-          "low": "Aşağı",
-          "ok": "Yaxşı",
-          "high": "Yuxarı"
-        },
-        "modal": {
-          "title": "Yeni Məhsul Əlavə Et",
-          "desc": "Məhsul məlumatlarını daxil edin"
-        },
-        "form": {
-          "sku": "SKU",
-          "barcode": "Ştrixkod",
-          "name": "Məhsul adı",
-          "category": "Kateqoriya",
-          "unit": "Ölçü vahidi",
-          "minStock": "Min. Stok",
-          "maxStock": "Max. Stok",
-          "cost": "Maya dəyəri (₼)",
-          "location": "Saxlama yeri",
-          "select": "Seçin"
-        },
-        "placeholders": {
-          "name": "Məhsul adını daxil edin"
-        },
-        "units": {
-          "kg": "kq",
-          "pcs": "ədəd",
-          "liter": "litr",
-          "meter": "metr"
-        }
-      }
-      ,
+
       "inventory": {
         "title": "İnventar",
         "subtitle": "Cari qalıqlar və inventar sayımı",
@@ -2146,6 +2006,8 @@
         "count": {
           "title": "Fiziki İnventar Sayımı",
           "info": "Fiziki sayımı aparın və faktiki miqdarı daxil edin. Sistem avtomatik olaraq fərqi hesablayacaq.",
+          "searchPlaceholder": "SKU, ad və ya yer...",
+          "confirmDelete": "Bu sətiri silmək istəyirsiniz?",
           "table": {
             "sku": "SKU",
             "product": "Məhsul",
@@ -2166,7 +2028,7 @@
       }
     },
     "assets": {
-      "title": "Əsas Vəsaitlərin İdarə Edilməsi",
+      "title": "Əsas Vəsaitlərin",
       "subtitle": "Aktivlərin uçotu və amortizasiya",
       "tabs": {
         "management": "İdarəetmə",
@@ -2348,6 +2210,7 @@
     }
   },
   "common": {
+    "actions": "Fəaliyyətlər",
     "logoAlt": "Loqo",
     "menu": "Menyu",
     "loading": "Yüklənir...",

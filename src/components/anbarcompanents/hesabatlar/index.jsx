@@ -2,8 +2,10 @@ import { FiDownload, FiTrendingUp } from "react-icons/fi";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import { ChartsGroup } from "../anbarqrafiks";
+import { useTranslation } from "react-i18next";
 
 function ItkiVeZayStatistikasi() {
+  const { t } = useTranslation();
   const initial = [
     {
       tarix: "2025-10-01",
@@ -48,7 +50,7 @@ function ItkiVeZayStatistikasi() {
     closeEdit();
   };
   const handleDelete = (index) => {
-    if (window.confirm("Bu sətiri silmək istəyirsiniz?")) {
+    if (window.confirm(t('pages.warehouse.common.confirmDelete'))) {
       setRows((prev) => prev.filter((_, i) => i !== index));
     }
   };
@@ -56,17 +58,17 @@ function ItkiVeZayStatistikasi() {
   return (
     <div className="bg-[#FFFFFF]  dark:bg-[#001233] dark:text-white border border-[#33415C] rounded-2xl p-6 shadow-sm mt-6">
       <h3 className="text-lg font-medium dark:text-white text-[#023E7D] mb-4">
-        İtki və Zay Statistikası
+        {t('pages.warehouse.reports.lossAndWasteTitle')}
       </h3>
       <table className="w-full text-sm">
         <thead>
           <tr className="text-left text-[#5C677D] border-b border-[#979DAC]">
-            <th className="py-2">Tarix</th>
-            <th className="py-2">Məhsul</th>
-            <th className="py-2">Miqdar</th>
-            <th className="py-2">Səbəb</th>
-            <th className="py-2">İtki (₼)</th>
-            <th className="py-2 text-right">Fəaliyyətlər</th>
+            <th className="py-2">{t('pages.warehouse.table.date')}</th>
+            <th className="py-2">{t('pages.warehouse.table.product')}</th>
+            <th className="py-2">{t('pages.warehouse.table.quantity')}</th>
+            <th className="py-2">{t('pages.warehouse.table.reason')}</th>
+            <th className="py-2">{t('pages.warehouse.table.loss')} (₼)</th>
+            <th className="py-2 text-right">{t('pages.warehouse.common.actions')}</th>
           </tr>
         </thead>
         <tbody>
@@ -87,14 +89,14 @@ function ItkiVeZayStatistikasi() {
                   className="inline-flex items-center gap-1 px-2 py-1 border rounded border-[#0466CB] text-[#0466CB] hover:bg-[#0453A4] hover:text-white mr-2"
                 >
                   <FaEdit />
-                  <span className="hidden sm:inline">Redaktə</span>
+                  <span className="hidden sm:inline">{t('pages.warehouse.common.edit')}</span>
                 </button>
                 <button
                   onClick={() => handleDelete(i)}
                   className="inline-flex items-center gap-1 px-2 py-1 border rounded text-red-600 border-red-200 hover:bg-red-50"
                 >
                   <FaTrash />
-                  <span className="hidden sm:inline">Sil</span>
+                  <span className="hidden sm:inline">{t('pages.warehouse.common.delete')}</span>
                 </button>
               </td>
             </tr>
