@@ -24,7 +24,7 @@ function SidebarMobile() {
   }, [isOpen]);
   return (
     <>
-      <div className="bg-white p-3 border-b border-gray-200 flex items-center justify-between fixed w-full z-20 md:hidden">
+      <div className="bg-white dark:bg-[#001845] dark:border-gray-700 p-3 border-b border-gray-200 flex items-center justify-between fixed w-full z-20 md:hidden">
         <button
           onClick={toggleSidebar}
           className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300"
@@ -42,19 +42,19 @@ function SidebarMobile() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="absolute left-2 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500"
+            className="absolute left-2 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500 dark:text-gray-400"
           >
             <circle cx="11" cy="11" r="8"></circle>
             <path d="m21 21-4.3-4.3"></path>
           </svg>
           <input
-            className="w-full h-9 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-9"
+            className="w-full h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#002855] dark:text-white px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 pl-9"
             placeholder={t("search_placeholder", { ns: "translation" })}
           />
         </div>
         <div className="flex items-center gap-2">
           <LanguageSwitcher compact className="mr-1" />
-          <button className="relative hover:bg-gray-100 p-2 rounded-full focus:outline-none">
+          <button className="relative hover:bg-gray-100 dark:hover:bg-[#023E7D] dark:text-white p-2 rounded-full focus:outline-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -72,8 +72,10 @@ function SidebarMobile() {
             </svg>
             <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-red-500"></span>
           </button>
-          <button className="relative hover:bg-gray-100 p-2 text-sm font-bold text-black rounded-full focus:outline-none">
-            <span className="flex items-center justify-center w-8 h-8">{t("header.initials", { ns: "translation" })}</span>
+          <button className="relative hover:bg-gray-100 dark:hover:bg-[#023E7D] p-2 text-sm font-bold text-black dark:text-white rounded-full focus:outline-none">
+            <span className="flex items-center justify-center w-8 h-8">
+              {t("header.initials", { ns: "translation" })}
+            </span>
           </button>
         </div>
       </div>
@@ -84,7 +86,7 @@ function SidebarMobile() {
         />
       )}
       <div
-        className={`fixed top-0 left-0 w-64 h-screen bg-white border-r border-gray-200 text-black z-40 transform ${
+        className={`fixed top-0 left-0 w-64 h-screen bg-white dark:bg-[#001845] border-r border-gray-200 dark:border-gray-700 text-black dark:text-white z-40 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out md:hidden`}
       >
@@ -97,10 +99,13 @@ function SidebarMobile() {
           />
           <h2 className="text-xl font-bold">{t("brand.name")}</h2>
         </div>
-        <hr className="border-gray-200" />
-        <div className="flex flex-col p-4 gap-2 mb-12 text-black font-medium">
+        <hr className="border-gray-200 dark:border-gray-700" />
+        <div className="flex flex-col p-4 gap-2 mb-12 text-black dark:text-white font-medium">
           <Link to="/muhasibat/dashboard">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -122,7 +127,10 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/maliyye">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -147,7 +155,10 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/salescustomers">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -167,7 +178,10 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/supplier">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -189,7 +203,10 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/anbar/dashboard">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -209,7 +226,11 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/esasvesaitler">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 
+    dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -220,7 +241,7 @@ function SidebarMobile() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-5 w-5"
+                className="h-5 w-5 shrink-0"
               >
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
                 <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
@@ -228,11 +249,20 @@ function SidebarMobile() {
                 <path d="M16 13H8"></path>
                 <path d="M16 17H8"></path>
               </svg>
-              <span>{t("pages.assets.menuTitle", { defaultValue: t("pages.assets.title") })}</span>
+
+              <span className="truncate max-w-[160px] text-sm">
+                {t("pages.assets.menuTitle", {
+                  defaultValue: t("pages.assets.title"),
+                })}
+              </span>
             </button>
           </Link>
+
           <Link to="/emekhaqqi/dashboard">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -254,7 +284,10 @@ function SidebarMobile() {
             </button>
           </Link>
           <Link to="/ai">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -271,11 +304,16 @@ function SidebarMobile() {
                 <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path>
                 <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
               </svg>
-              <span className="text-nowrap text-ellipsis">{t("pages.ai.title")}</span>
+              <span className="text-nowrap text-ellipsis">
+                {t("pages.ai.title")}
+              </span>
             </button>
           </Link>
           <Link to="/settings">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -295,9 +333,12 @@ function SidebarMobile() {
             </button>
           </Link>
         </div>
-        <div className="text-gray-500 p-4 absolute bottom-0 w-full">
+        <div className="text-gray-500 dark:text-gray-400 p-4 absolute bottom-0 w-full">
           <Link to="/login">
-            <button onClick={closeSidebar} className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3">
+            <button
+              onClick={closeSidebar}
+              className="flex items-center rounded-md text-md font-medium hover:bg-gray-200 dark:hover:bg-[#023E7D] h-9 px-4 py-2 cursor-pointer w-full justify-start gap-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
