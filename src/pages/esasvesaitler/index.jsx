@@ -50,13 +50,13 @@ export default function EsasVesaitler() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const assets = [
+  const [assetsData, setAssetsData] = useState([
     {
       invNo: "INV-2024-001",
       name: "Dell Kompüter",
-      category: t("pages.assets.categories.computerEquipment"),
+      category: "Kompüter avadanlığı",
       account: "111",
-      location: t("pages.assets.form.locationOptions.bakuOffice"),
+      location: "Bakı Ofisi",
       initialValue: "2,500",
       currentValue: "2,187.5",
       status: "active",
@@ -64,9 +64,9 @@ export default function EsasVesaitler() {
     {
       invNo: "INV-2023-045",
       name: "Toyota Camry",
-      category: t("pages.assets.categories.vehicles"),
+      category: "Nəqliyyat vasitələri",
       account: "112",
-      location: t("pages.assets.form.locationOptions.bakuOffice"),
+      location: "Bakı Ofisi",
       initialValue: "45,000",
       currentValue: "32,500",
       status: "active",
@@ -74,19 +74,19 @@ export default function EsasVesaitler() {
     {
       invNo: "INV-2024-012",
       name: "HP Printer LaserJet",
-      category: t("pages.assets.categories.officeEquipment"),
+      category: "Ofis avadanlığı",
       account: "111",
-      location: t("pages.assets.form.locationOptions.bakuOffice"),
+      location: "Bakı Ofisi",
       initialValue: "1,200",
       currentValue: "1,050",
       status: "active",
     },
     {
       invNo: "INV-2020-001",
-      name: t("pages.assets.categories.property") + " " + t("assetsExtra.locationOptions.may28Area"),
-      category: t("pages.assets.categories.property"),
+      name: "Əmlak - 28 May",
+      category: "Əmlak",
       account: "113",
-      location: t("assetsExtra.locationOptions.may28Area"),
+      location: "28 May",
       initialValue: "500,000",
       currentValue: "445,000",
       status: "active",
@@ -94,14 +94,98 @@ export default function EsasVesaitler() {
     {
       invNo: "INV-2023-089",
       name: 'Samsung Monitor 27"',
-      category: t("pages.assets.categories.computerEquipment"),
+      category: "Kompüter avadanlığı",
       account: "111",
-      location: t("pages.assets.form.locationOptions.bakuOffice"),
+      location: "Bakı Ofisi",
       initialValue: "450",
       currentValue: "300",
       status: "active",
     },
-  ];
+  ]);
+
+  const [editingId, setEditingId] = useState(null);
+
+  const handleEdit = (asset) => {
+    setFormData({
+      name: asset.name,
+      invNo: asset.invNo,
+      category: asset.category,
+      account: asset.account,
+      purchaseDate: "",
+      initialValue: asset.initialValue.replace(/,/g, ""),
+      residualValue: "",
+      depreciationMethod: "straightLine",
+      location: asset.location,
+      branch: "",
+      responsible: "",
+      serialNo: "",
+      warranty: "",
+      notes: "",
+    });
+    setEditingId(asset.invNo);
+    setShowAddModal(true);
+    setActiveMenuId(null);
+  };
+
+  const handleDelete = (invNo) => {
+    if (window.confirm(t("pages.assets.actions.confirmDelete"))) {
+      setAssetsData(assetsData.filter((a) => a.invNo !== invNo));
+    }
+    setActiveMenuId(null);
+  };
+
+  const handleSave = () => {
+    if (editingId) {
+      setAssetsData(
+        assetsData.map((item) =>
+          item.invNo === editingId
+            ? {
+                ...item,
+                name: formData.name,
+                invNo: formData.invNo,
+                category: formData.category,
+                account: formData.account,
+                location: formData.location,
+                initialValue: formData.initialValue,
+                currentValue: formData.initialValue, // Simplified logic
+              }
+            : item
+        )
+      );
+    } else {
+      setAssetsData([
+        ...assetsData,
+        {
+          invNo: formData.invNo,
+          name: formData.name,
+          category: formData.category,
+          account: formData.account,
+          location: formData.location,
+          initialValue: formData.initialValue,
+          currentValue: formData.initialValue,
+          status: "active",
+        },
+      ]);
+    }
+    setShowAddModal(false);
+    setEditingId(null);
+    setFormData({
+      name: "",
+      invNo: "",
+      category: "",
+      account: "111",
+      purchaseDate: "",
+      initialValue: "",
+      residualValue: "",
+      depreciationMethod: "straightLine",
+      location: "",
+      branch: "",
+      responsible: "",
+      serialNo: "",
+      warranty: "",
+      notes: "",
+    });
+  };
 
   const stats = [
     {
@@ -124,8 +208,8 @@ export default function EsasVesaitler() {
     },
     {
       title: t("pages.assets.stats.assetCount.title"),
-      value: String(assets.length),
-      subtitle: t("pages.assets.stats.assetCount.subtitle", { count: assets.length }),
+      value: String(assetsData.length),
+      subtitle: t("pages.assets.stats.assetCount.subtitle", { count: assetsData.length }),
       icon: <Grid3x3 className="w-5 h-5" />,
     },
   ];
@@ -162,7 +246,7 @@ export default function EsasVesaitler() {
 
     const csvContent = [
       headers.join(","),
-      ...assets.map((asset) =>
+      ...assetsData.map((asset) =>
         [
           asset.invNo,
           asset.name,
@@ -194,7 +278,7 @@ export default function EsasVesaitler() {
     const reportContent = `
 ${t("assetsExtra.reportText.depreciationReportTitle")}
 ${t("assetsExtra.reportText.dateLabel")}: ${new Date().toLocaleDateString()}
-${assets
+${assetsData
   .map((asset) => {
     const depreciation =
       parseFloat(asset.initialValue.replace(/,/g, "")) -
@@ -269,7 +353,7 @@ ${t("assetsExtra.reportText.generatedLabel")}: ${new Date().toLocaleString()}
     },
   ];
 
-  const filteredAssets = assets.filter(
+  const filteredAssets = assetsData.filter(
     (asset) =>
       asset.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       asset.invNo.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -566,14 +650,14 @@ ${t("assetsExtra.reportText.generatedLabel")}: ${new Date().toLocaleString()}
                             >
                               <button
                                 className="block w-full text-left px-4 py-2 hover:bg-[#979DAC]/10  dark:text-white text-[#001233]"
-                                onClick={() => alert(t("pages.assets.actions.edit"))}
+                                onClick={() => handleEdit(asset)}
                               >
                                 {t("pages.assets.actions.edit")}
                               </button>
 
                               <button
                                 className="block w-full text-left px-4 py-2 hover:bg-red-50 text-red-600"
-                                onClick={() => alert(t("pages.assets.actions.delete"))}
+                                onClick={() => handleDelete(asset.invNo)}
                               >
                                 {t("pages.assets.actions.delete")}
                               </button>
@@ -1017,9 +1101,7 @@ ${t("assetsExtra.reportText.generatedLabel")}: ${new Date().toLocaleString()}
                   {t("pages.assets.buttons.cancel")}
                 </button>
                 <button
-                  onClick={() => {
-                    setShowAddModal(false);
-                  }}
+                  onClick={handleSave}
                   className="px-4 py-2 bg-[#0466CB] text-white rounded-lg hover:bg-[#0453A4] transition-colors"
                 >
                   {t("pages.assets.buttons.save")}

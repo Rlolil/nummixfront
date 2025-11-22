@@ -1,24 +1,25 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const products = [
-  { id: 1, name: "Premium Paket", sales: "45 satış", price: "67,500 ₼", percent: "+25%" },
-  { id: 2, name: "Standart Xidmət", sales: "128 satış", price: "51,200 ₼", percent: "+18%" },
-  { id: 3, name: "Enterprise Lisenziya", sales: "12 satış", price: "48,000 ₼", percent: "+42%" },
-  { id: 4, name: "Əlavə Modullar", sales: "89 satış", price: "35,600 ₼", percent: "+12%" },
-  { id: 5, name: "Texniki Dəstək", sales: "156 satış", price: "31,200 ₼", percent: "+8%" },
-];
-
-const customers = [
-  { id: "A", name: "ABC Holding", orders: "15 alış • 2 gün əvvəl", price: "42,500 ₼" },
-  { id: "X", name: "XYZ Corporation", orders: "12 alış • 5 gün əvvəl", price: "38,900 ₼" },
-  { id: "T", name: "Tech Solutions MMC", orders: "18 alış • 1 gün əvvəl", price: "35,200 ₼" },
-  { id: "D", name: "Digital Agency", orders: "9 alış • 3 gün əvvəl", price: "28,700 ₼" },
-  { id: "R", name: "Retail Plus", orders: "14 alış • 1 həftə əvvəl", price: "25,600 ₼" },
-];
-
 const ProductCustomer = () => {
   const { t } = useTranslation();
+
+  const products = [
+    { id: 1, name: t("pages.ai.salesAi.products.list.premium"), sales: t("pages.ai.salesAi.common.salesCount", { count: 45 }), price: "67,500 ₼", percent: "+25%" },
+    { id: 2, name: t("pages.ai.salesAi.products.list.standard"), sales: t("pages.ai.salesAi.common.salesCount", { count: 128 }), price: "51,200 ₼", percent: "+18%" },
+    { id: 3, name: t("pages.ai.salesAi.products.list.enterprise"), sales: t("pages.ai.salesAi.common.salesCount", { count: 12 }), price: "48,000 ₼", percent: "+42%" },
+    { id: 4, name: t("pages.ai.salesAi.products.list.modules"), sales: t("pages.ai.salesAi.common.salesCount", { count: 89 }), price: "35,600 ₼", percent: "+12%" },
+    { id: 5, name: t("pages.ai.salesAi.products.list.support"), sales: t("pages.ai.salesAi.common.salesCount", { count: 156 }), price: "31,200 ₼", percent: "+8%" },
+  ];
+
+  const customers = [
+    { id: "A", name: t("pages.ai.salesAi.customers.list.abc"), orders: t("pages.ai.salesAi.customers.orders", { count: 15, time: t("pages.ai.salesAi.common.daysAgo", { count: 2 }) }), price: "42,500 ₼" },
+    { id: "X", name: t("pages.ai.salesAi.customers.list.xyz"), orders: t("pages.ai.salesAi.customers.orders", { count: 12, time: t("pages.ai.salesAi.common.daysAgo", { count: 5 }) }), price: "38,900 ₼" },
+    { id: "T", name: t("pages.ai.salesAi.customers.list.tech"), orders: t("pages.ai.salesAi.customers.orders", { count: 18, time: t("pages.ai.salesAi.common.daysAgo", { count: 1 }) }), price: "35,200 ₼" },
+    { id: "D", name: t("pages.ai.salesAi.customers.list.digital"), orders: t("pages.ai.salesAi.customers.orders", { count: 9, time: t("pages.ai.salesAi.common.daysAgo", { count: 3 }) }), price: "28,700 ₼" },
+    { id: "R", name: t("pages.ai.salesAi.customers.list.retail"), orders: t("pages.ai.salesAi.customers.orders", { count: 14, time: t("pages.ai.salesAi.common.weeksAgo", { count: 1 }) }), price: "25,600 ₼" },
+  ];
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
 

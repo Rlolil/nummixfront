@@ -6,16 +6,16 @@ import CartProduct from "../components/CartProduct";
 export default function Cart() {
     const { t } = useTranslation();
     const [cart, setCart] = useState([
-        { _id: 1, name: "Mehsul A", cateogry: "Category 1", price: 67, stock: 10, quantity: 0 },
-        { _id: 2, name: "Mehsul B", cateogry: "Category 2", price: 42, stock: 20, quantity: 0 },
-        { _id: 3, name: "Mehsul C", cateogry: "Category 3", price: 21, stock: 15, quantity: 0 },
+        { _id: 1, name: "pages.sales.pos.products.productA", cateogry: "Category 1", price: 67, stock: 10, quantity: 0 },
+        { _id: 2, name: "pages.sales.pos.products.productB", cateogry: "Category 2", price: 42, stock: 20, quantity: 0 },
+        { _id: 3, name: "pages.sales.pos.products.productC", cateogry: "Category 3", price: 21, stock: 15, quantity: 0 },
     ]);
 
     const [searchedCart, setSearchedCart] = useState(cart);
 
     const handleSearch = (e) => {
         const filteredData = cart.filter((item) =>
-            item.name.toLowerCase().includes(e.target.value.toLowerCase())
+            t(item.name).toLowerCase().includes(e.target.value.toLowerCase())
         );
         setSearchedCart(filteredData);
     };
@@ -88,7 +88,7 @@ export default function Cart() {
                                                 key={item._id}
                                             >
                                                 <div className="flex flex-col gap-1">
-                                                    <h3 className="font-semibold text-[#001233] dark:text-[#FFFFFF]">{item.name}</h3>
+                                                    <h3 className="font-semibold text-[#001233] dark:text-[#FFFFFF]">{t(item.name)}</h3>
                                                     <p className="text-[#5C677D] dark:text-[#7D8597] text-sm">{item.cateogry}</p>
                                                 </div>
                                                 <div className="flex flex-col">

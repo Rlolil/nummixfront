@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Overlay from "../../overlay";
+import { useTranslation } from "react-i18next";
 
 const YeniBudceModal = ({ onClose }) => {
+  const { t } = useTranslation();
   const [form, setForm] = useState({
     name: "",
     period: "Aylıq",
@@ -37,7 +39,7 @@ const YeniBudceModal = ({ onClose }) => {
         
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-[18px] font-semibold">
-            Yeni Büdcə Yarat
+            {t("pages.finance.budgeting.modal.title")}
           </h2>
           <button
             onClick={onClose}
@@ -49,19 +51,19 @@ const YeniBudceModal = ({ onClose }) => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <p className="text-sm text-[#7D8597] dark:text-[#5C677D]">
-            Kateqoriya və ya departament üçün büdcə planlaması
+            {t("pages.finance.budgeting.modal.subtitle")}
           </p>
 
           <div>
             <label className="block text-sm font-medium mb-1">
-              Büdcə adı *
+              {t("pages.finance.budgeting.modal.budgetName")} *
             </label>
             <input
               name="name"
               value={form.name}
               onChange={handleChange}
               type="text"
-              placeholder="Məs: 2025 IT Büdcəsi"
+              placeholder={t("pages.finance.budgeting.modal.placeholders.name")}
               className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             />
@@ -69,7 +71,7 @@ const YeniBudceModal = ({ onClose }) => {
 
           <div>
             <label className="block text-sm font-medium mb-1">
-              Dövr *
+              {t("pages.finance.budgeting.modal.period")} *
             </label>
             <select
               name="period"
@@ -78,15 +80,15 @@ const YeniBudceModal = ({ onClose }) => {
               className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             >
-              <option>Aylıq</option>
-              <option>Rüblük</option>
-              <option>İllik</option>
+              <option value="Aylıq">{t("pages.finance.budgeting.modal.options.monthly")}</option>
+              <option value="Rüblük">{t("pages.finance.budgeting.modal.options.quarterly")}</option>
+              <option value="İllik">{t("pages.finance.budgeting.modal.options.yearly")}</option>
             </select>
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">
-              Növ *
+              {t("pages.finance.budgeting.modal.type")} *
             </label>
             <select
               name="type"
@@ -95,14 +97,14 @@ const YeniBudceModal = ({ onClose }) => {
               className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             >
-              <option>Kateqoriya</option>
-              <option>Departament</option>
+              <option value="Kateqoriya">{t("pages.finance.budgeting.modal.options.category")}</option>
+              <option value="Departament">{t("pages.finance.budgeting.modal.options.department")}</option>
             </select>
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">
-              Kateqoriya *
+              {t("pages.finance.budgeting.modal.category")} *
             </label>
             <select
               name="category"
@@ -111,7 +113,7 @@ const YeniBudceModal = ({ onClose }) => {
               className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             >
-              <option value="">Seçin...</option>
+              <option value="">{t("pages.finance.common.select")}...</option>
               <option>IT</option>
               <option>Satış</option>
               <option>Maliyyə</option>
@@ -120,14 +122,14 @@ const YeniBudceModal = ({ onClose }) => {
 
           <div>
             <label className="block text-sm font-medium mb-1">
-              Planlaşdırılan məbləğ (AZN) *
+              {t("pages.finance.budgeting.modal.amount")} (AZN) *
             </label>
             <input
               name="amount"
               value={form.amount}
               onChange={handleChange}
               type="number"
-              placeholder="0.00"
+              placeholder={t("pages.finance.budgeting.modal.placeholders.amount")}
               className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
               required
             />
@@ -136,7 +138,7 @@ const YeniBudceModal = ({ onClose }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium mb-1">
-                Başlanğıc tarixi *
+                {t("pages.finance.budgeting.modal.startDate")} *
               </label>
               <input
                 name="startDate"
@@ -150,7 +152,7 @@ const YeniBudceModal = ({ onClose }) => {
 
             <div>
               <label className="block text-sm font-medium mb-1">
-                Bitmə tarixi *
+                {t("pages.finance.budgeting.modal.endDate")} *
               </label>
               <input
                 name="endDate"
@@ -165,13 +167,13 @@ const YeniBudceModal = ({ onClose }) => {
 
           <div>
             <label className="block text-sm font-medium mb-1">
-              Qeydlər
+              {t("pages.finance.budgeting.modal.notes")}
             </label>
             <textarea
               name="notes"
               value={form.notes}
               onChange={handleChange}
-              placeholder="Büdcə haqqında əlavə məlumat..."
+              placeholder={t("pages.finance.budgeting.modal.placeholders.notes")}
               className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white dark:bg-[#33415C] rounded-md p-2.5 text-sm h-20 resize-none focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
             />
           </div>
@@ -182,14 +184,14 @@ const YeniBudceModal = ({ onClose }) => {
               onClick={onClose}
               className="px-4 py-2 text-sm border border-[#979DAC] dark:border-[#33415C] rounded-md text-[#001233] dark:text-white hover:bg-[#F0F0F0] dark:hover:bg-[#0453A4] transition"
             >
-              Ləğv et
+              {t("common.cancel")}
             </button>
 
             <button
               type="submit"
               className="px-5 py-2 text-sm rounded-md bg-[#0466CB] dark:bg-[#0453A4] text-white hover:bg-[#023E7D] dark:hover:bg-[#0466CB] transition"
             >
-              + Yarat
+              + {t("common.create")}
             </button>
           </div>
         </form>

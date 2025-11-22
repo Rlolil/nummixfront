@@ -180,7 +180,7 @@ const Məhsullar = () => {
   };
 
   const handleDelete = (index) => {
-    if (window.confirm(t('pages.warehouse.products.deleteConfirm'))) {
+    if (window.confirm(t('common.confirmDelete'))) {
       setProducts((prev) => prev.filter((_, i) => i !== index));
     }
   };

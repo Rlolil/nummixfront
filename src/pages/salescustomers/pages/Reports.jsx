@@ -229,31 +229,31 @@ export default function Reports() {
                             child={
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 dark:text-[#FFFFFF]">
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500 dark:text-[#7D8597]">Total Revenue:</p> <span>₼100,000</span>
+                                        <p className="text-zinc-500 dark:text-[#7D8597]">{t("pages.sales.reports.kpi.totalRevenue")}:</p> <span>₼100,000</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500 dark:text-[#7D8597]">Sales Growth MoM:</p> <span className="text-green-600 dark:text-[#22c55e]">+21.8%</span>
+                                        <p className="text-zinc-500 dark:text-[#7D8597]">{t("pages.sales.reports.kpi.salesGrowthMoM")}:</p> <span className="text-green-600 dark:text-[#22c55e]">+21.8%</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500 dark:text-[#7D8597]">Avg Order Value:</p> <span>₼500</span>
+                                        <p className="text-zinc-500 dark:text-[#7D8597]">{t("pages.sales.reports.kpi.avgOrderValue")}:</p> <span>₼500</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500 dark:text-[#7D8597]">New Customers:</p> <span>50</span>
+                                        <p className="text-zinc-500 dark:text-[#7D8597]">{t("pages.sales.reports.kpi.newCustomers")}:</p> <span>50</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500 dark:text-[#7D8597]">Profit Growth MoM:</p> <span className="text-green-600 dark:text-[#22c55e]">+27.3%</span>
+                                        <p className="text-zinc-500 dark:text-[#7D8597]">{t("pages.sales.reports.kpi.profitGrowthMoM")}:</p> <span className="text-green-600 dark:text-[#22c55e]">+27.3%</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500 dark:text-[#7D8597]">Customer Retention:</p> <span>85%</span>
+                                        <p className="text-zinc-500 dark:text-[#7D8597]">{t("pages.sales.reports.kpi.customerRetention")}:</p> <span>85%</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500 dark:text-[#7D8597]">Sales Conversion:</p> <span>4.5%</span>
+                                        <p className="text-zinc-500 dark:text-[#7D8597]">{t("pages.sales.reports.kpi.salesConversion")}:</p> <span>4.5%</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500 dark:text-[#7D8597]">Best Sales Channel:</p> <span>Online</span>
+                                        <p className="text-zinc-500 dark:text-[#7D8597]">{t("pages.sales.reports.kpi.bestSalesChannel")}:</p> <span>{t("pages.sales.reports.kpi.values.online")}</span>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <p className="text-zinc-500 dark:text-[#7D8597]">Overdue Payment Rate:</p> <span className="text-red-500 dark:text-[#FF7F7F]">12.7%</span>
+                                        <p className="text-zinc-500 dark:text-[#7D8597]">{t("pages.sales.reports.kpi.overduePaymentRate")}:</p> <span className="text-red-500 dark:text-[#FF7F7F]">12.7%</span>
                                     </div>
                                 </div>
                             }

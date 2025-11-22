@@ -2,39 +2,40 @@ import React from "react";
 import { CheckCircle, AlertCircle, Calendar } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-const tasks = [
-  {
-    title: "Aylıq ƏDV bəyannaməsi",
-    date: "Son tarix: 20 Sentyabr",
-    status: "Tamamlandı",
-    icon: <CheckCircle className="text-green-500 w-5 h-5" />,
-    badgeColor: "bg-green-100 text-green-700",
-  },
-  {
-    title: "Rüblük gəlir vergisi hesabatı",
-    date: "Son tarix: 15 Oktyabr",
-    status: "Gözləyir",
-    icon: <Calendar className="text-blue-500 w-5 h-5" />,
-    badgeColor: "bg-blue-900 text-white",
-  },
-  {
-    title: "Sosial sığorta ayırmaları",
-    date: "Son tarix: 25 Sentyabr",
-    status: "Tamamlandı",
-    icon: <CheckCircle className="text-green-500 w-5 h-5" />,
-    badgeColor: "bg-green-100 text-green-700",
-  },
-  {
-    title: "İşçilərin gəlir məlumatları",
-    date: "Gecikmə: 2 gün",
-    status: "Gecikmə",
-    icon: <AlertCircle className="text-red-500 w-5 h-5" />,
-    badgeColor: "bg-red-100 text-red-700",
-  },
-];
-
 const Yoxlama = () => {
   const { t } = useTranslation();
+
+  const tasks = [
+    {
+      title: t("pages.ai.taxAi.tasks.list.vatReturn.title"),
+      date: t("pages.ai.taxAi.tasks.list.vatReturn.date"),
+      status: "Tamamlandı",
+      icon: <CheckCircle className="text-green-500 w-5 h-5" />,
+      badgeColor: "bg-green-100 text-green-700",
+    },
+    {
+      title: t("pages.ai.taxAi.tasks.list.incomeTax.title"),
+      date: t("pages.ai.taxAi.tasks.list.incomeTax.date"),
+      status: "Gözləyir",
+      icon: <Calendar className="text-blue-500 w-5 h-5" />,
+      badgeColor: "bg-blue-900 text-white",
+    },
+    {
+      title: t("pages.ai.taxAi.tasks.list.socialInsurance.title"),
+      date: t("pages.ai.taxAi.tasks.list.socialInsurance.date"),
+      status: "Tamamlandı",
+      icon: <CheckCircle className="text-green-500 w-5 h-5" />,
+      badgeColor: "bg-green-100 text-green-700",
+    },
+    {
+      title: t("pages.ai.taxAi.tasks.list.employeeIncome.title"),
+      date: t("pages.ai.taxAi.tasks.list.employeeIncome.date"),
+      status: "Gecikmə",
+      icon: <AlertCircle className="text-red-500 w-5 h-5" />,
+      badgeColor: "bg-red-100 text-red-700",
+    },
+  ];
+
   return (
     <div>
 

@@ -66,7 +66,7 @@ const Ledger = () => {
     closeEdit();
   };
   const handleDelete = (index) => {
-    const confirmMsg = t('pages.accounting.ledger.confirmDeleteAccount', { defaultValue: 'Bu hesabı silmək istəyirsiniz? Bu əməliyyat geri alına bilməz.' });
+    const confirmMsg = t('common.confirmDelete');
     if (window.confirm(confirmMsg)) {
       setAccounts(prev => prev.filter((_, i) => i !== index));
     }

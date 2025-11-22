@@ -35,10 +35,10 @@ const MaliyyeAI = () => {
       },
     ],
     debts: [
-      { name: "ABC Şirkəti", days: "15 gün keçib", amount: "₼12,500", typeKey: "receivable", statusKey: "" },
-      { name: "XYZ MMC", days: "45 gün keçib", amount: "₼8,900", typeKey: "receivable", statusKey: "risk" },
-      { name: "Supply Co", days: "5 gün keçib", amount: "₼15,600", typeKey: "payable", statusKey: "" },
-      { name: "Tech Solutions", days: "62 gün keçib", amount: "₼22,000", typeKey: "payable", statusKey: "critical" },
+      { name: "ABC Şirkəti", days: t("pages.ai.financeAi.debts.daysPassed", { count: 15 }), amount: "₼12,500", typeKey: "receivable", statusKey: "" },
+      { name: "XYZ MMC", days: t("pages.ai.financeAi.debts.daysPassed", { count: 45 }), amount: "₼8,900", typeKey: "receivable", statusKey: "risk" },
+      { name: "Supply Co", days: t("pages.ai.financeAi.debts.daysPassed", { count: 5 }), amount: "₼15,600", typeKey: "payable", statusKey: "" },
+      { name: "Tech Solutions", days: t("pages.ai.financeAi.debts.daysPassed", { count: 62 }), amount: "₼22,000", typeKey: "payable", statusKey: "critical" },
     ],
   };
 

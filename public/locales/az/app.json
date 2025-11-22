@@ -147,12 +147,27 @@
         "series": { "sales": "Satış" },
         "products": {
           "title": "Ən Çox Satılan Məhsullar",
-          "subtitle": "Bu ayın ən populyar məhsulları"
+          "subtitle": "Bu ayın ən populyar məhsulları",
+          "list": {
+            "premium": "Premium Paket",
+            "standard": "Standart Xidmət",
+            "enterprise": "Enterprise Lisenziya",
+            "modules": "Əlavə Modullar",
+            "support": "Texniki Dəstək"
+          }
         },
         "customers": {
           "title": "Ən Çox Alış Edən Müştərilər",
           "subtitle": "Son 3 ayın TOP müştəriləri",
-          "aiText": "TOP 5 müştəri ümumi satışın {{percent}}-ni təşkil edir."
+          "aiText": "TOP 5 müştəri ümumi satışın {{percent}}-ni təşkil edir.",
+          "list": {
+            "abc": "ABC Holding",
+            "xyz": "XYZ Corporation",
+            "tech": "Tech Solutions MMC",
+            "digital": "Digital Agency",
+            "retail": "Retail Plus"
+          },
+          "orders": "{{count}} alış • {{time}} əvvəl"
         },
         "salesCycles": {
           "title": "Satış Dövrləri",
@@ -175,7 +190,11 @@
             "bulkDiscount": "Toplu Alış Endirimi"
           }
         },
-        "common": { "salesCount": "{{count}} satış" }
+        "common": {
+          "salesCount": "{{count}} satış",
+          "daysAgo": "{{count}} gün",
+          "weeksAgo": "{{count}} həftə"
+        }
       },
       "financeAi": {
         "incomeExpense": {
@@ -205,7 +224,8 @@
           "title": "Borc və Alacaqlar",
           "subtitle": "Riskli vəziyyətdə olan ödənişlər",
           "status": { "risk": "Risk", "critical": "Kritik" },
-          "type": { "receivable": "Alacaq", "payable": "Borc" }
+          "type": { "receivable": "Alacaq", "payable": "Borc" },
+          "daysPassed": "{{count}} gün keçib"
         }
       },
       "taxAi": {
@@ -220,7 +240,13 @@
         "tasks": {
           "title": "Uyğunluq Tapşırıqları",
           "subtitle": "Son tarixlər və status",
-          "status": { "completed": "Tamamlandı", "pending": "Gözləyir", "delayed": "Gecikmə" }
+          "status": { "completed": "Tamamlandı", "pending": "Gözləyir", "delayed": "Gecikmə" },
+          "list": {
+            "vatReturn": { "title": "Aylıq ƏDV bəyannaməsi", "date": "Son tarix: 20 Sentyabr" },
+            "incomeTax": { "title": "Rüblük gəlir vergisi hesabatı", "date": "Son tarix: 15 Oktyabr" },
+            "socialInsurance": { "title": "Sosial sığorta ayırmaları", "date": "Son tarix: 25 Sentyabr" },
+            "employeeIncome": { "title": "İşçilərin gəlir məlumatları", "date": "Gecikmə: 2 gün" }
+          }
         },
         "series": {
           "incomeTax": "Gəlir Vergisi",
@@ -244,7 +270,21 @@
           "moreInfo": "Ətraflı Məlumat",
           "saving": "qənaət",
           "noteTitle": "Qeyd:",
-          "noteText": "Bütün tövsiyələr Azərbaycan Respublikasının vergi qanunvericiliyinə uyğundur. Tətbiq etməzdən əvvəl vergi məsləhətçisi ilə məsləhətləşin."
+          "noteText": "Bütün tövsiyələr Azərbaycan Respublikasının vergi qanunvericiliyinə uyğundur. Tətbiq etməzdən əvvəl vergi məsləhətçisi ilə məsləhətləşin.",
+          "items": {
+            "rdExpenses": {
+              "title": "R&D Xərcləri",
+              "description": "Tədqiqat-inkişaf xərclərini vergi bazasından çıxararaq 2,300 AZN qənaət edə bilərsiniz"
+            },
+            "depreciation": {
+              "title": "Əsas Vəsaitlərin Amortizasiyası",
+              "description": "Sürətli amortizasiya metodundan istifadə edərək bu il 4,500 AZN vergi azaldılması əldə edə bilərsiniz"
+            },
+            "socialPackages": {
+              "title": "İşçilərin Sosial Paketləri",
+              "description": "Müəyyən sosial müavinətlər vergidən azaddır, 1,800 AZN qənaət potensialı"
+            }
+          }
         }
       },
       "warehouse": {
@@ -317,7 +357,19 @@
           "title": "İşçi İtkisi Risk Analizi",
           "subtitle": "AI tərəfindən yüksək riskli hesab olunan şöbələr",
           "reasons": "Səbəblər:",
-          "level": { "high": "Yüksək Risk", "medium": "Orta Risk", "low": "Aşağı Risk" }
+          "level": { "high": "Yüksək Risk", "medium": "Orta Risk", "low": "Aşağı Risk" },
+          "reasonsList": {
+            "lowSalary": "Orta maaş aşağıdır",
+            "highWorkload": "İş yükü yüksəkdir",
+            "recentDepartures": "Son 2 ayda 2 işçi çıxıb",
+            "commissionSystem": "Komisyon sistemi təkmilləşdirilməlidir",
+            "stable": "Kollektiv stabil"
+          },
+          "advice": {
+             "salaryIncrease": "Maaş artımı və bonus sistemi tətbiq edilməlidir",
+             "performanceBonus": "Performans bonusları yenidən qurulmalıdır",
+             "noAction": "Hal-hazırda əlavə tədbirlər tələb olunmur"
+          }
         }
       }
     },
@@ -1071,7 +1123,9 @@
           "it": "IT",
           "office": "Ofis",
           "marketing": "Marketing",
-          "services": "Xidmətlər"
+          "services": "Xidmətlər",
+          "transport": "Nəqliyyat",
+          "finance": "Maliyyə"
         },
         "months": {
           "jan": "Yan",
@@ -1092,6 +1146,26 @@
         "title": "Ödənişlərin İdarə Olunması",
         "subtitle": "Təchizatçılara ödənişlər və müştərilərdən daxilolmalar",
         "newPlan": "Yeni ödəniş planla",
+        "modal": {
+          "title": "Yeni Ödəniş Planla",
+          "subtitle": "Təchizatçılara ödəniş və ya müştərilərdən daxilolma əlavə edin",
+          "type": "Növ",
+          "supplier": "Təchizatçı",
+          "amount": "Məbləğ",
+          "currency": "Valyuta",
+          "plannedDate": "Planlanan Tarix",
+          "category": "Kateqoriya",
+          "notes": "Qeydlər",
+          "placeholders": {
+            "supplier": "Təchizatçı adı",
+            "amount": "0.00",
+            "notes": "Əlavə məlumat..."
+          },
+          "options": {
+            "paymentOut": "Ödəniş (Çıxış)",
+            "incomeIn": "Daxilolma (Giriş)"
+          }
+        },
         "tabs": { "outflows": "Ödənişlər (Çıxış)", "inflows": "Daxilolmalar" },
         "outflows": { "title": "Təchizatçılara Ödənişlər", "subtitle": "Planlaşdırılmış və gözlənilən ödənişlər" },
         "inflows": { "title": "Müştərilərdən Daxilolmalar", "subtitle": "Gözlənilən ödənişlər və fakturalar" },
@@ -1153,7 +1227,20 @@
         "bank": { "subtitle": "Bank hesablarının hərəkəti", "account": "Hesab" },
         "modal": {
           "newOperationTitle": "Yeni Əməliyyat",
-          "newOperationSubtitle": "Kassa və ya bank əməliyyatı əlavə edin"
+          "newOperationSubtitle": "Kassa və ya bank əməliyyatı əlavə edin",
+          "operationType": "Əməliyyatın növü",
+          "type": "Növ",
+          "amount": "Məbləğ",
+          "currency": "Valyuta",
+          "category": "Kateqoriya",
+          "date": "Tarix",
+          "note": "Qeyd",
+          "options": {
+            "cash": "Kassa",
+            "bank": "Bank",
+            "income": "Gəlir",
+            "expense": "Xərc"
+          }
         },
         "form": {
           "type": "Əməliyyat növü",
@@ -1165,6 +1252,30 @@
         "subtitle": "Gəlir və xərclərin planlaşdırılması və faktiki göstəricilərlə müqayisəsi",
         "report": "Hesabat",
         "newBudget": "Yeni büdcə",
+        "modal": {
+          "title": "Yeni Büdcə Yarat",
+          "subtitle": "Kateqoriya və ya departament üçün büdcə planlaması",
+          "budgetName": "Büdcə adı",
+          "period": "Dövr",
+          "type": "Növ",
+          "category": "Kateqoriya",
+          "amount": "Məbləğ",
+          "startDate": "Başlama tarixi",
+          "endDate": "Bitmə tarixi",
+          "notes": "Qeydlər",
+          "placeholders": {
+            "name": "Məs: 2025 IT Büdcəsi",
+            "amount": "0.00",
+            "notes": "Əlavə məlumat..."
+          },
+          "options": {
+            "monthly": "Aylıq",
+            "quarterly": "Rüblük",
+            "yearly": "İllik",
+            "category": "Kateqoriya",
+            "department": "Departament"
+          }
+        },
         "cards": {
           "planned": { "title": "Plan (Bu ay)", "desc": "Planlaşdırılmış xərclər" },
           "actual": { "title": "Faktiki", "desc": "Real xərclər" },
@@ -1372,7 +1483,12 @@
           "vat": "ƏDV ({{percent}}%)",
           "total": "Yekun"
         },
-        "payment": { "cash": "Nağd", "card": "Kart" }
+        "payment": { "cash": "Nağd", "card": "Kart" },
+        "products": {
+          "productA": "Məhsul A",
+          "productB": "Məhsul B",
+          "productC": "Məhsul C"
+        }
       },
       "customers": {
         "title": "Müştərilər",
@@ -1382,6 +1498,7 @@
         "form": {
           "companyName": "Şirkət adı",
           "taxId": "VÖEN",
+          "taxNumber": "VÖEN",
           "contactPerson": "Əlaqə şəxs",
           "phone": "Telefon",
           "email": "Email",
@@ -1568,7 +1685,8 @@
           "contactPerson": "Əlaqə şəxs",
           "phone": "Telefon",
           "email": "Email",
-          "address": "Ünvan"
+          "address": "Ünvan",
+          "category": "Kateqoriya"
         },
         "placeholders": {
           "companyName": "Şirkət adını daxil edin",
@@ -2032,7 +2150,8 @@
             "systemQty": "Sistem Qalığı",
             "actualQty": "Faktiki Qalıq",
             "difference": "Fərq",
-            "status": "Status"
+            "status": "Status",
+            "unit": "Vahid"
           },
           "status": {
             "pending": "Gözləyir",
@@ -2069,6 +2188,11 @@
         "computerEquipment": "Kompüter avadanlığı"
       },
       "search": {"placeholder": "Aktiv axtar..."},
+      "actions": {
+        "edit": "Redaktə et",
+        "delete": "Sil",
+        "confirmDelete": "Bu aktivi silmək istəyirsiniz?"
+      },
       "table": {
         "headers": {
           "inventoryNo": "İnv. №",
@@ -2227,6 +2351,9 @@
     }
   },
   "common": {
+    "confirmDelete": "Bu elementi silmək istədiyinizə əminsiniz?",
+    "confirmDeleteWithName": "{{name}} silinsin?",
+    "confirmDeleteRow": "Sətir silinsin?",
     "actions": "Fəaliyyətlər",
     "logoAlt": "Loqo",
     "menu": "Menyu",
@@ -2236,6 +2363,7 @@
     "fullName": "Ad Soyad",
     "companyName": "Şirkət adı",
     "somethingWrong": "Nəsə səhv oldu",
+    "fillAllFields": "Zəhmət olmasa bütün vacib sahələri doldurun!",
     "cancel": "Ləğv et",
     "close": "Bağla",
     "save": "Yadda saxla",

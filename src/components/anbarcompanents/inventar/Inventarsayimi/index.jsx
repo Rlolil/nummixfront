@@ -93,7 +93,7 @@ export default function InventarSayimi() {
         closeEdit();
     };
     const handleDelete = (index) => {
-        if (window.confirm(t('pages.warehouse.inventory.count.confirmDelete', { defaultValue: 'Bu sətiri silmək istəyirsiniz?' }))) {
+        if (window.confirm(t('common.confirmDeleteRow'))) {
             const sku = items[index].sku;
             setItems(prev => prev.filter((_, i) => i !== index));
             setCounts(prev => {
@@ -295,7 +295,7 @@ export default function InventarSayimi() {
                                 <input disabled className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium">Vahid</label>
+                                <label className="block text-sm font-medium">{t('pages.warehouse.inventory.count.table.unit')}</label>
                                 <select className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={editing.data.unit} onChange={(e)=>setEditing(prev=>({...prev, data:{...prev.data, unit:e.target.value}}))}>
                                     <option value="ədəd">ədəd</option>
                                     <option value="kq">kq</option>
@@ -339,7 +339,7 @@ export default function InventarSayimi() {
                                 <input type="number" className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={form.systemQty} onChange={(e)=>setForm(prev=>({...prev, systemQty:e.target.value}))} />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium">Vahid</label>
+                                <label className="block text-sm font-medium">{t('pages.warehouse.inventory.count.table.unit')}</label>
                                 <select className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={form.unit} onChange={(e)=>setForm(prev=>({...prev, unit:e.target.value}))}>
                                     <option value="ədəd">ədəd</option>
                                     <option value="kq">kq</option>

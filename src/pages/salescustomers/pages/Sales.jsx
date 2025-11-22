@@ -62,7 +62,7 @@ export default function Sales() {
     };
 
     const handleDelete = (index) => {
-        const confirmed = window.confirm(t("pages.sales.sales.confirmDelete"));
+        const confirmed = window.confirm(t("common.confirmDelete"));
         if (!confirmed) return;
         const updated = dataState.filter((_, i) => i !== index);
         setDataState(updated);

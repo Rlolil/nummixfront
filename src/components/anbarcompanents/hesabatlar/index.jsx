@@ -50,8 +50,8 @@ function ItkiVeZayStatistikasi() {
     closeEdit();
   };
   const handleDelete = (index) => {
-    if (window.confirm(t('pages.warehouse.common.confirmDelete'))) {
-      setRows((prev) => prev.filter((_, i) => i !== index));
+    if (window.confirm(t('common.confirmDelete'))) {
+      setReports((prev) => prev.filter((_, i) => i !== index));
     }
   };
 

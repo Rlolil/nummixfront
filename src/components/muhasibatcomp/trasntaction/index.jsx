@@ -159,9 +159,7 @@ const Transactions = () => {
   };
 
   const handleDelete = (txn) => {
-    const confirmMsg = t('pages.accounting.transactions.confirmDelete', {
-      defaultValue: 'Delete this transaction? This action cannot be undone.'
-    });
+    const confirmMsg = t('common.confirmDelete');
     if (window.confirm(confirmMsg)) {
       setTransactions((prev) => prev.filter((t) => t.id !== txn.id));
     }

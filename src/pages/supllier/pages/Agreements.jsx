@@ -59,7 +59,7 @@ export default function Agreements() {
     };
 
     const handleDelete = (index) => {
-        const confirmed = window.confirm(t("pages.supplier.agreements.confirmDelete") || "Silinsin?");
+        const confirmed = window.confirm(t("common.confirmDelete"));
         if (!confirmed) return;
         setAgreements(agreements.filter((_, i) => i !== index));
     };

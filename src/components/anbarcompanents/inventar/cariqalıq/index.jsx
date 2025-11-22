@@ -39,7 +39,7 @@ export default function CariQaliqlar() {
         closeEdit();
     };
     const handleDelete = (index) => {
-        const msg = t('pages.warehouse.inventory.current.confirmDelete', { defaultValue: 'Bu sətiri silmək istəyirsiniz?' });
+        const msg = t('common.confirmDeleteRow');
         if (window.confirm(msg)) {
             setRows(prev => prev.filter((_, i) => i !== index));
         }

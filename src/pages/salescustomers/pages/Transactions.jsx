@@ -94,7 +94,7 @@ export default function Transactions() {
     };
 
     const handleDelete = (index) => {
-        const confirmed = window.confirm(t("pages.sales.transactions.confirmDelete"));
+        const confirmed = window.confirm(t("common.confirmDelete"));
         if (!confirmed) return;
         setTransactions(transactions.filter((_, i) => i !== index));
     };

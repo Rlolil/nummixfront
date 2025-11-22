@@ -49,7 +49,7 @@ export default function Sales() {
     };
 
     const handleDelete = (index) => {
-        const confirmed = window.confirm(t("pages.supplier.orders.confirmDelete") || "Silinsin?");
+        const confirmed = window.confirm(t("common.confirmDelete"));
         if (!confirmed) return;
         setDataState(dataState.filter((_, i) => i !== index));
     };

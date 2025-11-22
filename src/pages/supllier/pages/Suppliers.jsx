@@ -74,7 +74,7 @@ export default function Suppliers() {
     };
 
     const handleDelete = (index) => {
-        const confirmed = window.confirm(t("pages.supplier.suppliers.confirmDelete"));
+        const confirmed = window.confirm(t("common.confirmDelete"));
         if (!confirmed) return;
         setSuppliers(suppliers.filter((_, i) => i !== index));
     };

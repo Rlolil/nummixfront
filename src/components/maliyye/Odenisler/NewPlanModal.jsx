@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
 import Overlay from "../../overlay";
+import { useTranslation } from "react-i18next";
 
 const NewPlanModal = ({ onClose }) => {
+    const { t } = useTranslation();
     const [form, setForm] = useState({
         nov: "Ödəniş (Çıxış)",
         tachizatci: "",
@@ -28,7 +30,7 @@ const NewPlanModal = ({ onClose }) => {
             <div className="bg-white dark:bg-[#001233] w-[90%] md:w-[600px] rounded-2xl shadow-lg p-5 md:p-6 relative mx-auto overflow-y-auto max-h-[90vh] text-[#001233] dark:text-white">
                 <div className="flex justify-between items-center mb-3">
                     <h2 className="text-[17px] md:text-[18px] font-semibold">
-                        Yeni Ödəniş Planla
+                        {t("pages.finance.payments.modal.title")}
                     </h2>
                     <button
                         onClick={onClose}
@@ -39,13 +41,13 @@ const NewPlanModal = ({ onClose }) => {
                 </div>
 
                 <p className="text-sm text-[#7D8597] dark:text-[#5C677D] mb-5">
-                    Təchizatçılara ödəniş və ya müştərilərdən daxilolma əlavə edin
+                    {t("pages.finance.payments.modal.subtitle")}
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-[#001233] dark:text-white mb-1">
-                            Növ *
+                            {t("pages.finance.payments.modal.type")} *
                         </label>
                         <select
                             name="nov"
@@ -53,18 +55,18 @@ const NewPlanModal = ({ onClose }) => {
                             onChange={handleChange}
                             className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white  rounded-md p-2.5 text-sm text-[#001233] dark:text-white dark:bg-[#33415C] focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
                         >
-                            <option>Ödəniş (Çıxış)</option>
-                            <option>Daxilolma (Giriş)</option>
+                            <option value="Ödəniş (Çıxış)">{t("pages.finance.payments.modal.options.paymentOut")}</option>
+                            <option value="Daxilolma (Giriş)">{t("pages.finance.payments.modal.options.incomeIn")}</option>
                         </select>
                     </div>
 
                     <div>
                         <label className="block text-sm font-medium text-[#001233] dark:text-white mb-1">
-                            Təchizatçı *
+                            {t("pages.finance.payments.modal.supplier")} *
                         </label>
                         <input
                             name="tachizatci"
-                            placeholder="Təchizatçı adı"
+                            placeholder={t("pages.finance.payments.modal.placeholders.supplier")}
                             value={form.tachizatci}
                             onChange={handleChange}
                             className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white     rounded-md p-2.5 text-sm text-[#001233] dark:text-white dark:bg-[#33415C] focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
@@ -75,12 +77,12 @@ const NewPlanModal = ({ onClose }) => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                             <label className="block text-sm font-medium text-[#001233] dark:text-white mb-1">
-                                Məbləğ *
+                                {t("pages.finance.payments.modal.amount")} *
                             </label>
                             <input
                                 type="number"
                                 name="mebleg"
-                                placeholder="0.00"
+                                placeholder={t("pages.finance.payments.modal.placeholders.amount")}
                                 value={form.mebleg}
                                 onChange={handleChange}
                                 className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white rounded-md p-2.5 text-sm text-[#001233] dark:text-white  dark:bg-[#33415C] focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
@@ -89,7 +91,7 @@ const NewPlanModal = ({ onClose }) => {
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-[#001233] dark:text-white mb-1">
-                                Valyuta
+                                {t("pages.finance.payments.modal.currency")}
                             </label>
                             <select
                                 name="valyuta"
@@ -106,7 +108,7 @@ const NewPlanModal = ({ onClose }) => {
 
                     <div>
                         <label className="block text-sm font-medium text-[#001233] dark:text-white mb-1">
-                            Son tarix *
+                            {t("pages.finance.payments.modal.plannedDate")} *
                         </label>
                         <input
                             type="date"
@@ -120,29 +122,29 @@ const NewPlanModal = ({ onClose }) => {
 
                     <div>
                         <label className="block text-sm font-medium text-[#001233] dark:text-white mb-1">
-                            Kateqoriya
+                            {t("pages.finance.payments.modal.category")}
                         </label>
                         <select
                             name="kateqoriya"
                             value={form.kateqoriya}
                             onChange={handleChange}
-                            className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white  rounded-md p-2.5 text-sm text-[#001233] dark:text-white dark:bg-[#33415C] focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
+                            className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white rounded-md p-2.5 text-sm text-[#001233] dark:text-white dark:bg-[#33415C] focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
                         >
-                            <option>Seçin...</option>
-                            <option>Marketing</option>
-                            <option>Ofis xərcləri</option>
-                            <option>Nəqliyyat</option>
-                            <option>Digər</option>
+                            <option value="">{t("pages.finance.common.select")}...</option>
+                            <option value="Marketing">{t("pages.finance.common.categories.marketing")}</option>
+                            <option value="Ofis xərcləri">{t("pages.finance.common.categories.office")}</option>
+                            <option value="Nəqliyyat">{t("pages.finance.common.categories.transport")}</option>
+                            <option value="Digər">{t("pages.finance.common.categories.other")}</option>
                         </select>
                     </div>
 
                     <div>
                         <label className="block text-sm font-medium text-[#001233] dark:text-white mb-1">
-                            Qeydlər
+                            {t("pages.finance.payments.modal.notes")}
                         </label>
                         <textarea
                             name="qeydlər"
-                            placeholder="Əlavə məlumat..."
+                            placeholder={t("pages.finance.payments.modal.placeholders.notes")}
                             value={form.qeydlər}
                             onChange={handleChange}
                             rows={2}
@@ -156,13 +158,13 @@ const NewPlanModal = ({ onClose }) => {
                             onClick={onClose}
                             className="px-4 py-2 text-sm border border-[#979DAC] dark:border-[#33415C] rounded-md text-[#001233] dark:text-white hover:bg-[#F0F0F0] dark:hover:bg-[#0453A4] transition"
                         >
-                            Ləğv et
+                            {t("common.cancel")}
                         </button>
                         <button
                             type="submit"
                             className="px-5 py-2 text-sm rounded-md bg-[#0466CB] dark:bg-[#0453A4] text-white hover:bg-[#023E7D] dark:hover:bg-[#0466CB] transition"
                         >
-                            + Əlavə et
+                            + {t("common.add")}
                         </button>
                     </div>
                 </form>

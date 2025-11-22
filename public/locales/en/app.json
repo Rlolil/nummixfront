@@ -326,7 +326,9 @@
           "it": "IT",
           "office": "Office",
           "marketing": "Marketing",
-          "services": "Services"
+          "services": "Services",
+          "transport": "Transport",
+          "finance": "Finance"
         },
         "months": {
           "jan": "Jan",
@@ -347,6 +349,26 @@
         "title": "Payments Management",
         "subtitle": "Supplier payments and customer receipts",
         "newPlan": "Plan new payment",
+        "modal": {
+          "title": "Plan New Payment",
+          "subtitle": "Add payment to suppliers or income from customers",
+          "type": "Type",
+          "supplier": "Supplier",
+          "amount": "Amount",
+          "currency": "Currency",
+          "plannedDate": "Planned Date",
+          "category": "Category",
+          "notes": "Notes",
+          "placeholders": {
+            "supplier": "Supplier Name",
+            "amount": "0.00",
+            "notes": "Additional info..."
+          },
+          "options": {
+            "paymentOut": "Payment (Outflow)",
+            "incomeIn": "Income (Inflow)"
+          }
+        },
         "tabs": {
           "outflows": "Payments (Outflows)",
           "inflows": "Receipts (Inflows)"
@@ -469,7 +491,20 @@
         },
         "modal": {
           "newOperationTitle": "New Operation",
-          "newOperationSubtitle": "Add a cash or bank transaction"
+          "newOperationSubtitle": "Add a cash or bank transaction",
+          "operationType": "Operation Type",
+          "type": "Type",
+          "amount": "Amount",
+          "currency": "Currency",
+          "category": "Category",
+          "date": "Date",
+          "note": "Note",
+          "options": {
+            "cash": "Cash",
+            "bank": "Bank",
+            "income": "Income",
+            "expense": "Expense"
+          }
         },
         "form": {
           "type": "Operation type",
@@ -481,6 +516,30 @@
         "subtitle": "Plan income and expenses and compare with actuals",
         "report": "Report",
         "newBudget": "New budget",
+        "modal": {
+          "title": "Create New Budget",
+          "subtitle": "Budget planning for category or department",
+          "budgetName": "Budget Name",
+          "period": "Period",
+          "type": "Type",
+          "category": "Category",
+          "amount": "Amount",
+          "startDate": "Start Date",
+          "endDate": "End Date",
+          "notes": "Notes",
+          "placeholders": {
+            "name": "Ex: 2025 IT Budget",
+            "amount": "0.00",
+            "notes": "Additional info..."
+          },
+          "options": {
+            "monthly": "Monthly",
+            "quarterly": "Quarterly",
+            "yearly": "Yearly",
+            "category": "Category",
+            "department": "Department"
+          }
+        },
         "cards": {
           "planned": {
             "title": "Plan (This month)",
@@ -786,6 +845,11 @@
         "payment": {
           "cash": "Cash",
           "card": "Card"
+        },
+        "products": {
+          "productA": "Product A",
+          "productB": "Product B",
+          "productC": "Product C"
         }
       },
       "customers": {
@@ -798,6 +862,7 @@
         "form": {
           "companyName": "Company Name",
           "taxId": "Tax ID",
+          "taxNumber": "Tax Number",
           "contactPerson": "Contact Person",
           "phone": "Phone",
           "email": "Email",
@@ -1062,7 +1127,8 @@
           "contactPerson": "Contact Person",
           "phone": "Phone",
           "email": "Email",
-          "address": "Address"
+          "address": "Address",
+          "category": "Category"
         },
         "placeholders": {
           "companyName": "Enter company name",
@@ -1554,7 +1620,8 @@
             "systemQty": "System Qty",
             "actualQty": "Actual Qty",
             "difference": "Difference",
-            "status": "Status"
+            "status": "Status",
+            "unit": "Unit"
           },
           "status": {
             "pending": "Pending",
@@ -1715,12 +1782,27 @@
         },
         "products": {
           "title": "Top Selling Products",
-          "subtitle": "Most popular products this month"
+          "subtitle": "Most popular products this month",
+          "list": {
+            "premium": "Premium Package",
+            "standard": "Standard Service",
+            "enterprise": "Enterprise License",
+            "modules": "Additional Modules",
+            "support": "Technical Support"
+          }
         },
         "customers": {
           "title": "Top Customers",
           "subtitle": "Top customers of the last 3 months",
-          "aiText": "Top 5 customers account for {{percent}} of total sales."
+          "aiText": "Top 5 customers account for {{percent}} of total sales.",
+          "list": {
+            "abc": "ABC Holding",
+            "xyz": "XYZ Corporation",
+            "tech": "Tech Solutions LLC",
+            "digital": "Digital Agency",
+            "retail": "Retail Plus"
+          },
+          "orders": "{{count}} orders • {{time}} ago"
         },
         "salesCycles": {
           "title": "Sales Cycles",
@@ -1744,7 +1826,9 @@
           }
         },
         "common": {
-          "salesCount": "{{count}} sales"
+          "salesCount": "{{count}} sales",
+          "daysAgo": "{{count}} days",
+          "weeksAgo": "{{count}} weeks"
         }
       },
       "financeAi": {
@@ -1781,7 +1865,8 @@
           "type": {
             "receivable": "Receivable",
             "payable": "Payable"
-          }
+          },
+          "daysPassed": "{{count}} days passed"
         }
       },
       "taxAi": {
@@ -1800,6 +1885,12 @@
             "completed": "Completed",
             "pending": "Pending",
             "delayed": "Delayed"
+          },
+          "list": {
+            "vatReturn": { "title": "Monthly VAT Return", "date": "Deadline: September 20" },
+            "incomeTax": { "title": "Quarterly Income Tax Report", "date": "Deadline: October 15" },
+            "socialInsurance": { "title": "Social Insurance Contributions", "date": "Deadline: September 25" },
+            "employeeIncome": { "title": "Employee Income Data", "date": "Overdue: 2 days" }
           }
         },
         "series": {
@@ -1827,7 +1918,21 @@
           "moreInfo": "More Info",
           "saving": "saving",
           "noteTitle": "Note:",
-          "noteText": "All recommendations comply with the tax legislation of the Republic of Azerbaijan. Consult a tax advisor before applying."
+          "noteText": "All recommendations comply with the tax legislation of the Republic of Azerbaijan. Consult a tax advisor before applying.",
+          "items": {
+            "rdExpenses": {
+              "title": "R&D Expenses",
+              "description": "You can save 2,300 AZN by deducting R&D expenses from the tax base"
+            },
+            "depreciation": {
+              "title": "Depreciation of Fixed Assets",
+              "description": "Using accelerated depreciation method, you can get 4,500 AZN tax reduction this year"
+            },
+            "socialPackages": {
+              "title": "Employee Social Packages",
+              "description": "Certain social benefits are tax-exempt, potential saving of 1,800 AZN"
+            }
+          }
         }
       },
       "warehouse": {
@@ -1912,6 +2017,18 @@
             "high": "High Risk",
             "medium": "Medium Risk",
             "low": "Low Risk"
+          },
+          "reasonsList": {
+            "lowSalary": "Average salary is low",
+            "highWorkload": "High workload",
+            "recentDepartures": "2 employees left in last 2 months",
+            "commissionSystem": "Commission system needs improvement",
+            "stable": "Stable team"
+          },
+          "advice": {
+             "salaryIncrease": "Salary increase and bonus system should be implemented",
+             "performanceBonus": "Performance bonuses should be restructured",
+             "noAction": "No additional measures required at the moment"
           }
         }
       }
@@ -2430,7 +2547,11 @@
         }
       },
       "status": {"active": "Active"},
-      "actions": {"edit": "Edit", "delete": "Delete"},
+      "actions": {
+        "edit": "Edit", 
+        "delete": "Delete",
+        "confirmDelete": "Are you sure you want to delete this asset?"
+      },
       "reports": {
         "general": {"title": "General Report", "desc": "Full list of assets and data", "downloadExcel": "Download Excel"},
         "depreciation": {"title": "Depreciation Report", "desc": "Depreciation data of assets", "downloadPdf": "Download PDF"},
@@ -2575,6 +2696,9 @@
     }
   },
   "common": {
+    "confirmDelete": "Are you sure you want to delete this item?",
+    "confirmDeleteWithName": "Delete {{name}}?",
+    "confirmDeleteRow": "Delete row?",
     "actions": "Actions",
     "logoAlt": "Logo",
     "menu": "Menu",
@@ -2584,6 +2708,7 @@
     "fullName": "Full Name",
     "companyName": "Company Name",
     "somethingWrong": "Something went wrong",
+    "fillAllFields": "Please fill in all required fields!",
     "cancel": "Cancel",
     "close": "Close",
     "save": "Save",

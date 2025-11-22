@@ -146,7 +146,7 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
 
   const handleSubmit = () => {
     if (!form.amount || !form.operationType || !form.type) {
-      alert("Zəhmət olmasa bütün vacib sahələri doldurun!");
+      alert(t("common.fillAllFields"));
       return;
     }
 
@@ -187,36 +187,36 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
 
         <div className="space-y-4">
           <div>
-            <label className="text-[#5C677D] dark:text-white text-sm">Əməliyyatın növü</label>
+            <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.operationType")}</label>
             <select
               name="operationType"
               value={form.operationType}
               onChange={handleChange}
               className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
             >
-              <option value="">Select</option>
-              <option value="Kassa">Kassa</option>
-              <option value="Bank">Bank</option>
+              <option value="">{t("pages.finance.common.select")}</option>
+              <option value="Kassa">{t("pages.finance.cashBank.modal.options.cash")}</option>
+              <option value="Bank">{t("pages.finance.cashBank.modal.options.bank")}</option>
             </select>
           </div>
 
           <div>
-            <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.form.type")}</label>
+            <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.type")}</label>
             <select
               name="type"
               value={form.type}
               onChange={handleChange}
               className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
             >
-              <option value="">Select</option>
-              <option value="Gəlir">Gəlir</option>
-              <option value="Xərc">Xərc</option>
+              <option value="">{t("pages.finance.common.select")}</option>
+              <option value="Gəlir">{t("pages.finance.cashBank.modal.options.income")}</option>
+              <option value="Xərc">{t("pages.finance.cashBank.modal.options.expense")}</option>
             </select>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-[#5C677D] dark:text-white text-sm">Məbləğ</label>
+              <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.amount")}</label>
               <input
                 type="number"
                 name="amount"
@@ -228,37 +228,37 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
             </div>
 
             <div>
-              <label className="text-[#5C677D] dark:text-white text-sm">Valyuta</label>
+              <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.currency")}</label>
               <select
                 name="currency"
                 value={form.currency}
                 onChange={handleChange}
                 className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
               >
-                <option>AZN</option>
-                <option>USD</option>
-                <option>EUR</option>
+                <option value="AZN">AZN</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
               </select>
             </div>
           </div>
 
           <div>
-            <label className="text-[#5C677D] dark:text-white text-sm">Kateqoriya</label>
+            <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.category")}</label>
             <select
               name="category"
               value={form.category}
               onChange={handleChange}
               className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
             >
-              <option value="">Select</option>
-              <option>Maaş</option>
-              <option>Satış</option>
-              <option>Digər</option>
+              <option value="">{t("pages.finance.common.select")}</option>
+              <option value="Maaş">{t("pages.finance.common.categories.salary")}</option>
+              <option value="Satış">{t("pages.finance.common.categories.sales")}</option>
+              <option value="Digər">{t("pages.finance.common.categories.other")}</option>
             </select>
           </div>
 
           <div>
-            <label className="text-[#5C677D] dark:text-white text-sm">Tarix</label>
+            <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.date")}</label>
             <input
               type="date"
               name="date"
@@ -269,13 +269,13 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
           </div>
 
           <div>
-            <label className="text-[#5C677D] dark:text-white text-sm">Qeyd</label>
+            <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.note")}</label>
             <input
               type="text"
               name="note"
               value={form.note}
               onChange={handleChange}
-              placeholder="İstəyə bağlı"
+              placeholder={t("pages.finance.cashBank.form.notePlaceholder")}
               className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
             />
           </div>
@@ -431,7 +431,7 @@ export default KassaModal;
 //           {/* Məbləğ və Valyuta */}
 //           <div className="grid sm:grid-cols-2 gap-4">
 //             <div>
-//               <label className="text-[#5C677D] dark:text-white text-sm">Məbləğ</label>
+//               <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.amount")}</label>
 //               <input
 //                 type="number"
 //                 name="amount"
@@ -443,7 +443,7 @@ export default KassaModal;
 //             </div>
 
 //             <div>
-//               <label className="text-[#5C677D] dark:text-white text-sm">Valyuta</label>
+//               <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.currency")}</label>
 //               <select
 //                 name="currency"
 //                 value={form.currency}

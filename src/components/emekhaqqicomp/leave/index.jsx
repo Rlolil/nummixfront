@@ -51,7 +51,7 @@ function Leave() {
   const handleDelete = (idx) => {
     const emp = balances[idx];
     const confirmed = window.confirm(
-      t('pages.hr.leave.balance.confirmDelete', { defaultValue: 'Delete balance for {{name}}?', name: emp?.name })
+      t('common.confirmDeleteWithName', { name: emp?.name })
     );
     if (!confirmed) return;
     setBalances((prev) => prev.filter((_, i) => i !== idx));

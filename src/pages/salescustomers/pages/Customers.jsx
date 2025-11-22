@@ -103,7 +103,7 @@ export default function Customers() {
     };
 
     const handleDelete = (index) => {
-        const confirmed = window.confirm(t("pages.sales.customers.confirmDelete"));
+        const confirmed = window.confirm(t("common.confirmDelete"));
         if (!confirmed) return;
         const updated = dataState.filter((_, i) => i !== index);
         setDataState(updated);

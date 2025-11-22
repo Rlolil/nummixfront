@@ -1,32 +1,30 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const recommendations = [
-  {
-    title: "R&D Xərcləri",
-    level: "Asan",
-    description:
-      "Tədqiqat-inkişaf xərclərini vergi bazasından çıxararaq 2,300 AZN qənaət edə bilərsiniz",
-    saving: "2,300",
-  },
-  {
-    title: "Əsas Vəsaitlərin Amortizasiyası",
-    level: "Orta",
-    description:
-      "Sürətli amortizasiya metodundan istifadə edərək bu il 4,500 AZN vergi azaldılması əldə edə bilərsiniz",
-    saving: "4,500",
-  },
-  {
-    title: "İşçilərin Sosial Paketləri",
-    level: "Asan",
-    description:
-      "Müəyyən sosial müavinətlər vergidən azaddır, 1,800 AZN qənaət potensialı",
-    saving: "1,800",
-  },
-];
-
 const Optimallasdirma = () => {
   const { t } = useTranslation();
+
+  const recommendations = [
+    {
+      title: t("pages.ai.taxAi.optimization.items.rdExpenses.title"),
+      level: "Asan",
+      description: t("pages.ai.taxAi.optimization.items.rdExpenses.description"),
+      saving: "2,300",
+    },
+    {
+      title: t("pages.ai.taxAi.optimization.items.depreciation.title"),
+      level: "Orta",
+      description: t("pages.ai.taxAi.optimization.items.depreciation.description"),
+      saving: "4,500",
+    },
+    {
+      title: t("pages.ai.taxAi.optimization.items.socialPackages.title"),
+      level: "Asan",
+      description: t("pages.ai.taxAi.optimization.items.socialPackages.description"),
+      saving: "1,800",
+    },
+  ];
+
   return (
     <div className="p-4  bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 transition-colors">
       <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
