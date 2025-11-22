@@ -15,7 +15,7 @@ function NewQuestion({ setModal }) {
       <div onClick={handleClose} className="bg-black opacity-50 fixed inset-0 z-50"></div>
       <div
         role="dialog"
-        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-lg p-6 bg-white border rounded-lg shadow-lg border-gray-200 "
+        className="fixed top-1/2 left-1/2 transform dark:bg-[#001233] dark:text-white -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-lg p-6 bg-white border rounded-lg shadow-lg border-gray-200 "
       >
         <div className="text-center mb-4">
           <h2 className="text-lg font-semibold">{t('pages.hr.leave.modal.title')}</h2>
@@ -71,13 +71,13 @@ function NewQuestion({ setModal }) {
             <button
               type="button"
               onClick={handleClose}
-              className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+              className="px-4 py-2 bg-gray-200 dark:bg-[#001233]  dark:text-white dark:hover:bg-[#002244]  border  border-white text-gray-700 rounded-md hover:bg-gray-300"
             >
               {t('common.cancel')}
             </button>
             <button
               type="button"
-              className="px-4 py-2 bg-black text-white rounded-md hover:opacity-50"
+              className="px-4 py-2 bg-black  dark:bg-[#002244] text-white rounded-md hover:opacity-50"
             >
               {t('pages.hr.leave.modal.submit')}
             </button>
@@ -88,7 +88,7 @@ function NewQuestion({ setModal }) {
         <button
           type="button"
           onClick={handleClose}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-200 focus:outline-none"
+          className="absolute top-4 right-4 p-2 rounded-full dark:bg-[#001233] dark:text-white dark:hover:bg-[#002244] hover:bg-gray-200 focus:outline-none"
         >
           X
           <span className="sr-only">Close</span>

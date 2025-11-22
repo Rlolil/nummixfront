@@ -104,7 +104,7 @@ function Attendance() {
         <div className="">
           <AttendanceCard />
         </div>
-        <div className="border border-[#33415C] dark:border-[#979DAC] bg-[#FFFFFF] dark:bg-[#33415C] rounded-xl p-4 space-y-4 shadow-sm">
+        <div className="border border-[#33415C] dark:border-[#979DAC] dark:bg-[#33415C] bg-[#FFFFFF] rounded-xl p-4 space-y-4 shadow-sm">
           <h2 className="text-xl font-medium text-[#023E7D] dark:text-white">{t('pages.hr.attendance.calendar.title', { defaultValue: 'Calendar' })}</h2>
           <MyBigCalendar />
           <div className="space-y-2">

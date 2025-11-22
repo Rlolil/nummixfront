@@ -9,7 +9,7 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
       <div onClick={onClose} className="bg-black  opacity-50 fixed inset-0 z-51"></div>
       <div
         role="dialog"
-        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 dark:bg-[#001233] dark:text-white -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border rounded-lg shadow-lg p-6 sm:max-w-lg"
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 dark:bg-[#33415C] dark:text-white -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border dark:border-[#979DAC] rounded-lg shadow-lg p-6 sm:max-w-lg"
       >
         <button
           className="absolute top-4 right-4 opacity-70 hover:opacity-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -26,14 +26,14 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
             <div className="space-y-2">
               <label className="text-sm font-medium">{t('pages.hr.employees.modal.firstName', { defaultValue: 'First name' })}</label>
               <input
-                className="w-full h-9 px-3 py-1 border dark:bg-[#001233] dark:text-white rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-9 px-3 py-1 border dark:border-[#979DAC] dark:bg-[#001233] dark:text-white rounded-md bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder={t('pages.hr.employees.modal.firstNamePlaceholder', { defaultValue: 'Enter first name' })}
               />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium">{t('pages.hr.employees.modal.lastName', { defaultValue: 'Last name' })}</label>
               <input
-                className="w-full h-9 px-3 py-1 border rounded-md  dark:bg-[#001233] dark:text-white  bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-9 px-3 py-1 border dark:border-[#979DAC] rounded-md  dark:bg-[#001233] dark:text-white  bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder={t('pages.hr.employees.modal.lastNamePlaceholder', { defaultValue: 'Enter last name' })}
               />
             </div>
@@ -43,13 +43,13 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
             <div className="space-y-2">
               <label className="text-sm font-medium">{t('pages.hr.employees.modal.position', { defaultValue: 'Position' })}</label>
               <input
-                className="w-full h-9 px-3 py-1 border rounded-md dark:bg-[#001233] dark:text-white  bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-9 px-3 py-1 border dark:border-[#979DAC] rounded-md dark:bg-[#001233] dark:text-white  bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder={t('pages.hr.employees.modal.positionPlaceholder', { defaultValue: 'Enter position' })}
               />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium">{t('pages.hr.employees.modal.department', { defaultValue: 'Department' })}</label>
-              <select className="w-full h-9 px-3 py-1  dark:bg-[#001233] dark:text-white  border rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select className="w-full h-9 px-3 py-1  dark:bg-[#001233] dark:text-white  border dark:border-[#979DAC] rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option>{t('pages.hr.employees.modal.selectDepartment', { defaultValue: 'Select department' })}</option>
                 <option>{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</option>
                 <option>{t('pages.hr.departments.it', { defaultValue: 'IT Department' })}</option>
@@ -65,7 +65,7 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
               <label className="text-sm font-medium">{t('pages.hr.employees.modal.salary', { defaultValue: 'Salary (₼)' })}</label>
               <input
                 type="number"
-                className="w-full h-9 px-3 py-1 border rounded-md dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-9 px-3 py-1 border dark:border-[#979DAC] rounded-md dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder={t('pages.hr.employees.modal.salaryPlaceholder', { defaultValue: '2000' })}
               />
             </div>
@@ -73,7 +73,7 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
               <label className="text-sm font-medium">{t('pages.hr.employees.modal.contractDate', { defaultValue: 'Contract date' })}</label>
               <input
                 type="date"
-                className="w-full h-9 px-3 py-1 border rounded-md dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-9 px-3 py-1 border dark:border-[#979DAC] rounded-md dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
@@ -82,7 +82,7 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
             <div className="space-y-2">
               <label className="text-sm font-medium">{t('pages.hr.employees.modal.phone', { defaultValue: 'Phone' })}</label>
               <input
-                className="w-full h-9 px-3 py-1 border rounded-md dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-9 px-3 py-1 border dark:border-[#979DAC] rounded-md dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder={t('pages.hr.employees.modal.phonePlaceholder', { defaultValue: '+994 50 123 45 67' })}
               />
             </div>
@@ -90,7 +90,7 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
               <label className="text-sm font-medium">{t('pages.hr.employees.modal.email', { defaultValue: 'Email' })}</label>
               <input
                 type="email"
-                className="w-full h-9 px-3 py-1 border rounded-md  dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-9 px-3 py-1 border dark:border-[#979DAC] rounded-md  dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder={t('pages.hr.employees.modal.emailPlaceholder', { defaultValue: 'email@company.az' })}
               />
             </div>
@@ -99,7 +99,7 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
           <div className="space-y-2">
             <label className="text-sm font-medium">{t('pages.hr.employees.modal.tin', { defaultValue: 'TIN' })}</label>
             <input
-              className="w-full h-9 px-3 py-1 border rounded-md  dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-9 px-3 py-1 border dark:border-[#979DAC] rounded-md  dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder={t('pages.hr.employees.modal.tinPlaceholder', { defaultValue: 'Tax ID number' })}
             />
           </div>
@@ -107,18 +107,18 @@ const AddEmployeeDialog = ({ isDialogOpen, onClose }) => {
           <div className="space-y-2">
             <label className="text-sm font-medium">{t('pages.hr.employees.modal.idSerial', { defaultValue: 'ID serial number' })}</label>
             <input  
-              className="w-full h-9 px-3 py-1 border rounded-md  dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-9 px-3 py-1 border dark:border-[#979DAC] rounded-md  dark:bg-[#001233] dark:text-white bg-gray-50 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder={t('pages.hr.employees.modal.idSerialPlaceholder', { defaultValue: 'AZE1234567' })}
             />
           </div>
           <div className="flex justify-end gap-2 pt-4">
             <button
-              className="px-4 py-2 border rounded-md bg-white dark:hover:bg-[#002244] dark:bg-[#001233] dark:text-white text-gray-900 hover:bg-gray-100"
+              className="px-4 py-2 border dark:border-[#979DAC] rounded-md bg-white dark:hover:bg-[#023E7D] dark:bg-[#001233] dark:text-white text-gray-900 hover:bg-gray-100"
               onClick={onClose}
             >
               {t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}
             </button>
-            <button onClick={onClose} className="px-4 py-2 dark:bg-[#023E7D] dark:text-white bg-black text-white rounded-md hover:opacity-50">
+            <button onClick={onClose} className="px-4 py-2 dark:bg-[#0466CB] hover:bg-[#0453A4] dark:text-white bg-black text-white rounded-md">
               {t('pages.hr.employees.modal.save', { defaultValue: 'Save' })}
             </button>
           </div>

@@ -104,7 +104,7 @@ function ItkiVeZayStatistikasi() {
         </tbody>
       </table>
       <div className="text-right mt-4  mr-15 text-sm font-medium">
-        Ümumi:{" "}
+        {t('common.total')}:{" "}
         <span className="text-red-500">
           ₼
           {rows.reduce((sum, row) => sum + Number(row.itki || 0), 0).toFixed(2)}
@@ -120,7 +120,7 @@ function ItkiVeZayStatistikasi() {
           <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl dark:bg-[#001233] dark:text-white -translate-x-1/2 -translate-y-1/2 bg-[#FFFFFF] rounded-lg shadow-lg p-6 border border-[#33415C]">
             <div className="flex justify-between items-center border-b border-[#979DAC] pb-3">
               <h3 className="text-lg font-semibold dark:text-white text-[#023E7D]">
-                Sətiri redaktə et
+                {t('pages.warehouse.common.editRow')}
               </h3>
               <button
                 onClick={closeEdit}
@@ -131,7 +131,7 @@ function ItkiVeZayStatistikasi() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
               <div>
-                <label className="block text-sm font-medium">Tarix</label>
+                <label className="block text-sm font-medium">{t('pages.warehouse.table.date')}</label>
                 <input
                   type="date"
                   className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 dark:bg-[#001233] dark:text-white bg-[#FFFFFF]"
@@ -145,7 +145,7 @@ function ItkiVeZayStatistikasi() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium">Məhsul</label>
+                <label className="block text-sm font-medium">{t('pages.warehouse.table.product')}</label>
                 <input
                   className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 dark:bg-[#001233] dark:text-white bg-[#FFFFFF]"
                   value={editing.data.mehsul}
@@ -158,7 +158,7 @@ function ItkiVeZayStatistikasi() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium">Miqdar</label>
+                <label className="block text-sm font-medium">{t('pages.warehouse.table.quantity')}</label>
                 <input
                   type="number"
                   className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 dark:bg-[#001233] dark:text-white bg-[#FFFFFF]"
@@ -172,7 +172,7 @@ function ItkiVeZayStatistikasi() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium">Səbəb</label>
+                <label className="block text-sm font-medium">{t('pages.warehouse.table.reason')}</label>
                 <input
                   className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 dark:bg-[#001233] dark:text-white bg-[#FFFFFF]"
                   value={editing.data.sebeb}
@@ -185,7 +185,7 @@ function ItkiVeZayStatistikasi() {
                 />
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-sm font-medium">İtki (₼)</label>
+                <label className="block text-sm font-medium">{t('pages.warehouse.table.loss')} (₼)</label>
                 <input
                   type="number"
                   step="any"
@@ -205,13 +205,13 @@ function ItkiVeZayStatistikasi() {
                 onClick={closeEdit}
                 className="px-4 py-2 border border-[#979DAC]  dark:bg-[#001233] dark:text-white dark:hover:bg-[#002244] rounded bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]"
               >
-                Ləğv et
+                {t('common.cancel')}
               </button>
               <button
                 onClick={saveEdit}
                 className="px-4 py-2 bg-[#0466CB] text-white rounded hover:bg-[#0453A4]"
               >
-                Yadda saxla
+                {t('common.save')}
               </button>
             </div>
           </div>
@@ -222,26 +222,27 @@ function ItkiVeZayStatistikasi() {
 }
 
 export default function HesabatAnalitika() {
+  const { t } = useTranslation();
   return (
     <div className="p-6 space-y-6 dark:bg-[#001233] dark:text-white bg-[#FFFFFF]">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold dark:text-white text-[#023E7D]">
-            Hesabat və Analitika
+            {t('pages.warehouse.reports.title')}
           </h1>
           <p className="text-sm text-[#7D8597]">
-            Anbar fəaliyyətinin detallı təhlili
+            {t('pages.warehouse.reports.subtitle')}
           </p>
         </div>
         <div className="flex gap-3 items-center">
           <select className="border border-[#979DAC] dark:bg-[#001233] dark:text-white bg-[#FFFFFF] rounded-xl px-3 py-2 text-sm">
-            <option>Bu ay</option>
-            <option>Bu həftə</option>
-            <option>Bu rüb</option>
-            <option>Bu il</option>
+            <option>{t('common.period.thisMonth')}</option>
+            <option>{t('common.period.thisWeek')}</option>
+            <option>{t('common.period.thisQuarter')}</option>
+            <option>{t('common.period.thisYear')}</option>
           </select>
           <button className="flex items-center gap-2 border border-[#979DAC] dark:hover:bg-[#002244] dark:text-white text-[#023E7D] rounded-xl px-4 py-2 hover:bg-[#F5F8FF] transition">
-            <FiDownload className="w-4 h-4" /> PDF Yüklə
+            <FiDownload className="w-4 h-4" /> {t('common.downloadPDF')}
           </button> 
         </div>
       </div>
@@ -249,32 +250,32 @@ export default function HesabatAnalitika() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-[#FFFFFF]  dark:bg-[#001233] dark:text-white border border-[#33415C] rounded-2xl p-4 shadow-sm">
           <h3 className="text-lg font-medium dark:text-white text-[#5C677D] flex items-center gap-2">
-            Stok Dövriyyəsi <FiTrendingUp className="w-4 h-4" />
+            {t('pages.warehouse.reports.stockTurnover')} <FiTrendingUp className="w-4 h-4" />
           </h3>
           <p className="text-3xl font-semibold mt-2  dark:text-white text-[#023E7D]">4.8x</p>
-          <p className="text-xs text-green-600">+0.5 əvvəlki aya nisbətən</p>
+          <p className="text-xs text-green-600">+0.5 {t('pages.warehouse.reports.vsLastMonth')}</p>
         </div>
 
         <div className="bg-[#FFFFFF]  dark:bg-[#001233] dark:text-white border border-[#33415C] rounded-2xl p-4 shadow-sm">
           <h3 className="text-lg font-medium dark:text-white text-[#5C677D] flex items-center gap-2">
-            Orta Dövriyyə Müddəti <FiTrendingUp className="w-4 h-4" />
+            {t('pages.warehouse.reports.avgTurnoverTime')} <FiTrendingUp className="w-4 h-4" />
           </h3>
-          <p className="text-3xl font-semibold mt-2  dark:text-white text-[#023E7D]">23 gün</p>
-          <p className="text-xs text-green-600">-2 gün yaxşılaşma</p>
+          <p className="text-3xl font-semibold mt-2  dark:text-white text-[#023E7D]">23 {t('pages.ai.common.days')}</p>
+          <p className="text-xs text-green-600">-2 {t('pages.ai.common.days')} {t('pages.warehouse.reports.improvement')}</p>
         </div>
 
         <div className="bg-[#FFFFFF]  dark:bg-[#001233] dark:text-white border border-[#33415C] rounded-2xl p-4 shadow-sm">
-          <h3 className="text-lg font-medium dark:text-white text-[#5C677D]">Ümumi İtki</h3>
+          <h3 className="text-lg font-medium dark:text-white text-[#5C677D]">{t('pages.warehouse.reports.totalLoss')}</h3>
           <p className="text-3xl font-semibold mt-2  dark:text-white text-[#023E7D]">₼ 55.25</p>
-          <p className="text-xs text-[#7D8597]">Bu ay zay və silinmə</p>
+          <p className="text-xs text-[#7D8597]">{t('pages.warehouse.reports.lossDescription')}</p>
         </div>
 
         <div className="bg-[#FFFFFF]  dark:bg-[#001233] dark:text-white border border-[#33415C] rounded-2xl p-4 shadow-sm">
           <h3 className="text-lg font-medium dark:text-white text-[#5C677D]">
-            İnventar Dəqiqliyi
+            {t('pages.warehouse.reports.inventoryAccuracy')}
           </h3>
           <p className="text-3xl font-semibold mt-2  dark:text-white text-[#023E7D]">97.5%</p>
-          <p className="text-xs text-[#7D8597]">Son inventar sayımi</p>
+          <p className="text-xs text-[#7D8597]">{t('pages.warehouse.reports.lastInventoryCount')}</p>
         </div>
       </div>
 
@@ -282,14 +283,14 @@ export default function HesabatAnalitika() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-[#FFFFFF]  dark:bg-[#001233] dark:text-white border border-[#33415C] rounded-2xl p-4 shadow-sm">
           <h3 className="text-lg font-medium dark:text-white mb-3">
-            Ən Çox Satılan Məhsullar
+            {t('pages.warehouse.reports.topSellingProducts')}
           </h3>
           <table className="w-full text-sm">
             <thead>
               <tr className="text-left dark:text-white border-b border-[#979DAC]">
-                <th className="py-2">Məhsul</th>
-                <th className="py-2">Miqdar</th>
-                <th className="py-2">Gəlir</th>
+                <th className="py-2">{t('pages.warehouse.table.product')}</th>
+                <th className="py-2">{t('pages.warehouse.table.quantity')}</th>
+                <th className="py-2">{t('pages.warehouse.table.revenue')}</th>
               </tr>
             </thead>
             <tbody>
@@ -323,14 +324,14 @@ export default function HesabatAnalitika() {
 
         <div className="bg-[#FFFFFF]  dark:bg-[#001233] dark:text-white border border-[#33415C] rounded-2xl p-4 shadow-sm">
           <h3 className="text-lg font-medium dark:text-white mb-3">
-            Ləng Hərəkət Edən Məhsullar
+            {t('pages.warehouse.reports.slowMovingProducts')}
           </h3>
           <table className="w-full text-sm">
             <thead>
               <tr className="text-left text-[#5C677D] border-b border-[#979DAC]">
-                <th className="py-2">Məhsul</th>
-                <th className="py-2">Qalıq</th>
-                <th className="py-2">Müddət</th>
+                <th className="py-2">{t('pages.warehouse.table.product')}</th>
+                <th className="py-2">{t('pages.warehouse.table.stock')}</th>
+                <th className="py-2">{t('pages.warehouse.table.duration')}</th>
               </tr>
             </thead>
             <tbody>
@@ -342,7 +343,7 @@ export default function HesabatAnalitika() {
                 <td>25</td>
                 <td>
                   <span className="bg-[#FFFFFF] border border-[#979DAC] text-[#5C677D] px-2 py-1 rounded-full text-xs">
-                    45 gün
+                    45 {t('pages.ai.common.days')}
                   </span>
                 </td>
               </tr>
@@ -354,7 +355,7 @@ export default function HesabatAnalitika() {
                 <td>8</td>
                 <td>
                   <span className="bg-[#FFFFFF] border border-[#979DAC] text-[#5C677D] px-2 py-1 rounded-full text-xs">
-                    38 gün
+                    38 {t('pages.ai.common.days')}
                   </span>
                 </td>
               </tr>

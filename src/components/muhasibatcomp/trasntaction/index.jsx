@@ -313,9 +313,9 @@ const Transactions = () => {
                         <th className="text-left p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.accountName')}</th>
                         <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.debit')}</th>
                         <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.credit')}</th>
-                        <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.currency', { defaultValue: 'Valyuta' })}</th>
-                        <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.amount', { defaultValue: 'Məbləğ' })}</th>
-                        <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.liquidValue', { defaultValue: 'Maye dəyəri' })}</th>
+                        <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.currency')}</th>
+                        <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.amount')}</th>
+                        <th className="text-right p-1 sm:p-2 font-medium">{t('pages.accounting.transactions.table.liquidValue')}</th>
                       </tr>
                     </thead>
                     <tbody>

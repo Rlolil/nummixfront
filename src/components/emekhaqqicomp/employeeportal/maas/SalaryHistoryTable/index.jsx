@@ -107,7 +107,7 @@ const SalaryHistoryTable = () => {
       {editRow && (
         <div>
           <div onClick={closeEdit} className="fixed inset-0 bg-black opacity-50 z-50"></div>
-          <div role="dialog" aria-modal="true" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-51 w-full max-w-md bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow p-6 text-[#001233]">
+          <div role="dialog" aria-modal="true" className="fixed dark:bg-[#001233] dark:text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-51 w-full max-w-md bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow p-6 text-[#001233]">
             <button onClick={closeEdit} className="absolute top-4 right-4 text-[#7D8597] hover:text-[#001233]">
               <FiX className="w-5 h-5" />
               <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
@@ -116,38 +116,38 @@ const SalaryHistoryTable = () => {
             <div className="space-y-3">
               <div>
                 <label className="block text-sm mb-1 text-[#5C677D]">{t('pages.hr.portal.salary.history.headers.month')}</label>
-                <input className="w-full border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.month} onChange={(e) => setEditRow(r => ({ ...r, month: e.target.value }))} />
+                <input className="w-full dark:bg-[#001233] dark:text-white border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.month} onChange={(e) => setEditRow(r => ({ ...r, month: e.target.value }))} />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-sm mb-1 text-[#5C677D]">{t('pages.hr.portal.salary.history.headers.gross')}</label>
-                  <input className="w-full border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.gross} onChange={(e) => setEditRow(r => ({ ...r, gross: e.target.value }))} />
+                  <input className="w-full dark:bg-[#001233] dark:text-white border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.gross} onChange={(e) => setEditRow(r => ({ ...r, gross: e.target.value }))} />
                 </div>
                 <div>
                   <label className="block text-sm mb-1 text-[#5C677D]">{t('pages.hr.portal.salary.history.headers.tax')}</label>
-                  <input className="w-full border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.tax} onChange={(e) => setEditRow(r => ({ ...r, tax: e.target.value }))} />
+                  <input className="w-full dark:bg-[#001233] dark:text-white border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.tax} onChange={(e) => setEditRow(r => ({ ...r, tax: e.target.value }))} />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-sm mb-1 text-[#5C677D]">{t('pages.hr.portal.salary.history.headers.social')}</label>
-                  <input className="w-full border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.social} onChange={(e) => setEditRow(r => ({ ...r, social: e.target.value }))} />
+                  <input className="w-full dark:bg-[#001233] dark:text-white border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.social} onChange={(e) => setEditRow(r => ({ ...r, social: e.target.value }))} />
                 </div>
                 <div>
                   <label className="block text-sm mb-1 text-[#5C677D]">{t('pages.hr.portal.salary.history.headers.net')}</label>
-                  <input className="w-full border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.net} onChange={(e) => setEditRow(r => ({ ...r, net: e.target.value }))} />
+                  <input className="w-full dark:bg-[#001233] dark:text-white border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.net} onChange={(e) => setEditRow(r => ({ ...r, net: e.target.value }))} />
                 </div>
               </div>
               <div>
                 <label className="block text-sm mb-1 text-[#5C677D]">{t('pages.hr.portal.salary.history.headers.status')}</label>
-                <select className="w-full border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.status} onChange={(e) => setEditRow(r => ({ ...r, status: e.target.value }))}>
+                <select className="w-full dark:bg-[#001233] dark:text-white border border-[#979DAC] rounded-md px-3 py-2 text-sm bg-[#FFFFFF]" value={editRow.status} onChange={(e) => setEditRow(r => ({ ...r, status: e.target.value }))}>
                   <option value="paid">{t('pages.hr.payroll.status.paid', { defaultValue: 'Paid' })}</option>
                   <option value="pending">{t('pages.hr.payroll.status.pending', { defaultValue: 'Pending' })}</option>
                 </select>
               </div>
             </div>
             <div className="flex justify-end gap-2 mt-4">
-              <button className="px-4 py-2 rounded-md border border-[#33415C] bg-[#FFFFFF] text-[#001233] hover:bg-[#F5F8FF]" onClick={closeEdit}>{t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}</button>
+              <button className="px-4 py-2 rounded-md dark:bg-[#001233] dark:hover:bg-[#002244] dark:text-white border border-[#33415C] bg-[#FFFFFF] text-[#001233] hover:bg-[#F5F8FF]" onClick={closeEdit}>{t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}</button>
               <button className="px-4 py-2 rounded-md bg-[#0466CB] text-white hover:bg-[#0453A4]" onClick={saveEdit}>{t('pages.hr.employees.modal.save', { defaultValue: 'Save' })}</button>
             </div>
           </div>

@@ -105,7 +105,7 @@ function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = ""
             </button>
             <button
               type="submit"
-              className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-gray-800"
+              className="rounded-md dark:bg-[#023E7D] dark:hover:bg-[#0453A4] bg-black px-4 py-2 text-sm text-white hover:bg-gray-800"
             >
               {t('pages.hr.leave.modal.submit', { defaultValue: 'Submit' })}
             </button>

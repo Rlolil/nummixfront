@@ -50,20 +50,16 @@ function Muhasibat() {
             key={item.to}
             to={`/muhasibat/${item.to}`}
             onClick={() => setActiveItem(item.label)}
-            className="
-              w-full flex-1 text-center rounded-md transition-colors duration-200
-              bg-white text-[#001233] border-[#33415C]
-              hover:bg-[#0453A4] hover:text-white
-              dark:bg-[#002855] dark:text-white dark:border-[#979DAC]
-              dark:hover:bg-[#0453A4]
-            "
+            className={`
+              w-full flex-1 text-center rounded-md transition-colors duration-200 border
+              ${
+                activeItem === item.label
+                  ? "bg-[#0466CB] text-white border-transparent dark:bg-[#023E7D]"
+                  : "bg-white text-[#023E7D] border-[#33415C] hover:bg-[#0453A4] hover:text-white dark:bg-[#002855] dark:text-white dark:border-[#979DAC] dark:hover:bg-[#0453A4]"
+              }
+            `}
           >
-            <button
-              className={`
-                text-[#023e7d] w-full py-2 px-4 rounded-md dark:text-white border hover:bg-[#0453A4] transition-all duration-300 hover:text-white
-                ${activeItem === item.label ? "active" : ""}
-              `}
-            >
+            <button className="w-full py-2 px-4 rounded-md transition-all duration-300">
               {item.label}
             </button>
           </Link>

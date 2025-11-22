@@ -176,7 +176,10 @@
           "accountCode": "Account Code",
           "accountName": "Account Name",
           "debit": "Debit",
-          "credit": "Credit"
+          "credit": "Credit",
+          "currency": "Currency",
+          "amount": "Amount",
+          "liquidValue": "Liquid Value"
         },
         "accounts": {
           "accountsReceivable": "Accounts Receivable",
@@ -1297,6 +1300,7 @@
       "common": {
         "actions": "Actions",
         "edit": "Edit",
+        "editRow": "Edit Row",
         "delete": "Delete",
         "confirmDelete": "Do you want to delete this row?"
       },
@@ -1317,6 +1321,32 @@
           "current": "Current",
           "minimum": "Minimum"
         }
+      },
+      "table": {
+        "date": "Date",
+        "product": "Product",
+        "quantity": "Quantity",
+        "reason": "Reason",
+        "loss": "Loss",
+        "revenue": "Revenue",
+        "stock": "Stock",
+        "duration": "Duration",
+        "total": "Total"
+      },
+      "reports": {
+        "title": "Reports and Analytics",
+        "subtitle": "Detailed analysis of warehouse activity",
+        "stockTurnover": "Stock Turnover",
+        "vsLastMonth": "vs last month",
+        "avgTurnoverTime": "Average Turnover Time",
+        "improvement": "improvement",
+        "totalLoss": "Total Loss",
+        "lossDescription": "Waste and write-offs this month",
+        "inventoryAccuracy": "Inventory Accuracy",
+        "lastInventoryCount": "Last inventory count",
+        "topSellingProducts": "Top Selling Products",
+        "slowMovingProducts": "Slow Moving Products",
+        "lossAndWasteTitle": "Loss and Waste Statistics"
       },
       "products": {
         "title": "Products",
@@ -1373,19 +1403,6 @@
         "operations": "Warehouse Operations",
         "inventory": "Inventory",
         "reports": "Reports"
-      },
-      "reports": {
-        "title": "Warehouse Reports",
-        "subtitle": "Warehouse analytics and insights",
-        "lossAndWasteTitle": "Loss and waste statistics"
-      },
-      "table": {
-        "date": "Date",
-        "product": "Product",
-        "quantity": "Quantity",
-        "reason": "Reason",
-        "loss": "Loss",
-        "total": "Total"
       },
       "metrics": {
         "stockTurnover": "Stock turnover",

@@ -921,7 +921,10 @@
           "accountCode": "Hesab kodu",
           "accountName": "Hesab adı",
           "debit": "Debet",
-          "credit": "Kredit"
+          "credit": "Kredit",
+          "currency": "Valyuta",
+          "amount": "Məbləğ",
+          "liquidValue": "Maye dəyəri"
         },
         "accounts": {
           "accountsReceivable": "Debitor borcları",
@@ -1780,6 +1783,7 @@
       "common": {
         "actions": "Fəaliyyətlər",
         "edit": "Redaktə",
+        "editRow": "Sətiri redaktə et",
         "delete": "Sil",
         "confirmDelete": "Bu sətiri silmək istəyirsiniz?"
       },
@@ -1800,6 +1804,32 @@
           "current": "Cari",
           "minimum": "Minimum"
         }
+      },
+      "table": {
+        "date": "Tarix",
+        "product": "Məhsul",
+        "quantity": "Miqdar",
+        "reason": "Səbəb",
+        "loss": "İtki",
+        "revenue": "Gəlir",
+        "stock": "Qalıq",
+        "duration": "Müddət",
+        "total": "Cəmi"
+      },
+      "reports": {
+        "title": "Hesabat və Analitika",
+        "subtitle": "Anbar fəaliyyətinin detallı təhlili",
+        "stockTurnover": "Stok Dövriyyəsi",
+        "vsLastMonth": "əvvəlki aya nisbətən",
+        "avgTurnoverTime": "Orta Dövriyyə Müddəti",
+        "improvement": "yaxşılaşma",
+        "totalLoss": "Ümumi İtki",
+        "lossDescription": "Bu ay zay və silinmə",
+        "inventoryAccuracy": "İnventar Dəqiqliyi",
+        "lastInventoryCount": "Son inventar sayımi",
+        "topSellingProducts": "Ən Çox Satılan Məhsullar",
+        "slowMovingProducts": "Ləng Hərəkət Edən Məhsullar",
+        "lossAndWasteTitle": "İtki və Zay Statistikası"
       },
       "products": {
         "title": "Məhsullar",
@@ -1856,19 +1886,6 @@
         "operations": "Anbar Əməliyyatları",
         "inventory": "İnventar",
         "reports": "Hesabatlar"
-      },
-      "reports": {
-        "title": "Anbar hesabatları",
-        "subtitle": "Anbar analitikası və hesabatlar",
-        "lossAndWasteTitle": "İtki və zay statistikası"
-      },
-      "table": {
-        "date": "Tarix",
-        "product": "Məhsul",
-        "quantity": "Miqdar",
-        "reason": "Səbəb",
-        "loss": "İtki",
-        "total": "Cəmi"
       },
       "metrics": {
         "stockTurnover": "Stok dövriyyəsi",

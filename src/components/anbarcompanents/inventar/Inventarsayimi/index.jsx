@@ -316,40 +316,40 @@ export default function InventarSayimi() {
             {newInvOpen && (
                 <div>
                     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50" onClick={()=>{ setNewInvOpen(false); resetForm(); }}></div>
-                    <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl -translate-x-1/2 -translate-y-1/2  dark:bg-[#001233]  dark:text-white bg-white rounded-lg shadow-lg p-6">
-                        <div className="flex justify-between items-center border-b pb-3">
-                            <h3 className="text-lg font-semibold  dark:text-white">{t('pages.warehouse.inventory.count.newInventory', { defaultValue: 'Yeni inventar' })}</h3>
-                            <button onClick={()=>{ setNewInvOpen(false); resetForm(); }} className="text-xl text-gray-500 hover:text-gray-700">×</button>
+                    <div className="fixed top-1/2 left-1/2 z-51 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 dark:bg-[#001233] dark:text-white bg-[#FFFFFF] rounded-lg shadow-lg p-6 border border-[#33415C]">
+                        <div className="flex justify-between items-center border-b border-[#979DAC] pb-3">
+                            <h3 className="text-lg font-semibold dark:text-white text-[#023E7D]">{t('pages.warehouse.inventory.count.newInventory', { defaultValue: 'Yeni inventar' })}</h3>
+                            <button onClick={()=>{ setNewInvOpen(false); resetForm(); }} className="text-xl text-[#7D8597] hover:text-[#023E7D]">×</button>
                         </div>
                         <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4" onSubmit={handleCreate}>
                             <div>
                                 <label className="block text-sm font-medium">SKU</label>
-                                <input className="mt-1 w-full border rounded px-3 py-2" value={form.sku} onChange={(e)=>setForm(prev=>({...prev, sku:e.target.value}))} />
+                                <input className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={form.sku} onChange={(e)=>setForm(prev=>({...prev, sku:e.target.value}))} />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium">{t('pages.warehouse.inventory.count.table.product')}</label>
-                                <input className="mt-1 w-full border rounded px-3 py-2" value={form.name} onChange={(e)=>setForm(prev=>({...prev, name:e.target.value}))} />
+                                <input className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={form.name} onChange={(e)=>setForm(prev=>({...prev, name:e.target.value}))} />
                             </div>
                             <div className="sm:col-span-2">
                                 <label className="block text-sm font-medium">{t('pages.warehouse.inventory.count.table.location')}</label>
-                                <input className="mt-1 w-full border rounded px-3 py-2" value={form.location} onChange={(e)=>setForm(prev=>({...prev, location:e.target.value}))} />
+                                <input className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={form.location} onChange={(e)=>setForm(prev=>({...prev, location:e.target.value}))} />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium">{t('pages.warehouse.inventory.count.table.systemQty')}</label>
-                                <input type="number" className="mt-1 w-full border rounded px-3 py-2" value={form.systemQty} onChange={(e)=>setForm(prev=>({...prev, systemQty:e.target.value}))} />
+                                <input type="number" className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={form.systemQty} onChange={(e)=>setForm(prev=>({...prev, systemQty:e.target.value}))} />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium">Vahid</label>
-                                <select className="mt-1 w-full border rounded dark:bg-[#001233]  dark:text-white px-3 py-2" value={form.unit} onChange={(e)=>setForm(prev=>({...prev, unit:e.target.value}))}>
+                                <select className="mt-1 w-full border border-[#979DAC] rounded px-3 py-2 bg-[#FFFFFF] dark:bg-[#001233] dark:text-white" value={form.unit} onChange={(e)=>setForm(prev=>({...prev, unit:e.target.value}))}>
                                     <option value="ədəd">ədəd</option>
                                     <option value="kq">kq</option>
                                     <option value="litr">litr</option>
                                     <option value="metr">metr</option>
                                 </select>
                             </div>
-                            <div className="sm:col-span-2 flex justify-end gap-2 border-t pt-4 mt-2">
-                                <button type="button" onClick={()=>{ setNewInvOpen(false); resetForm(); }} className="px-4 py-2 border rounded dark:border-[#33415C] dark:hover:bg-[#002244] hover:bg-gray-100">{t('common.cancel',{defaultValue:'Cancel'})}</button>
-                                <button type="submit" className="px-4 py-2 bg-[#0466CB] text-white rounded">{t('common.save',{defaultValue:'Save'})}</button>
+                            <div className="sm:col-span-2 flex justify-end gap-2 border-t border-[#979DAC] pt-4 mt-2">
+                                <button type="button" onClick={()=>{ setNewInvOpen(false); resetForm(); }} className="px-4 py-2 border border-[#979DAC] rounded dark:bg-[#001233] dark:text-white dark:hover:bg-[#002244] bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]">{t('common.cancel',{defaultValue:'Cancel'})}</button>
+                                <button type="submit" className="px-4 py-2 bg-[#0466CB] text-white rounded hover:bg-[#0453A4]">{t('common.save',{defaultValue:'Save'})}</button>
                             </div>
                         </form>
                     </div>

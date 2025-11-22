@@ -68,7 +68,7 @@ function Leave() {
           {modalOpen && (
             <LeaveRequestModal onClose={() => setModalOpen(false)} />
           )}
-          <button onClick={() => setModalOpen(true)} className="bg-[#0466CB] hover:bg-[#0453A4] rounded-xl p-2 flex items-center gap-2">
+          <button onClick={() => setModalOpen(true)} className="bg-[#0466CB] dark:bg-[#023E7D] hover:bg-[#0453A4] rounded-xl p-2 flex items-center gap-2">
             <span className="text-[18px] text-white">+</span>
             <span className="text-white">{t('pages.hr.leave.newRequest', { defaultValue: 'New Request' })}</span>
           </button>
@@ -299,7 +299,7 @@ function Leave() {
                   </td>
                   <td className="px-4 py-2">
                     <div className="flex items-center gap-2">
-                      <button className="p-2 rounded-md hover:bg-[#F5F8FF]" onClick={() => openEdit(employee, idx)} title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })}>
+                      <button className="p-2 rounded-md dark:hover:bg-[#33415C] hover:bg-[#F5F8FF]" onClick={() => openEdit(employee, idx)} title={t('common.edit', { ns: 'translation', defaultValue: 'Edit' })}>
                         <FiEdit2 className="w-4 h-4" />
                       </button>
                       <button className="p-2 rounded-md text-red-600 hover:text-red-700" onClick={() => handleDelete(idx)} title={t('common.delete', { ns: 'translation', defaultValue: 'Delete' })}>
@@ -317,23 +317,23 @@ function Leave() {
       {editItem && (
         <div>
           <div onClick={closeEdit} className="bg-black opacity-50 fixed inset-0 z-51"></div>
-          <div role="dialog" className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow-lg p-6">
+          <div role="dialog" className="fixed dark:bg-[#001233] dark:text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-52 w-full max-w-xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow-lg p-6">
             <button className="absolute top-4 right-4 opacity-70 hover:opacity-100 focus:ring-2 focus:ring-blue-500 focus:outline-none" onClick={closeEdit}>
               <FiX className="w-4 h-4" />
               <span className="sr-only">{t('pages.hr.employees.modal.close', { defaultValue: 'Close' })}</span>
             </button>
             <div className="flex flex-col gap-2 text-center sm:text-left">
-              <h2 className="text-lg font-semibold text-[#023E7D]">{t('pages.hr.leave.balance.editTitle', { defaultValue: 'Edit Leave Balance' })}</h2>
+              <h2 className="text-lg font-semibold dark:text-white text-[#023E7D]">{t('pages.hr.leave.balance.editTitle', { defaultValue: 'Edit Leave Balance' })}</h2>
             </div>
             <div className="space-y-4 py-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#5C677D]">{t('pages.hr.leave.table.employee', { defaultValue: 'Employee' })}</label>
-                  <input className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none" value={editItem.name} onChange={(e) => handleEditChange('name', e.target.value)} />
+                  <input className="w-full dark:bg-[#001233] dark:text-white h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none" value={editItem.name} onChange={(e) => handleEditChange('name', e.target.value)} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#5C677D]">{t('pages.hr.leave.table.department', { defaultValue: 'Department' })}</label>
-                  <select className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none" value={editItem.departmentKey} onChange={(e) => handleEditChange('departmentKey', e.target.value)}>
+                  <select className="w-full dark:bg-[#001233] dark:text-white h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none" value={editItem.departmentKey} onChange={(e) => handleEditChange('departmentKey', e.target.value)}>
                     <option value="finance">{t('pages.hr.departments.finance', { defaultValue: 'Finance' })}</option>
                     <option value="it">{t('pages.hr.departments.it', { defaultValue: 'IT Department' })}</option>
                     <option value="marketing">{t('pages.hr.departments.marketing', { defaultValue: 'Marketing' })}</option>
@@ -345,28 +345,28 @@ function Leave() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#5C677D]">{t('pages.hr.leave.table.total', { defaultValue: 'Total Entitlement' })}</label>
-                  <input type="number" min="0" className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none" value={editItem.total} onChange={(e) => handleEditChange('total', e.target.value)} />
+                  <input type="number" min="0" className="w-full dark:bg-[#001233] dark:text-white h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none" value={editItem.total} onChange={(e) => handleEditChange('total', e.target.value)} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#5C677D]">{t('pages.hr.leave.table.used', { defaultValue: 'Used' })}</label>
-                  <input type="number" min="0" className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none" value={editItem.used} onChange={(e) => handleEditChange('used', e.target.value)} />
+                  <input type="number" min="0" className="w-full dark:bg-[#001233] dark:text-white h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-base text-[#001233] focus:outline-none" value={editItem.used} onChange={(e) => handleEditChange('used', e.target.value)} />
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#5C677D]">{t('pages.hr.leave.table.status', { defaultValue: 'Status' })}</label>
-                  <select className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none" value={editItem.statusKey} onChange={(e) => handleEditChange('statusKey', e.target.value)}>
+                  <select className="w-full dark:bg-[#001233] dark:text-white h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-sm text-[#001233] focus:outline-none" value={editItem.statusKey} onChange={(e) => handleEditChange('statusKey', e.target.value)}>
                     <option value="active">{t('pages.hr.employees.status.active', { defaultValue: 'Active' })}</option>
                     <option value="onLeave">{t('pages.hr.employees.status.onLeave', { defaultValue: 'On Leave' })}</option>
                   </select>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#5C677D]">{t('pages.hr.leave.table.remaining', { defaultValue: 'Remaining' })}</label>
-                  <input disabled className="w-full h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#F5F8FF] text-base text-[#001233]" value={Math.max(0, toInt(editItem.total) - Math.min(toInt(editItem.used), toInt(editItem.total)))} />
+                  <input disabled className="w-full dark:bg-[#001233] dark:text-white h-9 px-3 py-1 border border-[#979DAC] rounded-md bg-[#F5F8FF] text-base text-[#001233]" value={Math.max(0, toInt(editItem.total) - Math.min(toInt(editItem.used), toInt(editItem.total)))} />
                 </div>
               </div>
               <div className="flex justify-end gap-2 pt-2">
-                <button className="px-4 py-2 border border-[#979DAC] rounded-md bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]" onClick={closeEdit}>{t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}</button>
+                <button className="px-4 py-2 border border-[#979DAC] dark:hover:bg-[#33415C] dark:bg-[#001233] dark:text-white rounded-md bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]" onClick={closeEdit}>{t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}</button>
                 <button className="px-4 py-2 bg-[#0466CB] hover:bg-[#0453A4] text-white rounded-md" onClick={saveEdit}>{t('pages.hr.employees.modal.save', { defaultValue: 'Save' })}</button>
               </div>
             </div>

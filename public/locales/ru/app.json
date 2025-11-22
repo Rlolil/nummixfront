@@ -1103,7 +1103,10 @@
           "accountCode": "Код счета",
           "accountName": "Название счета",
           "debit": "Дебет",
-          "credit": "Кредит"
+          "credit": "Кредит",
+          "currency": "Валюта",
+          "amount": "Сумма",
+          "liquidValue": "Ликвидная стоимость"
         },
         "accounts": {
           "accountsReceivable": "Дебиторская задолженность",
@@ -2141,6 +2144,7 @@
       "common": {
         "actions": "Действия",
         "edit": "Редактировать",
+        "editRow": "Редактировать строку",
         "delete": "Удалить",
         "confirmDelete": "Вы хотите удалить эту строку?"
       },
@@ -2161,6 +2165,32 @@
           "current": "Текущий",
           "minimum": "Минимум"
         }
+      },
+      "table": {
+        "date": "Дата",
+        "product": "Продукт",
+        "quantity": "Количество",
+        "reason": "Причина",
+        "loss": "Потери",
+        "revenue": "Доход",
+        "stock": "Остаток",
+        "duration": "Длительность",
+        "total": "Итого"
+      },
+      "reports": {
+        "title": "Отчеты и аналитика",
+        "subtitle": "Подробный анализ складской деятельности",
+        "stockTurnover": "Оборачиваемость запасов",
+        "vsLastMonth": "к прошлому месяцу",
+        "avgTurnoverTime": "Среднее время оборота",
+        "improvement": "улучшение",
+        "totalLoss": "Общие потери",
+        "lossDescription": "Брак и списания в этом месяце",
+        "inventoryAccuracy": "Точность инвентаризации",
+        "lastInventoryCount": "Последний подсчет инвентаря",
+        "topSellingProducts": "Самые продаваемые товары",
+        "slowMovingProducts": "Медленно оборачиваемые товары",
+        "lossAndWasteTitle": "Статистика потерь и брака"
       },
       "products": {
         "title": "Продукты",
@@ -2217,19 +2247,6 @@
         "operations": "Складские операции",
         "inventory": "Инвентарь",
         "reports": "Отчеты"
-      },
-      "reports": {
-        "title": "Складские отчеты",
-        "subtitle": "Аналитика и отчеты по складу",
-        "lossAndWasteTitle": "Статистика потерь и брака"
-      },
-      "table": {
-        "date": "Дата",
-        "product": "Товар",
-        "quantity": "Количество",
-        "reason": "Причина",
-        "loss": "Потери",
-        "total": "Итого"
       },
       "metrics": {
         "stockTurnover": "Оборачиваемость запасов",

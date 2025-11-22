@@ -67,7 +67,7 @@ const NewPlanModal = ({ onClose }) => {
                             placeholder="Təchizatçı adı"
                             value={form.tachizatci}
                             onChange={handleChange}
-                            className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white  rounded-md p-2.5 text-sm text-[#001233] dark:text-white focus:ring dark:bg-[#33415C] focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
+                            className="w-full border border-[#979DAC] dark:border-[#33415C] bg-white     rounded-md p-2.5 text-sm text-[#001233] dark:text-white dark:bg-[#33415C] focus:outline-none focus:ring-2 focus:ring-[#0466CB]"
                             required
                         />
                     </div>

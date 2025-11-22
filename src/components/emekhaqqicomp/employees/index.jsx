@@ -349,7 +349,7 @@ const Employees = () => {
           <div onClick={closeEdit} className="bg-black opacity-50 fixed inset-0 z-51"></div>
           <div
             role="dialog"
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 dark:bg-[#001233] dark:text-white -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] rounded-lg shadow-lg p-6 sm:max-w-lg"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 dark:bg-[#33415C] dark:text-white -translate-y-1/2 z-52 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFFFFF] border border-[#33415C] dark:border-[#979DAC] rounded-lg shadow-lg p-6 sm:max-w-lg"
           >
             <button
               className="absolute top-4 right-4 opacity-70 hover:opacity-100  focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -441,7 +441,7 @@ const Employees = () => {
               </div>
               <div className="flex justify-end gap-2 pt-4">
                 <button
-                  className="px-4 py-2 border border-[#979DAC] dark:bg-[#001233] dark:text-white dark:hover:bg-[#002244] rounded-md bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]"
+                  className="px-4 py-2 border border-[#979DAC] dark:bg-[#001233] dark:text-white dark:hover:bg-[#023E7D] rounded-md bg-[#FFFFFF] text-[#023E7D] hover:bg-[#F5F8FF]"
                   onClick={closeEdit}
                 >
                   {t('pages.hr.employees.modal.cancel', { defaultValue: 'Cancel' })}
