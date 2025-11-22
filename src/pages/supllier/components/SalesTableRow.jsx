@@ -7,53 +7,57 @@ export default function SalesTableRow({ item, index, onEditClick, onDelete }) {
     const { t } = useTranslation();
     const dialogRef = useRef(null);
 
+    const getBadgeClass = (status) => {
+        switch (status) {
+            case "delayed":
+                return "badge badge-error";
+            case "pending":
+                return "badge badge-warning";
+            default:
+                return "badge badge-neutral";
+        }
+    };
+
     return (
-        <tr>
+        <tr className="dark:text-white text-black">
             <td className="flex items-center gap-2">{item.orderNumber}</td>
             <td className="hidden md:table-cell">{item.supplier}</td>
             <td className="hidden md:table-cell">{item.date}</td>
             <td className="hidden md:table-cell">{item.delivery}</td>
             <td>{item.amount}</td>
             <td className="hidden sm:table-cell">
-                <span
-                    className={`badge font-semibold text-xs ${
-                        item.statusCode === "delayed"
-                            ? "badge-error"
-                            : item.statusCode === "pending"
-                            ? "badge-warning"
-                            : "badge-success"
-                    }`}
-                >
+                <span className={`${getBadgeClass(item.statusCode)}`}>
                     {t(`pages.supplier.orders.status.${item.statusCode || "pending"}`)}
                 </span>
             </td>
             <td className="text-right">
                 <div className="flex justify-center items-center gap-2">
                     <button
-                        className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                        className="hover:bg-zinc-200 dark:hover:bg-[#002855] p-2 rounded-lg transition-all"
                         onClick={() => dialogRef.current && dialogRef.current.showModal()}
                     >
                         <MdOutlineRemoveRedEye className="size-5" />
                     </button>
                     <button
-                        className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                        className="hover:bg-zinc-200 dark:hover:bg-[#002855] p-2 rounded-lg transition-all"
                         onClick={() => onEditClick && onEditClick(index)}
                         title="Edit"
                     >
                         <FiEdit2 className="size-5" />
                     </button>
                     <button
-                        className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                        className="hover:bg-zinc-200 dark:hover:bg-[#002855] p-2 rounded-lg transition-all"
                         onClick={() => onDelete && onDelete(index)}
                         title="Delete"
                     >
                         <FiTrash2 className="size-5" />
                     </button>
                 </div>
+
                 <dialog ref={dialogRef} className="modal text-left">
-                    <div className="modal-box">
+                    <div className="modal-box bg-white dark:bg-[#001233] text-black dark:text-white">
                         <form method="dialog">
-                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black dark:text-white">
                                 ✕
                             </button>
                         </form>
@@ -83,15 +87,7 @@ export default function SalesTableRow({ item, index, onEditClick, onDelete }) {
                                 <div>
                                     <p className="font-semibold text-sm">{t("pages.supplier.orders.form.status")}</p>
                                     <p>
-                                        <span
-                                            className={`badge font-semibold text-xs ${
-                                                item.statusCode === "delayed"
-                                                    ? "badge-error"
-                                                    : item.statusCode === "pending"
-                                                    ? "badge-warning"
-                                                    : "badge-neutral"
-                                            }`}
-                                        >
+                                        <span className={`${getBadgeClass(item.statusCode)}`}>
                                             {t(`pages.supplier.orders.status.${item.statusCode || "pending"}`)}
                                         </span>
                                     </p>
@@ -99,8 +95,8 @@ export default function SalesTableRow({ item, index, onEditClick, onDelete }) {
                             </div>
                         </div>
                     </div>
-                    <form method="dialog" className="modal-backdrop">
-                        <button>close</button>
+                    <form method="dialog" className="modal-backdrop bg-black/40">
+                        <button className="text-white">close</button>
                     </form>
                 </dialog>
             </td>

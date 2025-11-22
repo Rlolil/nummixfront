@@ -266,92 +266,103 @@ export default function Sales() {
                 }
             />
             <dialog id="editOrderDialog" className="modal">
-                <div className="modal-box w-11/12 max-w-3xl">
+                <div className="modal-box w-11/12 max-w-3xl bg-white dark:bg-[#001233] text-black dark:text-white">
+
                     <button
                         type="button"
-                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black dark:text-white"
                         onClick={() => document.getElementById("editOrderDialog").close()}
                     >
                         ✕
                     </button>
+
                     <div className="flex flex-col gap-4">
-                        <h3 className="font-bold text-lg">{t("pages.supplier.orders.editModal.title") || "Sifarişi Redaktə Et"}</h3>
+                        <h3 className="font-bold text-lg">
+                            {t("pages.supplier.orders.editModal.title") || "Sifarişi Redaktə Et"}
+                        </h3>
+
                         <form onSubmit={handleEditSave} className="flex flex-col gap-4">
+
                             <div className="grid grid-cols-2 gap-4">
-                                <label className="flex flex-col gap-2">
-                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.orderNo")}</p>
-                                    <input
-                                        type="text"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                        value={editOrder?.orderNumber || ""}
-                                        onChange={(e) => setEditOrder({ ...editOrder, orderNumber: e.target.value })}
-                                    />
-                                </label>
-                                <label className="flex flex-col gap-2">
-                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.supplier")}</p>
-                                    <input
-                                        type="text"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                        value={editOrder?.supplier || ""}
-                                        onChange={(e) => setEditOrder({ ...editOrder, supplier: e.target.value })}
-                                    />
-                                </label>
-                                <label className="flex flex-col gap-2">
-                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.date")}</p>
-                                    <input
-                                        type="date"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                        value={editOrder?.date || ""}
-                                        onChange={(e) => setEditOrder({ ...editOrder, date: e.target.value })}
-                                    />
-                                </label>
-                                <label className="flex flex-col gap-2">
-                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.delivery")}</p>
-                                    <input
-                                        type="date"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                        value={editOrder?.delivery || ""}
-                                        onChange={(e) => setEditOrder({ ...editOrder, delivery: e.target.value })}
-                                    />
-                                </label>
-                                <label className="flex flex-col gap-2">
-                                    <p className="font-semibold text-sm">{t("pages.supplier.orders.form.amount")}</p>
-                                    <input
-                                        type="number"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-600 rounded-md bg-zinc-100 border-0"
-                                        value={editOrder?.amount || ""}
-                                        onChange={(e) => setEditOrder({ ...editOrder, amount: Number(e.target.value) })}
-                                    />
-                                </label>
+                                {[
+                                    { label: "orderNo", key: "orderNumber", type: "text" },
+                                    { label: "supplier", key: "supplier", type: "text" },
+                                    { label: "date", key: "date", type: "date" },
+                                    { label: "delivery", key: "delivery", type: "date" },
+                                    { label: "amount", key: "amount", type: "number" },
+                                ].map(({ label, key, type }) => (
+                                    <label key={key} className="flex flex-col gap-2">
+                                        <p className="font-semibold text-sm">
+                                            {t(`pages.supplier.orders.form.${label}`)}
+                                        </p>
+                                        <input
+                                            type={type}
+                                            className="input h-fit py-2 w-full border-0 rounded-md
+                                           bg-zinc-100 dark:bg-[#002855]
+                                           text-black dark:text-white
+                                           placeholder:text-gray-500 dark:placeholder:text-gray-300
+                                           focus:outline-2 focus:outline-[#023E7D]"
+                                            value={editOrder?.[key] || ""}
+                                            onChange={(e) =>
+                                                setEditOrder({
+                                                    ...editOrder,
+                                                    [key]: type === "number" ? Number(e.target.value) : e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </label>
+                                ))}
+
                                 <label className="flex flex-col gap-2">
                                     <p className="font-semibold text-sm">{t("pages.supplier.orders.form.status")}</p>
                                     <select
-                                        className="select h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0"
+                                        className="select h-fit py-2 w-full border-0 rounded-md
+                                       bg-zinc-100 dark:bg-[#002855]
+                                       text-black dark:text-white
+                                       focus:outline-2 focus:outline-[#023E7D]"
                                         value={editOrder?.statusCode || ""}
-                                        onChange={(e) => setEditOrder({ ...editOrder, statusCode: e.target.value })}
+                                        onChange={(e) =>
+                                            setEditOrder({ ...editOrder, statusCode: e.target.value })
+                                        }
                                     >
-                                        <option value="pending">{t("pages.supplier.orders.status.pending")}</option>
-                                        <option value="delayed">{t("pages.supplier.orders.status.delayed")}</option>
+                                        <option value="pending">
+                                            {t("pages.supplier.orders.status.pending")}
+                                        </option>
+                                        <option value="delayed">
+                                            {t("pages.supplier.orders.status.delayed")}
+                                        </option>
                                     </select>
                                 </label>
                             </div>
-                            <div className="flex gap-2 justify-end items-center">
+
+                            <div className="flex gap-2 justify-end items-center mt-2">
                                 <button
                                     type="button"
-                                    className="btn rounded-lg mt-4"
+                                    className="btn rounded-lg bg-zinc-200 dark:bg-[#001845] 
+                                   text-black dark:text-white border-0"
                                     onClick={() => document.getElementById("editOrderDialog").close()}
                                 >
                                     {t("common.cancel")}
                                 </button>
-                                <button className="btn btn-neutral rounded-lg mt-4" type="submit">
+                                <button
+                                    type="submit"
+                                    className="btn rounded-lg bg-[#023E7D] dark:bg-[#0453A4] 
+                                   text-white border-0 hover:opacity-90"
+                                >
                                     {t("common.save")}
                                 </button>
                             </div>
+
                         </form>
                     </div>
                 </div>
-                <div className="modal-backdrop" onClick={() => document.getElementById("editOrderDialog").close()} />
+
+                <div
+                    className="modal-backdrop bg-black/40"
+                    onClick={() => document.getElementById("editOrderDialog").close()}
+                />
             </dialog>
+
         </div>
     );
 }
