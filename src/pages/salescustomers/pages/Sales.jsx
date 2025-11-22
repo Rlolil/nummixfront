@@ -405,7 +405,7 @@ export default function Sales() {
                 />
             </div>
             <dialog id="editInvoiceDialog" className="modal">
-                <div className="modal-box w-11/12 max-w-3xl bg-white dark:bg-zinc-900 text-black dark:text-white">
+                <div className="modal-box w-11/12 max-w-3xl bg-white dark:bg-[#001233] text-black dark:text-white">
                     <button
                         type="button"
                         className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black dark:text-white"
@@ -430,7 +430,7 @@ export default function Sales() {
                                     <p className="font-semibold text-sm">{t("pages.sales.sales.table.columns.date")}</p>
                                     <input
                                         type="date"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-md bg-zinc-100 dark:bg-zinc-800 border-0 text-black dark:text-white"
+                                        className="input  h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-md bg-zinc-100 dark:bg-zinc-800 border-0 text-black dark:text-white"
                                         value={editInvoice?.date || ""}
                                         onChange={(e) => setEditInvoice({ ...editInvoice, date: e.target.value })}
                                     />

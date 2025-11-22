@@ -26,14 +26,14 @@ export default function TransactionsTableRow({ item, index, onEditClick, onDelet
             </td>
             <td className="text-right">
                 <button
-                    className="hover:bg-zinc-200 p-2 rounded-lg transition-all"
+                    className="dark:hover:bg-[#33415C] p-2 rounded-lg transition-all"
                     onClick={() => onEditClick && onEditClick(index)}
                     title={t("common.edit")}
                 >
                     <FiEdit2 className="size-5" />
                 </button>
                 <button
-                    className="hover:bg-zinc-200 p-2 rounded-lg transition-all ml-2"
+                    className="dark:hover:bg-[#33415C] p-2 rounded-lg transition-all ml-2"
                     onClick={() => onDelete && onDelete(index)}
                     title={t("common.delete")}
                 >

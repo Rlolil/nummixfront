@@ -9,54 +9,34 @@ import { getAgreements, createAgreement, updateAgreement, updateAgreementStatus 
 export default function Agreements() {
     const { t } = useTranslation();
 
-    // Sample agreements state
-    const [agreements, setAgreements] = useState([]);
-    const [newAgreement, setNewAgreement] = useState({
-        contractNo: "",
-        supplier: "",
-        amount: "",
-        currency: "AZN",
-        startDate: "",
-        endDate: "",
-        paymentTerm: "30",
-        notes: "",
-        status: "active"
-    });
-
-    useEffect(() => {
-        fetchAgreements();
-    }, []);
-
-    const fetchAgreements = async () => {
-        try {
-            const data = await getAgreements();
-            setAgreements(Array.isArray(data) ? data : []);
-        } catch (error) {
-            console.error("Error fetching agreements:", error);
-        }
-    };
-
-    const handleAddSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await createAgreement(newAgreement);
-            fetchAgreements();
-            setNewAgreement({
-                contractNo: "",
-                supplier: "",
-                amount: "",
-                currency: "AZN",
-                startDate: "",
-                endDate: "",
-                paymentTerm: "30",
-                notes: "",
-                status: "active"
-            });
-            document.getElementById("addNew")?.close();
-        } catch (error) {
-            console.error("Error creating agreement:", error);
-        }
-    };
+    const [agreements, setAgreements] = useState([
+        {
+            id: 1,
+            contractNo: "CNT-2025-001",
+            supplier: "AzərTəchizat MMC",
+            amount: 1450.0,
+            currency: "AZN",
+            startDate: "2025-01-01",
+            endDate: "2025-12-31",
+            paymentTerm: "30",
+            notes: t("pages.supplier.agreements.sample.description"),
+            status: "active",
+            daysLeft: 150,
+        },
+        {
+            id: 2,
+            contractNo: "CNT-2025-002",
+            supplier: "EuroMaterials",
+            amount: 3200.0,
+            currency: "AZN",
+            startDate: "2025-02-01",
+            endDate: "2025-10-15",
+            paymentTerm: "30",
+            notes: t("pages.supplier.agreements.sample.description"),
+            status: "active",
+            daysLeft: 46,
+        },
+    ]);
 
     const [editAgreement, setEditAgreement] = useState(null);
     const [editIndex, setEditIndex] = useState(null);
@@ -122,7 +102,6 @@ export default function Agreements() {
                     <dialog id="addNew" className="modal">
                         <div className="modal-box bg-white dark:bg-[#0F172A] text-black dark:text-white">
 
-                            {/* Close button */}
                             <button
                                 type="button"
                                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 dark:text-gray-300"
@@ -140,7 +119,6 @@ export default function Agreements() {
 
                                     <div className="grid grid-cols-2 gap-4">
 
-                                        {/* Contract No */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.contractNo")}</p>
                                             <input
@@ -154,7 +132,6 @@ export default function Agreements() {
                                             />
                                         </label>
 
-                                        {/* Supplier */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.supplier")}</p>
                                             <select
@@ -169,7 +146,6 @@ export default function Agreements() {
                                             </select>
                                         </label>
 
-                                        {/* Start Date */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.startDate")}</p>
                                             <input
@@ -181,7 +157,6 @@ export default function Agreements() {
                                             />
                                         </label>
 
-                                        {/* End Date */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.endDate")}</p>
                                             <input
@@ -220,7 +195,6 @@ export default function Agreements() {
                                             </select>
                                         </label>
 
-                                        {/* Payment Terms */}
                                         <label className="flex flex-col gap-2 col-span-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.paymentTerms")}</p>
                                             <select
@@ -235,7 +209,6 @@ export default function Agreements() {
                                             </select>
                                         </label>
 
-                                        {/* Notes */}
                                         <label className="flex flex-col gap-2 col-span-2">
                                             <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.notes")}</p>
                                             <input
@@ -310,7 +283,7 @@ export default function Agreements() {
                                 <button tabIndex={0} className="btn btn-ghost btn-circle">
                                     <HiOutlineDotsVertical className="size-5" />
                                 </button>
-                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-44">
+                                <ul tabIndex={0} className="dropdown-content dark:bg-[#33415C] menu p-2 shadow bg-base-100 rounded-box w-44">
                                     <li>
                                         <button onClick={() => openEdit(a, idx)} className="flex items-center">
                                             <HiOutlinePencil className="mr-2" />{t("common.edit")}
@@ -380,12 +353,11 @@ export default function Agreements() {
                     icon={<FaRegFileAlt />}
                 />
             </div>
-            {/* Edit Agreement Dialog */}
             <dialog id="editAgreementDialog" className="modal">
-                <div className="modal-box">
+                <div className="modal-box bg-white dark:bg-[#001233] text-black dark:text-white">
                     <button
                         type="button"
-                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black dark:text-white"
                         onClick={() => document.getElementById("editAgreementDialog")?.close()}
                     >
                         ✕
@@ -398,7 +370,7 @@ export default function Agreements() {
                                     <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.contractNo")}</p>
                                     <input
                                         type="text"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 dark:bg-[#002855] border-0 text-black dark:text-white placeholder:text-gray-600 dark:placeholder:text-zinc-400"
                                         value={editAgreement?.contractNo || ""}
                                         onChange={(e) => setEditAgreement({ ...editAgreement, contractNo: e.target.value })}
                                     />
@@ -407,7 +379,7 @@ export default function Agreements() {
                                     <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.supplier")}</p>
                                     <input
                                         type="text"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 dark:bg-[#002855] border-0 text-black dark:text-white placeholder:text-gray-600 dark:placeholder:text-zinc-400"
                                         value={editAgreement?.supplier || ""}
                                         onChange={(e) => setEditAgreement({ ...editAgreement, supplier: e.target.value })}
                                     />
@@ -416,7 +388,7 @@ export default function Agreements() {
                                     <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.startDate")}</p>
                                     <input
                                         type="date"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 dark:bg-[#002855] border-0 text-black dark:text-white"
                                         value={editAgreement?.startDate || ""}
                                         onChange={(e) => setEditAgreement({ ...editAgreement, startDate: e.target.value })}
                                     />
@@ -425,7 +397,7 @@ export default function Agreements() {
                                     <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.endDate")}</p>
                                     <input
                                         type="date"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 dark:bg-[#002855] border-0 text-black dark:text-white"
                                         value={editAgreement?.endDate || ""}
                                         onChange={(e) => setEditAgreement({ ...editAgreement, endDate: e.target.value })}
                                     />
@@ -435,7 +407,7 @@ export default function Agreements() {
                                     <input
                                         type="number"
                                         step="0.01"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 dark:bg-[#002855] border-0 text-black dark:text-white placeholder:text-gray-600 dark:placeholder:text-zinc-400"
                                         value={editAgreement?.amount || ""}
                                         onChange={(e) => setEditAgreement({ ...editAgreement, amount: Number(e.target.value) })}
                                     />
@@ -443,7 +415,7 @@ export default function Agreements() {
                                 <label className="flex flex-col gap-2">
                                     <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.currency")}</p>
                                     <select
-                                        className="select h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0"
+                                        className="select h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 dark:bg-[#002855] border-0 text-black dark:text-white"
                                         value={editAgreement?.currency || "AZN"}
                                         onChange={(e) => setEditAgreement({ ...editAgreement, currency: e.target.value })}
                                     >
@@ -455,7 +427,7 @@ export default function Agreements() {
                                 <label className="flex flex-col gap-2 col-span-2">
                                     <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.paymentTerms")}</p>
                                     <select
-                                        className="select h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0"
+                                        className="select h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 dark:bg-[#002855] border-0 text-black dark:text-white"
                                         value={editAgreement?.paymentTerm || "30"}
                                         onChange={(e) => setEditAgreement({ ...editAgreement, paymentTerm: e.target.value })}
                                     >
@@ -468,7 +440,7 @@ export default function Agreements() {
                                     <p className="font-semibold text-sm">{t("pages.supplier.agreements.form.notes")}</p>
                                     <input
                                         type="text"
-                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 border-0"
+                                        className="input h-fit py-2 w-full focus:outline-2 focus:outline-zinc-400 rounded-md bg-zinc-100 dark:bg-[#002855] border-0 text-black dark:text-white placeholder:text-gray-600 dark:placeholder:text-zinc-400"
                                         value={editAgreement?.notes || ""}
                                         onChange={(e) => setEditAgreement({ ...editAgreement, notes: e.target.value })}
                                     />
@@ -477,7 +449,7 @@ export default function Agreements() {
                             <div className="flex gap-2 justify-end items-center">
                                 <button
                                     type="button"
-                                    className="btn rounded-lg mt-4"
+                                    className="btn rounded-lg mt-4 text-black dark:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700"
                                     onClick={() => document.getElementById("editAgreementDialog")?.close()}
                                 >
                                     {t("common.cancel")}
@@ -489,8 +461,9 @@ export default function Agreements() {
                         </form>
                     </div>
                 </div>
-                <div className="modal-backdrop" onClick={() => document.getElementById("editAgreementDialog")?.close()} />
+                <div className="modal-backdrop bg-black/40 dark:bg-black/60" onClick={() => document.getElementById("editAgreementDialog")?.close()} />
             </dialog>
+
         </div>
     );
 }
