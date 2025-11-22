@@ -1,84 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaRegEdit, FaTrash } from "react-icons/fa";
 import { FaBox } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
-
-// Dummy məhsul məlumatları (unitofmeasure ilə)
-const initialProducts = [
-  {
-    sku: "XM-A101",
-    name: "Xammal A-101",
-    barcode: "8594562341234",
-    category: "Xammal",
-    unitofmeasure: "kq",
-    quantity: "5",
-    min: 50,
-    max: 500,
-    location: "A1-R2-H5",
-    cost: 12.5,
-    image: null,
-  },
-  {
-    sku: "HM-B205",
-    name: "Hazır məhsul B-205",
-    barcode: "8594562341235",
-    category: "Hazır məhsul",
-    unitofmeasure: "ədəd",
-    quantity: "120",
-    min: 50,
-    max: 300,
-    location: "B2-R1-H3",
-    cost: 45.0,
-    image: null,
-  },
-  {
-    sku: "BT-M1250",
-    name: "Bolt M12x50",
-    barcode: "8594562341236",
-    category: "Ehtiyat hissələri",
-    unitofmeasure: "ədəd",
-    quantity: "12",
-    min: 100,
-    max: 1000,
-    location: "C1-R3-H2",
-    cost: 0.85,
-    image: null,
-  },
-  {
-    sku: "QT-500",
-    name: "Qablaşdırma qutusu 500x300",
-    barcode: "8594562341237",
-    category: "Qablaşdırma",
-    unitofmeasure: "ədəd",
-    quantity: "25",
-    min: 200,
-    max: 2000,
-    location: "D1-R1-H1",
-    cost: 2.3,
-    image: null,
-  },
-  {
-    sku: "YG-5W30",
-    name: "Motor yağı 5W-30",
-    barcode: "8594562341238",
-    category: "Xammal",
-    unitofmeasure: "litr",
-    quantity: "8",
-    min: 30,
-    max: 200,
-    location: "A2-R4-H6",
-    cost: 18.75,
-    image: null,
-  },
-];
+import { getProducts, createProduct, updateProduct, deleteProduct } from "../../../services";
 
 const Məhsullar = () => {
+
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState([]);
   const [modalMode, setModalMode] = useState("create"); // 'create' | 'edit'
-  const [editIndex, setEditIndex] = useState(null);
+  const [editId, setEditId] = useState(null);
   const [form, setForm] = useState({
     sku: "",
     barcode: "",
@@ -92,6 +25,20 @@ const Məhsullar = () => {
     cost: "",
     image: null,
   });
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const loadProducts = async () => {
+    try {
+      const data = await getProducts();
+      // Ensure data is an array, if backend returns { products: [...] } adjust accordingly
+      setProducts(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error("Error loading products:", error);
+    }
+  };
 
   const handleFormChange = (field, value) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -123,7 +70,7 @@ const Məhsullar = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Basic validation
     if (!form.sku || !form.name) return;
@@ -140,48 +87,56 @@ const Məhsullar = () => {
       cost: Number(form.cost || 0),
       image: form.image || null,
     };
-    if (modalMode === "edit" && editIndex !== null) {
-      setProducts((prev) =>
-        prev.map((p, i) => (i === editIndex ? newItem : p))
-      );
-    } else {
-      setProducts((prev) => [newItem, ...prev]);
+
+    try {
+      if (modalMode === "edit" && editId) {
+        await updateProduct(editId, newItem);
+      } else {
+        await createProduct(newItem);
+      }
+      await loadProducts();
+      resetForm();
+      setEditId(null);
+      setOpen(false);
+    } catch (error) {
+      console.error("Error saving product:", error);
     }
-    resetForm();
-    setEditIndex(null);
-    setOpen(false);
   };
 
   const openCreate = () => {
     setModalMode("create");
     resetForm();
-    setEditIndex(null);
+    setEditId(null);
     setOpen(true);
   };
 
-  const openEdit = (index) => {
-    const p = products[index];
+  const openEdit = (product) => {
     setModalMode("edit");
-    setEditIndex(index);
+    setEditId(product._id || product.id);
     setForm({
-      sku: p.sku || "",
-      barcode: p.barcode || "",
-      name: p.name || "",
-      category: p.category || "",
-      unitofmeasure: p.unitofmeasure || "",
-      min: String(p.min ?? ""),
-      max: String(p.max ?? ""),
-      quantity: String(p.quantity ?? ""),
-      location: p.location || "",
-      cost: String(p.cost ?? ""),
-      image: p.image || null,
+      sku: product.sku || "",
+      barcode: product.barcode || "",
+      name: product.name || "",
+      category: product.category || "",
+      unitofmeasure: product.unitofmeasure || "",
+      min: String(product.min ?? ""),
+      max: String(product.max ?? ""),
+      quantity: String(product.quantity ?? ""),
+      location: product.location || "",
+      cost: String(product.cost ?? ""),
+      image: product.image || null,
     });
     setOpen(true);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = async (id) => {
     if (window.confirm(t('common.confirmDelete'))) {
-      setProducts((prev) => prev.filter((_, i) => i !== index));
+      try {
+        await deleteProduct(id);
+        await loadProducts();
+      } catch (error) {
+        console.error("Error deleting product:", error);
+      }
     }
   };
 
@@ -296,13 +251,13 @@ const Məhsullar = () => {
                   <td className="py-2 font-semibold dark:text-white text-[#023E7D]">₼{m.cost.toFixed(2)}</td>
                   <td className="py-2 flex items-center gap-2">
                     <button
-                      onClick={() => openEdit(products.indexOf(m))}
+                      onClick={() => openEdit(m)}
                       className="p-1 rounded border border-[#0466CB] text-[#0466CB] hover:bg-[#0453A4] hover:text-white"
                     >
                       <FaRegEdit />
                     </button>
                     <button
-                      onClick={() => handleDelete(products.indexOf(m))}
+                      onClick={() => handleDelete(m._id || m.id)}
                       className="p-1 rounded hover:bg-red-100 text-red-600 border border-red-200"
                     >
                       <FaTrash />

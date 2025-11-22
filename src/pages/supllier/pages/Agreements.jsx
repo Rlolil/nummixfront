@@ -3,40 +3,60 @@ import { FaRegFileAlt } from "react-icons/fa";
 import HeadCard from "../../salescustomers/components/HeadCard";
 import { MdOutlineDateRange } from "react-icons/md";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAgreements, createAgreement, updateAgreement, updateAgreementStatus } from "../../../services";
 
 export default function Agreements() {
     const { t } = useTranslation();
 
     // Sample agreements state
-    const [agreements, setAgreements] = useState([
-        {
-            id: 1,
-            contractNo: "CNT-2025-001",
-            supplier: "AzərTəchizat MMC",
-            amount: 1450.0,
-            currency: "AZN",
-            startDate: "2025-01-01",
-            endDate: "2025-12-31",
-            paymentTerm: "30",
-            notes: t("pages.supplier.agreements.sample.description"),
-            status: "active",
-            daysLeft: 150,
-        },
-        {
-            id: 2,
-            contractNo: "CNT-2025-002",
-            supplier: "EuroMaterials",
-            amount: 3200.0,
-            currency: "AZN",
-            startDate: "2025-02-01",
-            endDate: "2025-10-15",
-            paymentTerm: "30",
-            notes: t("pages.supplier.agreements.sample.description"),
-            status: "active",
-            daysLeft: 46,
-        },
-    ]);
+    const [agreements, setAgreements] = useState([]);
+    const [newAgreement, setNewAgreement] = useState({
+        contractNo: "",
+        supplier: "",
+        amount: "",
+        currency: "AZN",
+        startDate: "",
+        endDate: "",
+        paymentTerm: "30",
+        notes: "",
+        status: "active"
+    });
+
+    useEffect(() => {
+        fetchAgreements();
+    }, []);
+
+    const fetchAgreements = async () => {
+        try {
+            const data = await getAgreements();
+            setAgreements(Array.isArray(data) ? data : []);
+        } catch (error) {
+            console.error("Error fetching agreements:", error);
+        }
+    };
+
+    const handleAddSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await createAgreement(newAgreement);
+            fetchAgreements();
+            setNewAgreement({
+                contractNo: "",
+                supplier: "",
+                amount: "",
+                currency: "AZN",
+                startDate: "",
+                endDate: "",
+                paymentTerm: "30",
+                notes: "",
+                status: "active"
+            });
+            document.getElementById("addNew")?.close();
+        } catch (error) {
+            console.error("Error creating agreement:", error);
+        }
+    };
 
     const [editAgreement, setEditAgreement] = useState(null);
     const [editIndex, setEditIndex] = useState(null);
@@ -47,21 +67,38 @@ export default function Agreements() {
         document.getElementById("editAgreementDialog")?.showModal();
     };
 
-    const handleEditSave = (e) => {
+    const handleEditSave = async (e) => {
         e.preventDefault();
-        if (editIndex === null) return;
-        const updated = [...agreements];
-        updated[editIndex] = editAgreement;
-        setAgreements(updated);
-        setEditAgreement(null);
-        setEditIndex(null);
-        document.getElementById("editAgreementDialog")?.close();
+        if (editIndex === null || !editAgreement) return;
+        try {
+            const id = editAgreement.id || editAgreement._id;
+            if (id) {
+                await updateAgreement(id, editAgreement);
+                fetchAgreements();
+            }
+            setEditAgreement(null);
+            setEditIndex(null);
+            document.getElementById("editAgreementDialog")?.close();
+        } catch (error) {
+            console.error("Error updating agreement:", error);
+        }
     };
 
-    const handleDelete = (index) => {
+    const handleDelete = async (index) => {
         const confirmed = window.confirm(t("common.confirmDelete"));
         if (!confirmed) return;
-        setAgreements(agreements.filter((_, i) => i !== index));
+        // Assuming delete means setting status to inactive or similar if no delete endpoint
+        // But user provided patch status. Let's use that or just local delete if no ID.
+        const agreement = agreements[index];
+        const id = agreement.id || agreement._id;
+        if (id) {
+            try {
+                await updateAgreementStatus(id, 'inactive'); // Or 'deleted'
+                fetchAgreements();
+            } catch (error) {
+                console.error("Error deleting agreement:", error);
+            }
+        }
     };
 
     return (

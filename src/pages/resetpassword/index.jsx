@@ -14,7 +14,7 @@ function ResetPassword() {
     try {
         await forgotPassword({ email });
         setIsSubmitting(false);
-        navigate("/reset-password-verify");
+        navigate("/reset-password-verify", { state: { email } });
     } catch (error) {
         console.error(error);
         setIsSubmitting(false); 

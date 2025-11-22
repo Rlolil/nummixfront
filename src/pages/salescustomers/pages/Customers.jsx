@@ -1,45 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BodyCard from "../components/BodyCard";
 import HeadCard from "../components/HeadCard";
 
 import { HiPlus } from "react-icons/hi";
 import CustomersTableRow from "../components/CustomersTableRow";
 import { useTranslation } from "react-i18next";
-
-const initialData = [
-    {
-        companyName: "ABC Şirkəti",
-        taxNumber: "1234567890",
-        contactPerson: "Əli Məmmədov",
-        phone: "+994 50 123 45 67",
-        segmentCode: "regular",
-        totalSales: "₼145,000",
-        debt: "₼0",
-    },
-    {
-        companyName: "DEF Holding",
-        taxNumber: "0987654321",
-        contactPerson: "Aysel Hüseynova",
-        phone: "+994 51 987 65 43",
-        segmentCode: "new",
-        totalSales: "₼76,000",
-        debt: "₼5,400",
-    },
-    {
-        companyName: "GHI Ltd.",
-        taxNumber: "1122334455",
-        contactPerson: "Elvin Quliyev",
-        phone: "+994 55 123 45 67",
-        segmentCode: "overdue",
-        totalSales: "₼145,000",
-        debt: "₼0",
-    },
-];
+import { getCustomers, createCustomer, updateCustomer } from "../../../services";
 
 export default function Customers() {
     const { t } = useTranslation();
-    const [dataState, setDataState] = useState(initialData);
-    const [searchedData, setSearchedData] = useState(initialData);
+    const [dataState, setDataState] = useState([]);
+    const [searchedData, setSearchedData] = useState([]);
     const [newCustomer, setNewCustomer] = useState({
         companyName: "",
         taxNumber: "",
@@ -54,6 +25,21 @@ export default function Customers() {
     const [editCustomer, setEditCustomer] = useState(null);
     const [editIndex, setEditIndex] = useState(null);
 
+    useEffect(() => {
+        fetchCustomers();
+    }, []);
+
+    const fetchCustomers = async () => {
+        try {
+            const data = await getCustomers();
+            const customers = Array.isArray(data) ? data : [];
+            setDataState(customers);
+            setSearchedData(customers);
+        } catch (error) {
+            console.error("Error fetching customers:", error);
+        }
+    };
+
     const handleSearch = (e) => {
         const filteredData = dataState.filter((item) =>
             item.companyName.toLowerCase().includes(e.target.value.toLowerCase())
@@ -65,23 +51,26 @@ export default function Customers() {
         e.preventDefault();
     };
 
-    const handleAddSubmit = (e) => {
+    const handleAddSubmit = async (e) => {
         e.preventDefault();
-        const updated = [...dataState, newCustomer];
-        setDataState(updated);
-        setSearchedData(updated);
-        setNewCustomer({
-            companyName: "",
-            taxNumber: "",
-            contactPerson: "",
-            phone: "",
-            email: "",
-            address: "",
-            segmentCode: "regular",
-            totalSales: "₼0",
-            debt: "₼0",
-        });
-        document.getElementById("addNew")?.close();
+        try {
+            await createCustomer(newCustomer);
+            fetchCustomers();
+            setNewCustomer({
+                companyName: "",
+                taxNumber: "",
+                contactPerson: "",
+                phone: "",
+                email: "",
+                address: "",
+                segmentCode: "regular",
+                totalSales: "₼0",
+                debt: "₼0",
+            });
+            document.getElementById("addNew")?.close();
+        } catch (error) {
+            console.error("Error creating customer:", error);
+        }
     };
 
     const handleOpenEdit = (index) => {
@@ -90,16 +79,21 @@ export default function Customers() {
         document.getElementById("editDialog")?.showModal();
     };
 
-    const handleEditSave = (e) => {
+    const handleEditSave = async (e) => {
         e.preventDefault();
-        if (editIndex === null) return;
-        const updated = [...dataState];
-        updated[editIndex] = editCustomer;
-        setDataState(updated);
-        setSearchedData(updated);
-        setEditCustomer(null);
-        setEditIndex(null);
-        document.getElementById("editDialog")?.close();
+        if (editIndex === null || !editCustomer) return;
+        try {
+            const id = editCustomer.id || editCustomer._id;
+            if (id) {
+                await updateCustomer(id, editCustomer);
+                fetchCustomers();
+            }
+            setEditCustomer(null);
+            setEditIndex(null);
+            document.getElementById("editDialog")?.close();
+        } catch (error) {
+            console.error("Error updating customer:", error);
+        }
     };
 
     const handleDelete = (index) => {

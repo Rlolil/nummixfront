@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   FiDollarSign,
   FiTrendingUp,
@@ -15,6 +15,13 @@ import {
 } from "react-icons/fa6";
 import { BsCheckCircle } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
+import {
+  getDashboardStats,
+  getDashboardAssets,
+  financeDashChart,
+  getProfitDynamics,
+  getBalancePercentage,
+} from "../../../services";
 
 const taxesBase = [
   {
@@ -53,12 +60,40 @@ const taxesBase = [
 
 const DashboardCards = () => {
   const { t } = useTranslation();
+  const [stats, setStats] = useState(null);
+  const [assets, setAssets] = useState(null);
+  const [financeData, setFinanceData] = useState(null);
+  const [profitData, setProfitData] = useState(null);
+  const [balanceData, setBalanceData] = useState(null);
+
   useEffect(() => {
     const theme = localStorage.getItem('theme') || 'light';
     const root = window.document.documentElement;
     if (theme === 'dark') root.classList.add('dark');
     else root.classList.remove('dark');
+
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const [statsRes, assetsRes, financeRes, profitRes, balanceRes] = await Promise.all([
+        getDashboardStats(),
+        getDashboardAssets(),
+        financeDashChart(),
+        getProfitDynamics(),
+        getBalancePercentage(),
+      ]);
+      setStats(statsRes);
+      setAssets(assetsRes);
+      setFinanceData(financeRes);
+      setProfitData(profitRes);
+      setBalanceData(balanceRes);
+    } catch (error) {
+      console.error("Error fetching dashboard data:", error);
+    }
+  };
+
   const taxes = taxesBase.map((x) => ({
     ...x,
     name: t(x.nameKey),
@@ -73,10 +108,10 @@ const DashboardCards = () => {
             <FiDollarSign className="text-[#001233] dark:text-white" />
           </div>
           <div>
-            <div className="text-2xl font-semibold">₼675.000</div>
+            <div className="text-2xl font-semibold">₼{stats?.totalRevenue?.toLocaleString() || "0"}</div>
             <p className="text-xs text-[#7D8597] flex items-center gap-1 mt-1">
               <FiTrendingUp className="text-green-600" />
-              <span className="text-green-600 font-medium">+12.5%</span>
+              <span className="text-green-600 font-medium">{stats?.revenueGrowth || "0"}%</span>
               {t('pages.accounting.dashboard.cards.fromLastQuarter', { defaultValue: 'from last quarter' })}
             </p>
           </div>
@@ -87,10 +122,10 @@ const DashboardCards = () => {
             <FiTrendingUp className="text-[#001233] dark:text-white" />
           </div>
           <div>
-            <div className="text-2xl font-semibold">₼54.000</div>
+            <div className="text-2xl font-semibold">₼{stats?.netIncome?.toLocaleString() || "0"}</div>
             <p className="text-xs text-[#7D8597] flex items-center gap-1 mt-1">
               <FiTrendingDown className="text-red-600" />
-              <span className="text-red-600 font-medium">-8.2%</span>
+              <span className="text-red-600 font-medium">{stats?.incomeGrowth || "0"}%</span>
               {t('pages.accounting.dashboard.cards.fromLastQuarter', { defaultValue: 'from last quarter' })}
             </p>
           </div>
@@ -101,8 +136,8 @@ const DashboardCards = () => {
             <FiFileText className="text-[#001233] dark:text-white" />
           </div>
           <div>
-            <div className="text-2xl font-semibold">₼1.000.000</div>
-            <p className="text-xs text-[#7D8597] mt-1">{t('pages.accounting.dashboard.cards.liabilities')}: \u20bc265.500</p>
+            <div className="text-2xl font-semibold">₼{assets?.totalAssets?.toLocaleString() || "0"}</div>
+            <p className="text-xs text-[#7D8597] mt-1">{t('pages.accounting.dashboard.cards.liabilities')}: \u20bc{assets?.liabilities?.toLocaleString() || "0"}</p>
           </div>
         </div>
         <div className="bg-[#FFFFFF] text-[#001233] dark:bg-[#002855] dark:text-white flex flex-col gap-4 rounded-xl border  shadow-sm border-[#33415C] dark:border-[#979DAC] p-6">
@@ -111,7 +146,7 @@ const DashboardCards = () => {
             <FiAlertCircle className="text-[#001233] dark:text-white" />
           </div>
           <div>
-            <div className="text-2xl font-semibold">2</div>
+            <div className="text-2xl font-semibold">{stats?.pendingTaxes || "0"}</div>
             <p className="text-xs text-[#7D8597] mt-1">{t('pages.accounting.dashboard.cards.actionRequired')}</p>
           </div>
         </div>
@@ -119,17 +154,17 @@ const DashboardCards = () => {
       <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4 my-4">
         <div className="border border-[#33415C] dark:border-[#979DAC] p-4 rounded-xl shadow-sm bg-[#FFFFFF] dark:bg-[#002855]">
           <h3 className="text-lg font-medium mb-2 text-[#023E7D] dark:text-[#89A4D6]">{t('pages.accounting.dashboard.charts.revenueVsExpenses6m')}</h3>
-          <RevenueExpenseChart />
+          <RevenueExpenseChart data={financeData} />
         </div>
         <div className="border border-[#33415C] dark:border-[#979DAC] p-4 rounded-xl shadow-sm bg-[#FFFFFF] dark:bg-[#002855]">
           <h3 className="text-lg font-medium mb-2 text-[#023E7D] dark:text-[#89A4D6]">{t('pages.accounting.dashboard.charts.profitTrend')}</h3>
-          <NetProfitChart />
+          <NetProfitChart data={profitData} />
         </div>
       </div>
       <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-4 my-4">
         <div className="border border-[#33415C] dark:border-[#979DAC] p-4 rounded-xl shadow-sm bg-[#FFFFFF] dark:bg-[#002855]">
           <h3 className="text-lg font-medium mb-2 text-[#023E7D] dark:text-[#89A4D6]">{t('pages.accounting.dashboard.charts.balanceSheetDistribution')}</h3>
-          <BalancePieChart />
+          <BalancePieChart data={balanceData} />
         </div>
         <div className="border border-[#33415C] dark:border-[#979DAC] p-4 rounded-xl shadow-sm bg-[#FFFFFF] dark:bg-[#002855]">
           <h3 className="text-lg font-medium mb-2 text-[#023E7D] dark:text-[#89A4D6]">{t('pages.accounting.dashboard.upcomingTaxObligations')}</h3>

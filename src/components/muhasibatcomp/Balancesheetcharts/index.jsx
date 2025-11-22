@@ -10,7 +10,7 @@ import {
 
 const COLORS = ["#3b82f6", "#ef4444", "#10b981"];
 
-export default function BalancePieChart() {
+export default function BalancePieChart({ data }) {
   const { t } = useTranslation();
   useEffect(() => {
     const theme = localStorage.getItem('theme') || 'light';
@@ -19,7 +19,7 @@ export default function BalancePieChart() {
     else root.classList.remove('dark');
   }, []);
 
-  const data = [
+  const chartData = (Array.isArray(data) && data.length > 0) ? data : [
     {
       name: t(
         "pages.accounting.financialReports.balanceSheet.assets.title",
@@ -48,7 +48,7 @@ export default function BalancePieChart() {
         <ResponsiveContainer>
           <PieChart>
             <Pie
-              data={data}
+              data={chartData}
               dataKey="value"
               nameKey="name"
               cx="50%"
@@ -56,8 +56,8 @@ export default function BalancePieChart() {
               outerRadius={100}
               label={({ name, value }) => `${name}: ${value}%`}
             >
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index]} stroke="#fff" />
+              {chartData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke="#fff" />
               ))}
             </Pie>
             <Tooltip contentStyle={{ backgroundColor: document.documentElement.classList.contains('dark') ? '#002855' : '#FFFFFF', color: document.documentElement.classList.contains('dark') ? '#E0E0E0' : '#001233' }} />

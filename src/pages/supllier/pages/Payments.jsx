@@ -1,11 +1,74 @@
-import { HiOutlineExclamation } from "react-icons/hi";
+import { HiOutlineExclamation, HiPlus } from "react-icons/hi";
 import HeadCard from "../../salescustomers/components/HeadCard";
 import BodyCard from "../../salescustomers/components/BodyCard";
 import { MdOutlinePayment } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
+import { getSupplierPayments, createSupplierPayment, updateSupplierPayment, updateSupplierPaymentStatus } from "../../../services";
 
 export default function Payments() {
     const { t } = useTranslation();
+    const [payments, setPayments] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [newPayment, setNewPayment] = useState({
+        paymentNo: "",
+        supplierName: "",
+        amount: "",
+        paidAmount: "",
+        dueDate: "",
+        status: "pending"
+    });
+
+    useEffect(() => {
+        fetchPayments();
+    }, []);
+
+    const fetchPayments = async () => {
+        try {
+            const data = await getSupplierPayments();
+            setPayments(Array.isArray(data) ? data : []);
+        } catch (error) {
+            console.error("Error fetching payments:", error);
+        }
+    };
+
+    const handleAddPayment = async (e) => {
+        e.preventDefault();
+        try {
+            await createSupplierPayment(newPayment);
+            fetchPayments();
+            setNewPayment({
+                paymentNo: "",
+                supplierName: "",
+                amount: "",
+                paidAmount: "",
+                dueDate: "",
+                status: "pending"
+            });
+            document.getElementById("addPaymentModal")?.close();
+        } catch (error) {
+            console.error("Error creating payment:", error);
+        }
+    };
+
+    const handlePay = async (payment) => {
+        // Example: Mark as paid or update paid amount. 
+        // For simplicity, let's just update status to 'paid' if it's not.
+        try {
+            if (payment.status !== 'paid') {
+                await updateSupplierPaymentStatus(payment.id || payment._id, 'paid');
+                fetchPayments();
+            }
+        } catch (error) {
+            console.error("Error updating payment status:", error);
+        }
+    };
+
+    const filteredPayments = payments.filter(p => 
+        p.paymentNo?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        p.supplierName?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="w-full flex flex-col gap-6 bg-white text-[#001233] dark:bg-[#001233] dark:text-white">
             <div className="flex justify-between items-center">
@@ -17,6 +80,13 @@ export default function Payments() {
                         {t("pages.supplier.payments.subtitle")}
                     </p>
                 </div>
+                <button 
+                    className="btn bg-[#0466CB] hover:bg-[#0453A4] text-white border-none gap-2"
+                    onClick={() => document.getElementById("addPaymentModal")?.showModal()}
+                >
+                    <HiPlus className="w-5 h-5" />
+                    {t("pages.supplier.payments.actions.newPayment") || "New Payment"}
+                </button>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -54,6 +124,8 @@ export default function Payments() {
                     type="search"
                     className="grow placeholder:text-[#7D8597] dark:placeholder:text-[#5C677D] bg-transparent"
                     placeholder={t("pages.supplier.payments.searchPlaceholder")}
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </label>
 
@@ -78,72 +150,46 @@ export default function Payments() {
                                 </thead>
 
                                 <tbody className="border-t border-[#979DAC] dark:border-[#979DAC]">
-                                    <tr className="hover:bg-[#f8f9fa] dark:hover:bg-[#33415C]">
-                                        <td className="font-medium">PAY-2025-001</td>
-                                        <td className="hidden sm:table-cell">AzərTəchizat MMC</td>
-                                        <td className="hidden md:table-cell">5000 AZN</td>
-                                        <td className="hidden md:table-cell">5000 AZN</td>
-                                        <td className="hidden md:table-cell text-green-600 dark:text-green-400">0 AZN</td>
-                                        <td className="hidden lg:table-cell">
-                                            <div className="space-y-1">
-                                                <p>2025-10-15</p>
-                                            </div>
-                                        </td>
-                                        <td className="hidden sm:table-cell">
-                                            <span className="badge font-semibold text-xs badge-success">
-                                                {t("pages.supplier.payments.status.paid")}
-                                            </span>
-                                        </td>
-                                        <td className="text-right"></td>
-                                    </tr>
-
-                                    <tr className="hover:bg-[#f8f9fa] dark:hover:bg-[#33415C]">
-                                        <td className="font-medium">PAY-2025-002</td>
-                                        <td className="hidden sm:table-cell">Azərbaycan Kimya MMC</td>
-                                        <td className="hidden md:table-cell">8500 AZN</td>
-                                        <td className="hidden md:table-cell">0 AZN</td>
-                                        <td className="hidden md:table-cell text-orange-600 dark:text-orange-400">8500 AZN</td>
-                                        <td className="hidden lg:table-cell">
-                                            <div className="space-y-1">
-                                                <p>2025-10-11</p>
-                                                <p className="text-xs text-red-500">{t("pages.supplier.payments.table.overdueDays", { days: 4 })}</p>
-                                            </div>
-                                        </td>
-                                        <td className="hidden sm:table-cell">
-                                            <span className="badge font-semibold text-xs badge-error">
-                                                {t("pages.supplier.payments.status.overdue")}
-                                            </span>
-                                        </td>
-                                        <td className="text-right">
-                                            <button className="btn btn-sm rounded-md h-8 px-3 bg-[#0466CB] hover:bg-[#0453A4] text-white dark:bg-[#023E7D] dark:hover:bg-[#0453A4]">
-                                                {t("pages.supplier.payments.actions.pay")}
-                                            </button>
-                                        </td>
-                                    </tr>
-
-                                    <tr className="hover:bg-[#f8f9fa] dark:hover:bg-[#33415C]">
-                                        <td className="font-medium">PAY-2025-003</td>
-                                        <td className="hidden sm:table-cell">GlobalSupply LLC</td>
-                                        <td className="hidden md:table-cell">4275 USD</td>
-                                        <td className="hidden md:table-cell">2000 USD</td>
-                                        <td className="hidden md:table-cell text-orange-600 dark:text-orange-400">2275 USD</td>
-                                        <td className="hidden lg:table-cell">
-                                            <div className="space-y-1">
-                                                <p>2025-10-12</p>
-                                                <p className="text-xs text-red-500">{t("pages.supplier.payments.table.overdueDays", { days: 3 })}</p>
-                                            </div>
-                                        </td>
-                                        <td className="hidden sm:table-cell">
-                                            <span className="badge font-semibold text-xs badge-warning">
-                                                {t("pages.supplier.payments.status.partial")}
-                                            </span>
-                                        </td>
-                                        <td className="text-right">
-                                            <button className="btn btn-sm rounded-md h-8 px-3 bg-[#0466CB] hover:bg-[#0453A4] text-white dark:bg-[#023E7D] dark:hover:bg-[#0453A4]">
-                                                {t("pages.supplier.payments.actions.pay")}
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    {filteredPayments.map((payment, index) => (
+                                        <tr key={index} className="hover:bg-[#f8f9fa] dark:hover:bg-[#33415C]">
+                                            <td className="font-medium">{payment.paymentNo}</td>
+                                            <td className="hidden sm:table-cell">{payment.supplierName}</td>
+                                            <td className="hidden md:table-cell">{payment.amount}</td>
+                                            <td className="hidden md:table-cell">{payment.paidAmount}</td>
+                                            <td className="hidden md:table-cell text-green-600 dark:text-green-400">
+                                                {/* Calculate balance if possible, or use a field */}
+                                                {payment.balance || "0 AZN"}
+                                            </td>
+                                            <td className="hidden lg:table-cell">
+                                                <div className="space-y-1">
+                                                    <p>{payment.dueDate}</p>
+                                                </div>
+                                            </td>
+                                            <td className="hidden sm:table-cell">
+                                                <span className={`badge font-semibold text-xs ${
+                                                    payment.status === 'paid' ? 'badge-success' : 
+                                                    payment.status === 'overdue' ? 'badge-error' : 'badge-warning'
+                                                }`}>
+                                                    {payment.status}
+                                                </span>
+                                            </td>
+                                            <td className="text-right">
+                                                {payment.status !== 'paid' && (
+                                                    <button 
+                                                        className="btn btn-sm rounded-md h-8 px-3 bg-[#0466CB] hover:bg-[#0453A4] text-white dark:bg-[#023E7D] dark:hover:bg-[#0453A4]"
+                                                        onClick={() => handlePay(payment)}
+                                                    >
+                                                        {t("pages.supplier.payments.actions.pay")}
+                                                    </button>
+                                                )}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    {filteredPayments.length === 0 && (
+                                        <tr>
+                                            <td colSpan="8" className="text-center py-4">No payments found</td>
+                                        </tr>
+                                    )}
                                 </tbody>
                             </table>
                         </div>
@@ -162,6 +208,58 @@ export default function Payments() {
                     </div>
                 }
             />
+
+            {/* Add Payment Modal */}
+            <dialog id="addPaymentModal" className="modal">
+                <div className="modal-box bg-white dark:bg-[#001233]">
+                    <h3 className="font-bold text-lg text-[#023E7D] dark:text-[#0466CB]">Add New Payment</h3>
+                    <form onSubmit={handleAddPayment} className="py-4 flex flex-col gap-4">
+                        <input 
+                            type="text" 
+                            placeholder="Payment No" 
+                            className="input input-bordered w-full" 
+                            value={newPayment.paymentNo}
+                            onChange={(e) => setNewPayment({...newPayment, paymentNo: e.target.value})}
+                            required
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Supplier Name" 
+                            className="input input-bordered w-full" 
+                            value={newPayment.supplierName}
+                            onChange={(e) => setNewPayment({...newPayment, supplierName: e.target.value})}
+                            required
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Amount" 
+                            className="input input-bordered w-full" 
+                            value={newPayment.amount}
+                            onChange={(e) => setNewPayment({...newPayment, amount: e.target.value})}
+                            required
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Paid Amount" 
+                            className="input input-bordered w-full" 
+                            value={newPayment.paidAmount}
+                            onChange={(e) => setNewPayment({...newPayment, paidAmount: e.target.value})}
+                        />
+                        <input 
+                            type="date" 
+                            placeholder="Due Date" 
+                            className="input input-bordered w-full" 
+                            value={newPayment.dueDate}
+                            onChange={(e) => setNewPayment({...newPayment, dueDate: e.target.value})}
+                            required
+                        />
+                        <div className="modal-action">
+                            <button type="button" className="btn" onClick={() => document.getElementById("addPaymentModal").close()}>Cancel</button>
+                            <button type="submit" className="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </dialog>
         </div>
     );
 }

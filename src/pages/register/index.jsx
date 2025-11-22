@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { verify, register as registerUser, register, resendOtp } from "../../services"; // register fonksiyonunu import et
+import { verify, register, resendOtp } from "../../services";
 import { useTranslation } from "react-i18next";
 
 function Toaster({ toasts, removeToast }) {

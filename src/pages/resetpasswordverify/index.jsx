@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { verify, resetPassword, resendOtp } from "../../services";
 
 function Toaster({ toasts, removeToast }) {
   return (
@@ -40,6 +41,9 @@ function ResetPasswordVerify() {
   const [isCodeVerified, setIsCodeVerified] = useState(false);
   const [toasts, setToasts] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
+  const email = location.state?.email;
+
   const addToast = (type, message, ttl = 3000) => {
     const id = Date.now() + Math.random();
     const t = { id, type, message };
@@ -65,44 +69,57 @@ function ResetPasswordVerify() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const total = digits.join("");
-    if (total.length !== 6) {
+    const otp = digits.join("");
+    if (otp.length !== 6) {
       addToast("error", t("auth.verify.enterCode"));
       return;
     }
+    if (!email) {
+      addToast("error", "Email not found. Please try again.");
+      return;
+    }
+
     setIsSubmitting(true);
     try {
-      const data = { success: total === "123456" };
-      if (data.success) {
-        setIsCodeVerified(true);
-        addToast("success", t("auth.verify.success"));
-      } else {
-        addToast("error", t("auth.verify.invalid"));
-      }
+      await verify({ email, otp });
+      setIsCodeVerified(true);
+      addToast("success", t("auth.verify.success"));
     } catch (error) {
       console.error(error);
-      addToast("error", t("common.somethingWrong"));
+      addToast("error", t("auth.verify.invalid"));
     }
     setIsSubmitting(false);
   };
 
-  const handlePasswordReset = (e) => {
+  const handlePasswordReset = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       addToast("error", t("auth.reset.mismatch"));
       return;
     }
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const otp = digits.join("");
+      await resetPassword({ email, otp, newPassword: password });
       addToast("success", t("auth.reset.successRedirect"));
       setTimeout(() => navigate("/login"), 1000);
-    }, 1500);
+    } catch (error) {
+      console.error(error);
+      addToast("error", "Failed to reset password");
+    }
+    setIsSubmitting(false);
   };
 
-  const handleResend = () => {
-    addToast("info", t("auth.verify.resent"));
-    setDigits(["", "", "", "", "", ""]);
+  const handleResend = async () => {
+    if (!email) return;
+    try {
+      await resendOtp({ email });
+      addToast("info", t("auth.verify.resent"));
+      setDigits(["", "", "", "", "", ""]);
+    } catch (error) {
+      console.error(error);
+      addToast("error", "Failed to resend OTP");
+    }
   };
 
   return (

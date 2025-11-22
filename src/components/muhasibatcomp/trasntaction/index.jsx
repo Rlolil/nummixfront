@@ -2,19 +2,43 @@ import { useState, useEffect } from "react";
 import { FaPlus, FaFileInvoice, FaEdit, FaTrash } from "react-icons/fa";
 import CreateJournalEntry from "../newjournalmodule";
 import { useTranslation } from "react-i18next";
+import { getTransactions, deleteTransaction, createTransaction, updateTransaction } from "../../../services";
 
 const Transactions = () => {
   const [moduleOpen, setModuleOpen] = useState(false);
   const [selectedTxn, setSelectedTxn] = useState(null);
   const { t } = useTranslation();
+  const [transactions, setTransactions] = useState([]);
+
   useEffect(() => {
     const theme = localStorage.getItem('theme') || 'light';
     const root = window.document.documentElement;
     if (theme === 'dark') root.classList.add('dark');
     else root.classList.remove('dark');
+
+    fetchTransactions();
   }, []);
+
+  const fetchTransactions = async () => {
+    try {
+      const data = await getTransactions();
+      if (Array.isArray(data)) {
+        const formatted = data.map((t) => ({
+          ...t,
+          mayeValue: t.mayeValue || formatAmount(getTotalNumber(t.entries || [])),
+          currency: t.currency || 'AZN',
+          amount: t.amount || (t.mayeValue ? t.mayeValue : formatAmount(getTotalNumber(t.entries || []))),
+        }));
+        setTransactions(formatted);
+      }
+    } catch (error) {
+      console.error("Error fetching transactions:", error);
+    }
+  };
+
   // Helpers first so we can use them when initializing state
   function getTotalNumber(entries) {
+    if (!entries) return 0;
     let debit = 0;
     entries.forEach((e) => {
       if (e.debit !== "-") debit += Number(String(e.debit).replace(/[,]/g, ""));
@@ -25,87 +49,17 @@ const Transactions = () => {
     if (num == null || Number.isNaN(num)) return "0";
     return Number(num).toLocaleString();
   }
-  const initialTransactions = [
-    {
-      id: "INV-2025-1045",
-      titleKey: "pages.accounting.transactions.samples.salesInvoice",
-      titleParams: { id: "#INV-2025-1045" },
-      date: "06/10/2025",
-      user: "Leyla Mammadova",
-      currency: 'AZN',
-      entries: [
-        { code: "211", nameKey: "accountsReceivable", debit: "18.000", credit: "-" },
-        { code: "701", nameKey: "salesRevenue", debit: "-", credit: "15.000" },
-        { code: "341", nameKey: "vatPayable", debit: "-", credit: "3.000" },
-      ],
-    },
-    {
-      id: "PUR-2025-0892",
-      titleKey: "pages.accounting.transactions.samples.purchaseInvoice",
-      titleParams: { id: "#PUR-2025-0892" },
-      date: "06/10/2025",
-      user: "Rauf Aliyev",
-      currency: 'AZN',
-      entries: [
-        { code: "221", nameKey: "inventory", debit: "12.000", credit: "-" },
-        { code: "331", nameKey: "accountsPayable", debit: "-", credit: "12.000" },
-      ],
-    },
-    {
-      id: "SAL-SEP-2025",
-      titleKey: "pages.accounting.transactions.samples.salaryPaymentMonth",
-      titleParams: { period: "September 2025" },
-      date: "05/10/2025",
-      user: "Nigar Hasanova",
-      currency: 'AZN',
-      entries: [
-        { code: "543", nameKey: "payroll", debit: "45.000", credit: "-" },
-        { code: "551", nameKey: "socialContributions", debit: "10.000", credit: "-" },
-        { code: "201", nameKey: "bankAccounts", debit: "-", credit: "55.000" },
-      ],
-    },
-    {
-      id: "VAT-SEP-2025",
-      titleKey: "pages.accounting.transactions.samples.vatPaymentMonth",
-      titleParams: { period: "September 2025" },
-      date: "05/10/2025",
-      user: "Leyla Mammadova",
-      currency: 'AZN',
-      entries: [
-        { code: "341", nameKey: "vatPayable", debit: "8.500", credit: "-" },
-        { code: "201", nameKey: "bankAccounts", debit: "-", credit: "8.500" },
-      ],
-    },
-    {
-      id: "BANK-TRF-458",
-      titleKey: "pages.accounting.transactions.samples.bankTransferFromClient",
-      date: "04/10/2025",
-      user: "Rauf Aliyev",
-      currency: 'AZN',
-      entries: [
-        { code: "201", nameKey: "bankAccounts", debit: "25.000", credit: "-" },
-        { code: "211", nameKey: "accountsReceivable", debit: "-", credit: "25.000" },
-      ],
-    },
-  ];
-  const [transactions, setTransactions] = useState(
-    initialTransactions.map((t) => ({
-      ...t,
-      mayeValue: t.mayeValue || formatAmount(getTotalNumber(t.entries)),
-      currency: t.currency || 'AZN',
-      amount: t.amount || (t.mayeValue ? t.mayeValue : formatAmount(getTotalNumber(t.entries))),
-    }))
-  );
 
   const getTotals = (entries) => {
     let debit = 0,
       credit = 0;
     entries.forEach((e) => {
-      if (e.debit !== "-") debit += Number(e.debit.replace(/[,]/g, ""));
-      if (e.credit !== "-") credit += Number(e.credit.replace(/[,]/g, ""));
+      if (e.debit !== "-") debit += Number(String(e.debit).replace(/[,]/g, ""));
+      if (e.credit !== "-") credit += Number(String(e.credit).replace(/[,]/g, ""));
     });
     return { debit: `${debit.toLocaleString()}`, credit: `${credit.toLocaleString()}` };
   };
+
 
   if (moduleOpen) {
     document.body.style.overflow = "hidden";
@@ -158,10 +112,15 @@ const Transactions = () => {
     };
   };
 
-  const handleDelete = (txn) => {
+  const handleDelete = async (txn) => {
     const confirmMsg = t('common.confirmDelete');
     if (window.confirm(confirmMsg)) {
-      setTransactions((prev) => prev.filter((t) => t.id !== txn.id));
+      try {
+        await deleteTransaction(txn.id);
+        fetchTransactions();
+      } catch (error) {
+        console.error("Error deleting transaction:", error);
+      }
     }
   };
 
@@ -188,7 +147,7 @@ const Transactions = () => {
     }
   };
 
-  const handleSave = (payload) => {
+  const handleSave = async (payload) => {
     // payload: { date, reference, description, entries: [{account, debit, credit}] }
     const newEntries = (payload.entries || []).map((e) => {
       const m = mapAccountToCodeName(e.account);
@@ -207,41 +166,30 @@ const Transactions = () => {
       ? formatAmount(Number(String(payload.amount).replace(/[,]/g, "")))
       : formattedMaye;
 
-    if (selectedTxn) {
-      // update existing by id
-      setTransactions((prev) => prev.map((t) => (
-        t.id === selectedTxn.id
-          ? {
-              ...t,
-              id: payload.reference || t.id,
-              titleKey: 'pages.accounting.transactions.samples.manualEntry',
-              titleParams: { id: payload.description || payload.reference || t.titleParams?.id || '' },
-              date: toDisplayDate(payload.date) || t.date,
-              user: t.user || 'Manual Entry',
-              entries: newEntries.length ? newEntries : t.entries,
-              mayeValue: formattedMaye || t.mayeValue,
-              currency: payload.currency || t.currency || 'AZN',
-              amount: formattedAmount || t.amount,
-            }
-          : t
-      )));
-    } else {
-      // create new
-      const newTxn = {
-        id: payload.reference || `MAN-${Date.now()}`,
-        titleKey: 'pages.accounting.transactions.samples.manualEntry',
-        titleParams: { id: payload.description || payload.reference || 'Manual Entry' },
-        date: toDisplayDate(payload.date),
-        user: 'Manual Entry',
-        entries: newEntries,
-        mayeValue: formattedMaye,
-        currency: payload.currency || 'AZN',
-        amount: formattedAmount,
-      };
-      setTransactions((prev) => [newTxn, ...prev]);
-    }
+    const txnData = {
+      id: payload.reference, // Assuming reference is ID for now, or backend generates it
+      titleKey: 'pages.accounting.transactions.samples.manualEntry',
+      titleParams: { id: payload.description || payload.reference || 'Manual Entry' },
+      date: toDisplayDate(payload.date),
+      user: 'Manual Entry', // You might want to get this from auth context
+      entries: newEntries,
+      mayeValue: formattedMaye,
+      currency: payload.currency || 'AZN',
+      amount: formattedAmount,
+    };
 
-    setSelectedTxn(null);
+    try {
+      if (selectedTxn) {
+        await updateTransaction(selectedTxn.id, txnData);
+      } else {
+        await createTransaction(txnData);
+      }
+      fetchTransactions();
+      setSelectedTxn(null);
+      setModuleOpen(false);
+    } catch (error) {
+      console.error("Error saving transaction:", error);
+    }
   };
 
   return (

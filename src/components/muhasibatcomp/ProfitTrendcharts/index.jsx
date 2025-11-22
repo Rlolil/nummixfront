@@ -19,19 +19,25 @@ const data = [
   { month: "Oct", netProfit: 0 },
 ];
 
-export default function NetProfitChart() {
+export default function NetProfitChart({ data }) {
   useEffect(() => {
     const theme = localStorage.getItem('theme') || 'light';
     const root = window.document.documentElement;
     if (theme === 'dark') root.classList.add('dark');
     else root.classList.remove('dark');
   }, []);
+
+  // Fallback data
+  const chartData = (Array.isArray(data) && data.length > 0) ? data : [
+    { month: "May", netProfit: 0 },
+  ];
+
   return (
     <div className="px-6 pb-6">
       <div className="w-full h-[300px]">
         <ResponsiveContainer>
           <LineChart
-            data={data}
+            data={chartData}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
             {/* Grid */}

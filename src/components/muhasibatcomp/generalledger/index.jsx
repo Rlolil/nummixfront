@@ -1,32 +1,31 @@
 import { FaChartBar, FaSearch, FaArrowUp, FaArrowDown, FaEdit, FaTrash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { getGeneralLedger } from "../../../services";
 
 const Ledger = () => {
   const { t } = useTranslation();
+  const [accounts, setAccounts] = useState([]);
+  const [editing, setEditing] = useState(null); // {index, data}
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     const theme = localStorage.getItem('theme') || 'light';
     const root = window.document.documentElement;
     if (theme === 'dark') root.classList.add('dark');
     else root.classList.remove('dark');
-  }, []);
-  const cards = [
-    { title: t('pages.accounting.ledger.cards.totalAssets'), value: "₼1.000.000", icon: <FaArrowUp className="text-green-500" /> },
-    { title: t('pages.accounting.ledger.cards.totalLiabilities'), value: "₼265.500", icon: <FaArrowDown className="text-red-500" /> },
-    { title: t('pages.accounting.ledger.cards.totalEquity'), value: "₼656.500", icon: <FaChartBar className="text-blue-500" /> },
-    { title: t('pages.accounting.ledger.cards.totalRevenue'), value: "₼675.000", icon: <FaArrowUp className="text-green-500" /> },
-    { title: t('pages.accounting.ledger.cards.totalExpenses'), value: "₼621.000", icon: <FaArrowDown className="text-red-500" /> },
-  ];
 
-  const initialAccounts = [
-    { code: "101", name: "Cash", type: "Asset", balance: "₼45.000", currency: "AZN" },
-    { code: "201", name: "Bank Accounts", type: "Asset", balance: "₼285.000", currency: "AZN" },
-    { code: "331", name: "Accounts Payable", type: "Liability", balance: "₼78.000", currency: "AZN" },
-    { code: "701", name: "Sales Revenue", type: "Revenue", balance: "₼580.000", currency: "AZN" },
-  ];
-  const [accounts, setAccounts] = useState(initialAccounts);
-  const [editing, setEditing] = useState(null); // {index, data}
-  const [search, setSearch] = useState("");
+    fetchLedger();
+  }, []);
+
+  const fetchLedger = async () => {
+    try {
+      const data = await getGeneralLedger();
+      setAccounts(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error("Error fetching general ledger:", error);
+    }
+  };
 
   const normalizedSearch = search.trim().toLowerCase();
   const matches = (a) => {
@@ -35,6 +34,29 @@ const Ledger = () => {
     return hay.includes(normalizedSearch);
   };
   const filtered = accounts.filter(matches);
+
+  const parseBalance = (bal) => {
+    if (typeof bal === 'number') return bal;
+    return parseFloat(String(bal).replace(/[^0-9.-]+/g,"")) || 0;
+  };
+
+  const totalAssets = accounts
+    .filter(a => a.type === 'Asset')
+    .reduce((sum, a) => sum + parseBalance(a.balance), 0);
+    
+  const totalLiabilities = accounts
+    .filter(a => a.type === 'Liability')
+    .reduce((sum, a) => sum + parseBalance(a.balance), 0);
+
+  const totalEquity = accounts
+    .filter(a => a.type === 'Equity')
+    .reduce((sum, a) => sum + parseBalance(a.balance), 0);
+
+  const cards = [
+    { title: t('pages.accounting.ledger.cards.assets', { defaultValue: 'Assets' }), value: `₼${totalAssets.toLocaleString()}`, icon: <FaArrowUp className="text-green-500" /> },
+    { title: t('pages.accounting.ledger.cards.liabilities', { defaultValue: 'Liabilities' }), value: `₼${totalLiabilities.toLocaleString()}`, icon: <FaArrowDown className="text-red-500" /> },
+    { title: t('pages.accounting.ledger.cards.equity', { defaultValue: 'Equity' }), value: `₼${totalEquity.toLocaleString()}`, icon: <FaChartBar className="text-blue-500" /> },
+  ];
 
   const highlight = (text) => {
     if (!normalizedSearch) return text;

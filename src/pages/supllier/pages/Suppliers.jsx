@@ -1,25 +1,12 @@
 import { HiPlus } from "react-icons/hi";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-
-const initialSuppliers = [
-    {
-        companyName: "GlobalSupply LLC",
-        taxNumber: "1234567890",
-        contactPerson: "Kamran Əliyev",
-        phone: "+994 50 111 22 33",
-        email: "info@globalsupply.az",
-        address: "Bakı şəh., Yasamal r-nu, N. Nərimanov pr. 23",
-        categoryKey: "officeSupplies",
-        debt: "1450.00 AZN",
-        rating: 4.5,
-    },
-];
+import { useState, useEffect } from "react";
+import { getSuppliers, createSupplier, updateSupplier } from "../../../services";
 
 export default function Suppliers() {
     const { t } = useTranslation();
-    const [suppliers, setSuppliers] = useState(initialSuppliers);
+    const [suppliers, setSuppliers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [newSupplier, setNewSupplier] = useState({
         companyName: "",
@@ -35,25 +22,43 @@ export default function Suppliers() {
     const [editSupplier, setEditSupplier] = useState(null);
     const [editIndex, setEditIndex] = useState(null);
 
+    useEffect(() => {
+        fetchSuppliers();
+    }, []);
+
+    const fetchSuppliers = async () => {
+        try {
+            const data = await getSuppliers();
+            setSuppliers(Array.isArray(data) ? data : []);
+        } catch (error) {
+            console.error("Error fetching suppliers:", error);
+        }
+    };
+
     const filteredSuppliers = suppliers.filter((s) =>
         s.companyName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const handleAddSubmit = (e) => {
+    const handleAddSubmit = async (e) => {
         e.preventDefault();
-        setSuppliers([...suppliers, newSupplier]);
-        setNewSupplier({
-            companyName: "",
-            taxNumber: "",
-            contactPerson: "",
-            phone: "",
-            email: "",
-            address: "",
-            categoryKey: "officeSupplies",
-            debt: "0 AZN",
-            rating: 0,
-        });
-        document.getElementById("addNew")?.close();
+        try {
+            await createSupplier(newSupplier);
+            fetchSuppliers();
+            setNewSupplier({
+                companyName: "",
+                taxNumber: "",
+                contactPerson: "",
+                phone: "",
+                email: "",
+                address: "",
+                categoryKey: "officeSupplies",
+                debt: "0 AZN",
+                rating: 0,
+            });
+            document.getElementById("addNew")?.close();
+        } catch (error) {
+            console.error("Error creating supplier:", error);
+        }
     };
 
     const handleOpenEdit = (index) => {
@@ -62,15 +67,22 @@ export default function Suppliers() {
         document.getElementById("editSupplierDialog")?.showModal();
     };
 
-    const handleEditSave = (e) => {
+    const handleEditSave = async (e) => {
         e.preventDefault();
-        if (editIndex === null) return;
-        const updated = [...suppliers];
-        updated[editIndex] = editSupplier;
-        setSuppliers(updated);
-        setEditSupplier(null);
-        setEditIndex(null);
-        document.getElementById("editSupplierDialog")?.close();
+        if (editIndex === null || !editSupplier) return;
+        try {
+            // Assuming supplier has an id field. If not, we might need to use index or something else, but backend usually provides id.
+            const id = editSupplier.id || editSupplier._id; 
+            if (id) {
+                await updateSupplier(id, editSupplier);
+                fetchSuppliers();
+            }
+            setEditSupplier(null);
+            setEditIndex(null);
+            document.getElementById("editSupplierDialog")?.close();
+        } catch (error) {
+            console.error("Error updating supplier:", error);
+        }
     };
 
     const handleDelete = (index) => {

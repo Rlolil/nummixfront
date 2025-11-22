@@ -19,18 +19,24 @@ const data = [
   { month: "Oct", Revenue: 240000, Expenses: 210000 },
 ];
 
-export default function RevenueExpenseChart() {
+export default function RevenueExpenseChart({ data }) {
   useEffect(() => {
     const theme = localStorage.getItem('theme') || 'light';
     const root = window.document.documentElement;
     if (theme === 'dark') root.classList.add('dark');
     else root.classList.remove('dark');
   }, []);
+  
+  // Fallback data if none provided
+  const chartData = (Array.isArray(data) && data.length > 0) ? data : [
+    { month: "May", Revenue: 0, Expenses: 0 },
+  ];
+
   return (
     <div style={{ width: "100%", height: 300 }}>
       <ResponsiveContainer>
         <BarChart
-          data={data}
+          data={chartData}
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
         >
           {/* Grid */}
