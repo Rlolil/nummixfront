@@ -18,7 +18,7 @@ const Maliyye = () => {
         className="
           grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2
           items-center justify-between gap-2
-          p-3 rounded-md w-full sm:w-[1210px] mx-auto
+          p-3 rounded-md w-full mx-auto
           mt-10 sm:mt-4 shadow-md border
           bg-white border-[#33415C]
           dark:bg-[#002855] dark:border-[#979DAC]

@@ -1772,7 +1772,8 @@
           "partial": "Qismən ödənilib"
         },
         "actions": {
-          "pay": "Ödə"
+          "pay": "Ödə",
+          "newPayment": "Yeni Ödəniş"
         },
         "upcoming": {
           "title": "Yaxın ödənişlər",

@@ -1216,7 +1216,8 @@
           "partial": "Partially Paid"
         },
         "actions": {
-          "pay": "Pay now"
+          "pay": "Pay now",
+          "newPayment": "New Payment"
         },
         "upcoming": {
           "title": "Upcoming payments",

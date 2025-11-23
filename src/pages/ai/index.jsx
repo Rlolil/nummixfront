@@ -75,7 +75,7 @@ const Ai = () => {
       <div className="sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-0 px-4 sm:px-6 lg:px-8 dark:bg-[#001233] dark:text-white">
         <nav className="    grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2
     items-center justify-between gap-2
-    p-3 rounded-md w-full sm:w-[1210px] mx-auto
+    p-3 rounded-md w-full mx-auto
     mt-10 sm:mt-4 shadow-md border
     bg-white border-[#33415C]
     dark:bg-[#002855] dark:border-[#979DAC]">

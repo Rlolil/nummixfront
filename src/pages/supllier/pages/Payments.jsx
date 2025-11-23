@@ -217,7 +217,7 @@ export default function Payments() {
                         <input 
                             type="text" 
                             placeholder="Payment No" 
-                            className="input input-bordered w-full" 
+                            className="input input-bordered dark:focus:border-[#0466CB] w-full dark:bg-[#001233] dark:text-white" 
                             value={newPayment.paymentNo}
                             onChange={(e) => setNewPayment({...newPayment, paymentNo: e.target.value})}
                             required
@@ -225,7 +225,7 @@ export default function Payments() {
                         <input 
                             type="text" 
                             placeholder="Supplier Name" 
-                            className="input input-bordered w-full" 
+                            className="input input-bordered dark:focus:border-[#0466CB] w-full dark:bg-[#001233] dark:text-white" 
                             value={newPayment.supplierName}
                             onChange={(e) => setNewPayment({...newPayment, supplierName: e.target.value})}
                             required
@@ -233,7 +233,7 @@ export default function Payments() {
                         <input 
                             type="text" 
                             placeholder="Amount" 
-                            className="input input-bordered w-full" 
+                            className="input input-bordered dark:focus:border-[#0466CB] w-full dark:bg-[#001233] dark:text-white" 
                             value={newPayment.amount}
                             onChange={(e) => setNewPayment({...newPayment, amount: e.target.value})}
                             required
@@ -241,20 +241,20 @@ export default function Payments() {
                         <input 
                             type="text" 
                             placeholder="Paid Amount" 
-                            className="input input-bordered w-full" 
+                            className="input input-bordered dark:focus:border-[#0466CB] w-full dark:bg-[#001233] dark:text-white" 
                             value={newPayment.paidAmount}
                             onChange={(e) => setNewPayment({...newPayment, paidAmount: e.target.value})}
                         />
                         <input 
                             type="date" 
                             placeholder="Due Date" 
-                            className="input input-bordered w-full" 
+                            className="input input-bordered dark:focus:border-[#0466CB] w-full dark:bg-[#001233] dark:text-white" 
                             value={newPayment.dueDate}
                             onChange={(e) => setNewPayment({...newPayment, dueDate: e.target.value})}
                             required
                         />
                         <div className="modal-action">
-                            <button type="button" className="btn" onClick={() => document.getElementById("addPaymentModal").close()}>Cancel</button>
+                            <button type="button" className="btn  dark:bg-[#001233] dark:text-white  dark:hover:bg-[#002244]" onClick={() => document.getElementById("addPaymentModal").close()}>Cancel</button>
                             <button type="submit" className="btn btn-primary">Save</button>
                         </div>
                     </form>
