@@ -114,6 +114,7 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
   const { t } = useTranslation();
   const [form, setForm] = useState({
     operationType: "",
+    account: "",
     type: "",
     amount: "",
     currency: "AZN",
@@ -126,6 +127,7 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
     if (editData) {
       setForm({
         operationType: editData.operationType || "",
+        account: editData.account || "",
         type: editData.type || "",
         amount: editData.amount ? editData.amount.replace(/[^\d.-]/g, "") : "",
         currency: editData.amount?.includes("USD")
@@ -159,7 +161,8 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
           : "+" + form.amount + " " + form.currency,
       cat: form.category || "—",
       desc: form.note || "—",
-      operationType: form.operationType
+      operationType: form.operationType,
+      account: form.account || "—"
     };
 
     if (editData) onUpdate(newData);
@@ -199,6 +202,43 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
               <option value="Bank">{t("pages.finance.cashBank.modal.options.bank")}</option>
             </select>
           </div>
+
+          {form.operationType === "Kassa" && (
+            <div>
+              <label className="text-[#5C677D] dark:text-white text-sm">
+                {t("pages.finance.cashBank.modal.selectCash", { defaultValue: "Kassa Seçin" })}
+              </label>
+              <select
+                name="account"
+                value={form.account}
+                onChange={handleChange}
+                className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
+              >
+                <option value="">{t("pages.finance.common.select")}</option>
+                <option value="Kassa 1">Kassa 1</option>
+                <option value="Kassa 2">Kassa 2</option>
+              </select>
+            </div>
+          )}
+
+          {form.operationType === "Bank" && (
+            <div>
+              <label className="text-[#5C677D] dark:text-white text-sm">
+                {t("pages.finance.cashBank.modal.selectBank", { defaultValue: "Bank Seçin" })}
+              </label>
+              <select
+                name="account"
+                value={form.account}
+                onChange={handleChange}
+                className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
+              >
+                <option value="">{t("pages.finance.common.select")}</option>
+                <option value="Kapital Bank">Kapital Bank</option>
+                <option value="ABB">ABB</option>
+                <option value="Pasha Bank">Pasha Bank</option>
+              </select>
+            </div>
+          )}
 
           <div>
             <label className="text-[#5C677D] dark:text-white text-sm">{t("pages.finance.cashBank.modal.type")}</label>

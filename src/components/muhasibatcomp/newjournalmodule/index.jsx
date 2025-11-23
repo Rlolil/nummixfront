@@ -44,12 +44,6 @@ export default function CreateJournalEntry({
     setEntries(updated);
   };
 
-  const totalDebit = entries.reduce((sum, e) => sum + Number(e.debit || 0), 0);
-  const totalCredit = entries.reduce(
-    (sum, e) => sum + Number(e.credit || 0),
-    0
-  );
-
   const closeModal = () => setModuleOpen(false);
   const handleSave = () => {
     const payload = {
@@ -329,14 +323,6 @@ export default function CreateJournalEntry({
                         </td>
                       </tr>
                     ))}
-                    <tr className="font-semibold bg-[#0453A4]/10">
-                      <td className="px-2 py-2">
-                        {t("common.total", { defaultValue: "Total" })}
-                      </td>
-                      <td className="px-2 py-2">{totalDebit.toFixed(2)}</td>
-                      <td className="px-2 py-2">{totalCredit.toFixed(2)}</td>
-                      <td></td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -350,12 +336,7 @@ export default function CreateJournalEntry({
               </button>
               <button
                 onClick={handleSave}
-                disabled={totalDebit !== totalCredit || totalDebit === 0}
-                className={`px-4 py-2 rounded-md text-white ${
-                  totalDebit === totalCredit && totalDebit > 0
-                    ? "bg-[#0466CB] hover:bg-[#0453A4]"
-                    : "bg-[#979DAC] cursor-not-allowed"
-                }`}
+                className="px-4 py-2 rounded-md text-white bg-[#0466CB] hover:bg-[#0453A4]"
               >
                 {mode === "edit"
                   ? t("common.save", { defaultValue: "Save" })
