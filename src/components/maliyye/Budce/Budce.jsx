@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BiExport } from "react-icons/bi";
 import { FiPlus } from "react-icons/fi";
 import Chart from './Chart';
@@ -6,12 +6,37 @@ import Categories from './Categories';
 import Departmenler from './Departmenler';
 import { useTranslation } from 'react-i18next';
 import YeniBudceModal from './YeniBudceModal';
+import ViewBudgetsModal from './ViewBudgetsModal';
+import { getBudgetReport, exportBudgetsExcel } from '../../../services';
 
 const Budce = () => {
   const [activeTab, setActiveTab] = useState("category")
   const [isOpen, setIsOpen] = useState(false)
+  const [isViewOpen, setIsViewOpen] = useState(false)
+  const [reportData, setReportData] = useState(null);
 
-  if (isOpen) {
+  useEffect(() => {
+    fetchReport();
+  }, []);
+
+  const fetchReport = async () => {
+    try {
+      const data = await getBudgetReport();
+      setReportData(data);
+    } catch (error) {
+      console.error("Error fetching budget report:", error);
+    }
+  };
+
+  const handleExport = async () => {
+    try {
+      await exportBudgetsExcel();
+    } catch (error) {
+      console.error("Error exporting budgets:", error);
+    }
+  };
+
+  if (isOpen || isViewOpen) {
     document.body.style.overflow = "hidden"
   } else {
     document.body.style.overflow = "auto"
@@ -20,10 +45,10 @@ const Budce = () => {
   const { t } = useTranslation()
 
   const cards = [
-    { key: 'planned', amount: '73,000 AZN', color: 'text-[#001233] dark:text-white', descKey: 'plannedDesc' },
-    { key: 'actual', amount: '71,000 AZN', color: 'text-[#001233] dark:text-white', descKey: 'actualDesc' },
-    { key: 'variance', amount: '2,000 AZN', color: 'text-[#0466CB] dark:text-[#0466CB]', descKey: 'varianceDesc' },
-    { key: 'utilization', amount: '97.3%', color: 'text-[#001233] dark:text-white', progress: 97.3 },
+    { key: 'planned', amount: reportData?.planned || '73,000 AZN', color: 'text-[#001233] dark:text-white', descKey: 'plannedDesc' },
+    { key: 'actual', amount: reportData?.actual || '71,000 AZN', color: 'text-[#001233] dark:text-white', descKey: 'actualDesc' },
+    { key: 'variance', amount: reportData?.variance || '2,000 AZN', color: 'text-[#0466CB] dark:text-[#0466CB]', descKey: 'varianceDesc' },
+    { key: 'utilization', amount: reportData?.utilization ? `${reportData.utilization}%` : '97.3%', color: 'text-[#001233] dark:text-white', progress: reportData?.utilization || 97.3 },
   ]
 
   return (
@@ -38,9 +63,18 @@ const Budce = () => {
         </div>
 
         <div className='flex gap-4'>
-          <button className='flex gap-3 text-[14px] items-center border border-[#33415C] dark:border-[#33415C] rounded-lg px-4 py-2
+          <button 
+            onClick={handleExport}
+            className='flex gap-3 text-[14px] items-center border border-[#33415C] dark:border-[#33415C] rounded-lg px-4 py-2
             hover:bg-[#0453A4]/10 dark:hover:bg-[#0453A4]/20 transition'>
             <BiExport /> {t('pages.finance.budgeting.report')}
+          </button>
+
+          <button
+            onClick={() => setIsViewOpen(true)}
+            className='flex gap-3 text-[14px] items-center border border-[#33415C] dark:border-[#33415C] rounded-lg px-4 py-2
+            hover:bg-[#0453A4]/10 dark:hover:bg-[#0453A4]/20 transition'>
+            {t('pages.finance.budgeting.viewBudgets', { defaultValue: 'View Budgets' })}
           </button>
 
           <button
@@ -120,6 +154,7 @@ const Budce = () => {
       {activeTab === "department" && <Departmenler />}
 
       {isOpen && <YeniBudceModal onClose={() => setIsOpen(false)} />}
+      {isViewOpen && <ViewBudgetsModal onClose={() => setIsViewOpen(false)} />}
     </div>
   )
 }

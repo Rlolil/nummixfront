@@ -389,3 +389,39 @@ export const deleteCalendarEvent = async (userId, dayId, eventId) => {
   const res = await api.delete(`/api/users/${userId}/calendar/${dayId}/events/${eventId}`);
   return res.data;
 };
+
+// Budget Services
+export const createBudget = async (data) => {
+  const res = await api.post("/api/budgets", data);
+  return res.data;
+};
+
+export const getBudgets = async () => {
+  const res = await api.get("/api/budgets");
+  return res.data;
+};
+
+export const exportBudgetsExcel = async () => {
+  const res = await api.get("/api/budgets/export/excel", { responseType: 'blob' });
+  return res.data;
+};
+
+export const getDepartmentBudget = async (department, year) => {
+  const res = await api.get(`/api/budgets/${department}/${year}`);
+  return res.data;
+};
+
+export const updateBudget = async (id, data) => {
+  const res = await api.put(`/api/budgets/${id}`, data);
+  return res.data;
+};
+
+export const deleteBudget = async (id) => {
+  const res = await api.delete(`/api/budgets/${id}`);
+  return res.data;
+};
+
+export const getBudgetReport = async () => {
+  const res = await api.get("/api/budgets/report");
+  return res.data;
+};

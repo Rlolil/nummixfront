@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Overlay from "../../overlay";
 import { useTranslation } from "react-i18next";
+import { createBudget } from "../../../services";
 
 const YeniBudceModal = ({ onClose }) => {
   const { t } = useTranslation();
@@ -27,10 +28,14 @@ const YeniBudceModal = ({ onClose }) => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Yeni büdcə məlumatları:", form);
-    onClose();
+    try {
+      await createBudget(form);
+      onClose();
+    } catch (error) {
+      console.error("Error creating budget:", error);
+    }
   };
 
   return (

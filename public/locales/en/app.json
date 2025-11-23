@@ -515,6 +515,7 @@
         "title": "Budget Planning and Control",
         "subtitle": "Plan income and expenses and compare with actuals",
         "report": "Report",
+        "viewBudgets": "View Budgets",
         "newBudget": "New budget",
         "modal": {
           "title": "Create New Budget",
@@ -1109,7 +1110,7 @@
       "tabs": {
         "controlPanel": "Control Panel",
         "suppliers": "Suppliers",
-        "sales": "Sales",
+        "sales": "New Purchase",
         "agreements": "Agreements",
         "payments": "Payments",
         "analytics": "Analytics"
