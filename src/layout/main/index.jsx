@@ -17,9 +17,9 @@ function MainLayout() {
     else root.classList.remove('dark')
   }, [])
   return (
-    <div className="flex overflow-x-hidden">
+    <div className="flex overflow-x-hidden h-[100vh] dark:bg-[#001233]">
       <Sidebar />
-      <div className="w-full overflow-x-hidden">
+      <div className="w-full overflow-x-hidden  h-[100%] dark:bg-[#001233]">
         <AiMini />
         <Header />
         <Outlet />

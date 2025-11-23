@@ -1,5 +1,5 @@
 // BigCalendarComponent.js
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
@@ -8,6 +8,7 @@ import getDay from "date-fns/getDay";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { enUS, az as azLocale, ru as ruLocale } from "date-fns/locale";
 import { useTranslation } from "react-i18next";
+import { getCalendar, getProfile } from "../../../../services";
 
 const locales = {
   "en-US": enUS,
@@ -85,25 +86,30 @@ function EventCalendar() {
     [t]
   );
 
-  const events = useMemo(
-    () => [
-      {
-        title: t("pages.hr.attendance.calendar.events.projectPresentation", {
-          defaultValue: "Project presentation",
-        }),
-        start: new Date(2025, 9, 20, 10, 0),
-        end: new Date(2025, 9, 20, 12, 0),
-      },
-      {
-        title: t("pages.hr.attendance.calendar.events.teamMeeting", {
-          defaultValue: "Team meeting",
-        }),
-        start: new Date(2025, 9, 22, 14, 0),
-        end: new Date(2025, 9, 22, 15, 30),
-      },
-    ],
-    [t]
-  );
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const user = await getProfile();
+        if (user?.id) {
+          const data = await getCalendar(user.id);
+          if (Array.isArray(data)) {
+            const formattedEvents = data.map((event) => ({
+              title: event.title,
+              start: new Date(event.start),
+              end: new Date(event.end),
+              allDay: event.allDay,
+            }));
+            setEvents(formattedEvents);
+          }
+        }
+      } catch (error) {
+        console.error("Error loading calendar events:", error);
+      }
+    };
+    fetchEvents();
+  }, []);
   return (
     <div className="h-[500px] dark:text-white">
       <style>{`

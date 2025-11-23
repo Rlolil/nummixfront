@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { createCalendarEvent } from "../../../../services";
 
 function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = "" }) {
   const { t } = useTranslation();
@@ -9,11 +10,25 @@ function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = ""
   const [endDate, setEndDate] = useState(initialEndDate);
   const [reason, setReason] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Burada təqdim etmə loqikasını əlavə et
-    console.log({ worker, leaveType, startDate, endDate, reason });
-    onClose();
+    try {
+      // Assuming worker value is the userId and startDate is the dayId
+      const userId = worker;
+      const dayId = startDate;
+      const eventData = {
+        title: `${leaveType} Leave`,
+        description: reason,
+        start: startDate,
+        end: endDate,
+        type: leaveType,
+      };
+
+      await createCalendarEvent(userId, dayId, eventData);
+      onClose();
+    } catch (error) {
+      console.error("Error creating leave request:", error);
+    }
   };
 
   return (

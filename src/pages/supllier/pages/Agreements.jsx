@@ -9,34 +9,54 @@ import { getAgreements, createAgreement, updateAgreement, updateAgreementStatus 
 export default function Agreements() {
     const { t } = useTranslation();
 
-    const [agreements, setAgreements] = useState([
-        {
-            id: 1,
-            contractNo: "CNT-2025-001",
-            supplier: "AzərTəchizat MMC",
-            amount: 1450.0,
-            currency: "AZN",
-            startDate: "2025-01-01",
-            endDate: "2025-12-31",
-            paymentTerm: "30",
-            notes: t("pages.supplier.agreements.sample.description"),
-            status: "active",
-            daysLeft: 150,
-        },
-        {
-            id: 2,
-            contractNo: "CNT-2025-002",
-            supplier: "EuroMaterials",
-            amount: 3200.0,
-            currency: "AZN",
-            startDate: "2025-02-01",
-            endDate: "2025-10-15",
-            paymentTerm: "30",
-            notes: t("pages.supplier.agreements.sample.description"),
-            status: "active",
-            daysLeft: 46,
-        },
-    ]);
+    // Sample agreements state
+    const [agreements, setAgreements] = useState([]);
+    const [newAgreement, setNewAgreement] = useState({
+        contractNo: "",
+        supplier: "",
+        amount: "",
+        currency: "AZN",
+        startDate: "",
+        endDate: "",
+        paymentTerm: "30",
+        notes: "",
+        status: "active"
+    });
+
+    useEffect(() => {
+        fetchAgreements();
+    }, []);
+
+    const fetchAgreements = async () => {
+        try {
+            const data = await getAgreements();
+            setAgreements(Array.isArray(data) ? data : []);
+        } catch (error) {
+            console.error("Error fetching agreements:", error);
+        }
+    };
+
+    const handleAddSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await createAgreement(newAgreement);
+            fetchAgreements();
+            setNewAgreement({
+                contractNo: "",
+                supplier: "",
+                amount: "",
+                currency: "AZN",
+                startDate: "",
+                endDate: "",
+                paymentTerm: "30",
+                notes: "",
+                status: "active"
+            });
+            document.getElementById("addNew")?.close();
+        } catch (error) {
+            console.error("Error creating agreement:", error);
+        }
+    };
 
     const [editAgreement, setEditAgreement] = useState(null);
     const [editIndex, setEditIndex] = useState(null);

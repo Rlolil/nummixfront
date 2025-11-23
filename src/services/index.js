@@ -317,3 +317,75 @@ export const updateCustomer = async (id, data) => {
   const res = await api.patch(`/api/customers/${id}`, data);
   return res.data;
 };
+
+// Warehouse Operations Services
+export const createGRN = async (data) => {
+  const res = await api.post("/api/warehouse/grn", data);
+  return res.data;
+};
+
+export const createDelivery = async (data) => {
+  const res = await api.post("/api/warehouse/delivery", data);
+  return res.data;
+};
+
+export const createTransfer = async (data) => {
+  const res = await api.post("/api/warehouse/transfer", data);
+  return res.data;
+};
+
+export const getWarehouseHistory = async () => {
+  const res = await api.get("/api/warehouse/history");
+  return res.data;
+};
+
+// Calendar Services
+export const createCalendarDay = async (userId, data) => {
+  const res = await api.post(`/api/users/${userId}/calendar`, data);
+  return res.data;
+};
+
+export const getCalendar = async (userId) => {
+  const res = await api.get(`/api/users/${userId}/calendar`);
+  return res.data;
+};
+
+export const updateCalendarDay = async (userId, dayId, data) => {
+  const res = await api.put(`/api/users/${userId}/calendar/${dayId}`, data);
+  return res.data;
+};
+
+export const getCalendarDay = async (userId, dayId) => {
+  const res = await api.get(`/api/users/${userId}/calendar/${dayId}`);
+  return res.data;
+};
+
+export const deleteCalendarDay = async (userId, dayId) => {
+  const res = await api.delete(`/api/users/${userId}/calendar/${dayId}`);
+  return res.data;
+};
+
+export const createCalendarEvent = async (userId, dayId, data) => {
+  const res = await api.post(`/api/users/${userId}/calendar/${dayId}/events`, data);
+  return res.data;
+};
+
+export const getCalendarEvents = async (userId, dayId) => {
+  const res = await api.get(`/api/users/${userId}/calendar/${dayId}/events`);
+  return res.data;
+};
+
+export const getCalendarEvent = async (userId, dayId, eventId) => {
+  const res = await api.get(`/api/users/${userId}/calendar/${dayId}/events/${eventId}`);
+  return res.data;
+};
+
+export const updateCalendarEvent = async (userId, dayId, eventId, data) => {
+  const res = await api.put(`/api/users/${userId}/calendar/${dayId}/events/${eventId}`, data);
+  return res.data;
+};
+
+export const deleteCalendarEvent = async (userId, dayId, eventId) => {
+  const res = await api.delete(`/api/users/${userId}/calendar/${dayId}/events/${eventId}`);
+  return res.data;
+};

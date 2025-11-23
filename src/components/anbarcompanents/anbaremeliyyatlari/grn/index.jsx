@@ -6,6 +6,7 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { FaXmark } from "react-icons/fa6";
 import { FaBarcode } from "react-icons/fa6";
 import { useTranslation } from 'react-i18next';
+import { createGRN } from '../../../../services';
 
 // Köməkçi funksiya — yeni məhsul yaradır
 const createNewProduct = () => ({
@@ -47,6 +48,24 @@ const Anbargrn = () => {
 
     const removeProduct = (id) => {
         setProducts(prev => prev.filter(item => item.id !== id));
+    };
+
+    const handleSubmit = async () => {
+        try {
+            const data = {
+                date,
+                order,
+                warehouse,
+                products,
+                notes
+            };
+            await createGRN(data);
+            resetForm();
+            alert(t('common.success', { defaultValue: 'Operation successful' }));
+        } catch (error) {
+            console.error("Error creating GRN:", error);
+            alert(t('common.error', { defaultValue: 'Operation failed' }));
+        }
     };
 
     return (
@@ -249,7 +268,10 @@ const Anbargrn = () => {
                     >
                         {t('common.cancel')}
                     </button>
-                    <button className="px-4 py-2 rounded bg-[#0466CB] hover:bg-[#0453A4] text-white flex items-center gap-2">
+                    <button 
+                        onClick={handleSubmit}
+                        className="px-4 py-2 rounded bg-[#0466CB] hover:bg-[#0453A4] text-white flex items-center gap-2"
+                    >
                         <MdOutlineDone /> {t('pages.warehouse.operations.grn.confirm')}
                     </button>
                 </div>

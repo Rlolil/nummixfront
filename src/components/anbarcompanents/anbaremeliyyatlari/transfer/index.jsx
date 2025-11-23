@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { createTransfer } from "../../../../services";
 
 export default function AnbarTransfer() {
     const { t } = useTranslation();
@@ -43,14 +44,20 @@ export default function AnbarTransfer() {
         });
     };
 
-    // “Transferi təsdiqlə” – (hələ backend yoxdursa, sadəcə console)
-    const handleSubmit = () => {
+    // “Transferi təsdiqlə”
+    const handleSubmit = async () => {
         if (transfer.from === transfer.to) {
             alert(t('pages.warehouse.operations.transfer.validation.sameWarehouse'));
             return;
         }
-        console.log("Transfer məlumatı:", transfer);
-        alert(t('pages.warehouse.operations.transfer.success'));
+        try {
+            await createTransfer(transfer);
+            alert(t('pages.warehouse.operations.transfer.success'));
+            handleReset();
+        } catch (error) {
+            console.error("Error creating transfer:", error);
+            alert(t('common.error', { defaultValue: 'Operation failed' }));
+        }
     };
 
     return (

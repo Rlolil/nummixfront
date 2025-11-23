@@ -3,6 +3,7 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 import { MdOutlineDone } from "react-icons/md";
 import { FaBarcode } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
+import { createDelivery } from "../../../../services";
 
 const newProduct = () => ({
   id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
@@ -37,6 +38,24 @@ const Anbardn = () => {
   const addProduct = () => setProducts([...products, newProduct()]);
   const removeProduct = (idx) =>
     setProducts(products.filter((_, i) => i !== idx));
+
+  const handleSubmit = async () => {
+    try {
+      const data = {
+        date,
+        exitType,
+        reference,
+        products,
+        notes
+      };
+      await createDelivery(data);
+      resetForm();
+      alert(t('common.success', { defaultValue: 'Operation successful' }));
+    } catch (error) {
+      console.error("Error creating delivery:", error);
+      alert(t('common.error', { defaultValue: 'Operation failed' }));
+    }
+  };
 
   return (
     <div className="min-h-screen p-4 lg:p-6 xl:p-8 space-y-8 dark:text-white text-[#001233]">
@@ -223,7 +242,10 @@ const Anbardn = () => {
           >
             {t("common.cancel")}
           </button>
-          <button className="px-4 py-2 rounded bg-[#0466CB] hover:bg-[#0453A4] text-white flex items-center gap-2">
+          <button 
+            onClick={handleSubmit}
+            className="px-4 py-2 rounded bg-[#0466CB] hover:bg-[#0453A4] text-white flex items-center gap-2"
+          >
             <MdOutlineDone /> {t("pages.warehouse.operations.dn.confirm")}
           </button>
         </div>
