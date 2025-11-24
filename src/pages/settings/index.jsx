@@ -122,7 +122,7 @@ function Settings() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Profile */}
-        <section className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
+        <section className="bg-white dark:bg-[#33415C] border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
           <h2 className="text-lg font-semibold mb-1">{t('pages.settings.profile.title', { defaultValue: 'Profile' })}</h2>
           <p className="text-sm text-gray-500 mb-4">{t('pages.settings.profile.subtitle', { defaultValue: 'Update your basic information' })}</p>
           <form onSubmit={saveProfile} className="space-y-4">
@@ -156,7 +156,7 @@ function Settings() {
         </section>
 
         {/* Security */}
-        <section className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
+        <section className="bg-white dark:bg-[#33415C] border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
           <h2 className="text-lg font-semibold mb-1">{t('pages.settings.security.title', { defaultValue: 'Security' })}</h2>
           <p className="text-sm text-gray-500 mb-4">{t('pages.settings.security.subtitle', { defaultValue: 'Change your password' })}</p>
           <form onSubmit={changePassword} className="space-y-4">
@@ -197,7 +197,7 @@ function Settings() {
         </section>
 
         {/* Language & Theme */}
-        <section className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
+        <section className="bg-white dark:bg-[#33415C] border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
           <h2 className="text-lg font-semibold mb-1">{t('pages.settings.appearance.title', { defaultValue: 'Language & Appearance' })}</h2>
           <p className="text-sm text-gray-500 mb-4">{t('pages.settings.appearance.subtitle', { defaultValue: 'Choose language and theme' })}</p>
           <div className="flex flex-col sm:flex-row gap-6">
@@ -215,7 +215,7 @@ function Settings() {
         </section>
 
         {/* Preferences */}
-        <section className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
+        <section className="bg-white dark:bg-[#33415C] border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
           <h2 className="text-lg font-semibold mb-1">{t('pages.settings.preferences.title', { defaultValue: 'Preferences' })}</h2>
           <p className="text-sm text-gray-500 mb-4">{t('pages.settings.preferences.subtitle', { defaultValue: 'Regional and formatting options' })}</p>
           <form onSubmit={savePrefs} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -270,7 +270,7 @@ function Settings() {
         </section>
 
         {/* Notifications */}
-        <section className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
+        <section className="bg-white dark:bg-[#33415C] border border-gray-200 dark:border-zinc-800 rounded-xl p-5">
           <h2 className="text-lg font-semibold mb-1">{t('pages.settings.notifications.title', { defaultValue: 'Notifications' })}</h2>
           <p className="text-sm text-gray-500 mb-4">{t('pages.settings.notifications.subtitle', { defaultValue: 'Choose how you want to be notified' })}</p>
           <form onSubmit={saveNoti} className="space-y-3">
@@ -297,7 +297,7 @@ function Settings() {
       </div>
 
       {/* Danger/Reset */}
-      <div className="bg-white dark:bg-zinc-900 border border-red-200 dark:border-red-900 rounded-xl p-5">
+      <div className="bg-white dark:bg-[#33415C] border border-red-200 dark:border-red-900 rounded-xl p-5">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div>
             <h3 className="text-base font-semibold text-red-600">{t('pages.settings.reset.title', { defaultValue: 'Reset settings' })}</h3>
