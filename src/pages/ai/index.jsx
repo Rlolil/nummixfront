@@ -25,8 +25,8 @@ const Ai = () => {
   return (
 
     <div>
-      <div className="flex dark:bg-[#001233]  dark:text-white items-center justify-between px-25 py-3 mt-20 sm:mt-0 bg-white shadow-lg rounded-sm relative z-10 ">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-row dark:bg-[#001233] dark:text-white items-center justify-between px-4 sm:px-25 py-3 mt-20 sm:mt-0 bg-white shadow-lg rounded-sm relative z-10 flex-nowrap">
+        <div className="flex items-center gap-3 min-w-0">
           <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,29 +50,36 @@ const Ai = () => {
               <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path>
             </svg>
           </div>
-          <div className="flex flex-col leading-tight">
-            <h1 className="text-lg font-semibold">{t("pages.ai.title")}</h1>
-            <span className="text-sm text-gray-500">{t("pages.ai.subtitle")}</span>
+
+          <div className="flex flex-col leading-tight overflow-hidden">
+            <h1 className="text-lg font-semibold truncate">{t("pages.ai.title")}</h1>
+            <span className="text-sm text-gray-500 truncate">
+              {t("pages.ai.subtitle")}
+            </span>
           </div>
         </div>
-
-        <div className="flex items-center gap-4">
-          <button onClick={() => setNotification(!notification)} className="relative">
-            <FaRegBell className="text-2xl" />
+        <div className="flex items-center gap-3 flex-nowrap">
+          <button
+            onClick={() => setNotification(!notification)}
+            className="relative"
+          >
+            <FaRegBell className="text-xl" />
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 rounded-full">
               5
             </span>
           </button>
+
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="bg-gradient-to-r from-indigo-500 to-purple-600 cursor-pointer flex items-center justify-center gap-2 text-white px-4 py-2 rounded-md whitespace-nowrap"
+            className="bg-gradient-to-r from-indigo-500 to-purple-600 cursor-pointer flex items-center justify-center gap-2 text-white px-3 py-2 rounded-md whitespace-nowrap text-sm"
           >
-            <FiMessageSquare className="text-lg " />
-            <span className="text-sm ">{t("pages.ai.openAssistant")}</span>
+            <FiMessageSquare className="text-lg" />
+            <span>{t("pages.ai.openAssistant")}</span>
           </button>
         </div>
       </div>
-      <div className="sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[100px] ml-0 px-4 sm:px-6 lg:px-8 dark:bg-[#001233] dark:text-white">
+
+      <div className="sm:ml-[100px] sm:mt-[20px] max-w-[1320px] mt-[40px] ml-0 px-4 sm:px-6 lg:px-8 dark:bg-[#001233] dark:text-white">
         <nav className="    grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2
     items-center justify-between gap-2
     p-3 rounded-md w-full mx-auto
@@ -84,13 +91,12 @@ const Ai = () => {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-              `w-full flex-1 py-2 text-center rounded-md text-sm font-medium transition-colors duration-200 border 
-              ${
-                isActive
+                `w-full flex-1 py-2 text-center rounded-md text-sm font-medium transition-colors duration-200 border 
+              ${isActive
                   ? "bg-[#0466CB] text-white border-[#0466CB] dark:bg-[#0453A4] dark:border-[#023E7D]"
                   : "border-[#33415C] text-[#001233] bg-whit dark:border-[#979DAC] dark:text-white dark:bg-[#002855] dark:hover:bg-[#023E7D]"
-              }`
-            }
+                }`
+              }
             >
               {item.label}
             </NavLink>

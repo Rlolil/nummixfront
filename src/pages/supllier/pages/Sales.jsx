@@ -89,7 +89,6 @@ export default function Sales() {
                                 <form className="flex flex-col gap-4">
                                     <div className="grid grid-cols-2 gap-4">
 
-                                        {/* Order No */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm text-[#5C677D]">{t("pages.supplier.orders.form.orderNo")}</p>
                                             <input
@@ -103,7 +102,6 @@ export default function Sales() {
                                             />
                                         </label>
 
-                                        {/* Supplier */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm text-[#5C677D] dark:text-[#7D8597]">{t("pages.supplier.orders.form.supplier")}</p>
                                             <input
@@ -117,7 +115,6 @@ export default function Sales() {
                                             />
                                         </label>
 
-                                        {/* Date */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm text-[#5C677D] dark:text-[#7D8597]">{t("pages.supplier.orders.form.date")}</p>
                                             <input
@@ -129,7 +126,6 @@ export default function Sales() {
                                             />
                                         </label>
 
-                                        {/* Delivery */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm text-[#5C677D] dark:text-[#7D8597]">{t("pages.supplier.orders.form.delivery")}</p>
                                             <input
@@ -141,7 +137,6 @@ export default function Sales() {
                                             />
                                         </label>
 
-                                        {/* Amount */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm text-[#5C677D] dark:text-[#7D8597]">{t("pages.supplier.orders.form.amount")}</p>
                                             <input
@@ -156,7 +151,6 @@ export default function Sales() {
                                             />
                                         </label>
 
-                                        {/* Status */}
                                         <label className="flex flex-col gap-2">
                                             <p className="font-semibold text-sm text-[#5C677D] dark:text-[#7D8597]">{t("pages.supplier.orders.form.status")}</p>
                                             <select
@@ -170,7 +164,6 @@ export default function Sales() {
                                             </select>
                                         </label>
 
-                                        {/* Notes */}
                                         <label className="flex flex-col gap-2 col-span-2">
                                             <p className="font-semibold text-sm text-[#5C677D] dark:text-[#7D8597]">{t("pages.supplier.orders.form.notes")}</p>
                                             <input
