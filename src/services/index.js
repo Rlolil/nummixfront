@@ -91,10 +91,13 @@ export const deleteOperation = async (id) => {
 };
 
 export const paymentsSchedule = async () => {
-  const res = await api.get("/api/payments/schedule");      
+  const res = await api.get("/api/payments");      
   return res.data;
 }
-
+export const createPayment  = async (data) => {
+  const res = await api.post("/api/payments", data);
+  return res.data;
+}
 export const generalLedger =  async () => {
   const res =  await api.get("/api/general-ledger")
   // console.log(res.data);
@@ -425,3 +428,90 @@ export const getBudgetReport = async () => {
   const res = await api.get("/api/budgets/report");
   return res.data;
 };
+
+// Asset Management Services
+export const getAssets = async (userId, params = {}) => {
+  const res = await api.get(`/api/assests/${userId}/assets`, { params });
+  return res.data;
+};
+
+export const getAssetById = async (userId, assetId) => {
+  const res = await api.get(`/api/assests/${userId}/assets/${assetId}`);
+  return res.data;
+};
+
+export const createAsset = async (userId, data) => {
+  const res = await api.post(`/api/assests/${userId}/assets`, data);
+  return res.data;
+};
+
+export const updateAsset = async (userId, assetId, data) => {
+  const res = await api.put(`/api/assests/${userId}/assets/${assetId}`, data);
+  return res.data;
+};
+
+export const deleteAsset = async (userId, assetId) => {
+  const res = await api.delete(`/api/assests/${userId}/assets/${assetId}`);
+  return res.data;
+};
+
+export const uploadAssetDocument = async (userId, assetId, formData) => {
+  // formData should be a FormData instance with the file under a field like 'file'
+  const res = await api.post(`/api/assests/${userId}/assets/${assetId}/upload-document`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+  return res.data;
+};
+
+export const downloadAssetDocument = async (userId, assetId) => {
+  const res = await api.get(`/api/assests/${userId}/assets/${assetId}/download-document`, { responseType: 'blob' });
+  return res.data; // caller can createObjectURL or save
+};
+
+export const deleteAssetDocuments = async (userId, assetId) => {
+  const res = await api.delete(`/api/assests/${userId}/assets/${assetId}/documents`);
+  return res.data;
+};
+
+// Asset Categories
+export const getAssetCategories = async (userId) => {
+  const res = await api.get(`/api/assests/${userId}/categories`);
+  return res.data;
+};
+
+export const createAssetCategory = async (userId, data) => {
+  const res = await api.post(`/api/assests/${userId}/categories`, data);
+  return res.data;
+};
+
+export const updateAssetCategory = async (userId, categoryId, data) => {
+  const res = await api.put(`/api/assests/${userId}/categories/${categoryId}`, data);
+  return res.data;
+};
+
+export const deleteAssetCategory = async (userId, categoryId) => {
+  const res = await api.delete(`/api/assests/${userId}/categories/${categoryId}`);
+  return res.data;
+};
+
+// Asset Reports
+export const getAssetReports = async (userId, params = {}) => {
+  const res = await api.get(`/api/assests/${userId}/reports`, { params });
+  return res.data;
+};
+
+export const downloadAssetReportsExcel = async (userId, params = {}) => {
+  const res = await api.get(`/api/assests/${userId}/reports/excel/download`, { params, responseType: 'blob' });
+  return res.data;
+};
+
+export const downloadAssetReportsPdf = async (userId, params = {}) => {
+  const res = await api.get(`/api/assests/${userId}/reports/pdf/download`, { params, responseType: 'blob' });
+  return res.data;
+};
+
+export const getAssetStatistics = async (userId) => {
+  const res = await api.get(`/api/assests/${userId}/statistics`);
+  return res.data;
+};
+

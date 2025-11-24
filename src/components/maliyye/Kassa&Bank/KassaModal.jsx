@@ -138,13 +138,13 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
 
     if (editData) {
       setForm({
-        operationType: editData.operationType || "",
+        operationType: editData.type || "", // Backend 'type' is frontend 'operationType' (cash/bank)
         account: editData.account || "",
-        type: editData.type || "",
-        amount: editData.amount ? editData.amount.replace(/[^\d.-]/g, "") : "",
+        type: editData.operationType === "inflow" ? "income" : "expense", // Backend 'operationType' is frontend 'type' (income/expense)
+        amount: editData.amount ? String(editData.amount).replace(/[^\d.-]/g, "") : "",
         currency: editData.currency || "AZN",
         category: editData.category || "",
-        date: editData.date || "",
+        date: editData.date ? editData.date.split('T')[0] : "",
         note: editData.description || "",
       });
     }
@@ -160,20 +160,31 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
       return;
     }
 
+    // Map frontend values to backend schema
+    // Frontend form.type ("income"/"expense") -> Backend operationType ("inflow"/"outflow")
+    // Frontend form.operationType ("cash"/"bank") -> Backend type ("cash"/"bank")
+    
+    const backendOperationType = form.type === "income" ? "inflow" : "outflow";
+    const backendType = form.operationType; // "cash" or "bank"
+
     const newData = {
       date: form.date || new Date().toISOString(),
-      type: form.type, // "Income" or "Expense"
+      operationType: backendOperationType,
+      type: backendType,
       amount: parseFloat(form.amount),
       currency: form.currency,
       category: form.category,
       description: form.note || "",
-      operationType: form.operationType, // "cash" or "bank"
       account: form.account || "",
       createdBy: userId
     };
 
-    if (editData) onUpdate(newData);
-    else onSave(newData);
+    if (editData) {
+      onUpdate(newData)
+      setTimeout(() => {window.location.reload();}, 1000);
+    }
+    else 
+      {onSave(newData);}
 
     onClose();
   };

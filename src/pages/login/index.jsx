@@ -7,7 +7,7 @@ function Toaster({ toasts, removeToast }) {
     <div className="fixed top-6 right-6 z-50 space-y-2">
       {toasts.map((t) => (
         <div
-          key={t.id}
+          key={t._id}
           className={`max-w-sm w-full px-4 py-2 rounded-md shadow-md text-white ${
             t.type === "success"
               ? "bg-green-600"
@@ -19,7 +19,7 @@ function Toaster({ toasts, removeToast }) {
           <div className="flex items-center justify-between">
             <div className="text-sm">{t.message}</div>
             <button
-              onClick={() => removeToast(t.id)}
+              onClick={() => removeToast(t._id)}
               className="ml-4 text-xs opacity-80 hover:opacity-100"
             >
               ✕
@@ -44,11 +44,11 @@ function Login() {
     const t = { id, type, message };
     setToasts((s) => [t, ...s]);
     setTimeout(() => {
-      setToasts((s) => s.filter((x) => x.id !== id));
+      setToasts((s) => s.filter((x) => x._id !== id));
     }, ttl);
   };
   const removeToast = (id) => {
-    setToasts((s) => s.filter((x) => x.id !== id));
+    setToasts((s) => s.filter((x) => x._id !== id));
   };
 
   useEffect(() => {
@@ -70,7 +70,7 @@ function Login() {
       }
       setIsSubmitting(false);
       setIsLogin(true);
-      setTimeout(() => navigate("/dashboard"), 1000);
+      setTimeout(() => navigate("/muhasibat/dashboard"), 1000);
       addToast("success", t("auth.login.success"));
     } catch (err) {
       setIsSubmitting(false);

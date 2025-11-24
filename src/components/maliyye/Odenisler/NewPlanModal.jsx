@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { X } from "lucide-react";
 import Overlay from "../../overlay";
 import { useTranslation } from "react-i18next";
+import { createPayment } from "../../../services";
 
 const NewPlanModal = ({ onClose }) => {
     const { t } = useTranslation();
@@ -19,10 +20,17 @@ const NewPlanModal = ({ onClose }) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(form);
-        onClose();
+        try {
+            const res = await createPayment(form);
+            // Close modal only after successful save
+            onClose();
+            return res;
+        } catch (error) {
+            console.error("Payment creation error:", error);
+            alert("Payment creation failed");
+        }
     };
 
     return (

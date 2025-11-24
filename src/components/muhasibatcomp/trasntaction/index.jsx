@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { FaPlus, FaFileInvoice, FaEdit, FaTrash } from "react-icons/fa";
 import CreateJournalEntry from "../newjournalmodule";
 import { useTranslation } from "react-i18next";
-import { getTransactions, deleteTransaction, createTransaction, updateTransaction } from "../../../services";
+import { getTransactions, deleteTransaction, createTransaction, updateTransaction, getProfile } from "../../../services";
 
 const Transactions = () => {
   const [moduleOpen, setModuleOpen] = useState(false);
   const [selectedTxn, setSelectedTxn] = useState(null);
   const { t } = useTranslation();
   const [transactions, setTransactions] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const theme = localStorage.getItem('theme') || 'light';
@@ -17,18 +18,45 @@ const Transactions = () => {
     else root.classList.remove('dark');
 
     fetchTransactions();
+    fetchUserProfile();
   }, []);
+
+  const fetchUserProfile = async () => {
+    try {
+      const profile = await getProfile();
+      setCurrentUser(profile);
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+    }
+  };
 
   const fetchTransactions = async () => {
     try {
       const data = await getTransactions();
       if (Array.isArray(data)) {
-        const formatted = data.map((t) => ({
-          ...t,
-          mayeValue: t.mayeValue || formatAmount(getTotalNumber(t.entries || [])),
-          currency: t.currency || 'AZN',
-          amount: t.amount || (t.mayeValue ? t.mayeValue : formatAmount(getTotalNumber(t.entries || []))),
-        }));
+        const formatted = data.map((t) => {
+          let displayDate = t.date;
+          // Check if ISO date
+          if (t.date && (typeof t.date === 'string' && (t.date.includes('T') || t.date.match(/^\d{4}-\d{2}-\d{2}$/)))) {
+              const d = new Date(t.date);
+              if (!isNaN(d.getTime())) {
+                  // Format as DD/MM/YYYY
+                  const day = String(d.getDate()).padStart(2, '0');
+                  const month = String(d.getMonth() + 1).padStart(2, '0');
+                  const year = d.getFullYear();
+                  displayDate = `${day}/${month}/${year}`;
+              }
+          }
+
+          return {
+            ...t,
+            date: displayDate,
+            originalDate: t.date,
+            mayeValue: t.mayeValue || formatAmount(getTotalNumber(t.entries || [])),
+            currency: t.currency || 'AZN',
+            amount: t.amount || (t.mayeValue ? t.mayeValue : formatAmount(getTotalNumber(t.entries || []))),
+          };
+        });
         setTransactions(formatted);
       }
     } catch (error) {
@@ -41,7 +69,11 @@ const Transactions = () => {
     if (!entries) return 0;
     let debit = 0;
     entries.forEach((e) => {
-      if (e.debit !== "-") debit += Number(String(e.debit).replace(/[,]/g, ""));
+      if (e.type === 'debit' && e.amount) {
+          debit += Number(e.amount);
+      } else if (e.debit && e.debit !== "-") {
+          debit += Number(String(e.debit).replace(/[,]/g, ""));
+      }
     });
     return debit;
   }
@@ -54,8 +86,11 @@ const Transactions = () => {
     let debit = 0,
       credit = 0;
     entries.forEach((e) => {
-      if (e.debit !== "-") debit += Number(String(e.debit).replace(/[,]/g, ""));
-      if (e.credit !== "-") credit += Number(String(e.credit).replace(/[,]/g, ""));
+      if (e.type === 'debit' && e.amount) debit += Number(e.amount);
+      if (e.type === 'credit' && e.amount) credit += Number(e.amount);
+
+      if (e.debit && e.debit !== "-") debit += Number(String(e.debit).replace(/[,]/g, ""));
+      if (e.credit && e.credit !== "-") credit += Number(String(e.credit).replace(/[,]/g, ""));
     });
     return { debit: `${debit.toLocaleString()}`, credit: `${credit.toLocaleString()}` };
   };
@@ -97,18 +132,42 @@ const Transactions = () => {
       defaultValue: txn.titleParams?.id ? `${txn.titleParams?.id}` : "",
       ...txn.titleParams,
     });
+
+    const rawDate = txn.originalDate || txn.date;
+    let dateStr = "";
+    if (rawDate) {
+        if (typeof rawDate === 'string' && rawDate.includes('T')) {
+            dateStr = rawDate.split('T')[0];
+        } else if (typeof rawDate === 'string' && rawDate.includes('/')) {
+             dateStr = parseDateToISO(rawDate);
+        } else {
+            dateStr = rawDate;
+        }
+    }
+
+    const mappedEntries = txn.entries.map((e) => {
+        if (e.type) {
+             return {
+                account: e.account.toLowerCase() === 'expense' ? 'expenses' : e.account.toLowerCase(),
+                debit: e.type === 'debit' ? String(e.amount) : "",
+                credit: e.type === 'credit' ? String(e.amount) : "",
+            };
+        }
+        return {
+            account: mapAccountCode(e.code),
+            debit: toNumberString(e.debit),
+            credit: toNumberString(e.credit),
+        };
+    });
+
     return {
-      date: parseDateToISO(txn.date),
-      reference: txn.id,
-      description,
+      date: dateStr,
+      reference: txn.reference || txn.id,
+      description: txn.description || description,
       mayeValue: toNumberString(txn.mayeValue || ""),
       amount: toNumberString(txn.amount || txn.mayeValue || ""),
       currency: txn.currency || 'AZN',
-      entries: txn.entries.map((e) => ({
-        account: mapAccountCode(e.code),
-        debit: toNumberString(e.debit),
-        credit: toNumberString(e.credit),
-      })),
+      entries: mappedEntries,
     };
   };
 
@@ -149,38 +208,62 @@ const Transactions = () => {
 
   const handleSave = async (payload) => {
     // payload: { date, reference, description, entries: [{account, debit, credit}] }
-    const newEntries = (payload.entries || []).map((e) => {
-      const m = mapAccountToCodeName(e.account);
-      return {
-        code: m.code,
-        nameKey: m.nameKey,
-        debit: e.debit ? String(e.debit) : '-',
-        credit: e.credit ? String(e.credit) : '-',
-      };
+    
+    const backendEntries = [];
+    (payload.entries || []).forEach((e) => {
+      let accountName = "";
+      // Map frontend account values to backend enum
+      switch (e.account) {
+        case "cash": accountName = "Cash"; break;
+        case "bank": accountName = "Bank"; break;
+        case "sales": accountName = "Sales"; break;
+        case "expenses": accountName = "Expense"; break;
+        default: accountName = "Cash"; // Default fallback
+      }
+
+      if (e.debit && parseFloat(e.debit) > 0) {
+        backendEntries.push({
+          account: accountName,
+          type: "debit",
+          amount: parseFloat(e.debit),
+        });
+      }
+
+      if (e.credit && parseFloat(e.credit) > 0) {
+        backendEntries.push({
+          account: accountName,
+          type: "credit",
+          amount: parseFloat(e.credit),
+        });
+      }
     });
 
-    const formattedMaye = payload.mayeValue
-      ? formatAmount(Number(String(payload.mayeValue).replace(/[,]/g, "")))
-      : formatAmount(getTotalNumber(newEntries));
-    const formattedAmount = (payload.amount ?? '') !== ''
-      ? formatAmount(Number(String(payload.amount).replace(/[,]/g, "")))
-      : formattedMaye;
+    // Get user info from profile
+    let userFullName = "Admin User";
+    let userId = undefined;
+    
+    if (currentUser) {
+        userFullName = currentUser.fullName || currentUser.name || "Admin User";
+        userId = currentUser.id || currentUser._id;
+    }
 
     const txnData = {
-      id: payload.reference, // Assuming reference is ID for now, or backend generates it
-      titleKey: 'pages.accounting.transactions.samples.manualEntry',
-      titleParams: { id: payload.description || payload.reference || 'Manual Entry' },
-      date: toDisplayDate(payload.date),
-      user: 'Manual Entry', // You might want to get this from auth context
-      entries: newEntries,
-      mayeValue: formattedMaye,
-      currency: payload.currency || 'AZN',
-      amount: formattedAmount,
+      date: payload.date, // YYYY-MM-DD is valid for Date type in Mongoose
+      reference: payload.reference,
+      description: payload.description,
+      entries: backendEntries,
+      createdBy: {
+        fullName: userFullName
+      }
     };
+
+    if (userId) {
+        txnData.createdBy.userId = userId;
+    }
 
     try {
       if (selectedTxn) {
-        await updateTransaction(selectedTxn.id, txnData);
+        await updateTransaction(selectedTxn._id || selectedTxn.id, txnData);
       } else {
         await createTransaction(txnData);
       }
@@ -189,6 +272,7 @@ const Transactions = () => {
       setModuleOpen(false);
     } catch (error) {
       console.error("Error saving transaction:", error);
+      alert("Error saving transaction: " + (error.response?.data?.message || error.message));
     }
   };
 

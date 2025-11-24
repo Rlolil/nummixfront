@@ -33,7 +33,8 @@ const Odenisler = () => {
 
   if (isOpen) document.body.style.overflow = "hidden";
   else document.body.style.overflow = "auto";
-
+  console.log(schedule);
+  
   return (
     <div className="container mx-auto text-[#001233] dark:text-white">
       <div className="flex flex-col md:flex-row justify-between mb-4 sm:items-center">
@@ -132,7 +133,6 @@ const Odenisler = () => {
           ))}
         </div>
       </div>
-
       {isOpen && <NewPlanModal onClose={() => setIsOpen(false)} />}
     </div>
   );

@@ -3,10 +3,6 @@ import { Navigate } from "react-router-dom";
 import { getProfile } from "../../services";
 
 function PrivateRoute({ children }) {
-  // Temporary bypass for development
-  return children;
-
-  /*
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
@@ -26,7 +22,6 @@ function PrivateRoute({ children }) {
   }
   
   return isAuthenticated ? children : <Navigate to="/login" />;
-  */
 }
 
 export default PrivateRoute;

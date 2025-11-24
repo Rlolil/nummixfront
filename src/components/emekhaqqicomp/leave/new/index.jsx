@@ -14,13 +14,13 @@ function LeaveRequestModal({ onClose, initialStartDate = "", initialEndDate = ""
     e.preventDefault();
     try {
       // Assuming worker value is the userId and startDate is the dayId
-      const userId = worker;
-      const dayId = startDate;
+      const userId = "69234f1452aa61e3cf20ee97";
+      const dayId = 3;
       const eventData = {
         title: `${leaveType} Leave`,
         description: reason,
-        start: startDate,
-        end: endDate,
+        startTime: startDate,
+        endTime: endDate,
         type: leaveType,
       };
 

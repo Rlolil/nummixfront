@@ -114,8 +114,8 @@ const KassaEmeliyyatlari = ({ kassaData, setKassaData, setEditingData, setIsModa
   const deleteItem = async (i) => {
     const item = kassaData[i];
     try {
-      await deleteOperation(item.id);
-      setKassaData(prev => prev.filter(it => it.id !== item.id));
+      await deleteOperation(item._id || item.id);
+      setKassaData(prev => prev.filter(it => (it._id || it.id) !== (item._id || item.id)));
     } catch (err) {
       console.error(err);
       alert("Əməliyyat silinə bilmədi!");
@@ -125,6 +125,13 @@ const KassaEmeliyyatlari = ({ kassaData, setKassaData, setEditingData, setIsModa
   const editItem = (i) => {
     setEditingData(kassaData[i]);
     setIsModalOpen(true);
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return dateString;
+    return date.toLocaleDateString("az-AZ"); // Or any other locale
   };
 
   return (
@@ -145,16 +152,16 @@ const KassaEmeliyyatlari = ({ kassaData, setKassaData, setEditingData, setIsModa
           <tbody className="text-sm">
             {kassaData.map((item, i) => (
               <tr key={i} className="border-b border-[#979DAC] dark:border-[#33415C] hover:bg-[#0453A4]/10 dark:hover:bg-[#0453A4]/20 transition">
-                <td className="py-3">{item.date}</td>
+                <td className="py-3">{formatDate(item.date)}</td>
                 <td className="py-3">
-                  <span className={`px-3 py-1 rounded-md text-xs font-medium ${item.type === "Gəlir" ? "text-[#FFFFFF] bg-[#0466CB] dark:bg-[#FFFFFF] dark:text-[#001233]" : "bg-[#979DAC] text-[#001233] dark:bg-[#001845] dark:text-[#FFFFFF]"}`}>
-                    {item.type === "Gəlir" ? t("pages.finance.common.inflow") : t("pages.finance.common.outflow")}
+                  <span className={`px-3 py-1 rounded-md text-xs font-medium ${item.operationType === "inflow" ? "text-[#FFFFFF] bg-[#0466CB] dark:bg-[#FFFFFF] dark:text-[#001233]" : "bg-[#979DAC] text-[#001233] dark:bg-[#001845] dark:text-[#FFFFFF]"}`}>
+                    {item.operationType === "inflow" ? t("pages.finance.common.inflow") : t("pages.finance.common.outflow")}
                   </span>
                 </td>
-                <td className="py-3">{item.cat}</td>
-                <td className="py-3">{item.desc}</td>
-                <td className={`py-3 text-right font-medium ${item.amount.startsWith("+") ? "text-[#0466CB]" : "text-[#D00000]"}`}>
-                  {item.amount}
+                <td className="py-3">{item.category || item.cat}</td>
+                <td className="py-3">{item.description || item.desc}</td>
+                <td className={`py-3 text-right font-medium ${item.operationType === "inflow" ? "text-[#0466CB]" : "text-[#D00000]"}`}>
+                  {item.operationType === "inflow" ? "+" : "-"}{item.amount} {item.currency}
                 </td>
                 <td><FaPencil className="ml-2 cursor-pointer" onClick={() => editItem(i)} /></td>
                 <td><FaRegTrashAlt className="cursor-pointer" onClick={() => deleteItem(i)} /></td>
