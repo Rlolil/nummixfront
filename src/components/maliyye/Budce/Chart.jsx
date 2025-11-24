@@ -2,16 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const Chart = () => {
+const Chart = ({ data }) => {
   const { t } = useTranslation()
-  const data = [
-    { name: t('pages.finance.common.months.jan', 'Jan'), uv: 73000, pv: 71000, amt: 2400 },
-    { name: t('pages.finance.common.months.feb', 'Feb'), uv: 73000, pv: 75000, amt: 2210 },
-    { name: t('pages.finance.common.months.mar', 'Mar'), uv: 73000, pv: 70500, amt: 2290 },
-    { name: t('pages.finance.common.months.apr', 'Apr'), uv: 73000, pv: 72800, amt: 2000 },
-    { name: t('pages.finance.common.months.may', 'May'), uv: 73000, pv: 74200, amt: 2000 },
-    { name: t('pages.finance.common.months.jun', 'Jun'), uv: 73000, pv: 71000, amt: 2181 }
-  ];
+  
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart

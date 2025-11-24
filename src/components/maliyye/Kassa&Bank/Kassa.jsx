@@ -120,8 +120,8 @@ const Kassa = () => {
         const data = await getOperations();
         console.log("gelen data:", data);
                 
-        setKassaData(data.filter(item => item.operationType === "Kassa"));
-        setBankData(data.filter(item => item.operationType === "Bank"));
+        setKassaData(data.filter(item => item.operationType === "Kassa" || item.operationType === "cash"));
+        setBankData(data.filter(item => item.operationType === "Bank" || item.operationType === "bank"));
       } catch (err) {
         console.error(err);
       }
@@ -136,7 +136,7 @@ const Kassa = () => {
   const addOperation = async (data) => {    
     try {
       const savedData = await createOperation(data);      
-      if (data.operationType === "Kassa") setKassaData(prev => [...prev, savedData]);
+      if (data.operationType === "Kassa" || data.operationType === "cash") setKassaData(prev => [...prev, savedData]);
       else setBankData(prev => [...prev, savedData]);
     } catch (err) {
       console.error(err);
@@ -148,7 +148,7 @@ const Kassa = () => {
     if (!editingData) return;
     try {
       const updated = await updateOperation(editingData.id, updatedData);
-      if (editingData.operationType === "Kassa") {
+      if (editingData.operationType === "Kassa" || editingData.operationType === "cash") {
         setKassaData(kassaData.map(item => item.id === editingData.id ? updated : item));
       } else {
         setBankData(bankData.map(item => item.id === editingData.id ? updated : item));

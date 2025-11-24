@@ -582,6 +582,7 @@
           "otherExpenses": "Other expenses"
         },
         "departments": {
+          "totalBudget": "Total Budget",
           "salesMarketing": "Sales and Marketing",
           "itTech": "IT and Technology",
           "operations": "Operations",

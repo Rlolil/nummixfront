@@ -109,9 +109,11 @@ import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import Overlay from "../../overlay";
 import { useTranslation } from "react-i18next";
+import { getProfile } from "../../../services";
 
 const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
   const { t } = useTranslation();
+  const [userId, setUserId] = useState(null);
   const [form, setForm] = useState({
     operationType: "",
     account: "",
@@ -124,20 +126,26 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
   });
 
   useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const user = await getProfile();
+        setUserId(user._id);
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      }
+    };
+    fetchUser();
+
     if (editData) {
       setForm({
         operationType: editData.operationType || "",
         account: editData.account || "",
         type: editData.type || "",
         amount: editData.amount ? editData.amount.replace(/[^\d.-]/g, "") : "",
-        currency: editData.amount?.includes("USD")
-          ? "USD"
-          : editData.amount?.includes("EUR")
-          ? "EUR"
-          : "AZN",
-        category: editData.cat || "",
+        currency: editData.currency || "AZN",
+        category: editData.category || "",
         date: editData.date || "",
-        note: editData.desc || "",
+        note: editData.description || "",
       });
     }
   }, [editData]);
@@ -147,22 +155,21 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
   };
 
   const handleSubmit = () => {
-    if (!form.amount || !form.operationType || !form.type) {
+    if (!form.amount || !form.operationType || !form.type || !form.category || !form.currency) {
       alert(t("common.fillAllFields"));
       return;
     }
 
     const newData = {
-      date: form.date || "—",
-      type: form.type,
-      amount:
-        form.amount.startsWith("-")
-          ? form.amount + " " + form.currency
-          : "+" + form.amount + " " + form.currency,
-      cat: form.category || "—",
-      desc: form.note || "—",
-      operationType: form.operationType,
-      account: form.account || "—"
+      date: form.date || new Date().toISOString(),
+      type: form.type, // "Income" or "Expense"
+      amount: parseFloat(form.amount),
+      currency: form.currency,
+      category: form.category,
+      description: form.note || "",
+      operationType: form.operationType, // "cash" or "bank"
+      account: form.account || "",
+      createdBy: userId
     };
 
     if (editData) onUpdate(newData);
@@ -198,12 +205,12 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
               className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
             >
               <option value="">{t("pages.finance.common.select")}</option>
-              <option value="Kassa">{t("pages.finance.cashBank.modal.options.cash")}</option>
-              <option value="Bank">{t("pages.finance.cashBank.modal.options.bank")}</option>
+              <option value="cash">{t("pages.finance.cashBank.modal.options.cash")}</option>
+              <option value="bank">{t("pages.finance.cashBank.modal.options.bank")}</option>
             </select>
           </div>
 
-          {form.operationType === "Kassa" && (
+          {form.operationType === "cash" && (
             <div>
               <label className="text-[#5C677D] dark:text-white text-sm">
                 {t("pages.finance.cashBank.modal.selectCash", { defaultValue: "Kassa Seçin" })}
@@ -221,7 +228,7 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
             </div>
           )}
 
-          {form.operationType === "Bank" && (
+          {form.operationType === "bank" && (
             <div>
               <label className="text-[#5C677D] dark:text-white text-sm">
                 {t("pages.finance.cashBank.modal.selectBank", { defaultValue: "Bank Seçin" })}
@@ -249,8 +256,8 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
               className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
             >
               <option value="">{t("pages.finance.common.select")}</option>
-              <option value="Gəlir">{t("pages.finance.cashBank.modal.options.income")}</option>
-              <option value="Xərc">{t("pages.finance.cashBank.modal.options.expense")}</option>
+              <option value="income">{t("pages.finance.cashBank.modal.options.income")}</option>
+              <option value="expense">{t("pages.finance.cashBank.modal.options.expense")}</option>
             </select>
           </div>
 
@@ -291,9 +298,9 @@ const KassaModal = ({ onClose, onSave, onUpdate, editData }) => {
               className="w-full border rounded-lg px-3 py-2 bg-white dark:bg-[#33415C] text-[#001233] dark:text-white"
             >
               <option value="">{t("pages.finance.common.select")}</option>
-              <option value="Maaş">{t("pages.finance.common.categories.salary")}</option>
-              <option value="Satış">{t("pages.finance.common.categories.sales")}</option>
-              <option value="Digər">{t("pages.finance.common.categories.other")}</option>
+              <option value="salary">{t("pages.finance.common.categories.salary")}</option>
+              <option value="sales">{t("pages.finance.common.categories.sales")}</option>
+              <option value="other">{t("pages.finance.common.categories.other")}</option>
             </select>
           </div>
 

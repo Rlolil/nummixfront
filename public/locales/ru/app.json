@@ -1533,6 +1533,7 @@
           "otherExpenses": "Прочие расходы"
         },
         "departments": {
+          "totalBudget": "Общий бюджет",
           "salesMarketing": "Продажи и Маркетинг",
           "itTech": "IT и Технологии",
           "operations": "Операции",

@@ -1296,6 +1296,7 @@
           "otherExpenses": "Digər xərclər"
         },
         "departments": {
+          "totalBudget": "Ümumi Büdcə",
           "salesMarketing": "Satış və Marketing",
           "itTech": "İT və Texnologiya",
           "operations": "Əməliyyatlar",

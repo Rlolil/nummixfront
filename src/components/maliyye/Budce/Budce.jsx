@@ -45,11 +45,31 @@ const Budce = () => {
   const { t } = useTranslation()
 
   const cards = [
-    { key: 'planned', amount: reportData?.planned || '73,000 AZN', color: 'text-[#001233] dark:text-white', descKey: 'plannedDesc' },
-    { key: 'actual', amount: reportData?.actual || '71,000 AZN', color: 'text-[#001233] dark:text-white', descKey: 'actualDesc' },
-    { key: 'variance', amount: reportData?.variance || '2,000 AZN', color: 'text-[#0466CB] dark:text-[#0466CB]', descKey: 'varianceDesc' },
-    { key: 'utilization', amount: reportData?.utilization ? `${reportData.utilization}%` : '97.3%', color: 'text-[#001233] dark:text-white', progress: reportData?.utilization || 97.3 },
+    { key: 'planned', amount: reportData?.totalPlanned ? `${reportData.totalPlanned} AZN` : '0 AZN', color: 'text-[#001233] dark:text-white', descKey: 'plannedDesc' },
+    { key: 'actual', amount: reportData?.totalActual ? `${reportData.totalActual} AZN` : '0 AZN', color: 'text-[#001233] dark:text-white', descKey: 'actualDesc' },
+    { key: 'variance', amount: reportData?.totalDifference ? `${reportData.totalDifference} AZN` : '0 AZN', color: 'text-[#0466CB] dark:text-[#0466CB]', descKey: 'varianceDesc' },
+    { key: 'utilization', amount: reportData?.totalUsageRate || '0%', color: 'text-[#001233] dark:text-white', progress: parseFloat(reportData?.totalUsageRate) || 0 },
   ]
+
+  // Prepare chart data by aggregating monthly data across all budgets
+  const chartData = React.useMemo(() => {
+    if (!reportData?.budgets) return [];
+    
+    const months = {};
+    reportData.budgets.forEach(budget => {
+      if (budget.monthlyData) {
+        budget.monthlyData.forEach(monthData => {
+          if (!months[monthData.month]) {
+            months[monthData.month] = { name: monthData.month, uv: 0, pv: 0 };
+          }
+          months[monthData.month].uv += monthData.totalPlanned || 0; // Plan
+          months[monthData.month].pv += monthData.totalActual || 0;  // Actual
+        });
+      }
+    });
+    
+    return Object.values(months);
+  }, [reportData]);
 
   return (
     <div className="container mx-auto text-[#001233] dark:text-white">
@@ -125,7 +145,7 @@ const Budce = () => {
         <p className="text-[#7D8597] text-sm mb-3">{t('pages.finance.budgeting.yearly.subtitle')}</p>
 
         <div className="flex-1">
-          <Chart />
+          <Chart data={chartData} />
         </div>
       </div>
 
@@ -150,8 +170,8 @@ const Budce = () => {
         </button>
       </div>
 
-      {activeTab === "category" && <Categories />}
-      {activeTab === "department" && <Departmenler />}
+      {activeTab === "category" && <Categories data={reportData?.budgets || []} />}
+      {activeTab === "department" && <Departmenler data={reportData?.budgets || []} />}
 
       {isOpen && <YeniBudceModal onClose={() => setIsOpen(false)} />}
       {isViewOpen && <ViewBudgetsModal onClose={() => setIsViewOpen(false)} />}

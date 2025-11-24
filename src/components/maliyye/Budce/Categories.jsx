@@ -1,119 +1,70 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
 
-const Categories = () => {
+const Categories = ({ data }) => {
     const { t } = useTranslation();
 
-    const data = [
-        {
-            title: t('pages.finance.common.categories.salary'),
-            used: 24500,
-            planned: 25000,
-            percent: 98,
-            qaliq: 500
-        },
-        {
-            title: t('pages.finance.budgeting.categories.officeExpenses', 'Ofis xərcləri'),
-            used: 9200,
-            planned: 8000,
-            percent: 115,
-            extra: 1200,
-            noRed: false,
-        },
-        {
-            title: t('pages.finance.common.categories.marketing'),
-            used: 10500,
-            planned: 12000,
-            percent: 87.5,
-            qenaet: t('pages.finance.budgeting.labels.saving'),
-            qaliq: 1500
-        },
-        {
-            title: t('pages.finance.budgeting.categories.itAndTech', 'IT və Texnologiya'),
-            used: 5800,
-            planned: 6000,
-            percent: 96.7,
-            qaliq: 200
-        },
-        {
-            title: t('pages.finance.budgeting.categories.procurement', 'Satınalma'),
-            used: 14200,
-            planned: 15000,
-            percent: 94.7,
-            qenaet: t('pages.finance.budgeting.labels.saving'),
-            qaliq: 800
-        },
-        {
-            title: t('pages.finance.budgeting.categories.logistics', 'Logistika'),
-            used: 4100,
-            planned: 4000,
-            percent: 102.5,
-            extra: 100,
-            noRed: false,
-        },
-        {
-            title: t('pages.finance.budgeting.categories.otherExpenses', 'Digər xərclər'),
-            used: 2700,
-            planned: 3000,
-            percent: 90,
-            qenaet: t('pages.finance.budgeting.labels.saving'),
-            qaliq: 300
-        },
-    ];
-
     return (
-        <div className="bg-white dark:bg-[#002855] p-6 rounded-xl shadow border border-[#979DAC] dark:border-[#33415C] mt-7 mx-auto">
-            <h2 className="text-lg font-semibold text-[#023E7D] dark:text-white mb-1">
-                {t('pages.finance.budgeting.categoriesTitle')}
-            </h2>
-            <p className="text-[#7D8597] dark:text-[#5C677D] mb-6">
-                {t('pages.finance.budgeting.categoriesSubtitle')}
-            </p>
+        <div className="space-y-4 mt-7">
+            {data.map((item, index) => {
+                const planned = Number(item.totalPlanned) || 0;
+                const actual = Number(item.totalActual) || 0;
+                const percent = planned > 0 ? (actual / planned) * 100 : 0;
+                const isOverBudget = percent > 100;
+                const difference = planned - actual;
 
-            {data.map((item, index) => (
-                <div key={index} className="mb-6">
-                    <div className="flex items-center justify-between mb-1">
-                        <div className="flex items-center gap-3">
-                            <h3 className="text-[#5C677D] dark:text-[#979DAC] font-medium">{item.title}</h3>
-
-                            {item.extra && (
-                                <span className="bg-[#D00000] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-                                    {`+${item.extra.toLocaleString()} AZN`}
-                                </span>
-                            )}
-
-                            {item.qenaet && (
-                                <span className="text-[#0466CB] dark:text-[#0466CB] border border-[#0466CB] text-xs font-semibold px-2 py-0.5 rounded-sm"
-                                      style={{ backgroundColor: 'rgba(4, 102, 203, 0.2)' }}>
-                                    {item.qenaet}
-                                </span>
-                            )}
+                return (
+                    <div
+                        key={index}
+                        className="bg-white dark:bg-[#002855] rounded-xl border border-[#979DAC] dark:border-[#33415C] p-5 flex flex-col md:flex-row items-center justify-between shadow-sm hover:shadow-md transition-shadow duration-200"
+                    >
+                        <div className="flex items-center gap-4 w-full md:w-1/3">
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold
+                                ${isOverBudget ? "bg-[#FFE5E5] text-[#D00000]" : "bg-[#E5F4FF] text-[#0466CB]"}`}>
+                                {item.department ? item.department.charAt(0) : "?"}
+                            </div>
+                            <div>
+                                <h3 className="text-[#001233] dark:text-white font-medium text-lg">{item.department}</h3>
+                                <p className="text-[#7D8597] dark:text-[#7D8597] text-sm">
+                                    {t('pages.finance.budgeting.departments.totalBudget', 'Total Budget')}: {planned} AZN
+                                </p>
+                            </div>
                         </div>
 
-                        <p className="text-[#7D8597] dark:text-[#7D8597] text-sm">
-                            {item.used.toLocaleString()} / {item.planned.toLocaleString()} AZN
-                        </p>
-                    </div>
-
-                    <div className="relative w-full bg-[#979DAC] dark:bg-[#33415C] h-2.5 rounded-full overflow-hidden">
-                        <div
-                            className={`h-2.5 rounded-full ${item.percent > 100 && !item.noRed ? "bg-[#D00000]" : "bg-[#0466CB] dark:bg-[#0466CB]"}`}
-                            style={{ width: `${Math.min(item.percent, 100)}%` }}
-                        ></div>
-                    </div>
-
-                    <div className="flex justify-between items-center mt-1">
-                        <div className="text-sm text-[#5C677D] dark:text-[#979DAC] flex items-center gap-2">
-                            {item.percent}% {t('pages.finance.budgeting.labels.used')}
+                        <div className="w-full md:w-1/3 px-4 my-4 md:my-0">
+                            <div className="flex justify-between text-sm mb-2">
+                                <span className="text-[#5C677D] dark:text-[#7D8597]">{actual} AZN</span>
+                                <span className={`font-medium ${isOverBudget ? "text-[#D00000]" : "text-[#37A656]"}`}>
+                                    {percent.toFixed(1)}%
+                                </span>
+                            </div>
+                            <div className="w-full bg-[#979DAC]/40 dark:bg-[#5C677D] h-2 rounded-full overflow-hidden">
+                                <div
+                                    className={`h-2 rounded-full transition-all duration-700 ${isOverBudget ? "bg-[#D00000]" : "bg-[#0466CB]"}`}
+                                    style={{ width: `${Math.min(percent, 100)}%` }}
+                                ></div>
+                            </div>
                         </div>
-                        {item.qaliq && (
-                            <span className="text-[#0466CB] dark:text-[#0466CB] text-xs font-semibold px-2 py-0.5 rounded-full">
-                                {item.qaliq} AZN {t('pages.finance.budgeting.labels.remaining')}
-                            </span>
-                        )}
+
+                        <div className="w-full md:w-1/3 flex justify-between md:justify-end items-center gap-6">
+                            <div className="text-right">
+                                <p className="text-[#7D8597] dark:text-[#7D8597] text-xs uppercase tracking-wider">
+                                    {difference >= 0 ? t('pages.finance.budgeting.labels.remaining') : t('pages.finance.budgeting.labels.overBudget', 'Over Budget')}
+                                </p>
+                                <p className={`text-lg font-bold ${difference < 0 ? "text-[#D00000]" : "text-[#001233] dark:text-white"}`}>
+                                    {Math.abs(difference)} AZN
+                                </p>
+                            </div>
+                            
+                            {difference > 0 && (
+                                <div className="hidden sm:block px-3 py-1 bg-[#E6F4EA] text-[#37A656] rounded-full text-xs font-medium">
+                                    {t('pages.finance.budgeting.labels.saving')}
+                                </div>
+                            )}
+                        </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
 };
